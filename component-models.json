@@ -204,5 +204,18 @@
         "value": "Benjamin Franklin"
       }
     ]
+  },
+  {
+    "id": "embed",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "videoUrl",
+        "value": "",
+        "label": "Video URL",
+        "description": "Please provide a URL to an MPC video."
+      }
+    ]
   }
 ]
