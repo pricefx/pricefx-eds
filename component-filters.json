@@ -9,11 +9,11 @@
   },
   {
     "id": "column",
-    "components": ["text", "image", "button", "title"]
+    "components": ["text", "image", "button", "title", "embed"]
   },
   {
     "id": "section",
-    "components": ["button", "cards", "columns", "hero", "image", "quote", "text", "title"]
+    "components": ["button", "cards", "columns", "hero", "image", "quote", "text", "title", "embed"]
   },
   {
     "id": "cards",
