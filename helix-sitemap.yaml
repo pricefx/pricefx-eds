@@ -1,0 +1,20 @@
+sitemaps:
+  example:
+    origin: https://experienceleague.adobe.com
+    default: en
+    languages:
+      en:
+        source: /en/query-index.json
+        destination: /en/sitemap.xml
+        alternate: /en/{path}
+        hreflang: en
+      fr:
+        source: /fr/query-index.json
+        destination: /fr/sitemap.xml
+        hreflang: fr
+        alternate: /fr/{path}
+      de:
+        source: /de/query-index.json
+        destination: /de/sitemap.xml
+        hreflang: de
+        alternate: /de/{path}
