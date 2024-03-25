@@ -1,3 +1,7 @@
 {
-  "mappings": ["/content/pricefx/:/"]
+  "mappings": [
+    "/content/pricefx/:/",
+    "/content/pricefx/en:/"
+  ],
+  "includes": ["/content/pricefx/"]
 }
