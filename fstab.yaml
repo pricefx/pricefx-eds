@@ -1,5 +1,5 @@
 mountpoints:
   /:
-    url: "https://author-p28206-e1206067.adobeaemcloud.com/bin/franklin.delivery/bounteous-inc/edge-delivery-activate/main"
+    url: "https://author-p131512-e1282665.adobeaemcloud.com/bin/franklin.delivery/Bounteous-Inc/pricefx-aem/main"
     type: "markup"
     suffix: ".html"
