@@ -4,17 +4,17 @@ sitemaps:
     default: en
     languages:
       en:
-        source: /en/query-index.json
-        destination: /en/sitemap.xml
+        source: /en/configuration/query-index.json
+        destination: /en/configuration/sitemap.xml
         alternate: /en/{path}
         hreflang: en
       fr:
-        source: /fr/query-index.json
-        destination: /fr/sitemap.xml
+        source: /fr/configuration/query-index.json
+        destination: /fr/configuration/sitemap.xml
         hreflang: fr
         alternate: /fr/{path}
       de:
-        source: /de/query-index.json
-        destination: /de/sitemap.xml
+        source: /de/configuration/query-index.json
+        destination: /de/configuration/sitemap.xml
         hreflang: de
         alternate: /de/{path}
