@@ -1,6 +1,6 @@
 sitemaps:
   example:
-    origin: https://experienceleague.adobe.com
+    origin: https://www.pricefx.com
     default: en
     languages:
       en:
