@@ -11,6 +11,7 @@
  */
 
 :root {
+
   /* colors */
   --link-color: #035fe6;
   --link-hover-color: #136ff6;
@@ -197,7 +198,7 @@ button:disabled:hover {
 a.button.secondary,
 button.secondary {
   background-color: unset;
-  border: 2px solid currentcolor;
+  border: 2px solid currentColor;
   color: var(--text-color);
 }
 

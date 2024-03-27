@@ -6,12 +6,16 @@ async function handleEditorUpdate(event) {
   const { detail } = event;
 
   const resource = detail?.request?.target?.resource;
-  if (!resource) return;
+  if (!resource) {
+    return;
+  }
 
   const element = document.querySelector(`[data-aue-resource="${resource}"]`);
   const block = element?.parentElement?.closest('.block') || element?.closest('.block');
   const blockResource = block?.getAttribute('data-aue-resource');
-  if (!block || !blockResource?.startsWith(connectionPrefix)) return;
+  if (!block || !blockResource?.startsWith(connectionPrefix)) {
+    return;
+  }
 
   const updates = detail?.response?.updates;
   if (updates.length > 0) {

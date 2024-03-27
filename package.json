@@ -1,5 +1,5 @@
 {
-  "name": "@adobe/aem-boilerplate",
+  "name": "pricefx",
   "private": true,
   "version": "1.3.0",
   "description": "Starter project for Adobe Helix",
@@ -14,19 +14,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adobe/aem-boilerplate.git"
+    "url": "git+https://github.com/Bounteous-Inc/pricefx-aem.git"
   },
   "author": "Adobe",
   "license": "Apache License 2.0",
   "bugs": {
-    "url": "https://github.com/adobe/aem-boilerplate/issues"
+    "url": "https://github.com/Bounteous-Inc/pricefx-aem/issues"
   },
+  "homepage": "https://github.com/Bounteous-Inc/pricefx-aem#readme",
   "lint-staged": {
     "*.{html,json}": "prettier --write",
     "**/*.{js,cjs}": "eslint --fix",
     "**/*.css": "stylelint --fix"
   },
-  "homepage": "https://github.com/adobe/aem-boilerplate#readme",
   "devDependencies": {
     "@babel/core": "7.23.7",
     "@babel/eslint-parser": "7.23.3",

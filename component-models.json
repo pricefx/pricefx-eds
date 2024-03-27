@@ -149,20 +149,174 @@
     ]
   },
   {
-    "id": "section",
+    "id": "accordion-item",
     "fields": [
       {
         "component": "text-input",
-        "name": "style",
+        "valueType": "string",
+        "name": "accordion-title",
+        "label": "Title",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "body-text",
+        "label": "Text",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "tabs",
+    "fields": [
+      {
+        "component": "select",
+        "name": "type",
         "value": "",
-        "label": "Style",
-        "valueType": "string"
+        "label": "Tabs Layout",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Horizontal Layout",
+            "value": "horizontal"
+          },
+          {
+            "name": "Vertical Layout",
+            "value": "vertical"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tab-item",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "tab-title",
+        "label": "Tab Title",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "body-text",
+        "label": "Tab Text",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "section",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "style",
+        "label": "Style Options",
+        "valueType": "string[]",
+        "maxSize": 3,
+        "hidden": true,
+        "options": [
+          {
+            "name": "Text Alignment",
+            "children": [
+              {
+                "name": "Left",
+                "value": "alignment-left"
+              },
+              {
+                "name": "Center",
+                "value": "alignment-center"
+              },
+              {
+                "name": "Right",
+                "value": "alignment-right"
+              }
+            ]
+          },
+          {
+            "name": "Background Color",
+            "children": [
+              {
+                "name": "Primary",
+                "value": "background-color-primary"
+              },
+              {
+                "name": "Secondary",
+                "value": "background-color-secondary"
+              },
+              {
+                "name": "Black",
+                "value": "background-color-black"
+              }
+            ]
+          },
+          {
+            "name": "Margin",
+            "children": [
+              {
+                "name": "Add Margin Bottom",
+                "value": "margin-bottom"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "name": "backgroundImage",
+        "label": "Background Image",
+        "valueType": "string",
+        "multi": false
+      },
+      {
+        "component": "select",
+        "name": "theme",
+        "value": "",
+        "label": "Background Image Text",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Light Text",
+            "value": "text-light"
+          },
+          {
+            "name": "Dark Text",
+            "value": "text-dark"
+          }
+        ]
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "sectionID",
+        "label": "ID",
+        "value": ""
       }
     ]
   },
   {
     "id": "hero",
     "fields": [
+      {
+        "component": "select",
+        "name": "classes",
+        "value": "hero-primary",
+        "label": "Hero Style Option",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "hero-primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "hero-secondary"
+          }
+        ]
+      },
       {
         "component": "reference",
         "valueType": "string",
@@ -174,15 +328,82 @@
         "component": "text-input",
         "valueType": "string",
         "name": "imageAlt",
-        "label": "Alt",
+        "label": "Image Alt Text",
         "value": ""
       },
       {
-        "component": "text-area",
+        "component": "reference",
+        "valueType": "string",
+        "name": "backgroundImage",
+        "label": "Background Image",
+        "multi": false
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "backgroundImageAlt",
+        "label": "Background Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "heroContent",
+        "label": "Hero Content",
+        "value": "",
+        "description": "Heading (H1) and CTA"
+      }
+    ]
+  },
+  {
+    "id": "form",
+    "fields": [
+      {
+        "component": "text-input",
+        "name": "url",
+        "label": "URL",
+        "valueType": "string",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "google-map",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "apikey",
+        "label": "API Key",
+        "value": ""
+      },
+      {
+        "component": "text-input",
         "name": "text",
         "value": "",
         "label": "Text",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "embed",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "placeholder",
+        "label": "Placeholder",
+        "description": "An image to use as a placeholder",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "url",
+        "label": "URL",
+        "value": "",
+        "description": "A URL to an embeddable media"
       }
     ]
   },

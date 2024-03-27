@@ -1,0 +1,37 @@
+.accordion details {
+  border-top: 2px solid var(--c-gray-border);
+}
+
+.accordion details summary {
+  position: relative;
+  padding: 0 16px;
+  padding-right: 48px;
+  cursor: pointer;
+  list-style: none;
+  overflow: auto;
+}
+
+.accordion details summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion details summary::after {
+  font-family: var(--ff-activate-icons);
+  font-size: calc((30 / 16) * 1rem);
+  content: var(--icon-accordion-closed);
+  color: var(--c-primary);
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  transform: translateY(-50%);
+  transition: transform 0.2s;
+}
+
+.accordion details[open] summary::after {
+  content: var(--icon-accordion-open);
+}
+
+.accordion details .accordion-item-body {
+  padding: 0 16px;
+  font-size: 1.2rem;
+}
