@@ -9,13 +9,14 @@
   },
   {
     "id": "column",
-    "components": ["button", "image", "text", "title", "google-map"]
+    "components": ["button", "button-pfx", "image", "text", "title", "google-map"]
   },
   {
     "id": "section",
     "components": [
       "accordion",
       "button",
+      "button-pfx",
       "cards",
       "columns",
       "embed",

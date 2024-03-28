@@ -107,6 +107,18 @@
           }
         },
         {
+          "title": "Button Pfx",
+          "id": "button-pfx",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/button/v1/button",
+                "template": {}
+              }
+            }
+          }
+        },
+        {
           "title": "Cards",
           "id": "cards",
           "plugins": {

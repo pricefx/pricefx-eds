@@ -95,20 +95,83 @@
         "valueType": "string",
         "options": [
           {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "button-pfx",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "href",
+        "value": "",
+        "label": "Link"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "text",
+        "value": "",
+        "label": "Text"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "title",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "name": "type",
+        "value": "",
+        "label": "Type",
+        "valueType": "string",
+        "options": [
+          {
             "name": "Primary",
             "value": ""
+          },
+          {
+            "name": "Primary Dropdown",
+            "value": "primary-dropdown"
           },
           {
             "name": "Primary Light",
             "value": "primary-light"
           },
           {
+            "name": "Primary Light Dropdown",
+            "value": "primary-light-dropdown"
+          },
+          {
             "name": "Secondary",
             "value": "secondary"
           },
           {
+            "name": "Secondary Dropdown",
+            "value": "secondary-dropdown"
+          },
+          {
             "name": "Secondary Light",
             "value": "secondary-light"
+          },
+          {
+            "name": "Secondary Light Dropdown",
+            "value": "secondary-light-dropdown"
           },
           {
             "name": "Tertiary",
