@@ -42,7 +42,7 @@ graph LR
 
 ## Pre-requisites
 
-1. Kindly ensure that you have gone through the [set up guides](set-up_guide_fe.md).
+1. Kindly ensure that you have gone through the [set up guides](../../docs/fe_setup_instructions.md).
 2. Kindly ensure that you are aware of the [FAQ's](faqs.md) and the [Build](build_and_deploy.md) docs
 3. Kindly make sure that the server is up and running!
 4. It's also highly recommended to go through the documentation on [aem live](https://www.aem.live/docs/#build)
