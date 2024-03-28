@@ -2,7 +2,7 @@ export default async function decorate(block) {
   const [link, buttonLabel, type] = block.children;
   block.innerHTML = '';
 
-  if (link !== '') {
+  if (link.textContent !== '') {
     const buttonEl = document.createElement('a');
     buttonEl.classList.add('button');
     buttonEl.textContent = buttonLabel.textContent;
@@ -15,5 +15,5 @@ export default async function decorate(block) {
     block.appendChild(buttonEl);
   }
 
-  console.log(link, buttonLabel, type);
+  console.log(block.children, link.textContent, buttonLabel.textContent, type.textContent);
 }
