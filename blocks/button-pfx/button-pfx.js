@@ -1,6 +1,6 @@
 export default async function decorate(block) {
   const [link, buttonLabel, type] = block.children;
-  block.innerHTML = '';
+  block.textContent = '';
 
   if (link.textContent !== '') {
     const buttonEl = document.createElement('a');
