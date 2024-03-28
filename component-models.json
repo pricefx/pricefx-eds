@@ -125,14 +125,7 @@
         "valueType": "string",
         "name": "text",
         "value": "",
-        "label": "Text"
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "title",
-        "value": "",
-        "label": "Title"
+        "label": "Button Label"
       },
       {
         "component": "select",
