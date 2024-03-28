@@ -67,7 +67,7 @@
     "id": "button",
     "fields": [
       {
-        "component": "text-input",
+        "component": "reference",
         "valueType": "string",
         "name": "href",
         "value": "",
