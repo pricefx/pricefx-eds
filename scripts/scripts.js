@@ -20,7 +20,9 @@ const LCP_BLOCKS = []; // add your LCP blocks to the list
 async function loadFonts() {
   await loadCSS(`${window.hlx.codeBasePath}/styles/fonts.css`);
   try {
-    if (!window.location.hostname.includes('localhost')) sessionStorage.setItem('fonts-loaded', 'true');
+    if (!window.location.hostname.includes('localhost')) {
+      sessionStorage.setItem('fonts-loaded', 'true');
+    }
   } catch (e) {
     // do nothing
   }
@@ -87,7 +89,9 @@ async function loadLazy(doc) {
 
   const { hash } = window.location;
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
-  if (hash && element) element.scrollIntoView();
+  if (hash && element) {
+    element.scrollIntoView();
+  }
 
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));

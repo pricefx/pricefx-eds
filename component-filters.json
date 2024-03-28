@@ -9,14 +9,35 @@
   },
   {
     "id": "column",
-    "components": ["text", "image", "button", "title"]
+    "components": ["button", "image", "text", "title", "google-map"]
   },
   {
     "id": "section",
-    "components": ["button", "cards", "columns", "hero", "image", "quote", "text", "title"]
+    "components": [
+      "accordion",
+      "button",
+      "cards",
+      "columns",
+      "embed",
+      "google-map",
+      "hero",
+      "image",
+      "quote",
+      "tabs",
+      "text",
+      "title"
+    ]
   },
   {
     "id": "cards",
     "components": ["card"]
+  },
+  {
+    "id": "accordion",
+    "components": ["accordion-item"]
+  },
+  {
+    "id": "tabs",
+    "components": ["tab-item"]
   }
 ]

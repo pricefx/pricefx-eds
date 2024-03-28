@@ -231,7 +231,9 @@ function readBlockConfig(block) {
           } else {
             value = ps.map((p) => p.textContent);
           }
-        } else value = row.children[1].textContent;
+        } else {
+          value = row.children[1].textContent;
+        }
         config[name] = value;
       }
     }
@@ -317,7 +319,9 @@ function createOptimizedPicture(
   // webp
   breakpoints.forEach((br) => {
     const source = document.createElement('source');
-    if (br.media) source.setAttribute('media', br.media);
+    if (br.media) {
+      source.setAttribute('media', br.media);
+    }
     source.setAttribute('type', 'image/webp');
     source.setAttribute('srcset', `${pathname}?width=${br.width}&format=webply&optimize=medium`);
     picture.appendChild(source);
@@ -327,7 +331,9 @@ function createOptimizedPicture(
   breakpoints.forEach((br, i) => {
     if (i < breakpoints.length - 1) {
       const source = document.createElement('source');
-      if (br.media) source.setAttribute('media', br.media);
+      if (br.media) {
+        source.setAttribute('media', br.media);
+      }
       source.setAttribute('srcset', `${pathname}?width=${br.width}&format=${ext}&optimize=medium`);
       picture.appendChild(source);
     } else {
@@ -352,9 +358,13 @@ function decorateTemplateAndTheme() {
     });
   };
   const template = getMetadata('template');
-  if (template) addClasses(document.body, template);
+  if (template) {
+    addClasses(document.body, template);
+  }
   const theme = getMetadata('theme');
-  if (theme) addClasses(document.body, theme);
+  if (theme) {
+    addClasses(document.body, theme);
+  }
 }
 
 /**
@@ -430,7 +440,7 @@ function decorateIcons(element, prefix = '') {
  * @param {Element} main The container element
  */
 function decorateSections(main) {
-  main.querySelectorAll(':scope > div').forEach((section) => {
+  main.querySelectorAll(':scope > div:not([data-section-status])').forEach((section) => {
     const wrappers = [];
     let defaultContent = false;
     [...section.children].forEach((e) => {
@@ -438,7 +448,9 @@ function decorateSections(main) {
         const wrapper = document.createElement('div');
         wrappers.push(wrapper);
         defaultContent = e.tagName !== 'DIV';
-        if (defaultContent) wrapper.classList.add('default-content-wrapper');
+        if (defaultContent) {
+          wrapper.classList.add('default-content-wrapper');
+        }
       }
       wrappers[wrappers.length - 1].append(e);
     });
@@ -458,6 +470,16 @@ function decorateSections(main) {
             .filter((style) => style)
             .map((style) => toClassName(style.trim()));
           styles.forEach((style) => section.classList.add(style));
+        } else if (key === 'sectionid') {
+          section.id = meta.sectionid;
+        } else if (key === 'backgroundimage') {
+          const bgImg = createOptimizedPicture(meta.backgroundimage);
+          const defaultWrapper = section.querySelector('.default-content-wrapper');
+          section.classList.add('bg-image');
+          defaultWrapper.append(bgImg);
+          if (meta.theme) {
+            section.classList.add(meta.theme);
+          }
         } else {
           section.dataset[toCamelCase(key)] = meta[key];
         }
@@ -621,7 +643,21 @@ function decorateBlock(block) {
     const blockWrapper = block.parentElement;
     blockWrapper.classList.add(`${shortBlockName}-wrapper`);
     const section = block.closest('.section');
-    if (section) section.classList.add(`${shortBlockName}-container`);
+    if (section) {
+      section.classList.add(`${shortBlockName}-container`);
+    }
+    // wrap plain text and non-block elements in a <p> or <pre>
+    block.querySelectorAll(':scope > div > div').forEach((cell) => {
+      const firstChild = cell.firstElementChild;
+      const cellText = cell.textContent.trim();
+      if ((!firstChild && cellText) || (firstChild && !firstChild.tagName.match(/^(P(RE)?|H[1-6]|(U|O)L|TABLE)$/))) {
+        const tag =
+          firstChild && firstChild.tagName === 'CODE' && cellText === firstChild.textContent.trim() ? 'pre' : 'p';
+        const paragraph = document.createElement(tag);
+        paragraph.append(...cell.childNodes);
+        cell.replaceChildren(paragraph);
+      }
+    });
   }
 }
 
@@ -664,7 +700,9 @@ async function loadFooter(footer) {
 async function waitForLCP(lcpBlocks) {
   const block = document.querySelector('.block');
   const hasLCPBlock = block && lcpBlocks.includes(block.dataset.blockName);
-  if (hasLCPBlock) await loadBlock(block);
+  if (hasLCPBlock) {
+    await loadBlock(block);
+  }
 
   document.body.style.display = null;
   const lcpCandidate = document.querySelector('main img');

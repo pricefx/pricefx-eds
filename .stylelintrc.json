@@ -1,3 +1,7 @@
 {
-  "extends": ["stylelint-config-standard", "stylelint-prettier/recommended"]
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "comment-empty-line-before": ["always", { "ignore": ["after-comment"] }],
+    "value-keyword-case": ["lower", { "camelCaseSvgKeywords": true }]
+  }
 }

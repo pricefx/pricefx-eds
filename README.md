@@ -1,11 +1,11 @@
-# Your Project's Title...
+# Pricefx Website AEM Migration...
 
-Your project's description...
+AEM Edge Delivery Services Repository
 
 ## Environments
 
-- Preview: https://main--{repo}--{owner}.hlx.page/
-- Live: https://main--{repo}--{owner}.hlx.live/
+- Preview: https://main--pricefx-aem--bounteous-inc.hlx.page/en
+- Live: https://main--pricefx-aem--bounteous-inc.hlx.live/en
 
 ## Installation
 
