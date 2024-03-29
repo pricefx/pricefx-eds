@@ -1,6 +1,7 @@
 {
   "mappings": [
-    "/content/pricefx/en:/"
+    "/content/pricefx/en:/",
+    "/content/pricefx/en/learning-center/10-tools-help-pursuit-of-digital-transformation:/learning-center/10-tools-help-pursuit-of-digital-transformation"
   ],
   "includes": ["/content/pricefx/"]
 }
