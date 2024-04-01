@@ -85,6 +85,9 @@
   --spacing-xxlarge: 96px;
   --spacing-jumbo: 128px;
 
+  /* Site Content Maximum Width */
+  --site-page-width: 1900px;
+
   /* || COLOR PALETTE || */
   /* ------------------- */
 
@@ -103,6 +106,7 @@
   --c-gray: #dfe1e6;
   --c-gray-lt: #ebecee;
   --c-gray-med: #b5bac4;
+  --c-gray-med-alt: #bababa;
   --c-gray-drk: #6e7178;
   --c-gray-border: #d3d3d3;
   --c-disabled-copy: #575858;
@@ -112,6 +116,7 @@
   --c-white: #fff;
   --c-black: #3c3c3b;
   --c-dark: #353535;
+  --c-mid-dark: #333537;
   --c-offwhite: #f9fafa;
   --c-outline-drk: #304f8c;
   --c-outline-lt: #a9c0ec;
@@ -187,14 +192,20 @@ body {
   font-size: var(--body-font-size-l);
   font-family: var(--ff-secondary);
   font-weight: var(--fw-regular);
-  margin: 0;
+  margin: 0 auto;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-width: var(--site-page-width);
+  background-color: var(--c-mid-dark);
 }
 
 body.appear {
   display: block;
+}
+
+main {
+  background-color: var(--c-white);
 }
 
 /* links */
