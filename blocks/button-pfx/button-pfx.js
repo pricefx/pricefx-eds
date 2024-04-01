@@ -15,5 +15,5 @@ export default async function decorate(block) {
     block.appendChild(buttonEl);
   }
 
-  console.log(block.children, link.textContent, buttonLabel.textContent, type.textContent);
+  console.log(block.children, link.textContent.trim(), buttonLabel.textContent.trim(), type.textContent.trim());
 }
