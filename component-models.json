@@ -214,7 +214,7 @@
       {
         "component": "multiselect",
         "name": "property",
-        "label": "Styling Config",
+        "label": "Styling Configs",
         "valueType": "string",
         "required": true,
         "maxSize": 3,
