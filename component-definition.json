@@ -58,7 +58,7 @@
           "plugins": {
             "xwalk": {
               "page": {
-                "resourceType": "core/franklin/components/text/v1/rich-text",
+                "resourceType": "core/franklin/components/text/v1/text",
                 "template": {}
               }
             }
