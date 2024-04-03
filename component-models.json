@@ -212,30 +212,6 @@
     "id": "section",
     "fields": [
       {
-        "component": "reference",
-        "name": "backgroundImage",
-        "label": "Background Image",
-        "valueType": "string",
-        "multi": false
-      },
-      {
-        "component": "select",
-        "name": "theme",
-        "value": "",
-        "label": "Background Image Text",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Light Text",
-            "value": "text-light"
-          },
-          {
-            "name": "Dark Text",
-            "value": "text-dark"
-          }
-        ]
-      },
-      {
         "component": "select",
         "name": "backgroundColor",
         "value": "",
