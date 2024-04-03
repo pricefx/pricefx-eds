@@ -1,5 +1,5 @@
 mountpoints:
   /:
-    url: 'https://author-p131512-e1282665.adobeaemcloud.com/bin/franklin.delivery/Bounteous-Inc/pricefx-aem/main'
+    url: 'https://author-p131512-e1282665.adobeaemcloud.com/bin/franklin.delivery/pricefx/pricefx-eds/main'
     type: 'markup'
     suffix: '.html'
