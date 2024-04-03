@@ -213,12 +213,27 @@
     "fields": [
       {
         "component": "multiselect",
-        "name": "multiselect",
-        "label": "Multi Select",
+        "name": "property",
+        "label": "Multiselect field",
         "valueType": "string",
+        "required": true,
+        "maxSize": 2,
         "options": [
-          { "name": "Option 1", "value": "option1" },
-          { "name": "Option 2", "value": "option2" }
+          {
+            "name": "Theme",
+            "children": [
+              { "name": "Light", "value": "light" },
+              { "name": "Dark",  "value": "dark" }
+            ]
+          },
+          {
+            "name": "Type",
+            "children": [
+              { "name": "Alpha", "value": "alpha" },
+              { "name": "Beta", "value": "beta" },
+              { "name": "Gamma", "value": "gamma" }
+            ]
+          }
         ]
       },
       {
