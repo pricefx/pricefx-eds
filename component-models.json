@@ -213,53 +213,25 @@
     "fields": [
       {
         "component": "multiselect",
-        "name": "style",
-        "label": "Style Options",
-        "valueType": "string[]",
-        "maxSize": 3,
-        "hidden": true,
+        "name": "property",
+        "label": "Multiselect field",
+        "valueType": "string",
+        "required": true,
+        "maxSize": 2,
         "options": [
           {
-            "name": "Text Alignment",
+            "name": "Theme",
             "children": [
-              {
-                "name": "Left",
-                "value": "alignment-left"
-              },
-              {
-                "name": "Center",
-                "value": "alignment-center"
-              },
-              {
-                "name": "Right",
-                "value": "alignment-right"
-              }
+              { "name": "Light", "value": "light" },
+              { "name": "Dark",  "value": "dark" }
             ]
           },
           {
-            "name": "Background Color",
+            "name": "Type",
             "children": [
-              {
-                "name": "Primary",
-                "value": "background-color-primary"
-              },
-              {
-                "name": "Secondary",
-                "value": "background-color-secondary"
-              },
-              {
-                "name": "Black",
-                "value": "background-color-black"
-              }
-            ]
-          },
-          {
-            "name": "Margin",
-            "children": [
-              {
-                "name": "Add Margin Bottom",
-                "value": "margin-bottom"
-              }
+              { "name": "Alpha", "value": "alpha" },
+              { "name": "Beta", "value": "beta" },
+              { "name": "Gamma", "value": "gamma" }
             ]
           }
         ]
