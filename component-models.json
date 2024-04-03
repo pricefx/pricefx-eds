@@ -221,14 +221,14 @@
         "options": [
           {
             "name": "Background Color",
-            "options": [
+            "children": [
               { "name": "Grey", "value": "section--background-color-grey" },
               { "name": "White",  "value": "section--background-color-white" }
             ]
           },
           {
             "name": "Text Alignment",
-            "options": [
+            "children": [
               { "name": "Left", "value": "section--text-align-left" },
               { "name": "Center", "value": "section--text-align-center" },
               { "name": "Right", "value": "section--text-align-right" }
@@ -236,7 +236,7 @@
           },
           {
             "name": "Max Width",
-            "options": [
+            "children": [
               { "name": "Maximum 1188px", "value": "section--site-width" },
               { "name": "Maximum 680px", "value": "section--site-width-680px" },
               { "name": "Maximum 984px", "value": "section--site-width-984px" }
