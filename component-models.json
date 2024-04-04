@@ -234,7 +234,7 @@
       },
       {
         "component": "select",
-        "name": "Left",
+        "name": "alignment",
         "value": "section--text-align-left",
         "label": "Alignment",
         "valueType": "string",
