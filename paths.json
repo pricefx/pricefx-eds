@@ -6,8 +6,8 @@
     "/content/pricefx.resource/en/configuration/query-index.json:/configuration/query-index.json",
     "/content/pricefx/en/configuration/redirects.json:/configuration/redirects.json",
     "/content/pricefx/en/configuration/query-index.json:/configuration/query-index.json",
-    "/content/pricefx/en/configuration/header.json:/header.json",
-    "/content/pricefx/en/configuration/footer.json:/footer.json"
+    "/content/pricefx/en/configuration/header:/header.json",
+    "/content/pricefx/en/configuration/footer:/footer.json"
   ],
   "includes": ["/content/pricefx/"]
 }
