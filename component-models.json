@@ -219,6 +219,10 @@
         "valueType": "string",
         "options": [
           {
+            "name": "Default",
+            "value": ""
+          },
+          {
             "name": "Grey",
             "value": "section--background-color-grey"
           },
@@ -230,9 +234,9 @@
       },
       {
         "component": "select",
-        "name": "textAlignment",
-        "value": "",
-        "label": "Text Alignment",
+        "name": "Left",
+        "value": "section--text-align-left",
+        "label": "Alignment",
         "valueType": "string",
         "options": [
           {
@@ -256,6 +260,10 @@
         "label": "Max Width",
         "valueType": "string",
         "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
           {
             "name": "Maximum 1188px",
             "value": "section--site-width"
