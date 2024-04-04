@@ -269,12 +269,33 @@
             "value": "section--site-width"
           },
           {
-            "name": "Maximum 680px",
-            "value": "section--site-width-680px"
-          },
-          {
             "name": "Maximum 984px",
             "value": "section--site-width-984px"
+          },
+          {
+            "name": "Maximum 800px",
+            "value": "section--site-width-800px"
+          },
+          {
+            "name": "Maximum 680px",
+            "value": "section--site-width-680px"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "padding",
+        "value": "",
+        "label": "Padding",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "No Padding",
+            "value": "section--no-padding"
           }
         ]
       },

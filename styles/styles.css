@@ -380,19 +380,12 @@ h6 {
 ============================================= */
 /* sections */
 main .section {
-  padding: 64px 16px;
+  padding: 64px 24px;
 }
 
-@media (width >= 600px) {
+@media (width >= 1025) {
   main .section {
-    padding: 64px 32px;
-  }
-}
-
-@media (width >= 900px) {
-  .section > div {
-    max-width: 1200px;
-    margin: auto;
+    padding: 120px 32px;
   }
 }
 
