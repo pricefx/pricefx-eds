@@ -5,6 +5,8 @@
     "/content/pricefx/style-guide:/",
     "/content/pricefx/en/configuration/redirects.json",
     "/content/pricefx.resource/en/configuration/query-index.json:/configuration/query-index.json",
+    "/content/pricefx/en/configuration/redirects.json:/configuration/redirects.json",
+    "/content/pricefx/en/configuration/query-index.json:/configuration/query-index.json",
     "/content/pricefx/en/configuration/header.json:/header.json",
     "/content/pricefx/en/configuration/footer.json:/footer.json"
   ],

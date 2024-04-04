@@ -4,8 +4,8 @@ AEM Edge Delivery Services Repository
 
 ## Environments
 
-- Preview: https://main--pricefx-aem--bounteous-inc.hlx.page/en
-- Live: https://main--pricefx-aem--bounteous-inc.hlx.live/en
+- Preview: https://main--pricefx-eds--pricefx.hlx.page
+- Live: https://main--pricefx-eds--pricefx.hlx.live
 
 ## Installation
 

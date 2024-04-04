@@ -212,79 +212,69 @@
     "id": "section",
     "fields": [
       {
-        "component": "multiselect",
-        "name": "style",
-        "label": "Style Options",
-        "valueType": "string[]",
-        "maxSize": 3,
-        "hidden": true,
+        "component": "select",
+        "name": "backgroundColor",
+        "value": "",
+        "label": "Background Color",
+        "valueType": "string",
         "options": [
           {
-            "name": "Text Alignment",
-            "children": [
-              {
-                "name": "Left",
-                "value": "alignment-left"
-              },
-              {
-                "name": "Center",
-                "value": "alignment-center"
-              },
-              {
-                "name": "Right",
-                "value": "alignment-right"
-              }
-            ]
+            "name": "Default",
+            "value": ""
           },
           {
-            "name": "Background Color",
-            "children": [
-              {
-                "name": "Primary",
-                "value": "background-color-primary"
-              },
-              {
-                "name": "Secondary",
-                "value": "background-color-secondary"
-              },
-              {
-                "name": "Black",
-                "value": "background-color-black"
-              }
-            ]
+            "name": "Grey",
+            "value": "section--background-color-grey"
           },
           {
-            "name": "Margin",
-            "children": [
-              {
-                "name": "Add Margin Bottom",
-                "value": "margin-bottom"
-              }
-            ]
+            "name": "White",
+            "value": "section--background-color-white"
           }
         ]
       },
       {
-        "component": "reference",
-        "name": "backgroundImage",
-        "label": "Background Image",
-        "valueType": "string",
-        "multi": false
-      },
-      {
         "component": "select",
-        "name": "theme",
-        "value": "",
-        "label": "Background Image Text",
+        "name": "alignment",
+        "value": "section--text-align-left",
+        "label": "Alignment",
         "valueType": "string",
         "options": [
           {
-            "name": "Light Text",
-            "value": "text-light"
+            "name": "Left",
+            "value": "section--text-align-left"
           },
           {
-            "name": "Dark Text",
+            "name": "Center",
+            "value": "section--text-align-center"
+          },
+          {
+            "name": "Right",
             "value": "text-dark"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "maxWidth",
+        "value": "",
+        "label": "Max Width",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Maximum 1188px",
+            "value": "section--site-width"
+          },
+          {
+            "name": "Maximum 680px",
+            "value": "section--site-width-680px"
+          },
+          {
+            "name": "Maximum 984px",
+            "value": "section--site-width-984px"
           }
         ]
       },
