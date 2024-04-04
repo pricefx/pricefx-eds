@@ -286,7 +286,7 @@
         "component": "select",
         "name": "padding",
         "value": "",
-        "label": "No Padding",
+        "label": "Padding",
         "valueType": "string",
         "options": [
           {
@@ -294,7 +294,7 @@
             "value": ""
           },
           {
-            "name": "Zero Padding",
+            "name": "No Padding",
             "value": "section--no-padding"
           }
         ]
