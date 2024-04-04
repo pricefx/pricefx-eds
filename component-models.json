@@ -235,7 +235,7 @@
       {
         "component": "select",
         "name": "alignment",
-        "value": "section--text-align-center",
+        "value": "section--text-align-left",
         "label": "Alignment",
         "valueType": "string",
         "options": [
