@@ -447,5 +447,16 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "spacer",
+    "fields": [
+      {
+        "component": "spacer",
+        "name": "spacer",
+        "label": "Spacer",
+        "valueType": "string"
+      }
+    ]
   }
 ]
