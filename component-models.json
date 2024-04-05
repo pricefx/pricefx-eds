@@ -60,6 +60,23 @@
         "name": "alt",
         "value": "Default alt",
         "label": "Alt Text"
+      },
+      {
+        "component": "select",
+        "name": "roundedCorner",
+        "value": "",
+        "label": "Image Rounded Corner",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Rounded Corner",
+            "value": "image--rounded-corner"
+          }
+        ]
       }
     ]
   },
