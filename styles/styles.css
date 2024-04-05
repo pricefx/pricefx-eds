@@ -231,6 +231,7 @@ figure {
 
 img {
   display: block;
+  max-width: 100%;
 }
 
 /*
@@ -395,11 +396,11 @@ main .section.highlight {
   background-color: var(--c-gray-lt);
 }
 
-.section[data-backgroundcolor="section--background-color-grey"] {
+.section[data-backgroundcolor="section--bg-color-grey"] {
   background-color: var(--c-gray-lt);
 }
 
-.section[data-backgroundcolor="section--background-color-white"] {
+.section[data-backgroundcolor="section--bg-color-white"] {
   background-color: var(--c-white);
 }
 
@@ -415,22 +416,22 @@ main .section.highlight {
   text-align: right;
 }
 
-.section[data-maxwidth="section--site-width"] {
+.section[data-maxwidth="section--site-width"] .default-content-wrapper {
   margin: 0 auto;
   max-width: 1188px;
 }
 
-.section[data-maxwidth="section--site-width-984px"] {
+.section[data-maxwidth="section--site-width-984px"] .default-content-wrapper {
   margin: 0 auto;
   max-width: 984px;
 }
 
-.section[data-maxwidth="section--site-width-800px"] {
+.section[data-maxwidth="section--site-width-800px"] .default-content-wrapper {
   margin: 0 auto;
   max-width: 800px;
 }
 
-.section[data-maxwidth="section--site-width-680px"] {
+.section[data-maxwidth="section--site-width-680px"] .default-content-wrapper {
   margin: 0 auto;
   max-width: 680px;
 }

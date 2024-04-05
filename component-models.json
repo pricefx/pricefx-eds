@@ -224,11 +224,11 @@
           },
           {
             "name": "Grey",
-            "value": "section--background-color-grey"
+            "value": "section--bg-color-grey"
           },
           {
             "name": "White",
-            "value": "section--background-color-white"
+            "value": "section--bg-color-white"
           }
         ]
       },
