@@ -65,7 +65,7 @@
         "component": "select",
         "name": "roundedCorner",
         "value": "",
-        "label": "Image Rounded Corner",
+        "label": "Image Type",
         "valueType": "string",
         "options": [
           {
