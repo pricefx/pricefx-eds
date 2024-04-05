@@ -452,10 +452,37 @@
     "id": "spacer",
     "fields": [
       {
-        "component": "spacer",
+        "component": "select",
         "name": "spacer",
+        "value": "none",
         "label": "Spacer",
-        "valueType": "string"
+        "valueType": "string",
+        "options": [
+          {
+            "name": "None",
+            "value": "spacer--no-spacing"
+          },
+          {
+            "name": "Extra Small",
+            "value": "spacer—extra-small"
+          },
+          {
+            "name": "Small",
+            "value": "spacer—small"
+          },
+          {
+            "name": "Medium",
+            "value": "spacer—medium"
+          },
+          {
+            "name": "Large",
+            "value": "spacer—large"
+          },
+          {
+            "name": "Extra Large",
+            "value": "spacer—extra-large"
+          }
+        ]
       }
     ]
   }
