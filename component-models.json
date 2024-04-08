@@ -547,7 +547,7 @@
       {
         "component": "select",
         "name": "spacer",
-        "value": "none",
+        "value": "",
         "label": "Spacer",
         "valueType": "string",
         "options": [
