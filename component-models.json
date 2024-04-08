@@ -147,57 +147,57 @@
       {
         "component": "select",
         "name": "classes",
-        "value": "",
-        "label": "Type",
+        "value": "primary",
+        "label": "Variant",
         "valueType": "string",
         "options": [
           {
             "name": "Primary",
-            "value": "button"
+            "value": "primary"
           },
           {
             "name": "Primary Dropdown",
-            "value": "button button-icon"
+            "value": "primary-icon"
           },
           {
             "name": "Primary Light",
-            "value": "button primary-lt"
+            "value": "primary-lt"
           },
           {
             "name": "Primary Light Dropdown",
-            "value": "button primary-lt button-icon"
+            "value": "primary-lt-icon"
           },
           {
             "name": "Secondary",
-            "value": "button secondary"
+            "value": "secondary"
           },
           {
             "name": "Secondary Dropdown",
-            "value": "button secondary button-icon"
+            "value": "secondary-icon"
           },
           {
             "name": "Secondary Light",
-            "value": "button secondary-lt"
+            "value": "secondary-lt"
           },
           {
             "name": "Secondary Light Dropdown",
-            "value": "button secondary-lt button-icon"
+            "value": "secondary-lt-icon"
           },
           {
             "name": "Tertiary",
-            "value": "button tertiary"
+            "value": "tertiary"
           },
           {
             "name": "Tertiary Underline",
-            "value": "button tertiary tertiary-underline"
+            "value": "tertiary-underline"
           },
           {
             "name": "Tertiary Light",
-            "value": "button tertiary tertiary-lt"
+            "value": "tertiary-lt"
           },
           {
             "name": "Tertiary Light Underline",
-            "value": "button tertiary tertiary-lt tertiary-underline"
+            "value": "tertiary-lt-underline"
           }
         ]
       }

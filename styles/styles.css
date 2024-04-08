@@ -137,9 +137,7 @@
   --c-banner-lt-striping: var(--c-gray-border);
   --c-btn-drk: #1f3053;
 
-  /* Gradient */
-  --c-blue-gradient: linear-gradient(123deg, #304f8c 9.71%, #466cb9 86.9%);
-  --c-blue-gradient-hover: linear-gradient(123deg, #304f8c 9.71%, #283f6f 86.9%);
+  /* Gradients */
   --c-blue-gradient-lt: linear-gradient(135deg, #c1d2f3 -3.03%, #a1d8f4 100%);
   --c-blue-gradient-lt-hover: linear-gradient(135deg, #a9c0ec -3.03%, #7fc9ee 100%);
   --c-blue-gradient-lt-active: linear-gradient(135deg, #93aee6 -3.03%, #5fbbe8 100%);
@@ -233,54 +231,6 @@ img {
   display: block;
   height: auto;
   max-width: 100%;
-}
-
-/*
-------------------------------------
-  BUTTON CSS RULES
-------------------------------------
-*/
-/* buttons */
-a.button:any-link,
-button {
-  font-family: var(--body-font-family);
-  display: inline-block;
-  box-sizing: border-box;
-  text-decoration: none;
-  border: 2px solid transparent;
-  padding: 5px 30px;
-  text-align: center;
-  font-style: normal;
-  font-weight: 600;
-  cursor: pointer;
-  color: var(--background-color);
-  background-color: var(--link-color);
-  margin: 16px 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  border-radius: 30px;
-}
-
-a.button:hover,
-a.button:focus,
-button:hover,
-button:focus {
-  background-color: var(--link-hover-color);
-  cursor: pointer;
-}
-
-button:disabled,
-button:disabled:hover {
-  background-color: var(--light-color);
-  cursor: unset;
-}
-
-a.button.secondary,
-button.secondary {
-  background-color: unset;
-  border: 2px solid currentColor;
-  color: var(--text-color);
 }
 
 /*

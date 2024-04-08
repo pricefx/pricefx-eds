@@ -7,7 +7,9 @@
     "/content/pricefx/en/configuration/redirects.json:/configuration/redirects.json",
     "/content/pricefx/en/configuration/query-index.json:/configuration/query-index.json",
     "/content/pricefx/en/configuration/header:/header.json",
-    "/content/pricefx/en/configuration/footer:/footer.json"
+    "/content/pricefx/en/configuration/footer:/footer.json",
+    "/content/pricefx/fragments/header:/.helix/header.json",
+    "/content/pricefx.resource/fragments/:/fragments/"
   ],
   "includes": ["/content/pricefx/"]
 }
