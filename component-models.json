@@ -292,7 +292,7 @@
         "name": "style",
         "label": "Style Options",
         "valueType": "string[]",
-        "maxSize": 5,
+        "maxSize": 4,
         "hidden": true,
         "options": [
           {
@@ -326,23 +326,6 @@
               {
                 "name": "Right",
                 "value": "section-align-right"
-              }
-            ]
-          },
-          {
-            "name": "Background Color",
-            "children": [
-              {
-                "name": "Default",
-                "value": ""
-              },
-              {
-                "name": "Grey",
-                "value": "section--bg-color-grey"
-              },
-              {
-                "name": "White",
-                "value": "section--bg-color-white"
               }
             ]
           },
