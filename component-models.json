@@ -333,7 +333,7 @@
             "children": [
               {
                 "name": "Default",
-                "value": ""
+                "value": " "
               },
               {
                 "name": "Maximum 1188px",
@@ -358,7 +358,7 @@
             "children": [
               {
                 "name": "Default",
-                "value": ""
+                "value": " "
               },
               {
                 "name": "No Padding",
@@ -371,7 +371,7 @@
             "children": [
               {
                 "name": "Default",
-                "value": ""
+                "value": " "
               },
               {
                 "name": "Rounded Corner",
@@ -549,7 +549,7 @@
         "options": [
           {
             "name": "None",
-            "value": "spacer--no-spacing"
+            "value": "spacer-no-spacing"
           },
           {
             "name": "Extra Small",
