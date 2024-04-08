@@ -304,11 +304,11 @@
               },
               {
                 "name": "Grey",
-                "value": "section--bg-color-grey"
+                "value": "section-bg-color-grey"
               },
               {
                 "name": "White",
-                "value": "section--bg-color-white"
+                "value": "section-bg-color-white"
               }
             ]
           },
@@ -350,23 +350,6 @@
         "label": "Background Image",
         "valueType": "string",
         "multi": false
-      },
-      {
-        "component": "select",
-        "name": "roundedCorner",
-        "value": "",
-        "label": "Image Type",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Default",
-            "value": ""
-          },
-          {
-            "name": "Rounded Corner",
-            "value": "image-rounded-corner"
-          }
-        ]
       },
       {
         "component": "text-input",
