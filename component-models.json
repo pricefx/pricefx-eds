@@ -292,7 +292,7 @@
         "name": "style",
         "label": "Style Options",
         "valueType": "string[]",
-        "maxSize": 4,
+        "maxSize": 3,
         "hidden": true,
         "options": [
           {
@@ -326,31 +326,6 @@
               {
                 "name": "Right",
                 "value": "section-align-right"
-              }
-            ]
-          },
-          {
-            "name": "Max Width",
-            "children": [
-              {
-                "name": "Default",
-                "value": ""
-              },
-              {
-                "name": "Maximum 1188px",
-                "value": "section--site-width"
-              },
-              {
-                "name": "Maximum 984px",
-                "value": "section--site-width-984px"
-              },
-              {
-                "name": "Maximum 800px",
-                "value": "section--site-width-800px"
-              },
-              {
-                "name": "Maximum 680px",
-                "value": "section--site-width-680px"
               }
             ]
           },
