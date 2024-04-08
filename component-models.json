@@ -290,8 +290,8 @@
       {
         "component": "multiselect",
         "name": "style",
-        "label": "Style Options",
-        "valueType": "string[]",
+        "label": "Styles",
+        "valueType": "string",
         "maxSize": 5,
         "options": [
           {
@@ -375,7 +375,7 @@
               },
               {
                 "name": "Rounded Corner",
-                "value": "image--rounded-corner"
+                "value": "image-rounded-corner"
               }
             ]
           }
