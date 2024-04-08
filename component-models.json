@@ -292,8 +292,7 @@
         "name": "style",
         "label": "Style Options",
         "valueType": "string[]",
-        "maxSize": 3,
-        "hidden": true,
+        "maxSize": 5,
         "options": [
           {
             "name": "Background Color",
@@ -330,6 +329,31 @@
             ]
           },
           {
+            "name": "Max Width",
+            "children": [
+              {
+                "name": "Default",
+                "value": ""
+              },
+              {
+                "name": "Maximum 1188px",
+                "value": "section-site-width"
+              },
+              {
+                "name": "Maximum 984px",
+                "value": "section-site-width-984px"
+              },
+              {
+                "name": "Maximum 800px",
+                "value": "section-site-width-800px"
+              },
+              {
+                "name": "Maximum 680px",
+                "value": "section-site-width-680px"
+              }
+            ]
+          },
+          {
             "name": "Padding",
             "children": [
               {
@@ -338,7 +362,20 @@
               },
               {
                 "name": "No Padding",
-                "value": "section--no-padding"
+                "value": "section-no-padding"
+              }
+            ]
+          },
+          {
+            "name": "Image Type",
+            "children": [
+              {
+                "name": "Default",
+                "value": ""
+              },
+              {
+                "name": "Rounded Corner",
+                "value": "image--rounded-corner"
               }
             ]
           }
