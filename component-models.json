@@ -292,7 +292,7 @@
         "name": "style",
         "label": "Styles",
         "valueType": "string",
-        "maxSize": 5,
+        "maxSize": 1,
         "options": [
           {
             "name": "Background Color",
