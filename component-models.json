@@ -379,7 +379,7 @@
         "component": "select",
         "name": "roundedCorner",
         "value": "",
-        "label": "Image Type",
+        "label": "Rounded Corner for Image/Video",
         "valueType": "string",
         "options": [
           {
@@ -387,8 +387,16 @@
             "value": ""
           },
           {
-            "name": "Rounded Corner",
-            "value": "rounded-corner"
+            "name": "Small",
+            "value": "rounded-corner-8px"
+          },
+          {
+            "name": "Medium",
+            "value": "rounded-corner-16px"
+          },
+          {
+            "name": "Large",
+            "value": "rounded-corner-20px"
           }
         ]
       },
