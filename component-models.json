@@ -508,6 +508,19 @@
         "label": "URL",
         "value": "",
         "description": "A URL to an embeddable media"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "overlayText",
+        "label": "Overlay Text",
+        "value": ""
+      },
+      {
+        "component": "boolean",
+        "label": "PopUp Model",
+        "name": "popUpModel",
+        "valueType": "boolean"
       }
     ]
   },
