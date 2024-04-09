@@ -391,6 +391,14 @@ main .section.highlight {
 }
 
 /* section image styles */
-.section[data-roundedcorner="rounded-corner"] img {
+.section[data-roundedcorner="rounded-corner-8px"] img {
   border-radius: 8px;
+}
+
+.section[data-roundedcorner="rounded-corner-16px"] img {
+  border-radius: 16px;
+}
+
+.section[data-roundedcorner="rounded-corner-20px"] img {
+  border-radius: 20px;
 }
