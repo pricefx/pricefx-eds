@@ -687,6 +687,12 @@
       },
       {
         "component": "aem-tag",
+        "label": "Article Category Tag",
+        "name": "cq:tags",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-tag",
         "label": "Article Tags",
         "name": "cq:tags",
         "valueType": "string"
