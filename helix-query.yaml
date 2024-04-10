@@ -34,3 +34,25 @@ indices:
     include:
       - '/de/**'
     target: /de/configuration/query-index.json
+
+  related-articles-en:
+    include:
+      - '/en/**'
+    target: /en/configuration/query-index.json
+    properties:
+      title:
+        select: h1.title
+        value: |
+          text(el)
+      image:
+        select: '.related-article-thumbnail img'
+        value: |
+          attribute(el, 'src')
+      description:
+        select: '.related-article-description'
+        value: |
+          text(el)
+      lastModified:
+        select: none
+        value: |
+          parseTimestamp(headers['last-modified'], 'ddd, DD MMM YYYY hh:mm:ss GMT')
