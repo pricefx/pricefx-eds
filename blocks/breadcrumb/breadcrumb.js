@@ -57,17 +57,14 @@ export default async function decorate(block) {
   const breadcrumbLinks = [HomeLink.outerHTML];
 
   window.setTimeout(async () => {
-    let path = window.location.pathname;
-    if (hideCurrentPage === 'true') {
-      const pathVal = window.location.pathname;
-      const pathStr = pathVal.substr(pathVal.lastIndexOf('/') + 1);
-      path = pathVal.replace(pathStr, '');
-    }
+    const path = window.location.pathname;
     const paths = await getAllPathsExceptCurrent(path);
     paths.forEach((pathPart) => breadcrumbLinks.push(createLink(pathPart).outerHTML));
-    const currentPath = document.createElement('span');
-    currentPath.innerText = document.querySelector('title').innerText;
-    breadcrumbLinks.push(currentPath.outerHTML);
+    if (hideCurrentPage === 'false') {
+      const currentPath = document.createElement('span');
+      currentPath.innerText = document.querySelector('title').innerText;
+      breadcrumbLinks.push(currentPath.outerHTML);
+    }
 
     breadcrumb.innerHTML =
       breadcrumbLinks.join(`<span class="breadcrumb-separator"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">

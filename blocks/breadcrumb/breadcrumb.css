@@ -11,6 +11,6 @@
 
 @media (width >= 768px) {
     .breadcrumb nav {
-      display: block;
+      display: flex;
     }
 }
