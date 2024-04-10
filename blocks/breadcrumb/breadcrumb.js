@@ -11,14 +11,18 @@ const getPageTitle = async (url) => {
   return '';
 };
 
-const getAllPathsExceptCurrent = async (paths) => {
+const getAllPathsExceptCurrent = async (paths, hideCurrent) => {
   const result = [];
   // remove first and last slash characters
   const pathsList = paths.replace(/^\/|\/$/g, '').split('/');
-  for (let i = 0; i < pathsList.length - 1; i += 1) {
-    const pathPart = pathsList[i];
-    const prevPath = result[i - 1] ? result[i - 1].path : '';
-    const path = `${prevPath}/${pathPart}`;
+  let pathsListLength = pathsList.length - 1;
+  if (hideCurrent === 'true') {
+    pathsListLength = pathsList.length - 2;
+  }
+
+  for (let i = 0; i <= pathsListLength; i += 1) {
+    const pathsListVal = paths.replace(/^\/|\/$/g, '').split('/');
+    const path = `/${pathsListVal.splice(0, i + 1).join('/')}`;
     const url = `${window.location.origin}${path}`;
     /* eslint-disable-next-line no-await-in-loop */
     const name = await getPageTitle(url);
@@ -43,9 +47,9 @@ const createLink = (path) => {
 };
 
 export default async function decorate(block) {
-  const hideBreadcrumb = block.querySelector("div[data-aue-prop='hideBreadcrumb']").textContent.trim();
-  const hideCurrentPage = block.querySelector("div[data-aue-prop='hideCurrentPage']").textContent.trim();
-  const navigationStartLevel = block.querySelector('.button-container').textContent.trim();
+  const hideBreadcrumb = block.querySelector("div[data-aue-prop='hideBreadcrumb']")?.textContent.trim() || '';
+  const hideCurrentPage = block.querySelector("div[data-aue-prop='hideCurrentPage']")?.textContent.trim() || '';
+  const navigationStartLevel = block.querySelector('.button-container').textContent.trim() || '';
   block.innerHTML = '';
 
   if (hideBreadcrumb === 'true') {
@@ -58,14 +62,9 @@ export default async function decorate(block) {
   const breadcrumbLinks = [HomeLink.outerHTML];
 
   window.setTimeout(async () => {
-    const path = navigationStartLevel || window.location.pathname;
-    const paths = await getAllPathsExceptCurrent(path);
+    const path = navigationStartLevel;
+    const paths = await getAllPathsExceptCurrent(path, hideCurrentPage);
     paths.forEach((pathPart) => breadcrumbLinks.push(createLink(pathPart).outerHTML));
-    if (hideCurrentPage === 'false') {
-      const currentPath = document.createElement('span');
-      currentPath.innerText = document.querySelector('title').innerText;
-      breadcrumbLinks.push(currentPath.outerHTML);
-    }
 
     breadcrumb.innerHTML =
       breadcrumbLinks.join(`<span class="breadcrumb-separator"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
