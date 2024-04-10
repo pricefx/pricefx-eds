@@ -1,3 +1,7 @@
+.section.breadcrumb-container {
+    padding: 34px;
+}
+
 .breadcrumb nav {
     align-items: center;
     display: flex;

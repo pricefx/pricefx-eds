@@ -612,12 +612,6 @@
         "valueType": "boolean",
         "label": "Hide Current Page",
         "name": "hideCurrentPage"
-      },
-      {
-        "component": "boolean",
-        "valueType": "boolean",
-        "label": "Show Hidden Navigation Items",
-        "name": "showHiddenNavigationItems"
       }
     ]
   },

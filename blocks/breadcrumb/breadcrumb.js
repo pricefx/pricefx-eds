@@ -43,8 +43,9 @@ const createLink = (path) => {
 };
 
 export default async function decorate(block) {
-  const hideBreadcrumb = block.querySelector("div[data-aue-prop='hideBreadcrumb']").textContent || '';
-  const hideCurrentPage = block.querySelector("div[data-aue-prop='hideCurrentPage']").textContent || '';
+  const hideBreadcrumb = block.querySelector("div[data-aue-prop='hideBreadcrumb']").textContent.trim();
+  const hideCurrentPage = block.querySelector("div[data-aue-prop='hideCurrentPage']").textContent.trim();
+  const navigationStartLevel = block.querySelector('.button-container').textContent.trim();
   block.innerHTML = '';
 
   if (hideBreadcrumb === 'true') {
@@ -57,7 +58,7 @@ export default async function decorate(block) {
   const breadcrumbLinks = [HomeLink.outerHTML];
 
   window.setTimeout(async () => {
-    const path = window.location.pathname;
+    const path = navigationStartLevel || window.location.pathname;
     const paths = await getAllPathsExceptCurrent(path);
     paths.forEach((pathPart) => breadcrumbLinks.push(createLink(pathPart).outerHTML));
     if (hideCurrentPage === 'false') {
