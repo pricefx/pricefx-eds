@@ -1,5 +1,16 @@
-.breadcrumb-container .nav {
+.breadcrumb nav {
     align-items: center;
     display: flex;
     gap: 10px;
+}
+
+.breadcrumb nav .breadcrumb-separator {
+    align-items: center;
+    display: flex;
+}
+
+@media (width >= 768px) {
+    .breadcrumb nav {
+      display: block;
+    }
 }
