@@ -60,6 +60,20 @@
         "name": "alt",
         "value": "Default alt",
         "label": "Alt Text"
+      },
+      {
+        "component": "text",
+        "name": "imageLink",
+        "label": "Image Link",
+        "valueType": "string",
+        "description" : "If you add link then it will make image clickable"
+      },
+      {
+        "component": "boolean",
+        "label": "Target Blank",
+        "name": "targetBlank",
+        "valueType": "boolean",
+        "description" : "If you selected the link will open in new window"
       }
     ]
   },
@@ -638,15 +652,56 @@
     "id": "socialshare",
     "fields": [
       {
+        "component": "select",
+        "label": "Social Type",
+        "name": "socialType",
+        "valueType": "string",
+        "required": true,
+        "maxSize": 1,
+        "options": [
+          { "name": "Share", "value": "share-type" },
+          { "name": "Follow", "value": "follow-type" }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "Facebook",
+        "label": "Facebook",
+        "valueType": "string",
+        "placeholder": "Enter Facebook Page URL"
+      },
+      {
+        "component": "text",
+        "name": "twitter",
+        "label": "X (Formerly Twitter)",
+        "valueType": "string",
+        "placeholder": "Enter Twitter Page URL"
+      },
+      {
+        "component": "text",
+        "name": "linkedin",
+        "label": "Linkedin",
+        "valueType": "string",
+        "placeholder": "Enter Instagram Page URL"
+      },
+      {
+        "component": "text",
+        "name": "instagram",
+        "label": "Instagram",
+        "valueType": "string",
+        "placeholder": "Enter Instagram Page URL"
+      },
+      {
         "component": "multiselect",
         "name": "socialshare",
         "label": "Social Share",
         "valueType": "string",
+        "placeholder": "Select social platform",
         "options": [
           { "name": "Facebook", "value": "facebook" },
           { "name": "X (Formerly Twitter)", "value": "twitter" },
           { "name": "Linkedin", "value": "linkedin" },
-          { "name": "Instagram", "value": "instagram" }
+          { "name": "Email", "value": "email" }
         ]
       }
     ]
