@@ -121,7 +121,7 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
   const url = new URL(link);
 
   // Load Video in Popup
-  if (isPopup) {
+  if (isPopup === 'true') {
     const embedHTML = document.createElement('div');
     if (config) {
       embedHTML.classList = `embed embed-${config.match[0]}`;
