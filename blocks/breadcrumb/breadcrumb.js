@@ -43,17 +43,27 @@ const createLink = (path) => {
 };
 
 export default async function decorate(block) {
+  const hideBreadcrumb = block.querySelector("div[data-aue-prop='hideBreadcrumb']").textContent || '';
+  const hideCurrentPage = block.querySelector("div[data-aue-prop='hideCurrentPage']").textContent || '';
+  block.innerHTML = '';
+
+  if (hideBreadcrumb === 'true') {
+    return;
+  }
   const breadcrumb = createElement('nav', '', {
     'aria-label': 'Breadcrumb',
   });
-  block.innerHTML = '';
   const HomeLink = createLink({ path: '', name: 'Home', url: window.location.origin });
   const breadcrumbLinks = [HomeLink.outerHTML];
 
   window.setTimeout(async () => {
-    const path = window.location.pathname;
+    let path = window.location.pathname;
+    if (hideCurrentPage === 'true') {
+      const pathVal = window.location.pathname;
+      const pathStr = pathVal.substr(pathVal.lastIndexOf('/') + 1);
+      path = pathVal.replace(pathStr, '');
+    }
     const paths = await getAllPathsExceptCurrent(path);
-
     paths.forEach((pathPart) => breadcrumbLinks.push(createLink(pathPart).outerHTML));
     const currentPath = document.createElement('span');
     currentPath.innerText = document.querySelector('title').innerText;
@@ -64,5 +74,5 @@ export default async function decorate(block) {
     <path d="M14 5.5L21 12.5M21 12.5L14 19.5M21 12.5L3 12.5" stroke="#484D56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg></span>`);
     block.append(breadcrumb);
-  }, 1000);
+  }, 500);
 }
