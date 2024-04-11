@@ -66,14 +66,14 @@
         "name": "imageLink",
         "label": "Image Link",
         "valueType": "string",
-        "description" : "If you add link then it will make image clickable"
+        "description": "If you add link then it will make image clickable"
       },
       {
         "component": "boolean",
         "label": "Target Blank",
         "name": "targetBlank",
         "valueType": "boolean",
-        "description" : "If you selected the link will open in new window"
+        "description": "If you selected the link will open in new window"
       }
     ]
   },
@@ -628,8 +628,8 @@
         "name": "hideBreadcrumb"
       },
       {
-        "component": "aem-content",
-        "valueType": "string",
+        "component": "text-input",
+        "valueType": "number",
         "label": "Navigation Start Level",
         "name": "navigationStartLevel",
         "value": ""
@@ -639,12 +639,6 @@
         "valueType": "boolean",
         "label": "Hide Current Page",
         "name": "hideCurrentPage"
-      },
-      {
-        "component": "boolean",
-        "valueType": "boolean",
-        "label": "Show Hidden Navigation Items",
-        "name": "showHiddenNavigationItems"
       }
     ]
   },
@@ -659,8 +653,8 @@
         "required": true,
         "maxSize": 1,
         "options": [
-          { "name": "Share", "value": "share-type" },
-          { "name": "Follow", "value": "follow-type" }
+          { "name": "Share Buttons", "value": "share-buttons" },
+          { "name": "Follow Buttons", "value": "follow-buttons" }
         ]
       },
       {
@@ -682,27 +676,33 @@
         "name": "linkedin",
         "label": "Linkedin",
         "valueType": "string",
-        "placeholder": "Enter Instagram Page URL"
+        "placeholder": "Enter Linkedin Page URL"
       },
       {
         "component": "text",
-        "name": "instagram",
-        "label": "Instagram",
+        "name": "youtube",
+        "label": "Youtube",
         "valueType": "string",
-        "placeholder": "Enter Instagram Page URL"
+        "placeholder": "Enter Youtube Page URL"
       },
       {
         "component": "multiselect",
         "name": "socialshare",
-        "label": "Social Share",
+        "label": "Social Share (Applicable for Share Buttons)",
         "valueType": "string",
-        "placeholder": "Select social platform",
+        "description": "Select the Share Button(s).",
         "options": [
           { "name": "Facebook", "value": "facebook" },
           { "name": "X (Formerly Twitter)", "value": "twitter" },
           { "name": "Linkedin", "value": "linkedin" },
           { "name": "Email", "value": "email" }
         ]
+      },
+      {
+        "component": "boolean",
+        "label": "Light Theme",
+        "name": "light",
+        "valueType": "boolean"
       }
     ]
   },

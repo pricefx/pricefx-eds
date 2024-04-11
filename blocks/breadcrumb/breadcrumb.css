@@ -1,0 +1,28 @@
+.section.breadcrumb-container {
+    padding: 34px;
+}
+
+.breadcrumb nav {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+}
+
+.breadcrumb nav a {
+    text-decoration: none;
+}
+
+.breadcrumb nav a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb nav .breadcrumb-separator {
+    align-items: center;
+    display: flex;
+}
+
+@media (width >= 768px) {
+    .breadcrumb nav {
+      display: flex;
+    }
+}
