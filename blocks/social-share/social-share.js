@@ -26,8 +26,11 @@ function decorateSocialShare(block, config) {
       case 'linkedin':
         socialLink.innerHTML = LINKEDIN;
         break;
-      default:
+      case 'email':
         socialLink.innerHTML = EMAIL;
+        break;
+      default:
+        break;
     }
     listItem.appendChild(socialLink);
     wrapperElement.appendChild(listItem);
@@ -56,8 +59,11 @@ function decorateSocialFollow(block, config) {
       case 'linkedin':
         link.innerHTML = LINKEDIN;
         break;
-      default:
+      case 'youtube':
         link.innerHTML = EMAIL;
+        break;
+      default:
+        break;
     }
     listItem.appendChild(link);
     wrapperElement.appendChild(listItem);
@@ -68,6 +74,11 @@ function decorateSocialFollow(block, config) {
 
 export default async function decorate(block) {
   const [type] = block.children;
+  const isLightTheme = block.children[6]?.querySelector('p').textContent.trim();
+
+  if (isLightTheme) {
+    block.classList.add('social-share-light-theme');
+  }
 
   if (type?.textContent.trim() === 'share-type') {
     const config = block.children[5]?.querySelector('p')?.textContent?.split(',');
