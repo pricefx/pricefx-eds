@@ -24,7 +24,7 @@ const getAllPathsExceptCurrent = async (paths, startLevel) => {
       url = `${window.location.origin}${pathVal}.html`;
     }
 
-    if (i >= startLevel) {
+    if (i >= startLevel - 1) {
       // eslint-disable-next-line no-await-in-loop
       const name = await getPageTitle(url);
       if (name) {
