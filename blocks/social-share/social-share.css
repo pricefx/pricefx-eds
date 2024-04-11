@@ -24,6 +24,6 @@
 
     svg.email path {
         stroke: var(--c-white);
-        fill: var(--c-black);
+        fill: transparent;
     }
 }
