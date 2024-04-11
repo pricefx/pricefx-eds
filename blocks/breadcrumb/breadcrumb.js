@@ -14,23 +14,22 @@ const getPageTitle = async (url) => {
 const getAllPathsExceptCurrent = async (paths, startLevel) => {
   const result = [];
   // remove first and last slash characters
-  const pathsList = paths
-    .replace(/^\/|\/$/g, '')
-    .split('/')
-    .slice(startLevel - 1);
+  const pathsList = paths.replace(/^\/|\/$/g, '').split('/');
+  let pathVal = '';
 
   for (let i = 0; i <= pathsList.length - 2; i += 1) {
-    const pathsListVal = paths
-      .replace(/^\/|\/$/g, '')
-      .split('/')
-      .slice(startLevel - 1);
-    const path = `/${pathsListVal.splice(0, i + 1).join('/')}`;
-    const url = `${window.location.origin}${path}.html`;
+    pathVal = `${pathVal}/${pathsList[i]}`;
+    let url = `${window.location.origin}${pathVal}`;
+    if (window.location.host.includes('author')) {
+      url = `${window.location.origin}${pathVal}.html`;
+    }
 
-    /* eslint-disable-next-line no-await-in-loop */
-    const name = await getPageTitle(url);
-    if (name) {
-      result.push({ path, name, url });
+    if (i >= startLevel) {
+      // eslint-disable-next-line no-await-in-loop
+      const name = await getPageTitle(url);
+      if (name) {
+        result.push({ pathVal, name, url });
+      }
     }
   }
   return result;
