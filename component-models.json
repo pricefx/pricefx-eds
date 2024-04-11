@@ -659,8 +659,8 @@
         "required": true,
         "maxSize": 1,
         "options": [
-          { "name": "Share", "value": "share-type" },
-          { "name": "Follow", "value": "follow-type" }
+          { "name": "Share Buttons", "value": "share-buttons" },
+          { "name": "Follow Buttons", "value": "follow-buttons" }
         ]
       },
       {
@@ -694,7 +694,7 @@
       {
         "component": "multiselect",
         "name": "socialshare",
-        "label": "Social Share",
+        "label": "Social Share (Applicable for Share Buttons)",
         "valueType": "string",
         "placeholder": "Select social platform",
         "options": [

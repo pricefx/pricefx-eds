@@ -9,7 +9,7 @@ function extractDomain(domain) {
 
 function decorateSocialShare(block, config) {
   const wrapperElement = document.createElement('ul');
-  wrapperElement.classList.add('a2a_kit', 'a2a_kit_size_32', 'a2a_default_style', 'social-share-type');
+  wrapperElement.classList.add('a2a_kit', 'a2a_kit_size_32', 'a2a_default_style', 'social-share-buttons');
 
   Array.from(config).forEach((item) => {
     const listItem = document.createElement('li');
@@ -80,7 +80,7 @@ export default async function decorate(block) {
     block.classList.add('social-share-light-theme');
   }
 
-  if (type?.textContent.trim() === 'share-type') {
+  if (type?.textContent.trim() === 'share-buttons') {
     const config = block.children[5]?.querySelector('p')?.textContent?.split(',');
     block.textContent = '';
     if (config) {
