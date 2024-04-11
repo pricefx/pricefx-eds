@@ -52,9 +52,9 @@ const createLink = (path) => {
 };
 
 export default async function decorate(block) {
-  const hideBreadcrumb = block.querySelector("div[data-aue-prop='hideBreadcrumb']")?.textContent.trim() || '';
-  const hideCurrentPage = block.querySelector("div[data-aue-prop='hideCurrentPage']")?.textContent.trim() || '';
-  const startLevel = 4;
+  const hideBreadcrumb = block.querySelector("div[data-aue-prop='hideBreadcrumb']")?.textContent.trim();
+  const hideCurrentPage = block.querySelector("div[data-aue-prop='hideCurrentPage']")?.textContent.trim();
+  const startLevel = block.querySelector("div[data-aue-prop='navigationStartLevel']")?.textContent.trim();
   block.innerHTML = '';
 
   if (hideBreadcrumb === 'true') {
