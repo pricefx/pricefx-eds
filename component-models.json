@@ -598,22 +598,20 @@
         "component": "boolean",
         "valueType": "boolean",
         "label": "Hide Breadcrumb",
-        "name": "hideBreadcrumb",
-        "value": "false"
+        "name": "hideBreadcrumb"
       },
       {
         "component": "text-input",
         "valueType": "number",
         "label": "Navigation Start Level",
         "name": "navigationStartLevel",
-        "value": "1"
+        "value": ""
       },
       {
         "component": "boolean",
         "valueType": "boolean",
         "label": "Hide Current Page",
-        "name": "hideCurrentPage",
-        "value": "false"
+        "name": "hideCurrentPage"
       }
     ]
   },
