@@ -275,12 +275,24 @@ button:disabled:hover {
 .tertiary button:active,
 .tertiary button:focus,
 .tertiary button:hover,
+.tertiary-lt a:active,
+.tertiary-lt a:focus,
+.tertiary-lt a:hover,
+.tertiary-lt button:active,
+.tertiary-lt button:focus,
+.tertiary-lt button:hover,
 .tertiary-underline a:active,
 .tertiary-underline a:focus,
 .tertiary-underline a:hover,
 .tertiary-underline button:active,
 .tertiary-underline button:focus,
-.tertiary-underline button:hover {
+.tertiary-underline button:hover,
+.tertiary-lt-underline a:active,
+.tertiary-lt-underline a:focus,
+.tertiary-lt-underline a:hover,
+.tertiary-lt-underline button:active,
+.tertiary-lt-underline button:focus,
+.tertiary-lt-underline button:hover {
   background: transparent;
   font-weight: var(--fw-bold);
 }
