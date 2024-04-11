@@ -1,0 +1,16 @@
+.social-share {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.a2a_kit {
+    display: inline-block;
+}
+
+.social-share .a2a_default_style li {
+    display: inline-block;
+}
+
+.social-share .a2a_default_style li:not(:last-child) {
+    padding-right: 40px;
+}

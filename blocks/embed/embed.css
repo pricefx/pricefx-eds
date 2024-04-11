@@ -37,30 +37,45 @@
   object-fit: cover;
 }
 
+.embed .embed-placeholder-play {
+  flex-direction: column;
+}
+
 .embed .embed-placeholder-play button {
   box-sizing: border-box;
   position: relative;
-  display: block;
-  transform: scale(3);
-  width: 22px;
-  height: 22px;
-  border: 2px solid;
-  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 170px;
+  height: 106px;
+  background-color: rgb(255 255 255 / 75%);
+  border: 2px solid var(--c-white);
+  border-radius: 0;
   padding: 0;
+  cursor: pointer;
 }
 
 .embed .embed-placeholder-play button::before {
   content: "";
   display: block;
   box-sizing: border-box;
-  position: absolute;
   width: 0;
-  height: 10px;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-left: 6px solid;
-  top: 4px;
-  left: 7px;
+  height: 42px;
+  border-top: 21px solid transparent;
+  border-bottom: 21px solid transparent;
+  border-left: 42px solid;
+}
+
+.embed-play-title {
+  font-family: var(--ff-primary);
+  font-size: var(--base-font-size);
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0.88px;
+  text-align: left;
+  color: var(--c-white);
+  margin-top: var(--spacing-xsmall);
 }
 
 .embed .embed-default,

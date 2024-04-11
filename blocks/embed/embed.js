@@ -80,7 +80,12 @@ const embedYoutube = (url, autoplay) => {
     </div>`;
 };
 
-const loadEmbed = (block, link, autoplay) => {
+async function loadModal(block) {
+  const { openModal } = await import(`${window.hlx.codeBasePath}/blocks/modal/modal.js`);
+  openModal({ block });
+}
+
+const loadEmbed = (block, link, autoplay, isPopup) => {
   if (block.classList.contains('embed-is-loaded')) {
     return;
   }
@@ -114,6 +119,23 @@ const loadEmbed = (block, link, autoplay) => {
 
   const config = EMBEDS_CONFIG.find((e) => e.match.some((match) => link.includes(match)));
   const url = new URL(link);
+
+  // Load Video in Popup
+  if (isPopup === 'true') {
+    const embedHTML = document.createElement('div');
+    if (config) {
+      embedHTML.classList = `embed embed-${config.match[0]}`;
+      embedHTML.innerHTML = config.embed(url, autoplay);
+    } else {
+      embedHTML.innerHTML = getDefaultEmbed(url);
+      embedHTML.classList = 'embed';
+    }
+    embedHTML.classList.add('embed-is-loaded');
+    loadModal(embedHTML);
+    return;
+  }
+
+  // Load Video
   if (config) {
     block.innerHTML = config.embed(url, autoplay);
     block.classList = `block embed embed-${config.match[0]}`;
@@ -121,21 +143,32 @@ const loadEmbed = (block, link, autoplay) => {
     block.innerHTML = getDefaultEmbed(url);
     block.classList = 'block embed';
   }
+
   block.classList.add('embed-is-loaded');
 };
 
 export default function decorate(block) {
   const placeholder = block.querySelector('picture');
   const link = block.querySelector('a').href;
+  const overlayText = block.children[2].textContent.trim();
+  const isPopup = block.children[3].textContent.trim();
   block.textContent = '';
 
   if (placeholder) {
     const wrapper = document.createElement('div');
     wrapper.className = 'embed-placeholder';
-    wrapper.innerHTML = '<div class="embed-placeholder-play"><button type="button" title="Play"></button></div>';
+    if (overlayText) {
+      wrapper.innerHTML = `
+      <div class="embed-placeholder-play">
+        <button type="button" title="Play"></button>
+        <p class="embed-play-title">${overlayText}</p>
+      </div>`;
+    } else {
+      wrapper.innerHTML = '<div class="embed-placeholder-play"><button type="button" title="Play"></button></div>';
+    }
     wrapper.prepend(placeholder);
-    wrapper.addEventListener('click', () => {
-      loadEmbed(block, link, true);
+    wrapper.addEventListener('click', async () => {
+      loadEmbed(block, link, true, isPopup);
     });
     block.append(wrapper);
   } else {
