@@ -390,15 +390,18 @@ main .section.highlight {
   padding: 0;
 }
 
-/* section image styles */
-.section[data-roundedcorner="rounded-corner-8px"] img {
+/* section image & iframe video styles */
+.section[data-roundedcorner="rounded-corner-8px"] img,
+.section[data-roundedcorner="rounded-corner-8px"] iframe {
   border-radius: 8px;
 }
 
-.section[data-roundedcorner="rounded-corner-16px"] img {
+.section[data-roundedcorner="rounded-corner-16px"] img,
+.section[data-roundedcorner="rounded-corner-16px"] iframe {
   border-radius: 16px;
 }
 
-.section[data-roundedcorner="rounded-corner-20px"] img {
+.section[data-roundedcorner="rounded-corner-20px"] img,
+.section[data-roundedcorner="rounded-corner-20px"] iframe {
   border-radius: 20px;
 }
