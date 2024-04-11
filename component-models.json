@@ -66,14 +66,14 @@
         "name": "imageLink",
         "label": "Image Link",
         "valueType": "string",
-        "description" : "If you add link then it will make image clickable"
+        "description": "If you add link then it will make image clickable"
       },
       {
         "component": "boolean",
         "label": "Target Blank",
         "name": "targetBlank",
         "valueType": "boolean",
-        "description" : "If you selected the link will open in new window"
+        "description": "If you selected the link will open in new window"
       }
     ]
   },
@@ -703,6 +703,12 @@
           { "name": "Linkedin", "value": "linkedin" },
           { "name": "Email", "value": "email" }
         ]
+      },
+      {
+        "component": "boolean",
+        "label": "Light Theme",
+        "name": "light",
+        "valueType": "boolean"
       }
     ]
   }

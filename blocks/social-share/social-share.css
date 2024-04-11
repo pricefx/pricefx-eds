@@ -7,10 +7,12 @@
     display: inline-block;
 }
 
-.social-share .a2a_default_style li {
+.social-share .a2a_default_style > li,
+.social-share .social-follow > li {
     display: inline-block;
 }
 
-.social-share .a2a_default_style li:not(:last-child) {
+.social-share .a2a_default_style > li:not(:last-child),
+.social-share .social-follow > li:not(:last-child) {
     padding-right: 40px;
 }
