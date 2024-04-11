@@ -696,7 +696,7 @@
         "name": "socialshare",
         "label": "Social Share (Applicable for Share Buttons)",
         "valueType": "string",
-        "placeholder": "Select social platform",
+        "description": "Select the Share Button(s).",
         "options": [
           { "name": "Facebook", "value": "facebook" },
           { "name": "X (Formerly Twitter)", "value": "twitter" },
