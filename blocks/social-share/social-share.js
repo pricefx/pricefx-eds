@@ -76,7 +76,7 @@ export default async function decorate(block) {
   const [type] = block.children;
   const isLightTheme = block.children[6]?.querySelector('p').textContent.trim();
 
-  if (isLightTheme) {
+  if (isLightTheme === 'true') {
     block.classList.add('social-share-light-theme');
   }
 
