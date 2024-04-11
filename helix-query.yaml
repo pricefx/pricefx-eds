@@ -37,22 +37,23 @@ indices:
 
   related-articles-en:
     include:
-      - '/en/**'
+      - '/en/content/pricefx/en/index/learning-center/**'  # Adjusted path to include all articles
     target: /en/configuration/query-index.json
     properties:
       title:
-        select: h1.title
+        select: h1.title  # Adjust this selector based on the structure of related article pages
         value: |
           text(el)
       image:
-        select: '.related-article-thumbnail img'
+        select: '.article-thumbnail img'  # Adjust this selector based on the structure of related article pages
         value: |
           attribute(el, 'src')
       description:
-        select: '.related-article-description'
+        select: '.article-description'  # Adjust this selector based on the structure of related article pages
         value: |
           text(el)
       lastModified:
         select: none
         value: |
           parseTimestamp(headers['last-modified'], 'ddd, DD MMM YYYY hh:mm:ss GMT')
+ 
