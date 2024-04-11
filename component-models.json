@@ -601,8 +601,8 @@
         "name": "hideBreadcrumb"
       },
       {
-        "component": "aem-content",
-        "valueType": "string",
+        "component": "text-input",
+        "valueType": "number",
         "label": "Navigation Start Level",
         "name": "navigationStartLevel",
         "value": ""

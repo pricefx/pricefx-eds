@@ -8,6 +8,14 @@
     gap: 10px;
 }
 
+.breadcrumb nav a {
+    text-decoration: none;
+}
+
+.breadcrumb nav a:hover {
+    text-decoration: underline;
+}
+
 .breadcrumb nav .breadcrumb-separator {
     align-items: center;
     display: flex;
