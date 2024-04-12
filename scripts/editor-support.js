@@ -97,6 +97,9 @@ async function applyChanges(event) {
           decorateIcons(parentElement);
           decorateRichtext(parentElement);
           decorateTitles(parentElement);
+          if (element.dataset.aueModel === 'title' && detail.patch.value.length > 0) {
+            element.classList.add(detail.patch.value);
+          }
         }
         return true;
       }
