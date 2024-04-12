@@ -35,25 +35,33 @@ indices:
       - '/de/**'
     target: /de/configuration/query-index.json
 
-  articles-en:
+  articles:
     include:
-      - '/en/content/pricefx/en/index/learning-center/**'
-    target: /en/configuration/query-index.json
+      - /en/index/learning-center/**
+    target: /en/index/learning-center/article-index.json
     properties:
-      title:
-        select: h1.title
-        value: |
-          text(el)
-      image:
-        select: '.article-thumbnail img'
-        value: |
-          attribute(el, 'src')
-      description:
-        select: '.article-description'
-        value: |
-          text(el)
       lastModified:
         select: none
-        value: |
-          parseTimestamp(headers['last-modified'], 'ddd, DD MMM YYYY hh:mm:ss GMT')
+        value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
+      title:
+        select: main h1
+        value: textContent(el)
+      description:
+        select: head > meta[name="description"]
+        value: attribute(el, "content")
+      image:
+        select: head > meta[property="og:image"]
+        value: match(attribute(el, "content"), "^(https?:\/\/.*?(pricefx.com))+(.*)|^(.*)")
+      topics:
+        select: head > meta[name="topics"]
+        value: attribute(el, "content")
+      readingTime:
+        select: head > meta[name="readingtime"]
+        value: attribute(el, "content")
+      publishDate:
+        select: head > meta[name="publishdate"]
+        value: parseTimestamp(attribute(el, "content"), "ddd, DD MMM YYYY hh:mm:ss GMT")
+      type:
+        select: head > meta[name="template"]
+        value: attribute(el, "content")
  
