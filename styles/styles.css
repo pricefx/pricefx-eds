@@ -387,7 +387,8 @@ main .section.highlight {
 }
 
 .section[data-padding="section-no-padding"] {
-  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 /* section image & iframe video styles */
