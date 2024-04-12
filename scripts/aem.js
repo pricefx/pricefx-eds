@@ -373,7 +373,7 @@ function decorateTitles(element, detail = {}) {
     Object.keys(detail).length > 0 &&
     detail.value.length > 0
   ) {
-    element.querySelectorAll('[data-aue-model="title"]').classList.add(detail.value);
+    element.querySelector('[data-aue-model="title"]').classList.add(detail.value);
   }
 }
 
