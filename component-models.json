@@ -41,6 +41,23 @@
             "value": "h6"
           }
         ]
+      },
+      {
+        "component": "select",
+        "name": "classes",
+        "value": "",
+        "label": "Color",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Dark Blue",
+            "value": "title-dark-blue-gradient"
+          }
+        ]
       }
     ]
   },
