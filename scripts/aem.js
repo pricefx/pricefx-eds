@@ -367,9 +367,10 @@ function decorateTemplateAndTheme() {
   }
 }
 
-function decorateTitles(element) {
-  const temp = element;
-  console.log(temp);
+function decorateTitles(element, detail = {}) {
+  if (element.dataset.aueModel === 'title' && detail.patch.value.length > 0) {
+    element.classList.add(detail.patch.value);
+  }
 }
 
 /**

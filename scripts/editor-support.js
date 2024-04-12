@@ -96,10 +96,7 @@ async function applyChanges(event) {
           decorateButtons(parentElement);
           decorateIcons(parentElement);
           decorateRichtext(parentElement);
-          decorateTitles(parentElement);
-          if (element.dataset.aueModel === 'title' && detail.patch.value.length > 0) {
-            element.classList.add(detail.patch.value);
-          }
+          decorateTitles(parentElement, detail.patch);
         }
         return true;
       }
