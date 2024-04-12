@@ -4,6 +4,7 @@ import {
   decorateButtons,
   decorateIcons,
   decorateSections,
+  decorateTitles,
   loadBlock,
   loadBlocks,
 } from './aem.js';
@@ -63,6 +64,7 @@ async function applyChanges(event) {
         decorateButtons(newBlock);
         decorateIcons(newBlock);
         decorateRichtext(newBlock);
+        decorateTitles(newBlock);
         decorateBlock(newBlock);
         await loadBlock(newBlock);
         block.remove();
@@ -82,6 +84,7 @@ async function applyChanges(event) {
           element.insertAdjacentElement('afterend', newSection);
           decorateButtons(newSection);
           decorateIcons(newSection);
+          decorateTitles(newSection);
           decorateRichtext(newSection);
           decorateSections(parentElement);
           decorateBlocks(parentElement);
@@ -93,6 +96,7 @@ async function applyChanges(event) {
           decorateButtons(parentElement);
           decorateIcons(parentElement);
           decorateRichtext(parentElement);
+          decorateTitles(parentElement);
         }
         return true;
       }

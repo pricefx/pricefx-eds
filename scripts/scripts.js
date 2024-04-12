@@ -6,6 +6,7 @@ import {
   decorateIcons,
   decorateSections,
   decorateBlocks,
+  decorateTitles,
   decorateTemplateAndTheme,
   waitForLCP,
   loadBlocks,
@@ -107,6 +108,7 @@ export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  decorateTitles(main);
   decorateBlocks(main);
 }
 

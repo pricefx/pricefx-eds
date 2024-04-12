@@ -367,6 +367,11 @@ function decorateTemplateAndTheme() {
   }
 }
 
+function decorateTitles(element) {
+  const temp = element;
+  console.log(temp);
+}
+
 /**
  * Decorates paragraphs containing a single link as buttons.
  * @param {Element} element container element
@@ -728,6 +733,7 @@ export {
   decorateButtons,
   decorateIcons,
   decorateSections,
+  decorateTitles,
   decorateTemplateAndTheme,
   fetchPlaceholders,
   getMetadata,
