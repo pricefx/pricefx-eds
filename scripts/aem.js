@@ -369,7 +369,7 @@ function decorateTemplateAndTheme() {
 
 function decorateTitles(element, detail = {}) {
   if (element.querySelectorAll('[data-aue-model="title"]') && detail.value.length > 0) {
-    element.querySelectorAll('[data-aue-model="title"]').classList.add(detail.patch.value);
+    element.querySelectorAll('[data-aue-model="title"]').classList.add(detail.value);
   }
 }
 
