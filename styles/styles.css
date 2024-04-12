@@ -334,9 +334,9 @@ main .section {
   padding: 64px 24px;
 }
 
-@media (width >= 1025) {
+@media (width >= 768px) {
   main .section {
-    padding: 120px 32px;
+   padding: 120px 32px;
   }
 }
 
@@ -387,7 +387,8 @@ main .section.highlight {
 }
 
 .section[data-padding="section-no-padding"] {
-  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 /* section image & iframe video styles */
