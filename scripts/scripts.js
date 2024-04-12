@@ -107,8 +107,8 @@ export function decorateMain(main) {
   decorateButtons(main);
   decorateIcons(main);
   buildAutoBlocks(main);
-  decorateSections(main);
   decorateTitles(main);
+  decorateSections(main);
   decorateBlocks(main);
 }
 
