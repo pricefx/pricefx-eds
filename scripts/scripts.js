@@ -160,11 +160,17 @@ async function loadLazy(doc) {
       await loadCSS('./lib/sa11y.min.css');
       await import('./lib/sa11y.min.js');
       await import('./lib/sa11y.lang.en.js');
-      // Instantiate
-      Sa11y.Lang.addI18n(Sa11yLangEn.strings);
-      const sa11y = new Sa11y.Sa11y({
-        checkRoot: "body",
-        // Add props here!
+      
+      // Instantiate Sa11y after it's loaded
+      await new Promise((resolve) => {
+        window.addEventListener('load', () => {
+          Sa11y.Lang.addI18n(Sa11yLangEn.strings);
+          const sa11y = new Sa11y.Sa11y({
+            checkRoot: "body",
+            // Add props here!
+          });
+          resolve();
+        });
       });
     }
   } catch (error) {
