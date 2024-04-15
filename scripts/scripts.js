@@ -171,43 +171,7 @@ function loadDelayed() {
   // load anything that can be postponed to the latest here
 }
 
-/**
- * Loads the page parameters for Adobe Target.
- * @returns {Object} The target parameters object.
- */
-function loadATPageParams() {
-  const id = window.location.pathname.replaceAll('/', '_').replace(/\.html$/, '').substring(1);
-  const categoryId = getMetadata('fullcategory').split('|').pop();
-  const thumbnailURL = getMetadata('og:image');
-  const title = getMetadata('og:title');
-  const name = title.indexOf('| pricefx') > -1 ? title.split('| pricefx')[0] : title;
-  const description = getMetadata('og:description');
-  const pageUrl = getMetadata('og:url');
-  const page = window.location.pathname.split('/')[3];
-  const tags = getMetadata('article:tag');
-  const articleAuthor = getMetadata('authorname');
-  const articlePostDate = getMetadata('publishdate');
-  const articleReadTime = getMetadata('readingtime');
-
-  const targetParams = {
-    id,
-    categoryId,
-    thumbnailURL,
-    name,
-    description,
-    pageUrl,
-    page,
-    tags,
-    articleAuthor,
-    articlePostDate,
-    articleReadTime,
-  };
-
-  return targetParams;
-}
-
 async function loadPage() {
-  window.atPageParams = loadATPageParams();
   await loadEager(document);
   await loadLazy(document);
   loadDelayed();
