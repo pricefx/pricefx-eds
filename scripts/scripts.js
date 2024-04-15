@@ -157,9 +157,9 @@ async function loadLazy(doc) {
   try {
     // Check if the domain ends with ".page"
     if (window.location.hostname.endsWith('.page')) {
-      await loadCSS('sa11y.min.css');
-      await import('/dist/js/sa11y.umd.min.js');
-      await import('/dist/js/lang/en.umd.js');
+      await loadCSS('./lib/sa11y.min.css');
+      await import('./lib/sa11y.umd.min.js');
+      await import('./lib/lang/en.umd.js');
       // Instantiate
       Sa11y.Lang.addI18n(Sa11yLangEn.strings);
       const sa11y = new Sa11y.Sa11y({
