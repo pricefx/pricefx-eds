@@ -9,6 +9,7 @@
 }
 
 .breadcrumb nav a {
+    color: var(--c-copy);
     text-decoration: none;
 }
 
