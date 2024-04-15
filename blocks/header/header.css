@@ -53,6 +53,12 @@ header nav {
   width: 100%;
 }
 
+.nav-list-level-1 li,
+.nav-mobile-list-level-1 li {
+  list-style-type: none;
+  margin-left: 0;
+}
+
 .nav-list-level-1-item {
   font-size: var(--body-font-size-l);
   font-weight: var(--fw-lt-bold);

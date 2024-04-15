@@ -47,8 +47,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 170px;
-  height: 106px;
+  width: 80px;
+  height: 50px;
   background-color: rgb(255 255 255 / 75%);
   border: 2px solid var(--c-white);
   border-radius: 0;
@@ -61,10 +61,10 @@
   display: block;
   box-sizing: border-box;
   width: 0;
-  height: 42px;
-  border-top: 21px solid transparent;
-  border-bottom: 21px solid transparent;
-  border-left: 42px solid;
+  height: 20px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 20px solid;
 }
 
 .embed-play-title {
@@ -110,4 +110,19 @@
   left:0;
   top:0;
   position:absolute;
+}
+
+/* Responsive Styles */
+@media(width >= 768px) {
+  .embed .embed-placeholder-play button {
+    width: 170px;
+    height: 106px;
+  }
+
+  .embed .embed-placeholder-play button::before { 
+    height: 42px;
+    border-top: 21px solid transparent;
+    border-bottom: 21px solid transparent;
+    border-left: 42px solid;
+  }  
 }
