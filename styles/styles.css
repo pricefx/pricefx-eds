@@ -231,6 +231,7 @@ blockquote,
 figure {
   margin: 0;
   padding: 0;
+  list-style-type: none;
 }
 
 p {
@@ -246,8 +247,10 @@ img {
   max-width: 100%;
 }
 
+[data-aue-prop="text"]
 ul {
   li {
+    list-style-type: initial;
     list-style-position: inside;
     margin-bottom: 5px;
     margin-left: 15px;
