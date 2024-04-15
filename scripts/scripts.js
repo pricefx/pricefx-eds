@@ -164,30 +164,28 @@ async function loadLazy(doc) {
         await loadCSS(`${window.hlx.codeBasePath}/styles/sa11y.min.css`);
   
         // Import Sa11y library and language file dynamically
-        const { default: Sa11y } = await import('./lib/sa11y.min.js');
-        const { default: Sa11yLangEn } = await import('./lib/sa11y.lang.en.js');
+        const { Sa11y, Lang } = await import('../assets/js/sa11y.esm.js');
+        const Sa11yLangEn = await import('../assets/js/lang/en.js');
+  
+        // Set translations
+        Lang.addI18n(Sa11yLangEn.strings);
   
         // Instantiate Sa11y after it's loaded
-        if (Sa11y && Sa11yLangEn) {
-          Sa11y.Lang.addI18n(Sa11yLangEn.strings);
-          const sa11y = new Sa11y.Sa11y({
-            // Add props here!
-          });
-          
-          // Call `scan` method to start scanning
-          sa11y.scan();
-        } else {
-          throw new Error('Sa11y or Sa11yLangEn is undefined');
-        }
+        const sa11y = new Sa11y({
+          checkRoot: "body",
+        });
+        
+        // Call `scan` method to start scanning
+        sa11y.scan();
       }
     } catch (error) {
       console.error('Failed to load Sa11y:', error);
     }
   }
-
-// Call the function to load Sa11y
-loadSa11y();
-
+  
+  // Call the function to load Sa11y
+  loadSa11y();
+  
   try {
     /* if desktop (proxy for fast connection) or fonts already loaded, load fonts.css */
     if (window.innerWidth >= 900 || sessionStorage.getItem('fonts-loaded')) {
