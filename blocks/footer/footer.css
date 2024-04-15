@@ -105,7 +105,7 @@ footer .footer {
 }
 
 .footer .footer-copyright-section {
-  padding: var(--spacing-small) 0;
+  padding: var(--spacing-small);
 }
 
 .footer .footer-copyright-section .section[data-backgroundcolor="section-bg-color-grey"] {
