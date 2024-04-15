@@ -648,10 +648,6 @@
         "valueType": "string",
         "options": [
           {
-            "name": "Default",
-            "value": ""
-          },
-          {
             "name": "None",
             "value": "spacer-no-spacing"
           },
@@ -664,7 +660,7 @@
             "value": "spacer-small"
           },
           {
-            "name": "Medium",
+            "name": "Medium - Default",
             "value": ""
           },
           {
