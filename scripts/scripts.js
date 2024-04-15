@@ -154,28 +154,29 @@ async function loadLazy(doc) {
   loadFooter(doc.querySelector('footer'));
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
-  try {
-    // Check if the domain ends with ".page"
-    if (window.location.hostname.endsWith('.page')) {
-      await loadCSS('./lib/sa11y.min.css');
-      await import('./lib/sa11y.min.js');
-      await import('./lib/sa11y.lang.en.js');
-      
-      // Instantiate Sa11y after it's loaded
-      await new Promise((resolve) => {
-        window.addEventListener('load', () => {
-          Sa11y.Lang.addI18n(Sa11yLangEn.strings);
-          const sa11y = new Sa11y.Sa11y({
-            checkRoot: "body",
-            // Add props here!
-          });
-          resolve();
+  // Dynamically load Sa11y and its dependencies
+  async function loadSa11y() {
+    try {
+      // Check if the domain ends with ".page"
+      if (window.location.hostname.endsWith('.page')) {
+        await loadCSS('./lib/sa11y.min.css');
+        await import('./lib/sa11y.min.js');
+        await import('./lib/sa11y.lang.en.js');
+        
+        // Instantiate Sa11y after it's loaded
+        Sa11y.Lang.addI18n(Sa11yLangEn.strings);
+        const sa11y = new Sa11y.Sa11y({
+          checkRoot: "body",
+          // Add props here!
         });
-      });
+      }
+    } catch (error) {
+      console.error('Failed to load Sa11y:', error);
     }
-  } catch (error) {
-    console.error('Failed to load Sa11y:', error);
   }
+  
+  // Call the function to load Sa11y
+  loadSa11y();
 
   try {
     /* if desktop (proxy for fast connection) or fonts already loaded, load fonts.css */
