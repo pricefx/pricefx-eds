@@ -82,7 +82,7 @@ button {
   font-size: var(--body-font-size-l);
   font-weight: var(--fw-regular);
   line-height: var(--base-line-height);
-  padding: 0 38px;
+  padding: 0;
   text-transform: none;
 }
 
@@ -236,6 +236,29 @@ button:disabled:hover {
 .secondary-lt-icon a.button::after,
 .secondary-lt-icon button::after {
   top: 13px;
+}
+
+/* Tertiary Arrow Paddings */
+.tertiary.left-arrow a,
+.tertiary.left-arrow button,
+.tertiary-lt.left-arrow a,
+.tertiary-lt.left-arrow button,
+.tertiary-underline.left-arrow a,
+.tertiary-underline.left-arrow button,
+.tertiary-lt-underline.left-arrow a,
+.tertiary-lt-underline.left-arrow button {
+  padding-left: 38px;
+}
+
+.tertiary.right-arrow a,
+.tertiary.right-arrow button,
+.tertiary-lt.right-arrow a,
+.tertiary-lt.right-arrow button,
+.tertiary-underline.right-arrow a,
+.tertiary-underline.right-arrow button,
+.tertiary-lt-underline.right-arrow a,
+.tertiary-lt-underline.right-arrow button {
+  padding-right: 38px;
 }
 
 /* Tertiary States */
