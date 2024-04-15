@@ -154,21 +154,27 @@ async function loadLazy(doc) {
   loadFooter(doc.querySelector('footer'));
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
+
   // Dynamically load Sa11y and its dependencies
   async function loadSa11y() {
     try {
       // Check if the domain ends with ".page"
       if (window.location.hostname.endsWith('.page')) {
+        // Load Sa11y stylesheet
         await loadCSS('./lib/sa11y.min.css');
-        await import('./lib/sa11y.min.js');
-        await import('./lib/sa11y.lang.en.js');
-        
+  
+        // Import Sa11y library and language file dynamically
+        const Sa11y = await import('./lib/sa11y.min.js');
+        const Sa11yLangEn = await import('./lib/sa11y.lang.en.js');
+  
         // Instantiate Sa11y after it's loaded
         Sa11y.Lang.addI18n(Sa11yLangEn.strings);
         const sa11y = new Sa11y.Sa11y({
-          checkRoot: "body",
           // Add props here!
         });
+        
+        // Call `scan` method to start scanning
+        sa11y.scan();
       }
     } catch (error) {
       console.error('Failed to load Sa11y:', error);
