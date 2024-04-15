@@ -215,6 +215,7 @@ a:hover,
 a:visited {
   color: var(--c-mega-menu-link);
   line-height: var(--base-line-height);
+  text-decoration: none;
 }
 
 a:hover {
