@@ -154,7 +154,31 @@ async function loadLazy(doc) {
   loadFooter(doc.querySelector('footer'));
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
-  loadFonts();
+  try {
+    // Check if the domain ends with ".page"
+    if (window.location.hostname.endsWith('.page')) {
+      await loadCSS('sa11y.min.css');
+      await import('/dist/js/sa11y.umd.min.js');
+      await import('/dist/js/lang/en.umd.js');
+      // Instantiate
+      Sa11y.Lang.addI18n(Sa11yLangEn.strings);
+      const sa11y = new Sa11y.Sa11y({
+        checkRoot: "body",
+        // Add props here!
+      });
+    }
+  } catch (error) {
+    console.error('Failed to load Sa11y:', error);
+  }
+
+  try {
+    /* if desktop (proxy for fast connection) or fonts already loaded, load fonts.css */
+    if (window.innerWidth >= 900 || sessionStorage.getItem('fonts-loaded')) {
+      loadFonts();
+    }
+  } catch (e) {
+    // do nothing
+  }
 
   sampleRUM('lazy');
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
