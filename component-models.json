@@ -391,7 +391,7 @@
         "valueType": "string",
         "options": [
           {
-            "name": "Left",
+            "name": "Left - Default",
             "value": "section-align-left"
           },
           {
