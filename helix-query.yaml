@@ -22,15 +22,33 @@ indices:
         select: none
         value: |
           parseTimestamp(headers['last-modified'], 'ddd, DD MMM YYYY hh:mm:ss GMT')
-          
-  site-fr:
-    <<: *base-site
-    include:
-      - '/fr/**'
-    target: /fr/configuration/query-index.json
 
-  site-de:
-    <<: *base-site
+  articles:
     include:
-      - '/de/**'
-    target: /de/configuration/query-index.json
+      - /en/index/learning-center/**
+    target: /en/index/learning-center/article-index.json
+    properties:
+      lastModified:
+        select: none
+        value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
+      title:
+        select: main h1
+        value: textContent(el)
+      description:
+        select: head > meta[name="description"]
+        value: attribute(el, "content")
+      image:
+        select: head > meta[property="og:image"]
+        value: match(attribute(el, "content"), "^(https?:\/\/.*?(pricefx.com))+(.*)|^(.*)")
+      topics:
+        select: head > meta[name="topics"]
+        value: attribute(el, "content")
+      readingTime:
+        select: head > meta[name="readingtime"]
+        value: attribute(el, "content")
+      publishDate:
+        select: head > meta[name="publishdate"]
+        value: parseTimestamp(attribute(el, "content"), "ddd, DD MMM YYYY hh:mm:ss GMT")
+      type:
+        select: head > meta[name="template"]
+        value: attribute(el, "content")

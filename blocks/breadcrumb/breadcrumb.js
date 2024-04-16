@@ -50,9 +50,9 @@ const createLink = (path) => {
 };
 
 export default async function decorate(block) {
-  const hideBreadcrumb = block.querySelector("div[data-aue-prop='hideBreadcrumb']")?.textContent.trim() || 'false';
-  const hideCurrentPage = block.querySelector("div[data-aue-prop='hideCurrentPage']")?.textContent.trim() || 'false';
-  const startLevel = block.querySelector("div[data-aue-prop='navigationStartLevel']")?.textContent.trim() || 1;
+  const hideBreadcrumb = block.children[0]?.querySelector('p')?.textContent.trim() || 'false';
+  const hideCurrentPage = block.children[2]?.querySelector('p')?.textContent.trim() || 'false';
+  const startLevel = block.children[1]?.querySelector('p')?.textContent.trim() || 1;
   block.innerHTML = '';
 
   if (hideBreadcrumb === 'true') {

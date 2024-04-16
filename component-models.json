@@ -5,14 +5,14 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "jcr:title",
+        "name": "title",
         "value": "",
-        "label": "Text"
+        "label": "Title"
       },
       {
         "component": "select",
         "name": "type",
-        "value": "h1",
+        "value": "h2",
         "label": "Type",
         "valueType": "string",
         "options": [
@@ -21,7 +21,7 @@
             "value": "h1"
           },
           {
-            "name": "h2",
+            "name": "h2 - Default",
             "value": "h2"
           },
           {
@@ -39,6 +39,60 @@
           {
             "name": "h6",
             "value": "h6"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "fontColor",
+        "value": "",
+        "label": "Color",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Dark Blue",
+            "value": "title-dark-blue-gradient"
+          }
+        ]
+      },
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "placeholder": "Select Spacing",
+        "label": "Spacing",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Small",
+            "value": "title-spacer-small"
+          },
+          {
+            "name": "Medium",
+            "value": "title-spacer-medium"
+          },
+          {
+            "name": "Large",
+            "value": "title-spacer-large"
+          },
+          {
+            "name": "Extra Large",
+            "value": "title-spacer-extra-large"
+          },
+          {
+            "name": "Remove Top Spacer",
+            "value": "title-no-top-margin"
+          },
+          {
+            "name": "Remove Bottom Spacer",
+            "value": "title-no-bottom-margin"
           }
         ]
       }
@@ -135,6 +189,13 @@
         "value": ""
       },
       {
+        "component": "boolean",
+        "valueType": "boolean",
+        "label": "Target Blank",
+        "name": "targetBlank",
+        "description": "When selected, the link will open in a new window"
+      },
+      {
         "component": "text-input",
         "valueType": "string",
         "name": "text",
@@ -145,7 +206,7 @@
         "component": "select",
         "name": "classes",
         "value": "primary",
-        "label": "Variant",
+        "label": "Button Variant",
         "valueType": "string",
         "options": [
           {
@@ -195,6 +256,28 @@
           {
             "name": "Tertiary Light Underline",
             "value": "tertiary-lt-underline"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "type",
+        "value": "",
+        "label": "Tertiary Arrow Variant",
+        "valueType": "string",
+        "description": "Choose arrow option for Tertiary button variant",
+        "options": [
+          {
+            "name": "No Arrow",
+            "value": ""
+          },
+          {
+            "name": "Right Arrow",
+            "value": "right-arrow"
+          },
+          {
+            "name": "Left Arrow",
+            "value": "left-arrow"
           }
         ]
       }
@@ -330,7 +413,7 @@
         "valueType": "string",
         "options": [
           {
-            "name": "Left",
+            "name": "Left - Default",
             "value": "section-align-left"
           },
           {
@@ -352,7 +435,7 @@
         "options": [
           {
             "name": "Full Bleed",
-            "value": ""
+            "value": "section-full-bleed"
           },
           {
             "name": "Maximum 1188px - Default",
@@ -540,9 +623,10 @@
       },
       {
         "component": "boolean",
-        "label": "PopUp Model",
-        "name": "popUpModel",
-        "valueType": "boolean"
+        "label": "Enable PopUp Modal",
+        "name": "popUpModal",
+        "valueType": "boolean",
+        "description": "When selected, the Video will open in a Popup Modal"
       }
     ]
   },
@@ -581,34 +665,30 @@
     "fields": [
       {
         "component": "select",
-        "name": "spacer",
+        "name": "classes",
         "value": "",
         "label": "Spacer",
         "valueType": "string",
         "options": [
-          {
-            "name": "Default",
-            "value": ""
-          },
           {
             "name": "None",
             "value": "spacer-no-spacing"
           },
           {
             "name": "Extra Small",
-            "value": "spacer—extra-small"
+            "value": "spacer-extra-small"
           },
           {
             "name": "Small",
-            "value": "spacer—small"
+            "value": "spacer-small"
           },
           {
-            "name": "Medium",
-            "value": "spacer—medium"
+            "name": "Medium - Default",
+            "value": ""
           },
           {
             "name": "Large",
-            "value": "spacer—large"
+            "value": "spacer-large"
           },
           {
             "name": "Extra Large",
@@ -662,28 +742,28 @@
         "name": "Facebook",
         "label": "Facebook",
         "valueType": "string",
-        "placeholder": "Enter Facebook Page URL"
+        "description": "Enter Facebook Page URL"
       },
       {
         "component": "text",
         "name": "twitter",
         "label": "X (Formerly Twitter)",
         "valueType": "string",
-        "placeholder": "Enter Twitter Page URL"
+        "description": "Enter Twitter Page URL"
       },
       {
         "component": "text",
         "name": "linkedin",
         "label": "Linkedin",
         "valueType": "string",
-        "placeholder": "Enter Linkedin Page URL"
+        "description": "Enter Linkedin Page URL"
       },
       {
         "component": "text",
         "name": "youtube",
         "label": "Youtube",
         "valueType": "string",
-        "placeholder": "Enter Youtube Page URL"
+        "description": "Enter Youtube Page URL"
       },
       {
         "component": "multiselect",

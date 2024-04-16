@@ -1,14 +1,24 @@
 .section.breadcrumb-container {
     padding: 34px;
+    display: none;
+}
+
+.section[data-padding="section-no-padding"].breadcrumb-container {
+    padding: 0;
 }
 
 .breadcrumb nav {
-    align-items: center;
     display: flex;
     gap: 10px;
+    align-items: center;
+}
+
+.breadcrumb nav span {
+    color: var(--c-full-black);
 }
 
 .breadcrumb nav a {
+    color: var(--c-full-black);
     text-decoration: none;
 }
 
@@ -22,7 +32,7 @@
 }
 
 @media (width >= 768px) {
-    .breadcrumb nav {
-      display: flex;
+    .section.breadcrumb-container {
+        display: block;
     }
 }
