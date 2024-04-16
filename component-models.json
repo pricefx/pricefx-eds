@@ -623,9 +623,10 @@
       },
       {
         "component": "boolean",
-        "label": "PopUp Model",
-        "name": "popUpModel",
-        "valueType": "boolean"
+        "label": "Enable PopUp Modal",
+        "name": "popUpModal",
+        "valueType": "boolean",
+        "description": "When selected, the Video will open in a Popup Modal"
       }
     ]
   },
@@ -741,28 +742,28 @@
         "name": "Facebook",
         "label": "Facebook",
         "valueType": "string",
-        "placeholder": "Enter Facebook Page URL"
+        "description": "Enter Facebook Page URL"
       },
       {
         "component": "text",
         "name": "twitter",
         "label": "X (Formerly Twitter)",
         "valueType": "string",
-        "placeholder": "Enter Twitter Page URL"
+        "description": "Enter Twitter Page URL"
       },
       {
         "component": "text",
         "name": "linkedin",
         "label": "Linkedin",
         "valueType": "string",
-        "placeholder": "Enter Linkedin Page URL"
+        "description": "Enter Linkedin Page URL"
       },
       {
         "component": "text",
         "name": "youtube",
         "label": "Youtube",
         "valueType": "string",
-        "placeholder": "Enter Youtube Page URL"
+        "description": "Enter Youtube Page URL"
       },
       {
         "component": "multiselect",

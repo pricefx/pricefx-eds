@@ -75,7 +75,7 @@
   letter-spacing: 0.88px;
   text-align: left;
   color: var(--c-white);
-  margin-top: var(--spacing-xsmall);
+  margin-top: 20px;
 }
 
 .embed .embed-default,
