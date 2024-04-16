@@ -13,6 +13,10 @@
     align-items: center;
 }
 
+.breadcrumb nav span {
+    color: var(--c-full-black);
+}
+
 .breadcrumb nav a {
     color: var(--c-full-black);
     text-decoration: none;
