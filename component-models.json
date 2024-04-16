@@ -413,7 +413,7 @@
         "options": [
           {
             "name": "Full Bleed",
-            "value": ""
+            "value": "section-full-bleed"
           },
           {
             "name": "Maximum 1188px - Default",
@@ -642,7 +642,7 @@
     "fields": [
       {
         "component": "select",
-        "name": "spacer",
+        "name": "classes",
         "value": "",
         "label": "Spacer",
         "valueType": "string",
