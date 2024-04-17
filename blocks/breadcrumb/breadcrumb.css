@@ -7,6 +7,11 @@
     padding: 0;
 }
 
+.section[data-maxwidth="section-full-bleed"].breadcrumb-container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
 .breadcrumb nav {
     display: flex;
     gap: 10px;
