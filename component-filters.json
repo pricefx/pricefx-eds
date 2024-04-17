@@ -43,7 +43,7 @@
   },
   {
     "id": "hero",
-    "components": ["title", "embed", "image", "button-pfx"]
+    "components": ["button", "button-pfx", "image", "text", "title", "embed", "spacer"]
   },
   {
     "id": "tabs",
