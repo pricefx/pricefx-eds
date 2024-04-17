@@ -1,5 +1,5 @@
 import { loadScript } from '../../scripts/aem.js';
-import { EMAIL, FACEBOOK, LINKEDIN, TWITTER } from '../../scripts/constants.js';
+import { EMAIL, FACEBOOK, INSTAGRAM, LINKEDIN, TWITTER, YOUTUBE } from '../../scripts/constants.js';
 
 function extractDomain(domain) {
   const regex = /^(?:https?:\/\/)?(?:www\.)?([^./]+)\.com/;
@@ -59,8 +59,11 @@ function decorateSocialFollow(block, config) {
       case 'linkedin':
         link.innerHTML = LINKEDIN;
         break;
+      case 'instagram':
+        link.innerHTML = INSTAGRAM;
+        break;
       case 'youtube':
-        link.innerHTML = EMAIL;
+        link.innerHTML = YOUTUBE;
         break;
       default:
         break;
