@@ -14,9 +14,21 @@
     margin-left: 0;
 }
 
-.social-share .a2a_default_style > li:not(:last-child),
-.social-share .social-follow > li:not(:last-child) {
+.social-share .a2a_default_style svg {
+    height: 33px;
+}
+
+.social-share .social-follow svg {
+    width: auto;
+    height: 22px;
+}
+
+.social-share .a2a_default_style > li:not(:last-child) {
     padding-right: 40px;
+}
+
+.social-share .social-follow > li:not(:last-child) {
+    padding-right: 24px;
 }
 
 .social-share  svg.email {
@@ -31,4 +43,11 @@
 .social-share.social-share-light-theme svg.email path {
     stroke: var(--c-white);
     fill: transparent;
+}
+
+/* Resposive Styles */
+@media (width >= 768px) {
+    .social-share .a2a_default_style > li:not(:last-child) {
+        padding-right: 45px;
+    }
 }

@@ -760,6 +760,13 @@
       },
       {
         "component": "text",
+        "name": "instagram",
+        "label": "Instagram",
+        "valueType": "string",
+        "description": "Enter Instagram Page URL"
+      },
+      {
+        "component": "text",
         "name": "youtube",
         "label": "Youtube",
         "valueType": "string",
