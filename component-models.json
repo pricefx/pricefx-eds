@@ -548,12 +548,6 @@
         "multi": false
       },
       {
-        "component": "reference",
-        "valueType": "string",
-        "name": "title",
-        "label": "Title Label"
-      },
-      {
         "component": "text-input",
         "valueType": "string",
         "name": "backgroundImageAlt",
