@@ -116,6 +116,7 @@
                 "template": {
                   "name": "Hero",
                   "model": "hero",
+                  "filter": "hero",
                   "item1": {
                     "resourceType": "core/franklin/components/image/v1/image",
                     "name": "Image",
