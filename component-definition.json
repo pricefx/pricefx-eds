@@ -117,6 +117,8 @@
                   "name": "Hero",
                   "model": "hero",
                   "filter": "hero",
+                  "resourceType": "core/franklin/components/columns/v1/columns",
+
                   "column1": {
                     "item1": {
                       "resourceType": "core/franklin/components/image/v1/image",

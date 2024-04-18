@@ -9,7 +9,7 @@
   },
   {
     "id": "column",
-    "components": ["button", "button-pfx", "image", "text", "title", "google-map", "spacer", "breadcrumb"]
+    "components": ["button", "button-pfx", "image", "text", "title", "google-map", "spacer", "embed"]
   },
   {
     "id": "section",
