@@ -50,7 +50,7 @@
         "valueType": "string",
         "options": [
           {
-            "name": "Grey - Default",
+            "name": "Default",
             "value": ""
           },
           {
@@ -507,6 +507,64 @@
     ]
   },
   {
+    "id": "hero",
+    "fields": [
+      {
+        "component": "select",
+        "name": "classes",
+        "value": "hero-primary",
+        "label": "Hero Style Option",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "hero-primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "hero-secondary"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "backgroundImage",
+        "label": "Background Image",
+        "multi": false
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "backgroundImageAlt",
+        "label": "Background Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "heroContent",
+        "label": "Hero Content",
+        "value": "",
+        "description": "Heading (H1) and CTA"
+      }
+    ]
+  },
+  {
     "id": "form",
     "fields": [
       {
@@ -732,6 +790,49 @@
         "label": "Light Theme",
         "name": "light",
         "valueType": "boolean"
+      }
+    ]
+  },
+  {
+    "id": "relatedArticles",
+    "fields": [
+      {
+        "component": "text",
+        "name": "sectionTitle",
+        "label": "Section Title",
+        "valueType": "string",
+        "placeholder": "Enter section title"
+      },
+      {
+        "component": "select",
+        "label": "Layout",
+        "name": "sectionLayout",
+        "valueType": "string",
+        "options": [
+          { "name": "2 Column", "value": "two-column" },
+          { "name": "3 Column", "value": "three-column" },
+          { "name": "4 Column", "value": "four-column" },
+          { "name": "5 Column", "value": "five-column" }
+        ]
+      },
+      {
+        "component": "aem-tag",
+        "label": "Article Category Tag",
+        "name": "cq:categorytags",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-tag",
+        "label": "Article Tags",
+        "name": "cq:tags",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "basePath",
+        "value": "",
+        "label": "Base Path",
+        "valueType": "string"
       }
     ]
   }

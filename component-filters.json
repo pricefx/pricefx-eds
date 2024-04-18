@@ -5,7 +5,7 @@
   },
   {
     "id": "columns",
-    "components": ["column"]
+    "components": []
   },
   {
     "id": "column",
