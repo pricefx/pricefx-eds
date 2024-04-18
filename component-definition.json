@@ -118,9 +118,13 @@
                   "model": "hero",
                   "filter": "hero",
                   "item1": {
-                    "resourceType": "core/franklin/components/image/v1/image",
-                    "name": "Image",
-                    "model": "image"
+                    "resourceType": "core/franklin/components/columns/v1/columns",
+                    "template": {
+                      "name": "columns",
+                      "model": "columns",
+                      "columns": "2",
+                      "rows": "1"
+                    }
                   }
                 }
               }
