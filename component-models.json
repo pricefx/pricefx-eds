@@ -507,64 +507,6 @@
     ]
   },
   {
-    "id": "hero",
-    "fields": [
-      {
-        "component": "select",
-        "name": "classes",
-        "value": "hero-primary",
-        "label": "Hero Style Option",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Primary",
-            "value": "hero-primary"
-          },
-          {
-            "name": "Secondary",
-            "value": "hero-secondary"
-          }
-        ]
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": false
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "imageAlt",
-        "label": "Image Alt Text",
-        "value": ""
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "backgroundImage",
-        "label": "Background Image",
-        "multi": false
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "backgroundImageAlt",
-        "label": "Background Image Alt Text",
-        "value": ""
-      },
-      {
-        "component": "richtext",
-        "valueType": "string",
-        "name": "heroContent",
-        "label": "Hero Content",
-        "value": "",
-        "description": "Heading (H1) and CTA"
-      }
-    ]
-  },
-  {
     "id": "form",
     "fields": [
       {
