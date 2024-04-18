@@ -792,5 +792,46 @@
         "valueType": "boolean"
       }
     ]
+  },
+  {
+    "id": "stats",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "stat1",
+        "label": "Stat-1",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "description1",
+        "label": "Description-1",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "stat2",
+        "label": "Stat-2",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "description2",
+        "label": "Description-2",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "stat3",
+        "label": "Stat-3",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "description3",
+        "label": "Description-3",
+        "valueType": "string"
+      }
+    ]
   }
 ]
