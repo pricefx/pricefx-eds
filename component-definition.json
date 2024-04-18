@@ -117,10 +117,35 @@
                   "name": "Hero",
                   "model": "hero",
                   "filter": "hero",
-                  "item": {
-                    "resourceType": "core/franklin/components/columns/v1/columns",
-                    "name": "Columns",
-                    "model": "columns"
+                  "item1": {
+                    "resourceType": "core/franklin/components/image/v1/image",
+                    "name": "Image",
+                    "model": "image"
+                  },
+                  "item2": {
+                    "resourceType": "core/franklin/components/image/v1/image",
+                    "name": "Embed",
+                    "model": "embed"
+                  },
+                  "item3": {
+                    "resourceType": "core/franklin/components/text/v1/text",
+                    "name": "Text",
+                    "model": "text"
+                  },
+                  "item4": {
+                    "resourceType": "core/franklin/components/block/v1/block",
+                    "name": "Button Pfx",
+                    "model": "button-pfx"
+                  },
+                  "item5": {
+                    "resourceType": "core/franklin/components/block/v1/block",
+                    "name": "Button Pfx",
+                    "model": "button-pfx"
+                  },
+                  "item6": {
+                    "resourceType": "core/franklin/components/block/v1/block",
+                    "name": "Button Pfx",
+                    "model": "button-pfx"
                   }
                 }
               }
