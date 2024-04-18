@@ -44,5 +44,9 @@
   {
     "id": "tabs",
     "components": ["tab-item"]
+  },
+  {
+    "id": "hero",
+    "components": ["columns"]
   }
 ]
