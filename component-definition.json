@@ -117,45 +117,43 @@
                   "name": "Hero",
                   "model": "hero",
                   "filter": "columns",
-                  "columns": {
-                    "column1": {
-                      "item1": {
-                        "resourceType": "core/franklin/components/image/v1/image",
-                        "name": "Image",
-                        "model": "image"
-                      },
-                      "item2": {
-                        "resourceType": "core/franklin/components/image/v1/image",
-                        "name": "Embed",
-                        "model": "embed"
-                      }
+                  "col1": {
+                    "item1": {
+                      "resourceType": "core/franklin/components/image/v1/image",
+                      "name": "Image",
+                      "model": "image"
                     },
-                    "column2": {
-                      "item3": {
-                        "resourceType": "core/franklin/components/block/v1/block",
-                        "name": "Title",
-                        "model": "title"
-                      },
-                      "item4": {
-                        "resourceType": "core/franklin/components/text/v1/text",
-                        "name": "Text",
-                        "model": "text"
-                      },
-                      "item5": {
-                        "resourceType": "core/franklin/components/block/v1/block",
-                        "name": "Button Pfx",
-                        "model": "button-pfx"
-                      },
-                      "item6": {
-                        "resourceType": "core/franklin/components/block/v1/block",
-                        "name": "Button Pfx",
-                        "model": "button-pfx"
-                      },
-                      "item7": {
-                        "resourceType": "core/franklin/components/block/v1/block",
-                        "name": "Button Pfx",
-                        "model": "button-pfx"
-                      }
+                    "item2": {
+                      "resourceType": "core/franklin/components/image/v1/image",
+                      "name": "Embed",
+                      "model": "embed"
+                    }
+                  },
+                  "col2": {
+                    "item3": {
+                      "resourceType": "core/franklin/components/block/v1/block",
+                      "name": "Title",
+                      "model": "title"
+                    },
+                    "item4": {
+                      "resourceType": "core/franklin/components/text/v1/text",
+                      "name": "Text",
+                      "model": "text"
+                    },
+                    "item5": {
+                      "resourceType": "core/franklin/components/block/v1/block",
+                      "name": "Button Pfx",
+                      "model": "button-pfx"
+                    },
+                    "item6": {
+                      "resourceType": "core/franklin/components/block/v1/block",
+                      "name": "Button Pfx",
+                      "model": "button-pfx"
+                    },
+                    "item7": {
+                      "resourceType": "core/franklin/components/block/v1/block",
+                      "name": "Button Pfx",
+                      "model": "button-pfx"
                     }
                   }
                 }
