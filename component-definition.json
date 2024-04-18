@@ -118,7 +118,8 @@
                   "model": "hero",
                   "filter": "hero",
                   "resourceType": "core/franklin/components/columns/v1/columns",
-
+                  "columns": "2",
+                  "rows": "1",
                   "column1": {
                     "item1": {
                       "resourceType": "core/franklin/components/image/v1/image",
