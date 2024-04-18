@@ -47,6 +47,6 @@
   },
   {
     "id": "hero",
-    "components": ["columns"]
+    "components": ["columns", "column"]
   }
 ]
