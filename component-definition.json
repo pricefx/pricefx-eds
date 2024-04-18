@@ -112,7 +112,7 @@
           "plugins": {
             "xwalk": {
               "page": {
-                "resourceType": "core/franklin/components/section/v1/sectio",
+                "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
                   "name": "Hero",
                   "model": "hero",
@@ -120,8 +120,6 @@
                   "item1": {
                     "resourceType": "core/franklin/components/columns/v1/columns",
                     "template": {
-                      "name": "columns",
-                      "model": "columns",
                       "columns": "2",
                       "rows": "1"
                     }

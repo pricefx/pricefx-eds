@@ -1,11 +1,11 @@
 [
   {
     "id": "main",
-    "components": ["section", "spacer", "hero"]
+    "components": ["section", "spacer"]
   },
   {
     "id": "columns",
-    "components": []
+    "components": ["column"]
   },
   {
     "id": "column",
@@ -47,6 +47,6 @@
   },
   {
     "id": "hero",
-    "components": ["columns", "column"]
+    "components": ["columns"]
   }
 ]
