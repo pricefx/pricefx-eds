@@ -116,13 +116,11 @@
                 "template": {
                   "name": "Hero",
                   "model": "hero",
-                  "filter": "columns",
-                  "columns": {
+                  "filter": "hero",
+                  "item": {
                     "resourceType": "core/franklin/components/columns/v1/columns",
-                    "template": {
-                      "columns": "2",
-                      "rows": "1"
-                    }
+                    "name": "Columns",
+                    "model": "columns"
                   }
                 }
               }
