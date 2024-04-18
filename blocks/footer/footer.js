@@ -9,7 +9,7 @@ import { loadFragment } from '../fragment/fragment.js';
 function createMenuLink(childMenu) {
   const list = document.createElement('li');
   const [title, href, target] = childMenu?.title?.split('|') || [];
-  const anochor = `<a href="${href.trim()}" target="${target.trim()}">${title.trim()}</a>`;
+  const anochor = `<a href="${href ? href.trim() : ''}" target="${target ? target.trim() : ''}">${title.trim()}</a>`;
   list.innerHTML = anochor;
   return list;
 }
