@@ -78,8 +78,8 @@
               "page": {
                 "resourceType": "core/franklin/components/hero/v1/hero",
                 "template": {
-                  "name": "section",
-                  "filter": "section"
+                  "name": "hero",
+                  "filter": "hero"
                 }
               }
             }
