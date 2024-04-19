@@ -77,7 +77,10 @@
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/hero/v1/hero",
-                "template": {}
+                "template": {
+                  "name": "hero",
+                  "filter": "section"
+                }
               }
             }
           }
