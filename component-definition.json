@@ -69,14 +69,20 @@
               }
             }
           }
-        },
+        }
+      ]
+    },
+    {
+      "title": "Heros",
+      "id": "Hero",
+      "components": [
         {
           "title": "Hero",
           "id": "hero",
           "plugins": {
             "xwalk": {
               "page": {
-                "resourceType": "core/franklin/components/section/v1/section",
+                "resourceType": "core/franklin/components/hero/v1/hero",
                 "template": {}
               }
             }
