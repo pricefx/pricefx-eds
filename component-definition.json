@@ -124,22 +124,22 @@
                   },
                   "item2": {
                     "resourceType": "core/franklin/components/text/v1/text",
-                    "name": "richtext",
-                    "model": "richtext"
+                    "name": "Text",
+                    "model": "text"
                   },
                   "item3": {
                     "resourceType": "core/franklin/components/block/v1/block",
-                    "name": "Button Pfx",
+                    "name": "Button",
                     "model": "button-pfx"
                   },
                   "item4": {
                     "resourceType": "core/franklin/components/block/v1/block",
-                    "name": "Button Pfx",
+                    "name": "Button",
                     "model": "button-pfx"
                   },
                   "item5": {
                     "resourceType": "core/franklin/components/block/v1/block",
-                    "name": "Button Pfx",
+                    "name": "Button",
                     "model": "button-pfx"
                   },
                   "item6": {

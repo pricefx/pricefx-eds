@@ -1,7 +1,7 @@
 [
   {
     "id": "main",
-    "components": ["section", "spacer"]
+    "components": ["section", "spacer", "hero"]
   },
   {
     "id": "columns",
@@ -40,6 +40,10 @@
   {
     "id": "accordion",
     "components": ["accordion-item"]
+  },
+  {
+    "id": "hero",
+    "components": ["button", "button-pfx", "image", "text", "title", "spacer", "embed"]
   },
   {
     "id": "tabs",
