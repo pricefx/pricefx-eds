@@ -82,7 +82,7 @@ button {
   font-size: var(--body-font-size-l);
   font-weight: var(--fw-regular);
   line-height: var(--base-line-height);
-  padding: 0 10px;
+  padding: var(--spacing-micro) var(--spacing-xxsmall);
   text-transform: none;
 }
 
