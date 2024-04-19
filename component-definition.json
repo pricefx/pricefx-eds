@@ -78,7 +78,7 @@
               "page": {
                 "resourceType": "core/franklin/components/hero/v1/hero",
                 "template": {
-                  "name": "hero",
+                  "name": "section",
                   "filter": "section"
                 }
               }
