@@ -78,7 +78,7 @@
       "components": [
         {
           "title": "Hero",
-          "id": "section",
+          "id": "hero",
           "plugins": {
             "xwalk": {
               "page": {
