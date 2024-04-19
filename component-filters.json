@@ -42,6 +42,10 @@
     "components": ["accordion-item"]
   },
   {
+    "id": "hero",
+    "components": []
+  },
+  {
     "id": "tabs",
     "components": ["tab-item"]
   }
