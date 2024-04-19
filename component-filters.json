@@ -42,10 +42,6 @@
     "components": ["accordion-item"]
   },
   {
-    "id": "hero",
-    "components": ["button", "button-pfx", "image", "text", "title", "spacer", "embed"]
-  },
-  {
     "id": "tabs",
     "components": ["tab-item"]
   }
