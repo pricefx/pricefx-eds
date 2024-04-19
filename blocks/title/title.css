@@ -10,8 +10,8 @@
 }
 
 .title.title-spacer-small {
-    margin-top: var(--spacing-xxsmall);
-    margin-bottom: var(--spacing-xxsmall);
+    margin-top: 12px;
+    margin-bottom: 12px;
 }
 
 .title.title-spacer-medium {
