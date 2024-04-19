@@ -74,7 +74,7 @@
     },
     {
       "title": "Heros",
-      "id": "section",
+      "id": "Hero",
       "components": [
         {
           "title": "Hero",
