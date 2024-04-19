@@ -1,7 +1,7 @@
 [
   {
     "id": "main",
-    "components": ["section", "spacer", "hero"]
+    "components": ["section", "spacer"]
   },
   {
     "id": "columns",
@@ -9,7 +9,7 @@
   },
   {
     "id": "column",
-    "components": ["button", "button-pfx", "image", "text", "title", "google-map", "spacer", "embed"]
+    "components": ["button", "button-pfx", "image", "text", "title", "google-map", "spacer", "breadcrumb"]
   },
   {
     "id": "section",
@@ -40,10 +40,6 @@
   {
     "id": "accordion",
     "components": ["accordion-item"]
-  },
-  {
-    "id": "hero",
-    "components": []
   },
   {
     "id": "tabs",
