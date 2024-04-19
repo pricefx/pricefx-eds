@@ -69,13 +69,7 @@
               }
             }
           }
-        }
-      ]
-    },
-    {
-      "title": "Heros",
-      "id": "heros",
-      "components": [
+        },
         {
           "title": "Hero",
           "id": "hero",
