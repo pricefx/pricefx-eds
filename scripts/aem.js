@@ -605,6 +605,30 @@ function updateSectionsStatus(main) {
 }
 
 /**
+ * Updates all section status in a container element.
+ * @param {Element} main The container element
+ */
+function updateHerosStatus(main) {
+  const heros = [...main.querySelectorAll(':scope > div.hero')];
+  for (let i = 0; i < heros.length; i += 1) {
+    const hero = heros[i];
+    const status = hero.dataset.sectionStatus;
+    if (status !== 'loaded') {
+      const loadingBlock = hero.querySelector(
+        '.block[data-block-status="initialized"], .block[data-block-status="loading"]',
+      );
+      if (loadingBlock) {
+        hero.dataset.heroStatus = 'loading';
+        break;
+      } else {
+        hero.dataset.heroStatus = 'loaded';
+        hero.style.display = null;
+      }
+    }
+  }
+}
+
+/**
  * Builds a block DOM Element from a two dimensional array, string, or object
  * @param {string} blockName name of the block
  * @param {*} content two dimensional array or string or object of content
@@ -676,11 +700,13 @@ async function loadBlock(block) {
  */
 async function loadBlocks(main) {
   updateSectionsStatus(main);
+  updateHerosStatus(main);
   const blocks = [...main.querySelectorAll('div.block')];
   for (let i = 0; i < blocks.length; i += 1) {
     // eslint-disable-next-line no-await-in-loop
     await loadBlock(blocks[i]);
     updateSectionsStatus(main);
+    updateHerosStatus(main);
   }
 }
 
@@ -798,5 +824,6 @@ export {
   toCamelCase,
   toClassName,
   updateSectionsStatus,
+  updateHerosStatus,
   waitForLCP,
 };
