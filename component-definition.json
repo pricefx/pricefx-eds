@@ -86,7 +86,7 @@
                     "model": "image"
                   },
                   "item2": {
-                    "resourceType": "core/franklin/components/image/v1/image",
+                    "resourceType": "core/franklin/components/block/v1/block",
                     "name": "Embed",
                     "model": "embed"
                   },
