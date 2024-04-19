@@ -76,7 +76,7 @@
           "plugins": {
             "xwalk": {
               "page": {
-                "resourceType": "core/franklin/components/hero/v1/hero",
+                "resourceType": "core/franklin/components/section/v1/section",
                 "template": {}
               }
             }
