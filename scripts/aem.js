@@ -490,6 +490,60 @@ function decorateSections(main) {
 }
 
 /**
+ * Decorates all heros in a container element.
+ * @param {Element} main The container element
+ */
+function decorateHeros(main) {
+  main.querySelectorAll(':scope > div:not([data-hero-status])').forEach((hero) => {
+    const wrappers = [];
+    let defaultContent = false;
+    [...hero.children].forEach((e) => {
+      if (e.tagName === 'DIV' || !defaultContent) {
+        const wrapper = document.createElement('div');
+        wrappers.push(wrapper);
+        defaultContent = e.tagName !== 'DIV';
+        if (defaultContent) {
+          wrapper.classList.add('default-content-wrapper');
+        }
+      }
+      wrappers[wrappers.length - 1].append(e);
+    });
+    wrappers.forEach((wrapper) => hero.append(wrapper));
+    hero.classList.add('hero');
+    hero.dataset.heroStatus = 'initialized';
+    hero.style.display = 'none';
+
+    // Process hero metadata
+    const heroMeta = hero.querySelector('div.hero-metadata');
+    if (heroMeta) {
+      const meta = readBlockConfig(heroMeta);
+      Object.keys(meta).forEach((key) => {
+        if (key === 'style') {
+          const styles = meta.style
+            .split(',')
+            .filter((style) => style)
+            .map((style) => toClassName(style.trim()));
+          styles.forEach((style) => hero.classList.add(style));
+        } else if (key === 'heroid') {
+          hero.id = meta.heroid;
+        } else if (key === 'backgroundimage') {
+          const bgImg = createOptimizedPicture(meta.backgroundimage);
+          const defaultWrapper = hero.querySelector('.default-content-wrapper');
+          hero.classList.add('bg-image');
+          defaultWrapper.append(bgImg);
+          if (meta.theme) {
+            hero.classList.add(meta.theme);
+          }
+        } else {
+          hero.dataset[toCamelCase(key)] = meta[key];
+        }
+      });
+      heroMeta.parentNode.remove();
+    }
+  });
+}
+
+/**
  * Gets placeholders object.
  * @param {string} [prefix] Location of placeholders
  * @returns {object} Window placeholders object
@@ -728,6 +782,7 @@ export {
   decorateButtons,
   decorateIcons,
   decorateSections,
+  decorateHeros,
   decorateTemplateAndTheme,
   fetchPlaceholders,
   getMetadata,
