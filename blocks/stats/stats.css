@@ -1,0 +1,50 @@
+.statsWrapper {
+    background-color: #353535;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 970px;
+}
+
+.stats.block {
+    align-content: center;
+    display: flex;
+    justify-content: center;
+}
+
+.stat-title {
+    color: #FFFFFF;
+    font-family: Neo Sans Pro;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 56px;
+    padding: 20px;
+    text-align: center;
+}
+
+.line {
+    background: linear-gradient(135deg, #DF549D 0%, #41B6E6 51.1%, #F05E25 100%);
+    height: 5px;
+    opacity: 0px;
+    width: 151px;
+}
+
+.stat {
+    align-items: center;
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: column;
+    padding: 50px 0;
+}
+
+.stat-description {
+    color: #ffff;
+    font-family: Open Sans;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24.51px;
+    padding: 20px;
+    text-align: center;
+    width: 254px; 
+}
