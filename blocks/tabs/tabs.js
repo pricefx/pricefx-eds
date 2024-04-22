@@ -14,8 +14,10 @@ export default async function decorate(block) {
   const tabs = [...block.children].map((child) => child.firstElementChild);
   tabs.forEach((tab, i) => {
     if (i === 0) {
-      block.classList.add(tab.textContent);
-      tab.remove();
+      if (tab.textContent) {
+        block.classList.add(tab.textContent);
+        tab.remove();
+      }
       return;
     }
     const id = toClassName(tab.textContent);
