@@ -548,6 +548,63 @@
         "value": ""
       },
       {
+        "component": "select",
+        "name": "type",
+        "value": "h2",
+        "label": "Type",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "h1",
+            "value": "h1"
+          },
+          {
+            "name": "h2 - Default",
+            "value": "h2"
+          },
+          {
+            "name": "h3",
+            "value": "h3"
+          },
+          {
+            "name": "h4",
+            "value": "h4"
+          },
+          {
+            "name": "h5",
+            "value": "h5"
+          },
+          {
+            "name": "h6",
+            "value": "h6"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "fontColor",
+        "value": "",
+        "label": "Color",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Grey - Default",
+            "value": ""
+          },
+          {
+            "name": "Dark Blue",
+            "value": "title-dark-blue-gradient"
+          }
+        ]
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "heroTitle",
+        "label": "Hero Title",
+        "value": ""
+      },
+      {
         "component": "richtext",
         "valueType": "string",
         "name": "heroContent",
