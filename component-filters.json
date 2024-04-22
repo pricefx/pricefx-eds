@@ -1,7 +1,7 @@
 [
   {
     "id": "main",
-    "components": ["section", "spacer", "hero"]
+    "components": ["section", "spacer"]
   },
   {
     "id": "columns",
