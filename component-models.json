@@ -571,6 +571,96 @@
         "label": "Hero Content",
         "value": "",
         "description": "Heading (H1) and CTA"
+      },
+      {
+        "component": "radio-group",
+        "label": "Button Style",
+        "name": "buttonStyle",
+        "valueType": "string",
+        "options": [
+          { "name": "Primary", "value": "hero-primary-button" },
+          { "name": "Secondary", "value": "hero-secondary-button" }
+        ]
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "buttonLink",
+        "value": "",
+        "label": "Button Link"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "buttonLabel",
+        "value": "",
+        "label": "Button Label"
+      },
+      {
+        "component": "boolean",
+        "label": "Target Blank",
+        "name": "isTargetBlank",
+        "valueType": "boolean"
+      },
+      {
+        "component": "radio-group",
+        "label": "Button Style",
+        "name": "buttonStyle",
+        "valueType": "string",
+        "options": [
+          { "name": "Primary", "value": "hero-primary-button" },
+          { "name": "Secondary", "value": "hero-secondary-button" }
+        ]
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "buttonLink",
+        "value": "",
+        "label": "Button Link"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "buttonLabel",
+        "value": "",
+        "label": "Button Label"
+      },
+      {
+        "component": "boolean",
+        "label": "Target Blank",
+        "name": "isTargetBlank",
+        "valueType": "boolean"
+      },
+      {
+        "component": "radio-group",
+        "label": "Button Style",
+        "name": "buttonStyle",
+        "valueType": "string",
+        "options": [
+          { "name": "Primary", "value": "hero-primary-button" },
+          { "name": "Secondary", "value": "hero-secondary-button" }
+        ]
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "buttonLink",
+        "value": "",
+        "label": "Button Link"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "buttonLabel",
+        "value": "",
+        "label": "Button Label"
+      },
+      {
+        "component": "boolean",
+        "label": "Target Blank",
+        "name": "isTargetBlank",
+        "valueType": "boolean"
       }
     ]
   },
