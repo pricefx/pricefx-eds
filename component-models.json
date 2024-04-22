@@ -510,6 +510,16 @@
     "id": "hero",
     "fields": [
       {
+        "component": "radio-group",
+        "label": "Variation",
+        "name": "variation",
+        "valueType": "string",
+        "options": [
+          { "name": "Image", "value": "imageVariation" },
+          { "name": "Video", "value": "videoVariation" }
+        ]
+      },
+      {
         "component": "select",
         "name": "classes",
         "value": "hero-primary",
