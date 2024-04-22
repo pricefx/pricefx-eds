@@ -574,8 +574,8 @@
       },
       {
         "component": "radio-group",
-        "label": "Button Style",
-        "name": "buttonStyle",
+        "label": "Button 1 Style",
+        "name": "buttonOneStyle",
         "valueType": "string",
         "options": [
           { "name": "Primary", "value": "hero-primary-button" },
@@ -585,27 +585,27 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "buttonLink",
+        "name": "buttonOneLink",
         "value": "",
         "label": "Button Link"
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "buttonLabel",
+        "name": "buttonOneLabel",
         "value": "",
         "label": "Button Label"
       },
       {
         "component": "boolean",
         "label": "Target Blank",
-        "name": "isTargetBlank",
+        "name": "isTargetBlankOne",
         "valueType": "boolean"
       },
       {
         "component": "radio-group",
-        "label": "Button Style",
-        "name": "buttonStyle",
+        "label": "Button 2 Style",
+        "name": "buttonTwoStyle",
         "valueType": "string",
         "options": [
           { "name": "Primary", "value": "hero-primary-button" },
@@ -615,27 +615,27 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "buttonLink",
+        "name": "buttonTwoLink",
         "value": "",
         "label": "Button Link"
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "buttonLabel",
+        "name": "buttonTwoLabel",
         "value": "",
         "label": "Button Label"
       },
       {
         "component": "boolean",
         "label": "Target Blank",
-        "name": "isTargetBlank",
+        "name": "isTargetBlankTwo",
         "valueType": "boolean"
       },
       {
         "component": "radio-group",
-        "label": "Button Style",
-        "name": "buttonStyle",
+        "label": "Button 3 Style",
+        "name": "buttonThreeStyle",
         "valueType": "string",
         "options": [
           { "name": "Primary", "value": "hero-primary-button" },
@@ -645,21 +645,21 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "buttonLink",
+        "name": "buttonThreeLink",
         "value": "",
         "label": "Button Link"
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "buttonLabel",
+        "name": "buttonThreeLabel",
         "value": "",
         "label": "Button Label"
       },
       {
         "component": "boolean",
         "label": "Target Blank",
-        "name": "isTargetBlank",
+        "name": "isTargetBlankThree",
         "valueType": "boolean"
       }
     ]
