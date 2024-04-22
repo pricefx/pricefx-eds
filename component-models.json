@@ -541,6 +541,36 @@
         "value": ""
       },
       {
+        "component": "reference",
+        "valueType": "string",
+        "name": "placeholder",
+        "label": "Placeholder",
+        "description": "An image to use as a placeholder",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "url",
+        "label": "URL",
+        "value": "",
+        "description": "A URL to an embeddable media"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "overlayText",
+        "label": "Overlay Text",
+        "value": ""
+      },
+      {
+        "component": "boolean",
+        "label": "Enable PopUp Modal",
+        "name": "popUpModal",
+        "valueType": "boolean",
+        "description": "When selected, the Video will open in a Popup Modal"
+      },
+      {
         "component": "text-input",
         "valueType": "string",
         "name": "heroTitle",
@@ -549,7 +579,7 @@
       },
       {
         "component": "select",
-        "name": "type",
+        "name": "heroTitleType",
         "value": "h2",
         "label": "Type",
         "valueType": "string",
@@ -582,7 +612,7 @@
       },
       {
         "component": "select",
-        "name": "fontColor",
+        "name": "heroTitleColor",
         "value": "",
         "label": "Color",
         "valueType": "string",
@@ -600,37 +630,116 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "heroTitle",
-        "label": "Hero Title",
+        "name": "text",
+        "label": "Button1 Label",
         "value": ""
       },
       {
-        "component": "richtext",
+        "component": "text-input",
         "valueType": "string",
-        "name": "heroContent",
-        "label": "Hero Content",
+        "name": "href",
+        "label": "Button1 Link",
         "value": ""
       },
       {
-        "component": "button-pfx",
+        "component": "boolean",
+        "valueType": "boolean",
+        "label": "Button1 Target Blank",
+        "name": "targetBlank",
+        "description": "When selected, the link will open in a new window"
+      },
+      {
+        "component": "select",
+        "name": "classes",
+        "value": "primary",
+        "label": "Button1 Variant",
         "valueType": "string",
-        "name": "heroButton1",
-        "label": "Hero Button1",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
+        ]
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "text",
+        "label": "Button2 Label",
         "value": ""
       },
       {
-        "component": "button-pfx",
+        "component": "text-input",
         "valueType": "string",
-        "name": "heroButton2",
-        "label": "Hero Button2",
+        "name": "href",
+        "label": "Button2 Link",
         "value": ""
       },
       {
-        "component": "button-pfx",
+        "component": "boolean",
+        "valueType": "boolean",
+        "label": "Button2 Target Blank",
+        "name": "targetBlank",
+        "description": "When selected, the link will open in a new window"
+      },
+      {
+        "component": "select",
+        "name": "classes",
+        "value": "primary",
+        "label": "Button2 Variant",
         "valueType": "string",
-        "name": "heroButton3",
-        "label": "Hero Button3",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
+        ]
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "text",
+        "label": "Button3 Label",
         "value": ""
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "href",
+        "label": "Button3 Link",
+        "value": ""
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "label": "Button3 Target Blank",
+        "name": "targetBlank",
+        "description": "When selected, the link will open in a new window"
+      },
+      {
+        "component": "select",
+        "name": "classes",
+        "value": "primary",
+        "label": "Button3 Variant",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
+        ]
       }
     ]
   },
