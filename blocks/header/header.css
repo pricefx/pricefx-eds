@@ -75,9 +75,11 @@ header nav {
   content: var(--icon-chevron-down);
   font-family: var(--ff-pricefx-icons);
   font-size: 10px;
+  height: 8px;
   position: absolute;
   right: -16px;
-  top: 2px;
+  top: 0;
+  width: 8px;
 }
 
 .nav-list-level-1-item:hover .nav-list-level-1-item-name,
@@ -533,7 +535,6 @@ header a:focus {
   .expert-cta {
     font-size: var(--body-font-size-xs);
     max-width: 170px;
-    padding: 19px 8px;
   }
 }
 
