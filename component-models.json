@@ -520,23 +520,6 @@
         ]
       },
       {
-        "component": "select",
-        "name": "classes",
-        "value": "hero-primary",
-        "label": "Hero Style Option",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Primary",
-            "value": "hero-primary"
-          },
-          {
-            "name": "Secondary",
-            "value": "hero-secondary"
-          }
-        ]
-      },
-      {
         "component": "reference",
         "valueType": "string",
         "name": "image",
@@ -565,12 +548,27 @@
         "value": ""
       },
       {
+        "component": "reference",
+        "valueType": "string",
+        "name": "embedVideo",
+        "label": "Embed Video",
+        "description": "Video placeholder for video hero variation",
+        "multi": false
+      },
+      {
         "component": "richtext",
         "valueType": "string",
         "name": "heroContent",
         "label": "Hero Content",
         "value": "",
         "description": "Heading (H1) and CTA"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "overlayContent",
+        "label": "Overlay Content",
+        "value": ""
       },
       {
         "component": "radio-group",
@@ -661,6 +659,13 @@
         "label": "Target Blank",
         "name": "isTargetBlankThree",
         "valueType": "boolean"
+      },
+      {
+        "component": "text-input",
+        "name": "url",
+        "label": "URL",
+        "valueType": "string",
+        "value": ""
       }
     ]
   },
