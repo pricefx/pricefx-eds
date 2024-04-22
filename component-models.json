@@ -538,21 +538,68 @@
         "valueType": "string",
         "name": "imageAlt",
         "label": "Image Alt Text",
-        "value": ""
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "backgroundImage",
-        "label": "Background Image",
-        "multi": false
+        "value": "",
+        "description": "If you selected the link will open in new window"
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "backgroundImageAlt",
-        "label": "Background Image Alt Text",
-        "value": ""
+        "name": "heroTitle",
+        "label": "Hero Title",
+        "value": "",
+        "description": "Hero Title"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "heroTitleType",
+        "label": "Hero Title Type",
+        "value": "h2",
+        "description": "Hero Title Type",
+        "options": [
+          {
+            "name": "h1",
+            "value": "h1"
+          },
+          {
+            "name": "h2 - Default",
+            "value": "h2"
+          },
+          {
+            "name": "h3",
+            "value": "h3"
+          },
+          {
+            "name": "h4",
+            "value": "h4"
+          },
+          {
+            "name": "h5",
+            "value": "h5"
+          },
+          {
+            "name": "h6",
+            "value": "h6"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "heroTitleColor",
+        "label": "Hero Title Color",
+        "value": "title-dark-blue-gradient",
+        "description": "Hero Title Color",
+        "options": [
+          {
+            "name": "Grey - Default",
+            "value": ""
+          },
+          {
+            "name": "Dark Blue",
+            "value": "title-dark-blue-gradient"
+          }
+        ]
       },
       {
         "component": "richtext",
@@ -560,7 +607,31 @@
         "name": "heroContent",
         "label": "Hero Content",
         "value": "",
-        "description": "Heading (H1) and CTA"
+        "description": "Description"
+      },
+      {
+        "component": "button-pfx",
+        "valueType": "string",
+        "name": "heroButton1",
+        "label": "Hero Button1",
+        "value": "",
+        "description": "Hero Button"
+      },
+      {
+        "component": "button-pfx",
+        "valueType": "string",
+        "name": "heroButton2",
+        "label": "Hero Button2",
+        "value": "",
+        "description": "Hero Button"
+      },
+      {
+        "component": "button-pfx",
+        "valueType": "string",
+        "name": "heroButton3",
+        "label": "Hero Button3",
+        "value": "",
+        "description": "Hero Button"
       }
     ]
   },
