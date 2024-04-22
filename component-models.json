@@ -536,18 +536,16 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "imageAlt",
+        "name": "heroimageAlt",
         "label": "Image Alt Text",
-        "value": "",
-        "description": "If you selected the link will open in new window"
+        "value": ""
       },
       {
         "component": "text-input",
         "valueType": "string",
         "name": "heroTitle",
         "label": "Hero Title",
-        "value": "",
-        "description": "Hero Title"
+        "value": ""
       },
       {
         "component": "select",
@@ -555,7 +553,6 @@
         "name": "heroTitleType",
         "label": "Hero Title Type",
         "value": "h2",
-        "description": "Hero Title Type",
         "options": [
           {
             "name": "h1",
@@ -589,7 +586,6 @@
         "name": "heroTitleColor",
         "label": "Hero Title Color",
         "value": "title-dark-blue-gradient",
-        "description": "Hero Title Color",
         "options": [
           {
             "name": "Grey - Default",
@@ -606,32 +602,28 @@
         "valueType": "string",
         "name": "heroContent",
         "label": "Hero Content",
-        "value": "",
-        "description": "Description"
+        "value": ""
       },
       {
         "component": "button-pfx",
         "valueType": "string",
         "name": "heroButton1",
         "label": "Hero Button1",
-        "value": "",
-        "description": "Hero Button"
+        "value": ""
       },
       {
         "component": "button-pfx",
         "valueType": "string",
         "name": "heroButton2",
         "label": "Hero Button2",
-        "value": "",
-        "description": "Hero Button"
+        "value": ""
       },
       {
         "component": "button-pfx",
         "valueType": "string",
         "name": "heroButton3",
         "label": "Hero Button3",
-        "value": "",
-        "description": "Hero Button"
+        "value": ""
       }
     ]
   },
