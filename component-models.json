@@ -548,23 +548,6 @@
         "value": ""
       },
       {
-        "component": "select",
-        "valueType": "string",
-        "name": "heroTitleColor",
-        "label": "Hero Title Color",
-        "value": "title-dark-blue-gradient",
-        "options": [
-          {
-            "name": "Grey - Default",
-            "value": ""
-          },
-          {
-            "name": "Dark Blue",
-            "value": "title-dark-blue-gradient"
-          }
-        ]
-      },
-      {
         "component": "richtext",
         "valueType": "string",
         "name": "heroContent",

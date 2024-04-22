@@ -101,8 +101,8 @@
                 "template": {
                   "name": "Hero",
                   "model": "hero",
-                  "titleType": "h2",
-                  "fontColor": "title-dark-blue-gradient"
+                  "heroTitleType": "h2",
+                  "heroTitleColor": "title-dark-blue-gradient"
                 }
               }
             }
