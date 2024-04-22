@@ -69,21 +69,6 @@
               }
             }
           }
-        },
-        {
-          "title": "Hero",
-          "id": "hero",
-          "plugins": {
-            "xwalk": {
-              "page": {
-                "resourceType": "core/franklin/components/section/v1/section",
-                "template": {
-                  "name": "Hero",
-                  "filter": "hero"
-                }
-              }
-            }
-          }
         }
       ]
     },
@@ -101,6 +86,21 @@
                 "template": {
                   "columns": "2",
                   "rows": "1"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Hero",
+          "id": "hero",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/section/v1/section",
+                "template": {
+                  "name": "Hero",
+                  "filter": "hero"
                 }
               }
             }
