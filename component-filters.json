@@ -38,10 +38,6 @@
     "components": ["card"]
   },
   {
-    "id": "hero",
-    "components": ["button"]
-  },
-  {
     "id": "accordion",
     "components": ["accordion-item"]
   },
