@@ -792,5 +792,48 @@
         "valueType": "boolean"
       }
     ]
+  },
+  {
+    "id": "relatedArticles",
+    "fields": [
+      {
+        "component": "text",
+        "name": "sectionTitle",
+        "label": "Section Title",
+        "valueType": "string",
+        "placeholder": "Enter section title"
+      },
+      {
+        "component": "select",
+        "label": "Layout",
+        "name": "sectionLayout",
+        "valueType": "string",
+        "options": [
+          { "name": "2 Column", "value": "two-column" },
+          { "name": "3 Column", "value": "three-column" },
+          { "name": "4 Column", "value": "four-column" },
+          { "name": "5 Column", "value": "five-column" }
+        ]
+      },
+      {
+        "component": "aem-tag",
+        "label": "Article Category Tag",
+        "name": "cq:categorytags",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-tag",
+        "label": "Article Tags",
+        "name": "cq:tags",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "basePath",
+        "value": "",
+        "label": "Base Path",
+        "valueType": "string"
+      }
+    ]
   }
 ]
