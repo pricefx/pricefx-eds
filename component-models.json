@@ -536,20 +536,6 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "backgroundImage",
-        "label": "Background Image",
-        "multi": false
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "backgroundImageAlt",
-        "label": "Background Image Alt Text",
-        "value": ""
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
         "name": "embedVideo",
         "label": "Embed Video",
         "description": "Video placeholder for video hero variation",
