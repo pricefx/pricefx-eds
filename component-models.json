@@ -543,7 +543,7 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "placeholder",
+        "name": "Embed placeholder",
         "label": "Placeholder",
         "description": "An image to use as a placeholder",
         "multi": false
@@ -552,7 +552,7 @@
         "component": "text",
         "valueType": "string",
         "name": "url",
-        "label": "URL",
+        "label": "Embed URL",
         "value": "",
         "description": "A URL to an embeddable media"
       },
@@ -560,12 +560,12 @@
         "component": "text",
         "valueType": "string",
         "name": "overlayText",
-        "label": "Overlay Text",
+        "label": "Embed Overlay Text",
         "value": ""
       },
       {
         "component": "boolean",
-        "label": "Enable PopUp Modal",
+        "label": "Embed Enable PopUp Modal",
         "name": "popUpModal",
         "valueType": "boolean",
         "description": "When selected, the Video will open in a Popup Modal"
@@ -578,66 +578,23 @@
         "value": ""
       },
       {
-        "component": "select",
-        "name": "heroTitleType",
-        "value": "h2",
-        "label": "Type",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "h1",
-            "value": "h1"
-          },
-          {
-            "name": "h2 - Default",
-            "value": "h2"
-          },
-          {
-            "name": "h3",
-            "value": "h3"
-          },
-          {
-            "name": "h4",
-            "value": "h4"
-          },
-          {
-            "name": "h5",
-            "value": "h5"
-          },
-          {
-            "name": "h6",
-            "value": "h6"
-          }
-        ]
-      },
-      {
-        "component": "select",
-        "name": "heroTitleColor",
-        "value": "",
-        "label": "Color",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Grey - Default",
-            "value": ""
-          },
-          {
-            "name": "Dark Blue",
-            "value": "title-dark-blue-gradient"
-          }
-        ]
+        "component": "boolean",
+        "label": "Button1 Type",
+        "name": "button1Type",
+        "valueType": "boolean",
+        "description": "When selected, Primary / Secondary Button will reflect"
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "text",
+        "name": "button1Text",
         "label": "Button1 Label",
         "value": ""
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "href",
+        "name": "button1Href",
         "label": "Button1 Link",
         "value": ""
       },
@@ -645,37 +602,27 @@
         "component": "boolean",
         "valueType": "boolean",
         "label": "Button1 Target Blank",
-        "name": "targetBlank",
+        "name": "button1TargetBlank",
         "description": "When selected, the link will open in a new window"
       },
       {
-        "component": "select",
-        "name": "classes",
-        "value": "primary",
-        "label": "Button1 Variant",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Primary",
-            "value": "primary"
-          },
-          {
-            "name": "Secondary",
-            "value": "secondary"
-          }
-        ]
+        "component": "boolean",
+        "label": "Button2 Type",
+        "name": "button2Type",
+        "valueType": "boolean",
+        "description": "When selected, Primary / Secondary Button will reflect"
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "text",
+        "name": "button2text",
         "label": "Button2 Label",
         "value": ""
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "href",
+        "name": "button2Href",
         "label": "Button2 Link",
         "value": ""
       },
@@ -683,25 +630,15 @@
         "component": "boolean",
         "valueType": "boolean",
         "label": "Button2 Target Blank",
-        "name": "targetBlank",
+        "name": "button2TargetBlank",
         "description": "When selected, the link will open in a new window"
       },
       {
-        "component": "select",
-        "name": "classes",
-        "value": "primary",
-        "label": "Button2 Variant",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Primary",
-            "value": "primary"
-          },
-          {
-            "name": "Secondary",
-            "value": "secondary"
-          }
-        ]
+        "component": "boolean",
+        "label": "Button3 Type",
+        "name": "button3Type",
+        "valueType": "boolean",
+        "description": "When selected, Primary / Secondary Button will reflect"
       },
       {
         "component": "text-input",
@@ -723,23 +660,6 @@
         "label": "Button3 Target Blank",
         "name": "targetBlank",
         "description": "When selected, the link will open in a new window"
-      },
-      {
-        "component": "select",
-        "name": "classes",
-        "value": "primary",
-        "label": "Button3 Variant",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Primary",
-            "value": "primary"
-          },
-          {
-            "name": "Secondary",
-            "value": "secondary"
-          }
-        ]
       }
     ]
   },
