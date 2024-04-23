@@ -6,8 +6,10 @@ export default async function decorate(block) {
   [...block.children].forEach((row, index) => {
     if (index < 5) {
       heroLeftContainer.append(row.firstElementChild);
+      heroLeftContainer.classList.add('hero-left-container');
     } else {
       heroRightContainer.append(row.firstElementChild);
+      heroLeftContainer.classList.add('hero-right-container');
     }
   });
   heroContainer.append(heroLeftContainer);

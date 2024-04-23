@@ -571,9 +571,23 @@
         "component": "reference",
         "valueType": "string",
         "name": "embedVideo",
-        "label": "Embed Video",
+        "label": "Embed Video Placeholder",
         "description": "ⓘ Video placeholder for video hero variation",
         "multi": false
+      },
+      {
+        "component": "text-input",
+        "name": "url",
+        "label": "URL",
+        "valueType": "string",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "overlayContent",
+        "label": "Overlay Content",
+        "value": ""
       },
       {
         "component": "boolean",
@@ -586,16 +600,9 @@
         "component": "richtext",
         "valueType": "string",
         "name": "heroContent",
-        "label": "Hero Content",
+        "label": "Hero Description",
         "value": "",
         "description": "ⓘ Heading (H1) and CTA"
-      },
-      {
-        "component": "richtext",
-        "valueType": "string",
-        "name": "overlayContent",
-        "label": "Overlay Content",
-        "value": ""
       },
       {
         "component": "radio-group",
@@ -686,13 +693,6 @@
         "label": "Target Blank",
         "name": "isTargetBlankThree",
         "valueType": "boolean"
-      },
-      {
-        "component": "text-input",
-        "name": "url",
-        "label": "URL",
-        "valueType": "string",
-        "value": ""
       }
     ]
   },
