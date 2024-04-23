@@ -654,11 +654,10 @@
         "valueType": "boolean"
       },
       {
-        "component": "text-input",
-        "name": "url",
-        "label": "URL",
-        "valueType": "string",
-        "value": ""
+        "component": "aem-experience-fragment",
+        "name": "picker",
+        "label": "Experience Fragment Picker",
+        "valueType": "string"
       }
     ]
   },
