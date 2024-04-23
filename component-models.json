@@ -1090,5 +1090,74 @@
         "label": "Time to Read"
       }
     ]
+  },
+  {
+    "id": "stats",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "stat1",
+        "label": "Stat-1",
+        "valueType": "string",
+        "description": "Enter statistic Value"
+      },
+      {
+        "component": "richtext",
+        "name": "description1",
+        "label": "Description-1",
+        "valueType": "string",
+        "description": "Enter Statistic Description"
+      },
+      {
+        "component": "richtext",
+        "name": "stat2",
+        "label": "Stat-2",
+        "valueType": "string",
+        "description": "Enter Statistic Value"
+      },
+      {
+        "component": "richtext",
+        "name": "description2",
+        "label": "Description-2",
+        "valueType": "string",
+        "description": "Enter Statistic Description"
+      },
+      {
+        "component": "richtext",
+        "name": "stat3",
+        "label": "Stat-3",
+        "valueType": "string",
+        "description": "Enter Statistic Value"
+      },
+      {
+        "component": "richtext",
+        "name": "description3",
+        "label": "Description-3",
+        "valueType": "string",
+        "description": "Enter Statistic Description"
+      },
+      {
+        "component": "select",
+        "label": "Background Color",
+        "name": "backgroundColor",
+        "valueType": "string",
+        "value": "blackBackground",
+        "options": [
+          { "name": "Black Background", "value": "blackBackground" },
+          { "name": "No Background", "value": "noBackground" }
+        ]
+      },
+      {
+        "component": "select",
+        "label": "Text Size",
+        "name": "textSize",
+        "valueType": "string",
+        "value": "",
+        "options": [
+          { "name": "Regular", "value": "" },
+          { "name": "Large", "value": "large" }
+        ]
+      }
+    ]
   }
 ]
