@@ -117,64 +117,6 @@ const toggleMobileNavAccordion = (navToggle) => {
   navToggle.setAttribute('aria-expanded', setAriaExpanded);
 };
 
-// FILTER JS LOGICS
-const resetFilterAccordions = (filterToggle) => {
-  const filterContent = filterToggle.nextElementSibling;
-  const contentScroll = filterContent.scrollHeight;
-
-  filterContent.style.visibility = 'visible';
-  filterContent.style.maxHeight = `${contentScroll}px`;
-
-  filterContent.setAttribute('aria-hidden', 'false');
-  filterToggle.setAttribute('aria-expanded', 'true');
-};
-
-const toggleFilterAccordion = (toggle) => {
-  const content = toggle.nextElementSibling;
-  const contentScroll = content.scrollHeight;
-
-  if (!content.style.maxHeight) {
-    content.style.visibility = 'hidden';
-    content.style.maxHeight = '0px';
-  } else if (content.style.maxHeight === '0px') {
-    content.style.visibility = 'visible';
-    content.style.maxHeight = `${contentScroll}px`;
-  } else {
-    content.style.visibility = 'hidden';
-    content.style.maxHeight = '0px';
-  }
-
-  const ariaHiddenState = content.attributes[3].value;
-  const setAriaHidden = ariaHiddenState === 'true' ? 'false' : 'true';
-  content.setAttribute('aria-hidden', setAriaHidden);
-
-  const ariaExpandedState = toggle.attributes[3].value;
-  const setAriaExpanded = ariaExpandedState === 'false' ? 'true' : 'false';
-  toggle.setAttribute('aria-expanded', setAriaExpanded);
-};
-
-const toggleFilterMenu = (filterMenuToggle, filterMenu) => {
-  const filterMenuToggleAriaExpanded = filterMenuToggle.attributes[3].value;
-  const setfilterMenuToggleAriaExpanded = filterMenuToggleAriaExpanded === 'false' ? 'true' : 'false';
-  filterMenuToggle.setAttribute('aria-expanded', setfilterMenuToggleAriaExpanded);
-
-  if (filterMenuToggleAriaExpanded === 'false') {
-    filterMenu.focus();
-    filterMenuToggle.innerHTML = `<span class="filter-icon"></span><span class="toggle-label">Hide Filter</span>`;
-  } else {
-    filterMenu.blur();
-    filterMenuToggle.innerHTML = `<span class="filter-icon"></span><span class="toggle-label">Show Filter</span>`;
-    const filterAccordions = document.querySelectorAll('.filter-category-toggle');
-    filterAccordions.forEach((accordion) => {
-      resetFilterAccordions(accordion);
-    });
-  }
-
-  const filterMenuAriaHidden = filterMenu.attributes[3].value;
-  const setFilterMenuAriaHidden = filterMenuAriaHidden === 'false' ? 'true' : 'false';
-  filterMenu.setAttribute('aria-hidden', setFilterMenuAriaHidden);
-};
-
 /**
  * Decorates the Header and Megamenu
  * @param {Element} block The header block element
