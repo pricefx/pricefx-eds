@@ -1,4 +1,4 @@
-main .hero-container > div {
+/* main .hero-container > div {
   max-width: unset;
 }
   
@@ -31,4 +31,41 @@ main .hero-container {
   object-fit: cover;
   width: 100%;
   height: 100%;
+} */
+
+
+.hero .hero-main-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
+
+.hero .hero-left-container .hero-content-container h1,
+.hero .hero-left-container .hero-content-container h2,
+.hero .hero-left-container .hero-content-container h3
+.hero .hero-left-container .hero-content-container h4,
+.hero .hero-left-container .hero-content-container h5,
+.hero .hero-left-container .hero-content-container h6 {
+    background: var(--c-dark-blue-gradient);
+    background-clip: text;
+    -webkit-text-fill-color: transparent; 
+}
+
+.hero .hero-left-container .hero-content-container p {
+  font-size: 27px;
+  line-height: 33px;
+}
+
+.hero .button-container {
+  display: inline-flex;
+  margin-right: 9px;
+}
+
+.hero .hero-secondary-button {
+  background: transparent;
+  border: 2px solid var(--c-copy);
+  color: var(--c-copy);
+  font-style: normal;
+  padding: 14px 30px;
+}
+
