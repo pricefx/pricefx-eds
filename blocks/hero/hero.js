@@ -4,9 +4,10 @@ export default async function decorate(block) {
   const heroLeftContainer = document.createElement('div');
   const heroRightContainer = document.createElement('div');
   let buttonContainer = document.createElement('div');
+  buttonContainer.classList.add('button-container');
   let count = 1;
   [...block.children].forEach((row, index) => {
-    if (index <= 5) {
+    if (index < 6) {
       heroRightContainer.append(row.firstElementChild);
       heroRightContainer.classList.add('hero-right-container');
     } else if (index === 6) {
@@ -15,6 +16,7 @@ export default async function decorate(block) {
       if (buttonContainer.children.length > 0 && count === 5) {
         heroLeftContainer.append(buttonContainer);
         buttonContainer = document.createElement('div');
+        buttonContainer.classList.add('button-container');
         heroLeftContainer.classList.add('hero-left-container');
         count = 1;
       }
