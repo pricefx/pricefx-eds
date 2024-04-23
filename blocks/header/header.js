@@ -684,4 +684,83 @@ export default async function decorate(block) {
       toggleFilterAccordion(toggle);
     });
   });
+
+  placeholderContent.innerHTML = `
+    <div class="featured-article">
+      <div class="article-image"><img src="https://s3-alpha-sig.figma.com/img/4235/533a/eb03da8498827e68548e694c8568f248?Expires=1714953600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=hrblGrQhCThrV63jZ6mNcLAtihHcdtxOtUj~LvOsGBnJx4gnWGDTfq-c3EmRkcVFBrD05bArgScAZpkOl7JCeu7eTyQg6FoI7Ou63iaFqjbGzUR22-BdnqaERgOL81R3XxBG4eRLwS37nxV145MWT4xK48v5Qt6p1ixUMfxM60IHeW4nF7-4cWBdKvYUdZjNQ4F~2uoSGweWWCxL11XE5-~2oySQ5z8PS2VrNh04CsVj1~a7HXuL5QhpbWCRv1vtg5k7hdHBYw51G32T8N1oyoh30JGLuQyi4IicGxYtMtQANjLJDWuwktBibjK8Ad5Gczf1XE3rt7OhGNzAIUJSZQ__" alt="Article title"></div>
+      <div class="article-content">
+        <div class="article-details">
+          <p class="article-subtitle">Articles</p>
+          <h3 class="article-title">Pricefx Reviews: The Good, the Bad, the Ugly & Our Responses</h3>
+          <p class="article-info">By <a class="article-author-link" href="/">Jose Paez</a> on April 25, 2023</p>
+        </div>
+        <div class="article-cta-container">
+          <a class="article-link" href="/">Read Now</a>
+          <p class="article-readtime">12 min read</p>
+        </div>
+      </div>
+    </div>
+    <div class="articles-container">
+      <div class="article-card">
+        <div class="article-image"><img src="https://s3-alpha-sig.figma.com/img/4235/533a/eb03da8498827e68548e694c8568f248?Expires=1714953600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=hrblGrQhCThrV63jZ6mNcLAtihHcdtxOtUj~LvOsGBnJx4gnWGDTfq-c3EmRkcVFBrD05bArgScAZpkOl7JCeu7eTyQg6FoI7Ou63iaFqjbGzUR22-BdnqaERgOL81R3XxBG4eRLwS37nxV145MWT4xK48v5Qt6p1ixUMfxM60IHeW4nF7-4cWBdKvYUdZjNQ4F~2uoSGweWWCxL11XE5-~2oySQ5z8PS2VrNh04CsVj1~a7HXuL5QhpbWCRv1vtg5k7hdHBYw51G32T8N1oyoh30JGLuQyi4IicGxYtMtQANjLJDWuwktBibjK8Ad5Gczf1XE3rt7OhGNzAIUJSZQ__" alt="Article title"></div>
+        <div class="article-content">
+          <p class="article-subtitle">Articles</p>
+          <h3 class="article-title">Pricefx Reviews: The Good, the Bad, the Ugly & Our Responses</h3>
+          <p class="article-info">By <a class="article-author-link" href="/">Jose Paez</a> on April 25, 2023</p>
+        </div>
+        <div class="article-cta-container">
+          <a class="article-link" href="/">Read Now</a>
+          <p class="article-readtime">12 min read</p>
+        </div>
+      </div>
+      <div class="article-card">
+        <div class="article-image"><img src="https://s3-alpha-sig.figma.com/img/4235/533a/eb03da8498827e68548e694c8568f248?Expires=1714953600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=hrblGrQhCThrV63jZ6mNcLAtihHcdtxOtUj~LvOsGBnJx4gnWGDTfq-c3EmRkcVFBrD05bArgScAZpkOl7JCeu7eTyQg6FoI7Ou63iaFqjbGzUR22-BdnqaERgOL81R3XxBG4eRLwS37nxV145MWT4xK48v5Qt6p1ixUMfxM60IHeW4nF7-4cWBdKvYUdZjNQ4F~2uoSGweWWCxL11XE5-~2oySQ5z8PS2VrNh04CsVj1~a7HXuL5QhpbWCRv1vtg5k7hdHBYw51G32T8N1oyoh30JGLuQyi4IicGxYtMtQANjLJDWuwktBibjK8Ad5Gczf1XE3rt7OhGNzAIUJSZQ__" alt="Article title"></div>
+        <div class="article-content">
+          <p class="article-subtitle">Articles</p>
+          <h3 class="article-title">Pricefx Reviews: The Good, the Bad, the Ugly & Our Responses</h3>
+          <p class="article-info">By <a class="article-author-link" href="/">Jose Paez</a> on April 25, 2023</p>
+        </div>
+        <div class="article-cta-container">
+          <a class="article-link" href="/">Read Now</a>
+          <p class="article-readtime">12 min read</p>
+        </div>
+      </div>
+      <div class="article-card">
+        <div class="article-image"><img src="https://s3-alpha-sig.figma.com/img/4235/533a/eb03da8498827e68548e694c8568f248?Expires=1714953600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=hrblGrQhCThrV63jZ6mNcLAtihHcdtxOtUj~LvOsGBnJx4gnWGDTfq-c3EmRkcVFBrD05bArgScAZpkOl7JCeu7eTyQg6FoI7Ou63iaFqjbGzUR22-BdnqaERgOL81R3XxBG4eRLwS37nxV145MWT4xK48v5Qt6p1ixUMfxM60IHeW4nF7-4cWBdKvYUdZjNQ4F~2uoSGweWWCxL11XE5-~2oySQ5z8PS2VrNh04CsVj1~a7HXuL5QhpbWCRv1vtg5k7hdHBYw51G32T8N1oyoh30JGLuQyi4IicGxYtMtQANjLJDWuwktBibjK8Ad5Gczf1XE3rt7OhGNzAIUJSZQ__" alt="Article title"></div>
+        <div class="article-content">
+          <p class="article-subtitle">Articles</p>
+          <h3 class="article-title">Pricefx Reviews: The Good, the Bad, the Ugly & Our Responses</h3>
+          <p class="article-info">By <a class="article-author-link" href="/">Jose Paez</a> on April 25, 2023</p>
+        </div>
+        <div class="article-cta-container">
+          <a class="article-link" href="/">Read Now</a>
+          <p class="article-readtime">12 min read</p>
+        </div>
+      </div>
+      <div class="article-card">
+        <div class="article-image"><img src="https://s3-alpha-sig.figma.com/img/4235/533a/eb03da8498827e68548e694c8568f248?Expires=1714953600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=hrblGrQhCThrV63jZ6mNcLAtihHcdtxOtUj~LvOsGBnJx4gnWGDTfq-c3EmRkcVFBrD05bArgScAZpkOl7JCeu7eTyQg6FoI7Ou63iaFqjbGzUR22-BdnqaERgOL81R3XxBG4eRLwS37nxV145MWT4xK48v5Qt6p1ixUMfxM60IHeW4nF7-4cWBdKvYUdZjNQ4F~2uoSGweWWCxL11XE5-~2oySQ5z8PS2VrNh04CsVj1~a7HXuL5QhpbWCRv1vtg5k7hdHBYw51G32T8N1oyoh30JGLuQyi4IicGxYtMtQANjLJDWuwktBibjK8Ad5Gczf1XE3rt7OhGNzAIUJSZQ__" alt="Article title"></div>
+        <div class="article-content">
+          <p class="article-subtitle">Articles</p>
+          <h3 class="article-title">Pricefx Reviews: The Good, the Bad, the Ugly & Our Responses</h3>
+          <p class="article-info">By <a class="article-author-link" href="/">Jose Paez</a> on April 25, 2023</p>
+        </div>
+        <div class="article-cta-container">
+          <a class="article-link" href="/">Read Now</a>
+          <p class="article-readtime">12 min read</p>
+        </div>
+      </div>
+      <div class="article-card">
+        <div class="article-image"><img src="https://s3-alpha-sig.figma.com/img/4235/533a/eb03da8498827e68548e694c8568f248?Expires=1714953600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=hrblGrQhCThrV63jZ6mNcLAtihHcdtxOtUj~LvOsGBnJx4gnWGDTfq-c3EmRkcVFBrD05bArgScAZpkOl7JCeu7eTyQg6FoI7Ou63iaFqjbGzUR22-BdnqaERgOL81R3XxBG4eRLwS37nxV145MWT4xK48v5Qt6p1ixUMfxM60IHeW4nF7-4cWBdKvYUdZjNQ4F~2uoSGweWWCxL11XE5-~2oySQ5z8PS2VrNh04CsVj1~a7HXuL5QhpbWCRv1vtg5k7hdHBYw51G32T8N1oyoh30JGLuQyi4IicGxYtMtQANjLJDWuwktBibjK8Ad5Gczf1XE3rt7OhGNzAIUJSZQ__" alt="Article title"></div>
+        <div class="article-content">
+          <p class="article-subtitle">Articles</p>
+          <h3 class="article-title">Pricefx Reviews: The Good, the Bad, the Ugly & Our Responses</h3>
+          <p class="article-info">By <a class="article-author-link" href="/">Jose Paez</a> on April 25, 2023</p>
+        </div>
+        <div class="article-cta-container">
+          <a class="article-link" href="/">Read Now</a>
+          <p class="article-readtime">12 min read</p>
+        </div>
+      </div>
+    </div>
+  `;
 }
