@@ -10,9 +10,9 @@ export default async function decorate(block) {
       heroRightContainer.append(row.firstElementChild);
       heroRightContainer.classList.add('hero-right-container');
     } else if (index === 6) {
-      heroLeftContainer.append(row.firstElementChild.firstElementChild);
+      heroLeftContainer.append(row.firstElementChild);
     } else {
-      if (buttonContainer.children.length > 0 && count === 4) {
+      if (buttonContainer.children.length > 0 && count === 5) {
         heroLeftContainer.append(buttonContainer);
         buttonContainer = document.createElement('div');
         heroLeftContainer.classList.add('hero-left-container');
