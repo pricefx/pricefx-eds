@@ -5,11 +5,11 @@ export default async function decorate(block) {
   const heroRightContainer = document.createElement('div');
   [...block.children].forEach((row, index) => {
     if (index < 5) {
+      heroRightContainer.append(row.firstElementChild);
+      heroRightContainer.classList.add('hero-right-container');
+    } else {
       heroLeftContainer.append(row.firstElementChild);
       heroLeftContainer.classList.add('hero-left-container');
-    } else {
-      heroRightContainer.append(row.firstElementChild);
-      heroLeftContainer.classList.add('hero-right-container');
     }
   });
   heroContainer.append(heroLeftContainer);
