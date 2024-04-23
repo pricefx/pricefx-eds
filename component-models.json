@@ -600,9 +600,9 @@
         "component": "richtext",
         "valueType": "string",
         "name": "heroContent",
-        "label": "Hero Description",
+        "label": "Hero Content",
         "value": "",
-        "description": "ⓘ Heading (H1) and CTA"
+        "description": "ⓘ Heading (H1) and Description"
       },
       {
         "component": "radio-group",

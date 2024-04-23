@@ -3,16 +3,28 @@ export default async function decorate(block) {
   heroContainer.classList.add('hero-container');
   const heroLeftContainer = document.createElement('div');
   const heroRightContainer = document.createElement('div');
+  let buttonContainer = document.createElement('div');
+  let count = 1;
   [...block.children].forEach((row, index) => {
-    if (index < 5) {
+    if (index <= 5) {
       heroRightContainer.append(row.firstElementChild);
       heroRightContainer.classList.add('hero-right-container');
+    } else if (index === 6) {
+      heroLeftContainer.append(row.firstElementChild.firstElementChild);
     } else {
-      heroLeftContainer.append(row.firstElementChild);
-      heroLeftContainer.classList.add('hero-left-container');
+      if (buttonContainer.children.length > 0 && count === 4) {
+        heroLeftContainer.append(buttonContainer);
+        buttonContainer = document.createElement('div');
+        heroLeftContainer.classList.add('hero-left-container');
+        count = 1;
+      }
+      buttonContainer.append(row.firstElementChild);
+      count += 1;
     }
   });
+
   heroContainer.append(heroLeftContainer);
   heroContainer.append(heroRightContainer);
+  block.textContent = '';
   block.append(heroContainer);
 }
