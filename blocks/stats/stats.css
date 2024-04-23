@@ -7,9 +7,8 @@
 }
 
 .stats.block {
-    align-content: center;
     display: flex;
-    justify-content: center;
+    place-content: center;
 }
 
 .stat-title {
@@ -36,7 +35,7 @@
     display: flex;
     flex-basis: 100%;
     flex-direction: column;
-    padding: 39px 0px;
+    padding: 39px 0;
 }
 
 .stat-description {
