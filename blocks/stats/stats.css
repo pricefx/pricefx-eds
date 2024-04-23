@@ -28,7 +28,6 @@
 .line {
     background: linear-gradient(135deg, var(--c-secondary-pink) 0%, var(--c-primary-lt) 51.1%, var(--c-secondary-orange-lt) 100%);
     height: 5px;
-    opacity: 0px;
     width: 151px;
 }
 
@@ -46,9 +45,9 @@
     font-size: 18px;
     font-weight: 700;
     line-height: normal;
+    max-width: 400px; 
     padding: 16px;
     text-align: center;
-    max-width: 400px; 
 }
 
 .noBackground {
