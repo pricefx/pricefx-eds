@@ -333,15 +333,30 @@
           }
         },
         {
-          "title": "Stats",
-          "id": "stats",
+          "title": "Related Articles",
+          "id": "relatedArticles",
           "plugins": {
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
-                  "name": "Stats",
-                  "model": "stats"
+                  "name": "Related Articles",
+                  "model": "relatedArticles"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Learning Center",
+          "id": "learningCenter",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Learning Center",
+                  "model": "learningCenter"
                 }
               }
             }

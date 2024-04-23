@@ -1,32 +1,9 @@
 version: 1
-
 indices:
-  site-en: &base-site
-    include:
-      - '/en/**'
-    target: /en/configuration/query-index.json
-    properties:
-      title:
-        select: head > meta[property="og:title"]
-        value: |
-          attribute(el, 'content')
-      image:
-        select: head > meta[property="og:image"]
-        value: |
-          match(attribute(el, 'content'), 'https://[^/]+(/.*)')
-      description:
-        select: head > meta[property="og:description"]
-        value: |
-          attribute(el, 'content')
-      lastModified:
-        select: none
-        value: |
-          parseTimestamp(headers['last-modified'], 'ddd, DD MMM YYYY hh:mm:ss GMT')
-
   articles:
     include:
-      - /en/index/learning-center/**
-    target: /en/index/learning-center/article-index.json
+      - /learning-center/**
+    target: /article-index.json
     properties:
       lastModified:
         select: none
@@ -51,4 +28,7 @@ indices:
         value: parseTimestamp(attribute(el, "content"), "ddd, DD MMM YYYY hh:mm:ss GMT")
       type:
         select: head > meta[name="template"]
+        value: attribute(el, "content")
+      cq-tags:
+        select: head > meta[name="cq-tags"]
         value: attribute(el, "content")
