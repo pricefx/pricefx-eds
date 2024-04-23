@@ -1,0 +1,26 @@
+.iframe.block {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.iframe.container {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+}
+
+.iframe.noheight {
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+.iframe iframe {
+    border: none;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}

@@ -1,3 +1,104 @@
 .tabs .tabs-list {
   display: flex;
+  max-width: 100%;
+  justify-content: center;
+}
+
+.tabs .tabs-list button {
+  margin: 0 3rem;
+  padding: .5rem 1rem;
+  position: relative;
+  color: var(--c-black);
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: var(--ff-secondary);
+  background-color: transparent;
+  border: none;
+}
+
+.tabs .tabs-list button[aria-selected="true"],
+.tabs .tabs-list button:hover,
+.tabs .tabs-list button:focus {
+  color: var(--c-primary);
+}
+
+.tabs .tabs-list button::after {
+  background-color: currentColor;
+  bottom: 0;
+  height: 4px;
+  left: 0;
+  position: absolute;
+  transform: scale(0, 1);
+  transition: .3s ease transform;
+  width: 100%;
+  content: '';
+}
+
+.tabs .tabs-list button[aria-selected="true"]::after,
+.tabs .tabs-list button:hover::after,
+.tabs .tabs-list button:focus::after {
+  content: '';
+  transform: scale(1, 1);
+}
+
+.tabs .tabs-panel[aria-hidden="true"] {
+  display: none;
+}
+
+/* Vertical Tabs Styles */
+.tabs.vertical .tabs-tab {
+  padding: 10px 20px;
+  margin: 0;
+}
+
+.tabs.vertical .tabs-tab[aria-selected='true'] {
+  background: var(--c-primary);
+  color: var(--c-white);
+}
+
+.tabs.vertical .tabs-list button[aria-selected="true"]::after {
+  background-color: var(--c-primary);
+}
+
+.tabs.vertical .tabs-list button::after {
+  background-color: transparent;
+  bottom: -6px;
+  content: '';
+  display: block;
+  height: 12px;
+  left: calc(50% - 6px);
+  position: absolute;
+  transform: rotate(-45deg);
+  width: 12px;
+}
+
+.tabs.vertical .tabs-tab:hover,
+.tabs.vertical .tabs-list button:hover::after {
+  background: var(--c-banner-drk);
+  color: var(--c-white);
+}
+
+@media (width >= 768px) {
+  .tabs.vertical {
+    display: flex;
+  }
+
+  .tabs.vertical .tabs-list {
+    flex-direction: column;
+    justify-content: normal;
+  }
+
+  .tabs.vertical .tabs-panel {
+    margin-left: 50px;
+  }
+
+  .tabs.vertical .tabs-tab {
+    padding: 20px 50px;
+  }
+
+  .tabs.vertical .tabs-list button[aria-selected="true"]::after,
+  .tabs.vertical .tabs-list button:hover::after {
+    left: calc(100% - 6px);
+    top: calc(50% - 6px);
+  }
 }

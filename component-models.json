@@ -313,11 +313,45 @@
         "multi": false
       },
       {
-        "component": "text-area",
-        "name": "text",
+        "component": "text-input",
+        "valueType": "string",
+        "name": "title",
         "value": "",
-        "label": "Text",
+        "label": "Title"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "subTitle",
+        "value": "",
+        "label": "Sub Title"
+      },
+      {
+        "component": "text-area",
+        "name": "description",
+        "value": "",
+        "label": "Description",
         "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "buttonLink",
+        "value": "",
+        "label": "Button Link"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "buttonLabel",
+        "value": "",
+        "label": "Button Label"
+      },
+      {
+        "component": "boolean",
+        "label": "Target Blank",
+        "name": "isTargetBlank",
+        "valueType": "boolean"
       }
     ]
   },
@@ -510,20 +544,13 @@
     "id": "hero",
     "fields": [
       {
-        "component": "select",
-        "name": "classes",
-        "value": "hero-primary",
-        "label": "Hero Style Option",
+        "component": "radio-group",
+        "label": "Variation",
+        "name": "variation",
         "valueType": "string",
         "options": [
-          {
-            "name": "Primary",
-            "value": "hero-primary"
-          },
-          {
-            "name": "Secondary",
-            "value": "hero-secondary"
-          }
+          { "name": "Image", "value": "imageVariation" },
+          { "name": "Video", "value": "videoVariation" }
         ]
       },
       {
@@ -543,16 +570,17 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "backgroundImage",
-        "label": "Background Image",
+        "name": "embedVideo",
+        "label": "Embed Video",
+        "description": "ⓘ Video placeholder for video hero variation",
         "multi": false
       },
       {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "backgroundImageAlt",
-        "label": "Background Image Alt Text",
-        "value": ""
+        "component": "boolean",
+        "label": "Enable PopUp Modal",
+        "name": "popUpModal",
+        "valueType": "boolean",
+        "description": "ⓘ When selected, the Video will open in a Popup Modal"
       },
       {
         "component": "richtext",
@@ -560,7 +588,111 @@
         "name": "heroContent",
         "label": "Hero Content",
         "value": "",
-        "description": "Heading (H1) and CTA"
+        "description": "ⓘ Heading (H1) and CTA"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "overlayContent",
+        "label": "Overlay Content",
+        "value": ""
+      },
+      {
+        "component": "radio-group",
+        "label": "Button 1 Style",
+        "name": "buttonOneStyle",
+        "valueType": "string",
+        "options": [
+          { "name": "Primary", "value": "hero-primary-button" },
+          { "name": "Secondary", "value": "hero-secondary-button" }
+        ]
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "buttonOneLink",
+        "value": "",
+        "label": "Button Link"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "buttonOneLabel",
+        "value": "",
+        "label": "Button Label"
+      },
+      {
+        "component": "boolean",
+        "label": "Target Blank",
+        "name": "isTargetBlankOne",
+        "valueType": "boolean"
+      },
+      {
+        "component": "radio-group",
+        "label": "Button 2 Style",
+        "name": "buttonTwoStyle",
+        "valueType": "string",
+        "options": [
+          { "name": "Primary", "value": "hero-primary-button" },
+          { "name": "Secondary", "value": "hero-secondary-button" }
+        ]
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "buttonTwoLink",
+        "value": "",
+        "label": "Button Link"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "buttonTwoLabel",
+        "value": "",
+        "label": "Button Label"
+      },
+      {
+        "component": "boolean",
+        "label": "Target Blank",
+        "name": "isTargetBlankTwo",
+        "valueType": "boolean"
+      },
+      {
+        "component": "radio-group",
+        "label": "Button 3 Style",
+        "name": "buttonThreeStyle",
+        "valueType": "string",
+        "options": [
+          { "name": "Primary", "value": "hero-primary-button" },
+          { "name": "Secondary", "value": "hero-secondary-button" }
+        ]
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "buttonThreeLink",
+        "value": "",
+        "label": "Button Link"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "buttonThreeLabel",
+        "value": "",
+        "label": "Button Label"
+      },
+      {
+        "component": "boolean",
+        "label": "Target Blank",
+        "name": "isTargetBlankThree",
+        "valueType": "boolean"
+      },
+      {
+        "component": "text-input",
+        "name": "url",
+        "label": "URL",
+        "valueType": "string",
+        "value": ""
       }
     ]
   },
@@ -833,6 +965,129 @@
         "value": "",
         "label": "Base Path",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "learningCenter",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "featuredArticle",
+        "value": "",
+        "label": "Featured Article",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "searchPath",
+        "label": "Search Path",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "searchPlaceholderText",
+        "label": "Search Placeholder Text",
+        "valueType": "string"
+      },
+      {
+        "component": "number",
+        "name": "numberOfArticles",
+        "label": "Number Of Articles Display",
+        "valueType": "number",
+        "value": 0
+      },
+      {
+        "component": "radio-group",
+        "label": "Sort By",
+        "name": "sortBy",
+        "valueType": "string",
+        "options": [
+          { "name": "Asc", "value": "Ascending" },
+          { "name": "Desc", "value": "Descending" }
+        ]
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "filterOneTitle",
+        "value": "",
+        "label": "Filter 1 Title"
+      },
+      {
+        "component": "aem-tag",
+        "label": "Filter 1 Options",
+        "name": "filterOneTags",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "filterTwoTitle",
+        "value": "",
+        "label": "Filter 2 Title"
+      },
+      {
+        "component": "aem-tag",
+        "label": "Filter 2 Options",
+        "name": "filterTwoTags",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "filterThreeTitle",
+        "value": "",
+        "label": "Filter 3 Title"
+      },
+      {
+        "component": "aem-tag",
+        "label": "Filter 3 Options",
+        "name": "filterThreeTags",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "filterFourTitle",
+        "value": "",
+        "label": "Filter 4 Title"
+      },
+      {
+        "component": "aem-tag",
+        "label": "Filter 4 Options",
+        "name": "filterFourTags",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "page-metadata",
+    "fields": [
+      {
+        "component": "date-time",
+        "name": "articlePublishedDate",
+        "label": "Article Published Date"
+      },
+      {
+        "component": "aem-tag",
+        "name": "authors",
+        "label": "Authors"
+      },
+      {
+        "component": "aem-tag",
+        "name": "Catagory",
+        "label": "Catagory"
+      },
+      {
+        "component": "aem-tag",
+        "name": "topics",
+        "label": "Topics"
+      },
+      {
+        "component": "number",
+        "name": "timeToRead",
+        "label": "Time to Read"
       }
     ]
   }
