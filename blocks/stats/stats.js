@@ -1,7 +1,7 @@
 export default function decorate(block) {
   const parentDiv = document.createElement('div');
   const size = block.lastElementChild.querySelector('p');
-  let titleSize = "";
+  let titleSize = '';
   if(size) {
     titleSize = size.textContent.trim();
   }
@@ -15,8 +15,8 @@ export default function decorate(block) {
       if(element) {
           const propValue = element.getAttribute('data-richtext-prop');
           // If either a title or description is left empty, add a corresponding empty tag
-          if (propValue && propValue.includes('stat')) { //Add stat-title div for title
-              if (childDiv) { // If title is authored without description 
+          if (propValue && propValue.includes('stat')) {    //Add stat-title div for title
+              if (childDiv) {     // If title is authored without description 
                   const emptyTag = document.createElement('p');
                   const textDiv = document.createElement('div');
                   textDiv.classList.add('stat-description');
@@ -30,21 +30,25 @@ export default function decorate(block) {
               const pTag = element.querySelector('p');
               const titleDiv = document.createElement('div');
               titleDiv.classList.add('stat-title');
-              if(titleSize) titleDiv.classList.add(titleSize);
+              if(titleSize) {
+                titleDiv.classList.add(titleSize);
+              }
               titleDiv.appendChild(pTag.cloneNode(true));
               childDiv.appendChild(titleDiv);
               const line = document.createElement('div');
               line.classList.add('line');
               childDiv.appendChild(line);
-          } else if (propValue && propValue.includes('description')) { //Add stat-description div for
-              if (childDiv === null) { //If description is authored without title
+          } else if (propValue && propValue.includes('description')) {    //Add stat-description div for
+              if (childDiv === null) {     //If description is authored without title
                   childDiv = document.createElement('div');
                   childDiv.classList.add('stat');
                   const emptyTag = document.createElement('p');
                   const titleDiv = document.createElement('div');
                   titleDiv.appendChild(emptyTag.cloneNode(true));
                   titleDiv.classList.add('stat-title');
-                  if(titleSize) titleDiv.classList.add(titleSize);
+                  if(titleSize) {
+                    titleDiv.classList.add(titleSize);
+                  }
                   childDiv.appendChild(titleDiv);
                   const line = document.createElement('div'); 
                   line.classList.add('line');
@@ -73,18 +77,18 @@ export default function decorate(block) {
   const adjustStatTitleHeight = () => {
     const statTitles = parentDiv.querySelectorAll('.stat-title');
     statTitles.forEach((title) => {
-      title.style.height = 'auto'; // Set height to auto to recalculate
+      title.style.height = 'auto';    // Set height to auto to recalculate
     });
     setTimeout(() => {
-      const statTitles = parentDiv.querySelectorAll('.stat-title');
+      const statTitle = parentDiv.querySelectorAll('.stat-title');
       let maxHeight = 0;
-      statTitles.forEach((title) => {
+      statTitle.forEach((title) => {
         const height = title.offsetHeight;
         maxHeight = Math.max(maxHeight, height);
       });
-      if(maxHeight != 0){
-        statTitles.forEach((title) => {
-          title.style.height = maxHeight + 'px';
+      if(maxHeight !== 0){
+        statTitle.forEach((title) => {
+          title.style.height = `${maxHeight}px`;
         });
       }
     }, 200); // Delay to ensure proper recalculation after content changes
