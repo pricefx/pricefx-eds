@@ -13,7 +13,9 @@ function decorateButton(heroLeftContainer) {
     if (btnTarget === 'true') {
       heroButton.target = '_blank';
     }
-    btn.append(heroButton);
+    if (btnLabel !== '') {
+      btn.append(heroButton);
+    }
   });
 }
 
@@ -48,8 +50,8 @@ export default async function decorate(block) {
       heroRightContainer.append(row.firstElementChild);
       heroRightContainer.classList.add('hero-right-container');
     } else if (index === 6) {
-      heroLeftContainerInner.append(row.firstElementChild.firstElementChild);
-      heroLeftContainerInner.firstElementChild.classList.add('hero-content-container');
+      heroLeftContainerInner.append(row.firstElementChild?.firstElementChild);
+      heroLeftContainerInner.firstElementChild?.classList.add('hero-content-container');
     } else {
       if (buttonContainer.children.length >= 0 && count === 5) {
         heroLeftContainerInner.append(buttonContainer);
