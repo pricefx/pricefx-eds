@@ -303,7 +303,7 @@
     ]
   },
   {
-    "id": "cards",
+    "id": "card-container",
     "fields": [
       {
         "component": "select",
