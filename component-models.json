@@ -326,34 +326,6 @@
             "value": "four-column"
           }
         ]
-      },
-      {
-        "component": "select",
-        "name": "type",
-        "value": "",
-        "label": "Text Alignment",
-        "valueType": "string",
-        "description": "Choose the Text Alignment",
-        "options": [
-          {
-            "name": "Left",
-            "value": "align-left"
-          },
-          {
-            "name": "Center",
-            "value": "align-center"
-          },
-          {
-            "name": "Right",
-            "value": "align-right"
-          }
-        ]
-      },
-      {
-        "component": "boolean",
-        "label": "Disable Image Aspect Ratio",
-        "name": "isDisabled",
-        "valueType": "boolean"
       }
     ]
   },
