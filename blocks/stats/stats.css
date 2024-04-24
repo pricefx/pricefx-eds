@@ -1,4 +1,4 @@
-.stats-wrapper {
+.stats-container {
     background-color: var(--c-dark);
     display: flex;
     flex-direction: column;
@@ -74,7 +74,7 @@
 }
 
 @media (width >= 768px) {
-    .stats-wrapper {
+    .stats-container {
         flex-direction: row;
         border-radius: 16px;
     }
