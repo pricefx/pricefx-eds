@@ -5,10 +5,12 @@ export default function decorate(block) {
   if (size) {
     titleSize = size.textContent.trim();
   }
+
   const background = block.lastElementChild.previousElementSibling;
   const pText = background.querySelector('p').textContent.trim();
   parentDiv.classList.add('statsWrapper');
   parentDiv.classList.add(pText);
+
   let childDiv = null;
   [...block.children].forEach((row) => {
     const element = row.querySelector('[data-richtext-prop]');
@@ -16,7 +18,8 @@ export default function decorate(block) {
       const propValue = element.getAttribute('data-richtext-prop');
       // If either a title or description is left empty, add a corresponding empty tag
       if (propValue && propValue.includes('stat')) { // Add stat-title div for title
-        if (childDiv) { // If title is authored without description 
+        // If title is authored without description
+        if (childDiv) {
           const emptyTag = document.createElement('p');
           const textDiv = document.createElement('div');
           textDiv.classList.add('stat-description');
@@ -39,7 +42,8 @@ export default function decorate(block) {
         line.classList.add('line');
         childDiv.appendChild(line);
       } else if (propValue && propValue.includes('description')) { // Add stat-description div for
-        if (childDiv === null) { // If description is authored without title
+        // If description is authored without title
+        if (childDiv === null) {
           childDiv = document.createElement('div');
           childDiv.classList.add('stat');
           const emptyTag = document.createElement('p');
@@ -64,6 +68,7 @@ export default function decorate(block) {
       }
     }
   });
+
   if (childDiv) {
     const emptyTag = document.createElement('p');
     const textDiv = document.createElement('div');
