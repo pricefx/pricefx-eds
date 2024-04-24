@@ -259,6 +259,7 @@ header nav {
   font-size: var(--base-font-size);
   font-weight: var(--fw-med);
   height: 57px;
+  line-height: calc((18 / 16) * 1rem);
   margin: var(--spacing-xsmall) 0;
   max-width: 204px;
   padding: 19px 20px;
@@ -279,6 +280,7 @@ header nav {
 .expert-cta:hover {
   background-position: right;
   color: var(--c-white);
+  line-height: calc((18 / 16) * 1rem);
   text-decoration: none;
 }
 
@@ -575,7 +577,7 @@ header a:focus {
     height: auto;
     margin: var(--spacing-xsmall) auto;
     max-width: 212px;
-    padding: 14px var(--spacing-medium) 10px;
+    padding: var(--spacing-xsmall) var(--spacing-medium);
   }
 
   .expert-cta:hover,
