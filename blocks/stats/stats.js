@@ -16,51 +16,51 @@ export default function decorate(block) {
       const propValue = element.getAttribute('data-richtext-prop');
       // If either a title or description is left empty, add a corresponding empty tag
       if (propValue && propValue.includes('stat')) { // Add stat-title div for title
-          if (childDiv) { // If title is authored without description 
-            const emptyTag = document.createElement('p');
-            const textDiv = document.createElement('div');
-            textDiv.classList.add('stat-description');
-            textDiv.appendChild(emptyTag.cloneNode(true));
-            childDiv.appendChild(textDiv);
-            parentDiv.appendChild(childDiv);
-            childDiv = null;
-          }
+        if (childDiv) { // If title is authored without description 
+          const emptyTag = document.createElement('p');
+          const textDiv = document.createElement('div');
+          textDiv.classList.add('stat-description');
+          textDiv.appendChild(emptyTag.cloneNode(true));
+          childDiv.appendChild(textDiv);
+          parentDiv.appendChild(childDiv);
+          childDiv = null;
+        }
+        childDiv = document.createElement('div');
+        childDiv.classList.add('stat');
+        const pTag = element.querySelector('p');
+        const titleDiv = document.createElement('div');
+        titleDiv.classList.add('stat-title');
+        if (titleSize) {
+          titleDiv.classList.add(titleSize);
+        }
+        titleDiv.appendChild(pTag.cloneNode(true));
+        childDiv.appendChild(titleDiv);
+        const line = document.createElement('div');
+        line.classList.add('line');
+        childDiv.appendChild(line);
+      } else if (propValue && propValue.includes('description')) { // Add stat-description div for
+        if (childDiv === null) { // If description is authored without title
           childDiv = document.createElement('div');
           childDiv.classList.add('stat');
-          const pTag = element.querySelector('p');
+          const emptyTag = document.createElement('p');
           const titleDiv = document.createElement('div');
+          titleDiv.appendChild(emptyTag.cloneNode(true));
           titleDiv.classList.add('stat-title');
           if (titleSize) {
             titleDiv.classList.add(titleSize);
           }
-          titleDiv.appendChild(pTag.cloneNode(true));
           childDiv.appendChild(titleDiv);
           const line = document.createElement('div');
           line.classList.add('line');
           childDiv.appendChild(line);
-      } else if (propValue && propValue.includes('description')) { // Add stat-description div for
-          if (childDiv === null) { // If description is authored without title
-            childDiv = document.createElement('div');
-            childDiv.classList.add('stat');
-            const emptyTag = document.createElement('p');
-            const titleDiv = document.createElement('div');
-            titleDiv.appendChild(emptyTag.cloneNode(true));
-            titleDiv.classList.add('stat-title');
-            if (titleSize) {
-              titleDiv.classList.add(titleSize);
-            }
-            childDiv.appendChild(titleDiv);
-            const line = document.createElement('div');
-            line.classList.add('line');
-            childDiv.appendChild(line);
-          }
-          const pTag = element.querySelector('p');
-          const textDiv = document.createElement('div');
-          textDiv.classList.add('stat-description');
-          textDiv.appendChild(pTag.cloneNode(true));
-          childDiv.appendChild(textDiv);
-          parentDiv.appendChild(childDiv);
-          childDiv = null;
+        }
+        const pTag = element.querySelector('p');
+        const textDiv = document.createElement('div');
+        textDiv.classList.add('stat-description');
+        textDiv.appendChild(pTag.cloneNode(true));
+        childDiv.appendChild(textDiv);
+        parentDiv.appendChild(childDiv);
+        childDiv = null;
       }
     }
   });
