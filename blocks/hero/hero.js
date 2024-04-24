@@ -23,8 +23,10 @@ function decorateRightContainer(heroRightContainer) {
   heroImageContainer.classList.add('hero-image-container');
   if (heroVariation === 'imageVariation') {
     const heroImage = heroRightContainer.children[1].firstElementChild.firstElementChild;
-    // heroImageContainer.append(heroImage);
-    heroImageContainer.setAttribute('style', `background-image:url(${heroImage.children[0].currentSrc})`);
+    if (window.matchMedia('(min-width:986px)').matches) {
+      heroImageContainer.setAttribute('style', `background-image:url(${heroImage.children[0].currentSrc})`);
+    }
+    heroImageContainer.append(heroImage);
   }
   heroRightContainer.textContent = '';
   heroRightContainer.append(heroImageContainer);
