@@ -370,16 +370,16 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "title",
+        "name": "subTitle",
         "value": "",
-        "label": "Title"
+        "label": "Sub Title"
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "subTitle",
+        "name": "title",
         "value": "",
-        "label": "Sub Title"
+        "label": "Title"
       },
       {
         "component": "text-area",
