@@ -22,6 +22,12 @@
     line-height: 56px;
     padding: 16px;
     text-align: center;
+
+    sup {
+        font-size: 28px;
+        font-weight: 900;
+        line-height: 30px; 
+    }
 }
 
 .line {
@@ -65,12 +71,6 @@
 
 .stat-title.large {
     font-size: 70px;
-}
-
-sup {
-    font-size: 28px;
-    font-weight: 900;
-    line-height: 30px; 
 }
 
 @media (width >= 768px) {
