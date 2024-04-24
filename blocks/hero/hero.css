@@ -33,25 +33,52 @@ main .hero-container {
   height: 100%;
 } */
 
+.section.hero-container {
+  background-color: var(--c-gray-lt);
+  padding: 0;
+}
 
 .hero .hero-main-container {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
-.hero .hero-left-container .hero-content-container h1,
-.hero .hero-left-container .hero-content-container h2,
-.hero .hero-left-container .hero-content-container h3
-.hero .hero-left-container .hero-content-container h4,
-.hero .hero-left-container .hero-content-container h5,
-.hero .hero-left-container .hero-content-container h6 {
+.hero .hero-content-container h1,
+.hero .hero-content-container h2,
+.hero .hero-content-container h3
+.hero .hero-content-container h4,
+.hero .hero-content-container h5,
+.hero .hero-content-container h6 {
     background: var(--c-dark-blue-gradient);
     background-clip: text;
     -webkit-text-fill-color: transparent; 
 }
 
-.hero .hero-left-container .hero-content-container p {
+.hero .hero-left-container {
+  max-width: 881px;
+  margin: 0 auto;
+}
+
+.hero .hero-right-container {
+  max-width: 40%;
+}
+
+.hero .hero-right-container .hero-image-container {
+  position: relative;
+}
+
+.hero .hero-right-container .hero-image-container::before {
+    background: linear-gradient(90deg, #EBECEE 2.33%, #e8e8ebcf 24.08%, #e5e5e7a6 44.28%, #d9d9d900 77.69%);
+    content: "";
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 4;
+}
+
+
+.hero .hero-content-container p {
   font-size: 27px;
   line-height: 33px;
 }

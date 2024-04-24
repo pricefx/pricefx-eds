@@ -17,6 +17,18 @@ function decorateButton(heroLeftContainer) {
   });
 }
 
+function decorateRightContainer(heroRightContainer) {
+  const heroVariation = heroRightContainer.firstElementChild.textContent;
+  const heroImageContainer = document.createElement('div');
+  heroImageContainer.classList.add('hero-image-container');
+  if (heroVariation === 'imageVariation') {
+    const heroImage = heroRightContainer.children[1].firstElementChild.firstElementChild;
+    heroImageContainer.append(heroImage);
+  }
+  heroRightContainer.textContent = '';
+  heroRightContainer.append(heroImageContainer);
+}
+
 export default async function decorate(block) {
   const heroContainer = document.createElement('div');
   heroContainer.classList.add('hero-main-container');
@@ -48,6 +60,7 @@ export default async function decorate(block) {
   });
 
   decorateButton(heroLeftContainer);
+  decorateRightContainer(heroRightContainer);
   heroContainer.append(heroLeftContainer);
   heroContainer.append(heroRightContainer);
   block.textContent = '';
