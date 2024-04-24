@@ -42,10 +42,6 @@
     "components": ["card"]
   },
   {
-    "id": "card-container",
-    "components": ["card"]
-  },
-  {
     "id": "accordion",
     "components": ["accordion-item"]
   },
