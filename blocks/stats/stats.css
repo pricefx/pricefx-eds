@@ -55,16 +55,16 @@
     text-align: center;
 }
 
-.noBackground {
+.no-background {
     background-color: var(--c-white);
 }
 
-.noBackground .stat-title,
-.noBackground .stat-description {
+.no-background .stat-title,
+.no-background .stat-description {
     color: var(--c-copy);
 }
 
-.noBackground .stat-description {
+.no-background .stat-description {
     font-weight: 400;
     line-height: 24px;
 }

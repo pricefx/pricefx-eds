@@ -5,19 +5,19 @@ export default function decorate(block) {
   if (size) {
     titleSize = size.textContent.trim();
   }
-
-  const background = block.lastElementChild.previousElementSibling;
-  const pText = background.querySelector('p').textContent.trim();
   parentDiv.classList.add('statsWrapper');
-  parentDiv.classList.add(pText);
+  const background = block.lastElementChild.previousElementSibling;
+  const pText = background.querySelector('p');
+  if (pText) {
+    parentDiv.classList.add(pText.textContent.trim());
+  }
 
   let childDiv = null;
-  [...block.children].forEach((row) => {
-    const element = row.querySelector('[data-richtext-prop]');
-    if (element) {
-      const propValue = element.getAttribute('data-richtext-prop');
+  [...block.children].forEach((row, index) => {
+    if (index < 6) {
+      const propValue = row.querySelector('p');
       // If either a title or description is left empty, add a corresponding empty tag
-      if (propValue && propValue.includes('stat')) {
+      if (propValue && index % 2 === 0) {
         // If title is authored without description
         if (childDiv) {
           const emptyTag = document.createElement('p');
@@ -30,7 +30,7 @@ export default function decorate(block) {
         }
         childDiv = document.createElement('div');
         childDiv.classList.add('stat');
-        const pTag = element.querySelector('p');
+        const pTag = row.querySelector('p');
         const titleDiv = document.createElement('div');
         titleDiv.classList.add('stat-title');
         if (titleSize) {
@@ -41,7 +41,7 @@ export default function decorate(block) {
         const line = document.createElement('div');
         line.classList.add('line');
         childDiv.appendChild(line);
-      } else if (propValue && propValue.includes('description')) {
+      } else if (propValue && index % 2 !== 0) {
         // If description is authored without title
         if (childDiv === null) {
           childDiv = document.createElement('div');
@@ -58,7 +58,7 @@ export default function decorate(block) {
           line.classList.add('line');
           childDiv.appendChild(line);
         }
-        const pTag = element.querySelector('p');
+        const pTag = row.querySelector('p');
         const textDiv = document.createElement('div');
         textDiv.classList.add('stat-description');
         textDiv.appendChild(pTag.cloneNode(true));

@@ -1196,10 +1196,10 @@
         "label": "Background Color",
         "name": "backgroundColor",
         "valueType": "string",
-        "value": "blackBackground",
+        "value": "black-background",
         "options": [
-          { "name": "Black Background", "value": "blackBackground" },
-          { "name": "No Background", "value": "noBackground" }
+          { "name": "Black Background", "value": "black-background" },
+          { "name": "No Background", "value": "no-background" }
         ]
       },
       {
