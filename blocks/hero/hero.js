@@ -23,7 +23,8 @@ function decorateRightContainer(heroRightContainer) {
   heroImageContainer.classList.add('hero-image-container');
   if (heroVariation === 'imageVariation') {
     const heroImage = heroRightContainer.children[1].firstElementChild.firstElementChild;
-    heroImageContainer.append(heroImage);
+    // heroImageContainer.append(heroImage);
+    heroImageContainer.setAttribute('style', `background-image:url(${heroImage.children[0].currentSrc})`);
   }
   heroRightContainer.textContent = '';
   heroRightContainer.append(heroImageContainer);
@@ -33,7 +34,10 @@ export default async function decorate(block) {
   const heroContainer = document.createElement('div');
   heroContainer.classList.add('hero-main-container');
   const heroLeftContainer = document.createElement('div');
+  heroLeftContainer.classList.add('hero-left-container');
   const heroRightContainer = document.createElement('div');
+  const heroLeftContainerInner = document.createElement('div');
+  heroLeftContainerInner.classList.add('hero-content');
   let buttonContainer = document.createElement('div');
   buttonContainer.classList.add('button-container');
   let count = 1;
@@ -42,12 +46,11 @@ export default async function decorate(block) {
       heroRightContainer.append(row.firstElementChild);
       heroRightContainer.classList.add('hero-right-container');
     } else if (index === 6) {
-      heroLeftContainer.append(row.firstElementChild.firstElementChild);
-      heroLeftContainer.firstElementChild.classList.add('hero-content-container');
+      heroLeftContainerInner.append(row.firstElementChild.firstElementChild);
+      heroLeftContainerInner.firstElementChild.classList.add('hero-content-container');
     } else {
       if (buttonContainer.children.length >= 0 && count === 5) {
-        heroLeftContainer.classList.add('hero-left-container');
-        heroLeftContainer.append(buttonContainer);
+        heroLeftContainerInner.append(buttonContainer);
         buttonContainer = document.createElement('div');
         buttonContainer.classList.add('button-container');
 
@@ -55,7 +58,8 @@ export default async function decorate(block) {
       }
       count += 1;
       buttonContainer.append(row.firstElementChild);
-      heroLeftContainer.append(buttonContainer);
+      heroLeftContainerInner.append(buttonContainer);
+      heroLeftContainer.append(heroLeftContainerInner);
     }
   });
 
