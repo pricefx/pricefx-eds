@@ -18,6 +18,7 @@
       "button",
       "button-pfx",
       "cards",
+      "card-container",
       "columns",
       "embed",
       "google-map",
@@ -38,6 +39,10 @@
   },
   {
     "id": "cards",
+    "components": ["card"]
+  },
+  {
+    "id": "card-container",
     "components": ["card"]
   },
   {
