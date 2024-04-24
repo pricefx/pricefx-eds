@@ -303,6 +303,61 @@
     ]
   },
   {
+    "id": "cards",
+    "fields": [
+      {
+        "component": "select",
+        "name": "type",
+        "value": "",
+        "label": "Column Layout",
+        "valueType": "string",
+        "description": "Choose the Card Layout",
+        "options": [
+          {
+            "name": "2 Columns",
+            "value": "two-column"
+          },
+          {
+            "name": "3 Columns",
+            "value": "three-column"
+          },
+          {
+            "name": "4 Columns",
+            "value": "four-column"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "type",
+        "value": "",
+        "label": "Text Alignment",
+        "valueType": "string",
+        "description": "Choose the Text Alignment",
+        "options": [
+          {
+            "name": "Left",
+            "value": "align-left"
+          },
+          {
+            "name": "Center",
+            "value": "align-center"
+          },
+          {
+            "name": "Right",
+            "value": "align-right"
+          }
+        ]
+      },
+      {
+        "component": "boolean",
+        "label": "Disable Image Aspect Ratio",
+        "name": "isDisabled",
+        "valueType": "boolean"
+      }
+    ]
+  },
+  {
     "id": "card",
     "fields": [
       {
@@ -315,16 +370,16 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "title",
+        "name": "subTitle",
         "value": "",
-        "label": "Title"
+        "label": "Sub Title"
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "subTitle",
+        "name": "title",
         "value": "",
-        "label": "Sub Title"
+        "label": "Title"
       },
       {
         "component": "text-area",
