@@ -396,7 +396,7 @@
         "valueType": "string"
       },
       {
-        "component": "aem-content",
+        "component": "text-input",
         "valueType": "string",
         "name": "buttonLinkPath",
         "value": "",
