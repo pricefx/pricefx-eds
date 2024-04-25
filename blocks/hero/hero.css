@@ -169,7 +169,7 @@
 }
 
 .hero .hero-content-container p {
-  font-size:  calc((27 / 16) * 1rem);
+  font-size: calc((27 / 16) * 1rem);
   line-height: 33px;
   margin-bottom: 35px;
 }
