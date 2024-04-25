@@ -1120,9 +1120,12 @@
     "id": "page-metadata",
     "fields": [
       {
-        "component": "date-time",
-        "name": "articlePublishedDate",
-        "label": "Article Published Date"
+        "component": "text",
+        "valueType": "string",
+        "name": "publishdate",
+        "label": "Article Published Date",
+        "description": "Please enter the article published date.",
+        "placeholder": "Enter date in YYYY-MM-DD format"
       },
       {
         "component": "aem-tag",
@@ -1131,8 +1134,8 @@
       },
       {
         "component": "aem-tag",
-        "name": "Catagory",
-        "label": "Catagory"
+        "name": "category",
+        "label": "Category"
       },
       {
         "component": "aem-tag",
@@ -1140,10 +1143,13 @@
         "label": "Topics"
       },
       {
-        "component": "number",
-        "name": "timeToRead",
-        "label": "Time to Read"
-      }
+        "component": "text",
+        "valueType": "string",
+        "name": "readingtime",
+        "label": "Article Read Time",
+        "placeholder": "Enter time in number format",
+        "description": "Please enter article read time in mins."
+      }  
     ]
   },
   {
