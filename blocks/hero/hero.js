@@ -56,9 +56,13 @@ export default async function decorate(block) {
       heroRightContainer.classList.add('hero-right-container');
     } else if (index === 6) {
       heroLeftContainer.classList.add(row.firstElementChild.textContent);
-    } else if (index >= 7 && index <= 8) {
+    } else if (index === 7) {
+      const heroPreHeader = document.createElement('span');
+      heroPreHeader.classList.add('hero-pre-header');
+      heroPreHeader.append(row.firstElementChild || '');
+      heroLeftContainerInner.append(heroPreHeader);
+    } else if (index === 8) {
       heroLeftContainerInner.append(row.firstElementChild || '');
-      heroLeftContainerInner.firstElementChild?.classList.add('hero-content-container');
     } else {
       if (buttonContainer.children.length >= 0 && count === 5) {
         heroLeftContainerInner.append(buttonContainer);
