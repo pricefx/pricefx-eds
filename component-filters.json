@@ -46,7 +46,7 @@
   },
   {
     "id": "tabs",
-    "components": ["tab-item"]
+    "components": ["tab-item", "columns"]
   },
   {
     "id": "tab-item",
