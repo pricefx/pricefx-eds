@@ -1,60 +1,60 @@
-.title.title-dark-blue-gradient h1,
-.title.title-dark-blue-gradient h2,
-.title.title-dark-blue-gradient h3,
-.title.title-dark-blue-gradient h4,
-.title.title-dark-blue-gradient h5,
-.title.title-dark-blue-gradient h6 {
+.title-pfx.title-dark-blue-gradient h1,
+.title-pfx.title-dark-blue-gradient h2,
+.title-pfx.title-dark-blue-gradient h3,
+.title-pfx.title-dark-blue-gradient h4,
+.title-pfx.title-dark-blue-gradient h5,
+.title-pfx.title-dark-blue-gradient h6 {
     background: var(--c-dark-blue-gradient);
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.title.title-spacer-small {
+.title-pfx.title-spacer-small {
     margin-top: 12px;
     margin-bottom: 12px;
 }
 
-.title.title-spacer-medium {
+.title-pfx.title-spacer-medium {
     margin-top: var(--spacing-xsmall);
     margin-bottom: var(--spacing-xsmall);
 }
 
-.title.title-spacer-large {
+.title-pfx.title-spacer-large {
     margin-top: var(--spacing-small);
     margin-bottom: var(--spacing-small);
 }
 
-.title.title-spacer-extra-large {
+.title-pfx.title-spacer-extra-large {
     margin-top: var(--spacing-medium);
     margin-bottom: var(--spacing-medium);
 }
 
 @media (width >= 768px) {
-    .title.title-spacer-small {
+    .title-pfx.title-spacer-small {
         margin-top: var(--spacing-small);
         margin-bottom: var(--spacing-small);
     }
     
-    .title.title-spacer-medium {
+    .title-pfx.title-spacer-medium {
         margin-top: var(--spacing-medium);
         margin-bottom: var(--spacing-medium);
     }
     
-    .title.title-spacer-large {
+    .title-pfx.title-spacer-large {
         margin-top: var(--spacing-large);
         margin-bottom: var(--spacing-large);
     }
     
-    .title.title-spacer-extra-large {
+    .title-pfx.title-spacer-extra-large {
         margin-top: var(--spacing-xlarge);
         margin-bottom: var(--spacing-xlarge);
     }
 }
 
-.title.title-no-top-margin {
+.title-pfx.title-no-top-margin {
     margin-top: 0;
 }
 
-.title.title-no-bottom-margin {
+.title-pfx.title-no-bottom-margin {
     margin-bottom: 0;
 }
