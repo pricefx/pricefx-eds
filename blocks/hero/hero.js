@@ -54,7 +54,7 @@ export default async function decorate(block) {
     if (index < 6) {
       heroRightContainer.append(row.firstElementChild);
       heroRightContainer.classList.add('hero-right-container');
-    } else if (index === 6) {
+    } else if (index >= 7 && index <= 8) {
       heroLeftContainerInner.append(row.firstElementChild || '');
       heroLeftContainerInner.firstElementChild?.classList.add('hero-content-container');
     } else {
@@ -62,7 +62,6 @@ export default async function decorate(block) {
         heroLeftContainerInner.append(buttonContainer);
         buttonContainer = document.createElement('div');
         buttonContainer.classList.add('button-container');
-
         count = 1;
       }
       count += 1;
