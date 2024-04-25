@@ -289,22 +289,22 @@
       {
         "component": "select",
         "name": "layout",
-        "value": "two-column",
+        "value": "2",
         "label": "Column Layout",
         "valueType": "string",
         "description": "Choose the Column Layout",
         "options": [
           {
-            "name": "2 Columns",
-            "value": "two-column"
+            "name": "2 Columns - Default",
+            "value": "2"
           },
           {
-            "name": "3 Columns - Default",
-            "value": "three-column"
+            "name": "3 Columns",
+            "value": "3"
           },
           {
             "name": "4 Columns",
-            "value": "four-column"
+            "value": "4"
           }
         ]
       },
