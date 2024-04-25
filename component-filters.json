@@ -47,5 +47,9 @@
   {
     "id": "tabs",
     "components": ["tab-item"]
+  },
+  {
+    "id": "tab-item",
+    "components": ["section", "text"]
   }
 ]

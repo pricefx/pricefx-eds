@@ -480,6 +480,27 @@
         "name": "body-text",
         "label": "Tab Text",
         "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "buttonLink",
+        "value": "",
+        "label": "Button Link"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "buttonLabel",
+        "value": "",
+        "label": "Button Label"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
       }
     ]
   },
