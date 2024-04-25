@@ -89,6 +89,11 @@
   transition: var(--base-transition);
 }
 
+.hero a.button.hero-primary-button:hover, 
+.hero a.button.hero-primary-button:focus {
+  background-position: right;
+}
+
 .hero a.button.hero-secondary-button {
   background: transparent;
   border: 2px solid var(--c-copy);
