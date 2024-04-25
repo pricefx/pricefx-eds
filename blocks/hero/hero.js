@@ -1,19 +1,24 @@
 function decorateButton(heroLeftContainer) {
   heroLeftContainer.querySelectorAll('.button-container').forEach((btn) => {
-    const btnStyle = btn.children[0].textContent;
+    const btnStyle = btn.children[0].textContent || 'hero-primary-button';
     const btnLink = btn.children[1].textContent;
     const btnLabel = btn.children[2].textContent;
     const btnTarget = btn.children[3].textContent;
     btn.textContent = '';
-    const heroButton = document.createElement('a');
-    heroButton.classList.add('button');
-    heroButton.classList.add(btnStyle);
-    heroButton.innerHTML = btnLabel;
-    heroButton.href = btnLink;
-    if (btnTarget === 'true') {
-      heroButton.target = '_blank';
-    }
-    if (btnLabel !== '') {
+    if (btnLabel === '') {
+      btn.remove();
+    } else {
+      const heroButton = document.createElement('a');
+      heroButton.classList.add('button');
+      heroButton.classList.add(btnStyle);
+      heroButton.innerHTML = btnLabel;
+      if (btnLink) {
+        heroButton.href = btnLink;
+      }
+
+      if (btnTarget === 'true') {
+        heroButton.target = '_blank';
+      }
       btn.append(heroButton);
     }
   });
@@ -50,7 +55,7 @@ export default async function decorate(block) {
       heroRightContainer.append(row.firstElementChild);
       heroRightContainer.classList.add('hero-right-container');
     } else if (index === 6) {
-      heroLeftContainerInner.append(row.firstElementChild?.firstElementChild);
+      heroLeftContainerInner.append(row.firstElementChild?.firstElementChild || '');
       heroLeftContainerInner.firstElementChild?.classList.add('hero-content-container');
     } else {
       if (buttonContainer.children.length >= 0 && count === 5) {
