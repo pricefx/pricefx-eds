@@ -47,13 +47,5 @@
   {
     "id": "tabs",
     "components": ["tab-item"]
-  },
-  {
-    "id": "tab-item",
-    "components": ["columns", "text"]
-  },
-  {
-    "id": "hero",
-    "components": ["stats"]
   }
 ]
