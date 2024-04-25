@@ -16,7 +16,7 @@ function decorateCTA(cta, ctaLabel, ctaTarget, isClickable) {
     return link;
   }
 
-  return ctaLabel.firstElementChild;
+  return ctaLabel.children.length > 0 ? ctaLabel?.firstElementChild : ctaLabel;
 }
 
 function generateCardDom(props) {
