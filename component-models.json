@@ -308,7 +308,7 @@
       {
         "component": "select",
         "name": "layout",
-        "value": "",
+        "value": "three-column",
         "label": "Column Layout",
         "valueType": "string",
         "description": "Choose the Card Layout",
@@ -318,7 +318,7 @@
             "value": "two-column"
           },
           {
-            "name": "3 Columns",
+            "name": "3 Columns - Default",
             "value": "three-column"
           },
           {
@@ -330,13 +330,13 @@
       {
         "component": "select",
         "name": "alignment",
-        "value": "",
+        "value": "align-left",
         "label": "Text Alignment",
         "valueType": "string",
         "description": "Choose the Text Alignment",
         "options": [
           {
-            "name": "Left",
+            "name": "Left - Default",
             "value": "align-left"
           },
           {
@@ -350,10 +350,17 @@
         ]
       },
       {
-        "component": "boolean",
-        "label": "Disable Image Aspect Ratio",
-        "name": "isDisabled",
-        "valueType": "boolean"
+        "component": "multiselect",
+        "name": "cardsVariations",
+        "label": "Cards Variations",
+        "valueType": "string",
+        "description": "Select the Card Variations.",
+        "options": [
+          { "name": "Aspect Ratio 16:9", "value": "aspect-ratio-16-9" },
+          { "name": "Remove Aspect Ratio", "value": "no-aspect-ratio" },
+          { "name": "Icon Variation", "value": "icon-variation" },
+          { "name": "Hide Image", "value": "hide-image" }
+        ]
       }
     ]
   },
@@ -406,6 +413,12 @@
         "component": "boolean",
         "label": "Target Blank",
         "name": "isTargetBlank",
+        "valueType": "boolean"
+      },
+      {
+        "component": "boolean",
+        "label": "Entire Card Clickable",
+        "name": "isClickable",
         "valueType": "boolean"
       }
     ]
