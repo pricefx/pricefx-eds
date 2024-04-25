@@ -288,10 +288,10 @@
     "fields": [
       {
         "component": "select",
-        "name": "layout",
+        "name": "columns",
         "value": "2",
         "label": "Column Layout",
-        "valueType": "string",
+        "valueType": "number",
         "description": "Choose the Column Layout",
         "options": [
           {
