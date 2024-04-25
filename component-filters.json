@@ -50,6 +50,6 @@
   },
   {
     "id": "tab-item",
-    "components": ["section"]
+    "components": ["section", "text"]
   }
 ]

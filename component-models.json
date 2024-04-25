@@ -469,7 +469,7 @@
         "value": ""
       },
       {
-        "component": "text-input",
+        "component": "aem-content",
         "valueType": "string",
         "name": "buttonLink",
         "value": "",
