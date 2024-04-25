@@ -29,9 +29,9 @@ function decorateRightContainer(heroRightContainer) {
   const heroImageContainer = document.createElement('div');
   heroImageContainer.classList.add('hero-image-container');
   if (heroVariation === 'imageVariation') {
-    const heroImage = heroRightContainer.children[1].querySelector('img').src;
+    const heroImage = heroRightContainer.children[1];
     if (window.matchMedia('(min-width:986px)').matches) {
-      heroImageContainer.setAttribute('style', `background-image:url(${heroImage})`);
+      heroImageContainer.setAttribute('style', `background-image:url(${heroImage.querySelector('img').src})`);
     }
     heroImageContainer.append(heroImage);
   }
@@ -57,11 +57,14 @@ export default async function decorate(block) {
     } else if (index === 6) {
       heroLeftContainer.classList.add(row.firstElementChild.textContent);
     } else if (index === 7) {
-      const heroPreHeader = document.createElement('span');
-      heroPreHeader.classList.add('hero-pre-header');
-      heroPreHeader.append(row.firstElementChild || '');
-      heroLeftContainerInner.append(heroPreHeader);
+      if (row.firstElementChild.textContent !== '') {
+        const heroPreHeader = document.createElement('span');
+        heroPreHeader.classList.add('hero-pre-header');
+        heroPreHeader.append(row.firstElementChild || '');
+        heroLeftContainerInner.append(heroPreHeader);
+      }
     } else if (index === 8) {
+      row.firstElementChild?.classList.add('hero-content-container');
       heroLeftContainerInner.append(row.firstElementChild || '');
     } else {
       if (buttonContainer.children.length >= 0 && count === 5) {
