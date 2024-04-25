@@ -29,9 +29,9 @@ function decorateRightContainer(heroRightContainer) {
   const heroImageContainer = document.createElement('div');
   heroImageContainer.classList.add('hero-image-container');
   if (heroVariation === 'imageVariation') {
-    const heroImage = heroRightContainer.children[1].firstElementChild.firstElementChild;
+    const heroImage = heroRightContainer.children[1].querySelector('img').src;
     if (window.matchMedia('(min-width:986px)').matches) {
-      heroImageContainer.setAttribute('style', `background-image:url(${heroImage.children[0].currentSrc})`);
+      heroImageContainer.setAttribute('style', `background-image:url(${heroImage})`);
     }
     heroImageContainer.append(heroImage);
   }
@@ -55,7 +55,7 @@ export default async function decorate(block) {
       heroRightContainer.append(row.firstElementChild);
       heroRightContainer.classList.add('hero-right-container');
     } else if (index === 6) {
-      heroLeftContainerInner.append(row.firstElementChild?.firstElementChild || '');
+      heroLeftContainerInner.append(row.firstElementChild || '');
       heroLeftContainerInner.firstElementChild?.classList.add('hero-content-container');
     } else {
       if (buttonContainer.children.length >= 0 && count === 5) {
