@@ -54,7 +54,7 @@ export default async function decorate(block) {
     if (index < 6) {
       heroRightContainer.append(row.firstElementChild);
       heroRightContainer.classList.add('hero-right-container');
-    } else if (index >= 7 && index <= 8) {
+    } else if (index >= 6 && index <= 8) {
       heroLeftContainerInner.append(row.firstElementChild || '');
       heroLeftContainerInner.firstElementChild?.classList.add('hero-content-container');
     } else {
