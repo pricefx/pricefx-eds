@@ -670,12 +670,12 @@
         "name": "heroVariation",
         "valueType": "string",
         "options": [
-          { "name": "Min Height 800px", "value": "hero-primary-variation" },
-          { "name": "Min Height 465px", "value": "hero-secondary-variation" }
+          { "name": "Hero Height 800px - Default", "value": "hero-primary-variation" },
+          { "name": "Hero Height 465px", "value": "hero-secondary-variation" }
         ]
       },
       {
-        "component": "richtext",
+        "component": "text-input",
         "valueType": "string",
         "name": "heroPreheader",
         "label": "Hero Preheader Text",
