@@ -55,7 +55,9 @@ export default async function decorate(block) {
       heroRightContainer.append(row.firstElementChild);
       heroRightContainer.classList.add('hero-right-container');
     } else if (index === 6) {
-      heroLeftContainer.classList.add(row.firstElementChild.textContent);
+      if (row.firstElementChild.textContent !== '') {
+        heroLeftContainer.classList.add(row.firstElementChild.textContent);
+      }
     } else if (index === 7) {
       if (row.firstElementChild.textContent !== '') {
         const heroPreHeader = document.createElement('span');
