@@ -1233,5 +1233,17 @@
         ]
       }
     ]
+  },
+  {
+    "id": "articleMetadata",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "authorsParentPagePath",
+        "value": "",
+        "label": "Authors Parent Page Path",
+        "valueType": "string"
+      }
+    ]
   }
 ]
