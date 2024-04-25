@@ -396,9 +396,9 @@
         "valueType": "string"
       },
       {
-        "component": "text-input",
+        "component": "aem-content",
         "valueType": "string",
-        "name": "buttonLink",
+        "name": "buttonLinkPath",
         "value": "",
         "label": "Button Link"
       },
@@ -1249,6 +1249,18 @@
           { "name": "Regular", "value": "" },
           { "name": "Large", "value": "large" }
         ]
+      }
+    ]
+  },
+  {
+    "id": "articleMetadata",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "authorsParentPagePath",
+        "value": "",
+        "label": "Authors Parent Page Path",
+        "valueType": "string"
       }
     ]
   }
