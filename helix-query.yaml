@@ -26,11 +26,11 @@ indices:
       category:
         select: head > meta[name="category"]
         value: attribute(el, "content")
-      timeToRead:
-        select: head > meta[name="timeToRead"]
+      readingTime:
+        select: head > meta[name="readingtime"]
         value: attribute(el, "content")
-      articlePublishedDate:
-        select: head > meta[name="articlePublishedDate"]
+      articlePublishDate:
+        select: head > meta[name="publishdate"]
         value: attribute(el, "content")
       type:
         select: head > meta[name="template"]
