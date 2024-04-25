@@ -46,10 +46,10 @@
   },
   {
     "id": "tabs",
-    "components": ["tab-item", "columns"]
+    "components": ["tab-item"]
   },
   {
     "id": "tab-item",
-    "components": ["columns"]
+    "components": ["columns", "text"]
   }
 ]
