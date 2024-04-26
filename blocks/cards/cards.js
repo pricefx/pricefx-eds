@@ -13,10 +13,10 @@ function decorateCTA(cta, ctaLabel, ctaTarget, isClickable) {
       link.target = '_blank';
     }
 
-    return link;
+    return '';
   }
 
-  return ctaLabel.children.length > 0 ? ctaLabel?.firstElementChild : ctaLabel;
+  return '';
 }
 
 function generateCardDom(props) {
@@ -34,7 +34,7 @@ function generateCardDom(props) {
               ${eyebrow?.textContent.trim() !== '' ? `<div class='cards-card-eyebrow'>${eyebrow.textContent.trim().toUpperCase()}</div>` : ``}
               ${title?.children.length > 0 ? `<div class='cards-card-title'><h6>${title.textContent.trim()}</h6></div>` : ``}
               ${description?.children.length > 0 !== '' ? `<div class='cards-card-description'>${description.innerHTML}</div>` : ``}
-              <div class='cards-card-cta'>${decorateCTA(cta, ctaLabel, ctaTarget, isClickable).outerHTML}</div>
+              <div class='cards-card-cta'>${decorateCTA(cta, ctaLabel, ctaTarget, isClickable)}</div>
           </div>
         </a>
       </li>
@@ -48,7 +48,7 @@ function generateCardDom(props) {
             ${eyebrow?.textContent.trim() !== '' ? `<div class='cards-card-eyebrow'>${eyebrow.textContent.trim().toUpperCase()}</div>` : ``}
             ${title?.children.length > 0 ? `<div class='cards-card-title'><h6>${title.textContent.trim()}</h6></div>` : ``}
             ${description?.children.length > 0 !== '' ? `<div class='cards-card-description'>${description.innerHTML}</div>` : ``}
-            <div class='cards-card-cta'>${decorateCTA(cta, ctaLabel, ctaTarget).outerHTML}</div>
+            <div class='cards-card-cta'>${decorateCTA(cta, ctaLabel, ctaTarget)}</div>
         </div>
       </li>
     `);
