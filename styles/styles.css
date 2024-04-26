@@ -268,11 +268,7 @@ h3,
 h4,
 h5,
 h6 {
-  background: var(--c-dark-blue-gradient);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  line-height: 1;
-  margin: var(--spacing-xsmall) 0;
+  color: var(--c-copy);
 }
 
 h1,
@@ -319,6 +315,17 @@ h6 {
   letter-spacing: 1.5px;
   line-height: 1.25;
   text-transform: uppercase;
+}
+
+.title h1,
+.title h2,
+.title h3,
+.title h4,
+.title h5,
+.title h6 {
+    background: var(--c-dark-blue-gradient);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* Button Styles */
