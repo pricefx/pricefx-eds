@@ -9,6 +9,17 @@
     -webkit-text-fill-color: transparent;
 }
 
+.title-pfx.title-dark-grey h1,
+.title-pfx.title-dark-grey h2,
+.title-pfx.title-dark-grey h3,
+.title-pfx.title-dark-grey h4,
+.title-pfx.title-dark-grey h5,
+.title-pfx.title-dark-grey h6 {
+    background: var(--c-copy);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 .title-pfx.title-spacer-small {
     margin-top: 12px;
     margin-bottom: 12px;
