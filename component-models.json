@@ -340,6 +340,10 @@
         "description": "Choose the Column Layout",
         "options": [
           {
+            "name": "1 Columns",
+            "value": "1"
+          },
+          {
             "name": "2 Columns - Default",
             "value": "2"
           },
@@ -361,12 +365,16 @@
         "label": "Rows"
       },
       {
-        "component": "select",
+        "component": "multiselect",
         "name": "classes",
         "value": "",
-        "label": "2 Column Width",
+        "label": "Column Styles",
         "valueType": "string",
         "options": [
+          {
+            "name": "2 Column 30 X 70",
+            "value": "two-column-3-7"
+          },
           {
             "name": "2 Column 30 X 70",
             "value": "two-column-3-7"
@@ -386,27 +394,26 @@
           {
             "name": "2 Column 70 X 30",
             "value": "two-column-7-3"
-          }
-        ]
-      },
-      {
-        "component": "select",
-        "name": "columnBgColor",
-        "value": "",
-        "label": "Background Color",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Default",
-            "value": ""
           },
           {
-            "name": "Grey",
-            "value": "column-bg-color-grey"
+            "name": "Background Gray",
+            "value": "column-bg-color-gray"
           },
           {
-            "name": "White",
+            "name": "Background White",
             "value": "column-bg-color-white"
+          },
+          {
+            "name": "Top Aligned",
+            "value": "column-img-rounded-corner"
+          },
+          {
+            "name": "Canter Aligned",
+            "value": "column-center-aligned"
+          },
+          {
+            "name": "Image Rounded Corner",
+            "value": "column-img-rounded-corner"
           }
         ]
       }
