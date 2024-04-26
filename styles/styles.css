@@ -323,7 +323,7 @@ h6 {
 }
 
 /* Button Styles */
-a.button {
+a.button.primary {
   appearance: none;
   background: linear-gradient(123deg, #304f8c 4.85%, #466cb9 43.45%, #304f8c 54.85%, #283f6f 86.9%);
   background-position: left;
@@ -346,8 +346,8 @@ a.button {
   transition: var(--base-transition);
 }
 
-a.button:focus,
-a.button:hover {
+a.button.primary:focus,
+a.button.primary:hover {
   background-position: right;
 }
 

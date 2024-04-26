@@ -90,13 +90,13 @@
       {
         "component": "select",
         "name": "fontColor",
-        "value": "",
+        "value": "title-dark-grey",
         "label": "Color",
         "valueType": "string",
         "options": [
           {
             "name": "Grey - Default",
-            "value": ""
+            "value": "title-dark-grey"
           },
           {
             "name": "Dark Blue",
