@@ -72,6 +72,8 @@
   font-style: normal;
   font-weight: var(--fw-bold);
   line-height: 28px;
+  background: no-repeat;
+  -webkit-text-fill-color: unset;
 }
 
 .cards .cards-card-description p {
@@ -102,6 +104,7 @@
   position: relative;
   display: inline-flex;
   word-break: break-word;
+  background: none;
 }
 
 .cards .cards-card-cta a::after,

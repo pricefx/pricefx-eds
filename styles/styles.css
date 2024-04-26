@@ -32,6 +32,7 @@
   --fw-lt-bold: 600;
   --fw-bold: 700;
   --fw-x-bold: 800;
+  --fw-xx-bold: 900;
 
   /* Font Icons */
   --icon-plus: "\e917";
@@ -268,7 +269,9 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--c-copy);
+  background: var(--c-dark-blue-gradient);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   line-height: 1;
   margin: var(--spacing-xsmall) 0;
 }
@@ -317,6 +320,44 @@ h6 {
   letter-spacing: 1.5px;
   line-height: 1.25;
   text-transform: uppercase;
+}
+
+/* Button Styles */
+a.button.primary {
+  appearance: none;
+  background: linear-gradient(123deg, #304f8c 4.85%, #466cb9 43.45%, #304f8c 54.85%, #283f6f 86.9%);
+  background-position: left;
+  background-size: 300%;
+  border: none;
+  border-radius: 4px;
+  color: var(--c-white);
+  cursor: pointer;
+  display: inline-block;
+  font-family: var(--ff-primary);
+  font-size: var(--base-font-size);
+  font-weight: var(--fw-med);
+  line-height: 1;
+  margin: var(--spacing-xsmall) 0;
+  padding: var(--spacing-xsmall) var(--spacing-medium);
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: var(--base-transition);
+}
+
+a.button.primary:focus,
+a.button.primary:hover {
+  background-position: right;
+}
+
+/* Secondary */
+a.button.secondary {
+  background: transparent;
+  border: 2px solid var(--c-copy);
+  color: var(--c-copy);
+  font-style: normal;
+  padding: 14px 30px;
 }
 
 

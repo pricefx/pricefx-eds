@@ -1,14 +1,24 @@
-.statsWrapper {
+.stats-container-wrap {
     background-color: var(--c-dark);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 64px;
     margin: 0 auto;
+    padding: 53px 0;
+    width: 100%;
 }
 
 .stats.block {
     display: flex;
+    padding: 0 24px;
     place-content: center;
+}
+
+.stat {
+    align-items: center;
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: column;
 }
 
 .stat-title {
@@ -16,16 +26,16 @@
     color: var(--c-white);
     display: flex;
     font-family: var(--ff-primary);
-    font-size: 50px;
-    font-weight: 700;
+    font-size: calc((50 / 16) * 1rem);
+    font-weight: var(--fw-bold);
     height: auto;
     line-height: 56px;
-    padding: 16px;
+    margin-bottom: 16px;
     text-align: center;
 
     sup {
-        font-size: 28px;
-        font-weight: 900;
+        font-size: calc((28 / 16) * 1rem);
+        font-weight: var(--fw-xx-bold);
         line-height: 30px; 
     }
 }
@@ -36,22 +46,14 @@
     width: 151px;
 }
 
-.stat {
-    align-items: center;
-    display: flex;
-    flex-basis: 100%;
-    flex-direction: column;
-    padding: 39px 0;
-}
-
 .stat-description {
     color: var(--c-white);
     font-family: var(--ff-secondary);
-    font-size: 18px;
-    font-weight: 700;
-    line-height: normal;
-    max-width: 400px; 
-    padding: 16px;
+    font-size: --body-font-size-l;
+    font-weight: --fw-bold;
+    line-height: normal; 
+    margin-top: 16px;
+    max-width: 252px;
     text-align: center;
 }
 
@@ -65,17 +67,49 @@
 }
 
 .no-background .stat-description {
-    font-weight: 400;
+    font-weight: var(--fw-regular);
     line-height: 24px;
+    max-width: 383px;
+}
+
+.no-background .stat {
+    padding: 0 24px;
 }
 
 .stat-title.large {
-    font-size: 70px;
+    font-size: calc((70 / 16) * 1rem);
+}
+
+.stats-container-wrap.no-background {
+    padding: 64px 0;
 }
 
 @media (width >= 768px) {
-    .statsWrapper {
-        flex-direction: row;
-        border-radius: 16px;
+    .stats.block {
+        padding: 0;
     }
+
+    .stats-container-wrap {
+        border-radius: 16px;
+        flex-direction: row;
+        gap: 33px;
+        padding: 57px 74px 53px 75px;
+        width: auto;
+    }
+
+    .stats-container-wrap.no-background {
+        padding: 80px 64px;
+        gap: 24px;
+    }
+    
+}
+
+@media (width >= 1500px) {
+    .stat-description {
+        width: 383px;
+    }  
+
+    .no-background .stat-description {
+        width: 383px;
+    }  
 }
