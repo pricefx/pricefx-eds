@@ -78,7 +78,8 @@ export default function decorate(block) {
       return;
     }
 
-    ul.append(generateCardDom(row.children));
+    const cardDOM = generateCardDom(row.children);
+    ul.append(cardDOM);
   });
 
   ul.querySelectorAll('img').forEach((img) =>
