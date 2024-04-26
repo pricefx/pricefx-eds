@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { createOptimizedPicture } from '../../scripts/aem.js';
 
 function decorateCTA(cta, ctaLabel, ctaTarget, isClickable) {
@@ -19,7 +20,6 @@ function decorateCTA(cta, ctaLabel, ctaTarget, isClickable) {
   return '';
 }
 
-// eslint-disable-next-line no-unused-vars
 function generateCardDom(props) {
   const [imageContainer, eyebrow, title, description, cta, ctaLabel, ctaTarget, isClickable] = props;
   const picture = imageContainer.querySelector('picture');
@@ -74,16 +74,16 @@ export default function decorate(block) {
           block.classList.add(className);
         }
       }
-      return;
+      // return;
     }
 
-    ul.append(block);
+    // ul.append(generateCardDom(row.children));
   });
 
   ul.querySelectorAll('img').forEach((img) =>
     img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])),
   );
 
-  block.textContent = '';
-  block.append(ul);
+  // block.textContent = '';
+  // block.append(ul);
 }
