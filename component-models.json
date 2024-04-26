@@ -324,23 +324,23 @@
         "options": [
           {
             "name": "2 Column 30 X 70",
-            "value": "two-column-3X7"
+            "value": "two-column-3x7"
           },
           {
             "name": "2 Column 40 X 60",
-            "value": "two-column-4X6"
+            "value": "two-column-4x6"
           },
           {
             "name": "2 Column 50 X 50",
-            "value": "two-column-5X5"
+            "value": "two-column-5x5"
           },
           {
             "name": "2 Column 60 X 40",
-            "value": "two-column-6X4"
+            "value": "two-column-6x4"
           },
           {
             "name": "2 Column 70 X 30",
-            "value": "two-column-7X3"
+            "value": "two-column-7x3"
           }
         ]
       }
