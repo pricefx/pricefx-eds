@@ -324,23 +324,44 @@
         "options": [
           {
             "name": "2 Column 30 X 70",
-            "value": "two-column-3x7"
+            "value": "two-column-3-7"
           },
           {
             "name": "2 Column 40 X 60",
-            "value": "two-column-4x6"
+            "value": "two-column-4-6"
           },
           {
-            "name": "2 Column 50 X 50",
-            "value": "two-column-5x5"
+            "name": "2 Column 50 X 50 - Default",
+            "value": ""
           },
           {
             "name": "2 Column 60 X 40",
-            "value": "two-column-6x4"
+            "value": "two-column-6-4"
           },
           {
             "name": "2 Column 70 X 30",
-            "value": "two-column-7x3"
+            "value": "two-column-7-3"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "columnBgColor",
+        "value": "",
+        "label": "Background Color",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Grey",
+            "value": "column-bg-color-grey"
+          },
+          {
+            "name": "White",
+            "value": "column-bg-color-white"
           }
         ]
       }
