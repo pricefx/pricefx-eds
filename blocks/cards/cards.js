@@ -24,7 +24,7 @@ function generateCardDom(props) {
   const picture = imageContainer.querySelector('picture');
 
   // Build DOM
-  if (isClickable.textContent.trim() === 'true') {
+  if (isClickable?.textContent.trim() === 'true') {
     const link = cta.querySelector('a');
     const cardDOM = document.createRange().createContextualFragment(`
       <li>
