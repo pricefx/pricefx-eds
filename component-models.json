@@ -5,51 +5,6 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "jcr:title",
-        "value": "",
-        "label": "Text"
-      },
-      {
-        "component": "select",
-        "name": "type",
-        "value": "h1",
-        "label": "Type",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "h1",
-            "value": "h1"
-          },
-          {
-            "name": "h2",
-            "value": "h2"
-          },
-          {
-            "name": "h3",
-            "value": "h3"
-          },
-          {
-            "name": "h4",
-            "value": "h4"
-          },
-          {
-            "name": "h5",
-            "value": "h5"
-          },
-          {
-            "name": "h6",
-            "value": "h6"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "title-pfx",
-    "fields": [
-      {
-        "component": "text-input",
-        "valueType": "string",
         "name": "title",
         "value": "",
         "label": "Title"
@@ -332,26 +287,11 @@
     "id": "columns",
     "fields": [
       {
-        "component": "select",
-        "name": "columns",
-        "value": "2",
-        "label": "Column Layout",
+        "component": "text-input",
         "valueType": "number",
-        "description": "Choose the Column Layout",
-        "options": [
-          {
-            "name": "2 Columns - Default",
-            "value": "2"
-          },
-          {
-            "name": "3 Columns",
-            "value": "3"
-          },
-          {
-            "name": "4 Columns",
-            "value": "4"
-          }
-        ]
+        "name": "columns",
+        "value": "",
+        "label": "Columns"
       },
       {
         "component": "text-input",
@@ -359,56 +299,6 @@
         "name": "rows",
         "value": "",
         "label": "Rows"
-      },
-      {
-        "component": "select",
-        "name": "classes",
-        "value": "",
-        "label": "2 Column Width",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "2 Column 30 X 70",
-            "value": "two-column-3-7"
-          },
-          {
-            "name": "2 Column 40 X 60",
-            "value": "two-column-4-6"
-          },
-          {
-            "name": "2 Column 50 X 50 - Default",
-            "value": ""
-          },
-          {
-            "name": "2 Column 60 X 40",
-            "value": "two-column-6-4"
-          },
-          {
-            "name": "2 Column 70 X 30",
-            "value": "two-column-7-3"
-          }
-        ]
-      },
-      {
-        "component": "select",
-        "name": "columnBgColor",
-        "value": "",
-        "label": "Background Color",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Default",
-            "value": ""
-          },
-          {
-            "name": "Grey",
-            "value": "column-bg-color-grey"
-          },
-          {
-            "name": "White",
-            "value": "column-bg-color-white"
-          }
-        ]
       }
     ]
   },
@@ -773,24 +663,6 @@
         "name": "popUpModal",
         "valueType": "boolean",
         "description": "ⓘ When selected, the Video will open in a Popup Modal"
-      },
-      {
-        "component": "radio-group",
-        "label": "Hero Variation",
-        "name": "heroVariation",
-        "valueType": "string",
-        "options": [
-          { "name": "Hero Height 800px - Default", "value": "hero-primary-variation" },
-          { "name": "Hero Height 465px", "value": "hero-secondary-variation" }
-        ]
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "heroPreheader",
-        "label": "Hero Preheader Text",
-        "value": "",
-        "description": "ⓘ Hero PreHeader Text"
       },
       {
         "component": "richtext",
@@ -1187,13 +1059,6 @@
         "valueType": "string"
       },
       {
-        "component": "text",
-        "name": "authorPath",
-        "label": "Author Directory Path",
-        "valueType": "string",
-        "description": "Please enter the path to the author directory."
-      },
-      {
         "component": "number",
         "name": "numberOfArticles",
         "label": "Number Of Articles Display",
@@ -1201,15 +1066,13 @@
         "value": 0
       },
       {
-        "component": "checkbox-group",
+        "component": "radio-group",
         "label": "Sort By",
         "name": "sortBy",
-        "valueType": "string[]",
+        "valueType": "string",
         "options": [
-          { "name": "Asc Date", "value": "asc-date" },
-          { "name": "Desc Date", "value": "desc-date" },
-          { "name": "Asc Title", "value": "asc-title" },
-          { "name": "Desc Title", "value": "desc-title" }
+          { "name": "Asc", "value": "Ascending" },
+          { "name": "Desc", "value": "Descending" }
         ]
       },
       {
@@ -1384,49 +1247,14 @@
     ]
   },
   {
-    "id": "iframe",
+    "id": "raw-code",
     "fields": [
       {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "href",
+        "component": "richtext",
+        "name": "raw-code",
         "value": "",
-        "label": "Link"
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "width",
-        "value": "",
-        "label": "Width"
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "height",
-        "value": "",
-        "label": "Height"
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "href2",
-        "value": "",
-        "label": "Link2"
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "width2",
-        "value": "",
-        "label": "Width2"
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "height2",
-        "value": "",
-        "label": "Height2"
+        "label": "Author Raw Code",
+        "valueType": "string"
       }
     ]
   }
