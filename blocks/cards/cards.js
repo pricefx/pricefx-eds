@@ -26,7 +26,7 @@ function generateCardDom(props) {
   // Build DOM
   if (isClickable?.textContent.trim() === 'true') {
     const link = cta.querySelector('a');
-    const cardDOM = document.createRange().createContextualFragment(`
+    const cardDOM = `
       <li>
         <a class="cards-card-link" href="${link ? link.href : '#'}" target="${ctaTarget.textContent.trim() === 'true' ? '_blank' : ''}">
           <div class='cards-card-image'>${picture ? picture.outerHTML : ''}</div>
@@ -38,10 +38,10 @@ function generateCardDom(props) {
           </div>
         </a>
       </li>
-    `);
+    `;
     return cardDOM;
   }
-  const cardDOM = document.createRange().createContextualFragment(`
+  const cardDOM = `
       <li>
         <div class='cards-card-image'>${picture ? picture.outerHTML : ''}</div>
         <div class='cards-card-body'>
@@ -51,13 +51,14 @@ function generateCardDom(props) {
             <div class='cards-card-cta'>${decorateCTA(cta, ctaLabel, ctaTarget).outerHTML}</div>
         </div>
       </li>
-    `);
+    `;
   return cardDOM;
 }
 
 export default function decorate(block) {
   /* change to ul, li */
   const ul = document.createElement('ul');
+  const li = document.createElement('li');
   [...block.children].forEach((row, index) => {
     // Adding Style options
     if (index < 3) {
@@ -75,8 +76,8 @@ export default function decorate(block) {
       }
       return;
     }
-
-    ul.append(generateCardDom(row.children));
+    li.innerHTML = generateCardDom(row.children);
+    ul.append(li);
   });
 
   ul.querySelectorAll('img').forEach((img) =>
