@@ -314,6 +314,23 @@
         "name": "rows",
         "value": "",
         "label": "Rows"
+      },
+      {
+        "component": "select",
+        "name": "backgroundColor",
+        "value": "",
+        "label": "Background Color",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Grey",
+            "value": "column-bg-color-grey"
+          },
+          {
+            "name": "White - Default",
+            "value": ""
+          }
+        ]
       }
     ]
   },
