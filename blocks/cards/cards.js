@@ -44,15 +44,13 @@ function generateCardDom(props) {
   // }
 
   const cardDOM = document.createRange().createContextualFragment(`
-      <li>
-        <div class='cards-card-image'>${picture ? picture.outerHTML : ''}</div>
-        <div class='cards-card-body'>
-            ${eyebrow?.textContent.trim() !== '' ? `<div class='cards-card-eyebrow'>${eyebrow?.textContent.trim().toUpperCase()}</div>` : ``}
-            ${title?.children.length > 0 ? `<div class='cards-card-title'><h6>${title?.textContent.trim()}</h6></div>` : ``}
-            ${description?.children.length > 0 !== '' ? `<div class='cards-card-description'>${description?.innerHTML}</div>` : ``}
-            <div class='cards-card-cta'>${decorateCTA(cta, ctaLabel, ctaTarget)}</div>
-        </div>
-      </li>
+      <div class='cards-card-image'>${picture ? picture.outerHTML : ''}</div>
+      <div class='cards-card-body'>
+          ${eyebrow?.textContent.trim() !== '' ? `<div class='cards-card-eyebrow'>${eyebrow?.textContent.trim().toUpperCase()}</div>` : ``}
+          ${title?.children.length > 0 ? `<div class='cards-card-title'><h6>${title?.textContent.trim()}</h6></div>` : ``}
+          ${description?.children.length > 0 !== '' ? `<div class='cards-card-description'>${description?.innerHTML}</div>` : ``}
+          <div class='cards-card-cta'>${decorateCTA(cta, ctaLabel, ctaTarget)}</div>
+      </div>
     `);
   return cardDOM;
 }
@@ -60,6 +58,7 @@ function generateCardDom(props) {
 export default function decorate(block) {
   /* change to ul, li */
   const ul = document.createElement('ul');
+  const li = document.createElement('li');
   [...block.children].forEach((row, index) => {
     // Adding Style options
     if (index < 3 && row.matches('div')) {
@@ -78,8 +77,14 @@ export default function decorate(block) {
       return;
     }
 
-    const cardDOM = generateCardDom(row.children);
-    ul.append(cardDOM);
+    while (row.firstElementChild) {
+      li.append(row.firstElementChild);
+    }
+
+    const cardDOM = generateCardDom(li.children);
+    li.textContent = '';
+    li.append(cardDOM);
+    ul.append(li);
   });
 
   ul.querySelectorAll('img').forEach((img) =>
