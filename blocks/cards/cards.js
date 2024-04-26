@@ -60,7 +60,7 @@ export default function decorate(block) {
   const ul = document.createElement('ul');
   [...block.children].forEach((row, index) => {
     // Adding Style options
-    if (index < 3) {
+    if (index < 3 && row.matches('div')) {
       if (row.textContent.trim()) {
         let className = '';
         if (index === 2) {
