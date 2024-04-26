@@ -1382,5 +1382,17 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "rawCode",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "rawCode",
+        "value": "",
+        "label": "Author Raw Code",
+        "valueType": "string"
+      }
+    ]
   }
 ]
