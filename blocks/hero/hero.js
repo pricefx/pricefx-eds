@@ -29,9 +29,9 @@ function decorateRightContainer(heroRightContainer) {
   const heroImageContainer = document.createElement('div');
   heroImageContainer.classList.add('hero-image-container');
   if (heroVariation === 'imageVariation') {
-    const heroImage = heroRightContainer.children[1].firstElementChild.firstElementChild;
+    const heroImage = heroRightContainer.children[1];
     if (window.matchMedia('(min-width:986px)').matches) {
-      heroImageContainer.setAttribute('style', `background-image:url(${heroImage.children[0].currentSrc})`);
+      heroImageContainer.setAttribute('style', `background-image:url(${heroImage.querySelector('img').src})`);
     }
     heroImageContainer.append(heroImage);
   }
@@ -55,14 +55,24 @@ export default async function decorate(block) {
       heroRightContainer.append(row.firstElementChild);
       heroRightContainer.classList.add('hero-right-container');
     } else if (index === 6) {
-      heroLeftContainerInner.append(row.firstElementChild?.firstElementChild || '');
-      heroLeftContainerInner.firstElementChild?.classList.add('hero-content-container');
+      if (row.firstElementChild.textContent !== '') {
+        heroLeftContainer.classList.add(row.firstElementChild.textContent);
+      }
+    } else if (index === 7) {
+      if (row.firstElementChild.textContent !== '') {
+        const heroPreHeader = document.createElement('span');
+        heroPreHeader.classList.add('hero-pre-header');
+        heroPreHeader.append(row.firstElementChild || '');
+        heroLeftContainerInner.append(heroPreHeader);
+      }
+    } else if (index === 8) {
+      row.firstElementChild?.classList.add('hero-content-container');
+      heroLeftContainerInner.append(row.firstElementChild || '');
     } else {
       if (buttonContainer.children.length >= 0 && count === 5) {
         heroLeftContainerInner.append(buttonContainer);
         buttonContainer = document.createElement('div');
         buttonContainer.classList.add('button-container');
-
         count = 1;
       }
       count += 1;

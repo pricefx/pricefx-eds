@@ -9,13 +9,13 @@
   },
   {
     "id": "column",
-    "components": ["button", "button-pfx", "image", "text", "title", "google-map", "spacer", "breadcrumb"]
+    "components": ["button", "image", "text", "title", "google-map"]
   },
   {
     "id": "section",
     "components": [
       "accordion",
-      "article-metadata",
+      "articleMetadata",
       "button",
       "button-pfx",
       "cards",
@@ -28,6 +28,7 @@
       "tabs",
       "text",
       "title",
+      "title-pfx",
       "richtext",
       "spacer",
       "breadcrumb",
