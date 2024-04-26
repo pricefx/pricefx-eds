@@ -1382,5 +1382,52 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "iframe",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "href",
+        "value": "",
+        "label": "Link"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "width",
+        "value": "",
+        "label": "Width"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "height",
+        "value": "",
+        "label": "Height"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "href2",
+        "value": "",
+        "label": "Link2"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "width2",
+        "value": "",
+        "label": "Width2"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "height2",
+        "value": "",
+        "label": "Height2"
+      }
+    ]
   }
 ]
