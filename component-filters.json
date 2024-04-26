@@ -15,6 +15,7 @@
     "id": "section",
     "components": [
       "accordion",
+      "articleMetadata",
       "button",
       "button-pfx",
       "cards",
