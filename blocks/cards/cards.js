@@ -19,6 +19,7 @@ function decorateCTA(cta, ctaLabel, ctaTarget, isClickable) {
   return '';
 }
 
+// eslint-disable-next-line no-unused-vars
 function generateCardDom(props) {
   const [imageContainer, eyebrow, title, description, cta, ctaLabel, ctaTarget, isClickable] = props;
   const picture = imageContainer.querySelector('picture');
@@ -76,7 +77,7 @@ export default function decorate(block) {
       return;
     }
 
-    ul.append(generateCardDom(row.children));
+    ul.append(block);
   });
 
   ul.querySelectorAll('img').forEach((img) =>
