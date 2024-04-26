@@ -27,8 +27,7 @@
   }
 
   .columns > div > div {
-
-    /* flex: 1; */
+    flex: unset;
     width: 50%;
     order: unset;
   }
