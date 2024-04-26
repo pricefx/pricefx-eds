@@ -29,12 +29,12 @@ function generateCardDom(props) {
     const link = cta.querySelector('a');
     const cardDOM = document.createRange().createContextualFragment(`
       <li>
-        <a class="cards-card-link" href="${link ? link.href : '#'}" target="${ctaTarget.textContent.trim() === 'true' ? '_blank' : ''}">
+        <a class="cards-card-link" href="${link ? link.href : '#'}" target="${ctaTarget?.textContent.trim() === 'true' ? '_blank' : ''}">
           <div class='cards-card-image'>${picture ? picture.outerHTML : ''}</div>
           <div class='cards-card-body'>
-              ${eyebrow?.textContent.trim() !== '' ? `<div class='cards-card-eyebrow'>${eyebrow.textContent.trim().toUpperCase()}</div>` : ``}
-              ${title?.children.length > 0 ? `<div class='cards-card-title'><h6>${title.textContent.trim()}</h6></div>` : ``}
-              ${description?.children.length > 0 !== '' ? `<div class='cards-card-description'>${description.innerHTML}</div>` : ``}
+              ${eyebrow?.textContent.trim() !== '' ? `<div class='cards-card-eyebrow'>${eyebrow?.textContent.trim().toUpperCase()}</div>` : ``}
+              ${title?.children.length > 0 ? `<div class='cards-card-title'><h6>${title?.textContent.trim()}</h6></div>` : ``}
+              ${description?.children.length > 0 !== '' ? `<div class='cards-card-description'>${description?.innerHTML}</div>` : ``}
               <div class='cards-card-cta'>${decorateCTA(cta, ctaLabel, ctaTarget, isClickable)}</div>
           </div>
         </a>
@@ -42,13 +42,14 @@ function generateCardDom(props) {
     `);
     return cardDOM;
   }
+
   const cardDOM = document.createRange().createContextualFragment(`
       <li>
         <div class='cards-card-image'>${picture ? picture.outerHTML : ''}</div>
         <div class='cards-card-body'>
-            ${eyebrow?.textContent.trim() !== '' ? `<div class='cards-card-eyebrow'>${eyebrow.textContent.trim().toUpperCase()}</div>` : ``}
-            ${title?.children.length > 0 ? `<div class='cards-card-title'><h6>${title.textContent.trim()}</h6></div>` : ``}
-            ${description?.children.length > 0 !== '' ? `<div class='cards-card-description'>${description.innerHTML}</div>` : ``}
+            ${eyebrow?.textContent.trim() !== '' ? `<div class='cards-card-eyebrow'>${eyebrow?.textContent.trim().toUpperCase()}</div>` : ``}
+            ${title?.children.length > 0 ? `<div class='cards-card-title'><h6>${title?.textContent.trim()}</h6></div>` : ``}
+            ${description?.children.length > 0 !== '' ? `<div class='cards-card-description'>${description?.innerHTML}</div>` : ``}
             <div class='cards-card-cta'>${decorateCTA(cta, ctaLabel, ctaTarget)}</div>
         </div>
       </li>
@@ -74,16 +75,16 @@ export default function decorate(block) {
           block.classList.add(className);
         }
       }
-      // return;
+      return;
     }
 
-    // ul.append(generateCardDom(row.children));
+    ul.append(generateCardDom(row.children));
   });
 
   ul.querySelectorAll('img').forEach((img) =>
     img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])),
   );
 
-  // block.textContent = '';
-  // block.append(ul);
+  block.textContent = '';
+  block.append(ul);
 }
