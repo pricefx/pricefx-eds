@@ -405,7 +405,7 @@
           },
           {
             "name": "Top Aligned",
-            "value": "column-img-rounded-corner"
+            "value": "column-top-aligned"
           },
           {
             "name": "Center Aligned",
