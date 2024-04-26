@@ -6,7 +6,7 @@
         "component": "text-input",
         "valueType": "string",
         "name": "jcr:title",
-        "value": "",
+        "value": "h2",
         "label": "Text"
       },
       {
@@ -408,12 +408,20 @@
             "value": "column-img-rounded-corner"
           },
           {
-            "name": "Canter Aligned",
+            "name": "Center Aligned",
             "value": "column-center-aligned"
           },
           {
             "name": "Image Rounded Corner",
             "value": "column-img-rounded-corner"
+          },
+          {
+            "name": "Column Rounded Corner",
+            "value": "column-rounded-corner"
+          },
+          {
+            "name": "Column Separator",
+            "value": "column-separater"
           }
         ]
       }
