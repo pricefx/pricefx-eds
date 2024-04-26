@@ -15,7 +15,9 @@
 .title-pfx.title-dark-grey h4,
 .title-pfx.title-dark-grey h5,
 .title-pfx.title-dark-grey h6 {
-    color: var(--c-copy);
+    background: var(--c-copy);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .title-pfx.title-spacer-small {
