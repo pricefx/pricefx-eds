@@ -25,23 +25,23 @@ function generateCardDom(props) {
   const picture = imageContainer.querySelector('picture');
 
   // Build DOM
-  if (isClickable?.textContent.trim() === 'true') {
-    const link = cta.querySelector('a');
-    const cardDOM = document.createRange().createContextualFragment(`
-      <li>
-        <a class="cards-card-link" href="${link ? link.href : '#'}" target="${ctaTarget?.textContent.trim() === 'true' ? '_blank' : ''}">
-          <div class='cards-card-image'>${picture ? picture.outerHTML : ''}</div>
-          <div class='cards-card-body'>
-              ${eyebrow?.textContent.trim() !== '' ? `<div class='cards-card-eyebrow'>${eyebrow?.textContent.trim().toUpperCase()}</div>` : ``}
-              ${title?.children.length > 0 ? `<div class='cards-card-title'><h6>${title?.textContent.trim()}</h6></div>` : ``}
-              ${description?.children.length > 0 !== '' ? `<div class='cards-card-description'>${description?.innerHTML}</div>` : ``}
-              <div class='cards-card-cta'>${decorateCTA(cta, ctaLabel, ctaTarget, isClickable)}</div>
-          </div>
-        </a>
-      </li>
-    `);
-    return cardDOM;
-  }
+  // if (isClickable?.textContent.trim() === 'true') {
+  //   const link = cta.querySelector('a');
+  //   const cardDOM = document.createRange().createContextualFragment(`
+  //     <li>
+  //       <a class="cards-card-link" href="${link ? link.href : '#'}" target="${ctaTarget?.textContent.trim() === 'true' ? '_blank' : ''}">
+  //         <div class='cards-card-image'>${picture ? picture.outerHTML : ''}</div>
+  //         <div class='cards-card-body'>
+  //             ${eyebrow?.textContent.trim() !== '' ? `<div class='cards-card-eyebrow'>${eyebrow?.textContent.trim().toUpperCase()}</div>` : ``}
+  //             ${title?.children.length > 0 ? `<div class='cards-card-title'><h6>${title?.textContent.trim()}</h6></div>` : ``}
+  //             ${description?.children.length > 0 !== '' ? `<div class='cards-card-description'>${description?.innerHTML}</div>` : ``}
+  //             <div class='cards-card-cta'>${decorateCTA(cta, ctaLabel, ctaTarget, isClickable)}</div>
+  //         </div>
+  //       </a>
+  //     </li>
+  //   `);
+  //   return cardDOM;
+  // }
 
   const cardDOM = document.createRange().createContextualFragment(`
       <li>
