@@ -469,7 +469,9 @@
           { "name": "Aspect Ratio 16:9", "value": "aspect-ratio-16-9" },
           { "name": "Remove Aspect Ratio", "value": "no-aspect-ratio" },
           { "name": "Icon Variation", "value": "icon-variation" },
-          { "name": "Hide Image", "value": "hide-image" }
+          { "name": "Hide Image", "value": "hide-image" },
+          { "name": "Hide Button Link", "value": "hide-button-link" },
+          { "name": "Card BG Color - Black", "value": "card-bg-black" }
         ]
       }
     ]
