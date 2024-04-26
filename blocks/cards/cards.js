@@ -49,7 +49,7 @@ function generateCardDom(props) {
           ${eyebrow?.textContent.trim() !== '' ? `<div class='cards-card-eyebrow'>${eyebrow?.textContent.trim().toUpperCase()}</div>` : ``}
           ${title?.children.length > 0 ? `<div class='cards-card-title'><h6>${title?.textContent.trim()}</h6></div>` : ``}
           ${description?.children.length > 0 !== '' ? `<div class='cards-card-description'>${description?.innerHTML}</div>` : ``}
-          <div class='cards-card-cta'>${decorateCTA(cta, ctaLabel, ctaTarget)}</div>
+          <div class='cards-card-cta'></div>
       </div>
     `);
   return cardDOM;
