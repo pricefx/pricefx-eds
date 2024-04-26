@@ -81,9 +81,9 @@ export default function decorate(block) {
       li.append(row.firstElementChild);
     }
 
-    const cardDOM = generateCardDom(li.children);
-    li.textContent = '';
-    li.append(cardDOM);
+    // const cardDOM = generateCardDom(li.children);
+    // li.textContent = '';
+    // li.append(cardDOM);
     ul.append(li);
   });
 
