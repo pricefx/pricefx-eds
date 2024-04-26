@@ -49,5 +49,20 @@
   {
     "id": "tabs",
     "components": ["tab-item"]
+  },
+  {
+    "id": "text",
+    "rte": {
+      "format": ["bold"],
+      "alignment": [],
+      "indentation": [],
+      "sr_script": [],
+      "list": ["bullist", "numlist"],
+      "insert": ["link"],
+      "blocks": [],
+      "advanced": ["h3"],
+      "extensions": [],
+      "editor": ["removeformat"]
+    }
   }
 ]
