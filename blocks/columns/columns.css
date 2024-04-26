@@ -27,7 +27,7 @@
   }
 
   .columns > div > div {
-    flex: unset;
+    flex: 1;
     width: 50%;
     order: unset;
   }
@@ -35,33 +35,33 @@
 
 /* Custom Styles */
 .columns.columns-2.two-column-3-7 > div > div:first-child {
-  width: 30%;
+  flex: 30%;
 }
 
 .columns.columns-2.two-column-3-7 > div > div:last-child {
-  width: 70%;
+  flex: 70%;
 }
 
 .columns.columns-2.two-column-4-6 > div > div:first-child {
-  width: 40%;
+  flex: 40%;
 }
 
 .columns.columns-2.two-column-4-6 > div > div:last-child {
-  width: 60%;
+  flex: 60%;
 }
 
 .columns.columns-2.two-column-6-4 > div > div:first-child {
-  width: 60%;
+  flex: 60%;
 }
 
 .columns.columns-2.two-column-6-4 > div > div:last-child {
-  width: 40%;
+  flex: 40%;
 }
 
 .columns.columns-2.two-column-7-3 > div > div:first-child {
-  width: 70%;
+  flex: 70%;
 }
 
 .columns.columns-2.two-column-7-3 > div > div:last-child {
-  width: 30%;
+  flex: 30%;
 }
