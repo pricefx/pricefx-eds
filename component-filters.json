@@ -53,16 +53,16 @@
   {
     "id": "text",
     "rte": {
-      "format": ["bold"],
+      "format": [],
       "alignment": [],
       "indentation": [],
       "sr_script": [],
-      "list": ["bullist", "numlist"],
-      "insert": ["link"],
+      "list": [],
+      "insert": [],
       "blocks": [],
-      "advanced": ["h3"],
+      "advanced": [],
       "extensions": [],
-      "editor": ["removeformat"]
+      "editor": []
     }
   }
 ]
