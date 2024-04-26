@@ -35,7 +35,8 @@
       "socialshare",
       "stats",
       "relatedArticles",
-      "learningCenter"
+      "learningCenter",
+      "fragment"
     ]
   },
   {
@@ -49,20 +50,5 @@
   {
     "id": "tabs",
     "components": ["tab-item"]
-  },
-  {
-    "id": "text",
-    "rte": {
-      "format": [],
-      "alignment": [],
-      "indentation": [],
-      "sr_script": [],
-      "list": [],
-      "insert": [],
-      "blocks": [],
-      "advanced": [],
-      "extensions": [],
-      "editor": []
-    }
   }
 ]
