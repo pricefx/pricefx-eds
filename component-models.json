@@ -319,16 +319,28 @@
         "component": "select",
         "name": "classes",
         "value": "",
-        "label": "Background Color",
+        "label": "2 Column Width",
         "valueType": "string",
         "options": [
           {
-            "name": "Grey",
-            "value": "column-bg-color-grey"
+            "name": "2 Column 30 X 70",
+            "value": "two-column-3X7"
           },
           {
-            "name": "White - Default",
-            "value": ""
+            "name": "2 Column 40 X 60",
+            "value": "two-column-4X6"
+          },
+          {
+            "name": "2 Column 50 X 50",
+            "value": "two-column-5X5"
+          },
+          {
+            "name": "2 Column 60 X 40",
+            "value": "two-column-6X4"
+          },
+          {
+            "name": "2 Column 70 X 30",
+            "value": "two-column-7X3"
           }
         ]
       }
