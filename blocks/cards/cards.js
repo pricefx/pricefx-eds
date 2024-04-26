@@ -27,7 +27,6 @@ function generateCardDom(props) {
   if (isClickable?.textContent.trim() === 'true') {
     const link = cta.querySelector('a');
     const cardDOM = `
-      <li>
         <a class="cards-card-link" href="${link ? link.href : '#'}" target="${ctaTarget.textContent.trim() === 'true' ? '_blank' : ''}">
           <div class='cards-card-image'>${picture ? picture.outerHTML : ''}</div>
           <div class='cards-card-body'>
@@ -37,12 +36,10 @@ function generateCardDom(props) {
               <div class='cards-card-cta'>${decorateCTA(cta, ctaLabel, ctaTarget, isClickable).outerHTML}</div>
           </div>
         </a>
-      </li>
     `;
     return cardDOM;
   }
   const cardDOM = `
-      <li>
         <div class='cards-card-image'>${picture ? picture.outerHTML : ''}</div>
         <div class='cards-card-body'>
             ${eyebrow?.textContent.trim() !== '' ? `<div class='cards-card-eyebrow'>${eyebrow.textContent.trim().toUpperCase()}</div>` : ``}
@@ -50,7 +47,6 @@ function generateCardDom(props) {
             ${description?.children.length > 0 ? `<div class='cards-card-description'>${description.innerHTML}</div>` : ``}
             <div class='cards-card-cta'>${decorateCTA(cta, ctaLabel, ctaTarget).outerHTML}</div>
         </div>
-      </li>
     `;
   return cardDOM;
 }
