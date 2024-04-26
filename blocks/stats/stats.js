@@ -5,7 +5,7 @@ export default function decorate(block) {
   if (size) {
     titleSize = size.textContent.trim();
   }
-  parentDiv.classList.add('statsWrapper');
+  parentDiv.classList.add('stats-container-wrap');
   const background = block.lastElementChild.previousElementSibling;
   const pText = background.querySelector('p');
   if (pText) {
