@@ -660,7 +660,7 @@
       {
         "component": "select",
         "name": "maxWidth",
-        "value": "",
+        "value": "section-site-width",
         "label": "Max Width",
         "valueType": "string",
         "options": [
@@ -670,7 +670,7 @@
           },
           {
             "name": "Maximum 1188px - Default",
-            "value": ""
+            "value": "section-site-width"
           },
           {
             "name": "Maximum 984px",
