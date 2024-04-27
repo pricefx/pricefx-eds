@@ -152,8 +152,14 @@ div.cards-card-eyebrow + div.cards-card-description {
 /* Icon variation */
 .icon-variation.cards .cards-card-image {
   text-align: center;
-  width: 150px;
+  width: 50px;
   margin: 0 auto;
+  padding: 20px 0 0;
+}
+
+.icon-variation.cards .cards-card-title h6 {
+  margin-top: 0;
+  text-align: center;
 }
 
 .icon-variation.cards > ul > li img {
