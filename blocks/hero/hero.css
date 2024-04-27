@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+.section .hero-wrapper {
+  max-width: 100%;
+}
+
 .hero .hero-main-container {
   display: flex;
   align-items: flex-start;
@@ -22,10 +26,8 @@
 }
 
 .hero .hero-pre-header {
-  display: inline-flex;
+  display: inline-block;
   padding: 20px;
-  justify-content: center;
-  align-items: center;
   border-radius: 4px;
   background: var(--c-gray-drk-alt);
   margin-bottom: 35px;
@@ -34,11 +36,10 @@
 .hero .hero-pre-header p {
   color: var(--c-white);
   text-align: center;
-  font-family: var(--ff-secondary);
+  font-family: var(--ff-primary);
   font-size: calc((18 / 16) * 1rem);
   font-style: normal;
   font-weight: var(--fw-med);
-  line-height: 32px;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
@@ -58,7 +59,6 @@
 .hero .hero-content-container p {
   font-size: var(--body-font-size-l);
   line-height: 24px;
-  margin-bottom: 32px;
   font-family: var(--ff-secondary);
 }
 
@@ -81,7 +81,11 @@
 /* Hero Button */
 .hero .button-container {
   display: block;
-  margin-bottom: 8px;
+  margin: 0 0 8px;
+}
+
+.hero .hero-content-container + .button-container {
+  margin-top: 32px;
 }
 
 .hero .button-container:last-child {
@@ -185,12 +189,11 @@
   inset: 0 0 0 60%;
   position: absolute;
   z-index: 1;
-  min-height: 300px;
 }
 
 .hero .button-container {
   display: inline-flex;
-  margin: 0 9px 0 0;
+  margin: 35px 9px 0 0;
 }
 
 .hero a.button.hero-primary-button,
@@ -201,7 +204,6 @@
 .hero .hero-content-container p {
   font-size: calc((27 / 16) * 1rem);
   line-height: 33px;
-  margin-bottom: 35px;
 }
 
 .hero .hero-content-container h1,

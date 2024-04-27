@@ -30,7 +30,7 @@ function decorateRightContainer(heroRightContainer) {
   heroImageContainer.classList.add('hero-image-container');
   if (heroVariation === 'imageVariation') {
     const heroImage = heroRightContainer.children[1];
-    if (window.matchMedia('(min-width:986px)').matches) {
+    if (window.matchMedia('(min-width:986px)').matches && heroImage.querySelector('img') !== null) {
       heroImageContainer.setAttribute('style', `background-image:url(${heroImage.querySelector('img').src})`);
     }
     heroImageContainer.append(heroImage);
@@ -51,21 +51,21 @@ export default async function decorate(block) {
   buttonContainer.classList.add('button-container');
   let count = 1;
   [...block.children].forEach((row, index) => {
-    if (index < 6) {
+    if (index < 7) {
       heroRightContainer.append(row.firstElementChild);
       heroRightContainer.classList.add('hero-right-container');
-    } else if (index === 6) {
+    } else if (index === 7) {
       if (row.firstElementChild.textContent !== '') {
         heroLeftContainer.classList.add(row.firstElementChild.textContent);
       }
-    } else if (index === 7) {
+    } else if (index === 8) {
       if (row.firstElementChild.textContent !== '') {
         const heroPreHeader = document.createElement('span');
         heroPreHeader.classList.add('hero-pre-header');
         heroPreHeader.append(row.firstElementChild || '');
         heroLeftContainerInner.append(heroPreHeader);
       }
-    } else if (index === 8) {
+    } else if (index === 9) {
       row.firstElementChild?.classList.add('hero-content-container');
       heroLeftContainerInner.append(row.firstElementChild || '');
     } else {

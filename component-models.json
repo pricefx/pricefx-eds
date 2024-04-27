@@ -775,6 +775,17 @@
         "value": ""
       },
       {
+        "component": "select",
+        "label": "Image Position",
+        "name": "imagePosition",
+        "valueType": "string",
+        "options": [
+          { "name": "Left", "value": "hero-image-left" },
+          { "name": "Center", "value": "hero-image-center" },
+          { "name": "Right", "value": "hero-image-right" }
+        ]
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "embedVideo",
