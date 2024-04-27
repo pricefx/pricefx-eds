@@ -32,7 +32,7 @@
 }
 
 .columns.column-img-rounded-corner > div img {
-  border-radius: 16px;
+  border-radius: var(--spacing-xsmall);
 }
 
 .columns.column-rounded-corner > div > div {
@@ -102,6 +102,10 @@
 
   .columns.columns-2.two-column-7-3 > div > div:last-child {
     flex: 30%;
+  }
+
+  .column.column-padding {
+    padding: var(--spacing-xlarge);
   }
 
   

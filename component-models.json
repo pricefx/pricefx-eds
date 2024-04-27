@@ -426,6 +426,10 @@
           {
             "name": "Reverse order in mobile",
             "value": "column-mobile-reverse"
+          },
+          {
+            "name": "Add Padding",
+            "value": "column-padding"
           }
         ]
       }
