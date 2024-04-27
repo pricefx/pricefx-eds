@@ -441,7 +441,7 @@ main .section.highlight {
   padding-right: 0;
 }
 
-.section[data-maxwidth="section-site-width"] > div {
+.section > div {
   margin: 0 auto;
   max-width: 1188px;
 }

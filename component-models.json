@@ -12,7 +12,7 @@
       {
         "component": "select",
         "name": "type",
-        "value": "h1",
+        "value": "h2",
         "label": "Type",
         "valueType": "string",
         "options": [
@@ -340,6 +340,10 @@
         "description": "Choose the Column Layout",
         "options": [
           {
+            "name": "1 Columns",
+            "value": "1"
+          },
+          {
             "name": "2 Columns - Default",
             "value": "2"
           },
@@ -361,12 +365,16 @@
         "label": "Rows"
       },
       {
-        "component": "select",
+        "component": "multiselect",
         "name": "classes",
         "value": "",
-        "label": "2 Column Width",
+        "label": "Column Styles",
         "valueType": "string",
         "options": [
+          {
+            "name": "2 Column 30 X 70",
+            "value": "two-column-3-7"
+          },
           {
             "name": "2 Column 30 X 70",
             "value": "two-column-3-7"
@@ -386,27 +394,46 @@
           {
             "name": "2 Column 70 X 30",
             "value": "two-column-7-3"
-          }
-        ]
-      },
-      {
-        "component": "select",
-        "name": "columnBgColor",
-        "value": "",
-        "label": "Background Color",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Default",
-            "value": ""
           },
           {
-            "name": "Grey",
-            "value": "column-bg-color-grey"
+            "name": "Background Gray",
+            "value": "column-bg-color-gray"
           },
           {
-            "name": "White",
+            "name": "Background White",
             "value": "column-bg-color-white"
+          },
+          {
+            "name": "Top Aligned",
+            "value": "column-top-aligned"
+          },
+          {
+            "name": "Center Aligned",
+            "value": "column-center-aligned"
+          },
+          {
+            "name": "Image Rounded Corner",
+            "value": "column-img-rounded-corner"
+          },
+          {
+            "name": "Column Rounded Corner",
+            "value": "column-rounded-corner"
+          },
+          {
+            "name": "Column Separator",
+            "value": "column-separater"
+          },
+          {
+            "name": "Reverse order in mobile",
+            "value": "column-mobile-reverse"
+          },
+          {
+            "name": "Add Padding Large",
+            "value": "column-padding-64px"
+          },
+          {
+            "name": "Add Padding Medium",
+            "value": "column-padding-32px"
           }
         ]
       }
@@ -1189,8 +1216,9 @@
         "valueType": "string"
       },
       {
-        "component": "text",
+        "component": "aem-content",
         "name": "authorPath",
+        "value": "",
         "label": "Author Directory Path",
         "valueType": "string",
         "description": "Please enter the path to the author directory."

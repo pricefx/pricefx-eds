@@ -1,6 +1,7 @@
 .columns > div {
   display: flex;
   flex-direction: column;
+  gap: 32px;
 }
 
 .columns img {
@@ -19,49 +20,104 @@
   display: block;
 }
 
-@media (width >= 900px) {
+.columns.column-center-aligned > div {
+  text-align: center;
+}
+
+.columns.column-top-aligned > div {
+  align-items: flex-start;
+}
+
+.columns.column-mobile-reverse > div {
+  flex-direction: row-reverse;
+}
+
+.columns.column-img-rounded-corner > div img {
+  border-radius: var(--spacing-xsmall);
+}
+
+.columns.column-rounded-corner > div > div {
+  border-radius: 20px;
+}
+
+.columns.column-bg-color-gray > div > div {
+  background-color: var(--c-gray-lt);
+}
+
+.columns.column-bg-color-white > div > div {
+  background-color: var(--c-white);
+}
+
+.columns.column-separater > div > div {
+  border-right: 1px solid var(--c-copy);
+}
+
+.columns.column-padding-64px > div > div {
+  padding: var(--spacing-medium);
+}
+
+.columns.column-padding-32px > div > div {
+  padding: var(--spacing-xsmall);
+}
+
+.columns.column-separater > div > div:last-child {
+  border-right: unset; 
+}
+
+
+@media (width >= 985px) {
   .columns > div {
     align-items: center;
     flex-direction: unset;
-    gap: 32px;
   }
 
   .columns > div > div {
-    flex: unset;
-    width: 50%;
+    flex: 1;
     order: unset;
   }
-}
 
-/* Custom Styles */
-.columns.columns-2.two-column-3-7 > div > div:first-child {
-  width: 30%;
-}
+  /* Custom Styles */
+  .columns.column-mobile-reverse > div {
+    flex-direction: unset;
+  }
 
-.columns.columns-2.two-column-3-7 > div > div:last-child {
-  width: 70%;
-}
+  .columns.column-padding-64px > div > div {
+    padding: var(--spacing-xlarge);
+  }
 
-.columns.columns-2.two-column-4-6 > div > div:first-child {
-  width: 40%;
-}
+  .columns.column-padding-32px > div > div {
+    padding: var(--spacing-medium);
+  }
 
-.columns.columns-2.two-column-4-6 > div > div:last-child {
-  width: 60%;
-}
+  .columns.columns-2.two-column-3-7 > div > div:first-child {
+    flex: 30%;
+  }
 
-.columns.columns-2.two-column-6-4 > div > div:first-child {
-  width: 60%;
-}
+  .columns.columns-2.two-column-3-7 > div > div:last-child {
+    flex: 70%;
+  }
 
-.columns.columns-2.two-column-6-4 > div > div:last-child {
-  width: 40%;
-}
+  .columns.columns-2.two-column-4-6 > div > div:first-child {
+    flex: 40%;
+  }
 
-.columns.columns-2.two-column-7-3 > div > div:first-child {
-  width: 70%;
-}
+  .columns.columns-2.two-column-4-6 > div > div:last-child {
+    flex: 60%;
+  }
 
-.columns.columns-2.two-column-7-3 > div > div:last-child {
-  width: 30%;
+  .columns.columns-2.two-column-6-4 > div > div:first-child {
+    flex: 60%;
+  }
+
+  .columns.columns-2.two-column-6-4 > div > div:last-child {
+    flex: 40%;
+  }
+
+  .columns.columns-2.two-column-7-3 > div > div:first-child {
+    flex: 70%;
+  }
+
+  .columns.columns-2.two-column-7-3 > div > div:last-child {
+    flex: 30%;
+  }
 }
