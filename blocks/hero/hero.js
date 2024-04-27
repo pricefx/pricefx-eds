@@ -1,3 +1,17 @@
+async function loadStatsBlock() {
+  const statsPath = '/content/pricefx/style-guide/components/stats.html'; // Update the path accordingly
+  const resp = await fetch(`${statsPath}.plain.html`);
+  if (resp.ok) {
+    const statsFragment = document.createElement('div');
+    statsFragment.innerHTML = await resp.text();
+    const statsBlock = statsFragment.querySelector('.stats'); // Assuming the stats block has a class of 'stats'
+    if (statsBlock) {
+      return statsBlock;
+    }
+  }
+  return null;
+}
+
 function decorateButton(heroLeftContainer) {
   heroLeftContainer.querySelectorAll('.button-container').forEach((btn) => {
     const btnStyle = btn.children[0].textContent || 'hero-primary-button';
@@ -88,4 +102,10 @@ export default async function decorate(block) {
   heroContainer.append(heroRightContainer);
   block.textContent = '';
   block.append(heroContainer);
+  
+  // Load and append stats block
+  const statsBlock = await loadStatsBlock();
+  if (statsBlock) {
+    block.after(statsBlock);
+  }
 }
