@@ -422,6 +422,10 @@
           {
             "name": "Column Separator",
             "value": "column-separater"
+          },
+          {
+            "name": "Reverse order in mobile",
+            "value": "column-mobile-reverse"
           }
         ]
       }
@@ -656,7 +660,7 @@
       {
         "component": "select",
         "name": "maxWidth",
-        "value": "section-site-width",
+        "value": "",
         "label": "Max Width",
         "valueType": "string",
         "options": [
@@ -666,7 +670,7 @@
           },
           {
             "name": "Maximum 1188px - Default",
-            "value": "section-site-width"
+            "value": ""
           },
           {
             "name": "Maximum 984px",
