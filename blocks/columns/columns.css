@@ -51,9 +51,14 @@
   border-right: 1px solid var(--c-copy);
 }
 
+.columns.column-padding > div > div {
+  padding: var(--spacing-medium);
+}
+
 .columns.column-separater > div > div:last-child {
   border-right: unset; 
 }
+
 
 @media (width >= 985px) {
   .columns > div {
@@ -70,6 +75,10 @@
   /* Custom Styles */
   .columns.column-mobile-reverse > div {
     flex-direction: unset;
+  }
+
+  .columns.column-padding > div > div {
+    padding: var(--spacing-xlarge);
   }
 
   .columns.columns-2.two-column-3-7 > div > div:first-child {
@@ -104,9 +113,4 @@
     flex: 30%;
   }
 
-  .column.column-padding {
-    padding: var(--spacing-xlarge);
-  }
-
-  
 }
