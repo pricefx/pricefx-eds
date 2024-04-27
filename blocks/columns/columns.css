@@ -1,7 +1,7 @@
 .columns > div {
   display: flex;
   flex-direction: column;
-  row-gap: 32px;
+  gap: 32px;
 }
 
 .columns img {
@@ -69,7 +69,6 @@
   .columns > div {
     align-items: center;
     flex-direction: unset;
-    gap: 32px;
   }
 
   .columns > div > div {
@@ -121,5 +120,4 @@
   .columns.columns-2.two-column-7-3 > div > div:last-child {
     flex: 30%;
   }
-
 }
