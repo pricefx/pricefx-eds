@@ -1,3 +1,5 @@
+import { loadFragment } from '../fragment/fragment.js';
+
 async function loadStatsBlock() {
   const statsPath = '/content/pricefx/style-guide/components/stats.html'; // Update the path accordingly
   const resp = await fetch(`${statsPath}.plain.html`);
@@ -103,8 +105,9 @@ export default async function decorate(block) {
   block.textContent = '';
   block.append(heroContainer);
   
-  // Load and append stats block
-  const statsBlock = await loadStatsBlock();
+  // Load and append stats block using loadFragment function
+  const statsPath = '/content/pricefx/style-guide/components/stats'; // Update the path accordingly
+  const statsBlock = await loadFragment(statsPath);
   if (statsBlock) {
     block.after(statsBlock);
   }
