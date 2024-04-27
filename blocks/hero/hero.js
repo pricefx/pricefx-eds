@@ -1,19 +1,5 @@
 import { loadFragment } from '../fragment/fragment.js';
 
-async function loadStatsBlock() {
-  const statsPath = '/content/pricefx/style-guide/components/stats.html'; // Update the path accordingly
-  const resp = await fetch(`${statsPath}.plain.html`);
-  if (resp.ok) {
-    const statsFragment = document.createElement('div');
-    statsFragment.innerHTML = await resp.text();
-    const statsBlock = statsFragment.querySelector('.stats-wrapper'); // Assuming the stats block has a class of 'stats'
-    if (statsBlock) {
-      return statsBlock;
-    }
-  }
-  return null;
-}
-
 function decorateButton(heroLeftContainer) {
   heroLeftContainer.querySelectorAll('.button-container').forEach((btn) => {
     const btnStyle = btn.children[0].textContent || 'hero-primary-button';
@@ -106,7 +92,7 @@ export default async function decorate(block) {
   block.append(heroContainer);
   
   // Load and append stats block using loadFragment function
-  const statsPath = '/content/pricefx/style-guide/components/stats'; // Update the path accordingly
+  const statsPath = '/content/pricefx/style-guide/components/stats'; // Update the path accordingly  
   const statsBlock = await loadFragment(statsPath);
   if (statsBlock) {
     block.after(statsBlock);
