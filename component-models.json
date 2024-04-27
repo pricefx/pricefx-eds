@@ -428,8 +428,12 @@
             "value": "column-mobile-reverse"
           },
           {
-            "name": "Add Padding",
-            "value": "column-padding"
+            "name": "Add Padding Large",
+            "value": "column-padding-64px"
+          },
+          {
+            "name": "Add Padding Medium",
+            "value": "column-padding-32px"
           }
         ]
       }

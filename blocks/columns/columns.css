@@ -51,8 +51,12 @@
   border-right: 1px solid var(--c-copy);
 }
 
-.columns.column-padding > div > div {
+.columns.column-padding-64px > div > div {
   padding: var(--spacing-medium);
+}
+
+.columns.column-padding-32px > div > div {
+  padding: var(--spacing-xsmall);
 }
 
 .columns.column-separater > div > div:last-child {
@@ -77,8 +81,12 @@
     flex-direction: unset;
   }
 
-  .columns.column-padding > div > div {
+  .columns.column-padding-64px > div > div {
     padding: var(--spacing-xlarge);
+  }
+
+  .columns.column-padding-32px > div > div {
+    padding: var(--spacing-medium);
   }
 
   .columns.columns-2.two-column-3-7 > div > div:first-child {
