@@ -4,7 +4,7 @@ async function loadStatsBlock() {
   if (resp.ok) {
     const statsFragment = document.createElement('div');
     statsFragment.innerHTML = await resp.text();
-    const statsBlock = statsFragment.querySelector('.stats'); // Assuming the stats block has a class of 'stats'
+    const statsBlock = statsFragment.querySelector('.stats-wrapper'); // Assuming the stats block has a class of 'stats'
     if (statsBlock) {
       return statsBlock;
     }
