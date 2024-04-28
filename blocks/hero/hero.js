@@ -58,7 +58,7 @@ export default async function decorate(block) {
       heroRightContainer.classList.add('hero-right-container');
     } else if (index === 7) {
       if (row.firstElementChild.textContent !== '') {
-        heroLeftContainer.classList.add(row.firstElementChild.textContent || 'hero-image-right');
+        heroLeftContainer.classList.add(row.firstElementChild);
       }
     } else if (index === 8) {
       if (row.firstElementChild.textContent !== '') {
