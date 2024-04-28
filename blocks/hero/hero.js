@@ -30,10 +30,8 @@ function decorateRightContainer(heroRightContainer) {
   heroImageContainer.classList.add('hero-image-container');
   if (heroVariation === 'imageVariation') {
     const heroImage = heroRightContainer.children[1];
-    const heroImagePosition = heroRightContainer.children[2].textContent || 'hero-image-right';
     if (window.matchMedia('(min-width:986px)').matches && heroImage.querySelector('img') !== null) {
       heroImageContainer.setAttribute('style', `background-image:url(${heroImage.querySelector('img').src})`);
-      heroImageContainer.classList.add(heroImagePosition);
     }
     heroImageContainer.append(heroImage);
   }
