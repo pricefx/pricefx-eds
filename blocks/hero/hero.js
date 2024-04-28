@@ -1,9 +1,9 @@
 function decorateButton(heroLeftContainer) {
   heroLeftContainer.querySelectorAll('.button-container').forEach((btn) => {
-    const btnStyle = btn.children[0].textContent || 'hero-primary-button';
-    const btnLink = btn.children[1].textContent;
-    const btnLabel = btn.children[2].textContent;
-    const btnTarget = btn.children[3].textContent;
+    const btnStyle = btn.children[0]?.textContent || 'primary';
+    const btnLink = btn.children[1]?.textContent;
+    const btnLabel = btn.children[2]?.textContent;
+    const btnTarget = btn.children[3]?.textContent;
     btn.textContent = '';
     if (btnLabel === '') {
       btn.remove();
@@ -30,8 +30,10 @@ function decorateRightContainer(heroRightContainer) {
   heroImageContainer.classList.add('hero-image-container');
   if (heroVariation === 'imageVariation') {
     const heroImage = heroRightContainer.children[1];
-    if (window.matchMedia('(min-width:986px)').matches) {
+    const heroImagePosition = heroRightContainer.children[2].textContent || 'hero-image-right';
+    if (window.matchMedia('(min-width:986px)').matches && heroImage.querySelector('img') !== null) {
       heroImageContainer.setAttribute('style', `background-image:url(${heroImage.querySelector('img').src})`);
+      heroImageContainer.classList.add(heroImagePosition);
     }
     heroImageContainer.append(heroImage);
   }
@@ -52,23 +54,26 @@ export default async function decorate(block) {
   let count = 1;
   [...block.children].forEach((row, index) => {
     if (index < 6) {
+      /* Image / Video */
       heroRightContainer.append(row.firstElementChild);
       heroRightContainer.classList.add('hero-right-container');
     } else if (index === 6) {
-      if (row.firstElementChild.textContent !== '') {
-        heroLeftContainer.classList.add(row.firstElementChild.textContent);
-      }
+      /* Height Height Variation */
+      heroLeftContainer.classList.add(row.firstElementChild?.textContent || 'hero-secondary-variation');
     } else if (index === 7) {
-      if (row.firstElementChild.textContent !== '') {
+      /* Pre Header Text */
+      if (row.firstElementChild?.textContent !== '') {
         const heroPreHeader = document.createElement('span');
         heroPreHeader.classList.add('hero-pre-header');
-        heroPreHeader.append(row.firstElementChild || '');
+        heroPreHeader.append(row.firstElementChild);
         heroLeftContainerInner.append(heroPreHeader);
       }
     } else if (index === 8) {
+      /* Hero Content */
       row.firstElementChild?.classList.add('hero-content-container');
       heroLeftContainerInner.append(row.firstElementChild || '');
     } else {
+      /* Hero Buttons */
       if (buttonContainer.children.length >= 0 && count === 5) {
         heroLeftContainerInner.append(buttonContainer);
         buttonContainer = document.createElement('div');

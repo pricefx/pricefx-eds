@@ -323,7 +323,8 @@ h6 {
 }
 
 /* Button Styles */
-a.button.primary {
+a.button,
+button {
   appearance: none;
   background: linear-gradient(123deg, #304f8c 4.85%, #466cb9 43.45%, #304f8c 54.85%, #283f6f 86.9%);
   background-position: left;
@@ -360,6 +361,11 @@ a.button.secondary {
   padding: 14px 30px;
 }
 
+a.button.secondary:focus,
+a.button.secondary:hover {
+  backdrop-filter: blur(12px);
+  background: rgba(255 255 255 / 70%);
+}
 
 @media (width >= 768px) {
   p {
