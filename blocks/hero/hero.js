@@ -54,23 +54,28 @@ export default async function decorate(block) {
   let count = 1;
   [...block.children].forEach((row, index) => {
     if (index < 7) {
+      /* Image / Video */
       heroRightContainer.append(row.firstElementChild);
       heroRightContainer.classList.add('hero-right-container');
     } else if (index === 7) {
+      /* Height Variation */
       if (row.firstElementChild.textContent !== '') {
-        heroLeftContainer.classList.add(row.firstElementChild);
+        heroLeftContainer.classList.add(row.firstElementChild.textContent);
       }
     } else if (index === 8) {
+      /* Pre Header Text */
       if (row.firstElementChild.textContent !== '') {
         const heroPreHeader = document.createElement('span');
         heroPreHeader.classList.add('hero-pre-header');
-        heroPreHeader.append(row.firstElementChild.textContent || '');
+        heroPreHeader.append(row.firstElementChild || '');
         heroLeftContainerInner.append(heroPreHeader);
       }
     } else if (index === 9) {
+      /* Hero Content */
       row.firstElementChild?.classList.add('hero-content-container');
       heroLeftContainerInner.append(row.firstElementChild || '');
     } else {
+      /* Hero Buttons */
       if (buttonContainer.children.length >= 0 && count === 5) {
         heroLeftContainerInner.append(buttonContainer);
         buttonContainer = document.createElement('div');
