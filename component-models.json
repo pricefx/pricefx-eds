@@ -777,7 +777,7 @@
       {
         "component": "select",
         "label": "Image Position",
-        "name": "imagePosition",
+        "name": "classes",
         "valueType": "string",
         "value": "",
         "options": [
