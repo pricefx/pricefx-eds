@@ -614,6 +614,10 @@
           {
             "name": "White",
             "value": "section-bg-color-white"
+          },
+          {
+            "name": "Fragment",
+            "value": "fragment"
           }
         ]
       },
