@@ -820,6 +820,7 @@
         "label": "Hero Height Variation",
         "name": "heroVariation",
         "valueType": "string",
+        "value": "hero-secondary-variation",
         "options": [
           { "name": "Hero Height 800px", "value": "hero-primary-variation" },
           { "name": "Hero Height 465px - Default", "value": "hero-secondary-variation" }
@@ -846,6 +847,7 @@
         "label": "Button 1 Style",
         "name": "buttonOneStyle",
         "valueType": "string",
+        "value": "hero-primary-button",
         "options": [
           { "name": "Primary", "value": "hero-primary-button" },
           { "name": "Secondary", "value": "hero-secondary-button" }
@@ -875,6 +877,7 @@
         "component": "radio-group",
         "label": "Button 2 Style",
         "name": "buttonTwoStyle",
+        "value": "hero-primary-button",
         "valueType": "string",
         "options": [
           { "name": "Primary", "value": "hero-primary-button" },
@@ -906,6 +909,7 @@
         "label": "Button 3 Style",
         "name": "buttonThreeStyle",
         "valueType": "string",
+        "value": "hero-primary-button",
         "options": [
           { "name": "Primary", "value": "hero-primary-button" },
           { "name": "Secondary", "value": "hero-secondary-button" }
