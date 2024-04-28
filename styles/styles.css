@@ -453,6 +453,10 @@ main .section.highlight {
   padding-right: 0;
 }
 
+.section[data-maxwidth="section-full-bleed"] > div {
+  max-width: 100%;
+}
+
 .section[data-maxwidth="section-site-width-984px"] > div {
   margin: 0 auto;
   max-width: 984px;
