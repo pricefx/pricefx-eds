@@ -5,7 +5,15 @@ function hasWrapper(el) {
   });
   return !!el.firstElementChild && window.getComputedStyle(el.firstElementChild).display === 'block';
 }
+function toggleAccordion(navToggle) {
+  navToggle.open = !navToggle.open;
+  // const ariaExpandedState = navToggle.attributes[1].value;
+  const plusIcon = document.querySelector('.accordion-button');
+  const ariaExpandedState = plusIcon.getAttribute('aria-expanded');
 
+  const setAriaExpanded = ariaExpandedState === 'false' ? 'true' : 'false';
+  plusIcon.setAttribute('aria-expanded', setAriaExpanded);
+}
 export default function decorate(block) {
   [...block.children].forEach((row) => {
     // decorate accordion item label
@@ -16,11 +24,16 @@ export default function decorate(block) {
     if (!hasWrapper(summary)) {
       summary.innerHTML = `
         <p>${summary.innerHTML}</p>
-        <button class="accordion-button" aria-expanded="false">
-          <span class="plus-icon" aria-expanded="false"></span>
-        </button>
      `;
     }
+
+    const buttonWithIcon = document.createElement('button');
+    buttonWithIcon.classList.add('accordion-button');
+    buttonWithIcon.setAttribute('aria-expanded', 'false');
+    // buttonWithIcon.style.visibility = "visible";
+    buttonWithIcon.innerHTML = '<span class="plus-icon" aria-expanded="false"></span>';
+    summary.appendChild(buttonWithIcon);
+
     // decorate accordion item body
     const body = row.children[1];
     body.className = 'accordion-item-body';
@@ -34,18 +47,11 @@ export default function decorate(block) {
     row.classList.add('accordion-item-container');
     row.innerHTML = '';
     row.append(details);
-  });
 
-  const plusIcon = document.querySelector('.plus-icon');
-  plusIcon.addEventListener('click', () => {
-    const ariaExpandedState = plusIcon.getAttribute('aria-expanded');
-    const details = document.querySelector('details');
-    if (ariaExpandedState === 'false') {
-      details.setAttribute('open', 'true');
-    } else if (ariaExpandedState === 'true') {
-      details.removeAttribute('open');
-    }
-    const newAriaExpandedState = ariaExpandedState === 'false' ? 'true' : 'false';
-    plusIcon.setAttribute('aria-expanded', newAriaExpandedState);
+    const menuTitle = summary.querySelector('button');
+
+    menuTitle.addEventListener('click', () => {
+      toggleAccordion(details);
+    });
   });
 }
