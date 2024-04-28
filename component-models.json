@@ -756,8 +756,8 @@
         "name": "sectionTitle",
         "valueType": "string",
         "options": [
-          { "name": "Title Gray", "value": "section-title-gray" },
-          { "name": "Title Blue - Default", "value": "section-title-blue" }
+          { "name": "Section Title Gray", "value": "section-title-gray" },
+          { "name": "Section Title Blue - Default", "value": "section-title-blue" }
         ]
       },
       {
