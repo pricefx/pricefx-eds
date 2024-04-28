@@ -58,13 +58,13 @@ export default async function decorate(block) {
       heroRightContainer.classList.add('hero-right-container');
     } else if (index === 7) {
       if (row.firstElementChild.textContent !== '') {
-        heroLeftContainer.classList.add(row.firstElementChild.textContent);
+        heroLeftContainer.classList.add(row.firstElementChild.textContent || 'hero-image-right');
       }
     } else if (index === 8) {
       if (row.firstElementChild.textContent !== '') {
         const heroPreHeader = document.createElement('span');
         heroPreHeader.classList.add('hero-pre-header');
-        heroPreHeader.append(row.firstElementChild || '');
+        heroPreHeader.append(row.firstElementChild.textContent || '');
         heroLeftContainerInner.append(heroPreHeader);
       }
     } else if (index === 9) {
