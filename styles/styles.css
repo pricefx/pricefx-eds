@@ -323,7 +323,8 @@ h6 {
 }
 
 /* Button Styles */
-a.button.primary {
+a.button,
+button {
   appearance: none;
   background: linear-gradient(123deg, #304f8c 4.85%, #466cb9 43.45%, #304f8c 54.85%, #283f6f 86.9%);
   background-position: left;
@@ -346,6 +347,11 @@ a.button.primary {
   transition: var(--base-transition);
 }
 
+a.button.primary {
+  background: var(--c-blue-gradient-lt);
+  color: var(--c-btn-drk);
+}
+
 a.button.primary:focus,
 a.button.primary:hover {
   background-position: right;
@@ -354,9 +360,8 @@ a.button.primary:hover {
 /* Secondary */
 a.button.secondary {
   background: transparent;
-  border: 2px solid var(--c-copy);
-  color: var(--c-copy);
-  font-style: normal;
+  border: 2px solid var(--c-disabled-bg);
+  color: var(--c-disabled-bg);
   padding: 14px 30px;
 }
 
@@ -365,9 +370,6 @@ a.button.secondary:hover {
   backdrop-filter: blur(12px);
   background: rgba(255 255 255 / 70%);
 }
-
-
-
 
 @media (width >= 768px) {
   p {
