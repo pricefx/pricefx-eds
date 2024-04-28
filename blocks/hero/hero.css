@@ -63,15 +63,6 @@
 }
 
 /* Hero right container styles */
- .hero .hero-right-container .hero-image-container {
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-}
-
-.hero .hero-right-container .hero-image-container::before {
-  content: unset;
-}
 
 .hero .hero-right-container .hero-image-container img {
     aspect-ratio: 2 / 1;
@@ -158,7 +149,7 @@
     margin: 0 auto;
     z-index: 2;
     padding: 54px 0;
-    min-height: 800px;
+    min-height: 465px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -173,8 +164,8 @@
       margin-bottom: 35px;
   }
 
-  .hero .hero-left-container.hero-secondary-variation {
-    min-height: 465px;
+  .hero .hero-left-container.hero-primary-variation {
+    min-height: 800px;
   }
 
   .hero .hero-content {
@@ -187,20 +178,19 @@
     z-index: 1;
   }
 
+  .hero .hero-right-container .hero-image-container {
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    background-position: right center;
+  }
+
   .hero.hero-image-left .hero-image-container  {
     background-position: left center;
   }
 
-  .hero.hero-image-right .hero-image-container  {
-    background-position: right center;
-  }
-
   .hero.hero-image-center .hero-image-container  {
     background-position: center;
-  }
-
-  .hero .hero-right-container .hero-image-container img {
-    display: none;
   }
 
   .hero .hero-right-container .hero-image-container::before {

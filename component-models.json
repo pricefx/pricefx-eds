@@ -817,12 +817,12 @@
       },
       {
         "component": "radio-group",
-        "label": "Hero Variation",
+        "label": "Hero Height Variation",
         "name": "heroVariation",
         "valueType": "string",
         "options": [
-          { "name": "Hero Height 800px - Default", "value": "hero-primary-variation" },
-          { "name": "Hero Height 465px", "value": "hero-secondary-variation" }
+          { "name": "Hero Height 800px", "value": "hero-primary-variation" },
+          { "name": "Hero Height 465px - Default", "value": "hero-secondary-variation" }
         ]
       },
       {

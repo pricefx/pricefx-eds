@@ -58,6 +58,9 @@ export default async function decorate(block) {
       heroRightContainer.append(row.firstElementChild);
       heroRightContainer.classList.add('hero-right-container');
     } else if (index === 6) {
+      /* Height Height Variation */
+      heroLeftContainer.classList.add(row.firstElementChild?.textContent || 'hero-secondary-variation');
+    } else if (index === 7) {
       /* Pre Header Text */
       if (row.firstElementChild?.textContent !== '') {
         const heroPreHeader = document.createElement('span');
@@ -65,7 +68,7 @@ export default async function decorate(block) {
         heroPreHeader.append(row.firstElementChild);
         heroLeftContainerInner.append(heroPreHeader);
       }
-    } else if (index === 7) {
+    } else if (index === 8) {
       /* Hero Content */
       row.firstElementChild?.classList.add('hero-content-container');
       heroLeftContainerInner.append(row.firstElementChild || '');
