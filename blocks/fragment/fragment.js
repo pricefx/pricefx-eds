@@ -39,7 +39,7 @@ export async function loadFragment(path) {
 
 export default async function decorate(block) {
   const [fragmentPath] = block.children;
-  block.txtContent = '';
+  block.textContent = '';
   const path = fragmentPath.textContent.trim();
   const fragment = await loadFragment(path);
   if (fragment) {
