@@ -347,11 +347,6 @@ button {
   transition: var(--base-transition);
 }
 
-a.button.primary {
-  background: var(--c-blue-gradient-lt);
-  color: var(--c-btn-drk);
-}
-
 a.button.primary:focus,
 a.button.primary:hover {
   background-position: right;
@@ -360,8 +355,9 @@ a.button.primary:hover {
 /* Secondary */
 a.button.secondary {
   background: transparent;
-  border: 2px solid var(--c-disabled-bg);
-  color: var(--c-disabled-bg);
+  border: 2px solid var(--c-copy);
+  color: var(--c-copy);
+  font-style: normal;
   padding: 14px 30px;
 }
 
