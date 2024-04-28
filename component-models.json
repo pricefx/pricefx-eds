@@ -708,6 +708,18 @@
             "value": ""
           },
           {
+            "name": "Padding Large",
+            "value": "section-padding-large"
+          },
+          {
+            "name": "Padding Medium",
+            "value": "section-padding-medium"
+          },
+          {
+            "name": "Padding Small",
+            "value": "section-padding-small"
+          },
+          {
             "name": "No Padding",
             "value": "section-no-padding"
           }
