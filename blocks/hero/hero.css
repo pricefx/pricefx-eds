@@ -185,6 +185,10 @@
     background-position: right center;
   }
 
+  .hero .hero-right-container .hero-image-container img {
+    display: none;
+  }
+
   .hero.hero-image-left .hero-image-container  {
     background-position: left center;
   }

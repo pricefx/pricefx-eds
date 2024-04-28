@@ -779,7 +779,7 @@
         "label": "Image Position",
         "name": "classes",
         "valueType": "string",
-        "value": "",
+        "value": "hero-image-right",
         "options": [
           { "name": "Left", "value": "hero-image-left" },
           { "name": "Center", "value": "hero-image-center" },
