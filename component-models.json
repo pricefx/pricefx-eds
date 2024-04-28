@@ -1391,7 +1391,7 @@
     "id": "fragment",
     "fields": [
       {
-        "component": "aem-content",
+        "component": "text-input",
         "name": "fragmentPath",
         "value": "",
         "label": "Fragment Path",
