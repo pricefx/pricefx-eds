@@ -755,6 +755,7 @@
         "label": "Section Title Color",
         "name": "sectionTitle",
         "valueType": "string",
+        "description": "The entire section's H1 to H6 color will be changed.",
         "options": [
           { "name": "Section Title Gray", "value": "section-title-gray" },
           { "name": "Section Title Blue - Default", "value": "section-title-blue" }
