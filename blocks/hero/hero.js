@@ -1,9 +1,9 @@
 function decorateButton(heroLeftContainer) {
   heroLeftContainer.querySelectorAll('.button-container').forEach((btn) => {
-    const btnStyle = btn.children[0].textContent || 'hero-primary-button';
-    const btnLink = btn.children[1].textContent;
-    const btnLabel = btn.children[2].textContent;
-    const btnTarget = btn.children[3].textContent;
+    const btnStyle = btn.children[0]?.textContent || 'hero-primary-button';
+    const btnLink = btn.children[1]?.textContent;
+    const btnLabel = btn.children[2]?.textContent;
+    const btnTarget = btn.children[3]?.textContent;
     btn.textContent = '';
     if (btnLabel === '') {
       btn.remove();
@@ -63,7 +63,7 @@ export default async function decorate(block) {
       heroLeftContainer.classList.add(row.firstElementChild.textContent || 'hero-image-right');
     } else if (index === 8) {
       /* Pre Header Text */
-      if (row.firstElementChild.textContent !== '') {
+      if (row.firstElementChild?.textContent !== '') {
         const heroPreHeader = document.createElement('span');
         heroPreHeader.classList.add('hero-pre-header');
         heroPreHeader.append(row.firstElementChild);
