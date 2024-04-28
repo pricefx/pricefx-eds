@@ -83,34 +83,6 @@
   margin-bottom: 0;
 }
 
-.hero a.button.hero-primary-button {
-  appearance: none;
-  background: linear-gradient(123deg, #304f8c 4.85%, #466cb9 43.45%, #304f8c 54.85%, #283f6f 86.9%);
-  background-position: left;
-  background-size: 300%;
-  border: none;
-  border-radius: 4px;
-  color: var(--c-white);
-  cursor: pointer;
-  display: block;
-  font-family: var(--ff-primary);
-  font-size: var(--base-font-size);
-  font-weight: var(--fw-med);
-  line-height: 1;
-  margin: 0;
-  padding: var(--spacing-xsmall) var(--spacing-medium);
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: var(--base-transition);
-}
-
-.hero a.button.hero-primary-button:hover, 
-.hero a.button.hero-primary-button:focus {
-  background-position: right;
-}
-
 .hero a.button.hero-secondary-button {
   background: transparent;
   border: 2px solid var(--c-copy);
@@ -212,8 +184,8 @@
     margin: 35px 9px 0 0;
   }
 
-  .hero a.button.hero-primary-button,
-  .hero a.button.hero-secondary-button {
+  .hero a.button.primary,
+  .hero a.button.secondary {
     display: inline-block;
   }
 

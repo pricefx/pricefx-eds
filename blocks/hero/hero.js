@@ -1,6 +1,6 @@
 function decorateButton(heroLeftContainer) {
   heroLeftContainer.querySelectorAll('.button-container').forEach((btn) => {
-    const btnStyle = btn.children[0]?.textContent || 'hero-primary-button';
+    const btnStyle = btn.children[0]?.textContent || 'primary';
     const btnLink = btn.children[1]?.textContent;
     const btnLabel = btn.children[2]?.textContent;
     const btnTarget = btn.children[3]?.textContent;

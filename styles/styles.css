@@ -360,6 +360,14 @@ a.button.secondary {
   padding: 14px 30px;
 }
 
+a.button.secondary:focus,
+a.button.secondary:hover {
+  backdrop-filter: blur(12px);
+  background: rgba(255 255 255 / 70%);
+}
+
+
+
 
 @media (width >= 768px) {
   p {

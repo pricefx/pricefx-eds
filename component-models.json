@@ -847,10 +847,10 @@
         "label": "Button 1 Style",
         "name": "buttonOneStyle",
         "valueType": "string",
-        "value": "hero-primary-button",
+        "value": "primary",
         "options": [
-          { "name": "Primary", "value": "hero-primary-button" },
-          { "name": "Secondary", "value": "hero-secondary-button" }
+          { "name": "Primary", "value": "primary" },
+          { "name": "Secondary", "value": "secondary" }
         ]
       },
       {
@@ -877,11 +877,11 @@
         "component": "radio-group",
         "label": "Button 2 Style",
         "name": "buttonTwoStyle",
-        "value": "hero-primary-button",
+        "value": "primary",
         "valueType": "string",
         "options": [
-          { "name": "Primary", "value": "hero-primary-button" },
-          { "name": "Secondary", "value": "hero-secondary-button" }
+          { "name": "Primary", "value": "primary" },
+          { "name": "Secondary", "value": "secondary" }
         ]
       },
       {
@@ -909,10 +909,10 @@
         "label": "Button 3 Style",
         "name": "buttonThreeStyle",
         "valueType": "string",
-        "value": "hero-primary-button",
+        "value": "primary",
         "options": [
-          { "name": "Primary", "value": "hero-primary-button" },
-          { "name": "Secondary", "value": "hero-secondary-button" }
+          { "name": "Primary", "value": "primary" },
+          { "name": "Secondary", "value": "secondary" }
         ]
       },
       {
