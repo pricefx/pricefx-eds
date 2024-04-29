@@ -15,7 +15,7 @@
 
 .accordion details summary::after {
   font-family: var(--ff-activate-icons);
-  font-size: calc((30 / 16) * 1rem);
+  font-size: var(--heading-font-size-xl);
   content: var(--icon-accordion-closed);
   position: absolute;
   top: 50%;
@@ -34,7 +34,7 @@
   font-style: normal;
   font-weight: var(--fw-regular);
   color: var(--c-copy);
-  font-size: calc((22 / 16) * 1rem);
+  font-size: var(--heading-font-size-m);
   line-height: 28px;
 }
 
