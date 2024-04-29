@@ -19,7 +19,6 @@
   content: var(--icon-accordion-closed);
   position: absolute;
   top: 50%;
-  right: 18px;
   transform: translateY(-50%);
   transition: transform 0.2s;
 }
@@ -29,12 +28,12 @@
 }
 
 .accordion details .accordion-item-body {
-  padding: 0 4px 20px;
+  padding: 0 4px 30px;
   font-family: var(--ff-secondary);
   font-style: normal;
   font-weight: var(--fw-regular);
   color: var(--c-copy);
-  font-size: var(--heading-font-size-m);
+  font-size: var(--heading-font-size-s);
   line-height: 28px;
 }
 
