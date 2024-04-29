@@ -81,7 +81,7 @@
     padding: var(--spacing-medium);
   }
 
-  .columns.column-separater > div > div:not(:last-child) {
+  .columns.column-separator > div > div:not(:last-child) {
     border-right: 1px solid var(--c-copy);
   }
 
