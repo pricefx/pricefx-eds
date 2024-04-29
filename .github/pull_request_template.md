@@ -4,5 +4,5 @@ Fix #<gh-issue-id>
 
 Test URLs:
 
-- Before: https://main--pricefx-aem--bounteous-inc.hlx.live/
-- After: https://<branch>--pricefx-aem--bounteous-inc.hlx.live/
+- Before: https://main--pricefx-eds--pricefx.hlx.live/
+- After: https://<branch>--pricefx-eds--pricefx.hlx.live/
