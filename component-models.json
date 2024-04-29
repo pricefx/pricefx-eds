@@ -95,7 +95,7 @@
         "valueType": "string",
         "options": [
           {
-            "name": "Grey - Default",
+            "name": "Gray - Default",
             "value": "title-dark-grey"
           },
           {
@@ -421,7 +421,7 @@
           },
           {
             "name": "Column Separator",
-            "value": "column-separater"
+            "value": "column-separator"
           },
           {
             "name": "Reverse order in mobile",
@@ -637,8 +637,8 @@
             "value": ""
           },
           {
-            "name": "Grey",
-            "value": "section-bg-color-grey"
+            "name": "Gray",
+            "value": "section-bg-color-gray"
           },
           {
             "name": "White",
@@ -708,6 +708,18 @@
             "value": ""
           },
           {
+            "name": "Padding Large",
+            "value": "section-padding-large"
+          },
+          {
+            "name": "Padding Medium",
+            "value": "section-padding-medium"
+          },
+          {
+            "name": "Padding Small",
+            "value": "section-padding-small"
+          },
+          {
             "name": "No Padding",
             "value": "section-no-padding"
           }
@@ -736,6 +748,17 @@
             "name": "Large",
             "value": "rounded-corner-20px"
           }
+        ]
+      },
+      {
+        "component": "radio-group",
+        "label": "Section Title Color",
+        "name": "sectionTitle",
+        "valueType": "string",
+        "description": "The entire section's H1 to H6 color will be changed.",
+        "options": [
+          { "name": "Section Title Gray", "value": "section-title-gray" },
+          { "name": "Section Title Blue - Default", "value": "section-title-blue" }
         ]
       },
       {
@@ -1191,13 +1214,13 @@
       {
         "component": "aem-tag",
         "label": "Article Category Tag",
-        "name": "cq:categorytags",
+        "name": "articleCategorytags",
         "valueType": "string"
       },
       {
         "component": "aem-tag",
         "label": "Article Tags",
-        "name": "cq:tags",
+        "name": "articleTags",
         "valueType": "string"
       },
       {
