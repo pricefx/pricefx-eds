@@ -767,6 +767,12 @@
         "name": "sectionID",
         "label": "ID",
         "value": ""
+      },
+      {
+        "component": "boolean",
+        "label": "Iframe Two Column",
+        "name": "iframeTwoColumn",
+        "valueType": "boolean"
       }
     ]
   },
