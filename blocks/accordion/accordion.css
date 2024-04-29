@@ -4,8 +4,6 @@
 
 .accordion details summary {
   position: relative;
-  padding: 0 16px;
-  padding-right: 48px;
   cursor: pointer;
   list-style: none;
   overflow: auto;
@@ -19,7 +17,6 @@
   font-family: var(--ff-activate-icons);
   font-size: calc((30 / 16) * 1rem);
   content: var(--icon-accordion-closed);
-  color: var(--c-primary);
   position: absolute;
   top: 50%;
   right: 18px;
@@ -32,10 +29,13 @@
 }
 
 .accordion details .accordion-item-body {
-  padding: 0 16px;
-  font-family: var(--fw-regular);
+  padding: 0 4px 20px;
+  font-family: var(--ff-secondary);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--fw-regular);
+  color: var(--c-copy);
+  font-size: calc((22 / 16) * 1rem);
+  line-height: 28px;
 }
 
 .accordion-button {
@@ -61,8 +61,7 @@
  align-items: center;
  font-family: var(--ff-primary);
  font-size: calc((33 / 16) * 1rem); 
- font-weight: 500;
- line-height: 56px;
+ font-weight: var(--fw-med);
 }
 
 .accordion-item-label p {
