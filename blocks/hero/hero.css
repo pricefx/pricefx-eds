@@ -8,7 +8,7 @@
 }
 
 .section.hero-container[data-backgroundcolor="section-bg-color-white"] .hero-right-container .hero-image-container::before {
-  background: linear-gradient(90deg, #FFF 2.33%, #fffffff2 24.08%, #ffffffb3 44.28%, #d9d9d900 77.69%);
+  background: linear-gradient(90deg, #fff 2.33%, #fffffff2 24.08%, #ffffffb3 44.28%, #d9d9d900 77.69%);
 }
 
 .section .hero-wrapper {

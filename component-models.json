@@ -738,15 +738,15 @@
           },
           {
             "name": "Small",
-            "value": "rounded-corner-8px"
+            "value": "rounded-corner-small"
           },
           {
             "name": "Medium",
-            "value": "rounded-corner-16px"
+            "value": "rounded-corner-medium"
           },
           {
             "name": "Large",
-            "value": "rounded-corner-20px"
+            "value": "rounded-corner-large"
           }
         ]
       },
