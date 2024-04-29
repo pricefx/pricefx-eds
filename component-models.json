@@ -708,6 +708,18 @@
             "value": ""
           },
           {
+            "name": "Padding Large",
+            "value": "section-padding-large"
+          },
+          {
+            "name": "Padding Medium",
+            "value": "section-padding-medium"
+          },
+          {
+            "name": "Padding Small",
+            "value": "section-padding-small"
+          },
+          {
             "name": "No Padding",
             "value": "section-no-padding"
           }
@@ -736,6 +748,17 @@
             "name": "Large",
             "value": "rounded-corner-20px"
           }
+        ]
+      },
+      {
+        "component": "radio-group",
+        "label": "Section Title Color",
+        "name": "sectionTitle",
+        "valueType": "string",
+        "description": "The entire section's H1 to H6 color will be changed.",
+        "options": [
+          { "name": "Section Title Gray", "value": "section-title-gray" },
+          { "name": "Section Title Blue - Default", "value": "section-title-blue" }
         ]
       },
       {

@@ -407,13 +407,12 @@ a.button.secondary:hover {
 ============================================= */
 /* sections */
 main .section {
-  padding: 64px 24px;
+  padding: var(--spacing-xlarge) var(--spacing-small);
 }
 
-@media (width >= 768px) {
-  main .section {
-   padding: 120px 32px;
-  }
+.section > div {
+  margin: 0 auto;
+  max-width: 1188px;
 }
 
 /* section metadata */
@@ -422,8 +421,15 @@ main .section.highlight {
   background-color: var(--c-gray-lt);
 }
 
-.section[data-backgroundcolor="section-bg-color-grey"] {
-  background-color: var(--c-gray-lt);
+.section[data-sectiontitle="section-title-gray"] h1,
+.section[data-sectiontitle="section-title-gray"] h2,
+.section[data-sectiontitle="section-title-gray"] h3,
+.section[data-sectiontitle="section-title-gray"] h4,
+.section[data-sectiontitle="section-title-gray"] h5,
+.section[data-sectiontitle="section-title-gray"] h6 {
+  background: var(--c-copy);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .section[data-backgroundcolor="section-bg-color-white"] {
@@ -447,11 +453,6 @@ main .section.highlight {
   padding-right: 0;
 }
 
-.section > div {
-  margin: 0 auto;
-  max-width: 1188px;
-}
-
 .section[data-maxwidth="section-site-width-984px"] > div {
   margin: 0 auto;
   max-width: 984px;
@@ -467,6 +468,18 @@ main .section.highlight {
   max-width: 680px;
 }
 
+.section[data-padding="section-padding-large"] {
+  padding: 50px var(--spacing-small);
+}
+
+.section[data-padding="section-padding-medium"] {
+  padding: var(--spacing-medium) var(--spacing-small);
+}
+
+.section[data-padding="section-padding-small"] {
+  padding: var(--spacing-xsmall) var(--spacing-small);
+}
+
 .section[data-padding="section-no-padding"] {
   padding: 0;
 }
@@ -479,10 +492,28 @@ main .section.highlight {
 
 .section[data-roundedcorner="rounded-corner-16px"] img,
 .section[data-roundedcorner="rounded-corner-16px"] iframe {
-  border-radius: 16px;
+  border-radius: var(--spacing-xsmall);
 }
 
 .section[data-roundedcorner="rounded-corner-20px"] img,
 .section[data-roundedcorner="rounded-corner-20px"] iframe {
   border-radius: 20px;
+}
+
+@media (width >= 768px) {
+  main .section {
+   padding: 120px var(--spacing-medium);
+  }
+
+  .section[data-padding="section-padding-large"] {
+    padding: 100px var(--spacing-medium);
+  }
+  
+  .section[data-padding="section-padding-medium"] {
+    padding: var(--spacing-xlarge) var(--spacing-medium);
+  }
+  
+  .section[data-padding="section-padding-small"] {
+    padding: var(--spacing-medium);
+  }
 }
