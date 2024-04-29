@@ -48,20 +48,12 @@
   background-color: var(--c-white);
 }
 
-.columns.column-separater > div > div {
-  border-right: 1px solid var(--c-copy);
-}
-
 .columns.column-padding-64px > div > div {
   padding: var(--spacing-medium);
 }
 
 .columns.column-padding-32px > div > div {
   padding: var(--spacing-xsmall);
-}
-
-.columns.column-separater > div > div:last-child {
-  border-right: unset; 
 }
 
 
@@ -87,6 +79,10 @@
 
   .columns.column-padding-32px > div > div {
     padding: var(--spacing-medium);
+  }
+
+  .columns.column-separator > div > div:not(:last-child) {
+    border-right: 1px solid var(--c-copy);
   }
 
   .columns.columns-2.two-column-3-7 > div > div:first-child {

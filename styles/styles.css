@@ -436,6 +436,10 @@ main .section.highlight {
   background-color: var(--c-white);
 }
 
+.section[data-backgroundcolor="section-bg-color-gray"] {
+  background-color: var(--c-gray-lt);
+}
+
 .section[data-alignment="section-align-left"] {
   text-align: left;
 }
@@ -451,6 +455,10 @@ main .section.highlight {
 .section[data-maxwidth="section-full-bleed"] {
   padding-left: 0;
   padding-right: 0;
+}
+
+.section[data-maxwidth="section-full-bleed"] > div {
+  max-width: 100%;
 }
 
 .section[data-maxwidth="section-site-width-984px"] > div {
