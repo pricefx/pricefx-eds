@@ -1,4 +1,4 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
+import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
 import ffetch from '../../scripts/ffetch.js';
 
 function generateCardDom(article) {
@@ -40,8 +40,11 @@ export default async function decorate(block) {
   const title = block.children[0]?.textContent.trim();
   const titleEle = `<h2>${title}</h2>`;
   const columnLayout = block.children[1]?.textContent.trim() || 'three-column';
-  const categoryTags = block.children[2]?.textContent.trim()?.split(',');
+  let categoryTags = block.children[2]?.textContent.trim()?.split(',');
   const articleTags = block.children[3]?.textContent.trim()?.split(',');
+  if (categoryTags.toString().length === 0) {
+    categoryTags = getMetadata('category')?.split(',');
+  }
   const filterValues = {
     category: categoryTags,
     authors: articleTags,
