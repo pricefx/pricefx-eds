@@ -436,6 +436,10 @@ main .section.highlight {
   background-color: var(--c-white);
 }
 
+.section[data-backgroundcolor="section-bg-color-gray"] {
+  background-color: var(--c-gray-lt);
+}
+
 .section[data-alignment="section-align-left"] {
   text-align: left;
 }
