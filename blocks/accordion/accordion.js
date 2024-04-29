@@ -13,7 +13,7 @@ export default function decorate(block) {
     summary.append(...label.childNodes);
     if (!hasWrapper(summary)) {
       summary.innerHTML = `
-        <p>${summary.innerHTML}</p>
+        <h3>${summary.innerHTML}</h3>
      `;
     }
 

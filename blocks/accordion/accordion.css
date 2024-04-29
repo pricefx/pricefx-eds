@@ -33,7 +33,7 @@
 
 .accordion details .accordion-item-body {
   padding: 0 16px;
-  font-family: var(--ff-secondary);
+  font-family: var(--fw-regular);
   font-style: normal;
   font-weight: 400;
 }
@@ -44,33 +44,23 @@
   cursor: pointer;    
 }
 
-/* .accordion-button[aria-expanded = 'false'] .plus-icon::after {
-  content: var(--icon-plus);
-  cursor: pointer;
-}
-
-.accordion-button[aria-expanded = 'true'] .plus-icon::after {
-  content: var(--icon-minus);
-  cursor: pointer;
-} */
 
 .plus-icon{
   color: var(--c-mega-menu-link);
   cursor:pointer;
   line-height: 0px;
   font-family: var(--ff-pricefx-icons);
-  font-size: 30px;
-  font-weight: var(--fw-regular);
+  font-size: calc((30 / 16) * 1rem); 
   position: absolute;
   right: 0;
 }
 
 .accordion-item-label{
  display: flex;
+ justify-content: space-between;
  align-items: center;
- color: #000;
  font-family: var(--ff-primary);
- font-size: 33px; 
+ font-size: calc((33 / 16) * 1rem); 
  font-weight: 500;
  line-height: 56px;
 }
