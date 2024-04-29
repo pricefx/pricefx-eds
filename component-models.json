@@ -429,11 +429,11 @@
           },
           {
             "name": "Add Padding Large",
-            "value": "column-padding-64px"
+            "value": "column-padding-large"
           },
           {
             "name": "Add Padding Medium",
-            "value": "column-padding-32px"
+            "value": "column-padding-medium"
           }
         ]
       }
