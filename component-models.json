@@ -95,7 +95,7 @@
         "valueType": "string",
         "options": [
           {
-            "name": "Grey - Default",
+            "name": "Gray - Default",
             "value": "title-dark-grey"
           },
           {
@@ -421,7 +421,7 @@
           },
           {
             "name": "Column Separator",
-            "value": "column-separater"
+            "value": "column-separator"
           },
           {
             "name": "Reverse order in mobile",
@@ -637,8 +637,8 @@
             "value": ""
           },
           {
-            "name": "Grey",
-            "value": "section-bg-color-grey"
+            "name": "Gray",
+            "value": "section-bg-color-gray"
           },
           {
             "name": "White",
