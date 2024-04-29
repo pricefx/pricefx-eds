@@ -1214,13 +1214,13 @@
       {
         "component": "aem-tag",
         "label": "Article Category Tag",
-        "name": "cq:categorytags",
+        "name": "articleCategorytags",
         "valueType": "string"
       },
       {
         "component": "aem-tag",
         "label": "Article Tags",
-        "name": "cq:tags",
+        "name": "articleTags",
         "valueType": "string"
       },
       {
