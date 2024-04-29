@@ -80,10 +80,6 @@ export default function decorate(block) {
 
   // Adjust Height of stat-title
   const adjustStatTitleHeight = () => {
-    const statTitles = parentDiv.querySelectorAll('.stat-title');
-    statTitles.forEach((title) => {
-      title.style.height = 'auto'; // Set height to auto to recalculate
-    });
     setTimeout(() => {
       const statTitle = parentDiv.querySelectorAll('.stat-title');
       let maxHeight = 0;
@@ -99,10 +95,20 @@ export default function decorate(block) {
     }, 200); // Delay to ensure proper recalculation after content changes
   };
 
+  const setDefaultTitle = () => {
+    const statTitles = parentDiv.querySelectorAll('.stat-title');
+    statTitles.forEach((title) => {
+      title.style.height = 'auto';
+    });
+  };
+
   // Attach resize event listener to adjust heights on window resize
   window.addEventListener('resize', () => {
     if (window.innerWidth > 768) {
+      setDefaultTitle();
       adjustStatTitleHeight();
+    } else {
+      setDefaultTitle();
     }
   });
 
