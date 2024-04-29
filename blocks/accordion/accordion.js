@@ -1,18 +1,8 @@
 function hasWrapper(el) {
-  document.addEventListener('DOMContentLoaded', () => {
-    const icon = document.getElementById('plus-icon');
-    icon.setAttribute('aria-expanded', 'false');
-  });
   return !!el.firstElementChild && window.getComputedStyle(el.firstElementChild).display === 'block';
 }
 function toggleAccordion(navToggle) {
   navToggle.open = !navToggle.open;
-  // const ariaExpandedState = navToggle.attributes[1].value;
-  const plusIcon = document.querySelector('.accordion-button');
-  const ariaExpandedState = plusIcon.getAttribute('aria-expanded');
-
-  const setAriaExpanded = ariaExpandedState === 'false' ? 'true' : 'false';
-  plusIcon.setAttribute('aria-expanded', setAriaExpanded);
 }
 export default function decorate(block) {
   [...block.children].forEach((row) => {
@@ -30,7 +20,6 @@ export default function decorate(block) {
     const buttonWithIcon = document.createElement('button');
     buttonWithIcon.classList.add('accordion-button');
     buttonWithIcon.setAttribute('aria-expanded', 'false');
-    // buttonWithIcon.style.visibility = "visible";
     buttonWithIcon.innerHTML = '<span class="plus-icon" aria-expanded="false"></span>';
     summary.appendChild(buttonWithIcon);
 

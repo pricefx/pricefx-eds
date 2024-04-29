@@ -44,7 +44,7 @@
   cursor: pointer;    
 }
 
-.accordion-button[aria-expanded = 'false'] .plus-icon::after {
+/* .accordion-button[aria-expanded = 'false'] .plus-icon::after {
   content: var(--icon-plus);
   cursor: pointer;
 }
@@ -52,7 +52,7 @@
 .accordion-button[aria-expanded = 'true'] .plus-icon::after {
   content: var(--icon-minus);
   cursor: pointer;
-}
+} */
 
 .plus-icon{
   color: var(--c-mega-menu-link);
@@ -77,4 +77,12 @@
 
 .accordion-item-label p {
   margin-bottom: 0;
+}
+
+.accordion-item[open] .plus-icon::after {
+  content: var(--icon-minus);
+}
+
+.accordion-item:not([open]) .plus-icon::after {
+  content: var(--icon-plus);
 }
