@@ -347,6 +347,12 @@ button {
   transition: var(--base-transition);
 }
 
+a.button:focus,
+button:focus {
+  outline: 2px solid var(--c-outline-drk);
+  outline-offset: 2px;
+}
+
 a.button.primary:focus,
 a.button.primary:hover {
   background-position: right;
