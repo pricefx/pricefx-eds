@@ -1207,8 +1207,7 @@
         "options": [
           { "name": "2 Column", "value": "two-column" },
           { "name": "3 Column", "value": "three-column" },
-          { "name": "4 Column", "value": "four-column" },
-          { "name": "5 Column", "value": "five-column" }
+          { "name": "4 Column", "value": "four-column" }
         ]
       },
       {

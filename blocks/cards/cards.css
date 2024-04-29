@@ -11,7 +11,7 @@
   background-color: var(--c-white);
   margin-left: 0;
   border-radius: 8px;
-  box-shadow: 0 4px 4px 0 rgba(#000, #000, #000, 25%);
+  box-shadow: 0 5px 20px 0 rgb(0 0 0 / 25%);
   display: flex;
   flex-direction: column;
 }
@@ -94,6 +94,8 @@
 .cards .cards-card-cta {
   margin-top: auto;
   padding-top: 40px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .cards .cards-card-cta a,
@@ -105,11 +107,12 @@
   font-weight: var(--fw-med);
   line-height: 20px;
   letter-spacing: 1px;
-  padding-right: 25px;
+  padding: 0 25px 0 0;
   position: relative;
   display: inline-flex;
   word-break: break-word;
   background: none;
+  margin: 0;
 }
 
 .cards .cards-card-cta a::after,
@@ -119,6 +122,16 @@
   font-size: calc((12 / 16) * 1rem);
   position: absolute;
   right: 0;
+}
+
+.cards-card-reading-time {
+  color: var(--c-gray-mid);
+  text-align: right;
+  font-family: var(--ff-primary);
+  font-size: var(--base-font-size);
+  font-style: normal;
+  font-weight: var(--fw-bold);
+  line-height: 20px;
 }
 
 div.cards-card-eyebrow + div.cards-card-description {

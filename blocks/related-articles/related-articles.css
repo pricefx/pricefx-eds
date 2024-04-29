@@ -1,0 +1,20 @@
+@import url('../cards/cards.css');
+
+.related-articles h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-large);
+}
+
+.related-articles .cards-card-published-date,
+.related-articles .cards-card-reading-time {
+    color: var(--c-full-black);
+    font-family: var(--ff-secondary);
+    font-size: calc((13 / 16) * 1rem);
+    font-style: normal;
+    font-weight: var(--fw-regular);
+    line-height: 19px;
+}
+
+.related-articles .cards-card-cta a {
+    display: none;
+}
