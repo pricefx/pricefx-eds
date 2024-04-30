@@ -1,25 +1,24 @@
 export default function decorate(block) {
   const [urlElement, widthElement, heightElement] = block.children;
+  const height = Number(heightElement.textContent);
+  const width = Number(widthElement.textContent);
+  const url = new URL(urlElement.textContent);
   const container = document.createElement('div');
+  const iframe = document.createElement('iframe');
+
   block.textContent = '';
   container.classList.add('iframe', 'container');
-  if (urlElement) {
-    const url = new URL(urlElement.textContent);
-    const iframe = document.createElement('iframe');
-    container.appendChild(iframe);
-    iframe.src = url.href;
-  }
+  container.appendChild(iframe);
+  iframe.src = url.href;
 
-  if (heightElement) {
-    const height = Number(heightElement.textContent);
+  if (height) {
     container.classList.remove('noheight');
     container.style.height = `${height}px`;
   } else {
     container.classList.add('noheight');
   }
 
-  if (widthElement) {
-    const width = Number(widthElement.textContent);
+  if (width) {
     container.style.width = `${width}px`;
   }
 
