@@ -80,11 +80,11 @@ const embedYoutube = (url, autoplay) => {
     </div>`;
 };
 
-const embedScene7 = (url, autoplay) => {
+const embedScene7 = (url) => {
   // Extract the necessary parameters from the provided Scene7 video URL
   const [, asset] = url.pathname.split('/').slice(-2);
   const serverurl = url.origin + url.pathname.replace('/is/content/', '/is/image/');
-  const videoserverurl = url.origin + '/is/content/';
+  const videoserverurl = `${url.origin}/is/content/`;
 
   // Construct the HTML markup for embedding the Scene7 video viewer
   return `<div id="s7viewer" style="position:relative;width:640px;height:360px;"></div>

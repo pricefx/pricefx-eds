@@ -90,9 +90,9 @@ export default async function decorate(block) {
   heroContainer.append(heroRightContainer);
   block.textContent = '';
   block.append(heroContainer);
-  
+
   // Load and append stats block using loadFragment function
-  const statsPath = '/style-guide/components/stats'; // Update the path accordingly  
+  const statsPath = '/style-guide/components/stats'; // Update the path accordingly
   const statsBlock = await loadFragment(statsPath);
   if (statsBlock) {
     block.after(statsBlock);
