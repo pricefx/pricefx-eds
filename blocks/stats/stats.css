@@ -10,7 +10,6 @@
 
 .stats.block {
     display: flex;
-    padding: 0 24px;
     place-content: center;
 }
 
