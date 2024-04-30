@@ -93,6 +93,7 @@ const embedScene7 = (url) => {
       var videoViewer = new s7viewers.VideoViewer({
         "containerId": "s7viewer",
         "params": {
+          "auto": "auto",
           "asset": "/pricefxstage/${asset}", // Including leading slash and "Scene7SharedAssets"
           "serverurl": "${serverurl}",
           "videoserverurl": "${videoserverurl}"
