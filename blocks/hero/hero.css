@@ -157,6 +157,10 @@
     width: 65%;
   }
 
+  .hero .hero-content.hero-no-bg-image {
+    width: 100%;
+  }
+
   /* Hero right container styles */
   .hero .hero-right-container {
     inset: 0 0 0 58%;

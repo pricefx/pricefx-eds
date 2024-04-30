@@ -37,6 +37,8 @@ function decorateRightContainer(heroRightContainer) {
     heroImageContainer.append(heroImage);
     heroRightContainer.textContent = '';
     heroRightContainer.append(heroImageContainer);
+  } else {
+    heroRightContainer.textContent = '';
   }
 }
 
@@ -54,6 +56,11 @@ export default async function decorate(block) {
   [...block.children].forEach((row, index) => {
     if (index < 6) {
       /* Image / Video */
+      if (index === 0) {
+        if (row.firstElementChild?.textContent === 'noVariation') {
+          heroLeftContainerInner.classList.add('hero-no-bg-image');
+        }
+      }
       heroRightContainer.append(row.firstElementChild);
       heroRightContainer.classList.add('hero-right-container');
     } else if (index === 6) {
