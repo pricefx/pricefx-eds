@@ -83,17 +83,17 @@ const embedYoutube = (url, autoplay) => {
 const embedScene7 = (url) => {
   // Extract the necessary parameters from the provided Scene7 video URL
   const [, , asset] = url.pathname.split('/').slice(-2); // Adjusting slice to include -3
-  const serverurl = 'http://s7d1.scene7.com/is/image/';
-  const videoserverurl = 'http://s7d1.scene7.com/is/content/';
+  const serverurl = 'https://s7d9.scene7.com/is/image/';
+  const videoserverurl = 'https://s7d1.scene7.com/is/content/';
 
   // Construct the HTML markup for embedding the Scene7 video viewer
   return `<div id="s7viewer" style="position:relative;width:640px;height:360px;"></div>
-    <script type="text/javascript" src="http://s7d1.scene7.com/s7viewers/html5/js/VideoViewer.js"></script>
+    <script type="text/javascript" src="https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js"></script>
     <script type="text/javascript">
       var videoViewer = new s7viewers.VideoViewer({
         "containerId": "s7viewer",
         "params": {
-          "asset": "/Scene7SharedAssets/${asset}", // Including leading slash and "Scene7SharedAssets"
+          "asset": "/pricefxstage/${asset}", // Including leading slash and "Scene7SharedAssets"
           "serverurl": "${serverurl}",
           "videoserverurl": "${videoserverurl}"
         }
