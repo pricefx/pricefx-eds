@@ -136,6 +136,10 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
       match: ['youtube', 'youtu.be'],
       embed: embedYoutube,
     },
+    {
+      match: ['scene7'],
+      embed: embedScene7,
+    },
   ];
 
   const config = EMBEDS_CONFIG.find((e) => e.match.some((match) => link.includes(match)));
