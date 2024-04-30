@@ -5,7 +5,7 @@ export default function decorate(block) {
   // setup image columns
   [...block.children].forEach((row) => {
     [...row.children].forEach((col) => {
-      if (col.textContent === '') {
+      if (col.textContent.trim() === '') {
         col.style.border = 'none';
       }
       const pic = col.querySelector('picture');

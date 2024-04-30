@@ -775,13 +775,15 @@
     "id": "hero",
     "fields": [
       {
-        "component": "radio-group",
+        "component": "select",
         "label": "Variation",
         "name": "variation",
         "valueType": "string",
+        "value": "imageVariation",
         "options": [
-          { "name": "Image", "value": "imageVariation" },
-          { "name": "Video", "value": "videoVariation" }
+          { "name": "Image - Default", "value": "imageVariation" },
+          { "name": "Video", "value": "videoVariation" },
+          { "name": "No Background Image / Video", "value": "noVariation" }
         ]
       },
       {
@@ -878,7 +880,7 @@
         ]
       },
       {
-        "component": "text-input",
+        "component": "aem-content",
         "valueType": "string",
         "name": "buttonOneLink",
         "value": "",
@@ -909,7 +911,7 @@
         ]
       },
       {
-        "component": "text-input",
+        "component": "aem-content",
         "valueType": "string",
         "name": "buttonTwoLink",
         "value": "",
@@ -940,7 +942,7 @@
         ]
       },
       {
-        "component": "text-input",
+        "component": "aem-content",
         "valueType": "string",
         "name": "buttonThreeLink",
         "value": "",

@@ -26,17 +26,18 @@ function decorateButton(heroLeftContainer) {
 
 function decorateRightContainer(heroRightContainer) {
   const heroVariation = heroRightContainer.firstElementChild.textContent;
-  const heroImageContainer = document.createElement('div');
-  heroImageContainer.classList.add('hero-image-container');
+
   if (heroVariation === 'imageVariation') {
+    const heroImageContainer = document.createElement('div');
+    heroImageContainer.classList.add('hero-image-container');
     const heroImage = heroRightContainer.children[1];
     if (window.matchMedia('(min-width:986px)').matches && heroImage.querySelector('img') !== null) {
       heroImageContainer.setAttribute('style', `background-image:url(${heroImage.querySelector('img').src})`);
     }
     heroImageContainer.append(heroImage);
+    heroRightContainer.textContent = '';
+    heroRightContainer.append(heroImageContainer);
   }
-  heroRightContainer.textContent = '';
-  heroRightContainer.append(heroImageContainer);
 }
 
 export default async function decorate(block) {

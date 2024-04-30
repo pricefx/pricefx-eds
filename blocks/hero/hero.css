@@ -46,7 +46,8 @@
   font-style: normal;
   font-weight: var(--fw-med);
   line-height: 25px;
-  letter-spacing: 1.5px
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 }
 
 .hero .hero-content-container h1,
@@ -123,7 +124,9 @@
   .hero .hero-pre-header p {
     font-size: calc((22 / 16) * 1rem);
     font-weight: var(--fw-bold);
-    line-height: 27px;
+    line-height: 28px;
+    text-transform: capitalize;
+    letter-spacing: normal;
   }
 
   .hero .hero-left-container {
