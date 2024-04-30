@@ -370,6 +370,7 @@
         "value": "",
         "label": "Column Styles",
         "valueType": "string",
+        "description": "Segregating 2 column width will be applicable only when we select 2 column in column layout dropdown above.",
         "options": [
           {
             "name": "2 Column 30 X 70",
@@ -853,9 +854,9 @@
         "component": "text-input",
         "valueType": "string",
         "name": "heroPreheader",
-        "label": "Hero Preheader Text",
+        "label": "Hero Eyebrow Text",
         "value": "",
-        "description": "ⓘ Hero PreHeader Text"
+        "description": "ⓘ Hero Eyebrow Text"
       },
       {
         "component": "richtext",
