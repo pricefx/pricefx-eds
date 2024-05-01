@@ -161,7 +161,14 @@
         "label": "Alt Text"
       },
       {
-        "component": "text",
+        "component": "text-input",
+        "valueType": "string",
+        "name": "internal Link",
+        "value": "alt",
+        "label": "Image Link"
+      },
+      {
+        "component": "aem-content",
         "name": "imageLink",
         "label": "Image Link",
         "valueType": "string",
