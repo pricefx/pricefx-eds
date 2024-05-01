@@ -163,7 +163,7 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "internal Link",
+        "name": "height",
         "value": "alt",
         "label": "Image Link"
       },
