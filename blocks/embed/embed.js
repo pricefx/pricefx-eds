@@ -105,7 +105,7 @@ const embedScene7 = (url) => {
   s7viewerDiv.append(s7viewerContainer);
   s7viewerDiv.append(loadScriptLogic(scene7ScriptData));
 
-  return s7viewerDiv.outerHTML;
+  return s7viewerDiv.innerText;
 };
 
 async function loadModal(block) {
