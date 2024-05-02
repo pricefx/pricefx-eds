@@ -1,3 +1,5 @@
+import { loadScript } from '../../scripts/aem.js';
+
 function decorateButton(heroLeftContainer) {
   heroLeftContainer.querySelectorAll('.button-container').forEach((btn) => {
     const btnStyle = btn.children[0]?.textContent || 'primary';
@@ -42,6 +44,21 @@ function decorateRightContainer(heroRightContainer) {
   }
 }
 
+function loadScene7() {
+  loadScript('http://s7d1.scene7.com/s7viewers/html5/js/VideoViewer.js', {});
+  return `<div id="s7viewer" style="position:relative;width:640px;height:360px;"></div>
+  <script type="text/javascript">
+  var videoViewer = new s7viewers.VideoViewer({
+  "containerId":"s7viewer",
+  "params":{
+  "asset":"Scene7SharedAssets/Glacier_Climber_MP4",
+  "serverurl":"http://s7d1.scene7.com/is/image/",
+  "videoserverurl":"http://s7d1.scene7.com/is/content/"
+  }
+  }).init();
+  </script>`;
+}
+
 export default async function decorate(block) {
   const heroContainer = document.createElement('div');
   heroContainer.classList.add('hero-main-container');
@@ -64,10 +81,10 @@ export default async function decorate(block) {
       heroRightContainer.append(row.firstElementChild);
       heroRightContainer.classList.add('hero-right-container');
     } else if (index === 6) {
-      /* Height Height Variation */
-      heroLeftContainer.classList.add(row.firstElementChild?.textContent || 'hero-secondary-variation');
+      /*  Height Variation */
+      heroLeftContainer.classList.add(row.firstElementChild?.textContent || 'hero-primary-height');
     } else if (index === 7) {
-      /* Pre Header Text */
+      /* Eyebrow Text */
       if (row.firstElementChild?.textContent !== '') {
         const heroPreHeader = document.createElement('span');
         heroPreHeader.classList.add('hero-pre-header');
@@ -99,4 +116,5 @@ export default async function decorate(block) {
   heroContainer.append(heroRightContainer);
   block.textContent = '';
   block.append(heroContainer);
+  loadScene7();
 }
