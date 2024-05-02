@@ -88,6 +88,7 @@ const embedScene7 = (url) => {
   const serverurl = DM_SERVER_URL;
   const videoserverurl = DM_VIDEO_SERVER_URL;
 
+  // Load the Scene7 script using loadScriptLogic
   const scene7Script = `<div id="s7viewer" style="position:relative;width:640px;height:360px;"></div>`;
   const scene7ScriptData = `var videoViewer = new s7viewers.VideoViewer({
     "containerId": "s7viewer",
@@ -98,7 +99,8 @@ const embedScene7 = (url) => {
     }
   }).init();`;
 
-  return `${scene7Script}${loadScriptLogic(scene7ScriptData)}`;
+  // Call loadScriptLogic and wait for the script to load
+  return loadScriptLogic(scene7ScriptData).then(() => scene7Script);
 };
 
 async function loadModal(block) {
