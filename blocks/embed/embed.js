@@ -111,9 +111,11 @@ const embedScene7 = (url) => {
     }
   }).init();`;
 
-  holder.append(loadScriptLogic(scene7ScriptData));
-
-  return holder;
+  // Append the scene7ScriptData promise to the holder
+  return loadScriptLogic(scene7ScriptData).then(() => {
+    holder.appendChild(scene7Script);
+    return holder;
+  });
 };
 
 async function loadModal(block) {
