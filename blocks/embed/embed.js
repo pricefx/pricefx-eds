@@ -88,7 +88,7 @@ const embedScene7 = (url) => {
   const serverurl = DM_SERVER_URL;
   const videoserverurl = DM_VIDEO_SERVER_URL;
 
-  loadScript('http://s7d1.scene7.com/s7viewers/html5/js/VideoViewer.js', {});
+  loadScript('http://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js', {});
 
   const s7viewerDiv = document.createElement('div');
   const s7viewerContainer = `<div id="s7viewer" style="position:relative;width:640px;height:360px;"></div>`;

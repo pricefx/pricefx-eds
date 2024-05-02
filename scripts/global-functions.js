@@ -16,9 +16,9 @@ export default function environmentMode() {
 export function loadScriptLogic(data) {
   return new Promise((resolve, reject) => {
     const script = document.createElement('script');
-    script.text = data; // Set the script content
+    script.append(data);
     script.onload = resolve;
     script.onerror = reject;
-    document.body.appendChild(script); // Append the script to the document body
+    resolve();
   });
 }
