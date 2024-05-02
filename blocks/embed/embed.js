@@ -170,26 +170,42 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
     const embedHTML = document.createElement('div');
     if (config) {
       embedHTML.classList = `embed embed-${config.match[0]}`;
-      embedHTML.innerHTML = config.embed(url, autoplay);
+      config
+        .embed(url, autoplay)
+        .then((holder) => {
+          embedHTML.appendChild(holder);
+          embedHTML.classList.add('embed-is-loaded');
+          loadModal(embedHTML);
+        })
+        .catch(() => {
+          // Handle the error gracefully, e.g., display a message to the user
+        });
     } else {
       embedHTML.innerHTML = getDefaultEmbed(url);
       embedHTML.classList = 'embed';
+      embedHTML.classList.add('embed-is-loaded');
+      loadModal(embedHTML);
     }
-    embedHTML.classList.add('embed-is-loaded');
-    loadModal(embedHTML);
     return;
   }
 
   // Load Video
   if (config) {
-    block.innerHTML = config.embed(url, autoplay);
-    block.classList = `block embed embed-${config.match[0]}`;
+    config
+      .embed(url, autoplay)
+      .then((holder) => {
+        block.appendChild(holder);
+        block.classList = `block embed embed-${config.match[0]}`;
+        block.classList.add('embed-is-loaded');
+      })
+      .catch(() => {
+        // Handle the error gracefully, e.g., display a message to the user
+      });
   } else {
     block.innerHTML = getDefaultEmbed(url);
     block.classList = 'block embed';
+    block.classList.add('embed-is-loaded');
   }
-
-  block.classList.add('embed-is-loaded');
 };
 
 export default function decorate(block) {
