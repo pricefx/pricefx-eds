@@ -5,7 +5,6 @@
  */
 
 import { decorateMain } from '../../scripts/scripts.js';
-
 import { loadBlocks } from '../../scripts/aem.js';
 
 /**
@@ -38,8 +37,13 @@ export async function loadFragment(path) {
 }
 
 export default async function decorate(block) {
-  const link = block.querySelector('a');
-  const path = link ? link.getAttribute('href') : block.textContent.trim();
+  const [fragmentPath] = block.children;
+  block.textContent = '';
+  let path = fragmentPath.textContent.trim();
+  if (!path) {
+    block.textContent = "Please configure the fragment path";
+    return;
+  }
   const fragment = await loadFragment(path);
   if (fragment) {
     const fragmentSection = fragment.querySelector(':scope .section');

@@ -1521,5 +1521,17 @@
         "label": "Height"
       }
     ]
+  },
+  {
+    "id": "fragment",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "fragmentPath",
+        "value": "",
+        "label": "Fragment Path",
+        "valueType": "string"
+      }
+    ]
   }
 ]
