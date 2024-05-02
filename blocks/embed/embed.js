@@ -160,18 +160,34 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
   const url = new URL(link);
 
   if (isPopup === 'true') {
-    const embedHTML = document.createElement('div');
     if (config) {
-      embedHTML.classList = `embed embed-${config.match[0]}`;
-      embedHTML.innerHTML = config.embed(url, autoplay);
+      if (config.match.includes('scene7')) {
+        config
+            .embed(url, autoplay)
+            .then((holder) => {
+              holder.classList = `embed embed-${config.match[0]}`;
+              holder.classList.add('embed-is-loaded');
+              loadModal(holder);
+            })
+            .catch(() => {});
+      } else {
+        const embedHTML = document.createElement('div');
+        embedHTML.classList = `embed embed-${config.match[0]}`;
+        embedHTML.innerHTML = config.embed(url, autoplay);
+        embedHTML.classList.add('embed-is-loaded');
+        loadModal(embedHTML);
+        return;
+      }
     } else {
+      const embedHTML = document.createElement('div');
       embedHTML.innerHTML = getDefaultEmbed(url);
       embedHTML.classList = 'embed';
+      embedHTML.classList.add('embed-is-loaded');
+      loadModal(embedHTML);
+      return;
     }
-    embedHTML.classList.add('embed-is-loaded');
-    loadModal(embedHTML);
-    return;
   }
+
 
   if (config) {
     if (config.match.includes('scene7')) {
