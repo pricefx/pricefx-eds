@@ -823,7 +823,7 @@
       {
         "component": "text-input",
         "name": "url",
-        "label": "URL",
+        "label": "Embed Video URL",
         "valueType": "string",
         "value": ""
       },
@@ -831,7 +831,7 @@
         "component": "richtext",
         "valueType": "string",
         "name": "overlayContent",
-        "label": "Overlay Content",
+        "label": "Embed Video Overlay Content",
         "value": ""
       },
       {

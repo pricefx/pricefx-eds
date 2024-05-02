@@ -181,3 +181,7 @@ export default function decorate(block) {
     observer.observe(block);
   }
 }
+
+export function decorateEmbed(block) {
+  decorate(block);
+}
