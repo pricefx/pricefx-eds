@@ -88,28 +88,18 @@ const embedScene7 = (url) => {
   const serverurl = DM_SERVER_URL;
   const videoserverurl = DM_VIDEO_SERVER_URL;
   loadScript('https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js');
-  // Define the JavaScript logic to initialize the Scene7 viewer
-  const scene7ScriptData = `
-    new s7viewers.VideoViewer({
-      "containerId": "s7viewer",
-      "params": {
-        "asset": "/${asset}",
-        "serverurl": "${serverurl}",
-        "videoserverurl": "${videoserverurl}"
-      }
-    }).init();
-  `;
 
-  // Create a placeholder div for the Scene7 viewer
-  const scene7Placeholder = document.createElement('div');
-  scene7Placeholder.id = 's7viewer';
-  scene7Placeholder.style.cssText = 'position:relative;width:640px;height:360px;';
+  const scene7Script = `<div id="s7viewer" style="position:relative;width:640px;height:360px;"></div>`;
+  const scene7ScriptData = `var videoViewer = new s7viewers.VideoViewer({
+    "containerId":"s7viewer",
+    "params":{
+      "asset":"${asset}",
+      "serverurl":"${serverurl}",
+      "videoserverurl":"${videoserverurl}"
+    }
+    }).init()`;
 
-  // Load and execute the script using loadScriptLogic
-  loadScriptLogic(scene7ScriptData);
-
-  // Return the placeholder div
-  return scene7Placeholder.outerHTML;
+  return scene7Script.append(loadScriptLogic(scene7ScriptData));
 };
 
 async function loadModal(block) {
