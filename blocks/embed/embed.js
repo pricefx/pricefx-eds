@@ -1,5 +1,6 @@
 import { loadScript } from '../../scripts/aem.js';
 import { DM_VIDEO_SERVER_URL, DM_SERVER_URL } from '../../scripts/url-constants.js';
+import { loadScriptLogic } from '../../scripts/global-functions.js';
 
 const getDefaultEmbed = (url, autoplay) => `<div class="embed-default">
     <iframe src="${url.href}" allowfullscreen="" scrolling="no" allow="${autoplay ? 'autoplay; ' : ''}encrypted-media" 
@@ -87,38 +88,24 @@ const embedScene7 = (url) => {
   const serverurl = DM_SERVER_URL;
   const videoserverurl = DM_VIDEO_SERVER_URL;
 
-  return new Promise((resolve, reject) => {
-    // Load the Scene7 initialization script
-    loadScript('https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js')
-      .then(() => {
-        // Create the parent div element with class "holder"
-        const holder = document.createElement('div');
-        holder.classList.add('holder');
+  loadScript('http://s7d1.scene7.com/s7viewers/html5/js/VideoViewer.js', {});
 
-        // Append the Scene7 script container to the holder
-        const scene7Script = document.createElement('script');
-        scene7Script.textContent = `
-          var s7viewer = document.createElement('div');
-          s7viewer.id = 's7viewer';
-          s7viewer.style.cssText = 'position:relative;width:640px;height:360px;';
-          document.body.appendChild(s7viewer);
+  const s7viewerDiv = document.createElement('div');
+  const s7viewerContainer = `<div id="s7viewer" style="position:relative;width:640px;height:360px;"></div>`;
+  const scene7ScriptData = `var videoViewer = new s7viewers.VideoViewer({
+    "containerId":"s7viewer",
+    "params":{
+      "asset":"${asset}",
+      "serverurl":"${serverurl}",
+      "videoserverurl":"${videoserverurl}"
+     }
+    }).init()`;
 
-          var videoViewer = new s7viewers.VideoViewer({
-            "containerId": "s7viewer",
-            "params": {
-              "asset": "${asset}",
-              "serverurl": "${serverurl}",
-              "videoserverurl": "${videoserverurl}"
-            }
-          }).init();`;
+  s7viewerDiv.textContent = '';
+  s7viewerDiv.append(s7viewerContainer);
+  s7viewerDiv.append(loadScriptLogic(scene7ScriptData));
 
-        // Append the Scene7 initialization script to the holder
-        holder.appendChild(scene7Script);
-
-        resolve(holder);
-      })
-      .catch(reject);
-  });
+  return s7viewerDiv;
 };
 
 async function loadModal(block) {
