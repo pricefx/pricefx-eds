@@ -99,6 +99,11 @@ const embedScene7 = (url) => {
         // Append the Scene7 script container to the holder
         const scene7Script = document.createElement('script');
         scene7Script.textContent = `
+          var s7viewer = document.createElement('div');
+          s7viewer.id = 's7viewer';
+          s7viewer.style.cssText = 'position:relative;width:640px;height:360px;';
+          document.body.appendChild(s7viewer);
+
           var videoViewer = new s7viewers.VideoViewer({
             "containerId": "s7viewer",
             "params": {
