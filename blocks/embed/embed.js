@@ -1,4 +1,5 @@
 import { loadScript } from '../../scripts/aem.js';
+import { DM_VIDEO_SERVER_URL, DM_SERVER_URL } from '../../scripts/url-constants.js';
 
 const getDefaultEmbed = (url, autoplay) => `<div class="embed-default">
     <iframe src="${url.href}" allowfullscreen="" scrolling="no" allow="${autoplay ? 'autoplay; ' : ''}encrypted-media" 
@@ -80,6 +81,27 @@ const embedYoutube = (url, autoplay) => {
     </div>`;
 };
 
+const embedScene7 = (url) => {
+  const params = new URLSearchParams(new URL(url).search);
+  const asset = params.get('asset');
+  const imageServerUrl = DM_SERVER_URL;
+  const videoServerUrl = DM_VIDEO_SERVER_URL;
+
+  return `<div class="holder"><div id="s7viewer" style="position:relative"></div></div>
+    <script type="text/javascript" src="https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js"></script>
+    <script type="text/javascript">
+      var videoViewer = new s7viewers.VideoViewer({
+        "containerId": "s7viewer",
+        "params": {
+          "auto": "auto",
+          "asset": "${asset}",
+          "serverurl": "${imageServerUrl}",
+          "videoserverurl": "${videoServerUrl}"
+        }
+      }).init();
+    </script>`;
+};
+
 async function loadModal(block) {
   const { openModal } = await import(`${window.hlx.codeBasePath}/blocks/modal/modal.js`);
   openModal({ block });
@@ -114,6 +136,10 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
     {
       match: ['youtube', 'youtu.be'],
       embed: embedYoutube,
+    },
+    {
+      match: ['scene7'],
+      embed: embedScene7,
     },
   ];
 

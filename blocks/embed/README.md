@@ -16,3 +16,5 @@ Example URLs for authors:
 * YouTube
   * https://youtu.be/RGSN4S5jn4o
   * https://www.youtube.com/watch?v=RGSN4S5jn4o
+* Dynamic Media
+  * https://s7d9.scene7.com/s7viewers/html5/VideoViewer.html?videoserverurl=https://s7d9.scene7.com/is/content/pricefxstage/sample%2Dvideo&emailurl=https://s7d9.scene7.com/s7/emailFriend&serverUrl=https://s7d9.scene7.com/is/image/&config=Scene7SharedAssets/Universal%5FHTML5%5FVideo&contenturl=https://s7d9.scene7.com/skins/&asset=pricefxstage/sample%2Dvideo
