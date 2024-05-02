@@ -87,15 +87,17 @@ const embedScene7 = (url) => {
   const serverurl = DM_SERVER_URL;
   const videoserverurl = DM_VIDEO_SERVER_URL;
 
-  const s7viewerDiv = document.createElement('div');
-  s7viewerDiv.id = 's7viewer';
-  s7viewerDiv.style.cssText = 'position:relative;width:640px;height:360px;';
-  document.body.appendChild(s7viewerDiv);
+  return new Promise((resolve, reject) => {
+    const s7viewerDiv = document.createElement('div');
+    s7viewerDiv.id = 's7viewer';
+    s7viewerDiv.style.cssText = 'position:relative;width:640px;height:360px;';
 
-  loadScript('https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js')
-    .then(() => {
-      const scene7Script = document.createElement('script');
-      scene7Script.textContent = `
+    document.body.appendChild(s7viewerDiv);
+
+    loadScript('https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js')
+      .then(() => {
+        const scene7Script = document.createElement('script');
+        scene7Script.textContent = `
         var videoViewer = new s7viewers.VideoViewer({
           "containerId": "s7viewer",
           "params": {
@@ -104,13 +106,12 @@ const embedScene7 = (url) => {
             "videoserverurl": "${videoserverurl}"
           }
         }).init();`;
-      document.body.appendChild(scene7Script);
-    })
-    .catch(() => {
-      // Handle error silently
-    });
 
-  return s7viewerDiv;
+        document.body.appendChild(scene7Script);
+        resolve(s7viewerDiv);
+      })
+      .catch(reject);
+  });
 };
 
 async function loadModal(block) {
@@ -161,26 +162,13 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
     const embedHTML = document.createElement('div');
     if (config) {
       embedHTML.classList = `embed embed-${config.match[0]}`;
-      if (config.match.includes('scene7')) {
-        config
-          .embed(url, autoplay)
-          .then((holder) => {
-            embedHTML.appendChild(holder);
-            embedHTML.classList.add('embed-is-loaded');
-            loadModal(embedHTML);
-          })
-          .catch(() => {});
-      } else {
-        embedHTML.innerHTML = config.embed(url, autoplay);
-        embedHTML.classList.add('embed-is-loaded');
-        loadModal(embedHTML);
-      }
+      embedHTML.innerHTML = config.embed(url, autoplay);
     } else {
       embedHTML.innerHTML = getDefaultEmbed(url);
       embedHTML.classList = 'embed';
-      embedHTML.classList.add('embed-is-loaded');
-      loadModal(embedHTML);
     }
+    embedHTML.classList.add('embed-is-loaded');
+    loadModal(embedHTML);
     return;
   }
 
