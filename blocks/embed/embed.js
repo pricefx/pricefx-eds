@@ -1,6 +1,6 @@
 import { loadScript } from '../../scripts/aem.js';
 import { DM_VIDEO_SERVER_URL, DM_SERVER_URL } from '../../scripts/url-constants.js';
-import { loadScriptLogic } from '../../scripts/global-functions.js';
+// import { loadScriptLogic } from '../../scripts/global-functions.js';
 
 const getDefaultEmbed = (url, autoplay) => `<div class="embed-default">
     <iframe src="${url.href}" allowfullscreen="" scrolling="no" allow="${autoplay ? 'autoplay; ' : ''}encrypted-media" 
@@ -82,16 +82,18 @@ const embedYoutube = (url, autoplay) => {
     </div>`;
 };
 
-const embedScene7 = (url) => {
+const embedScene7 = async (url) => {
   const params = new URLSearchParams(url.search);
   const asset = params.get('asset');
   const serverurl = DM_SERVER_URL;
   const videoserverurl = DM_VIDEO_SERVER_URL;
 
-  loadScript('http://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js', {});
+  await loadScript('http://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js');
 
   const s7viewerDiv = document.createElement('div');
-  const s7viewerContainer = `<div id="s7viewer" style="position:relative;width:640px;height:360px;"></div>`;
+  s7viewerDiv.id = 's7viewer';
+  s7viewerDiv.style.cssText = 'position:relative;width:640px;height:360px;';
+
   const scene7ScriptData = `var videoViewer = new s7viewers.VideoViewer({
     "containerId":"s7viewer",
     "params":{
@@ -101,11 +103,12 @@ const embedScene7 = (url) => {
      }
     }).init()`;
 
-  s7viewerDiv.textContent = '';
-  s7viewerDiv.append(s7viewerContainer);
-  s7viewerDiv.append(loadScriptLogic(scene7ScriptData));
+  const scriptTag = document.createElement('script');
+  scriptTag.textContent = scene7ScriptData;
 
-  return s7viewerDiv.innerText;
+  s7viewerDiv.appendChild(scriptTag);
+
+  return s7viewerDiv.outerHTML;
 };
 
 async function loadModal(block) {
