@@ -108,6 +108,9 @@ const embedScene7 = (url) => {
   // Load and execute the script using loadScriptLogic
   loadScriptLogic(scene7ScriptData);
 
+  // Append the loaded script logic to the placeholder div
+  scene7Placeholder.innerHTML = scene7ScriptData;
+
   // Return the placeholder div
   return scene7Placeholder.outerHTML;
 };
