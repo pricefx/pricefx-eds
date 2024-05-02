@@ -101,7 +101,7 @@ const embedScene7 = (url, autoplay) => {
         var videoViewer = new s7viewers.VideoViewer({
           "containerId": "s7viewer",
           "params": {
-            "autoplay":"${autoplay ? '1' : '0'}";
+            "autoplay":"${autoplay ? '1' : '0'}",
             "asset": "${asset}",
             "serverurl": "${serverurl}",
             "videoserverurl": "${videoserverurl}"
