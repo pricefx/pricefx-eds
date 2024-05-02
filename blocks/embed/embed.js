@@ -84,19 +84,18 @@ const embedYoutube = (url, autoplay) => {
 const embedScene7 = (url) => {
   const params = new URLSearchParams(new URL(url).search);
   const asset = params.get('asset');
-  const imageServerUrl = DM_SERVER_URL;
-  const videoServerUrl = DM_VIDEO_SERVER_URL;
+  const serverurl = DM_SERVER_URL;
+  const videoserverurl = DM_VIDEO_SERVER_URL;
 
-  return `<div class="holder"><div id="s7viewer" style="position:relative"></div></div>
+  return `<div id="s7viewer" style="position:relative">
     <script type="text/javascript" src="https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js"></script>
     <script type="text/javascript">
       var videoViewer = new s7viewers.VideoViewer({
         "containerId": "s7viewer",
         "params": {
-          "auto": "auto",
           "asset": "${asset}",
-          "serverurl": "${imageServerUrl}",
-          "videoserverurl": "${videoServerUrl}"
+          "serverurl": "${serverurl}",
+          "videoserverurl": "${videoserverurl}"
         }
       }).init();
     </script>`;
