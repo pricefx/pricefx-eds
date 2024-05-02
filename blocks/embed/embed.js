@@ -90,7 +90,7 @@ const embedScene7 = (url) => {
   return new Promise((resolve, reject) => {
     const s7viewerDiv = document.createElement('div');
     s7viewerDiv.id = 's7viewer';
-    s7viewerDiv.style.cssText = 'position:relative;width:640px;height:360px;';
+    s7viewerDiv.style.cssText = 'position:relative;';
 
     document.body.appendChild(s7viewerDiv);
 
