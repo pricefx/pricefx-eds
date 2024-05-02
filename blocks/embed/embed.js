@@ -82,34 +82,43 @@ const embedYoutube = (url, autoplay) => {
     </div>`;
 };
 
-const embedScene7 = async (url) => {
+const embedScene7 = (url) => {
   const params = new URLSearchParams(url.search);
   const asset = params.get('asset');
   const serverurl = DM_SERVER_URL;
   const videoserverurl = DM_VIDEO_SERVER_URL;
 
-  await loadScript('https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js');
-
+  // Create s7viewerDiv element
   const s7viewerDiv = document.createElement('div');
   s7viewerDiv.id = 's7viewer';
   s7viewerDiv.style.cssText = 'position:relative;width:640px;height:360px;';
 
-  // Create the script tag
-  const scriptTag = document.createElement('script');
-  scriptTag.textContent = `var videoViewer = new s7viewers.VideoViewer({
-    "containerId":"s7viewer",
-    "params":{
-      "asset":"${asset}",
-      "serverurl":"${serverurl}",
-      "videoserverurl":"${videoserverurl}"
-     }
-    }).init()`;
+  // Append s7viewerDiv to the document body
+  document.body.appendChild(s7viewerDiv);
 
-  // Append the script tag to the document body
-  document.body.appendChild(scriptTag);
+  // Load the Scene7 initialization script
+  loadScript('https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js')
+      .then(() => {
+        // Create the script tag
+        const scene7Script = document.createElement('script');
+        scene7Script.textContent = `
+        var videoViewer = new s7viewers.VideoViewer({
+          "containerId": "s7viewer",
+          "params": {
+            "asset": "${asset}",
+            "serverurl": "${serverurl}",
+            "videoserverurl": "${videoserverurl}"
+          }
+        }).init();`;
 
-  // Return the outer HTML of s7viewerDiv
-  return s7viewerDiv.outerHTML;
+        // Append the script tag to the document body
+        document.body.appendChild(scene7Script);
+      })
+      .catch(() => {
+        // Handle error silently
+      });
+
+  return s7viewerDiv;
 };
 
 async function loadModal(block) {
