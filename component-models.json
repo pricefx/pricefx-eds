@@ -1470,9 +1470,9 @@
     "id": "code",
     "fields": [
       {
-        "component": "richtext",
+        "component": "text-input",
         "valueType": "string",
-        "name": "Code",
+        "name": "rawode",
         "value": "",
         "label": "Author Raw Code"
       }
