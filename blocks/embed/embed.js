@@ -88,7 +88,7 @@ const embedScene7 = async (url) => {
   const serverurl = DM_SERVER_URL;
   const videoserverurl = DM_VIDEO_SERVER_URL;
 
-  await loadScript('http://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js');
+  await loadScript('https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js');
 
   const s7viewerDiv = document.createElement('div');
   s7viewerDiv.id = 's7viewer';
