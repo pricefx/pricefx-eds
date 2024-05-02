@@ -1,4 +1,5 @@
 import { loadScript } from '../../scripts/aem.js';
+import { loadScriptLogic } from '../../scripts/global-functions.js';
 
 function decorateButton(heroLeftContainer) {
   heroLeftContainer.querySelectorAll('.button-container').forEach((btn) => {
@@ -39,24 +40,25 @@ function decorateRightContainer(heroRightContainer) {
     heroImageContainer.append(heroImage);
     heroRightContainer.textContent = '';
     heroRightContainer.append(heroImageContainer);
+  } else if (heroVariation === 'videoVariation') {
+    loadScript('http://s7d1.scene7.com/s7viewers/html5/js/VideoViewer.js', {});
+
+    const scene7Script = `<div id="s7viewer" style="position:relative;width:640px;height:360px;"></div>`;
+    const scene7ScriptData = `var videoViewer = new s7viewers.VideoViewer({
+    "containerId":"s7viewer",
+    "params":{
+    "asset":"Scene7SharedAssets/Glacier_Climber_MP4",
+    "serverurl":"http://s7d1.scene7.com/is/image/",
+    "videoserverurl":"http://s7d1.scene7.com/is/content/"
+    }
+    }).init()`;
+
+    heroRightContainer.textContent = '';
+    heroRightContainer.append(scene7Script);
+    heroRightContainer.append(loadScriptLogic(scene7ScriptData));
   } else {
     heroRightContainer.textContent = '';
   }
-}
-
-function loadScene7() {
-  loadScript('http://s7d1.scene7.com/s7viewers/html5/js/VideoViewer.js', {});
-  return `<div id="s7viewer" style="position:relative;width:640px;height:360px;"></div>
-  <script type="text/javascript">
-  var videoViewer = new s7viewers.VideoViewer({
-  "containerId":"s7viewer",
-  "params":{
-  "asset":"Scene7SharedAssets/Glacier_Climber_MP4",
-  "serverurl":"http://s7d1.scene7.com/is/image/",
-  "videoserverurl":"http://s7d1.scene7.com/is/content/"
-  }
-  }).init();
-  </script>`;
 }
 
 export default async function decorate(block) {
@@ -116,5 +118,4 @@ export default async function decorate(block) {
   heroContainer.append(heroRightContainer);
   block.textContent = '';
   block.append(heroContainer);
-  loadScene7();
 }
