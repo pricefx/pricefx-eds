@@ -1,6 +1,6 @@
 import { loadScript } from '../../scripts/aem.js';
 import { DM_VIDEO_SERVER_URL, DM_SERVER_URL } from '../../scripts/url-constants.js';
-import { loadScriptLogic } from '../../scripts/global-functions.js';
+// import { loadScriptLogic } from '../../scripts/global-functions.js';
 
 const getDefaultEmbed = (url, autoplay) => `<div class="embed-default">
     <iframe src="${url.href}" allowfullscreen="" scrolling="no" allow="${autoplay ? 'autoplay; ' : ''}encrypted-media" 
@@ -82,26 +82,25 @@ const embedYoutube = (url, autoplay) => {
     </div>`;
 };
 
-const embedScene7 = (url) => {
+const embedScene7 = async (url) => {
   const params = new URLSearchParams(url.search);
   const asset = params.get('asset');
   const serverurl = DM_SERVER_URL;
   const videoserverurl = DM_VIDEO_SERVER_URL;
 
-  // Load the Scene7 initialization script
-  loadScript('https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js');
-
   // Create the parent div element with class "holder"
   const holder = document.createElement('div');
   holder.classList.add('holder');
 
-  // Append the Scene7 script container to the holder
+  // Append the Scene7 script container to the holder (optional)
   const scene7Script = document.createElement('div');
   scene7Script.id = 's7viewer';
   scene7Script.style.cssText = 'position:relative;width:640px;height:360px;';
-  holder.appendChild(scene7Script);
+  holder.appendChild(scene7Script); // Uncomment if you want a separate container
 
-  // Execute the Scene7 initialization script
+  loadScript('https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js');
+
+  // Scene7 initialization script data
   const scene7ScriptData = `var videoViewer = new s7viewers.VideoViewer({
     "containerId": "s7viewer",
     "params": {
@@ -111,14 +110,12 @@ const embedScene7 = (url) => {
     }
   }).init();`;
 
-  // Append the Scene7 initialization script to the holder
-  holder.appendChild(
-    loadScriptLogic(scene7ScriptData).then(
-      () =>
-        // Once the script is loaded and executed, return the holder
-        holder,
-    ),
-  );
+  // Create a script element and set its content
+  const script = document.createElement('script');
+  script.textContent = scene7ScriptData;
+
+  // Append the script element to the holder
+  holder.appendChild(script);
 
   return holder;
 };
