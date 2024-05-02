@@ -92,28 +92,27 @@ const embedScene7 = (url) => {
     // Load the Scene7 initialization script
     loadScript('https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js')
       .then(() => {
-        // Execute the Scene7 initialization script
-        const scene7ScriptData = `var videoViewer = new s7viewers.VideoViewer({
-        "containerId": "s7viewer",
-        "params": {
-          "asset": "${asset}",
-          "serverurl": "${serverurl}",
-          "videoserverurl": "${videoserverurl}"
-        }
-      }).init();`;
-
         // Create the parent div element with class "holder"
         const holder = document.createElement('div');
         holder.classList.add('holder');
 
         // Append the Scene7 script container to the holder
-        const scene7Script = document.createElement('div');
-        scene7Script.id = 's7viewer';
-        scene7Script.style.cssText = 'position:relative;width:640px;height:360px;';
-        holder.appendChild(scene7Script);
+        const scene7Script = document.createElement('script');
+        scene7Script.textContent = `
+          var videoViewer = new s7viewers.VideoViewer({
+            "containerId": "s7viewer",
+            "params": {
+              "asset": "${asset}",
+              "serverurl": "${serverurl}",
+              "videoserverurl": "${videoserverurl}"
+            }
+          }).init();`;
 
         // Append the Scene7 initialization script to the holder
-        holder.appendChild(document.createTextNode(scene7ScriptData));
+        holder.appendChild(scene7Script);
+
+        // Append the holder to the DOM
+        document.body.appendChild(holder);
 
         resolve(holder);
       })
