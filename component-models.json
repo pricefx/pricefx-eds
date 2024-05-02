@@ -1465,5 +1465,17 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "code",
+    "fields": [
+      {
+        "component": "text-input",
+        "name": "rawCode",
+        "value": "",
+        "label": "Enter the Raw Code",
+        "valueType": "string"
+      }
+    ]
   }
 ]
