@@ -88,13 +88,15 @@ const embedScene7 = async (url) => {
   const serverurl = DM_SERVER_URL;
   const videoserverurl = DM_VIDEO_SERVER_URL;
 
-  await loadScript('https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js');
+  await loadScript('http://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js');
 
   const s7viewerDiv = document.createElement('div');
   s7viewerDiv.id = 's7viewer';
   s7viewerDiv.style.cssText = 'position:relative;width:640px;height:360px;';
 
-  const scene7ScriptData = `var videoViewer = new s7viewers.VideoViewer({
+  // Create the script tag
+  const scriptTag = document.createElement('script');
+  scriptTag.textContent = `var videoViewer = new s7viewers.VideoViewer({
     "containerId":"s7viewer",
     "params":{
       "asset":"${asset}",
@@ -103,11 +105,10 @@ const embedScene7 = async (url) => {
      }
     }).init()`;
 
-  const scriptTag = document.createElement('script');
-  scriptTag.textContent = scene7ScriptData;
+  // Append the script tag to the document body
+  document.body.appendChild(scriptTag);
 
-  s7viewerDiv.appendChild(scriptTag);
-
+  // Return the outer HTML of s7viewerDiv
   return s7viewerDiv.outerHTML;
 };
 
