@@ -768,6 +768,12 @@
         "name": "sectionID",
         "label": "ID",
         "value": ""
+      },
+      {
+        "component": "boolean",
+        "label": "Iframe Two Column",
+        "name": "iframeTwoColumn",
+        "valueType": "boolean"
       }
     ]
   },
@@ -1463,6 +1469,32 @@
         "value": "",
         "label": "Authors Parent Page Path",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "iframe",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "href",
+        "value": "",
+        "label": "Link"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "width",
+        "value": "",
+        "label": "Width"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "height",
+        "value": "",
+        "label": "Height"
       }
     ]
   },
