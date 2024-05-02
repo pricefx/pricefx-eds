@@ -82,42 +82,43 @@ const embedYoutube = (url, autoplay) => {
     </div>`;
 };
 
-const embedScene7 = async (url) => {
+const embedScene7 = (url) => {
   const params = new URLSearchParams(url.search);
   const asset = params.get('asset');
   const serverurl = DM_SERVER_URL;
   const videoserverurl = DM_VIDEO_SERVER_URL;
 
-  // Create the parent div element with class "holder"
-  const holder = document.createElement('div');
-  holder.classList.add('holder');
+  return new Promise((resolve, reject) => {
+    // Load the Scene7 initialization script
+    loadScript('https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js')
+      .then(() => {
+        // Execute the Scene7 initialization script
+        const scene7ScriptData = `var videoViewer = new s7viewers.VideoViewer({
+        "containerId": "s7viewer",
+        "params": {
+          "asset": "${asset}",
+          "serverurl": "${serverurl}",
+          "videoserverurl": "${videoserverurl}"
+        }
+      }).init();`;
 
-  // Append the Scene7 script container to the holder (optional)
-  const scene7Script = document.createElement('div');
-  scene7Script.id = 's7viewer';
-  scene7Script.style.cssText = 'position:relative;width:640px;height:360px;';
-  holder.appendChild(scene7Script); // Uncomment if you want a separate container
+        // Create the parent div element with class "holder"
+        const holder = document.createElement('div');
+        holder.classList.add('holder');
 
-  loadScript('https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js');
+        // Append the Scene7 script container to the holder
+        const scene7Script = document.createElement('div');
+        scene7Script.id = 's7viewer';
+        scene7Script.style.cssText = 'position:relative;width:640px;height:360px;';
+        holder.appendChild(scene7Script);
 
-  // Scene7 initialization script data
-  const scene7ScriptData = `var videoViewer = new s7viewers.VideoViewer({
-    "containerId": "s7viewer",
-    "params": {
-      "asset": "${asset}",
-      "serverurl": "${serverurl}",
-      "videoserverurl": "${videoserverurl}"
-    }
-  }).init();`;
+        // Append the Scene7 initialization script to the holder
+        holder.appendChild(document.createTextNode(scene7ScriptData));
 
-  // Create a script element and set its content
-  const script = document.createElement('script');
-  script.textContent = scene7ScriptData;
-
-  // Append the script element to the holder
-  holder.appendChild(script);
-
-  return holder;
+        resolve(holder);
+      })
+      .catch(reject);
+  });
 };
 
 async function loadModal(block) {
