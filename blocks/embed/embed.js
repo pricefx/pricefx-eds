@@ -93,9 +93,6 @@ const embedScene7 = (url) => {
   s7viewerDiv.id = 's7viewer';
   s7viewerDiv.style.cssText = 'position:relative;width:640px;height:360px;';
 
-  // Append s7viewerDiv to the document body
-  document.body.appendChild(s7viewerDiv);
-
   // Load the Scene7 initialization script
   loadScript('https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js')
       .then(() => {
@@ -111,8 +108,8 @@ const embedScene7 = (url) => {
           }
         }).init();`;
 
-        // Append the script tag to the document body
-        document.body.appendChild(scene7Script);
+        // Append the script tag to the s7viewerDiv
+        s7viewerDiv.appendChild(scene7Script);
       })
       .catch(() => {
         // Handle error silently
@@ -120,6 +117,7 @@ const embedScene7 = (url) => {
 
   return s7viewerDiv;
 };
+
 
 async function loadModal(block) {
   const { openModal } = await import(`${window.hlx.codeBasePath}/blocks/modal/modal.js`);
