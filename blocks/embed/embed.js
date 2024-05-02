@@ -81,7 +81,7 @@ const embedYoutube = (url, autoplay) => {
     </div>`;
 };
 
-const embedScene7 = (block, url) => {
+const embedScene7 = (url) => {
   const params = new URLSearchParams(url.search);
   const asset = params.get('asset');
   const serverurl = DM_SERVER_URL;
