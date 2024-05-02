@@ -2,6 +2,6 @@
     text-align: center;
 }
 
-.grid-item {
+.grid__item {
     display: inline-block;
 }
