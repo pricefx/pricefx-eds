@@ -87,13 +87,13 @@ const embedScene7 = (url) => {
   const asset = params.get('asset');
   const serverurl = DM_SERVER_URL;
   const videoserverurl = DM_VIDEO_SERVER_URL;
-
+  loadScript('https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js');
   // Define the JavaScript logic to initialize the Scene7 viewer
   const scene7ScriptData = `
-    var videoViewer = new s7viewers.VideoViewer({
+    new s7viewers.VideoViewer({
       "containerId": "s7viewer",
       "params": {
-        "asset": "${asset}",
+        "asset": "/${asset}",
         "serverurl": "${serverurl}",
         "videoserverurl": "${videoserverurl}"
       }
@@ -107,9 +107,6 @@ const embedScene7 = (url) => {
 
   // Load and execute the script using loadScriptLogic
   loadScriptLogic(scene7ScriptData);
-
-  // Append the loaded script logic to the placeholder div
-  scene7Placeholder.innerHTML = scene7ScriptData;
 
   // Return the placeholder div
   return scene7Placeholder.outerHTML;
