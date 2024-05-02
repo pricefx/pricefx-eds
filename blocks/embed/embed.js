@@ -1,6 +1,5 @@
 import { loadScript } from '../../scripts/aem.js';
 import { DM_VIDEO_SERVER_URL, DM_SERVER_URL } from '../../scripts/url-constants.js';
-// import { loadScriptLogic } from '../../scripts/global-functions.js';
 
 const getDefaultEmbed = (url, autoplay) => `<div class="embed-default">
     <iframe src="${url.href}" allowfullscreen="" scrolling="no" allow="${autoplay ? 'autoplay; ' : ''}encrypted-media" 
@@ -82,7 +81,7 @@ const embedYoutube = (url, autoplay) => {
     </div>`;
 };
 
-const embedScene7 = (url) => {
+const embedScene7 = (block, url) => {
   const params = new URLSearchParams(url.search);
   const asset = params.get('asset');
   const serverurl = DM_SERVER_URL;
@@ -115,9 +114,6 @@ const embedScene7 = (url) => {
 
         // Append the Scene7 initialization script to the holder
         holder.appendChild(scene7Script);
-
-        // Append the holder to the DOM
-        document.body.appendChild(holder);
 
         resolve(holder);
       })
@@ -174,42 +170,26 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
     const embedHTML = document.createElement('div');
     if (config) {
       embedHTML.classList = `embed embed-${config.match[0]}`;
-      config
-        .embed(url, autoplay)
-        .then((holder) => {
-          embedHTML.appendChild(holder);
-          embedHTML.classList.add('embed-is-loaded');
-          loadModal(embedHTML);
-        })
-        .catch(() => {
-          // Handle the error gracefully, e.g., display a message to the user
-        });
+      embedHTML.innerHTML = config.embed(url, autoplay);
     } else {
       embedHTML.innerHTML = getDefaultEmbed(url);
       embedHTML.classList = 'embed';
-      embedHTML.classList.add('embed-is-loaded');
-      loadModal(embedHTML);
     }
+    embedHTML.classList.add('embed-is-loaded');
+    loadModal(embedHTML);
     return;
   }
 
   // Load Video
   if (config) {
-    config
-      .embed(url, autoplay)
-      .then((holder) => {
-        block.appendChild(holder);
-        block.classList = `block embed embed-${config.match[0]}`;
-        block.classList.add('embed-is-loaded');
-      })
-      .catch(() => {
-        // Handle the error gracefully, e.g., display a message to the user
-      });
+    block.innerHTML = config.embed(url, autoplay);
+    block.classList = `block embed embed-${config.match[0]}`;
   } else {
     block.innerHTML = getDefaultEmbed(url);
     block.classList = 'block embed';
-    block.classList.add('embed-is-loaded');
   }
+
+  block.classList.add('embed-is-loaded');
 };
 
 export default function decorate(block) {
