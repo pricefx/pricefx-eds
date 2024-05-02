@@ -82,42 +82,45 @@ const embedYoutube = (url, autoplay) => {
     </div>`;
 };
 
-const embedScene7 = (url) => {
-  const params = new URLSearchParams(url.search);
-  const asset = params.get('asset');
-  const serverurl = DM_SERVER_URL;
-  const videoserverurl = DM_VIDEO_SERVER_URL;
+const embedScene7 = (block, url) =>
+  new Promise((resolve, reject) => {
+    const params = new URLSearchParams(url.search);
+    const asset = params.get('asset');
+    const serverurl = DM_SERVER_URL;
+    const videoserverurl = DM_VIDEO_SERVER_URL;
 
-  // Create s7viewerDiv element
-  const s7viewerDiv = document.createElement('div');
-  s7viewerDiv.id = 's7viewer';
-  s7viewerDiv.style.cssText = 'position:relative;width:640px;height:360px;';
+    // Create s7viewerDiv element
+    const s7viewerDiv = document.createElement('div');
+    s7viewerDiv.id = 's7viewer';
+    s7viewerDiv.style.cssText = 'position:relative;width:640px;height:360px;';
 
-  // Load the Scene7 initialization script
-  loadScript('https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js')
+    // Append s7viewerDiv to the block
+    block.appendChild(s7viewerDiv);
+
+    // Load the Scene7 initialization script
+    loadScript('https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js')
       .then(() => {
         // Create the script tag
         const scene7Script = document.createElement('script');
         scene7Script.textContent = `
-        var videoViewer = new s7viewers.VideoViewer({
-          "containerId": "s7viewer",
-          "params": {
-            "asset": "${asset}",
-            "serverurl": "${serverurl}",
-            "videoserverurl": "${videoserverurl}"
-          }
-        }).init();`;
+          var videoViewer = new s7viewers.VideoViewer({
+            "containerId": "s7viewer",
+            "params": {
+              "asset": "${asset}",
+              "serverurl": "${serverurl}",
+              "videoserverurl": "${videoserverurl}"
+            }
+          }).init();`;
 
-        // Append the script tag to the s7viewerDiv
-        s7viewerDiv.appendChild(scene7Script);
+        // Append the script tag to the document body
+        document.body.appendChild(scene7Script);
+
+        resolve(s7viewerDiv); // Resolve with the s7viewerDiv
       })
-      .catch(() => {
-        // Handle error silently
+      .catch((error) => {
+        reject(error); // Reject with the error
       });
-
-  return s7viewerDiv;
-};
-
+  });
 
 async function loadModal(block) {
   const { openModal } = await import(`${window.hlx.codeBasePath}/blocks/modal/modal.js`);
