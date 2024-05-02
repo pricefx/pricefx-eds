@@ -39,12 +39,15 @@ export async function loadFragment(path) {
 export default async function decorate(block) {
   const [fragmentPath] = block.children;
   block.textContent = '';
-  let path = fragmentPath.textContent.trim();
-  if (!path) {
-    block.textContent = "Please configure the fragment path";
+
+  if (!fragmentPath || !fragmentPath.textContent) {
+    block.textContent = 'Please configure the fragment path';
     return;
   }
+
+  const path = fragmentPath.textContent.trim();
   const fragment = await loadFragment(path);
+
   if (fragment) {
     const fragmentSection = fragment.querySelector(':scope .section');
     if (fragmentSection) {
