@@ -1,5 +1,6 @@
 import { loadScript } from '../../scripts/aem.js';
 import { DM_VIDEO_SERVER_URL, DM_SERVER_URL } from '../../scripts/url-constants.js';
+import { loadScriptLogic } from '../../scripts/global-functions.js';
 
 const getDefaultEmbed = (url, autoplay) => `<div class="embed-default">
     <iframe src="${url.href}" allowfullscreen="" scrolling="no" allow="${autoplay ? 'autoplay; ' : ''}encrypted-media" 
@@ -87,20 +88,17 @@ const embedScene7 = (url) => {
   const serverurl = DM_SERVER_URL;
   const videoserverurl = DM_VIDEO_SERVER_URL;
 
-  // Load the necessary script
-  loadScript('https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js');
+  const scene7Script = `<div id="s7viewer" style="position:relative;width:640px;height:360px;"></div>`;
+  const scene7ScriptData = `var videoViewer = new s7viewers.VideoViewer({
+    "containerId": "s7viewer",
+    "params": {
+      "asset": "/${asset}",
+      "serverurl": "${serverurl}",
+      "videoserverurl": "${videoserverurl}"
+    }
+  }).init();`;
 
-  return `<div id="s7viewer" style="position:relative;width:640px;height:360px;"></div>
-    <script type="text/javascript">
-      var videoViewer = new s7viewers.VideoViewer({
-        "containerId": "s7viewer",
-        "params": {
-          "asset": "/${asset}",
-          "serverurl": "${serverurl}",
-          "videoserverurl": "${videoserverurl}"
-        }
-      }).init();
-    </script>`;
+  return `${scene7Script}${loadScriptLogic(scene7ScriptData)}`;
 };
 
 async function loadModal(block) {
