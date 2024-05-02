@@ -95,13 +95,13 @@ const embedScene7 = (url) => {
   const holder = document.createElement('div');
   holder.classList.add('holder');
 
-  // Append the Scene7 script to the holder
+  // Append the Scene7 script container to the holder
   const scene7Script = document.createElement('div');
   scene7Script.id = 's7viewer';
   scene7Script.style.cssText = 'position:relative;width:640px;height:360px;';
   holder.appendChild(scene7Script);
 
-  // Execute the Scene7 initialization script and append the result to the holder
+  // Execute the Scene7 initialization script
   const scene7ScriptData = `var videoViewer = new s7viewers.VideoViewer({
     "containerId": "s7viewer",
     "params": {
@@ -111,11 +111,16 @@ const embedScene7 = (url) => {
     }
   }).init();`;
 
-  // Append the output of loadScriptLogic(scene7ScriptData) to the holder
-  return loadScriptLogic(scene7ScriptData).then(() => {
-    holder.appendChild(scene7ScriptData);
-    return holder;
-  });
+  // Append the Scene7 initialization script to the holder
+  holder.appendChild(
+    loadScriptLogic(scene7ScriptData).then(
+      () =>
+        // Once the script is loaded and executed, return the holder
+        holder,
+    ),
+  );
+
+  return holder;
 };
 
 async function loadModal(block) {
