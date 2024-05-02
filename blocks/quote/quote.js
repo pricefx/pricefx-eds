@@ -1,3 +1,5 @@
+import { QUOTES } from '../../scripts/constants.js';
+
 export default async function decorate(block) {
   const quoteContainer = document.createElement('div');
   quoteContainer.classList.add('quote-main-container');
@@ -13,17 +15,12 @@ export default async function decorate(block) {
   quoteRightContainer.appendChild(quoteRightContainerInner);
 
   // eslint-disable-next-line no-unused-vars
-  let count = 0;
 
   [...block.children].forEach((row, index) => {
-    if (count === 1) {
-      quoteRightContainer.classList.add('quote-no-left-container');
-    }
-
-    if (index === 0) {
+    if (index === 1) {
       const quoteIcon = document.createElement('div');
       quoteIcon.className = 'quote-icon';
-      quoteIcon.innerHTML = `<img src="../../icons/quote-icon.svg" alt="quoteIcon">`;
+      quoteIcon.innerHTML = QUOTES;
 
       const quoteEl = document.createElement('p');
       quoteEl.classList.add('quote-text');
@@ -32,7 +29,7 @@ export default async function decorate(block) {
       quoteIcon.appendChild(quoteEl);
 
       quoteRightContainerInner.appendChild(quoteIcon);
-    } else if (index === 3) {
+    } else if (index === 2) {
       const imageLogo = document.querySelector('picture img');
       if (imageLogo) {
         const quoteLogo = document.createElement('div');
@@ -40,13 +37,13 @@ export default async function decorate(block) {
         quoteLogo.appendChild(imageLogo);
         quoteRightContainerInner.appendChild(quoteLogo);
       }
-    } else if (index === 1) {
+    } else if (index === 3) {
       const authorEl = document.createElement('div');
       authorEl.classList.add('author');
       authorEl.innerHTML = row.firstElementChild.innerHTML;
       quoteRightContainerInner.appendChild(authorEl);
-    } else if (index === 2) {
-      const quoteImage = row.firstElementChild.querySelector('picture');
+    } else if (index === 0) {
+      const quoteImage = row.firstElementChild.querySelector('picture img');
       if (quoteImage) {
         quoteImage.classList.add('quote-image-container');
         if (quoteImage) {
@@ -54,7 +51,7 @@ export default async function decorate(block) {
         }
       } else {
         quoteLeftContainer.className = 'quote-no-image-container';
-        count += 1;
+        quoteRightContainer.classList.add('quote-no-left-container');
       }
     }
   });
