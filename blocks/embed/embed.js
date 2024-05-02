@@ -111,7 +111,7 @@ const embedScene7 = (url) => {
     }
   }).init();`;
 
-  holder.appendChild(loadScriptLogic(scene7ScriptData));
+  holder.append(loadScriptLogic(scene7ScriptData));
 
   return holder;
 };
