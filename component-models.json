@@ -1471,10 +1471,10 @@
     "fields": [
       {
         "component": "text-input",
-        "name": "rawCode",
+        "valueType": "string",
+        "name": "title",
         "value": "",
-        "label": "Enter the Raw Code",
-        "valueType": "string"
+        "label": "Title"
       }
     ]
   }
