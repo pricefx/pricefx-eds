@@ -1470,11 +1470,11 @@
     "id": "code",
     "fields": [
       {
-        "component": "text-input",
+        "component": "richtext",
         "valueType": "string",
-        "name": "title",
+        "name": "Code",
         "value": "",
-        "label": "Title"
+        "label": "Author Raw Code"
       }
     ]
   }
