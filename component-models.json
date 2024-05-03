@@ -1033,6 +1033,12 @@
     "id": "quote",
     "fields": [
       {
+        "component": "reference",
+        "valueType": "string",
+        "name": "quoteImage",
+        "label": "Quote Image"
+      },
+      {
         "component": "text-area",
         "valueType": "string",
         "value": "Well done is better than well said.",
@@ -1040,23 +1046,17 @@
         "label": "Quote"
       },
       {
+        "component": "reference",
+        "valueType": "string",
+        "name": "quoteLogo",
+        "label": "Quote Logo"
+      },
+      {
         "component": "text-area",
         "valueType": "string",
         "name": "author",
         "label": "Author",
         "value": "Benjamin Franklin"
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "quoteImage",
-        "label": "Quote Image"
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "quoteLogo",
-        "label": "Quote Logo"
       }
     ]
   },
