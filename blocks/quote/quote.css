@@ -3,7 +3,6 @@
 }
 
 .quote {
-  background-color: var(--c-extra-dark);
   margin: 0.5rem;
   border-radius: 0.5rem;
   color: var(--c-white);
@@ -44,6 +43,11 @@
 .quote-main-container {
   display: flex;
   justify-content: space-between;
+  background-color: var(--c-copy);
+}
+
+.black-background {
+  background-color: var(--c-extra-dark);
 }
 
 .quote-no-image-container{
@@ -52,9 +56,16 @@
   display: none;
 }
 
+.quote-left-container{
+    flex: 0 0 35%;
+    border-radius: 8px; 
+    min-height: 407px;
+}
+
 .quote-image-container{
     height: 100%;
-    border-radius: 10px; 
+    border-radius: 8px; 
+    object-fit: cover;
 }
 
 .quote-right-container {
@@ -80,7 +91,7 @@
 }
 
 /* mobile View */
-@media (width <= 600px) {
+@media (width <= 767px) {
   .quote-main-container {
     padding: 0 var(--spacing-small);
     display: grid;
