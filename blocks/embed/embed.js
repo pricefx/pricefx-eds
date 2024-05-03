@@ -184,25 +184,27 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
       embedHTML.classList.add('embed-is-loaded');
       loadModal(embedHTML);
     }
-  } else if (config) {
-    if (config.match.includes('scene7')) {
-      config
-        .embed(url, autoplay)
-        .then((holder) => {
-          block.appendChild(holder);
-          block.classList = `block embed embed-${config.match[0]}`;
-          block.classList.add('embed-is-loaded');
-        })
-        .catch(() => {});
+  } else if (isPopup !== 'true') {
+    if (config) {
+      if (config.match.includes('scene7')) {
+        config
+          .embed(url, autoplay)
+          .then((holder) => {
+            block.appendChild(holder);
+            block.classList = `block embed embed-${config.match[0]}`;
+            block.classList.add('embed-is-loaded');
+          })
+          .catch(() => {});
+      } else {
+        block.innerHTML = config.embed(url, autoplay);
+        block.classList = `block embed embed-${config.match[0]}`;
+        block.classList.add('embed-is-loaded');
+      }
     } else {
-      block.innerHTML = config.embed(url, autoplay);
-      block.classList = `block embed embed-${config.match[0]}`;
+      block.innerHTML = getDefaultEmbed(url);
+      block.classList = 'block embed';
       block.classList.add('embed-is-loaded');
     }
-  } else {
-    block.innerHTML = getDefaultEmbed(url);
-    block.classList = 'block embed';
-    block.classList.add('embed-is-loaded');
   }
 };
 
