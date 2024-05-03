@@ -94,4 +94,15 @@
     padding: 0 var(--spacing-small);
     display: grid;
   }
+
+  .quote-text, p{
+    text-align: center;
+  }
+  
+  .quote-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
 }
