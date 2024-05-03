@@ -1,4 +1,5 @@
 import { loadScript } from '../../scripts/aem.js';
+import { DM_VIDEO_SERVER_URL, DM_SERVER_URL } from '../../scripts/url-constants.js';
 
 const getDefaultEmbed = (url, autoplay) => `<div class="embed-default">
     <iframe src="${url.href}" allowfullscreen="" scrolling="no" allow="${autoplay ? 'autoplay; ' : ''}encrypted-media" 
@@ -80,6 +81,40 @@ const embedYoutube = (url, autoplay) => {
     </div>`;
 };
 
+const embedScene7 = (url, autoplay) => {
+  const params = new URLSearchParams(url.search);
+  const asset = params.get('asset');
+  const serverurl = DM_SERVER_URL;
+  const videoserverurl = DM_VIDEO_SERVER_URL;
+
+  return new Promise((resolve, reject) => {
+    const s7viewerDiv = document.createElement('div');
+    s7viewerDiv.id = 's7viewer';
+    s7viewerDiv.style.cssText = 'position:relative;';
+
+    document.body.appendChild(s7viewerDiv);
+
+    loadScript('https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js')
+      .then(() => {
+        const scene7Script = document.createElement('script');
+        scene7Script.textContent = `
+        var videoViewer = new s7viewers.VideoViewer({
+          "containerId": "s7viewer",
+          "params": {
+            "autoplay":"${autoplay ? '1' : '0'}",
+            "asset": "${asset}",
+            "serverurl": "${serverurl}",
+            "videoserverurl": "${videoserverurl}"
+          }
+        }).init();`;
+
+        document.body.appendChild(scene7Script);
+        resolve(s7viewerDiv);
+      })
+      .catch(reject);
+  });
+};
+
 async function loadModal(block) {
   const { openModal } = await import(`${window.hlx.codeBasePath}/blocks/modal/modal.js`);
   openModal({ block });
@@ -114,6 +149,10 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
     {
       match: ['youtube', 'youtu.be'],
       embed: embedYoutube,
+    },
+    {
+      match: ['scene7'],
+      embed: embedScene7,
     },
   ];
 
