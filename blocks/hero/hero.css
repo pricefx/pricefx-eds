@@ -176,10 +176,8 @@
     align-items: center;
   }
 
-  .hero .hero-right-container .embed{
-    width: 600px;
-    height: 400px;
-    top: 54px;
+  .hero .hero-right-container .embed {
+    width: 83%;
   }
 
   .hero .hero-right-container .hero-image-container {

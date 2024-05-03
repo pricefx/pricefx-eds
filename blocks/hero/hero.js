@@ -78,6 +78,7 @@ export default async function decorate(block) {
           heroLeftContainerInner.classList.add('hero-no-bg-image');
         } else if (row.firstElementChild?.textContent === 'videoVariation') {
           heroLeftContainerInner.classList.add('hero-content-video');
+          heroRightContainer.classList.add('hero-video');
         }
       }
       heroRightContainer.append(row.firstElementChild);
