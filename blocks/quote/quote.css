@@ -1,20 +1,97 @@
 .quote-wrapper {
   display: flex;
-  place-content: center;
+  flex-wrap: wrap;
 }
 
 .quote {
-  background-color: lightgray;
+  background-color: var(--c-extra-dark);
   margin: 0.5rem;
-  padding: 2rem;
-  border-radius: 2rem;
+  border-radius: 0.5rem;
+  color: var(--c-white);
 }
 
-.quote > q {
+.quote-text , p{
+  color: var(--c-white);
+  font-family: var(--ff-secondary);
+  font-size: var(--heading-font-size-s);
   font-style: italic;
+  font-weight: var(--fw-regular);
+  line-height: var(--spacing-medium);
+  text-align: left ;
 }
 
-.quote > .author {
-  font-size: 0.9rem;
-  margin-left: 1rem;
+.author{
+  color: var(--c-white);
+  font-family: var(--ff-secondary);
+  font-size: var(--body-font-size-l);
+  font-style: normal;
+  font-weight: var(--fw-regular);
+  line-height: var(--heading-font-size-m);
+  text-align: left ;
+}
+
+.quote-icon{
+  padding-bottom: var(--heading-font-size-xl);
+}
+
+.quote-logo{
+  width: 136px;
+  height:var(--heading-font-size-xl);
+  padding-bottom: var(--heading-font-size-xl);
+}
+
+.quote-main-container {
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.quote-no-image-container{
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  display: none;
+}
+
+.quote-image-container .quote-left-container {
+    width: 100%;
+    padding-left: 2px;
+    flex: 1 0 600px;
+    height: auto;
+}
+
+.quote-image-container, .quote-main-container {
+  flex: 1;
+}
+
+.quote-right-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: right;
+    margin: 40px;
+}
+
+.quote-no-left-container {
+  .quote-text, p{
+    text-align: center;
+  }
+
+  .quote-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.quote-no-image-container .quote-right-container {
+    flex: 1 0 100%;
+    text-align: center;
+}
+
+/* mobile View */
+@media (width <= 600px) {
+  .quote-main-container {
+    padding: 0 var(--spacing-small);
+    display: grid;
+  }
 }
