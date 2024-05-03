@@ -1,7 +1,5 @@
 import { loadScript } from '../../scripts/aem.js';
-
-const DM_VIDEO_SERVER_URL = 'https://s7d9.scene7.com/is/content/';
-const DM_SERVER_URL = 'https://s7d9.scene7.com/is/image/';
+import { DM_VIDEO_SERVER_URL, DM_SERVER_URL } from '../../scripts/url-constants.js';
 
 const getDefaultEmbed = (url, autoplay) => `<div class="embed-default">
     <iframe src="${url.href}" allowfullscreen="" scrolling="no" allow="${autoplay ? 'autoplay; ' : ''}encrypted-media" 
@@ -178,7 +176,6 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
         embedHTML.innerHTML = config.embed(url, autoplay);
         embedHTML.classList.add('embed-is-loaded');
         loadModal(embedHTML);
-        return;
       }
     } else {
       const embedHTML = document.createElement('div');
@@ -186,11 +183,8 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
       embedHTML.classList = 'embed';
       embedHTML.classList.add('embed-is-loaded');
       loadModal(embedHTML);
-      return;
     }
-  }
-
-  if (config) {
+  } else if (config) {
     if (config.match.includes('scene7')) {
       config
         .embed(url, autoplay)
