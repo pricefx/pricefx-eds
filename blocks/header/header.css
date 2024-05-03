@@ -11,7 +11,7 @@ header {
   position: sticky;
   top: 0;
   width: 100%;
-  z-index: 3;
+  z-index: 4;
   transition: var(--base-transition-2);
 }
 

@@ -113,6 +113,10 @@
   .hero .hero-right-container .hero-image-container {
     background-image: unset !important;
   }
+
+  .hero .hero-right-container {
+    width: 100%;
+  }
 }
 
 /* Media Query for Desktop */
@@ -134,7 +138,7 @@
   .hero .hero-left-container {
     max-width: 1188px;
     margin: 0 auto;
-    z-index: 2;
+    z-index: 3;
     padding: 54px 0;
     min-height: 465px;
     display: flex;
@@ -156,7 +160,7 @@
   }
 
   .hero .hero-content {
-    width: 65%;
+    width: 60%;
   }
 
   .hero .hero-content.hero-content-video {
