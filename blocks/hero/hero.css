@@ -159,6 +159,10 @@
     width: 65%;
   }
 
+  .hero .hero-content.hero-content-video {
+    width: 62%;
+  }
+
   .hero .hero-content.hero-no-bg-image {
     width: 100%;
   }
@@ -168,6 +172,14 @@
     inset: 0 0 0 58%;
     position: absolute;
     z-index: 2;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero .hero-right-container .embed{
+    width: 600px;
+    height: 400px;
+    top: 54px;
   }
 
   .hero .hero-right-container .hero-image-container {
