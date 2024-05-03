@@ -1,5 +1,7 @@
 import { loadScript } from '../../scripts/aem.js';
-import { DM_VIDEO_SERVER_URL, DM_SERVER_URL } from '../../scripts/url-constants.js';
+
+const DM_VIDEO_SERVER_URL = 'https://s7d9.scene7.com/is/content/';
+const DM_SERVER_URL = 'https://s7d9.scene7.com/is/image/';
 
 const getDefaultEmbed = (url, autoplay) => `<div class="embed-default">
     <iframe src="${url.href}" allowfullscreen="" scrolling="no" allow="${autoplay ? 'autoplay; ' : ''}encrypted-media" 
