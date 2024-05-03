@@ -159,31 +159,53 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
   const config = EMBEDS_CONFIG.find((e) => e.match.some((match) => link.includes(match)));
   const url = new URL(link);
 
-  // Load Video in Popup
   if (isPopup === 'true') {
-    const embedHTML = document.createElement('div');
     if (config) {
-      embedHTML.classList = `embed embed-${config.match[0]}`;
-      embedHTML.innerHTML = config.embed(url, autoplay);
+      if (config.match.includes('scene7')) {
+        config
+          .embed(url, autoplay)
+          .then((holder) => {
+            holder.classList = `embed embed-${config.match[0]}`;
+            holder.classList.add('embed-is-loaded');
+            loadModal(holder);
+          })
+          .catch(() => {});
+      } else {
+        const embedHTML = document.createElement('div');
+        embedHTML.classList = `embed embed-${config.match[0]}`;
+        embedHTML.innerHTML = config.embed(url, autoplay);
+        embedHTML.classList.add('embed-is-loaded');
+        loadModal(embedHTML);
+      }
     } else {
+      const embedHTML = document.createElement('div');
       embedHTML.innerHTML = getDefaultEmbed(url);
       embedHTML.classList = 'embed';
+      embedHTML.classList.add('embed-is-loaded');
+      loadModal(embedHTML);
     }
-    embedHTML.classList.add('embed-is-loaded');
-    loadModal(embedHTML);
-    return;
   }
 
-  // Load Video
   if (config) {
-    block.innerHTML = config.embed(url, autoplay);
-    block.classList = `block embed embed-${config.match[0]}`;
+    if (config.match.includes('scene7')) {
+      config
+        .embed(url, autoplay)
+        .then((holder) => {
+          block.appendChild(holder);
+          block.classList = `block embed embed-${config.match[0]}`;
+          block.classList.add('embed-is-loaded');
+        })
+        .catch(() => {});
+    } else {
+      block.innerHTML = config.embed(url, autoplay);
+      block.classList = `block embed embed-${config.match[0]}`;
+      block.classList.add('embed-is-loaded');
+    }
   } else {
     block.innerHTML = getDefaultEmbed(url);
     block.classList = 'block embed';
+    block.classList.add('embed-is-loaded');
   }
-
-  block.classList.add('embed-is-loaded');
 };
 
 export default function decorate(block) {
