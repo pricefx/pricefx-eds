@@ -168,6 +168,9 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
         .embed(url, autoplay)
         .then((holder) => {
           const elem = boolFlag ? holder : block;
+          if (!boolFlag) {
+            elem.appendChild(holder);
+          }
           elem.classList = `${flagIdentifier} embed embed-${config.match[0]}`;
           elem.classList.add('embed-is-loaded');
           modalelem = elem;
