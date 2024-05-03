@@ -1,5 +1,4 @@
 import { loadScript } from '../../scripts/aem.js';
-import { DM_VIDEO_SERVER_URL, DM_SERVER_URL } from '../../scripts/url-constants.js';
 
 const getDefaultEmbed = (url, autoplay) => `<div class="embed-default">
     <iframe src="${url.href}" allowfullscreen="" scrolling="no" allow="${autoplay ? 'autoplay; ' : ''}encrypted-media" 
@@ -81,40 +80,6 @@ const embedYoutube = (url, autoplay) => {
     </div>`;
 };
 
-const embedScene7 = (url, autoplay) => {
-  const params = new URLSearchParams(url.search);
-  const asset = params.get('asset');
-  const serverurl = DM_SERVER_URL;
-  const videoserverurl = DM_VIDEO_SERVER_URL;
-
-  return new Promise((resolve, reject) => {
-    const s7viewerDiv = document.createElement('div');
-    s7viewerDiv.id = 's7viewer';
-    s7viewerDiv.style.cssText = 'position:relative;';
-
-    document.body.appendChild(s7viewerDiv);
-
-    loadScript('https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js')
-      .then(() => {
-        const scene7Script = document.createElement('script');
-        scene7Script.textContent = `
-        var videoViewer = new s7viewers.VideoViewer({
-          "containerId": "s7viewer",
-          "params": {
-            "autoplay":"${autoplay ? '1' : '0'}",
-            "asset": "${asset}",
-            "serverurl": "${serverurl}",
-            "videoserverurl": "${videoserverurl}"
-          }
-        }).init();`;
-
-        document.body.appendChild(scene7Script);
-        resolve(s7viewerDiv);
-      })
-      .catch(reject);
-  });
-};
-
 async function loadModal(block) {
   const { openModal } = await import(`${window.hlx.codeBasePath}/blocks/modal/modal.js`);
   openModal({ block });
@@ -150,62 +115,36 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
       match: ['youtube', 'youtu.be'],
       embed: embedYoutube,
     },
-    {
-      match: ['scene7'],
-      embed: embedScene7,
-    },
   ];
 
   const config = EMBEDS_CONFIG.find((e) => e.match.some((match) => link.includes(match)));
   const url = new URL(link);
 
+  // Load Video in Popup
   if (isPopup === 'true') {
+    const embedHTML = document.createElement('div');
     if (config) {
-      if (config.match.includes('scene7')) {
-        config
-          .embed(url, autoplay)
-          .then((holder) => {
-            holder.classList = `embed embed-${config.match[0]}`;
-            holder.classList.add('embed-is-loaded');
-            loadModal(holder);
-          })
-          .catch(() => {});
-      } else {
-        const embedHTML = document.createElement('div');
-        embedHTML.classList = `embed embed-${config.match[0]}`;
-        embedHTML.innerHTML = config.embed(url, autoplay);
-        embedHTML.classList.add('embed-is-loaded');
-        loadModal(embedHTML);
-      }
+      embedHTML.classList = `embed embed-${config.match[0]}`;
+      embedHTML.innerHTML = config.embed(url, autoplay);
     } else {
-      const embedHTML = document.createElement('div');
       embedHTML.innerHTML = getDefaultEmbed(url);
       embedHTML.classList = 'embed';
-      embedHTML.classList.add('embed-is-loaded');
-      loadModal(embedHTML);
     }
-  } else if (isPopup !== 'true') {
-    if (config) {
-      if (config.match.includes('scene7')) {
-        config
-          .embed(url, autoplay)
-          .then((holder) => {
-            block.appendChild(holder);
-            block.classList = `block embed embed-${config.match[0]}`;
-            block.classList.add('embed-is-loaded');
-          })
-          .catch(() => {});
-      } else {
-        block.innerHTML = config.embed(url, autoplay);
-        block.classList = `block embed embed-${config.match[0]}`;
-        block.classList.add('embed-is-loaded');
-      }
-    } else {
-      block.innerHTML = getDefaultEmbed(url);
-      block.classList = 'block embed';
-      block.classList.add('embed-is-loaded');
-    }
+    embedHTML.classList.add('embed-is-loaded');
+    loadModal(embedHTML);
+    return;
   }
+
+  // Load Video
+  if (config) {
+    block.innerHTML = config.embed(url, autoplay);
+    block.classList = `block embed embed-${config.match[0]}`;
+  } else {
+    block.innerHTML = getDefaultEmbed(url);
+    block.classList = 'block embed';
+  }
+
+  block.classList.add('embed-is-loaded');
 };
 
 export default function decorate(block) {
