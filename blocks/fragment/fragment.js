@@ -38,7 +38,6 @@ export async function loadFragment(path) {
 
 export default async function decorate(block) {
   const [fragmentPath] = block.children;
-  block.textContent = '';
 
   if (!fragmentPath || !fragmentPath.textContent) {
     block.textContent = 'Please configure the fragment path';
@@ -49,13 +48,10 @@ export default async function decorate(block) {
   const fragment = await loadFragment(path);
 
   if (fragment) {
-    const fragmentSection = fragment.querySelector(':scope .section');
-    if (fragmentSection) {
-      block.closest('.section').classList.add(...fragmentSection.classList);
-      const fragmentContainer = block.closest('.fragment');
-      fragment.childNodes.forEach((node) => {
-        fragmentContainer.appendChild(node);
-      });
+    const fragmentContainer = block.querySelector(':scope .fragment'); // Look for a container element with class "fragment" within the block
+    if (fragmentContainer) {
+      fragmentContainer.innerHTML = ''; // Clear existing content in the container
+      fragmentContainer.appendChild(fragment); // Append the fragment content as a child
     }
   }
 }
