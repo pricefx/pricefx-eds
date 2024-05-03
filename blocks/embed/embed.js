@@ -94,7 +94,7 @@ const embedScene7 = (url, autoplay) => {
 
     document.body.appendChild(s7viewerDiv);
 
-    loadScript(`https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js`, {})
+    loadScript('https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js')
       .then(() => {
         const scene7Script = document.createElement('script');
         scene7Script.textContent = `
@@ -159,39 +159,52 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
   const config = EMBEDS_CONFIG.find((e) => e.match.some((match) => link.includes(match)));
   const url = new URL(link);
 
-  const boolFlag = isPopup === 'true';
-  const flagIdentifier = boolFlag ? '' : 'block';
-  let modalelem;
+  if (isPopup === 'true') {
+    if (config) {
+      if (config.match.includes('scene7')) {
+        config
+          .embed(url, autoplay)
+          .then((holder) => {
+            holder.classList = `embed embed-${config.match[0]}`;
+            holder.classList.add('embed-is-loaded');
+            loadModal(holder);
+          })
+          .catch(() => {});
+      } else {
+        const embedHTML = document.createElement('div');
+        embedHTML.classList = `embed embed-${config.match[0]}`;
+        embedHTML.innerHTML = config.embed(url, autoplay);
+        embedHTML.classList.add('embed-is-loaded');
+        loadModal(embedHTML);
+      }
+    } else {
+      const embedHTML = document.createElement('div');
+      embedHTML.innerHTML = getDefaultEmbed(url);
+      embedHTML.classList = 'embed';
+      embedHTML.classList.add('embed-is-loaded');
+      loadModal(embedHTML);
+    }
+  }
+
   if (config) {
     if (config.match.includes('scene7')) {
       config
         .embed(url, autoplay)
         .then((holder) => {
-          const elem = boolFlag ? holder : block;
-          if (!boolFlag) {
-            elem.appendChild(holder);
-          }
-          elem.classList = `${flagIdentifier} embed embed-${config.match[0]}`;
-          elem.classList.add('embed-is-loaded');
-          modalelem = elem;
+          block.appendChild(holder);
+          block.classList = `block embed embed-${config.match[0]}`;
+          block.classList.add('embed-is-loaded');
         })
         .catch(() => {});
     } else {
-      const embedHTML = boolFlag ? document.createElement('div') : block;
-      embedHTML.classList = `${flagIdentifier} embed-${config.match[0]}`;
-      embedHTML.innerHTML = config.embed(url, autoplay);
-      embedHTML.classList.add('embed-is-loaded');
-      modalelem = embedHTML;
+      block.innerHTML = config.embed(url, autoplay);
+      block.classList = `block embed embed-${config.match[0]}`;
+      block.classList.add('embed-is-loaded');
     }
   } else {
-    const embedHTML = boolFlag ? document.createElement('div') : block;
-    embedHTML.innerHTML = getDefaultEmbed(url);
-    embedHTML.classList = `${flagIdentifier} embed`;
-    embedHTML.classList.add('embed-is-loaded');
-    modalelem = embedHTML;
-  }
-  if (boolFlag) {
-    loadModal(modalelem);
+    block.innerHTML = getDefaultEmbed(url);
+    block.classList = 'block embed';
+    block.classList.add('embed-is-loaded');
   }
 };
 
