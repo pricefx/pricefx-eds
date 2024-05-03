@@ -176,6 +176,7 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
         embedHTML.innerHTML = config.embed(url, autoplay);
         embedHTML.classList.add('embed-is-loaded');
         loadModal(embedHTML);
+        return;
       }
     } else {
       const embedHTML = document.createElement('div');
@@ -183,6 +184,7 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
       embedHTML.classList = 'embed';
       embedHTML.classList.add('embed-is-loaded');
       loadModal(embedHTML);
+      return;
     }
   }
 
