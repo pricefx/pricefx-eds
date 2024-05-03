@@ -150,8 +150,8 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
 export default function decorate(block) {
   const placeholder = block.querySelector('picture');
   const link = block.querySelector('a').href;
-  const overlayText = block.children[2].textContent.trim();
-  const isPopup = block.children[3].textContent.trim();
+  const overlayText = block.children[2]?.textContent.trim();
+  const isPopup = block.children[3]?.textContent.trim();
   block.textContent = '';
 
   if (placeholder) {

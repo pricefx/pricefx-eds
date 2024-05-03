@@ -40,16 +40,20 @@ function decorateRightContainer(heroRightContainer) {
     heroRightContainer.textContent = '';
     heroRightContainer.append(heroImageContainer);
   } else if (heroVariation === 'videoVariation') {
+    const heroRightContainerInner = document.createElement('div');
+    heroRightContainerInner.classList.add('embed');
     const placeholder = heroRightContainer.children[2];
     const link = heroRightContainer.children[3];
     const overlayText = heroRightContainer.children[4];
     const isPopup = heroRightContainer.children[5];
     heroRightContainer.textContent = '';
-    heroRightContainer.append(placeholder);
-    heroRightContainer.append(link);
-    heroRightContainer.append(overlayText);
-    heroRightContainer.append(isPopup);
-    decorateEmbed(heroRightContainer);
+    heroRightContainerInner.append(placeholder);
+    heroRightContainerInner.append(link);
+    heroRightContainerInner.append(overlayText);
+    heroRightContainerInner.append(isPopup);
+
+    decorateEmbed(heroRightContainerInner);
+    heroRightContainer.append(heroRightContainerInner);
   } else {
     heroRightContainer.textContent = '';
   }
