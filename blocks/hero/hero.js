@@ -1,3 +1,5 @@
+import { decorateEmbed } from '../embed/embed.js';
+
 function decorateButton(heroLeftContainer) {
   heroLeftContainer.querySelectorAll('.button-container').forEach((btn) => {
     const btnStyle = btn.children[0]?.textContent || 'primary';
@@ -38,7 +40,16 @@ function decorateRightContainer(heroRightContainer) {
     heroRightContainer.textContent = '';
     heroRightContainer.append(heroImageContainer);
   } else if (heroVariation === 'videoVariation') {
+    const placeholder = heroRightContainer.children[2];
+    const link = heroRightContainer.children[3];
+    const overlayText = heroRightContainer.children[4];
+    const isPopup = heroRightContainer.children[5];
     heroRightContainer.textContent = '';
+    heroRightContainer.append(placeholder);
+    heroRightContainer.append(link);
+    heroRightContainer.append(overlayText);
+    heroRightContainer.append(isPopup);
+    decorateEmbed(heroRightContainer);
   } else {
     heroRightContainer.textContent = '';
   }
