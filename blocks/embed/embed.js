@@ -94,7 +94,7 @@ const embedScene7 = (url, autoplay) => {
 
     document.body.appendChild(s7viewerDiv);
 
-    loadScript('https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js')
+    loadScript(`https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js`, {})
       .then(() => {
         const scene7Script = document.createElement('script');
         scene7Script.textContent = `
