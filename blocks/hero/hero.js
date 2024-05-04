@@ -47,7 +47,7 @@ function decorateRightContainer(heroRightContainer) {
     const overlayText = heroRightContainer.children[4];
     const isPopup = heroRightContainer.children[5];
     heroRightContainer.textContent = '';
-    if (link) {
+    if (link.textContent !== '') {
       heroRightContainerInner.append(placeholder);
       heroRightContainerInner.append(link);
       heroRightContainerInner.append(overlayText);
