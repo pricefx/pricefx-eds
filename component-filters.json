@@ -36,7 +36,9 @@
       "stats",
       "relatedArticles",
       "learningCenter",
-      "iframe"
+      "iframe",
+      "fragment",
+      "table"
     ]
   },
   {
