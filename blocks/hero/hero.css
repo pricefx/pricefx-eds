@@ -138,7 +138,7 @@
   .hero .hero-left-container {
     max-width: 1188px;
     margin: 0 auto;
-    z-index: 3;
+    z-index: 2;
     padding: 54px 0;
     min-height: 465px;
     display: flex;
