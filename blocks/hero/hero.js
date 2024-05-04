@@ -47,13 +47,15 @@ function decorateRightContainer(heroRightContainer) {
     const overlayText = heroRightContainer.children[4];
     const isPopup = heroRightContainer.children[5];
     heroRightContainer.textContent = '';
-    heroRightContainerInner.append(placeholder);
-    heroRightContainerInner.append(link);
-    heroRightContainerInner.append(overlayText);
-    heroRightContainerInner.append(isPopup);
+    if (link) {
+      heroRightContainerInner.append(placeholder);
+      heroRightContainerInner.append(link);
+      heroRightContainerInner.append(overlayText);
+      heroRightContainerInner.append(isPopup);
 
-    decorateEmbed(heroRightContainerInner);
-    heroRightContainer.append(heroRightContainerInner);
+      decorateEmbed(heroRightContainerInner);
+      heroRightContainer.append(heroRightContainerInner);
+    }
   } else {
     heroRightContainer.textContent = '';
   }
