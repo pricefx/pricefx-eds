@@ -439,6 +439,10 @@
           {
             "name": "Paragraph Large font",
             "value": "column-para-font-large"
+          },
+          {
+            "name": "Entire Columns Top Padding",
+            "value": "columns-top-padding-large"
           }
         ]
       }
