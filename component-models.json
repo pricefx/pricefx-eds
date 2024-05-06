@@ -344,6 +344,13 @@
         "name": "linkHref",
         "value": "",
         "label": "Link"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "label": "Target Blank",
+        "name": "linkTargetBlank",
+        "description": "When selected, the link opens in a new tab"
       }
     ]
   },
