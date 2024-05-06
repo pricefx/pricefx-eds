@@ -1577,9 +1577,9 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "rawode",
+        "name": "htmlCode",
         "value": "",
-        "label": "Author Raw Code"
+        "label": "Author HTML Code"
       }
     ]
   }
