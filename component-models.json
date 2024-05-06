@@ -829,7 +829,7 @@
       {
         "component": "text-input",
         "name": "url",
-        "label": "URL",
+        "label": "Embed Video URL",
         "valueType": "string",
         "value": ""
       },
@@ -837,7 +837,7 @@
         "component": "richtext",
         "valueType": "string",
         "name": "overlayContent",
-        "label": "Overlay Content",
+        "label": "Embed Video Overlay Content",
         "value": ""
       },
       {
@@ -852,10 +852,10 @@
         "label": "Hero Height Variation",
         "name": "heroVariation",
         "valueType": "string",
-        "value": "hero-secondary-variation",
+        "value": "hero-primary-height",
         "options": [
-          { "name": "Hero Height 800px", "value": "hero-primary-variation" },
-          { "name": "Hero Height 465px - Default", "value": "hero-secondary-variation" }
+          { "name": "Hero Height 800px", "value": "hero-secondary-height" },
+          { "name": "Hero Height 465px - Default", "value": "hero-primary-height" }
         ]
       },
       {
@@ -1039,30 +1039,30 @@
     "id": "quote",
     "fields": [
       {
-        "component": "text-area",
-        "valueType": "string",
-        "value": "Well done is better than well said.",
-        "name": "quote",
-        "label": "Quote"
-      },
-      {
-        "component": "text-area",
-        "valueType": "string",
-        "name": "author",
-        "label": "Author",
-        "value": "Benjamin Franklin"
-      },
-      {
         "component": "reference",
         "valueType": "string",
         "name": "quoteImage",
         "label": "Quote Image"
       },
       {
+        "component": "text-area",
+        "valueType": "string",
+        "value": "",
+        "name": "quote",
+        "label": "Quote"
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "quoteLogo",
         "label": "Quote Logo"
+      },
+      {
+        "component": "text-area",
+        "valueType": "string",
+        "name": "author",
+        "label": "Author",
+        "value": ""
       }
     ]
   },
@@ -1309,6 +1309,12 @@
         "label": "Filter 1 Title"
       },
       {
+        "component": "boolean",
+        "label": "Filter 1 is Multi-Select",
+        "name": "filterOneMultiSelect",
+        "valueType": "boolean"
+      },
+      {
         "component": "aem-tag",
         "label": "Filter 1 Options",
         "name": "filterOneTags",
@@ -1320,6 +1326,12 @@
         "name": "filterTwoTitle",
         "value": "",
         "label": "Filter 2 Title"
+      },
+      {
+        "component": "boolean",
+        "label": "Filter 2 is Multi-Select",
+        "name": "filterTwoMultiSelect",
+        "valueType": "boolean"
       },
       {
         "component": "aem-tag",
@@ -1335,6 +1347,12 @@
         "label": "Filter 3 Title"
       },
       {
+        "component": "boolean",
+        "label": "Filter 3 is Multi-Select",
+        "name": "filterThreeMultiSelect",
+        "valueType": "boolean"
+      },
+      {
         "component": "aem-tag",
         "label": "Filter 3 Options",
         "name": "filterThreeTags",
@@ -1346,6 +1364,12 @@
         "name": "filterFourTitle",
         "value": "",
         "label": "Filter 4 Title"
+      },
+      {
+        "component": "boolean",
+        "label": "Filter 4 is Multi-Select",
+        "name": "filterFourMultiSelect",
+        "valueType": "boolean"
       },
       {
         "component": "aem-tag",
@@ -1495,6 +1519,55 @@
         "name": "height",
         "value": "",
         "label": "Height"
+      }
+    ]
+  },
+  {
+    "id": "fragment",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "fragmentPath",
+        "value": "",
+        "label": "Fragment Path",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "table",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "browseTable",
+        "value": "",
+        "label": "Browse Table",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "tableTitle",
+        "value": "",
+        "label": "Table Title"
+      },
+      {
+        "component": "boolean",
+        "label": "Disable Top Row",
+        "name": "disableTopRow",
+        "valueType": "boolean"
+      },
+      {
+        "component": "select",
+        "label": "Select Table Variation",
+        "name": "tableVariation",
+        "valueType": "string",
+        "options": [
+          { "name": "Default", "value": "default" },
+          { "name": "Icon Variation", "value": "icon" },
+          { "name": "Level Variation", "value": "level" },
+          { "name": "Level Variation color", "value": "LevelColor" }
+        ]
       }
     ]
   },

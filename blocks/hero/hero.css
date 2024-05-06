@@ -1,3 +1,5 @@
+@import url('../embed/embed.css');
+
 .section.hero-container {
   background-color: var(--c-gray-lt);
   padding: 0;
@@ -111,6 +113,10 @@
   .hero .hero-right-container .hero-image-container {
     background-image: unset !important;
   }
+
+  .hero .hero-right-container {
+    width: 100%;
+  }
 }
 
 /* Media Query for Desktop */
@@ -154,7 +160,11 @@
   }
 
   .hero .hero-content {
-    width: 65%;
+    width: 60%;
+  }
+
+  .hero .hero-content.hero-content-video {
+    width: 62%;
   }
 
   .hero .hero-content.hero-no-bg-image {
@@ -165,7 +175,13 @@
   .hero .hero-right-container {
     inset: 0 0 0 58%;
     position: absolute;
-    z-index: 1;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero .hero-right-container .embed {
+    width: 83%;
   }
 
   .hero .hero-right-container .hero-image-container {

@@ -306,8 +306,9 @@ h3 {
 }
 
 h4 {
-  font-size: var(--fw-regular);
-  line-height: 1.27;
+  font-size: var(--heading-font-size-m);
+  line-height: 1.28;
+  font-weight: var(--fw-regular);
 }
 
 h5 {
@@ -324,8 +325,9 @@ h6 {
 }
 
 /* Button Styles */
-a.button,
-button {
+/* button / a.button will be just a link */ 
+a.button.primary,
+button.primary {
   appearance: none;
   background: linear-gradient(123deg, #304f8c 4.85%, #466cb9 43.45%, #304f8c 54.85%, #283f6f 86.9%);
   background-position: left;
@@ -348,8 +350,8 @@ button {
   transition: var(--base-transition);
 }
 
-a.button:focus,
-button:focus {
+a.button.primary:focus,
+button.primary:focus {
   outline: 2px solid var(--c-outline-drk);
   outline-offset: 2px;
 }
@@ -360,18 +362,40 @@ a.button.primary:hover {
 }
 
 /* Secondary */
-a.button.secondary {
+a.button.secondary,
+button.secondary {
+  appearance: none;
   background: transparent;
+  background-position: left;
+  background-size: 300%;
   border: 2px solid var(--c-copy);
+  border-radius: 4px;
   color: var(--c-copy);
+  cursor: pointer;
+  display: inline-block;
+  font-family: var(--ff-primary);
+  font-size: var(--base-font-size);
   font-style: normal;
+  font-weight: var(--fw-med);
+  line-height: 1;
+  margin: var(--spacing-xsmall) 0;
   padding: 14px 30px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: var(--base-transition);
 }
 
 a.button.secondary:focus,
 a.button.secondary:hover {
   backdrop-filter: blur(12px);
   background: rgba(255 255 255 / 70%);
+}
+
+a.button.secondary:focus,
+button.secondary:focus {
+  outline: 2px solid var(--c-copy);
 }
 
 @media (width >= 768px) {
@@ -393,7 +417,8 @@ a.button.secondary:hover {
   }
 
   h4 {
-    line-height: 1.22;
+    font-size: 27px;
+    line-height: 1.23;
   }
 
   h5 {
