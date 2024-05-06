@@ -1,0 +1,87 @@
+.table {
+  font-family: var(--ff-secondary);
+  border-collapse: collapse;
+  max-width: 1188px;
+}
+
+/* Default Table */
+.table-default {
+  font-family: var(--ff-secondary);
+  border-collapse: collapse;
+  border: 2px solid black;
+}
+
+/* .table-default td, .table-default th {
+  border: 1px solid #ddd;
+  padding-top: 24px ;
+  padding-right: 32px;
+  padding-bottom: 24px;
+  padding-left: 32px;
+} */
+
+.table-default tr:nth-child(odd) {
+    background-color: var(--c-disabled);
+}
+
+.table-default th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: var(--c-copy);
+  color: white;
+}
+
+/* Level Table & Level Color common */
+.table-level, .levelcolor {
+  font-family: var(--ff-secondary);
+  border-collapse: collapse;
+}
+
+/* .table-level td, .table-level th, .levelcolor td, .levelcolor th {
+  padding-top: 24px ;
+  padding-right: 32px;
+  padding-bottom: 24px;
+  padding-left: 32px;
+} */
+
+
+.table-level th, .levelcolor th {
+    font-family: var( --ff-primary);
+}
+
+.table-level tr:nth-child(odd), .levelcolor tr:nth-child(odd){
+    background-color: #E6F5FC;
+}
+
+.table-level th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #304F8C;
+  color: white;
+}
+
+/* level color table */
+.levelcolor td {
+    font-weight: 700;
+}
+
+.levelcolor th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #8c3066;
+  color: white;
+}
+
+.concentric-circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  padding: 10px;
+  position: relative;
+  border:10px solid #304F8C;
+}
+
+
+
