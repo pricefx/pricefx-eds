@@ -1047,7 +1047,7 @@
       {
         "component": "text-area",
         "valueType": "string",
-        "value": "Well done is better than well said.",
+        "value": "",
         "name": "quote",
         "label": "Quote"
       },
@@ -1062,7 +1062,7 @@
         "valueType": "string",
         "name": "author",
         "label": "Author",
-        "value": "Benjamin Franklin"
+        "value": ""
       }
     ]
   },

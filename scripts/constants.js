@@ -24,4 +24,8 @@ const HOME =
 const RIGHTARROW =
   '<span class="breadcrumb-separator"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none"><path d="M14 5.5L21 12.5M21 12.5L14 19.5M21 12.5L3 12.5" stroke="#484D56" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
 
-export { EMAIL, FACEBOOK, HOME, INSTAGRAM, LINKEDIN, RIGHTARROW, SEARCH, TWITTER, YOUTUBE };
+const QUOTES = `<svg xmlns="http://www.w3.org/2000/svg" width="45" height="32" viewBox="0 0 45 32" fill="none">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M21.2578 0.5V19.4444H10.7578V31.5L0.257812 18.2963V0.5H21.2578ZM44.2578 0.5V19.4444H33.7578V31.5L23.2578 18.2963V0.5H44.2578Z" fill="white" fill-opacity="0.6"/>
+  </svg>`;
+
+export { EMAIL, FACEBOOK, HOME, INSTAGRAM, LINKEDIN, RIGHTARROW, SEARCH, TWITTER, YOUTUBE, QUOTES };
