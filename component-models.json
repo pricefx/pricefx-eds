@@ -339,6 +339,12 @@
     "id": "left-right-boxed",
     "fields": [
       {
+        "component": "boolean",
+        "label": "Image / Video to Right",
+        "name": "isImageRight",
+        "valueType": "boolean"
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "image",
@@ -353,17 +359,19 @@
         "value": ""
       },
       {
-        "component": "boolean",
-        "label": "Image / Video to Right",
-        "name": "isImageRight",
-        "valueType": "boolean"
+        "component": "richtext",
+        "valueType": "string",
+        "name": "boxedContent",
+        "label": "Left Right Boxed Content",
+        "value": "",
+        "description": "ⓘ Heading (H2) and Description"
       },
       {
         "component": "reference",
         "valueType": "string",
         "name": "embedVideo",
         "label": "Embed Video Placeholder",
-        "description": "ⓘ Video placeholder for video hero variation",
+        "description": "ⓘ Video placeholder",
         "multi": false
       },
       {
