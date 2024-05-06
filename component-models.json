@@ -161,7 +161,14 @@
         "label": "Alt Text"
       },
       {
-        "component": "text",
+        "component": "text-input",
+        "valueType": "string",
+        "name": "height",
+        "value": "alt",
+        "label": "Image Link"
+      },
+      {
+        "component": "aem-content",
         "name": "imageLink",
         "label": "Image Link",
         "valueType": "string",
@@ -325,6 +332,25 @@
             "value": "left-arrow"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "link-pfx",
+    "fields": [
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "linkHref",
+        "value": "",
+        "label": "Link"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "label": "Target Blank",
+        "name": "linkTargetBlank",
+        "description": "When selected, the link opens in a new tab"
       }
     ]
   },
