@@ -187,7 +187,7 @@
     "id": "button",
     "fields": [
       {
-        "component": "text-input",
+        "component": "aem-content",
         "valueType": "string",
         "name": "href",
         "value": "",
@@ -234,7 +234,7 @@
     "id": "button-pfx",
     "fields": [
       {
-        "component": "text-input",
+        "component": "aem-content",
         "valueType": "string",
         "name": "href",
         "label": "Link",
@@ -461,6 +461,14 @@
           {
             "name": "Add Padding Medium",
             "value": "column-padding-medium"
+          },
+          {
+            "name": "Paragraph Large font",
+            "value": "column-para-font-large"
+          },
+          {
+            "name": "Entire Columns Top Padding",
+            "value": "columns-top-padding-large"
           }
         ]
       }
@@ -778,14 +786,16 @@
         ]
       },
       {
-        "component": "radio-group",
+        "component": "select",
         "label": "Section Title Color",
-        "name": "sectionTitle",
+        "name": "sectionTitleColor",
         "valueType": "string",
+        "value": "",
         "description": "The entire section's H1 to H6 color will be changed.",
         "options": [
+          { "name": "Default", "value": "" },
           { "name": "Section Title Gray", "value": "section-title-gray" },
-          { "name": "Section Title Blue - Default", "value": "section-title-blue" }
+          { "name": "Section Title Blue", "value": "section-title-blue" }
         ]
       },
       {
