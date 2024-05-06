@@ -336,6 +336,18 @@
     ]
   },
   {
+    "id": "link",
+    "fields": [
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "linkHref",
+        "value": "",
+        "label": "Link"
+      }
+    ]
+  },
+  {
     "id": "columns",
     "fields": [
       {

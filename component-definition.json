@@ -67,6 +67,18 @@
       ]
     },
     {
+      "title": "Link",
+      "id": "link",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/button/v1/button",
+            "template": {}
+          }
+        }
+      }
+    },
+    {
       "title": "Sections",
       "id": "sections",
       "components": [
