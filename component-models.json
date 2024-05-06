@@ -336,6 +336,68 @@
     ]
   },
   {
+    "id": "left-right-boxed",
+    "fields": [
+      {
+        "component": "boolean",
+        "label": "Image / Video to Right",
+        "name": "isImageRight",
+        "valueType": "boolean"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "boxedContent",
+        "label": "Left Right Boxed Content",
+        "value": "",
+        "description": "ⓘ Heading (H2) and Description"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "embedVideo",
+        "label": "Embed Video Placeholder",
+        "description": "ⓘ Video placeholder",
+        "multi": false
+      },
+      {
+        "component": "text-input",
+        "name": "url",
+        "label": "Embed Video URL",
+        "valueType": "string",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "overlayContent",
+        "label": "Embed Video Overlay Content",
+        "value": ""
+      },
+      {
+        "component": "boolean",
+        "label": "Enable PopUp Modal",
+        "name": "popUpModal",
+        "valueType": "boolean",
+        "description": "ⓘ When selected, the Video will open in a Popup Modal"
+      }
+    ]
+  },
+  {
     "id": "link-pfx",
     "fields": [
       {
