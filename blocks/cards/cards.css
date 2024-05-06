@@ -69,7 +69,7 @@
 .cards .cards-card-title h6 {
   color: var(--c-copy);
   font-family: var(--ff-primary);
-  font-size: var(--heading-font-size-m);
+  font-size: var(--heading-font-size-s);
   font-style: normal;
   font-weight: var(--fw-bold);
   line-height: 28px;
@@ -93,7 +93,7 @@
 
 .cards .cards-card-cta {
   margin-top: auto;
-  padding-top: 40px;
+  padding-top: 20px;
   display: flex;
   justify-content: space-between;
 }
