@@ -71,6 +71,14 @@
   line-height: 1.3;
 }
 
+.columns.column-padding-large > div > div {
+  padding: var(--spacing-medium);
+}
+
+.columns.column-padding-medium > div > div {
+  padding: var(--spacing-xsmall);
+}
+
 
 @media (width >= 985px) {
   .columns > div {
