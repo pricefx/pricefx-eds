@@ -829,7 +829,7 @@
       {
         "component": "text-input",
         "name": "url",
-        "label": "URL",
+        "label": "Embed Video URL",
         "valueType": "string",
         "value": ""
       },
@@ -837,7 +837,7 @@
         "component": "richtext",
         "valueType": "string",
         "name": "overlayContent",
-        "label": "Overlay Content",
+        "label": "Embed Video Overlay Content",
         "value": ""
       },
       {
@@ -852,10 +852,10 @@
         "label": "Hero Height Variation",
         "name": "heroVariation",
         "valueType": "string",
-        "value": "hero-secondary-variation",
+        "value": "hero-primary-height",
         "options": [
-          { "name": "Hero Height 800px", "value": "hero-primary-variation" },
-          { "name": "Hero Height 465px - Default", "value": "hero-secondary-variation" }
+          { "name": "Hero Height 800px", "value": "hero-secondary-height" },
+          { "name": "Hero Height 465px - Default", "value": "hero-primary-height" }
         ]
       },
       {
@@ -1039,6 +1039,12 @@
     "id": "quote",
     "fields": [
       {
+        "component": "reference",
+        "valueType": "string",
+        "name": "quoteImage",
+        "label": "Quote Image"
+      },
+      {
         "component": "text-area",
         "valueType": "string",
         "value": "Well done is better than well said.",
@@ -1046,23 +1052,17 @@
         "label": "Quote"
       },
       {
+        "component": "reference",
+        "valueType": "string",
+        "name": "quoteLogo",
+        "label": "Quote Logo"
+      },
+      {
         "component": "text-area",
         "valueType": "string",
         "name": "author",
         "label": "Author",
         "value": "Benjamin Franklin"
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "quoteImage",
-        "label": "Quote Image"
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "quoteLogo",
-        "label": "Quote Logo"
       }
     ]
   },
@@ -1519,6 +1519,55 @@
         "name": "height",
         "value": "",
         "label": "Height"
+      }
+    ]
+  },
+  {
+    "id": "fragment",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "fragmentPath",
+        "value": "",
+        "label": "Fragment Path",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "table",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "browseTable",
+        "value": "",
+        "label": "Browse Table",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "tableTitle",
+        "value": "",
+        "label": "Table Title"
+      },
+      {
+        "component": "boolean",
+        "label": "Disable Top Row",
+        "name": "disableTopRow",
+        "valueType": "boolean"
+      },
+      {
+        "component": "select",
+        "label": "Select Table Variation",
+        "name": "tableVariation",
+        "valueType": "string",
+        "options": [
+          { "name": "Default", "value": "default" },
+          { "name": "Icon Variation", "value": "icon" },
+          { "name": "Level Variation", "value": "level" },
+          { "name": "Level Variation color", "value": "LevelColor" }
+        ]
       }
     ]
   }
