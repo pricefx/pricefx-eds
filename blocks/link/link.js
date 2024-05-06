@@ -1,7 +1,7 @@
 import { editMode } from '../../scripts/global-functions.js';
 
 export default function decorate(block) {
-  if (editMode()) {
+  if (editMode() || window.location.search.includes('?ref=')) {
     return;
   }
 
@@ -12,6 +12,7 @@ export default function decorate(block) {
   if (image && href) {
     const { parentElement } = image;
     const anchor = document.createElement('a');
+    anchor.classList.add('image-link');
     anchor.href = href;
     anchor.target = isTarget === 'true' ? '_blank' : '';
     anchor.append(image);
