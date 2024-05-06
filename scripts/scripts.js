@@ -96,6 +96,12 @@ function buildAutoBlocks() {
   }
 }
 
+async function updateMetadata() {
+  document.title = `${document.title} | Pricefx`;
+  document.head.querySelector('meta[property="og:title"]').content = document.title;
+  document.head.querySelector('meta[name="twitter:title"]').content = document.title;
+}
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -118,6 +124,7 @@ async function loadEager(doc) {
   document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
+  await updateMetadata();
   if (main) {
     decorateMain(main);
     document.body.classList.add('appear');

@@ -6,7 +6,8 @@
   position: relative;
   cursor: pointer;
   list-style: none;
-  overflow: auto;
+  overflow: hidden;
+  max-height: 52px;
 }
 
 .accordion details summary::-webkit-details-marker {
@@ -39,8 +40,10 @@
 
 .accordion-button {
   background: transparent;
-  border: none;     
-  cursor: pointer;    
+}
+
+.accordion-button:focus{
+  outline: none;
 }
 
 
@@ -52,6 +55,7 @@
   font-size: calc((30 / 16) * 1rem); 
   position: absolute;
   right: 0;
+  height: 52px;
 }
 
 .accordion-item-label{
