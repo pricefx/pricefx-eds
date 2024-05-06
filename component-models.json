@@ -336,7 +336,7 @@
     ]
   },
   {
-    "id": "link",
+    "id": "link-pfx",
     "fields": [
       {
         "component": "aem-content",
