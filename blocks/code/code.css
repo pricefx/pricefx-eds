@@ -1,12 +1,11 @@
-
 .code-wrapper .grid__item {
     display: inline-block;
     position: relative;
 }
 
 .code-wrapper img {
-    width: 95px !important;
     flex-shrink: 0;
+    width: 95px !important;
 }
 
 .iframe-width {

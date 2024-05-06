@@ -19,6 +19,7 @@
       "button",
       "button-pfx",
       "cards",
+      "code",
       "columns",
       "embed",
       "google-map",
@@ -38,8 +39,7 @@
       "learningCenter",
       "iframe",
       "fragment",
-      "table",
-      "code"
+      "table"
     ]
   },
   {
