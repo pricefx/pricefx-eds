@@ -370,7 +370,7 @@ export default async function decorate(block) {
 
   // Render Featured Article
   featuredArticleContainer.innerHTML = `
-    <div class="article-image"><img src="${featuredArticleData.image}" alt="${featuredArticleData.imageAlt || featuredArticleData.title}" loading="lazy"></div>
+    <div class="article-image"><img src="${featuredArticleData.image}" alt="${featuredArticleData.imageAlt || featuredArticleData.title}"></div>
     <div class="article-content">
       ${
         featuredArticleData.category !== '' ||
@@ -406,7 +406,7 @@ export default async function decorate(block) {
       renderArticleAuthors(article);
       markup += `
         <li class="article-card">
-          <div class="article-image"><img src="${article.image}" alt="${article.imageAlt || article.title}" loading="lazy"></div>
+          <div class="article-image"><img src="${article.image}" alt="${article.imageAlt || article.title}"></div>
           <div class="article-content">
             ${
               article.category !== '' ||
