@@ -72,8 +72,11 @@
       "plugins": {
         "xwalk": {
           "page": {
-            "resourceType": "core/franklin/components/button/v1/block",
-            "template": {}
+            "resourceType": "core/franklin/components/button/v1/button",
+            "template": {
+              "name": "Link",
+              "model": "link"
+            }
           }
         }
       }
