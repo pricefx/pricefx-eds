@@ -14,7 +14,7 @@ export function environmentMode() {
  * @returns {Boolean} Edit mode (edit or preview)
  */
 export function editMode() {
-  if (window.location.pathname.includes('/canvas/author')) {
+  if (window.navigation.currentEntry.url.includes('/canvas/author')) {
     return true;
   }
   return false;
