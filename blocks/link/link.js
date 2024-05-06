@@ -1,9 +1,9 @@
-// import { editMode } from '../../scripts/global-functions.js';
+import { editMode } from '../../scripts/global-functions.js';
 
 export default function decorate(block) {
-  // if (editMode()) {
-  //   return;
-  // }
+  if (editMode()) {
+    return;
+  }
 
   const [link, target] = block.children;
   const { href } = link.querySelector('a') || '';
@@ -19,5 +19,5 @@ export default function decorate(block) {
   }
 
   block.textContent = '';
-  // block.parentElement.remove();
+  block.parentElement.remove();
 }
