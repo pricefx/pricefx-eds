@@ -161,7 +161,14 @@
         "label": "Alt Text"
       },
       {
-        "component": "text",
+        "component": "text-input",
+        "valueType": "string",
+        "name": "height",
+        "value": "alt",
+        "label": "Image Link"
+      },
+      {
+        "component": "aem-content",
         "name": "imageLink",
         "label": "Image Link",
         "valueType": "string",
@@ -325,6 +332,25 @@
             "value": "left-arrow"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "link-pfx",
+    "fields": [
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "linkHref",
+        "value": "",
+        "label": "Link"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "label": "Target Blank",
+        "name": "linkTargetBlank",
+        "description": "When selected, the link opens in a new tab"
       }
     ]
   },
@@ -839,7 +865,7 @@
       {
         "component": "text-input",
         "name": "url",
-        "label": "URL",
+        "label": "Embed Video URL",
         "valueType": "string",
         "value": ""
       },
@@ -847,7 +873,7 @@
         "component": "richtext",
         "valueType": "string",
         "name": "overlayContent",
-        "label": "Overlay Content",
+        "label": "Embed Video Overlay Content",
         "value": ""
       },
       {
@@ -862,10 +888,10 @@
         "label": "Hero Height Variation",
         "name": "heroVariation",
         "valueType": "string",
-        "value": "hero-secondary-variation",
+        "value": "hero-primary-height",
         "options": [
-          { "name": "Hero Height 800px", "value": "hero-primary-variation" },
-          { "name": "Hero Height 465px - Default", "value": "hero-secondary-variation" }
+          { "name": "Hero Height 800px", "value": "hero-secondary-height" },
+          { "name": "Hero Height 465px - Default", "value": "hero-primary-height" }
         ]
       },
       {
@@ -1057,7 +1083,7 @@
       {
         "component": "text-area",
         "valueType": "string",
-        "value": "Well done is better than well said.",
+        "value": "",
         "name": "quote",
         "label": "Quote"
       },
@@ -1072,7 +1098,7 @@
         "valueType": "string",
         "name": "author",
         "label": "Author",
-        "value": "Benjamin Franklin"
+        "value": ""
       }
     ]
   },

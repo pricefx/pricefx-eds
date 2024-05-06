@@ -149,6 +149,21 @@
           }
         },
         {
+          "title": "Link Pfx",
+          "id": "link-pfx",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Link",
+                  "model": "link-pfx"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Cards",
           "id": "cards",
           "plugins": {
