@@ -29,10 +29,6 @@
   text-align: center;
 }
 
-.columns.column-top-aligned > div {
-  align-items: flex-start;
-}
-
 .columns.column-mobile-reverse > div {
   flex-direction: column-reverse;
 }
@@ -93,9 +89,12 @@
     margin-bottom: 50px;
   }
 
-  /* Custom Styles */
   .columns.column-separator > div {
     gap: unset;
+  }
+
+  .columns.column-top-aligned > div {
+    align-items: flex-start;
   }
 
   .columns.columns-top-padding-large {
