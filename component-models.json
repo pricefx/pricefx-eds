@@ -180,7 +180,7 @@
     "id": "button",
     "fields": [
       {
-        "component": "text-input",
+        "component": "aem-content",
         "valueType": "string",
         "name": "href",
         "value": "",
@@ -227,7 +227,7 @@
     "id": "button-pfx",
     "fields": [
       {
-        "component": "text-input",
+        "component": "aem-content",
         "valueType": "string",
         "name": "href",
         "label": "Link",

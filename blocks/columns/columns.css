@@ -5,7 +5,7 @@
 }
 
 .columns img {
-  width: 100%;
+  max-width: 100%;
 }
 
 .columns > div > div h1,
@@ -15,10 +15,6 @@
 .columns > div > div h5,
 .columns > div > div h6 {
   margin-top: 0;
-}
-
-.columns > div > .columns-img-col img {
-  display: block;
 }
 
 .columns.column-center-aligned > div {
