@@ -19,5 +19,5 @@ export default function decorate(block) {
   }
 
   block.textContent = '';
-  block.parentElement.remove();
+  // block.parentElement.remove();
 }
