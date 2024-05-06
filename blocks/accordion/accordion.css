@@ -40,10 +40,12 @@
 
 .accordion-button {
   background: transparent;
+  border:none;
 }
 
 .accordion-button:focus{
   outline: none;
+  border:none;
 }
 
 
