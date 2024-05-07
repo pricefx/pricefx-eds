@@ -569,12 +569,30 @@
         "valueType": "string",
         "description": "Select the Card Variations.",
         "options": [
-          { "name": "Aspect Ratio 16:9", "value": "aspect-ratio-16-9" },
-          { "name": "Remove Aspect Ratio", "value": "no-aspect-ratio" },
-          { "name": "Icon Variation", "value": "icon-variation" },
-          { "name": "Hide Image", "value": "hide-image" },
-          { "name": "Hide Button Link", "value": "hide-button-link" },
-          { "name": "Card BG Color - Black", "value": "card-bg-black" }
+          {
+            "name": "Aspect Ratio 16:9",
+            "value": "aspect-ratio-16-9"
+          },
+          {
+            "name": "Remove Aspect Ratio",
+            "value": "no-aspect-ratio"
+          },
+          {
+            "name": "Icon Variation",
+            "value": "icon-variation"
+          },
+          {
+            "name": "Hide Image",
+            "value": "hide-image"
+          },
+          {
+            "name": "Hide Button Link",
+            "value": "hide-button-link"
+          },
+          {
+            "name": "Card BG Color - Black",
+            "value": "card-bg-black"
+          }
         ]
       }
     ]
@@ -834,9 +852,18 @@
         "value": "",
         "description": "The entire section's H1 to H6 color will be changed.",
         "options": [
-          { "name": "Default", "value": "" },
-          { "name": "Section Title Gray", "value": "section-title-gray" },
-          { "name": "Section Title Blue", "value": "section-title-blue" }
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Section Title Gray",
+            "value": "section-title-gray"
+          },
+          {
+            "name": "Section Title Blue",
+            "value": "section-title-blue"
+          }
         ]
       },
       {
@@ -864,9 +891,18 @@
         "valueType": "string",
         "value": "imageVariation",
         "options": [
-          { "name": "Image - Default", "value": "imageVariation" },
-          { "name": "Video", "value": "videoVariation" },
-          { "name": "No Background Image / Video", "value": "noVariation" }
+          {
+            "name": "Image - Default",
+            "value": "imageVariation"
+          },
+          {
+            "name": "Video",
+            "value": "videoVariation"
+          },
+          {
+            "name": "No Background Image / Video",
+            "value": "noVariation"
+          }
         ]
       },
       {
@@ -890,9 +926,18 @@
         "valueType": "string",
         "value": "hero-image-right",
         "options": [
-          { "name": "Left", "value": "hero-image-left" },
-          { "name": "Center", "value": "hero-image-center" },
-          { "name": "Right - Default", "value": "hero-image-right" }
+          {
+            "name": "Left",
+            "value": "hero-image-left"
+          },
+          {
+            "name": "Center",
+            "value": "hero-image-center"
+          },
+          {
+            "name": "Right - Default",
+            "value": "hero-image-right"
+          }
         ]
       },
       {
@@ -931,8 +976,14 @@
         "valueType": "string",
         "value": "hero-primary-height",
         "options": [
-          { "name": "Hero Height 800px", "value": "hero-secondary-height" },
-          { "name": "Hero Height 465px - Default", "value": "hero-primary-height" }
+          {
+            "name": "Hero Height 800px",
+            "value": "hero-secondary-height"
+          },
+          {
+            "name": "Hero Height 465px - Default",
+            "value": "hero-primary-height"
+          }
         ]
       },
       {
@@ -958,8 +1009,14 @@
         "valueType": "string",
         "value": "primary",
         "options": [
-          { "name": "Primary", "value": "primary" },
-          { "name": "Secondary", "value": "secondary" }
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
         ]
       },
       {
@@ -989,8 +1046,14 @@
         "value": "primary",
         "valueType": "string",
         "options": [
-          { "name": "Primary", "value": "primary" },
-          { "name": "Secondary", "value": "secondary" }
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
         ]
       },
       {
@@ -1020,8 +1083,14 @@
         "valueType": "string",
         "value": "primary",
         "options": [
-          { "name": "Primary", "value": "primary" },
-          { "name": "Secondary", "value": "secondary" }
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
         ]
       },
       {
@@ -1227,8 +1296,14 @@
         "required": true,
         "maxSize": 1,
         "options": [
-          { "name": "Share Buttons", "value": "share-buttons" },
-          { "name": "Follow Buttons", "value": "follow-buttons" }
+          {
+            "name": "Share Buttons",
+            "value": "share-buttons"
+          },
+          {
+            "name": "Follow Buttons",
+            "value": "follow-buttons"
+          }
         ]
       },
       {
@@ -1273,10 +1348,22 @@
         "valueType": "string",
         "description": "Select the Share Button(s).",
         "options": [
-          { "name": "Facebook", "value": "facebook" },
-          { "name": "X (Formerly Twitter)", "value": "twitter" },
-          { "name": "Linkedin", "value": "linkedin" },
-          { "name": "Email", "value": "email" }
+          {
+            "name": "Facebook",
+            "value": "facebook"
+          },
+          {
+            "name": "X (Formerly Twitter)",
+            "value": "twitter"
+          },
+          {
+            "name": "Linkedin",
+            "value": "linkedin"
+          },
+          {
+            "name": "Email",
+            "value": "email"
+          }
         ]
       },
       {
@@ -1303,9 +1390,18 @@
         "name": "sectionLayout",
         "valueType": "string",
         "options": [
-          { "name": "2 Column", "value": "two-column" },
-          { "name": "3 Column", "value": "three-column" },
-          { "name": "4 Column", "value": "four-column" }
+          {
+            "name": "2 Column",
+            "value": "two-column"
+          },
+          {
+            "name": "3 Column",
+            "value": "three-column"
+          },
+          {
+            "name": "4 Column",
+            "value": "four-column"
+          }
         ]
       },
       {
@@ -1372,10 +1468,22 @@
         "name": "sortBy",
         "valueType": "string[]",
         "options": [
-          { "name": "Asc Date", "value": "asc-date" },
-          { "name": "Desc Date", "value": "desc-date" },
-          { "name": "Asc Title", "value": "asc-title" },
-          { "name": "Desc Title", "value": "desc-title" }
+          {
+            "name": "Asc Date",
+            "value": "asc-date"
+          },
+          {
+            "name": "Desc Date",
+            "value": "desc-date"
+          },
+          {
+            "name": "Asc Title",
+            "value": "asc-title"
+          },
+          {
+            "name": "Desc Title",
+            "value": "desc-title"
+          }
         ]
       },
       {
@@ -1544,8 +1652,14 @@
         "valueType": "string",
         "value": "black-background",
         "options": [
-          { "name": "Black Background", "value": "black-background" },
-          { "name": "No Background", "value": "no-background" }
+          {
+            "name": "Black Background",
+            "value": "black-background"
+          },
+          {
+            "name": "No Background",
+            "value": "no-background"
+          }
         ]
       },
       {
@@ -1555,8 +1669,14 @@
         "valueType": "string",
         "value": "",
         "options": [
-          { "name": "Regular", "value": "" },
-          { "name": "Large", "value": "large" }
+          {
+            "name": "Regular",
+            "value": ""
+          },
+          {
+            "name": "Large",
+            "value": "large"
+          }
         ]
       }
     ]
@@ -1640,11 +1760,55 @@
         "name": "tableVariation",
         "valueType": "string",
         "options": [
-          { "name": "Default", "value": "default" },
-          { "name": "Icon Variation", "value": "icon" },
-          { "name": "Level Variation", "value": "level" },
-          { "name": "Level Variation color", "value": "LevelColor" }
+          {
+            "name": "Default",
+            "value": "default"
+          },
+          {
+            "name": "Icon Variation",
+            "value": "icon"
+          },
+          {
+            "name": "Level Variation",
+            "value": "level"
+          },
+          {
+            "name": "Level Variation color",
+            "value": "LevelColor"
+          }
         ]
+      }
+    ]
+  },
+  {
+    "id": "download",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "fileReference",
+        "label": "DownLoad Image",
+        "multi": false
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "alt",
+        "value": "Download Alt",
+        "label": "Alt Text"
+      },
+      {
+        "component": "aem-content",
+        "name": "assetLink",
+        "label": "Asset Link",
+        "valueType": "string",
+        "description": "Provide Asset Link"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "fileName",
+        "label": "File Name"
       }
     ]
   },
