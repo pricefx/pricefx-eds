@@ -1,0 +1,6 @@
+@import url('../embed/embed.css');
+
+.section.lr-boxed-container {
+  background-color: var(--c-gray-lt);
+  padding: 0;
+}

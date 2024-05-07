@@ -339,6 +339,17 @@
     "id": "left-right-boxed",
     "fields": [
       {
+        "component": "radio-group",
+        "label": "Boxed Image / Video Variation",
+        "name": "boxedVariation",
+        "valueType": "string",
+        "value": "imageVariation",
+        "options": [
+          { "name": "Image - Default", "value": "imageVariation" },
+          { "name": "Video", "value": "videoVariation" }
+        ]
+      },
+      {
         "component": "boolean",
         "label": "Image / Video to Right",
         "name": "isImageRight",
@@ -357,14 +368,6 @@
         "name": "imageAlt",
         "label": "Image Alt Text",
         "value": ""
-      },
-      {
-        "component": "richtext",
-        "valueType": "string",
-        "name": "boxedContent",
-        "label": "Left Right Boxed Content",
-        "value": "",
-        "description": "ⓘ Heading (H2) and Description"
       },
       {
         "component": "reference",
@@ -394,6 +397,14 @@
         "name": "popUpModal",
         "valueType": "boolean",
         "description": "ⓘ When selected, the Video will open in a Popup Modal"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "boxedContent",
+        "label": "Left Right Boxed Content",
+        "value": "",
+        "description": "ⓘ Heading (H2) and Description"
       }
     ]
   },
