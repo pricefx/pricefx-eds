@@ -45,6 +45,14 @@ export default async function decorate(block) {
       boxedRightContainer.append(row.firstElementChild);
       boxedRightContainer.classList.add('boxed-right-container');
     } else if (index === 7) {
+      /* Eyebrow Text */
+      if (row.firstElementChild?.textContent !== '') {
+        const boxedEyebrowText = document.createElement('span');
+        boxedEyebrowText.classList.add('boxed-eyebrow-text');
+        boxedEyebrowText.append(row.firstElementChild);
+        boxedLeftContainer.append(boxedEyebrowText);
+      }
+    } else if (index === 8) {
       /* Left Right Boxed Content */
       row.firstElementChild?.classList.add('boxed-content-container');
       boxedLeftContainer.append(row.firstElementChild || '');

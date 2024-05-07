@@ -399,6 +399,14 @@
         "description": "ⓘ When selected, the Video will open in a Popup Modal"
       },
       {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "boxedEyebrowText",
+        "label": "Eyebrow Text",
+        "value": "",
+        "description": "ⓘ Eyebrow Text"
+      },
+      {
         "component": "richtext",
         "valueType": "string",
         "name": "boxedContent",

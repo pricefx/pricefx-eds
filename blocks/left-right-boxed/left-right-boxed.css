@@ -4,12 +4,31 @@
   padding: 0;
 }
 
-.boxed-main-container {
+.left-right-boxed .boxed-main-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
-.boxed-left-container, .boxed-right-container {
-    flex: 50%;
+.left-right-boxed .boxed-right-container img {
+    aspect-ratio: 16 / 9.2;
+    object-fit: cover;
+}
+
+/* Media Query for Desktop */
+
+@media (width >= 986px) {
+    .left-right-boxed .boxed-main-container {
+        flex-direction: row;
+    }
+
+    .left-right-boxed .boxed-left-container, .left-right-boxed .boxed-right-container {
+        flex: 50%;
+    }
+
+    .left-right-boxed .boxed-left-container .boxed-content-container {
+        max-width: 587px;
+        margin: auto 61px auto auto;
+    }
 }
