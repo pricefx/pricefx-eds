@@ -12,7 +12,7 @@ function decorateRightContainer(boxedRightContainer) {
     boxedRightContainer.append(boxedImageContainer);
   } else if (boxedVariation === 'videoVariation') {
     const boxedRightContainerInner = document.createElement('div');
-    boxedRightContainerInner.classList.add('embed');
+    boxedRightContainerInner.classList.add('boxed-video-container embed');
     const placeholder = boxedRightContainer.children[2];
     const link = boxedRightContainer.children[3];
     const overlayText = boxedRightContainer.children[4];
@@ -38,9 +38,18 @@ export default async function decorate(block) {
   const boxedLeftContainer = document.createElement('div');
   boxedLeftContainer.classList.add('boxed-left-container');
   const boxedRightContainer = document.createElement('div');
+  const boxedLeftContainerInner = document.createElement('div');
+  boxedLeftContainerInner.classList.add('boxed-content-container');
 
   [...block.children].forEach((row, index) => {
     if (index <= 6) {
+      if (index === 1) {
+        const variationOption = row.firstElementChild?.textContent;
+        if (variationOption === 'videoVariation') {
+          boxedLeftContainerInner.classList.add('boxed-content-video');
+          boxedRightContainer.classList.add('hero-video');
+        }
+      }
       /* Image / Video */
       boxedRightContainer.append(row.firstElementChild);
       boxedRightContainer.classList.add('boxed-right-container');
@@ -50,15 +59,14 @@ export default async function decorate(block) {
         const boxedEyebrowText = document.createElement('span');
         boxedEyebrowText.classList.add('boxed-eyebrow-text');
         boxedEyebrowText.append(row.firstElementChild);
-        boxedLeftContainer.append(boxedEyebrowText);
+        boxedLeftContainerInner.append(boxedEyebrowText);
       }
     } else if (index === 8) {
       /* Left Right Boxed Content */
-      row.firstElementChild?.classList.add('boxed-content-container');
-      boxedLeftContainer.append(row.firstElementChild || '');
+      boxedLeftContainerInner.append(row.firstElementChild || '');
     }
   });
-
+  boxedLeftContainer.append(boxedLeftContainerInner);
   decorateRightContainer(boxedRightContainer);
   boxedContainer.append(boxedLeftContainer);
   boxedContainer.append(boxedRightContainer);
