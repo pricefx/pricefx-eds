@@ -10,9 +10,9 @@ header {
   padding: 0 var(--spacing-xsmall) 0 0;
   position: sticky;
   top: 0;
+  transition: var(--base-transition-2);
   width: 100%;
   z-index: 3;
-  transition: var(--base-transition-2);
 }
 
 .header {
@@ -32,7 +32,13 @@ header {
 
 /* Brand Logo */
 .brand {
+  height: auto;
   max-width: 126px;
+  width: 100%;
+}
+
+.brand img {
+  display: block;
   width: 100%;
 }
 
@@ -568,6 +574,11 @@ header a:focus {
 
   .header-search-cta {
     margin: 0 var(--spacing-xsmall) 0 0;
+  }
+
+  .brand img {
+    height: 33px;
+    width: 85px;
   }
 
   .expert-cta {
