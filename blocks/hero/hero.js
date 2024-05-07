@@ -76,7 +76,7 @@ export default async function decorate(block) {
     if (index < 6) {
       /* Image / Video */
       if (index === 0) {
-        if (row.firstElementChild?.textContent === 'noVariation') {
+        if (row.firstElementChild?.textContent === '') {
           heroLeftContainerInner.classList.add('hero-no-bg-image');
         } else if (row.firstElementChild?.textContent === 'videoVariation') {
           heroLeftContainerInner.classList.add('hero-content-video');
