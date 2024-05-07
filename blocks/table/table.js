@@ -1,4 +1,3 @@
-// import ffetch from '../../scripts/ffetch.js';
 export default async function decorate(block) {
   // eslint-disable-next-line no-unused-vars
   const [spreadSheetLink, title, disableTopRow, tableVariation] = block.children;
@@ -17,50 +16,84 @@ export default async function decorate(block) {
   const table = document.createElement('table');
   const variation = tableVariation.textContent.replace(/\s+/g, ' ').trim();
 
-  if (variation === 'default') {
-    table.classList.add('table-default');
-  } else if (variation === 'icon') {
-    table.classList.add('table-icon');
-  } else if (variation === 'level') {
-    table.classList.add('table-level');
-  } else if (variation === 'LevelColor') {
-    table.classList.add('levelcolor');
-  }
-
   /* Header Row  */
   const headerRow = document.createElement('tr');
-  Object.keys(tableData.data[0]).forEach((key) => {
+  headerRow.innerHTML = `<style id="dynamic-styles" class="dynamic-styles">`;
+  Object.keys(tableData.data[0]).forEach((key, index) => {
     const th = document.createElement('th');
-    th.textContent = key.charAt(0).toUpperCase() + key.slice(1); // Capitalize the first letter
+    th.textContent = key.charAt(0).toUpperCase() + key.slice(1);
+    if (variation === 'LevelColor') {
+      th.classList.add(`column-${index}`); // Add class based on column index
+    }
     headerRow.appendChild(th);
   });
 
   table.appendChild(headerRow);
 
-  /* Rows */
-  tableData.data.forEach((item) => {
-    const row = document.createElement('tr');
-    Object.values(item).forEach((value) => {
-      const cell = document.createElement('td');
+  if (variation === 'default' || variation === 'icon') {
+    if (variation === 'default') {
+      table.classList.add('table-default');
+    } else {
+      table.classList.add('table-icon');
+    }
 
-      // level-icon
-      if (value.toLowerCase() === 'yes') {
-        const icon = document.createElement('div');
-        icon.classList.add('concentric-circle');
-        cell.appendChild(icon);
-      } else if (value.toLowerCase() === 'no') {
-        cell.textContent = '';
-      } else {
+    tableData.data.forEach((item) => {
+      const row = document.createElement('tr');
+
+      /* Default Table / Icon Table */
+      Object.values(item).forEach((value) => {
+        const cell = document.createElement('td');
         cell.textContent = value;
-      }
+        row.appendChild(cell);
+      });
 
-      // default table
-      // cell.textContent = value;
-
-      row.appendChild(cell);
+      table.appendChild(row);
     });
-    table.appendChild(row);
-  });
+  } else if (variation === 'level' || variation === 'LevelColor') {
+    tableData.data.forEach((item) => {
+      const row = document.createElement('tr');
+      /* Level Table && LevelColor Table */
+      Object.values(item).forEach((value) => {
+        const cell = document.createElement('td');
+        if (value.toLowerCase() === 'yes') {
+          const icon = document.createElement('div');
+          icon.classList.add('concentric-circle');
+          cell.appendChild(icon);
+        } else if (value.toLowerCase() === 'no') {
+          cell.textContent = '';
+        } else {
+          cell.textContent = value;
+        }
+        row.appendChild(cell);
+      });
+
+      table.appendChild(row);
+    });
+
+    if (variation === 'level') {
+      table.classList.add('table-level');
+    } else if (variation === 'LevelColor') {
+      table.classList.add('levelcolor');
+      const dynamicStyles = document.createElement('style');
+      dynamicStyles.classList.add('dynamic-styles');
+      headerRow.appendChild(dynamicStyles);
+      const colors = ['#f5a057', '#41b6e6', '#6eb74a'];
+      Object.keys(tableData.data[0]).forEach((key, index) => {
+        if (index !== 0) {
+          const colorIndex = index % colors.length; // Calculate color index
+          dynamicStyles.textContent += `
+    .column-${index} {
+        color: var(--color-${colorIndex}, ${colors[colorIndex]});
+    }`;
+        } else {
+          dynamicStyles.textContent += `
+    .column-${index} {
+        color: white;
+    }`;
+        }
+      });
+    }
+  }
 
   tableContainer.appendChild(table);
   block.appendChild(tableContainer);
