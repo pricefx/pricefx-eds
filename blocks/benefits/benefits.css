@@ -1,0 +1,56 @@
+.benefits-wrapper {
+  display: flex;
+}
+
+.benefits {
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.benefits-main-container {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 8px;
+}
+
+.benefits-left-container {
+    flex: 0 0 50%;
+    border-radius: 8px; 
+    min-height: 753px;
+    object-fit: cover;
+}
+
+.benefits-right-container {
+    display: inline-block;
+    align-items: center;
+    margin: calc((40 / 16) * 1rem);
+}
+
+.benefits-action{
+   font-family: var(--ff-secondary);
+   font-size: calc((18 / 16) * 1rem);
+   font-style: normal;
+   font-weight: var(--fw-regular);
+   line-height: 28px;
+}
+
+hr {
+    display: block;
+    width:576px;
+    height: 1px;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    background: var(--c-primary-lt);
+}
+
+.container {
+    display: inline-block;
+}
+
+.left-container, .right-container {
+    flex: 1;
+}
+
+.content {
+    margin-bottom: 20px;
+}
