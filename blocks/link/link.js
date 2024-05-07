@@ -1,7 +1,7 @@
-import { editMode } from '../../scripts/global-functions.js';
+import { editMode, environmentMode } from '../../scripts/global-functions.js';
 
 export default function decorate(block) {
-  if (editMode() || window.location.search.includes('?ref=')) {
+  if (editMode()) {
     return;
   }
 
@@ -20,5 +20,8 @@ export default function decorate(block) {
   }
 
   block.textContent = '';
-  block.parentElement.remove();
+
+  if (environmentMode() === 'publish') {
+    block.parentElement.remove();
+  }
 }
