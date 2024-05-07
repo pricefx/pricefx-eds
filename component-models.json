@@ -883,11 +883,11 @@
         "label": "Variation",
         "name": "variation",
         "valueType": "string",
-        "value": "",
+        "value": "noVariation",
         "options": [
           { "name": "Image", "value": "imageVariation" },
           { "name": "Video", "value": "videoVariation" },
-          { "name": "No Background Image / Video", "value": "" }
+          { "name": "No Background Image / Video", "value": "noVariation" }
         ]
       },
       {

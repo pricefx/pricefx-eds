@@ -76,9 +76,10 @@ export default async function decorate(block) {
     if (index < 6) {
       /* Image / Video */
       if (index === 0) {
-        if (row.firstElementChild?.textContent === '') {
+        const variationOption = row.firstElementChild?.textContent;
+        if (variationOption === '' || variationOption === 'noVariation') {
           heroLeftContainerInner.classList.add('hero-no-bg-image');
-        } else if (row.firstElementChild?.textContent === 'videoVariation') {
+        } else if (variationOption === 'videoVariation') {
           heroLeftContainerInner.classList.add('hero-content-video');
           heroRightContainer.classList.add('hero-video');
         }
