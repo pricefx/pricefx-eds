@@ -948,7 +948,7 @@
       {
         "component": "radio-group",
         "label": "Hero Height",
-        "name": "heroHeight",
+        "name": "heroVariation",
         "valueType": "string",
         "value": "hero-primary-height",
         "options": [
