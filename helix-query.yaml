@@ -72,11 +72,11 @@ indices:
         value: attribute(el, "content")
   partners:
     include:
-      - /partner/**
+      - /partners/**
     exclude:
-      - /partner/enable-and-pricefx-partnership
-      - /partner/partner-delivery
-      - /partner/partner-showcase
+      - /partners/enable-and-pricefx-partnership
+      - /partners/partner-delivery
+      - /partners/partner-showcase
     target: /partner-index.json
     properties:
       title:
