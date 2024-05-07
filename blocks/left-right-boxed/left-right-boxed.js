@@ -46,7 +46,7 @@ export default async function decorate(block) {
       if (index === 1) {
         const variationOption = row.firstElementChild?.textContent || 'false';
         if (variationOption === 'true') {
-          boxedLeftContainer.parentElement.classList.add('boxed-content-right');
+          boxedContainer.classList.add('boxed-content-right');
         }
       }
       /* Image / Video */
