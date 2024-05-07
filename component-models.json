@@ -894,9 +894,9 @@
         "label": "Variation",
         "name": "variation",
         "valueType": "string",
-        "value": "noVariation",
+        "value": "imageVariation",
         "options": [
-          { "name": "Image", "value": "imageVariation" },
+          { "name": "Image - Default", "value": "imageVariation" },
           { "name": "Video", "value": "videoVariation" },
           { "name": "No Background Image / Video", "value": "noVariation" }
         ]

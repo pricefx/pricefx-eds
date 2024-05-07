@@ -27,8 +27,7 @@ function decorateButton(heroLeftContainer) {
 }
 
 function decorateRightContainer(heroRightContainer) {
-  const heroVariation = heroRightContainer.firstElementChild.textContent;
-
+  const heroVariation = heroRightContainer.firstElementChild.textContent || 'imageVariation';
   if (heroVariation === 'imageVariation') {
     const heroImageContainer = document.createElement('div');
     heroImageContainer.classList.add('hero-image-container');
@@ -77,7 +76,7 @@ export default async function decorate(block) {
       /* Image / Video */
       if (index === 0) {
         const variationOption = row.firstElementChild?.textContent;
-        if (variationOption === '' || variationOption === 'noVariation') {
+        if (variationOption === 'noVariation') {
           heroLeftContainerInner.classList.add('hero-no-bg-image');
         } else if (variationOption === 'videoVariation') {
           heroLeftContainerInner.classList.add('hero-content-video');

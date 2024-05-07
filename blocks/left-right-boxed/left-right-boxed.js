@@ -1,12 +1,12 @@
 import { decorateEmbed } from '../embed/embed.js';
 
 function decorateRightContainer(boxedRightContainer) {
-  const boxedVariation = boxedRightContainer.firstElementChild.textContent;
+  const boxedVariation = boxedRightContainer.firstElementChild.textContent || 'imageVariation';
 
   if (boxedVariation === 'imageVariation') {
     const boxedImageContainer = document.createElement('div');
-    boxedImageContainer.classList.add('lr-boxed-image-container');
-    const boxedImage = boxedRightContainer.children[1];
+    boxedImageContainer.classList.add('boxed-image-container');
+    const boxedImage = boxedRightContainer.children[2];
     boxedImageContainer.append(boxedImage);
     boxedRightContainer.textContent = '';
     boxedRightContainer.append(boxedImageContainer);
@@ -34,22 +34,23 @@ function decorateRightContainer(boxedRightContainer) {
 
 export default async function decorate(block) {
   const boxedContainer = document.createElement('div');
-  boxedContainer.classList.add('lr-boxed-main-container');
+  boxedContainer.classList.add('boxed-main-container');
   const boxedLeftContainer = document.createElement('div');
-  boxedLeftContainer.classList.add('lr-boxed-left-container');
+  boxedLeftContainer.classList.add('boxed-left-container');
   const boxedRightContainer = document.createElement('div');
   const boxedLeftContainerInner = document.createElement('div');
-  boxedLeftContainerInner.classList.add('lr-boxed-content');
+  boxedLeftContainerInner.classList.add('boxed-content');
 
   [...block.children].forEach((row, index) => {
     if (index <= 6) {
       /* Image / Video */
       boxedRightContainer.append(row.firstElementChild);
-      boxedRightContainer.classList.add('lr-boxed-right-container');
+      boxedRightContainer.classList.add('boxed-right-container');
     } else if (index === 7) {
       /* Left Right Boxed Content */
-      row.firstElementChild?.classList.add('lr-boxed-content-container');
+      row.firstElementChild?.classList.add('boxed-content-container');
       boxedLeftContainerInner.append(row.firstElementChild || '');
+      boxedLeftContainer.append(boxedLeftContainerInner);
     }
   });
 
