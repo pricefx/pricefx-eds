@@ -159,27 +159,6 @@
         "name": "alt",
         "value": "Default alt",
         "label": "Alt Text"
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "height",
-        "value": "alt",
-        "label": "Image Link"
-      },
-      {
-        "component": "aem-content",
-        "name": "imageLink",
-        "label": "Image Link",
-        "valueType": "string",
-        "description": "If you add link then it will make image clickable"
-      },
-      {
-        "component": "boolean",
-        "label": "Target Blank",
-        "name": "targetBlank",
-        "valueType": "boolean",
-        "description": "If you selected the link will open in new window"
       }
     ]
   },
