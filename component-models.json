@@ -1691,6 +1691,12 @@
         "name": "carouselSlideFrag",
         "value": "",
         "label": "Add Carousel Slide Fragment"
+      },
+      {
+        "component": "boolean",
+        "label": "Auto Slide",
+        "name": "isAutoSlide",
+        "valueType": "boolean"
       }
     ]
   }
