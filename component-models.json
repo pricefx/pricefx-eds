@@ -1823,5 +1823,36 @@
         "label": "Author HTML Code"
       }
     ]
+  },
+  {
+    "id": "carousel",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "carouselTitle",
+        "value": "",
+        "label": "Carousel Title"
+      },
+      {
+        "component": "richtext",
+        "name": "carouselDescription",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "carouselSlideFrag",
+        "value": "",
+        "label": "Add Carousel Slide Fragment"
+      },
+      {
+        "component": "boolean",
+        "label": "Auto Slide",
+        "name": "isAutoSlide",
+        "valueType": "boolean"
+      }
+    ]
   }
 ]

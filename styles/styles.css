@@ -109,6 +109,7 @@
   --c-gray: #dfe1e6;
   --c-gray-lt: #ebecee;
   --c-gray-med: #b5bac4;
+  --c-gray-med-2: #939393;
   --c-gray-med-alt: #bababa;
   --c-gray-mid: #939393;
   --c-gray-drk: #6e7178;
@@ -130,6 +131,7 @@
   --c-link: #466cb9;
   --c-link-lt: #5fbbe8;
   --c-mega-menu-link: #2d9bd2;
+  --c-card-subtitle: #c9559e;
 
   /* Alerts */
   --c-disabled-border: var(--c-gray-border);
@@ -210,6 +212,16 @@ body {
 
 body.appear {
   display: block;
+}
+
+header {
+  height: 116px;
+}
+
+@media (width > 985px) {
+  header {
+    height: 107px;
+  }
 }
 
 main {
@@ -540,6 +552,17 @@ main .section.highlight {
   border-radius: 20px;
 }
 
+/* Hidden class, makes content visible only for screen readers */
+.sr-only:not(:focus, :active) {
+  clip: rect(0 0 0 0); 
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; 
+  width: 1px;
+}
+
 .section[data-iframetwocolumn="true"] {
   padding-top: 18px;
   justify-content: center;
@@ -570,11 +593,11 @@ main .section.highlight {
   .section[data-padding="section-padding-large"] {
     padding: 100px var(--spacing-medium);
   }
-  
+
   .section[data-padding="section-padding-medium"] {
     padding: var(--spacing-xlarge) var(--spacing-medium);
   }
-  
+
   .section[data-padding="section-padding-small"] {
     padding: var(--spacing-medium);
   }

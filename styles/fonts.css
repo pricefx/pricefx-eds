@@ -68,6 +68,7 @@
   font-family: pricefx-icons;
   font-style: normal;
   font-weight: normal;
+  font-display: swap;
   src:
     url('../fonts/pricefx-icons/pricefx-icons.ttf') format('truetype'),
     url('../fonts/pricefx-icons/pricefx-icons.woff') format('woff'),
