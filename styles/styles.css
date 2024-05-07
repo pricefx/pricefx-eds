@@ -602,7 +602,7 @@ main .section.highlight {
     padding: var(--spacing-medium);
   }
 
-.section[data-iframetwocolumn="true"] {
+  .section[data-iframetwocolumn="true"] {
     display: flex;
   }
 
