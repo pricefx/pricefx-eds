@@ -1430,7 +1430,7 @@
       {
         "component": "aem-tag",
         "label": "Topic Tags",
-        "name": "topictags",
+        "name": "topicTags",
         "valueType": "string"
       },
       {
