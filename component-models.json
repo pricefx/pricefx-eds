@@ -946,15 +946,11 @@
         "description": "ⓘ When selected, the Video will open in a Popup Modal"
       },
       {
-        "component": "radio-group",
-        "label": "Hero Height Variation",
-        "name": "heroVariation",
-        "valueType": "string",
-        "value": "hero-primary-height",
-        "options": [
-          { "name": "Hero Height 800px", "value": "hero-secondary-height" },
-          { "name": "Hero Height 465px - Default", "value": "hero-primary-height" }
-        ]
+        "component": "boolean",
+        "label": "Hero Height",
+        "name": "heroHeight",
+        "valueType": "boolean",
+        "description": "ⓘ When selected, Hero height changes to 800px"
       },
       {
         "component": "text-input",
