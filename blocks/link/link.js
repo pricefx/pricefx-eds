@@ -1,7 +1,7 @@
 import { editMode } from '../../scripts/global-functions.js';
 
 export default function decorate(block) {
-  if (editMode() || window.location.search.includes('?ref=')) {
+  if (editMode()) {
     return;
   }
 
@@ -20,5 +20,5 @@ export default function decorate(block) {
   }
 
   block.textContent = '';
-  block.parentElement.remove();
+  // block.parentElement.remove();
 }
