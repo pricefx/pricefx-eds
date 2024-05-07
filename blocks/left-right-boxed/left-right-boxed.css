@@ -1,6 +1,15 @@
 @import url('../embed/embed.css');
 
-.section.lr-boxed-container {
-  background-color: var(--c-gray-lt);
+.section.left-right-boxed-container {
   padding: 0;
+}
+
+.boxed-main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.boxed-left-container, .boxed-right-container {
+    flex: 50%;
 }

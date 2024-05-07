@@ -38,8 +38,6 @@ export default async function decorate(block) {
   const boxedLeftContainer = document.createElement('div');
   boxedLeftContainer.classList.add('boxed-left-container');
   const boxedRightContainer = document.createElement('div');
-  const boxedLeftContainerInner = document.createElement('div');
-  boxedLeftContainerInner.classList.add('boxed-content');
 
   [...block.children].forEach((row, index) => {
     if (index <= 6) {
@@ -49,8 +47,7 @@ export default async function decorate(block) {
     } else if (index === 7) {
       /* Left Right Boxed Content */
       row.firstElementChild?.classList.add('boxed-content-container');
-      boxedLeftContainerInner.append(row.firstElementChild || '');
-      boxedLeftContainer.append(boxedLeftContainerInner);
+      boxedLeftContainer.append(row.firstElementChild || '');
     }
   });
 
