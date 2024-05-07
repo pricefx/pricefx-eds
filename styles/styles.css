@@ -398,6 +398,10 @@ button.secondary:focus {
   outline: 2px solid var(--c-copy);
 }
 
+.image-link {
+  display: inline-block;
+}
+
 @media (width >= 768px) {
   p {
     margin-bottom: 40px;
@@ -540,6 +544,28 @@ main .section.highlight {
   border-radius: 20px;
 }
 
+.section[data-iframetwocolumn="true"] {
+  padding-top: 18px;
+  justify-content: center;
+  max-width: none;
+  margin: 0;
+}
+
+.section[data-iframetwocolumn="true"] > div {
+  background: lightgray 0 0 / 100% 100% no-repeat;
+  padding: 36px;
+  margin: 0;
+}
+
+.section[data-iframetwocolumn="true"] > div:first-child {
+  padding-top: 87px;
+  margin-top: -100px;
+}
+
+.section[data-iframetwocolumn="true"] >  div:nth-child(2) {
+  margin-top: 0;
+}
+
 @media (width >= 768px) {
   main .section {
    padding: 120px var(--spacing-medium);
@@ -555,5 +581,23 @@ main .section.highlight {
   
   .section[data-padding="section-padding-small"] {
     padding: var(--spacing-medium);
+  }
+
+  .section[data-iframetwocolumn="true"] {
+    display: flex;
+  }
+
+  .section[data-iframetwocolumn="true"] > div {
+    max-width: 631px;
+  }
+
+  .section[data-iframetwocolumn="true"] > div:first-child {
+    margin-top: -130px;
+    padding: 87px 18px 36px 36px;
+  }
+
+  .section[data-iframetwocolumn="true"] >  div:nth-child(2) {
+    margin-top: -130px;
+    padding: 87px 36px 36px 18px;
   }
 }

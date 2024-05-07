@@ -1,20 +1,119 @@
 .quote-wrapper {
   display: flex;
-  place-content: center;
 }
 
 .quote {
-  background-color: lightgray;
   margin: 0.5rem;
-  padding: 2rem;
-  border-radius: 2rem;
+  border-radius: 0.5rem;
+  color: var(--c-white);
 }
 
-.quote > q {
+.quote-text {
+  color: var(--c-white);
+  font-family: var(--ff-secondary);
+  font-size: var(--heading-font-size-s);
   font-style: italic;
+  font-weight: var(--fw-regular);
+  line-height: var(--spacing-medium);
+  text-align: left ;
+  padding-top: calc((20 / 16) * 1rem);
 }
 
-.quote > .author {
-  font-size: 0.9rem;
-  margin-left: 1rem;
+.author{
+  color: var(--c-white);
+  font-family: var(--ff-secondary);
+  font-size: var(--body-font-size-l);
+  font-style: normal;
+  font-weight: var(--fw-regular);
+  line-height: var(--heading-font-size-m);
+  text-align: left ;
+  padding-top: calc((20 / 16) * 1rem);
 }
+
+.quote-icon{
+  padding-bottom: calc((30 / 16) * 1rem);
+}
+
+.quote-logo{
+  width: 136px;
+  height: calc((40 / 16) * 1rem);
+  margin-bottom: calc((20 / 16) * 1rem);
+}
+
+.quote-main-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--c-copy);
+  border-radius: 8px;
+}
+
+.black-background {
+  background-color: var(--c-extra-dark);
+}
+
+.quote-no-image-container {
+  justify-content: center;
+  text-align: center;
+  display: none;
+}
+
+.quote-left-container {
+    flex: 0 0 35%;
+    border-radius: 8px; 
+    min-height: 407px;
+}
+
+.quote-image-container {
+    height: 100%;
+    border-radius: 8px; 
+    object-fit: cover;
+}
+
+.quote-right-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: calc((40 / 16) * 1rem);
+}
+
+.quote-no-left-container {
+  .quote-text, p{
+    text-align: center;
+  }
+
+  .quote-logo {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.quote-no-image-container .quote-right-container {
+    text-align: center;
+}
+
+/* mobile View */
+@media (width <= 767px) {
+  .quote-main-container {
+    padding: 0 var(--spacing-small);
+    display: grid;
+    grid-template-columns: 1fr; 
+    grid-template-rows: auto;
+  }
+
+  .quote-text, p{
+    text-align: center;
+  }
+  
+  .quote-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .quote-left-container, .quote-right-container {
+    flex: 1; 
+    max-width: 100%;
+  }
+
+}
+
