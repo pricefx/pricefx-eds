@@ -77,7 +77,7 @@ indices:
       - /partners/enable-and-pricefx-partnership
       - /partners/partner-delivery
       - /partners/partner-showcase
-    target: /partner-index.json
+    target: /partners-index.json
     properties:
       title:
         select: head > meta[property="og:title"]
