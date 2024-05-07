@@ -44,10 +44,9 @@ export default async function decorate(block) {
   [...block.children].forEach((row, index) => {
     if (index <= 6) {
       if (index === 1) {
-        const variationOption = row.firstElementChild?.textContent;
-        if (variationOption === 'videoVariation') {
-          boxedLeftContainerInner.classList.add('boxed-content-video');
-          boxedRightContainer.classList.add('hero-video');
+        const variationOption = row.firstElementChild?.textContent || 'false';
+        if (variationOption === 'true') {
+          boxedLeftContainer.parentElement.classList.add('boxed-content-right');
         }
       }
       /* Image / Video */
@@ -63,10 +62,10 @@ export default async function decorate(block) {
       }
     } else if (index === 8) {
       /* Left Right Boxed Content */
-      boxedLeftContainerInner.append(row.firstElementChild || '');
+      boxedLeftContainerInner.append(row.firstElementChild?.firstElementChild || '');
+      boxedLeftContainer.append(boxedLeftContainerInner);
     }
   });
-  boxedLeftContainer.append(boxedLeftContainerInner);
   decorateRightContainer(boxedRightContainer);
   boxedContainer.append(boxedLeftContainer);
   boxedContainer.append(boxedRightContainer);

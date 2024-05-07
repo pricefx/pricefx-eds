@@ -351,9 +351,10 @@
       },
       {
         "component": "boolean",
-        "label": "Image / Video to Right",
-        "name": "isImageRight",
-        "valueType": "boolean"
+        "label": "Image / Video to Left",
+        "name": "isImageLeft",
+        "valueType": "boolean",
+        "description": "ⓘ Default Content in left and image / video on right."
       },
       {
         "component": "reference",
