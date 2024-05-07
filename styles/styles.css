@@ -398,10 +398,6 @@ button.secondary:focus {
   outline: 2px solid var(--c-copy);
 }
 
-.image-link {
-  display: inline-block;
-}
-
 @media (width >= 768px) {
   p {
     margin-bottom: 40px;
