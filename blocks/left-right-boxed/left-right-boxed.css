@@ -12,14 +12,9 @@
         flex-direction: column;
     }
             
-
-    .left-right-boxed .boxed-main-container.boxed-content-right {
-        flex-direction: column-reverse;
-    }
-
     .left-right-boxed .boxed-left-container {
         width: 100%;
-        padding: 64px 24px;
+        padding: var(--spacing-xlarge) var(--spacing-small);
     }
 
     .left-right-boxed .boxed-eyebrow-text {
@@ -61,10 +56,6 @@
         .left-right-boxed .boxed-main-container {
             padding: 0 var(--spacing-small);
             flex-direction: row;
-        }
-
-        .left-right-boxed .boxed-main-container.boxed-content-right {
-            flex-direction: row-reverse;
         }
 
         .left-right-boxed .boxed-content-container {
