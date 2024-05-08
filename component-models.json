@@ -1914,5 +1914,35 @@
         "value": ""
       }
     ]
+  },
+  {
+    "id": "search",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "searchTitle",
+        "label": "Search Title"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "searchPlaceholderText",
+        "label": "Search Placeholder Text"
+      },
+      {
+        "component": "richtext",
+        "name": "suggestionsList",
+        "label": "Suggestions List",
+        "valueType": "string"
+      },
+      {
+        "component": "number",
+        "name": "noOfResultsPerPage",
+        "label": "No Of Results Per page",
+        "valueType": "number",
+        "value": 0
+      }
+    ]
   }
 ]
