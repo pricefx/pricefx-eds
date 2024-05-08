@@ -1751,26 +1751,24 @@
         "value": 0
       },
       {
-        "component": "checkbox-group",
-        "label": "Sort By",
+        "component": "multiselect",
         "name": "sortBy",
-        "valueType": "string[]",
+        "label": "Sort By",
+        "valueType": "string",
         "options": [
           {
-            "name": "Asc Date",
-            "value": "asc-date"
+            "name": "Date",
+            "children": [
+              { "name": "New-Old", "value": "dateNewOld" },
+              { "name": "Old-New",  "value": "dateOldNew" }
+            ]
           },
           {
-            "name": "Desc Date",
-            "value": "desc-date"
-          },
-          {
-            "name": "Asc Title",
-            "value": "asc-title"
-          },
-          {
-            "name": "Desc Title",
-            "value": "desc-title"
+            "name": "Title",
+            "children": [
+              { "name": "A-Z", "value": "titleAZ" },
+              { "name": "z-a", "value": "titleZa" }
+            ]
           }
         ]
       },
