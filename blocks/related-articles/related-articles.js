@@ -38,7 +38,7 @@ const filterBasedOnProp = (data = [], filterProps = [], filterValues = {}) =>
   );
 
 export default async function decorate(block) {
-  const url = environmentMode() === 'author' ? `${PUBLISH_ENDPOINT}/article-index.json` : '/article-index.json';
+  const url = '/article-index.json';
   // Get Data
   const data = await ffetch(url).all();
   // const type = block.children[0]?.textContent.trim(); // TODO for Blog Articles
