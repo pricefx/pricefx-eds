@@ -37,7 +37,7 @@ const filterBasedOnProp = (data = [], filterProps = [], filterValues = {}) =>
 export default async function decorate(block) {
   const url = '/article-index.json';
   // Get Data
-  const data = await featch(url);
+  const data = await fetch(url);
   // const type = block.children[0]?.textContent.trim(); // TODO for Blog Articles
   const title = block.children[1]?.textContent.trim();
   const titleEle = `<h2>${title}</h2>`;
