@@ -1879,7 +1879,7 @@
     ]
   },
   {
-    "id": "benefits",
+    "id": "imageText",
     "fields": [
       {
         "component": "richtext",
@@ -1890,27 +1890,48 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "benefitsImage",
-        "label": "Benefits Image"
+        "name": "image",
+        "label": "Image"
       },
       {
         "component": "boolean",
-        "label": "Disable Icon",
-        "name": "disableIcon",
+        "label": "Enable Icon",
+        "name": "enableIcon",
         "valueType": "boolean"
       },
       {
         "component": "text-area",
         "valueType": "string",
-        "name": "benefitsText",
-        "label": "Text",
+        "name": "text",
+        "label": "Action Text",
         "value": ""
       },
       {
         "component": "text-area",
         "valueType": "string",
-        "name": "supportText",
-        "label": "Benefits Support Text",
+        "name": "supportText1",
+        "label": "Support Text 1",
+        "value": ""
+      },
+      {
+        "component": "text-area",
+        "valueType": "string",
+        "name": "supportText2",
+        "label": "Support Text 2",
+        "value": ""
+      },
+      {
+        "component": "text-area",
+        "valueType": "string",
+        "name": "supportText3",
+        "label": "Support Text 3",
+        "value": ""
+      },
+      {
+        "component": "text-area",
+        "valueType": "string",
+        "name": "supportText4",
+        "label": "Support Text 4",
         "value": ""
       }
     ]
