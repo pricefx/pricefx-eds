@@ -171,7 +171,7 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
             const container = document.createElement('div');
             container.classList = `embed embed-${config.match[0]}`;
             container.classList.add('embed-is-loaded');
-            container.appendChild(holder);
+            container.innerHTML(holder);
             loadModal(container);
           })
           .catch(() => {});
@@ -202,7 +202,7 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
         .embed(url, autoplay)
         .then((holder) => {
           scene7VideoElement = holder;
-          block.appendChild(holder);
+          block.innerHTML(holder);
           block.classList = `block embed embed-${config.match[0]}`;
           block.classList.add('embed-is-loaded');
         })
