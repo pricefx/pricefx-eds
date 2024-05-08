@@ -1960,6 +1960,11 @@
         ]
       },
       {
+        "component": "tab",
+        "label": "Filters",
+        "name": "filters"
+      },
+      {
         "component": "text-input",
         "valueType": "string",
         "name": "searchResultTitle",
