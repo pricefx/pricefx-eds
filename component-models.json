@@ -1933,7 +1933,7 @@
       {
         "component": "number",
         "name": "noOfResultsPerPage",
-        "label": "No Of Results Per page",
+        "label": "No. Of Results Per page",
         "valueType": "number",
         "value": 0
       },
@@ -1948,6 +1948,12 @@
         "valueType": "string",
         "name": "totalResultsTitle",
         "label": "Total Results Title"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "totalResultsTitle",
+        "label": "No Results Label"
       }
     ]
   }
