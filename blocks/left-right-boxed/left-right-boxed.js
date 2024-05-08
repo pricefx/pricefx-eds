@@ -15,13 +15,16 @@ function decorateRightContainer(boxedRightContainer) {
     boxedRightContainer.append(boxedImageContainer);
   } else if (boxedVariation === 'videoVariation') {
     const boxedRightContainerInner = document.createElement('div');
-    boxedRightContainerInner.classList.add('boxed-video-container embed');
-    const placeholder = boxedRightContainer.children[2];
-    const link = boxedRightContainer.children[3];
-    const overlayText = boxedRightContainer.children[4];
-    const isPopup = boxedRightContainer.children[5];
+    boxedRightContainerInner.classList.add('embed');
+    const placeholder = boxedRightContainer.children[3];
+    const link = boxedRightContainer.children[4];
+    const overlayText = boxedRightContainer.children[5];
+    const isPopup = boxedRightContainer.children[6];
     boxedRightContainer.textContent = '';
     if (link.textContent !== '') {
+      if (window.matchMedia('(min-width:986px)').matches && placeholder.querySelector('img') !== null) {
+        boxedRightContainerInner.setAttribute('style', `background-image:url(${placeholder.querySelector('img').src})`);
+      }
       boxedRightContainerInner.append(placeholder);
       boxedRightContainerInner.append(link);
       boxedRightContainerInner.append(overlayText);
