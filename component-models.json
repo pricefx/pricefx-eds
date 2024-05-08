@@ -379,6 +379,18 @@
         "multi": false
       },
       {
+        "component": "select",
+        "label": "Image Position",
+        "name": "classes",
+        "valueType": "string",
+        "value": "image-position-right",
+        "options": [
+          { "name": "Left", "value": "image-position-left" },
+          { "name": "Center", "value": "image-position-center" },
+          { "name": "Right - Default", "value": "image-position-right" }
+        ]
+      },
+      {
         "component": "text-input",
         "name": "url",
         "label": "Embed Video URL",

@@ -1,7 +1,7 @@
     @import url('../embed/embed.css');
 
     .section.left-right-boxed-container {
-    padding: 0;
+        padding: 0;
     }
 
     .left-right-boxed .boxed-main-container {
@@ -15,6 +15,11 @@
 
     .left-right-boxed .boxed-main-container.boxed-content-right {
         flex-direction: column-reverse;
+    }
+
+    .left-right-boxed .boxed-left-container {
+        width: 100%;
+        padding: 64px 24px;
     }
 
     .left-right-boxed .boxed-eyebrow-text {
