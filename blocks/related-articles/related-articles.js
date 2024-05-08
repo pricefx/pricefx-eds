@@ -1,6 +1,6 @@
 import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
 import { environmentMode } from '../../scripts/global-functions.js';
-import { BASE_CONTENT_PATH, PUBLISH_ENDPOINT } from '../../scripts/url-constants.js';
+import { BASE_CONTENT_PATH } from '../../scripts/url-constants.js';
 import ffetch from '../../scripts/ffetch.js';
 
 function generateCardDom(article) {
@@ -444,7 +444,7 @@ const filterBasedOnProp = (data = [], filterProps = [], filterValues = {}) =>
   );
 
 export default async function decorate(block) {
-  const url = environmentMode() === 'author' ? `${PUBLISH_ENDPOINT}/article-index.json` : '/article-index.json';
+  const url = '/article-index.json';
   // Get Data
   const data = await ffetch(url).all();
   const type = block.children[0]?.textContent.trim();
@@ -454,8 +454,8 @@ export default async function decorate(block) {
   let categoryTags = block.children[3]?.textContent.trim()?.split(',');
   const topicTags = block.children[4]?.textContent.trim()?.split(',');
   const authorTags = block.children[5]?.textContent.trim()?.split(',');
-  const authorPath = block.children[7]?.textContent.trim()?.split(',');
-  const numOfArticles = block.children[8]?.textContent.trim()?.split(',');
+  const authorPath = block.children[7]?.textContent.trim();
+  const numOfArticles = block.children[8]?.textContent.trim();
   if (categoryTags.toString().length === 0) {
     categoryTags = getMetadata('category')?.split(',');
   }
