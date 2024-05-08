@@ -173,25 +173,21 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
             })
             .catch(() => {});
           return;
-        } else {
-          const embedHTML = document.createElement('div');
-          embedHTML.classList = `embed embed-${config.match[0]}`;
-          embedHTML.innerHTML = config.embed(url, autoplay);
-          embedHTML.classList.add('embed-is-loaded');
-          loadModal(embedHTML);
-          return;
         }
-      } else {
         const embedHTML = document.createElement('div');
-        embedHTML.innerHTML = getDefaultEmbed(url);
-        embedHTML.classList = 'embed';
+        embedHTML.classList = `embed embed-${config.match[0]}`;
+        embedHTML.innerHTML = config.embed(url, autoplay);
         embedHTML.classList.add('embed-is-loaded');
         loadModal(embedHTML);
         return;
       }
+      const embedHTML = document.createElement('div');
+      embedHTML.innerHTML = getDefaultEmbed(url);
+      embedHTML.classList = 'embed';
+      embedHTML.classList.add('embed-is-loaded');
+      loadModal(embedHTML);
+      return;
     }
-
-
 
   if (config) {
     if (config.match.includes('scene7')) {
