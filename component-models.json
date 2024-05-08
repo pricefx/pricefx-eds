@@ -1445,6 +1445,21 @@
         "value": "",
         "label": "Base Path",
         "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "blogAuthorPath",
+        "value": "",
+        "label": "Author Directory Path",
+        "valueType": "string",
+        "description": "Please enter the path to the author directory."
+      },
+      {
+        "component": "number",
+        "name": "blogNumberOfArticles",
+        "label": "Number Of Articles Display",
+        "valueType": "number",
+        "value": 0
       }
     ]
   },
