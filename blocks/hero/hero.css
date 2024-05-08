@@ -58,16 +58,7 @@
 .hero .hero-content-container h4,
 .hero .hero-content-container h5,
 .hero .hero-content-container h6 {
-    background: var(--c-dark-blue-gradient);
-    background-clip: text;
-    -webkit-text-fill-color: transparent; 
     margin: 0 0 32px;
-}
-
-.hero .hero-content-container p {
-  font-size: var(--body-font-size-l);
-  line-height: 24px;
-  font-family: var(--ff-secondary);
 }
 
 .hero .hero-right-container .hero-image-container img {
@@ -195,11 +186,11 @@
     display: none;
   }
 
-  .hero.hero-image-left .hero-image-container  {
+  .hero.image-position-left .hero-image-container  {
     background-position: left center;
   }
 
-  .hero.hero-image-center .hero-image-container  {
+  .hero.image-position-center .hero-image-container  {
     background-position: center;
   }
 

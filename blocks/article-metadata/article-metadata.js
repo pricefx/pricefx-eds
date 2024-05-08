@@ -1,5 +1,5 @@
 import { getMetadata } from '../../scripts/aem.js';
-import environmentMode from '../../scripts/global-functions.js';
+import { environmentMode } from '../../scripts/global-functions.js';
 import { BASE_CONTENT_PATH } from '../../scripts/url-constants.js';
 
 const formatDate = (dateString) => {
