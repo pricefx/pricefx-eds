@@ -1757,19 +1757,19 @@
         "valueType": "string[]",
         "options": [
           {
-            "name": "Date New Old",
+            "name": "Date NewOld",
             "value": "newold-date"
           },
           {
-            "name": "Date Old New",
+            "name": "Date OldNew",
             "value": "oldnew-date"
           },
           {
-            "name": "Title A Z",
+            "name": "Title AZ",
             "value": "az-title"
           },
           {
-            "name": "Title Z A",
+            "name": "Title ZA",
             "value": "za-title"
           }
         ]
