@@ -119,7 +119,7 @@ async function loadModal(block) {
   const { openModal } = await import(`${window.hlx.codeBasePath}/blocks/modal/modal.js`);
   openModal({ block });
 }
-
+let scene7VideoElement;
 const loadEmbed = (block, link, autoplay, isPopup) => {
   if (block.classList.contains('embed-is-loaded')) {
     return;
@@ -191,17 +191,14 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
 
   if (config) {
     if (config.match.includes('scene7')) {
-      // Check if the block already has a Scene7 viewer
-      const s7viewerDiv = document.getElementById('s7viewer');
-      if (s7viewerDiv) {
-        // If so, remove it before loading the new Scene7 video
-        s7viewerDiv.remove();
+      if (scene7VideoElement) {
+        scene7VideoElement.remove();
       }
-
       // Load the Scene7 video
       config
         .embed(url, autoplay)
         .then((holder) => {
+          scene7VideoElement = holder;
           block.appendChild(holder);
           block.classList = `block embed embed-${config.match[0]}`;
           block.classList.add('embed-is-loaded');
