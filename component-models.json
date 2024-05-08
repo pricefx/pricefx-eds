@@ -1894,7 +1894,7 @@
     ]
   },
   {
-    "id": "benefits",
+    "id": "imageText",
     "fields": [
       {
         "component": "richtext",
@@ -1905,28 +1905,232 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "benefitsImage",
-        "label": "Benefits Image"
+        "name": "image",
+        "label": "Image"
       },
       {
         "component": "boolean",
-        "label": "Disable Icon",
-        "name": "disableIcon",
+        "label": "Enable Icon",
+        "name": "enableIcon",
         "valueType": "boolean"
       },
       {
         "component": "text-area",
         "valueType": "string",
-        "name": "benefitsText",
-        "label": "Text",
+        "name": "text",
+        "label": "Action Text",
         "value": ""
       },
       {
         "component": "text-area",
         "valueType": "string",
-        "name": "supportText",
-        "label": "Benefits Support Text",
+        "name": "supportText1",
+        "label": "Support Text 1",
         "value": ""
+      },
+      {
+        "component": "text-area",
+        "valueType": "string",
+        "name": "supportText2",
+        "label": "Support Text 2",
+        "value": ""
+      },
+      {
+        "component": "text-area",
+        "valueType": "string",
+        "name": "supportText3",
+        "label": "Support Text 3",
+        "value": ""
+      },
+      {
+        "component": "text-area",
+        "valueType": "string",
+        "name": "supportText4",
+        "label": "Support Text 4",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "partner-showcase",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "Configs",
+        "name": "configs"
+      },
+      {
+        "component": "aem-content",
+        "name": "featuredPartner",
+        "value": "",
+        "label": "Featured Partner (Optional)",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "searchPath",
+        "label": "Search Path",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "searchPlaceholderText",
+        "label": "Search Placeholder Text",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "partnersPath",
+        "value": "",
+        "label": "Partners Directory Path",
+        "valueType": "string",
+        "description": "Please enter the path to the Partners directory."
+      },
+      {
+        "component": "number",
+        "name": "numberOfPartners",
+        "label": "No. Of Partners Display",
+        "valueType": "number",
+        "value": 0
+      },
+      {
+        "component": "multiselect",
+        "name": "sortBy",
+        "label": "Sort By",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Date",
+            "children": [
+              { "name": "New-Old", "value": "dateNewOld" },
+              { "name": "Old-New", "value": "dateOldNew" }
+            ]
+          },
+          {
+            "name": "Title",
+            "children": [
+              { "name": "A-Z", "value": "titleAZ" },
+              { "name": "Z-A", "value": "titleZa" }
+            ]
+          }
+        ]
+      },
+      {
+        "component": "tab",
+        "label": "Filters",
+        "name": "filters"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "filterOneTitle",
+        "value": "",
+        "label": "Filter 1 Title"
+      },
+      {
+        "component": "boolean",
+        "label": "Filter 1 is Multi-Select",
+        "name": "filterOneMultiSelect",
+        "valueType": "boolean"
+      },
+      {
+        "component": "aem-tag",
+        "label": "Filter 1 Options",
+        "name": "filterOneTags",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "filterTwoTitle",
+        "value": "",
+        "label": "Filter 2 Title"
+      },
+      {
+        "component": "boolean",
+        "label": "Filter 2 is Multi-Select",
+        "name": "filterTwoMultiSelect",
+        "valueType": "boolean"
+      },
+      {
+        "component": "aem-tag",
+        "label": "Filter 2 Options",
+        "name": "filterTwoTags",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "filterThreeTitle",
+        "value": "",
+        "label": "Filter 3 Title"
+      },
+      {
+        "component": "boolean",
+        "label": "Filter 3 is Multi-Select",
+        "name": "filterThreeMultiSelect",
+        "valueType": "boolean"
+      },
+      {
+        "component": "aem-tag",
+        "label": "Filter 3 Options",
+        "name": "filterThreeTags",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "filterFourTitle",
+        "value": "",
+        "label": "Filter 4 Title"
+      },
+      {
+        "component": "boolean",
+        "label": "Filter 4 is Multi-Select",
+        "name": "filterFourMultiSelect",
+        "valueType": "boolean"
+      },
+      {
+        "component": "aem-tag",
+        "label": "Filter 4 Options",
+        "name": "filterFourTags",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "search",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "searchPlaceholderText",
+        "label": "Search Placeholder Text"
+      },
+      {
+        "component": "number",
+        "name": "noOfResultsPerPage",
+        "label": "No. Of Results Per page",
+        "valueType": "number",
+        "value": 0
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "searchResultTitle",
+        "label": "Search Result Title"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "totalResultsTitle",
+        "label": "Total Results Title"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "totalResultsTitle",
+        "label": "No Results Label"
       }
     ]
   }

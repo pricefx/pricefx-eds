@@ -447,7 +447,7 @@ export default async function decorate(block) {
   const url = environmentMode() === 'author' ? `${PUBLISH_ENDPOINT}/article-index.json` : '/article-index.json';
   // Get Data
   const data = await ffetch(url).all();
-  const type = block.children[0]?.textContent.trim(); // TODO for Blog Articles
+  const type = block.children[0]?.textContent.trim();
   const title = block.children[1]?.textContent.trim();
   const titleEle = `<h2>${title}</h2>`;
   const columnLayout = block.children[2]?.textContent.trim() || 'three-column';
