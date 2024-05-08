@@ -159,44 +159,47 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
   const config = EMBEDS_CONFIG.find((e) => e.match.some((match) => link.includes(match)));
   const url = new URL(link);
 
-    if (isPopup === 'true') {
-      if (config) {
-        if (config.match.includes('scene7')) {
-          config
-            .embed(url, autoplay)
-            .then((holder) => {
-              const container = document.createElement('div');
-              container.classList = `embed embed-${config.match[0]}`;
-              container.classList.add('embed-is-loaded');
-              container.appendChild(holder);
-              loadModal(container);
-            })
-            .catch(() => {});
-          return;
-        }
-        const embedHTML = document.createElement('div');
-        embedHTML.classList = `embed embed-${config.match[0]}`;
-        embedHTML.innerHTML = config.embed(url, autoplay);
-        embedHTML.classList.add('embed-is-loaded');
-        loadModal(embedHTML);
+  if (isPopup === 'true') {
+    if (config) {
+      if (config.match.includes('scene7')) {
+        config
+          .embed(url, autoplay)
+          .then((holder) => {
+            const container = document.createElement('div');
+            container.classList = `embed embed-${config.match[0]}`;
+            container.classList.add('embed-is-loaded');
+            container.appendChild(holder);
+            loadModal(container);
+          })
+          .catch(() => {});
         return;
       }
       const embedHTML = document.createElement('div');
-      embedHTML.innerHTML = getDefaultEmbed(url);
-      embedHTML.classList = 'embed';
+      embedHTML.classList = `embed embed-${config.match[0]}`;
+      embedHTML.innerHTML = config.embed(url, autoplay);
       embedHTML.classList.add('embed-is-loaded');
       loadModal(embedHTML);
       return;
     }
+    const embedHTML = document.createElement('div');
+    embedHTML.innerHTML = getDefaultEmbed(url);
+    embedHTML.classList = 'embed';
+    embedHTML.classList.add('embed-is-loaded');
+    loadModal(embedHTML);
+    return;
+  }
 
   if (config) {
     if (config.match.includes('scene7')) {
-      config
-        .embed(url, autoplay)
+      const holderPromise = config.embed(url, autoplay);
+      holderPromise
         .then((holder) => {
           block.appendChild(holder);
           block.classList = `block embed embed-${config.match[0]}`;
           block.classList.add('embed-is-loaded');
+
+          // Store the Scene7 holder for later cleanup
+          block.dataset.scene7Holder = holder.id;
         })
         .catch(() => {});
     } else {
@@ -209,6 +212,29 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
     block.classList = 'block embed';
     block.classList.add('embed-is-loaded');
   }
+
+  // Cleanup Scene7 viewer when the modal is closed
+  const modalObserver = new MutationObserver((mutationsList, observer) => {
+    mutationsList.forEach((mutation) => {
+      if (mutation.type === 'childList') {
+        const modal = mutation.target.closest('.modal-content');
+        if (!modal) {
+          // If the modal is closed, clean up the Scene7 viewer
+          const holderId = block.dataset.scene7Holder;
+          if (holderId) {
+            const s7viewerHolder = document.getElementById(holderId);
+            if (s7viewerHolder) {
+              s7viewerHolder.remove();
+            }
+          }
+          observer.disconnect();
+        }
+      }
+    });
+  });
+
+  // Observe changes in the DOM to detect modal closure
+  modalObserver.observe(document.body, { childList: true, subtree: true });
 };
 
 export default function decorate(block) {
