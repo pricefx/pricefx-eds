@@ -1954,7 +1954,7 @@
             "name": "Title",
             "children": [
               { "name": "A-Z", "value": "titleAZ" },
-              { "name": "z-a", "value": "titleZa" }
+              { "name": "Z-A", "value": "titleZa" }
             ]
           }
         ]
