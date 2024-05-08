@@ -11,7 +11,8 @@
     "/content/pricefx/en/fragments/:/fragments/",
     "/content/pricefx.resource/en/learning-center/article-index.json:/article-index.json",
     "/content/pricefx/en/spreadsheets/:/spreadsheets/",
-    "/content/pricefx/en/metadata:/metadata.json"
+    "/content/pricefx/en/metadata:/metadata.json",
+    "/content/pricefx/en/headers:/.helix/headers.json"
   ],
   "includes": ["/content/pricefx/"]
 }
