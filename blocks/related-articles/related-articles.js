@@ -1,4 +1,6 @@
 import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
+import { environmentMode } from '../../scripts/global-functions.js';
+import { PUBLISH_ENDPOINT } from '../../scripts/url-constants.js';
 import ffetch from '../../scripts/ffetch.js';
 
 function generateCardDom(article) {
@@ -36,8 +38,10 @@ const filterBasedOnProp = (data = [], filterProps = [], filterValues = {}) =>
   );
 
 export default async function decorate(block) {
-  const data = await ffetch('/article-index.json').all();
-  // const type = block.children[0]?.textContent.trim();
+  const url = environmentMode() === 'author' ? `${PUBLISH_ENDPOINT}/article-index.json` : '/article-index.json';
+  // Get Data
+  const data = await ffetch(url).all();
+  // const type = block.children[0]?.textContent.trim(); // TODO for Blog Articles
   const title = block.children[1]?.textContent.trim();
   const titleEle = `<h2>${title}</h2>`;
   const columnLayout = block.children[2]?.textContent.trim() || 'three-column';
