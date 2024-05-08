@@ -1,5 +1,4 @@
 import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
-import ffetch from '../../scripts/ffetch.js';
 
 function generateCardDom(article) {
   const { articlePublishDate, image, imageAlt, title, path, readingTime } = article;
@@ -38,7 +37,7 @@ const filterBasedOnProp = (data = [], filterProps = [], filterValues = {}) =>
 export default async function decorate(block) {
   const url = '/article-index.json';
   // Get Data
-  const data = await ffetch(url).all();
+  const data = await featch(url);
   // const type = block.children[0]?.textContent.trim(); // TODO for Blog Articles
   const title = block.children[1]?.textContent.trim();
   const titleEle = `<h2>${title}</h2>`;
