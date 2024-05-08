@@ -37,6 +37,8 @@
   /* Font Icons */
   --icon-plus: "\e917";
   --icon-minus: "\e915";
+  --icon-plus-solid: "\e920";
+  --icon-minus-solid: "\e91f";
   --icon-arrow-left: "\e903";
   --icon-arrow-right: "\e904";
   --icon-arrow-up: "\e905";
