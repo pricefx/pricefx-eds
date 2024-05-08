@@ -27,7 +27,7 @@ export default async function decorate(block) {
       const benefitImage = document.querySelector('picture img');
       if (benefitImage) {
         const image = document.createElement('div');
-        image.classList.add('benefits-logo');
+        image.classList.add('benefits-image');
         image.appendChild(benefitImage);
         benefitsLeftContainer.appendChild(image);
       }
@@ -39,13 +39,21 @@ export default async function decorate(block) {
 
       action.childNodes.forEach((node) => {
         if (node.nodeType === 1 && node.tagName === 'P') {
-          node.classList.add('action');
-          const icon = document.createElement('i');
-          icon.classList.add('benefits-icon');
-          icon.innerHTML = BENEFITS;
+          node.classList.add('icon-text');
 
-          if (enableIcon) {
+          const newParagraph = document.createElement('p');
+          newParagraph.classList.add('benefits-para');
+          newParagraph.appendChild(node.firstChild);
+
+          if (enableIcon.textContent.replace(/\s+/g, '') === 'true') {
+            const icon = document.createElement('div');
+            icon.classList.add('benefits-icon');
+            icon.innerHTML = BENEFITS;
+            icon.appendChild(newParagraph);
+
             node.insertBefore(icon, node.firstChild);
+          } else {
+            node.insertBefore(newParagraph, node.firstChild);
           }
         }
       });
@@ -91,9 +99,9 @@ export default async function decorate(block) {
           if (paragraphs.length > 1) {
             const content = document.createElement('div');
             content.classList.add('content');
-            content.innerHTML = `<${heading.tagName.toLowerCase()}>${heading.textContent}</${heading.tagName.toLowerCase()}>
+            content.innerHTML = `<p><strong>${heading.textContent}</strong></p>
              <p>${paragraphs[0].textContent.trim()}</p>
-             <p>${paragraphs[1].textContent.trim()}</p>
+             <p class="uppercase"><strong>${paragraphs[1].textContent.trim()}<strong></p>
             </div>`;
 
             if (iteration % 2 === 1) {
