@@ -1944,20 +1944,20 @@
         "valueType": "string[]",
         "options": [
           {
-            "name": "Date NewOld",
-            "value": "date-NewOld"
+            "name": "Asc Date",
+            "value": "asc-date"
           },
           {
-            "name": "Date OldNew",
-            "value": "date-OldNew"
+            "name": "Desc Date",
+            "value": "desc-date"
           },
           {
-            "name": "Title AZ",
-            "value": "title-az"
+            "name": "Asc Title",
+            "value": "asc-title"
           },
           {
-            "name": "Title ZA",
-            "value": "title-za"
+            "name": "Desc Title",
+            "value": "desc-title"
           }
         ]
       },
