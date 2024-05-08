@@ -1,0 +1,132 @@
+.imagetext-wrapper {
+  display: flex;
+}
+
+.imagetext {
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.imagetext-text{
+   text-align: center;
+   font-family: var(--ff-secondary);
+   font-size: calc((18 / 16) * 1rem);
+   font-style: normal;
+   font-weight: var(--fw-regular);
+   line-height: 28px;
+}
+
+.imagetext-main-container {
+  max-width: 1188px;
+  max-height: 753px;
+  display: flex;
+  justify-content: space-between; 
+  border-radius: 8px;
+}
+
+.imagetext-left-container  {
+    width: 50%;
+    border-radius: 8px; 
+    object-fit: cover;
+}
+
+.imagetext-right-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: top;
+    margin: calc((20 / 16) * 1rem);
+    overflow: auto;
+}
+
+.imagetext-image , img { 
+  width: 100%;
+  height: 100%; 
+  object-fit: cover; 
+  border-radius: 8px;
+}
+
+.imagetext-action{ 
+   font-family: var(--ff-secondary);
+   font-size: calc((18 / 16) * 1rem);
+   font-style: normal;
+   font-weight: var(--fw-regular);
+   line-height: 28px;
+   height: 40%;
+}
+
+hr {
+    display: block;
+    width: 576px;
+    height: 1px;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    background: var(--c-primary-lt);
+}
+
+p.uppercase {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.content p {
+  margin: 0; 
+  padding: 0; 
+  margin-bottom: 10px; 
+}
+
+.container {
+    height: calc(60% - 1px);
+    display: flex;
+    justify-content: space-between; 
+}
+
+.left-container, .right-container {
+    margin: calc((10 / 16) * 1rem);
+}
+
+.imagetext-para {
+    margin-left: 20px;
+}
+
+.imagetext-icon {
+    display: flex;
+}
+
+.play-button {
+  margin-left: 5px; 
+  vertical-align: middle; 
+  padding: 10px;
+}
+
+.text-icon p:last-child {
+  display: flex;
+  align-items: center;
+}
+
+svg {
+   width: 45px;
+   height: 37px;
+   flex-shrink: 0;
+}
+
+.suggestion-image {
+    width: 193px;
+    height: 74px;
+}
+
+@media (width <= 767px) { 
+  .imagetext-main-container {
+    flex-direction: column; 
+  }
+
+  .imagetext-left-container,
+  .imagetext-right-container {
+    width: 100%; 
+    flex: 1; 
+  }
+
+  .imagetext-right-container {
+    margin : 0;
+  }
+}
