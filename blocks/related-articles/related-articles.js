@@ -454,8 +454,8 @@ export default async function decorate(block) {
   let categoryTags = block.children[3]?.textContent.trim()?.split(',');
   const topicTags = block.children[4]?.textContent.trim()?.split(',');
   const authorTags = block.children[5]?.textContent.trim()?.split(',');
-  const authorPath = block.children[7]?.textContent.trim()?.split(',');
-  const numOfArticles = block.children[8]?.textContent.trim()?.split(',');
+  const authorPath = block.children[7]?.textContent.trim();
+  const numOfArticles = block.children[8]?.textContent.trim();
   if (categoryTags.toString().length === 0) {
     categoryTags = getMetadata('category')?.split(',');
   }
