@@ -3,6 +3,9 @@
 .related-articles h2 {
     text-align: center;
     margin-bottom: var(--spacing-large);
+    color: var(--c-copy);
+    background: none;
+    -webkit-text-fill-color: unset;
 }
 
 .related-articles .cards-card-published-date,

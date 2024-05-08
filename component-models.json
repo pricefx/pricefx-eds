@@ -159,27 +159,6 @@
         "name": "alt",
         "value": "Default alt",
         "label": "Alt Text"
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "height",
-        "value": "alt",
-        "label": "Image Link"
-      },
-      {
-        "component": "aem-content",
-        "name": "imageLink",
-        "label": "Image Link",
-        "valueType": "string",
-        "description": "If you add link then it will make image clickable"
-      },
-      {
-        "component": "boolean",
-        "label": "Target Blank",
-        "name": "targetBlank",
-        "valueType": "boolean",
-        "description": "If you selected the link will open in new window"
       }
     ]
   },
@@ -622,12 +601,30 @@
         "valueType": "string",
         "description": "Select the Card Variations.",
         "options": [
-          { "name": "Aspect Ratio 16:9", "value": "aspect-ratio-16-9" },
-          { "name": "Remove Aspect Ratio", "value": "no-aspect-ratio" },
-          { "name": "Icon Variation", "value": "icon-variation" },
-          { "name": "Hide Image", "value": "hide-image" },
-          { "name": "Hide Button Link", "value": "hide-button-link" },
-          { "name": "Card BG Color - Black", "value": "card-bg-black" }
+          {
+            "name": "Aspect Ratio 16:9",
+            "value": "aspect-ratio-16-9"
+          },
+          {
+            "name": "Remove Aspect Ratio",
+            "value": "no-aspect-ratio"
+          },
+          {
+            "name": "Icon Variation",
+            "value": "icon-variation"
+          },
+          {
+            "name": "Hide Image",
+            "value": "hide-image"
+          },
+          {
+            "name": "Hide Button Link",
+            "value": "hide-button-link"
+          },
+          {
+            "name": "Card BG Color - Black",
+            "value": "card-bg-black"
+          }
         ]
       }
     ]
@@ -887,9 +884,18 @@
         "value": "",
         "description": "The entire section's H1 to H6 color will be changed.",
         "options": [
-          { "name": "Default", "value": "" },
-          { "name": "Section Title Gray", "value": "section-title-gray" },
-          { "name": "Section Title Blue", "value": "section-title-blue" }
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Section Title Gray",
+            "value": "section-title-gray"
+          },
+          {
+            "name": "Section Title Blue",
+            "value": "section-title-blue"
+          }
         ]
       },
       {
@@ -917,9 +923,18 @@
         "valueType": "string",
         "value": "imageVariation",
         "options": [
-          { "name": "Image - Default", "value": "imageVariation" },
-          { "name": "Video", "value": "videoVariation" },
-          { "name": "No Background Image / Video", "value": "noVariation" }
+          {
+            "name": "Image - Default",
+            "value": "imageVariation"
+          },
+          {
+            "name": "Video",
+            "value": "videoVariation"
+          },
+          {
+            "name": "No Background Image / Video",
+            "value": "noVariation"
+          }
         ]
       },
       {
@@ -943,9 +958,18 @@
         "valueType": "string",
         "value": "hero-image-right",
         "options": [
-          { "name": "Left", "value": "hero-image-left" },
-          { "name": "Center", "value": "hero-image-center" },
-          { "name": "Right - Default", "value": "hero-image-right" }
+          {
+            "name": "Left",
+            "value": "hero-image-left"
+          },
+          {
+            "name": "Center",
+            "value": "hero-image-center"
+          },
+          {
+            "name": "Right - Default",
+            "value": "hero-image-right"
+          }
         ]
       },
       {
@@ -984,8 +1008,14 @@
         "valueType": "string",
         "value": "hero-primary-height",
         "options": [
-          { "name": "Hero Height 800px", "value": "hero-secondary-height" },
-          { "name": "Hero Height 465px - Default", "value": "hero-primary-height" }
+          {
+            "name": "Hero Height 800px",
+            "value": "hero-secondary-height"
+          },
+          {
+            "name": "Hero Height 465px - Default",
+            "value": "hero-primary-height"
+          }
         ]
       },
       {
@@ -1011,8 +1041,14 @@
         "valueType": "string",
         "value": "primary",
         "options": [
-          { "name": "Primary", "value": "primary" },
-          { "name": "Secondary", "value": "secondary" }
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
         ]
       },
       {
@@ -1042,8 +1078,14 @@
         "value": "primary",
         "valueType": "string",
         "options": [
-          { "name": "Primary", "value": "primary" },
-          { "name": "Secondary", "value": "secondary" }
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
         ]
       },
       {
@@ -1073,8 +1115,14 @@
         "valueType": "string",
         "value": "primary",
         "options": [
-          { "name": "Primary", "value": "primary" },
-          { "name": "Secondary", "value": "secondary" }
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
         ]
       },
       {
@@ -1280,8 +1328,14 @@
         "required": true,
         "maxSize": 1,
         "options": [
-          { "name": "Share Buttons", "value": "share-buttons" },
-          { "name": "Follow Buttons", "value": "follow-buttons" }
+          {
+            "name": "Share Buttons",
+            "value": "share-buttons"
+          },
+          {
+            "name": "Follow Buttons",
+            "value": "follow-buttons"
+          }
         ]
       },
       {
@@ -1326,10 +1380,22 @@
         "valueType": "string",
         "description": "Select the Share Button(s).",
         "options": [
-          { "name": "Facebook", "value": "facebook" },
-          { "name": "X (Formerly Twitter)", "value": "twitter" },
-          { "name": "Linkedin", "value": "linkedin" },
-          { "name": "Email", "value": "email" }
+          {
+            "name": "Facebook",
+            "value": "facebook"
+          },
+          {
+            "name": "X (Formerly Twitter)",
+            "value": "twitter"
+          },
+          {
+            "name": "Linkedin",
+            "value": "linkedin"
+          },
+          {
+            "name": "Email",
+            "value": "email"
+          }
         ]
       },
       {
@@ -1344,6 +1410,23 @@
     "id": "relatedArticles",
     "fields": [
       {
+        "component": "select",
+        "label": "Article Type",
+        "name": "articleType",
+        "valueType": "string",
+        "description": "Choose the Article Type",
+        "options": [
+          {
+            "name": "Default - Related Articles",
+            "value": "related"
+          },
+          {
+            "name": "Blog Articles",
+            "value": "blog"
+          }
+        ]
+      },
+      {
         "component": "text",
         "name": "sectionTitle",
         "label": "Section Title",
@@ -1356,9 +1439,18 @@
         "name": "sectionLayout",
         "valueType": "string",
         "options": [
-          { "name": "2 Column", "value": "two-column" },
-          { "name": "3 Column", "value": "three-column" },
-          { "name": "4 Column", "value": "four-column" }
+          {
+            "name": "2 Column",
+            "value": "two-column"
+          },
+          {
+            "name": "3 Column",
+            "value": "three-column"
+          },
+          {
+            "name": "4 Column",
+            "value": "four-column"
+          }
         ]
       },
       {
@@ -1369,8 +1461,14 @@
       },
       {
         "component": "aem-tag",
-        "label": "Article Tags",
-        "name": "articleTags",
+        "label": "Topic Tags",
+        "name": "topicTags",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-tag",
+        "label": "Author Tags",
+        "name": "authorTags",
         "valueType": "string"
       },
       {
@@ -1425,10 +1523,22 @@
         "name": "sortBy",
         "valueType": "string[]",
         "options": [
-          { "name": "Asc Date", "value": "asc-date" },
-          { "name": "Desc Date", "value": "desc-date" },
-          { "name": "Asc Title", "value": "asc-title" },
-          { "name": "Desc Title", "value": "desc-title" }
+          {
+            "name": "Asc Date",
+            "value": "asc-date"
+          },
+          {
+            "name": "Desc Date",
+            "value": "desc-date"
+          },
+          {
+            "name": "Asc Title",
+            "value": "asc-title"
+          },
+          {
+            "name": "Desc Title",
+            "value": "desc-title"
+          }
         ]
       },
       {
@@ -1597,8 +1707,14 @@
         "valueType": "string",
         "value": "black-background",
         "options": [
-          { "name": "Black Background", "value": "black-background" },
-          { "name": "No Background", "value": "no-background" }
+          {
+            "name": "Black Background",
+            "value": "black-background"
+          },
+          {
+            "name": "No Background",
+            "value": "no-background"
+          }
         ]
       },
       {
@@ -1608,8 +1724,14 @@
         "valueType": "string",
         "value": "",
         "options": [
-          { "name": "Regular", "value": "" },
-          { "name": "Large", "value": "large" }
+          {
+            "name": "Regular",
+            "value": ""
+          },
+          {
+            "name": "Large",
+            "value": "large"
+          }
         ]
       }
     ]
@@ -1693,11 +1815,339 @@
         "name": "tableVariation",
         "valueType": "string",
         "options": [
-          { "name": "Default", "value": "default" },
-          { "name": "Icon Variation", "value": "icon" },
-          { "name": "Level Variation", "value": "level" },
-          { "name": "Level Variation color", "value": "LevelColor" }
+          {
+            "name": "Default",
+            "value": "default"
+          },
+          {
+            "name": "Icon Variation",
+            "value": "icon"
+          },
+          {
+            "name": "Level Variation",
+            "value": "level"
+          },
+          {
+            "name": "Level Variation color",
+            "value": "LevelColor"
+          }
         ]
+      }
+    ]
+  },
+  {
+    "id": "download",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "fileReference",
+        "label": "DownLoad Image",
+        "multi": false
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "alt",
+        "value": "Download Alt",
+        "label": "Alt Text"
+      },
+      {
+        "component": "aem-content",
+        "name": "assetLink",
+        "label": "Asset Link",
+        "valueType": "string",
+        "description": "Provide Asset Link"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "fileName",
+        "label": "File Name"
+      }
+    ]
+  },
+  {
+    "id": "code",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "htmlCode",
+        "value": "",
+        "label": "Author HTML Code"
+      }
+    ]
+  },
+  {
+    "id": "carousel",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "carouselTitle",
+        "value": "",
+        "label": "Carousel Title"
+      },
+      {
+        "component": "richtext",
+        "name": "carouselDescription",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "carouselSlideFrag",
+        "value": "",
+        "label": "Add Carousel Slide Fragment"
+      },
+      {
+        "component": "boolean",
+        "label": "Auto Slide",
+        "name": "isAutoSlide",
+        "valueType": "boolean"
+      }
+    ]
+  },
+  {
+    "id": "imageText",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "benefitsDescription",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image"
+      },
+      {
+        "component": "boolean",
+        "label": "Enable Icon",
+        "name": "enableIcon",
+        "valueType": "boolean"
+      },
+      {
+        "component": "text-area",
+        "valueType": "string",
+        "name": "text",
+        "label": "Action Text",
+        "value": ""
+      },
+      {
+        "component": "text-area",
+        "valueType": "string",
+        "name": "supportText1",
+        "label": "Support Text 1",
+        "value": ""
+      },
+      {
+        "component": "text-area",
+        "valueType": "string",
+        "name": "supportText2",
+        "label": "Support Text 2",
+        "value": ""
+      },
+      {
+        "component": "text-area",
+        "valueType": "string",
+        "name": "supportText3",
+        "label": "Support Text 3",
+        "value": ""
+      },
+      {
+        "component": "text-area",
+        "valueType": "string",
+        "name": "supportText4",
+        "label": "Support Text 4",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "partner-showcase",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "Configs",
+        "name": "configs"
+      },
+      {
+        "component": "aem-content",
+        "name": "featuredPartner",
+        "value": "",
+        "label": "Featured Partner (Optional)",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "searchPath",
+        "label": "Search Path",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "searchPlaceholderText",
+        "label": "Search Placeholder Text",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "partnersPath",
+        "value": "",
+        "label": "Partners Directory Path",
+        "valueType": "string",
+        "description": "Please enter the path to the Partners directory."
+      },
+      {
+        "component": "number",
+        "name": "numberOfPartners",
+        "label": "No. Of Partners Display",
+        "valueType": "number",
+        "value": 0
+      },
+      {
+        "component": "multiselect",
+        "name": "sortBy",
+        "label": "Sort By",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Date",
+            "children": [
+              { "name": "New-Old", "value": "dateNewOld" },
+              { "name": "Old-New", "value": "dateOldNew" }
+            ]
+          },
+          {
+            "name": "Title",
+            "children": [
+              { "name": "A-Z", "value": "titleAZ" },
+              { "name": "Z-A", "value": "titleZa" }
+            ]
+          }
+        ]
+      },
+      {
+        "component": "tab",
+        "label": "Filters",
+        "name": "filters"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "filterOneTitle",
+        "value": "",
+        "label": "Filter 1 Title"
+      },
+      {
+        "component": "boolean",
+        "label": "Filter 1 is Multi-Select",
+        "name": "filterOneMultiSelect",
+        "valueType": "boolean"
+      },
+      {
+        "component": "aem-tag",
+        "label": "Filter 1 Options",
+        "name": "filterOneTags",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "filterTwoTitle",
+        "value": "",
+        "label": "Filter 2 Title"
+      },
+      {
+        "component": "boolean",
+        "label": "Filter 2 is Multi-Select",
+        "name": "filterTwoMultiSelect",
+        "valueType": "boolean"
+      },
+      {
+        "component": "aem-tag",
+        "label": "Filter 2 Options",
+        "name": "filterTwoTags",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "filterThreeTitle",
+        "value": "",
+        "label": "Filter 3 Title"
+      },
+      {
+        "component": "boolean",
+        "label": "Filter 3 is Multi-Select",
+        "name": "filterThreeMultiSelect",
+        "valueType": "boolean"
+      },
+      {
+        "component": "aem-tag",
+        "label": "Filter 3 Options",
+        "name": "filterThreeTags",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "filterFourTitle",
+        "value": "",
+        "label": "Filter 4 Title"
+      },
+      {
+        "component": "boolean",
+        "label": "Filter 4 is Multi-Select",
+        "name": "filterFourMultiSelect",
+        "valueType": "boolean"
+      },
+      {
+        "component": "aem-tag",
+        "label": "Filter 4 Options",
+        "name": "filterFourTags",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "search",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "searchPlaceholderText",
+        "label": "Search Placeholder Text"
+      },
+      {
+        "component": "number",
+        "name": "noOfResultsPerPage",
+        "label": "No. Of Results Per page",
+        "valueType": "number",
+        "value": 0
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "searchResultTitle",
+        "label": "Search Result Title"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "totalResultsTitle",
+        "label": "Total Results Title"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "totalResultsTitle",
+        "label": "No Results Label"
       }
     ]
   }

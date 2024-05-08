@@ -94,7 +94,6 @@
 /* mobile View */
 @media (width <= 767px) {
   .quote-main-container {
-    padding: 0 var(--spacing-small);
     display: grid;
     grid-template-columns: 1fr; 
     grid-template-rows: auto;
@@ -113,6 +112,10 @@
   .quote-left-container, .quote-right-container {
     flex: 1; 
     max-width: 100%;
+  }
+  
+  .quote-image-container {
+    width: 100%;
   }
 
 }

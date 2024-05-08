@@ -19,7 +19,9 @@
       "button",
       "button-pfx",
       "cards",
+      "code",
       "columns",
+      "download",
       "embed",
       "google-map",
       "hero",
@@ -40,7 +42,11 @@
       "learningCenter",
       "iframe",
       "fragment",
-      "table"
+      "table",
+      "carousel",
+      "benefits",
+      "partner-showcase",
+      "search"
     ]
   },
   {

@@ -1,4 +1,6 @@
 import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
+import { environmentMode } from '../../scripts/global-functions.js';
+import { PUBLISH_ENDPOINT } from '../../scripts/url-constants.js';
 import ffetch from '../../scripts/ffetch.js';
 
 function generateCardDom(article) {
@@ -31,30 +33,35 @@ const filterBasedOnProp = (data = [], filterProps = [], filterValues = {}) =>
     (item) =>
       filterProps.filter((prop) => {
         const filteredValue = filterValues[prop];
-        return filteredValue?.filter((filterItem) => filterItem && item[prop]?.includes(filterItem)).length > 0;
+        return filteredValue?.filter((filterItem) => item[prop]?.includes(filterItem)).length > 0;
       }).length > 0,
   );
 
 export default async function decorate(block) {
-  const data = await ffetch('/article-index.json').all();
-  const title = block.children[0]?.textContent.trim();
+  const url = environmentMode() === 'author' ? `${PUBLISH_ENDPOINT}/article-index.json` : '/article-index.json';
+  // Get Data
+  const data = await ffetch(url).all();
+  // const type = block.children[0]?.textContent.trim(); // TODO for Blog Articles
+  const title = block.children[1]?.textContent.trim();
   const titleEle = `<h2>${title}</h2>`;
-  const columnLayout = block.children[1]?.textContent.trim() || 'three-column';
-  let categoryTags = block.children[2]?.textContent.trim()?.split(',');
-  const articleTags = block.children[3]?.textContent.trim()?.split(',');
+  const columnLayout = block.children[2]?.textContent.trim() || 'three-column';
+  let categoryTags = block.children[3]?.textContent.trim()?.split(',');
+  const topicTags = block.children[4]?.textContent.trim()?.split(',');
+  const authorTags = block.children[5]?.textContent.trim()?.split(',');
   if (categoryTags.toString().length === 0) {
     categoryTags = getMetadata('category')?.split(',');
   }
-  const filterValues = {
-    category: categoryTags,
-    authors: articleTags,
-  };
-  const filterProps = ['authors', 'category'];
+
   block.classList.add(columnLayout, 'cards', 'aspect-ratio-16-9');
   block.innerHTML = titleEle;
   const ul = document.createElement('ul');
 
-  const filteredData = filterBasedOnProp(data, filterProps, filterValues);
+  // filter by Category
+  const filteryByCategory = filterBasedOnProp(data, ['category'], { category: categoryTags });
+
+  // filter by other tags
+  const filteryByTopics = filterBasedOnProp(filteryByCategory, ['topics'], { topics: topicTags });
+  const filteredData = filterBasedOnProp(filteryByTopics, ['authors'], { authors: authorTags });
 
   // Sorting Article by Date published
   filteredData.sort((a, b) => {
@@ -64,7 +71,7 @@ export default async function decorate(block) {
   });
 
   filteredData?.forEach((article, index) => {
-    if (index > 8) {
+    if (index > 7) {
       return;
     }
 
