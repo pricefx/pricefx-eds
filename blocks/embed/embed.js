@@ -121,8 +121,6 @@ async function loadModal(block) {
   openModal({ block: modalContent });
 }
 
-let scene7VideoElement;
-
 const loadEmbed = (block, link, autoplay, isPopup) => {
   if (block.classList.contains('embed-is-loaded')) {
     return;
@@ -194,14 +192,10 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
 
   if (config) {
     if (config.match.includes('scene7')) {
-      if (scene7VideoElement) {
-        scene7VideoElement.remove();
-      }
       // Load the Scene7 video
       config
         .embed(url, autoplay)
         .then((holder) => {
-          scene7VideoElement = holder;
           block.innerHTML(holder);
           block.classList = `block embed embed-${config.match[0]}`;
           block.classList.add('embed-is-loaded');
