@@ -107,11 +107,11 @@
 
         .left-right-boxed .boxed-right-container .embed.embed-is-loaded {
             background-image: none !important;
-            margin-right: 32px;
+            margin-right: var(--spacing-medium);
         }
 
         .left-right-boxed .boxed-main-container.boxed-content-right .boxed-right-container .embed.embed-is-loaded {
-            margin: 0 0 0 32px;
+            margin: 0 0 0 var(--spacing-medium);
         }
 
         .left-right-boxed .boxed-right-container .boxed-image-container,
