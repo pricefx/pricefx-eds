@@ -165,13 +165,14 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
           config
             .embed(url, autoplay)
             .then((holder) => {
-              const container = document.createElement('div'); // Create a container element
-              container.appendChild(holder); // Append the Scene7 video content to the container
+              const container = document.createElement('div');
               container.classList = `embed embed-${config.match[0]}`;
               container.classList.add('embed-is-loaded');
-              loadModal(container); // Pass the container to loadModal function
+              container.appendChild(holder);
+              loadModal(container);
             })
             .catch(() => {});
+          return;
         } else {
           const embedHTML = document.createElement('div');
           embedHTML.classList = `embed embed-${config.match[0]}`;
@@ -189,6 +190,7 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
         return;
       }
     }
+
 
 
   if (config) {
