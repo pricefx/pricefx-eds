@@ -1921,12 +1921,6 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "searchTitle",
-        "label": "Search Title"
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
         "name": "searchPlaceholderText",
         "label": "Search Placeholder Text"
       },
@@ -1942,6 +1936,18 @@
         "label": "No Of Results Per page",
         "valueType": "number",
         "value": 0
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "searchResultTitle",
+        "label": "Search Result Title"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "totalResultsTitle",
+        "label": "Total Results Title"
       }
     ]
   }
