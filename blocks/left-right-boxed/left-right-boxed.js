@@ -7,6 +7,9 @@ function decorateRightContainer(boxedRightContainer) {
     const boxedImageContainer = document.createElement('div');
     boxedImageContainer.classList.add('boxed-image-container');
     const boxedImage = boxedRightContainer.children[2];
+    if (window.matchMedia('(min-width:986px)').matches && boxedImage.querySelector('img') !== null) {
+      boxedImageContainer.setAttribute('style', `background-image:url(${boxedImage.querySelector('img').src})`);
+    }
     boxedImageContainer.append(boxedImage);
     boxedRightContainer.textContent = '';
     boxedRightContainer.append(boxedImageContainer);

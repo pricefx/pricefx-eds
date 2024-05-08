@@ -1,65 +1,104 @@
-@import url('../embed/embed.css');
+    @import url('../embed/embed.css');
 
-.section.left-right-boxed-container {
-  padding: 0;
-}
+    .section.left-right-boxed-container {
+    padding: 0;
+    }
 
-.left-right-boxed .boxed-main-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.left-right-boxed .boxed-right-container img {
-    aspect-ratio: 16 / 9.2;
-    object-fit: cover;
-}
-
-.left-right-boxed .boxed-eyebrow-text {
-    display: inline-block;
-    margin-bottom: 25px;
-}
-
-.left-right-boxed .boxed-eyebrow-text p {
-    font-size: calc((20 / 16) * 1rem);
-    font-style: normal;
-    font-weight: var(--fw-med);
-    line-height: 25px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-}
-
-.left-right-boxed .boxed-content-container h1,
-.left-right-boxed .boxed-content-container h2,
-.left-right-boxed .boxed-content-container h3
-.left-right-boxed .boxed-content-container h4,
-.left-right-boxed .boxed-content-container h5,
-.left-right-boxed .boxed-content-container h6 {
-    margin: 0 0 25px;
-}
-
-/* Media Query for Desktop */
-
-@media (width >= 986px) {
     .left-right-boxed .boxed-main-container {
-        flex-direction: row;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
     }
 
-    .left-right-boxed .boxed-left-container, .left-right-boxed .boxed-right-container {
-        flex: 50%;
+    .left-right-boxed .boxed-left-container {
+        max-width: 1188px;
+        margin: 0 auto;
+        z-index: 2;
+        padding: 54px 0;
+        min-height: 465px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
     }
 
-    .left-right-boxed .boxed-left-container .boxed-content-container {
-        max-width: 587px;
-        margin: auto 61px auto auto;
+    .left-right-boxed .boxed-right-container {
+        inset: 0 0 0 50%;
+        position: absolute;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+    }
+            
+
+    .left-right-boxed .boxed-main-container.boxed-content-right {
+        flex-direction: column-reverse;
+    }
+
+    .left-right-boxed .boxed-eyebrow-text {
+        display: inline-block;
+        margin-bottom: 25px;
     }
 
     .left-right-boxed .boxed-eyebrow-text p {
-        font-size: calc((22 / 16) * 1rem);
-        font-weight: var(--fw-bold);
-        line-height: 28px;
-        text-transform: capitalize;
-        letter-spacing: normal;
+        font-size: calc((20 / 16) * 1rem);
+        font-style: normal;
+        font-weight: var(--fw-med);
+        line-height: 25px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
     }
-}
+
+    .left-right-boxed .boxed-content-container h1,
+    .left-right-boxed .boxed-content-container h2,
+    .left-right-boxed .boxed-content-container h3
+    .left-right-boxed .boxed-content-container h4,
+    .left-right-boxed .boxed-content-container h5,
+    .left-right-boxed .boxed-content-container h6 {
+        margin: 0 0 25px;
+    }
+
+    @media (width <= 985px) {
+        .left-right-boxed .boxed-right-container .boxed-image-container {
+            background-image: unset !important;
+        }
+
+        .left-right-boxed .boxed-right-container {
+            width: 100%;
+        }
+    }
+
+    /* Media Query for Desktop */
+
+    @media (width >= 986px) {
+        .left-right-boxed .boxed-main-container {
+            flex-direction: row;
+        }
+
+        .left-right-boxed .boxed-main-container.boxed-content-right {
+            flex-direction: row-reverse;
+        }
+
+        .left-right-boxed .boxed-content-container {
+            width: 46%;
+        }
+
+        .left-right-boxed .left-right-boxed .boxed-right-container .boxed-image-container {
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+            background-position: right center;
+        }
+
+        .left-right-boxed .boxed-right-container .boxed-image-container img {
+            display: none;
+        }
+
+        .left-right-boxed .boxed-eyebrow-text p {
+            font-size: calc((22 / 16) * 1rem);
+            font-weight: var(--fw-bold);
+            line-height: 28px;
+            text-transform: capitalize;
+            letter-spacing: normal;
+        }
+    }
