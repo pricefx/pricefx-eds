@@ -1883,7 +1883,7 @@
     "fields": [
       {
         "component": "richtext",
-        "name": "benefitsDescription",
+        "name": "imageTextDescription",
         "label": "Description",
         "valueType": "string"
       },
