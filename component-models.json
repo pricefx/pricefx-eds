@@ -1945,19 +1945,19 @@
         "options": [
           {
             "name": "Date NewOld",
-            "value": "newold-date"
+            "value": "date-NewOld"
           },
           {
             "name": "Date OldNew",
-            "value": "oldnew-date"
+            "value": "date-OldNew"
           },
           {
             "name": "Title AZ",
-            "value": "az-title"
+            "value": "title-az"
           },
           {
             "name": "Title ZA",
-            "value": "za-title"
+            "value": "title-za"
           }
         ]
       },
