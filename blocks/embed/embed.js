@@ -191,17 +191,24 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
 
   if (config) {
     if (config.match.includes('scene7')) {
-      const holderPromise = config.embed(url, autoplay);
-      holderPromise
+      // Check if the block already has a Scene7 viewer
+      const s7viewerDiv = document.getElementById('s7viewer');
+      if (s7viewerDiv) {
+        // If so, remove it before loading the new Scene7 video
+        s7viewerDiv.remove();
+      }
+
+      // Load the Scene7 video
+      config
+        .embed(url, autoplay)
         .then((holder) => {
           block.appendChild(holder);
           block.classList = `block embed embed-${config.match[0]}`;
           block.classList.add('embed-is-loaded');
-
-          // Store the Scene7 holder for later cleanup
-          block.dataset.scene7Holder = holder.id;
         })
-        .catch(() => {});
+        .catch((error) => {
+          console.error('Error loading Scene7 video:', error);
+        });
     } else {
       block.innerHTML = config.embed(url, autoplay);
       block.classList = `block embed embed-${config.match[0]}`;
@@ -212,29 +219,6 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
     block.classList = 'block embed';
     block.classList.add('embed-is-loaded');
   }
-
-  // Cleanup Scene7 viewer when the modal is closed
-  const modalObserver = new MutationObserver((mutationsList, observer) => {
-    mutationsList.forEach((mutation) => {
-      if (mutation.type === 'childList') {
-        const modal = mutation.target.closest('.modal-content');
-        if (!modal) {
-          // If the modal is closed, clean up the Scene7 viewer
-          const holderId = block.dataset.scene7Holder;
-          if (holderId) {
-            const s7viewerHolder = document.getElementById(holderId);
-            if (s7viewerHolder) {
-              s7viewerHolder.remove();
-            }
-          }
-          observer.disconnect();
-        }
-      }
-    });
-  });
-
-  // Observe changes in the DOM to detect modal closure
-  modalObserver.observe(document.body, { childList: true, subtree: true });
 };
 
 export default function decorate(block) {
