@@ -1761,12 +1761,6 @@
         "label": "Search Placeholder Text"
       },
       {
-        "component": "richtext",
-        "name": "suggestionsList",
-        "label": "Suggestions List",
-        "valueType": "string"
-      },
-      {
         "component": "number",
         "name": "noOfResultsPerPage",
         "label": "No. Of Results Per page",
