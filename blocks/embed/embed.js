@@ -117,9 +117,12 @@ const embedScene7 = (url, autoplay) => {
 
 async function loadModal(block) {
   const { openModal } = await import(`${window.hlx.codeBasePath}/blocks/modal/modal.js`);
-  openModal({ block });
+  const modalContent = block.cloneNode(true); // Clone the block to reload its content
+  openModal({ block: modalContent });
 }
+
 let scene7VideoElement;
+
 const loadEmbed = (block, link, autoplay, isPopup) => {
   if (block.classList.contains('embed-is-loaded')) {
     return;
