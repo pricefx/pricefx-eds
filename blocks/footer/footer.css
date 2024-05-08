@@ -27,6 +27,14 @@ footer .footer {
 
 .footer-logo-wrapper a {
   display: inline-block;
+  height: auto;
+  max-width: 169px;
+  width: 100%;
+}
+
+.footer-logo-wrapper img {
+  height: 56px;
+  width: 169px;
 }
 
 .footer-menu {

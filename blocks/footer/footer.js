@@ -50,7 +50,7 @@ function toggleMobileNavAccordion(navToggle) {
 async function decorateLogo(footer) {
   const logoWrapper = document.createElement('div');
   logoWrapper.classList.add('footer-logo-wrapper');
-  logoWrapper.innerHTML = `<a href="/"><img src="../../icons/logo.svg" alt="Pricefx"/></a>`;
+  logoWrapper.innerHTML = `<a href="/"><img src="../../icons/logo.svg" alt="Pricefx" loading="lazy" /></a>`;
   footer.appendChild(logoWrapper);
 }
 
