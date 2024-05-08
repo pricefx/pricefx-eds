@@ -1,6 +1,4 @@
 import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
-import { environmentMode } from '../../scripts/global-functions.js';
-import { PUBLISH_ENDPOINT } from '../../scripts/url-constants.js';
 import ffetch from '../../scripts/ffetch.js';
 
 function generateCardDom(article) {
