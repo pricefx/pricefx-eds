@@ -2238,30 +2238,6 @@
         }
       },
       {
-        "component": "checkbox-group",
-        "label": "Sort By",
-        "name": "sortBy",
-        "valueType": "string[]",
-        "options": [
-          {
-            "name": "Date New-Old",
-            "value": "newold-date"
-          },
-          {
-            "name": "Date Old-New",
-            "value": "oldnew-date"
-          },
-          {
-            "name": "Title A-Z",
-            "value": "az-title"
-          },
-          {
-            "name": "Title Z-A",
-            "value": "za-title"
-          }
-        ]
-      },
-      {
         "component": "text-input",
         "valueType": "string",
         "name": "searchResultTitle",
