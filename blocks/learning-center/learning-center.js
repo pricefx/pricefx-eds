@@ -1,5 +1,5 @@
 import ffetch from '../../scripts/ffetch.js';
-import environmentMode from '../../scripts/global-functions.js';
+import { environmentMode } from '../../scripts/global-functions.js';
 import { BASE_CONTENT_PATH } from '../../scripts/url-constants.js';
 
 const isDesktop = window.matchMedia('(min-width: 986px)');
