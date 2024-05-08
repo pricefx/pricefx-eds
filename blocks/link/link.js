@@ -1,10 +1,6 @@
-import { editMode, environmentMode } from '../../scripts/global-functions.js';
+import { environmentMode } from '../../scripts/global-functions.js';
 
 export default function decorate(block) {
-  if (editMode()) {
-    return;
-  }
-
   const [link, target] = block.children;
   const { href } = link.querySelector('a') || '';
   const isTarget = target.textContent.trim();

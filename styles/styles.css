@@ -587,19 +587,19 @@ main .section.highlight {
 
 @media (width >= 768px) {
   main .section {
-   padding: 120px var(--spacing-medium);
+   padding: 120px var(--spacing-small);
   }
 
   .section[data-padding="section-padding-large"] {
-    padding: 100px var(--spacing-medium);
+    padding: 100px var(--spacing-small);
   }
 
   .section[data-padding="section-padding-medium"] {
-    padding: var(--spacing-xlarge) var(--spacing-medium);
+    padding: var(--spacing-xlarge) var(--spacing-small);
   }
 
   .section[data-padding="section-padding-small"] {
-    padding: var(--spacing-medium);
+    padding: var(--spacing-medium) var(--spacing-small);
   }
 
   .section[data-iframetwocolumn="true"] {
