@@ -1944,19 +1944,19 @@
         "valueType": "string[]",
         "options": [
           {
-            "name": "Date New-Old",
+            "name": "Date New Old",
             "value": "newold-date"
           },
           {
-            "name": "Date Old-New",
+            "name": "Date Old New",
             "value": "oldnew-date"
           },
           {
-            "name": "Title A-Z",
+            "name": "Title A Z",
             "value": "az-title"
           },
           {
-            "name": "Title Z-A",
+            "name": "Title Z A",
             "value": "za-title"
           }
         ]
