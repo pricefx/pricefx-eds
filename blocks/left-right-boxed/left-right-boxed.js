@@ -1,3 +1,4 @@
+import { createOptimizedPicture } from '../../scripts/aem.js';
 import { decorateEmbed } from '../embed/embed.js';
 
 function decorateRightContainer(boxedRightContainer) {
@@ -73,6 +74,13 @@ export default async function decorate(block) {
     }
   });
   decorateRightContainer(boxedRightContainer);
+
+  boxedRightContainer
+    .querySelectorAll('img')
+    .forEach((img) =>
+      img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])),
+    );
+
   boxedContainer.append(boxedLeftContainer);
   boxedContainer.append(boxedRightContainer);
   block.textContent = '';

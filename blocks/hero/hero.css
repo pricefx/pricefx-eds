@@ -186,11 +186,11 @@
     display: none;
   }
 
-  .hero.hero-image-left .hero-image-container  {
+  .hero.image-position-left .hero-image-container  {
     background-position: left center;
   }
 
-  .hero.hero-image-center .hero-image-container  {
+  .hero.image-position-center .hero-image-container  {
     background-position: center;
   }
 
