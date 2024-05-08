@@ -1724,24 +1724,47 @@
         "valueType": "string"
       },
       {
-        "component": "text",
-        "name": "searchPath",
-        "label": "Search Path",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "searchPlaceholderText",
-        "label": "Search Placeholder Text",
-        "valueType": "string"
-      },
-      {
-        "component": "aem-content",
-        "name": "partnersPath",
-        "value": "",
-        "label": "Partners Directory Path",
+        "component": "reference",
         "valueType": "string",
-        "description": "Please enter the path to the Partners directory."
+        "name": "benefitsImage",
+        "label": "Benefits Image"
+      },
+      {
+        "component": "boolean",
+        "label": "Disable Icon",
+        "name": "disableIcon",
+        "valueType": "boolean"
+      },
+      {
+        "component": "text-area",
+        "valueType": "string",
+        "name": "benefitsText",
+        "label": "Text",
+        "value": ""
+      },
+      {
+        "component": "text-area",
+        "valueType": "string",
+        "name": "supportText",
+        "label": "Benefits Support Text",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "search",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "searchPlaceholderText",
+        "label": "Search Placeholder Text"
+      },
+      {
+        "component": "richtext",
+        "name": "suggestionsList",
+        "label": "Suggestions List",
+        "valueType": "string"
       },
       {
         "component": "number",
@@ -1751,24 +1774,26 @@
         "value": 0
       },
       {
-        "component": "multiselect",
-        "name": "sortBy",
+        "component": "checkbox-group",
         "label": "Sort By",
-        "valueType": "string",
+        "name": "sortBy",
+        "valueType": "string[]",
         "options": [
           {
-            "name": "Date",
-            "children": [
-              { "name": "New-Old", "value": "dateNewOld" },
-              { "name": "Old-New",  "value": "dateOldNew" }
-            ]
+            "name": "Date New-Old",
+            "value": "newold-date"
           },
           {
-            "name": "Title",
-            "children": [
-              { "name": "A-Z", "value": "titleAZ" },
-              { "name": "Z-A", "value": "titleZa" }
-            ]
+            "name": "Date Old-New",
+            "value": "oldnew-date"
+          },
+          {
+            "name": "Title A-Z",
+            "value": "az-title"
+          },
+          {
+            "name": "Title Z-A",
+            "value": "za-title"
           }
         ]
       },
