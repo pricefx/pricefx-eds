@@ -75,8 +75,14 @@
 
 .accordion-item[open] .plus-icon::after {
   content: var(--icon-minus);
+  display: inline-block; 
+  width: 31px;
+  height: 52px;
 }
 
 .accordion-item:not([open]) .plus-icon::after {
   content: var(--icon-plus);
+  display: inline-block; 
+  width: 31px;
+  height: 52px;
 }

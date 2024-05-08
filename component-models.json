@@ -1877,5 +1877,42 @@
         "valueType": "boolean"
       }
     ]
+  },
+  {
+    "id": "benefits",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "benefitsDescription",
+        "label": "Description",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "benefitsImage",
+        "label": "Benefits Image"
+      },
+      {
+        "component": "boolean",
+        "label": "Disable Icon",
+        "name": "disableIcon",
+        "valueType": "boolean"
+      },
+      {
+        "component": "text-area",
+        "valueType": "string",
+        "name": "benefitsText",
+        "label": "Text",
+        "value": ""
+      },
+      {
+        "component": "text-area",
+        "valueType": "string",
+        "name": "supportText",
+        "label": "Benefits Support Text",
+        "value": ""
+      }
+    ]
   }
 ]
