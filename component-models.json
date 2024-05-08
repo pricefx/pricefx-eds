@@ -1960,6 +1960,11 @@
         ]
       },
       {
+        "component": "tab",
+        "label": "Filters Config",
+        "name": "foltersConfig"
+      },
+      {
         "component": "text-input",
         "valueType": "string",
         "name": "searchResultTitle",
