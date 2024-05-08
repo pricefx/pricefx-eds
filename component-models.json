@@ -1724,47 +1724,24 @@
         "valueType": "string"
       },
       {
-        "component": "reference",
-        "valueType": "string",
-        "name": "benefitsImage",
-        "label": "Benefits Image"
-      },
-      {
-        "component": "boolean",
-        "label": "Disable Icon",
-        "name": "disableIcon",
-        "valueType": "boolean"
-      },
-      {
-        "component": "text-area",
-        "valueType": "string",
-        "name": "benefitsText",
-        "label": "Text",
-        "value": ""
-      },
-      {
-        "component": "text-area",
-        "valueType": "string",
-        "name": "supportText",
-        "label": "Benefits Support Text",
-        "value": ""
-      }
-    ]
-  },
-  {
-    "id": "search",
-    "fields": [
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "searchPlaceholderText",
-        "label": "Search Placeholder Text"
-      },
-      {
-        "component": "richtext",
-        "name": "suggestionsList",
-        "label": "Suggestions List",
+        "component": "text",
+        "name": "searchPath",
+        "label": "Search Path",
         "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "searchPlaceholderText",
+        "label": "Search Placeholder Text",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "partnersPath",
+        "value": "",
+        "label": "Partners Directory Path",
+        "valueType": "string",
+        "description": "Please enter the path to the Partners directory."
       },
       {
         "component": "number",
@@ -1772,6 +1749,30 @@
         "label": "No. Of Results Per page",
         "valueType": "number",
         "value": 0
+      },
+      {
+        "component": "checkbox-group",
+        "label": "Sort By",
+        "name": "sortBy",
+        "valueType": "string[]",
+        "options": [
+          {
+            "name": "Date New-Old",
+            "value": "newold-date"
+          },
+          {
+            "name": "Date Old-New",
+            "value": "oldnew-date"
+          },
+          {
+            "name": "Title A-Z",
+            "value": "az-title"
+          },
+          {
+            "name": "Title Z-A",
+            "value": "za-title"
+          }
+        ]
       },
       {
         "component": "text-input",
