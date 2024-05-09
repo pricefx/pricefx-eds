@@ -1,7 +1,6 @@
 import { IMAGETEXT, PLAYBUTTON } from '../../scripts/constants.js';
 
 export default async function decorate(block) {
-  // eslint-disable-next-line no-unused-vars
   let enableIcon = false;
 
   const imagetext = document.createElement('div');
