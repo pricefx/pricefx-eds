@@ -9,6 +9,7 @@ indices:
       - /footer
       - /fragments
       - /metadata
+      - /style-guide
     target: /query-index.json
     properties:
       title:
