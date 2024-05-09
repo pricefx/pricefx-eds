@@ -91,11 +91,14 @@
   margin-bottom: 16px;
 }
 
+.cards .cards-card-description li {
+  list-style-type: disc;
+}
+
 .cards .cards-card-cta {
   margin-top: auto;
   padding-top: 20px;
   display: flex;
-  justify-content: space-between;
 }
 
 .cards .cards-card-cta a,
@@ -138,13 +141,53 @@ div.cards-card-eyebrow + div.cards-card-description {
   margin-top: 16px;
 }
 
+/* Card BG Color - Black */
+.card-bg-black.cards > ul > li {
+  background-color: var(--c-dark);
+}
+
+.card-bg-black.cards .cards-card-eyebrow,
+.card-bg-black.cards .cards-card-title h6,
+.card-bg-black.cards .cards-card-description p,
+.card-bg-black.cards .cards-card-description span,
+.card-bg-black.cards .cards-card-description li,
+.card-bg-black.cards .cards-card-description a,
+.card-bg-black.cards .cards-card-cta a,
+.card-bg-black.cards .cards-card-cta p {
+  color: var(--c-white);
+}
+
 /* Alignment */
 .cards.align-center {
   text-align: center;
 }
 
+.cards.align-center .cards-card-body  ul {
+  display: inline-block;
+}
+
+.cards.align-center .cards-card-body  ul li {
+  text-align: left;
+}
+
+.cards.align-center .cards-card-cta {
+  justify-content: center;
+}
+
 .cards.align-right {
   text-align: right;
+}
+
+.cards.cards.align-right .cards-card-body  ul {
+  display: inline-block;
+}
+
+.cards.cards.align-right .cards-card-body  ul li {
+  text-align: left;
+}
+
+.cards.align-right .cards-card-cta {
+  justify-content: flex-end;
 }
 
 /* No Aspect Ratio */
@@ -197,22 +240,6 @@ div.cards-card-eyebrow + div.cards-card-description {
   display: none;
 }
 
-/* Card BG Color - Black */
-.card-bg-black.cards > ul > li {
-  background-color: var(--c-dark);
-}
-
-.card-bg-black.cards .cards-card-eyebrow,
-.card-bg-black.cards .cards-card-title h6,
-.card-bg-black.cards .cards-card-description p,
-.card-bg-black.cards .cards-card-description span,
-.card-bg-black.cards .cards-card-description li,
-.card-bg-black.cards .cards-card-description a,
-.card-bg-black.cards .cards-card-cta a,
-.card-bg-black.cards .cards-card-cta p {
-  color: var(--c-white);
-}
-
 /* Resposive Styles */
 @media (width >= 768px) {
   .cards > ul {
@@ -225,14 +252,8 @@ div.cards-card-eyebrow + div.cards-card-description {
     width: calc(50% - 16px);
   }
 
-  .cards.two-column > ul > li {
-    width: calc(50% - 16px);
-  }
-
-  .cards.three-column > ul > li {
-    width: calc(50% - 16px);
-  }
-
+  .cards.two-column > ul > li,
+  .cards.three-column > ul > li,
   .cards.four-column > ul > li {
     width: calc(50% - 16px);
   }

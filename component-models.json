@@ -318,10 +318,22 @@
     "id": "left-right-boxed",
     "fields": [
       {
+        "component": "radio-group",
+        "label": "Boxed Image / Video Variation",
+        "name": "boxedVariation",
+        "valueType": "string",
+        "value": "imageVariation",
+        "options": [
+          { "name": "Image - Default", "value": "imageVariation" },
+          { "name": "Video", "value": "videoVariation" }
+        ]
+      },
+      {
         "component": "boolean",
-        "label": "Image / Video to Right",
-        "name": "isImageRight",
-        "valueType": "boolean"
+        "label": "Image / Video to Left",
+        "name": "isImageLeft",
+        "valueType": "boolean",
+        "description": "ⓘ Default Content in left and image / video on right."
       },
       {
         "component": "reference",
@@ -338,20 +350,24 @@
         "value": ""
       },
       {
-        "component": "richtext",
-        "valueType": "string",
-        "name": "boxedContent",
-        "label": "Left Right Boxed Content",
-        "value": "",
-        "description": "ⓘ Heading (H2) and Description"
-      },
-      {
         "component": "reference",
         "valueType": "string",
         "name": "embedVideo",
         "label": "Embed Video Placeholder",
         "description": "ⓘ Video placeholder",
         "multi": false
+      },
+      {
+        "component": "select",
+        "label": "Image Position",
+        "name": "classes",
+        "valueType": "string",
+        "value": "image-position-right",
+        "options": [
+          { "name": "Left", "value": "image-position-left" },
+          { "name": "Center", "value": "image-position-center" },
+          { "name": "Right - Default", "value": "image-position-right" }
+        ]
       },
       {
         "component": "text-input",
@@ -373,6 +389,22 @@
         "name": "popUpModal",
         "valueType": "boolean",
         "description": "ⓘ When selected, the Video will open in a Popup Modal"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "boxedEyebrowText",
+        "label": "Eyebrow Text",
+        "value": "",
+        "description": "ⓘ Eyebrow Text"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "boxedContent",
+        "label": "Left Right Boxed Content",
+        "value": "",
+        "description": "ⓘ Heading (H2) and Description"
       }
     ]
   },
@@ -924,19 +956,19 @@
         "label": "Image Position",
         "name": "classes",
         "valueType": "string",
-        "value": "hero-image-right",
+        "value": "image-position-right",
         "options": [
           {
             "name": "Left",
-            "value": "hero-image-left"
+            "value": "image-position-left"
           },
           {
             "name": "Center",
-            "value": "hero-image-center"
+            "value": "image-position-center"
           },
           {
             "name": "Right - Default",
-            "value": "hero-image-right"
+            "value": "image-position-right"
           }
         ]
       },
@@ -971,7 +1003,7 @@
       },
       {
         "component": "radio-group",
-        "label": "Hero Height Variation",
+        "label": "Hero Height",
         "name": "heroVariation",
         "valueType": "string",
         "value": "hero-primary-height",
@@ -1501,26 +1533,24 @@
         "value": 0
       },
       {
-        "component": "checkbox-group",
-        "label": "Sort By",
+        "component": "multiselect",
         "name": "sortBy",
-        "valueType": "string[]",
+        "label": "Sort By",
+        "valueType": "string",
         "options": [
           {
-            "name": "Asc Date",
-            "value": "asc-date"
+            "name": "Date",
+            "children": [
+              { "name": "Asc Date", "value": "asc-date" },
+              { "name": "Desc Date", "value": "desc-date" }
+            ]
           },
           {
-            "name": "Desc Date",
-            "value": "desc-date"
-          },
-          {
-            "name": "Asc Title",
-            "value": "asc-title"
-          },
-          {
-            "name": "Desc Title",
-            "value": "desc-title"
+            "name": "Title",
+            "children": [
+              { "name": "A-Z", "value": "asc-title" },
+              { "name": "Z-A", "value": "desc-title" }
+            ]
           }
         ]
       },
@@ -1773,13 +1803,6 @@
     "id": "table",
     "fields": [
       {
-        "component": "aem-content",
-        "name": "browseTable",
-        "value": "",
-        "label": "Browse Table",
-        "valueType": "string"
-      },
-      {
         "component": "text-input",
         "valueType": "string",
         "name": "tableTitle",
@@ -1788,9 +1811,30 @@
       },
       {
         "component": "boolean",
-        "label": "Disable Top Row",
-        "name": "disableTopRow",
-        "valueType": "boolean"
+        "label": "Header Row",
+        "name": "isHeaderRow",
+        "valueType": "boolean",
+        "description": "It will create the first row of the table as the header row."
+      },
+      {
+        "component": "select",
+        "label": "Select No. Columns",
+        "name": "noOfColumns",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "2 Column",
+            "value": "twoCol"
+          },
+          {
+            "name": "3 Column",
+            "value": "threeCol"
+          },
+          {
+            "name": "4 Column",
+            "value": "fourCol"
+          }
+        ]
       },
       {
         "component": "select",
@@ -1815,6 +1859,35 @@
             "value": "LevelColor"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "row",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "colOneDescription",
+        "label": "Column 1 Description",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "colTwoDescription",
+        "label": "Column 2 Description",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "colThreeDescription",
+        "label": "Column 3 Description",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "colFourDescription",
+        "label": "Column 4 Description",
+        "valueType": "string"
       }
     ]
   },
@@ -1922,6 +1995,26 @@
         "value": ""
       },
       {
+        "component": "radio-group",
+        "label": "Button Style",
+        "name": "buttonStyle",
+        "valueType": "string",
+        "value": "primary",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "primary"
+          }
+        ]
+      },
+      {
+        "component": "text-area",
+        "valueType": "string",
+        "name": "supportTitle",
+        "label": "Support Title",
+        "value": ""
+      },
+      {
         "component": "text-area",
         "valueType": "string",
         "name": "supportText1",
@@ -1948,6 +2041,12 @@
         "name": "supportText4",
         "label": "Support Text 4",
         "value": ""
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "support-image",
+        "label": "Support Logo Image"
       }
     ]
   },

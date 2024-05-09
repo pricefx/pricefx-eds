@@ -60,5 +60,9 @@
   {
     "id": "tabs",
     "components": ["tab-item"]
+  },
+  {
+    "id": "table",
+    "components": ["row"]
   }
 ]
