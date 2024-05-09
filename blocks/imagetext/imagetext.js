@@ -36,9 +36,10 @@ export default async function decorate(block) {
     } else if (index === 1) {
       /* Left Container image */
       const bannerImage = document.querySelector('picture img');
+      bannerImage.classList.add('banner-image');
       if (bannerImage) {
         const image = document.createElement('div');
-        image.classList.add('banner-image');
+        image.classList.add('banner-container');
         image.appendChild(bannerImage);
         imagetextLeftContainer.appendChild(image);
       }
