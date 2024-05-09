@@ -498,6 +498,21 @@
           }
         },
         {
+          "title": "Table Row",
+          "id": "table-row",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Table Row",
+                  "model": "table-row"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Code",
           "id": "code",
           "plugins": {
