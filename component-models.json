@@ -1954,6 +1954,26 @@
         "value": ""
       },
       {
+        "component": "radio-group",
+        "label": "Button Style",
+        "name": "buttonStyle",
+        "valueType": "string",
+        "value": "primary",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "primary"
+          }
+        ]
+      },
+      {
+        "component": "text-area",
+        "valueType": "string",
+        "name": "supportTitle",
+        "label": "Support Title",
+        "value": ""
+      },
+      {
         "component": "text-area",
         "valueType": "string",
         "name": "supportText1",
@@ -1980,6 +2000,12 @@
         "name": "supportText4",
         "label": "Support Text 4",
         "value": ""
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "support-image",
+        "label": "Support Logo Image"
       }
     ]
   },
