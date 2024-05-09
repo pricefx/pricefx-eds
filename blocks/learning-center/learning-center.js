@@ -333,13 +333,12 @@ export default async function decorate(block) {
     let authorsParentPagePathFormatted = authorDirectoryPath.textContent.trim();
     const isPublishEnvironment = environmentMode() === 'publish';
 
-    if (!isPublishEnvironment) {
-      // In the author environment, ensure the URL does not end with a slash
-      // Append a slash only if the URL doesn't already end with it
-      if (!authorsParentPagePathFormatted.endsWith('/')) {
-        authorsParentPagePathFormatted += '/';
-      }
-    } else {
+    // Append a slash only if the URL doesn't already end with it
+    if (!authorsParentPagePathFormatted.endsWith('/')) {
+      authorsParentPagePathFormatted += '/';
+    }
+
+    if (isPublishEnvironment) {
       // In the publish environment, remove the base path if present
       authorsParentPagePathFormatted = authorsParentPagePathFormatted.replace(BASE_CONTENT_PATH, '');
     }
@@ -356,7 +355,7 @@ export default async function decorate(block) {
       if (!isPublishEnvironment) {
         authorPageLink = `${authorsParentPagePathFormatted}${removePrefixAuthor}.html`;
       } else {
-        authorPageLink = `/authors/${removePrefixAuthor}`;
+        authorPageLink = `${authorsParentPagePathFormatted}${removePrefixAuthor}`;
       }
 
       innerMarkup +=
