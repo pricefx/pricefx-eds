@@ -397,7 +397,11 @@ export default async function decorate(block) {
 
   featuredArticleContainer
     .querySelectorAll('img')
-    .forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, true)));
+    .forEach((img) =>
+      img
+        .closest('picture')
+        .replaceWith(createOptimizedPicture(img.src, img.alt, true, [{ media: '(min-width: 640px)', width: '594' }])),
+    );
 
   // Render Learning Center Article Card
   const renderArticleCard = (articleDataList) => {
@@ -450,7 +454,11 @@ export default async function decorate(block) {
 
   articlesContainer
     .querySelectorAll('img')
-    .forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false)));
+    .forEach((img) =>
+      img
+        .closest('picture')
+        .replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ media: '(min-width: 640px)', width: '594' }])),
+    );
 
   // Render pagination pages
   const renderPages = (articlePerPage, articleList, currentPage) => {
