@@ -99,7 +99,6 @@
   margin-top: auto;
   padding-top: 20px;
   display: flex;
-  justify-content: space-between;
 }
 
 .cards .cards-card-cta a,
@@ -171,6 +170,10 @@ div.cards-card-eyebrow + div.cards-card-description {
   text-align: left;
 }
 
+.cards.align-center .cards-card-cta {
+  justify-content: center;
+}
+
 .cards.align-right {
   text-align: right;
 }
@@ -181,6 +184,10 @@ div.cards-card-eyebrow + div.cards-card-description {
 
 .cards.cards.align-right .cards-card-body  ul li {
   text-align: left;
+}
+
+.cards.align-right .cards-card-cta {
+  justify-content: flex-end;
 }
 
 /* No Aspect Ratio */
