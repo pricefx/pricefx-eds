@@ -2442,5 +2442,34 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "marketo-form",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "formTitle",
+        "label": "Form Title"
+      },
+      {
+        "component": "richtext",
+        "name": "formDescription",
+        "label": "Form Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "marketoFormId",
+        "label": "Marketo Form ID"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "marketoSuccessUrl",
+        "label": "Marketo Success URL"
+      }
+    ]
   }
 ]
