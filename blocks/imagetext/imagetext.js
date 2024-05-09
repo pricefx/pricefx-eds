@@ -1,4 +1,4 @@
-import { IMAGETEXT, PLAYBUTTON } from '../../scripts/constants.js';
+import { IMAGETEXT } from '../../scripts/constants.js';
 
 export default async function decorate(block) {
   let enableIcon = false;
@@ -95,7 +95,6 @@ export default async function decorate(block) {
 
       const playButton = document.createElement('span');
       playButton.classList.add('play-button');
-      playButton.innerHTML = PLAYBUTTON;
 
       const textPlayButton = content.querySelector('p:last-child');
 
