@@ -80,44 +80,70 @@ export default async function decorate(block) {
       imagetextAction.appendChild(line);
 
       imagetextRightContainer.appendChild(imagetextAction);
-    } else if (index === 5) {
+    } else if (index >= 4 && index < 8) {
+      /* Button Component */
+    } else if (index === 8) {
       /* Support Title */
       const content = document.createElement('div');
       content.classList.add('suggestion-title');
       content.innerHTML = row.firstElementChild.innerHTML;
 
       imagetextRightContainer.appendChild(content);
-    } else if (index >= 6 && index < 10) {
-      /* Support Text 1 to 4 */
+    } else if (index >= 9 && index <= 11) {
+      /* Support eyebrow, Logo, description */
       const content = document.createElement('div');
       content.classList.add('content');
       content.innerHTML = row.firstElementChild.innerHTML;
-
-      const playButton = document.createElement('span');
-      playButton.classList.add('play-button');
-
-      const textPlayButton = content.querySelector('p:last-child');
-
-      const tempText = textPlayButton.textContent;
-      textPlayButton.innerHTML = '';
-
-      const tempSpan = document.createElement('p');
-      tempSpan.classList.add('text-icon');
-      tempSpan.textContent = tempText;
-
-      tempSpan.appendChild(playButton);
-      textPlayButton.appendChild(tempSpan);
-
-      if (index % 2 === 0) {
-        leftContainer.appendChild(content);
-      } else {
-        rightContainer.appendChild(content);
-      }
+      leftContainer.appendChild(content);
+    } else if (index >= 12 && index <= 14) {
+      const content = document.createElement('div');
+      content.classList.add('content');
+      content.innerHTML = row.firstElementChild.innerHTML;
+      rightContainer.appendChild(content);
+    } else if (index >= 15 && index <= 17) {
+      const content = document.createElement('div');
+      content.classList.add('content');
+      content.innerHTML = row.firstElementChild.innerHTML;
+      leftContainer.appendChild(content);
+    } else if (index >= 18 && index <= 20) {
+      const content = document.createElement('div');
+      content.classList.add('content');
+      content.innerHTML = row.firstElementChild.innerHTML;
+      rightContainer.appendChild(content);
     }
+
+    // else if (index >= 6 && index < 10) {
+    //   /* Support Text 1 to 4 */
+    //   const content = document.createElement('div');
+    //   content.classList.add('content');
+    //   content.innerHTML = row.firstElementChild.innerHTML;
+
+    //   const playButton = document.createElement('span');
+    //   playButton.classList.add('play-button');
+
+    //   const textPlayButton = content.querySelector('p:last-child');
+
+    //   const tempText = textPlayButton.textContent;
+    //   textPlayButton.innerHTML = '';
+
+    //   const tempSpan = document.createElement('p');
+    //   tempSpan.classList.add('text-icon');
+    //   tempSpan.textContent = tempText;
+
+    //   tempSpan.appendChild(playButton);
+    //   textPlayButton.appendChild(tempSpan);
+
+    //   if (index % 2 === 0) {
+    //     leftContainer.appendChild(content);
+    //   } else {
+    //     rightContainer.appendChild(content);
+    //   }
+    // }
   });
 
   container.appendChild(leftContainer);
   container.appendChild(rightContainer);
+
   imagetextRightContainer.appendChild(container);
 
   imagetextContainer.appendChild(imagetextLeftContainer);
