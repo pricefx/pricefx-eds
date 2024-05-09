@@ -397,9 +397,7 @@ export default async function decorate(block) {
 
   featuredArticleContainer
     .querySelectorAll('img')
-    .forEach((img) =>
-      img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, true, [{ width: '750' }])),
-    );
+    .forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, true)));
 
   // Render Learning Center Article Card
   const renderArticleCard = (articleDataList) => {
@@ -452,9 +450,7 @@ export default async function decorate(block) {
 
   articlesContainer
     .querySelectorAll('img')
-    .forEach((img) =>
-      img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])),
-    );
+    .forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false)));
 
   // Render pagination pages
   const renderPages = (articlePerPage, articleList, currentPage) => {
