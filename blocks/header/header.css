@@ -42,6 +42,12 @@ header {
   width: 100%;
 }
 
+.icon-logo svg{
+  height: auto;
+  max-width: 126px;
+  width: 100%;
+}
+
 /* Header Nav */
 header nav {
   align-items: center;
