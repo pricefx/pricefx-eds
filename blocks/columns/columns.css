@@ -86,6 +86,10 @@
     flex: 1;
   }
 
+  .columns.column-gap-large > div {
+    gap: 64px;
+  }
+
   .columns > div > div strong {
     font-size: calc((33 / 16) * 1rem);
     line-height: 1.18;

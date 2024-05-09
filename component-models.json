@@ -540,6 +540,10 @@
             "value": "column-padding-small"
           },
           {
+            "name": "Column Gap Large",
+            "value": "column-gap-large"
+          },
+          {
             "name": "Paragraph Large font",
             "value": "column-para-font-large"
           },
