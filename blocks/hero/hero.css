@@ -111,7 +111,6 @@
 }
 
 /* Media Query for Desktop */
-
 @media (width >= 986px) {
   .hero .hero-main-container {
     padding: 0 var(--spacing-small);
@@ -146,16 +145,12 @@
       margin-bottom: 35px;
   }
 
-  .hero .hero-left-container.hero-primary-variation {
+  .hero .hero-left-container.hero-secondary-height {
     min-height: 800px;
   }
 
   .hero .hero-content {
     width: 60%;
-  }
-
-  .hero .hero-content.hero-content-video {
-    width: 62%;
   }
 
   .hero .hero-content.hero-no-bg-image {
@@ -172,7 +167,13 @@
   }
 
   .hero .hero-right-container .embed {
-    width: 83%;
+    width: 100%;
+    padding-left: 14%;
+    padding-right: 10%;
+  }
+
+  .hero .hero-right-container .embed .embed-placeholder {
+    aspect-ratio: 16 / 10.5;
   }
 
   .hero .hero-right-container .hero-image-container {
