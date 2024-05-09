@@ -536,6 +536,10 @@
             "value": "column-padding-medium"
           },
           {
+            "name": "Add Padding Small",
+            "value": "column-padding-small"
+          },
+          {
             "name": "Paragraph Large font",
             "value": "column-para-font-large"
           },
