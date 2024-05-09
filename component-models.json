@@ -204,6 +204,67 @@
           {
             "name": "secondary",
             "value": "secondary"
+          },
+          {
+            "name": "Tertiary",
+            "value": "tertiary"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "classes",
+        "value": "primary",
+        "label": "Button Variant",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Primary Dropdown",
+            "value": "primary-icon"
+          },
+          {
+            "name": "Primary Light",
+            "value": "primary-lt"
+          },
+          {
+            "name": "Primary Light Dropdown",
+            "value": "primary-lt-icon"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          },
+          {
+            "name": "Secondary Dropdown",
+            "value": "secondary-icon"
+          },
+          {
+            "name": "Secondary Light",
+            "value": "secondary-lt"
+          },
+          {
+            "name": "Secondary Light Dropdown",
+            "value": "secondary-lt-icon"
+          },
+          {
+            "name": "Tertiary",
+            "value": "tertiary"
+          },
+          {
+            "name": "Tertiary Underline",
+            "value": "tertiary-underline"
+          },
+          {
+            "name": "Tertiary Light",
+            "value": "tertiary-lt"
+          },
+          {
+            "name": "Tertiary Light Underline",
+            "value": "tertiary-lt-underline"
           }
         ]
       }
