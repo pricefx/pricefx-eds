@@ -64,7 +64,8 @@
   height: 20px;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-left: 20px solid;
+  border-left: 20px solid var(--c-full-black);
+  margin-left: 5px;
 }
 
 .embed-play-title {
@@ -123,6 +124,7 @@
     height: 42px;
     border-top: 21px solid transparent;
     border-bottom: 21px solid transparent;
-    border-left: 50px solid;
+    border-left: 50px solid var(--c-full-black);
+    margin-left: 10px;
   }  
 }

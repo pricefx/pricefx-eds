@@ -1503,7 +1503,10 @@
         "name": "blogNumberOfArticles",
         "label": "Number Of Articles Display",
         "valueType": "number",
-        "value": 0
+        "value": 13,
+        "validation": {
+          "numberMin": 3
+        }
       }
     ]
   },
@@ -1542,7 +1545,10 @@
         "name": "numberOfArticles",
         "label": "Number Of Articles Display",
         "valueType": "number",
-        "value": 0
+        "value": 6,
+        "validation": {
+          "numberMin": 3
+        }
       },
       {
         "component": "multiselect",
@@ -2102,7 +2108,10 @@
         "name": "numberOfPartners",
         "label": "No. Of Partners Display",
         "valueType": "number",
-        "value": 0
+        "value": 6,
+        "validation": {
+          "numberMin": 3
+        }
       },
       {
         "component": "multiselect",
@@ -2223,7 +2232,10 @@
         "name": "noOfResultsPerPage",
         "label": "No. Of Results Per page",
         "valueType": "number",
-        "value": 0
+        "value": 10,
+        "validation": {
+          "numberMin": 3
+        }
       },
       {
         "component": "text-input",
@@ -2240,8 +2252,8 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "totalResultsTitle",
-        "label": "No Results Label"
+        "name": "NoResultsTitle",
+        "label": "No Results Title"
       }
     ]
   }
