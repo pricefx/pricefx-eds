@@ -2,10 +2,7 @@ import { IMAGETEXT, PLAYBUTTON } from '../../scripts/constants.js';
 
 export default async function decorate(block) {
   // eslint-disable-next-line no-unused-vars
-  const [description, bannerpicture, enableIcon] = block.children;
-
-  // eslint-disable-next-line no-unused-vars
-  let suggestionLogo = false;
+  let enableIcon = false;
 
   const imagetext = document.createElement('div');
   imagetext.classList.add('imagetext-container');
@@ -44,10 +41,8 @@ export default async function decorate(block) {
         imagetextLeftContainer.appendChild(image);
       }
     } else if (index === 2) {
-      suggestionLogo = row.firstElementChild.textContent;
-      suggestionLogo = false;
+      enableIcon = row.firstElementChild.textContent;
     } else if (index === 3) {
-      // 4
       const imagetextAction = document.createElement('div');
       imagetextAction.classList.add('imagetext-action');
 
@@ -61,7 +56,7 @@ export default async function decorate(block) {
           newParagraph.classList.add('imagetext-para');
           newParagraph.appendChild(node.firstChild);
 
-          if (enableIcon.textContent.replace(/\s+/g, '') === 'true') {
+          if (enableIcon === 'true') {
             const icon = document.createElement('div');
             icon.classList.add('imagetext-icon');
             icon.innerHTML = IMAGETEXT;
@@ -81,18 +76,18 @@ export default async function decorate(block) {
       imagetextAction.appendChild(line);
 
       imagetextRightContainer.appendChild(imagetextAction);
-    } else if (index >= 4) {
+    } else if (index === 4) {
+      // button
+    } else if (index === 5) {
+      const content = document.createElement('div');
+      content.classList.add('suggestion-title');
+      content.innerHTML = row.firstElementChild.innerHTML;
+
+      imagetextRightContainer.appendChild(content);
+    } else if (index >= 6 && index < 10) {
       const content = document.createElement('div');
       content.classList.add('content');
       content.innerHTML = row.firstElementChild.innerHTML;
-
-      if (suggestionLogo === 'true') {
-        const image = document.createElement('img');
-        image.classList.add('suggestion-image');
-        image.src = 'image-url.jpg';
-        const replaceSuggestionImage = content.querySelector('p:first-child');
-        content.replaceChild(image, replaceSuggestionImage);
-      }
 
       const playButton = document.createElement('span');
       playButton.classList.add('play-button');

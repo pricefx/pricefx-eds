@@ -132,6 +132,10 @@ svg {
     height: 74px;
 }
 
+.suggestion-title {
+    display: block; 
+}
+
 @media (width <= 767px) { 
   .imagetext-main-container {
     flex-direction: column; 
@@ -144,8 +148,12 @@ svg {
   }
 
   .imagetext-right-container {
-    margin : 0;
-    align-items: center;
+    margin : 0; 
     padding-top: calc((40 / 16) * 1rem);
   }
+
+  .container {
+    align-items: center;
+  }
+
 }
