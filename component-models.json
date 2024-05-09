@@ -2192,6 +2192,12 @@
         "name": "supportText4",
         "label": "Support Text 4",
         "value": ""
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "support-image",
+        "label": "Support Logo Image"
       }
     ]
   },
