@@ -408,6 +408,7 @@ a.button.secondary:hover {
 a.button.secondary:focus,
 button.secondary:focus {
   outline: 2px solid var(--c-copy);
+  outline-offset: 2px;
 }
 
 @media (width >= 768px) {
