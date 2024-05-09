@@ -1419,7 +1419,7 @@
     ]
   },
   {
-    "id": "Articles",
+    "id": "relatedArticles",
     "fields": [
       {
         "component": "select",
