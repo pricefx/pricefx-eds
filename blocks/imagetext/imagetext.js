@@ -2,7 +2,7 @@ import { IMAGETEXT, PLAYBUTTON } from '../../scripts/constants.js';
 
 export default async function decorate(block) {
   // eslint-disable-next-line no-unused-vars
-  const [description, bannerImage, enableIcon] = block.children;
+  const [description, bannerpicture, enableIcon] = block.children;
 
   // eslint-disable-next-line no-unused-vars
   let suggestionLogo = false;
@@ -36,11 +36,11 @@ export default async function decorate(block) {
 
       imagetext.appendChild(imagetextEl);
     } else if (index === 1) {
-      const bannerImageImage = document.querySelector('picture img');
-      if (bannerImageImage) {
+      const bannerImage = document.querySelector('picture img');
+      if (bannerImage) {
         const image = document.createElement('div');
-        image.classList.add('imagetext-image');
-        image.appendChild(bannerImageImage);
+        image.classList.add('banner-image');
+        image.appendChild(bannerImage);
         imagetextLeftContainer.appendChild(image);
       }
     } else if (index === 2) {
@@ -75,11 +75,12 @@ export default async function decorate(block) {
       });
 
       imagetextAction.appendChild(action);
-      imagetextRightContainer.appendChild(imagetextAction);
 
-      const line = document.createElement('hr');
+      const line = document.createElement('div');
       line.classList.add('cross-line');
-      imagetextRightContainer.appendChild(line);
+      imagetextAction.appendChild(line);
+
+      imagetextRightContainer.appendChild(imagetextAction);
     } else if (index >= 4) {
       const content = document.createElement('div');
       content.classList.add('content');
