@@ -135,7 +135,7 @@ export default async function decorate(block) {
   const brandWrapperDesktop = document.createElement('div');
   brandWrapperDesktop.classList.add('brand');
   brandWrapperDesktop.innerHTML = `
-    <a class="brand-logo-wrapper" href="/"><span class="icon icon-logo"></span></a>
+    <a class="brand-logo-wrapper" href="/"><span class="icon icon-pricefx-logo-light"></span></a>
   `;
   decorateIcons(brandWrapperDesktop);
   desktopHeader.append(brandWrapperDesktop);
@@ -304,8 +304,9 @@ export default async function decorate(block) {
   // Render Mobile Brand Logo
   const brandWrapperMobile = document.createElement('div');
   brandWrapperMobile.classList.add('brand');
-  const brandLogo = `<a class="brand-logo-wrapper" href="/"><span class="icon icon-logo"></span></a>`;
+  const brandLogo = `<a class="brand-logo-wrapper" href="/"><span class="icon icon-pricefx-logo-light"></span></a>`;
   brandWrapperMobile.innerHTML = brandLogo;
+  decorateIcons(brandWrapperMobile);
   mobileHeader.append(brandWrapperMobile);
 
   const mobileNavControlWrapper = document.createElement('div');
