@@ -2014,7 +2014,7 @@
       },
       {
         "component": "radio-group",
-        "label": "Button Style",
+        "label": "Action Button Style",
         "name": "buttonStyle",
         "valueType": "string",
         "value": "primary",
@@ -2022,8 +2022,32 @@
           {
             "name": "Primary",
             "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
           }
         ]
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "buttonLink",
+        "value": "",
+        "label": "Button Link"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "buttonLabel",
+        "value": "",
+        "label": "Button Label"
+      },
+      {
+        "component": "boolean",
+        "label": "Target Blank",
+        "name": "isTargetBlankOne",
+        "valueType": "boolean"
       },
       {
         "component": "text-area",
@@ -2033,11 +2057,53 @@
         "value": ""
       },
       {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "imageTextPreheader1",
+        "label": "Eyebrow Text 1",
+        "value": "",
+        "description": "ⓘEyebrow Text"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "support-image1",
+        "label": "Support Logo Image 1"
+      },
+      {
         "component": "text-area",
         "valueType": "string",
         "name": "supportText1",
         "label": "Support Text 1",
         "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "buttonOneLink",
+        "value": "",
+        "label": "Button Link 1"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "buttonOneLabel",
+        "value": "",
+        "label": "Button Label 1"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "imageTextPreheader2",
+        "label": "Eyebrow Text 2",
+        "value": "",
+        "description": "ⓘEyebrow Text"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "support-image2",
+        "label": "Support Logo Image 2"
       },
       {
         "component": "text-area",
@@ -2047,11 +2113,67 @@
         "value": ""
       },
       {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "buttonTwoLink",
+        "value": "",
+        "label": "Button Link 2"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "buttonTwoLabel",
+        "value": "",
+        "label": "Button Label 2"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "imageTextPreheader3",
+        "label": "Eyebrow Text 3",
+        "value": "",
+        "description": "ⓘEyebrow Text"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "support-image3",
+        "label": "Support Logo Image 3"
+      },
+      {
         "component": "text-area",
         "valueType": "string",
         "name": "supportText3",
         "label": "Support Text 3",
         "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "buttonThreeLink",
+        "value": "",
+        "label": "Button Link 3"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "buttonThreeLabel",
+        "value": "",
+        "label": "Button Label 3"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "imageTextPreheader4",
+        "label": "Eyebrow Text 4",
+        "value": "",
+        "description": "ⓘEyebrow Text"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "support-image4",
+        "label": "Support Logo Image 4"
       },
       {
         "component": "text-area",
@@ -2061,10 +2183,18 @@
         "value": ""
       },
       {
-        "component": "reference",
+        "component": "aem-content",
         "valueType": "string",
-        "name": "support-image",
-        "label": "Support Logo Image"
+        "name": "buttonFourLink",
+        "value": "",
+        "label": "Button Link 4"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "buttonFourLabel",
+        "value": "",
+        "label": "Button Label 4"
       }
     ]
   },
