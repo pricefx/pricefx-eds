@@ -413,7 +413,7 @@ button.secondary:focus {
 
 @media (width >= 768px) {
   p {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
   
   h1 {
@@ -466,12 +466,12 @@ main .section.highlight {
   background-color: var(--c-gray-lt);
 }
 
-.section[data-sectiontitle="section-title-gray"] h1,
-.section[data-sectiontitle="section-title-gray"] h2,
-.section[data-sectiontitle="section-title-gray"] h3,
-.section[data-sectiontitle="section-title-gray"] h4,
-.section[data-sectiontitle="section-title-gray"] h5,
-.section[data-sectiontitle="section-title-gray"] h6 {
+.section[data-sectiontitlecolor="section-title-gray"] h1,
+.section[data-sectiontitlecolor="section-title-gray"] h2,
+.section[data-sectiontitlecolor="section-title-gray"] h3,
+.section[data-sectiontitlecolor="section-title-gray"] h4,
+.section[data-sectiontitlecolor="section-title-gray"] h5,
+.section[data-sectiontitlecolor="section-title-gray"] h6 {
   background: var(--c-copy);
   background-clip: text;
   -webkit-text-fill-color: transparent;
