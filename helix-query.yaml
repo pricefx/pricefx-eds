@@ -33,6 +33,8 @@ indices:
   articles:
     include:
       - /learning-center/**
+    exclude:
+      - /learning-center/writer/
     target: /article-index.json
     properties:
       lastModified:
