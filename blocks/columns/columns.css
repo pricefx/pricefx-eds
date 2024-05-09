@@ -87,6 +87,10 @@
   }
 
   .columns.column-gap-large > div {
+    gap: 125px;
+  }
+
+  .columns.column-gap-medium > div {
     gap: 64px;
   }
 
