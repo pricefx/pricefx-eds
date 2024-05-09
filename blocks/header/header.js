@@ -1,5 +1,6 @@
 import ffetch from '../../scripts/ffetch.js';
 import { SEARCH } from '../../scripts/constants.js';
+import { decorateIcons } from '../../scripts/aem.js'; 
 
 const isDesktop = window.matchMedia('(min-width: 986px)');
 
@@ -136,7 +137,7 @@ export default async function decorate(block) {
   brandWrapperDesktop.innerHTML = `
     <a class="brand-logo-wrapper" href="/"><span class="icon icon-logo"></span></a>
   `;
-  
+  decorateIcons(brandWrapperDesktop);
   desktopHeader.append(brandWrapperDesktop);
 
   // Render Navigation
