@@ -69,7 +69,7 @@ export default async function decorate(block) {
       }
     } else if (index === 8) {
       /* Left Right Boxed Content */
-      boxedLeftContainerInner.append(row.firstElementChild?.firstElementChild || '');
+      boxedLeftContainerInner.append(row.firstElementChild || '');
       boxedLeftContainer.append(boxedLeftContainerInner);
     }
   });
