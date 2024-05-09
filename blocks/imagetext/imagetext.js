@@ -15,6 +15,12 @@ export default async function decorate(block) {
   const imagetextRightContainer = document.createElement('div');
   imagetextRightContainer.classList.add('imagetext-right-container');
 
+  const imagetextAction = document.createElement('div');
+  imagetextAction.classList.add('imagetext-action');
+
+  const supportContainer = document.createElement('div');
+  supportContainer.classList.add('support-container');
+
   const container = document.createElement('div');
   container.classList.add('container');
 
@@ -47,8 +53,6 @@ export default async function decorate(block) {
       enableIcon = row.firstElementChild.textContent;
     } else if (index === 3) {
       /* Action Text */
-      const imagetextAction = document.createElement('div');
-      imagetextAction.classList.add('imagetext-action');
 
       const action = row.firstElementChild;
 
@@ -75,76 +79,74 @@ export default async function decorate(block) {
 
       imagetextAction.appendChild(action);
 
-      const line = document.createElement('div');
-      line.classList.add('cross-line');
-      imagetextAction.appendChild(line);
-
       imagetextRightContainer.appendChild(imagetextAction);
-    } else if (index >= 4 && index < 8) {
+    } else if (index === 5) {
       /* Button Component */
+      const button = document.createElement('div');
+      button.classList.add('button-container');
+      button.appendChild(row.firstElementChild);
+      imagetextAction.appendChild(button);
     } else if (index === 8) {
       /* Support Title */
+      const line = document.createElement('div');
+      line.classList.add('cross-line');
+      supportContainer.appendChild(line);
+
       const content = document.createElement('div');
       content.classList.add('suggestion-title');
       content.innerHTML = row.firstElementChild.innerHTML;
 
-      imagetextRightContainer.appendChild(content);
+      supportContainer.appendChild(content);
     } else if (index >= 9 && index <= 11) {
-      /* Support eyebrow, Logo, description */
+      /* Support 1 eyebrow, Logo, description */
+      const firstChild = row.firstElementChild;
+      const className = `index-${index}`;
+      firstChild.classList.add(className);
+
       const content = document.createElement('div');
       content.classList.add('content');
-      content.innerHTML = row.firstElementChild.innerHTML;
+      content.appendChild(firstChild);
       leftContainer.appendChild(content);
     } else if (index >= 12 && index <= 14) {
+      /* Support 2 eyebrow, Logo, description */
+      const firstChild = row.firstElementChild;
+      const className = `index-${index}`;
+      firstChild.classList.add(className);
+
       const content = document.createElement('div');
       content.classList.add('content');
-      content.innerHTML = row.firstElementChild.innerHTML;
+      content.appendChild(firstChild);
       rightContainer.appendChild(content);
     } else if (index >= 15 && index <= 17) {
+      /* Support 3 eyebrow, Logo, description */
+
+      const firstChild = row.firstElementChild;
+      const className = `index-${index}`;
+      firstChild.classList.add(className);
+
       const content = document.createElement('div');
       content.classList.add('content');
-      content.innerHTML = row.firstElementChild.innerHTML;
+      content.appendChild(firstChild);
       leftContainer.appendChild(content);
     } else if (index >= 18 && index <= 20) {
+      /* Support 4 eyebrow, Logo, description */
+      const firstChild = row.firstElementChild;
+      const className = `index-${index}`;
+      firstChild.classList.add(className);
+
       const content = document.createElement('div');
       content.classList.add('content');
-      content.innerHTML = row.firstElementChild.innerHTML;
+      content.appendChild(firstChild);
       rightContainer.appendChild(content);
     }
-
-    // else if (index >= 6 && index < 10) {
-    //   /* Support Text 1 to 4 */
-    //   const content = document.createElement('div');
-    //   content.classList.add('content');
-    //   content.innerHTML = row.firstElementChild.innerHTML;
-
-    //   const playButton = document.createElement('span');
-    //   playButton.classList.add('play-button');
-
-    //   const textPlayButton = content.querySelector('p:last-child');
-
-    //   const tempText = textPlayButton.textContent;
-    //   textPlayButton.innerHTML = '';
-
-    //   const tempSpan = document.createElement('p');
-    //   tempSpan.classList.add('text-icon');
-    //   tempSpan.textContent = tempText;
-
-    //   tempSpan.appendChild(playButton);
-    //   textPlayButton.appendChild(tempSpan);
-
-    //   if (index % 2 === 0) {
-    //     leftContainer.appendChild(content);
-    //   } else {
-    //     rightContainer.appendChild(content);
-    //   }
-    // }
   });
 
   container.appendChild(leftContainer);
   container.appendChild(rightContainer);
 
-  imagetextRightContainer.appendChild(container);
+  supportContainer.appendChild(container);
+
+  imagetextRightContainer.appendChild(supportContainer);
 
   imagetextContainer.appendChild(imagetextLeftContainer);
   imagetextContainer.appendChild(imagetextRightContainer);
