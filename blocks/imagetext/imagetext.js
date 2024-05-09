@@ -27,12 +27,14 @@ export default async function decorate(block) {
 
   [...block.children].forEach((row, index) => {
     if (index === 0) {
+      /* Description */
       const imagetextEl = document.createElement('p');
       imagetextEl.classList.add('imagetext-text');
       imagetextEl.textContent = row.firstElementChild.textContent;
 
       imagetext.appendChild(imagetextEl);
     } else if (index === 1) {
+      /* Left Container image */
       const bannerImage = document.querySelector('picture img');
       if (bannerImage) {
         const image = document.createElement('div');
@@ -41,8 +43,10 @@ export default async function decorate(block) {
         imagetextLeftContainer.appendChild(image);
       }
     } else if (index === 2) {
+      /* Enable icon for Action Text */
       enableIcon = row.firstElementChild.textContent;
     } else if (index === 3) {
+      /* Action Text */
       const imagetextAction = document.createElement('div');
       imagetextAction.classList.add('imagetext-action');
 
@@ -76,15 +80,15 @@ export default async function decorate(block) {
       imagetextAction.appendChild(line);
 
       imagetextRightContainer.appendChild(imagetextAction);
-    } else if (index === 4) {
-      // button
     } else if (index === 5) {
+      /* Support Title */
       const content = document.createElement('div');
       content.classList.add('suggestion-title');
       content.innerHTML = row.firstElementChild.innerHTML;
 
       imagetextRightContainer.appendChild(content);
     } else if (index >= 6 && index < 10) {
+      /* Support Text 1 to 4 */
       const content = document.createElement('div');
       content.classList.add('content');
       content.innerHTML = row.firstElementChild.innerHTML;
