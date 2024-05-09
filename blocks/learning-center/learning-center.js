@@ -1,4 +1,5 @@
 import ffetch from '../../scripts/ffetch.js';
+import { createOptimizedPicture } from '../../scripts/aem.js';
 import { environmentMode } from '../../scripts/global-functions.js';
 import { BASE_CONTENT_PATH } from '../../scripts/url-constants.js';
 
@@ -369,7 +370,11 @@ export default async function decorate(block) {
 
   // Render Featured Article
   featuredArticleContainer.innerHTML = `
-    <div class="article-image"><img src="${featuredArticleData.image}" alt="${featuredArticleData.imageAlt || featuredArticleData.title}"></div>
+    <div class="article-image">
+      <picture>
+        <img src="${featuredArticleData.image || ''}" alt="${featuredArticleData.imageAlt || featuredArticleData.title}">
+      </picture>
+    </div>
     <div class="article-content">
       ${
         featuredArticleData.category !== '' ||
@@ -405,7 +410,11 @@ export default async function decorate(block) {
       renderArticleAuthors(article);
       markup += `
         <li class="article-card">
-          <div class="article-image"><img src="${article.image}" alt="${article.imageAlt || article.title}"></div>
+          <div class="article-image">
+            <picture>
+              <img src="${article.image || ''}" alt="${article.imageAlt || article.title}">
+            </picture>
+          </div>
           <div class="article-content">
             ${
               article.category !== '' ||
@@ -434,6 +443,12 @@ export default async function decorate(block) {
     articlesContainer.innerHTML = renderArticleCard(articleJsonData);
   };
   appendLearningCenterArticles(defaultSortedArticle);
+
+  block
+    .querySelectorAll('img')
+    .forEach((img) =>
+      img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])),
+    );
 
   // Render pagination pages
   const renderPages = (articlePerPage, articleList, currentPage) => {
