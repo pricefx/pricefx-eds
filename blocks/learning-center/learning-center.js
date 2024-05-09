@@ -395,6 +395,12 @@ export default async function decorate(block) {
     </div>
   `;
 
+  featuredArticleContainer
+    .querySelectorAll('img')
+    .forEach((img) =>
+      img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, true, [{ width: '750' }])),
+    );
+
   // Render Learning Center Article Card
   const renderArticleCard = (articleDataList) => {
     let initialArticleData = articleDataList;
@@ -444,7 +450,7 @@ export default async function decorate(block) {
   };
   appendLearningCenterArticles(defaultSortedArticle);
 
-  block
+  articlesContainer
     .querySelectorAll('img')
     .forEach((img) =>
       img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])),
