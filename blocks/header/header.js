@@ -1,6 +1,6 @@
 import ffetch from '../../scripts/ffetch.js';
 import { SEARCH } from '../../scripts/constants.js';
-import { decorateIcons } from '../../scripts/aem.js'; 
+import { decorateIcon } from '../../scripts/aem.js'; 
 
 const isDesktop = window.matchMedia('(min-width: 986px)');
 
@@ -135,9 +135,9 @@ export default async function decorate(block) {
   const brandWrapperDesktop = document.createElement('div');
   brandWrapperDesktop.classList.add('brand');
   brandWrapperDesktop.innerHTML = `
-    <a class="brand-logo-wrapper" href="/"><span class="icon icon-pricefx-logo-light"></span></a>
+    <a class="brand-logo-wrapper" href="/" aria-label="Go to Pricefx homepage"><span class="icon icon-pricefx-logo-light"></span></a>
   `;
-  decorateIcons(brandWrapperDesktop);
+  decorateIcon(brandWrapperDesktop, alt = 'Pricefx Logo');
   desktopHeader.append(brandWrapperDesktop);
 
   // Render Navigation
@@ -304,9 +304,10 @@ export default async function decorate(block) {
   // Render Mobile Brand Logo
   const brandWrapperMobile = document.createElement('div');
   brandWrapperMobile.classList.add('brand');
-  const brandLogo = `<a class="brand-logo-wrapper" href="/"><span class="icon icon-pricefx-logo-light"></span></a>`;
+  const brandLogo = `
+    <a class="brand-logo-wrapper" href="/" aria-label="Go to Pricefx homepage"><span class="icon icon-pricefx-logo-light"></span></a>`;
   brandWrapperMobile.innerHTML = brandLogo;
-  decorateIcons(brandWrapperMobile);
+  decorateIcons(brandWrapperMobile, alt = 'Pricefx Logo');
   mobileHeader.append(brandWrapperMobile);
 
   const mobileNavControlWrapper = document.createElement('div');
