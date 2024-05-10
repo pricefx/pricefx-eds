@@ -2,10 +2,11 @@
   display: flex;
   max-width: 100%;
   justify-content: center;
+  flex-direction: column;
 }
 
 .tabs .tabs-list button {
-  margin: 0 16px;
+  margin-right: 16px;
   position: relative;
   cursor: pointer;
   display: flex;
@@ -27,8 +28,13 @@
   border: none;
 }
 
+.tabs h3 {
+  margin-bottom: 24px;
+}
 
-
+.tabs p {
+  margin-bottom: 0;
+}
 
 .tabs .tabs-panel[aria-hidden="true"] {
   display: none;
@@ -45,6 +51,10 @@
     display: flex;
   }
 
+  .tabs .tabs-list {
+    flex-direction: row;
+  }
+  
   .tabs.vertical .tabs-list {
     flex-direction: column;
     justify-content: normal;
