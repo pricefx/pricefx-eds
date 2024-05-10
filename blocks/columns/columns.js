@@ -1,3 +1,5 @@
+import { environmentMode } from '../../scripts/global-functions.js';
+
 export default function decorate(block) {
   const cols = [...block.firstElementChild.children];
   block.classList.add(`columns-${cols.length}`);
@@ -26,9 +28,12 @@ export default function decorate(block) {
           a.target = isTarget?.textContent.trim() === 'true' ? '_blank' : '';
           a.append(pic);
           picParent.append(a);
-          linkwrapper.remove();
-          if (isTarget) {
-            isTarget.remove();
+
+          if (environmentMode) {
+            linkwrapper.remove();
+            if (isTarget) {
+              isTarget.remove();
+            }
           }
         }
       }
