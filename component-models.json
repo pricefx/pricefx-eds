@@ -512,6 +512,10 @@
             "value": "column-left-aligned"
           },
           {
+            "name": "Image Center Aligned",
+            "value": "column-img-center-aligned"
+          },
+          {
             "name": "Center Aligned",
             "value": "column-center-aligned"
           },

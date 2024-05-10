@@ -7,7 +7,7 @@ export default function decorate(block) {
   // setup image columns
   [...block.children].forEach((row) => {
     [...row.children].forEach((col) => {
-      if (col.textContent.trim() === '') {
+      if (col.firstElementChild === null) {
         col.style.border = 'none';
         col.style.background = 'none';
         col.style.boxShadow = 'none';
