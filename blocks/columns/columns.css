@@ -29,7 +29,7 @@
   text-align: center;
 }
 
-.columns.column-img-center-aligned > div.columns-img-col {
+.columns.column-img-center-aligned .columns-img-col {
   display: flex;
   align-items: center;
   justify-content: center;
