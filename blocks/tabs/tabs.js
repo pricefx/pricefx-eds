@@ -48,9 +48,8 @@ async function processTab(tab, index, block, tablist) {
 
   // Add event listener and append to list
   button.addEventListener('click', () => {
-   button.addEventListener('click', () => {
     block.querySelectorAll('.tabs-panel').forEach((panel) => {
-    // ... existing click logic
+      // ... existing click logic
       panel.setAttribute('aria-hidden', true);
     });
     tablist.querySelectorAll('.tabs-tab').forEach((btn) => {
@@ -58,7 +57,8 @@ async function processTab(tab, index, block, tablist) {
     });
     tabpanel.setAttribute('aria-hidden', false);
     button.setAttribute('aria-selected', true);
-   });
+  });
+
   tablist.appendChild(button);
 }
 
