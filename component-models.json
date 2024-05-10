@@ -2082,20 +2082,6 @@
         "value": ""
       },
       {
-        "component": "aem-content",
-        "valueType": "string",
-        "name": "buttonOneLink",
-        "value": "",
-        "label": "Button Link 1"
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "buttonOneLabel",
-        "value": "",
-        "label": "Button Label 1"
-      },
-      {
         "component": "text-input",
         "valueType": "string",
         "name": "imageTextPreheader2",
@@ -2115,20 +2101,6 @@
         "name": "supportText2",
         "label": "Support Text 2",
         "value": ""
-      },
-      {
-        "component": "aem-content",
-        "valueType": "string",
-        "name": "buttonTwoLink",
-        "value": "",
-        "label": "Button Link 2"
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "buttonTwoLabel",
-        "value": "",
-        "label": "Button Label 2"
       },
       {
         "component": "text-input",
@@ -2152,20 +2124,6 @@
         "value": ""
       },
       {
-        "component": "aem-content",
-        "valueType": "string",
-        "name": "buttonThreeLink",
-        "value": "",
-        "label": "Button Link 3"
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "buttonThreeLabel",
-        "value": "",
-        "label": "Button Label 3"
-      },
-      {
         "component": "text-input",
         "valueType": "string",
         "name": "imageTextPreheader4",
@@ -2185,20 +2143,6 @@
         "name": "supportText4",
         "label": "Support Text 4",
         "value": ""
-      },
-      {
-        "component": "aem-content",
-        "valueType": "string",
-        "name": "buttonFourLink",
-        "value": "",
-        "label": "Button Link 4"
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "buttonFourLabel",
-        "value": "",
-        "label": "Button Label 4"
       }
     ]
   },
