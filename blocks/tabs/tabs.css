@@ -46,6 +46,10 @@
   display: none;
 }
 
+.tabs button[aria-selected="true"] {
+  background: #1F3053;
+}
+
 /* Vertical Tabs Styles */
 .tabs.vertical .tabs-tab {
   padding: 10px 20px;

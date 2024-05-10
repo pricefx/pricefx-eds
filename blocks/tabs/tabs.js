@@ -20,7 +20,7 @@ async function processTab(tab, index, block, tablist) {
   if (tabpanel.querySelector('a')) {
     const link = tabpanel.querySelector('a').href;
 
-    if (link.includes('/style-guide/')) {
+    if (link.includes('/fragments/')) {
       const url = new URL(link);
       const fragmentPath = url.pathname;
 
