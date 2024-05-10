@@ -307,7 +307,7 @@ export default async function decorate(block) {
   const brandLogo = `
     <a class="brand-logo-wrapper" href="/" aria-label="Go to Pricefx homepage"><span class="icon icon-pricefx-logo-light"></span></a>`;
   brandWrapperMobile.innerHTML = brandLogo;
-  decorateIcons(brandWrapperMobile, alt = 'Pricefx Logo');
+  decorateIcon(brandWrapperMobile, alt = 'Pricefx Logo');
   mobileHeader.append(brandWrapperMobile);
 
   const mobileNavControlWrapper = document.createElement('div');
