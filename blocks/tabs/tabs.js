@@ -13,7 +13,7 @@ async function loadTabContent(tabPanel, fragmentPath) {
   }
 }
 
-async function createTab, index, block, tablist) {
+async function createTab(tab, index, block, tablist) {
   if (index === 0) {
     if (tab.textContent) {
       block.classList.add(tab.textContent);
