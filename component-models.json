@@ -2367,5 +2367,29 @@
         "label": "Marketo Success URL"
       }
     ]
+  },
+  {
+    "id": "case-study",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "fileReference",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "caseStudyTitle",
+        "label": "Case Study Title"
+      },
+      {
+        "component": "richtext",
+        "name": "caseStudyDescription",
+        "label": "Case Study Description",
+        "valueType": "string"
+      }
+    ]
   }
 ]
