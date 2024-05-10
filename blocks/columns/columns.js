@@ -7,6 +7,8 @@ export default function decorate(block) {
     [...row.children].forEach((col) => {
       if (col.textContent.trim() === '') {
         col.style.border = 'none';
+        col.style.background = 'none';
+        col.style.boxShadow = 'none';
       }
       const pic = col.querySelector('picture');
       if (pic) {

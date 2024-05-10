@@ -508,6 +508,10 @@
             "value": "column-top-aligned"
           },
           {
+            "name": "Left Aligned",
+            "value": "column-left-aligned"
+          },
+          {
             "name": "Center Aligned",
             "value": "column-center-aligned"
           },
@@ -548,8 +552,8 @@
             "value": "column-gap-medium"
           },
           {
-            "name": "Paragraph Large font",
-            "value": "column-para-font-large"
+            "name": "Column Box Shadow",
+            "value": "column-box-shadow"
           },
           {
             "name": "Entire Columns Top Padding",
