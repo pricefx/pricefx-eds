@@ -1,7 +1,6 @@
 import ffetch from '../../scripts/ffetch.js';
-import { getMetadata } from '../../scripts/aem.js';
+import { getMetadata, decorateIcons } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
-import { decorateIcons } from '../../scripts/aem.js';
 
 /**
  * Generating Footer Navigation
