@@ -289,6 +289,17 @@ h6 {
   margin: var(--spacing-xsmall) 0;
 }
 
+h1 strong,
+h2 strong,
+h3 strong,
+h4 strong,
+h5 strong,
+h6 strong {
+  background: var(--c-copy);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 h1,
 h2,
 h3,
@@ -409,6 +420,32 @@ a.button.secondary:focus,
 button.secondary:focus {
   outline: 2px solid var(--c-copy);
   outline-offset: 2px;
+}
+
+/* Tertiary */
+a.button.tertiary,
+button.tertiary {
+  color: var(--c-extra-dark);
+  font-family: var(--ff-primary);
+  font-size: var(--base-font-size);
+  font-style: normal;
+  font-weight: 500;
+  line-height: var(--base-font-size);
+  letter-spacing: 0.889px;
+  text-transform: uppercase;
+}
+
+a.button.tertiary::after,
+button.tertiary::after {
+  height: 6px;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: var(--spacing-xxsmall) solid;
+  content: "";
+  display: inline-block;
+  box-sizing: border-box;
+  width: 0;
+  margin-left: 10px;
 }
 
 @media (width >= 768px) {
