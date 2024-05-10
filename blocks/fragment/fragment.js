@@ -6,6 +6,7 @@
 
 import { decorateMain } from '../../scripts/scripts.js';
 import { loadBlocks } from '../../scripts/aem.js';
+import { environmentMode } from '../../scripts/global-functions.js';
 
 /**
  * Loads a fragment.
@@ -37,22 +38,19 @@ export async function loadFragment(path) {
 }
 
 export default async function decorate(block) {
-  const [fragmentPath] = block.children;
+  const link = block.querySelector('a');
   block.textContent = '';
-
-  if (!fragmentPath || !fragmentPath.textContent) {
-    block.textContent = 'Please configure the fragment path';
-    return;
-  }
-
-  const path = fragmentPath.textContent.trim();
+  const path = link ? link.getAttribute('href') : block.textContent.trim();
   const fragment = await loadFragment(path);
-
   if (fragment) {
     const fragmentSection = fragment.querySelector(':scope .section');
     if (fragmentSection) {
       block.closest('.section').classList.add(...fragmentSection.classList);
-      block.closest('.fragment').append(...fragment.childNodes);
+      if (!environmentMode() === 'publish') {
+        block.closest('.fragment').append(...fragment.childNodes);
+      } else {
+        block.closest('.fragment').replaceWith(...fragment.childNodes);
+      }
     }
   }
 }
