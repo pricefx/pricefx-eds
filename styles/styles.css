@@ -109,6 +109,7 @@
   --c-gray: #dfe1e6;
   --c-gray-lt: #ebecee;
   --c-gray-med: #b5bac4;
+  --c-gray-med-2: #939393;
   --c-gray-med-alt: #bababa;
   --c-gray-mid: #939393;
   --c-gray-drk: #6e7178;
@@ -130,6 +131,7 @@
   --c-link: #466cb9;
   --c-link-lt: #5fbbe8;
   --c-mega-menu-link: #2d9bd2;
+  --c-card-subtitle: #c9559e;
 
   /* Alerts */
   --c-disabled-border: var(--c-gray-border);
@@ -212,6 +214,16 @@ body.appear {
   display: block;
 }
 
+header {
+  height: 116px;
+}
+
+@media (width > 985px) {
+  header {
+    height: 107px;
+  }
+}
+
 main {
   background-color: var(--c-white);
 }
@@ -275,6 +287,17 @@ h6 {
   -webkit-text-fill-color: transparent;
   line-height: 1;
   margin: var(--spacing-xsmall) 0;
+}
+
+h1 strong,
+h2 strong,
+h3 strong,
+h4 strong,
+h5 strong,
+h6 strong {
+  background: var(--c-copy);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 h1,
@@ -396,11 +419,38 @@ a.button.secondary:hover {
 a.button.secondary:focus,
 button.secondary:focus {
   outline: 2px solid var(--c-copy);
+  outline-offset: 2px;
+}
+
+/* Tertiary */
+a.button.tertiary,
+button.tertiary {
+  color: var(--c-extra-dark);
+  font-family: var(--ff-primary);
+  font-size: var(--base-font-size);
+  font-style: normal;
+  font-weight: 500;
+  line-height: var(--base-font-size);
+  letter-spacing: 0.889px;
+  text-transform: uppercase;
+}
+
+a.button.tertiary::after,
+button.tertiary::after {
+  height: 6px;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: var(--spacing-xxsmall) solid;
+  content: "";
+  display: inline-block;
+  box-sizing: border-box;
+  width: 0;
+  margin-left: 10px;
 }
 
 @media (width >= 768px) {
   p {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
   
   h1 {
@@ -453,12 +503,12 @@ main .section.highlight {
   background-color: var(--c-gray-lt);
 }
 
-.section[data-sectiontitle="section-title-gray"] h1,
-.section[data-sectiontitle="section-title-gray"] h2,
-.section[data-sectiontitle="section-title-gray"] h3,
-.section[data-sectiontitle="section-title-gray"] h4,
-.section[data-sectiontitle="section-title-gray"] h5,
-.section[data-sectiontitle="section-title-gray"] h6 {
+.section[data-sectiontitlecolor="section-title-gray"] h1,
+.section[data-sectiontitlecolor="section-title-gray"] h2,
+.section[data-sectiontitlecolor="section-title-gray"] h3,
+.section[data-sectiontitlecolor="section-title-gray"] h4,
+.section[data-sectiontitlecolor="section-title-gray"] h5,
+.section[data-sectiontitlecolor="section-title-gray"] h6 {
   background: var(--c-copy);
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -540,20 +590,71 @@ main .section.highlight {
   border-radius: 20px;
 }
 
+/* Hidden class, makes content visible only for screen readers */
+.sr-only:not(:focus, :active) {
+  clip: rect(0 0 0 0); 
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; 
+  width: 1px;
+}
+
+.section[data-iframetwocolumn="true"] {
+  padding-top: 18px;
+  justify-content: center;
+  max-width: none;
+  margin: 0;
+}
+
+.section[data-iframetwocolumn="true"] > div {
+  background: lightgray 0 0 / 100% 100% no-repeat;
+  padding: 36px;
+  margin: 0;
+}
+
+.section[data-iframetwocolumn="true"] > div:first-child {
+  padding-top: 87px;
+  margin-top: -100px;
+}
+
+.section[data-iframetwocolumn="true"] >  div:nth-child(2) {
+  margin-top: 0;
+}
+
 @media (width >= 768px) {
   main .section {
-   padding: 120px var(--spacing-medium);
+   padding: 120px var(--spacing-small);
   }
 
   .section[data-padding="section-padding-large"] {
-    padding: 100px var(--spacing-medium);
+    padding: 100px var(--spacing-small);
   }
-  
+
   .section[data-padding="section-padding-medium"] {
-    padding: var(--spacing-xlarge) var(--spacing-medium);
+    padding: var(--spacing-xlarge) var(--spacing-small);
   }
-  
+
   .section[data-padding="section-padding-small"] {
-    padding: var(--spacing-medium);
+    padding: var(--spacing-medium) var(--spacing-small);
+  }
+
+  .section[data-iframetwocolumn="true"] {
+    display: flex;
+  }
+
+  .section[data-iframetwocolumn="true"] > div {
+    max-width: 631px;
+  }
+
+  .section[data-iframetwocolumn="true"] > div:first-child {
+    margin-top: -130px;
+    padding: 87px 18px 36px 36px;
+  }
+
+  .section[data-iframetwocolumn="true"] >  div:nth-child(2) {
+    margin-top: -130px;
+    padding: 87px 36px 36px 18px;
   }
 }

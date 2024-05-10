@@ -4,28 +4,29 @@
   gap: 32px;
 }
 
-.columns img {
-  width: 100%;
+.columns > div > div h1,
+.columns > div > div h2,
+.columns > div > div h3,
+.columns > div > div h4,
+.columns > div > div h5,
+.columns > div > div h6 {
+  margin-top: 0;
 }
 
-.columns > div > div {
-  order: 1;
+.columns > div > div p:not(:last-child) {
+  margin-bottom: 10px;
 }
 
-.columns > div > .columns-img-col {
-  order: 0;
+.columns.columns-top-padding-large {
+  margin-top: 25px;
 }
 
-.columns > div > .columns-img-col img {
-  display: block;
+.columns.column-left-aligned > div {
+  text-align: left;
 }
 
 .columns.column-center-aligned > div {
   text-align: center;
-}
-
-.columns.column-top-aligned > div {
-  align-items: flex-start;
 }
 
 .columns.column-mobile-reverse > div {
@@ -56,29 +57,58 @@
   padding: var(--spacing-xsmall);
 }
 
+.columns.column-padding-large > div > div {
+  padding: var(--spacing-medium);
+}
+
+.columns.column-padding-medium > div > div {
+  padding: var(--spacing-xsmall);
+}
+
+.columns.column-padding-small > div > div {
+  padding: var(--spacing-xsmall);
+}
+
+.columns.column-box-shadow > div > div {
+  box-shadow: 0 6px 8px 0 rgb(0 0 0 / 10%);
+}
 
 @media (width >= 985px) {
   .columns > div {
     align-items: center;
-    flex-direction: unset;
+    flex-direction: row;
   }
 
   .columns > div > div {
     flex: 1;
-    order: unset;
   }
 
-  /* Custom Styles */
+  .columns.column-gap-large > div {
+    gap: 125px;
+  }
+
+  .columns.column-gap-medium > div {
+    gap: 64px;
+  }
+
+  .columns > div:not(:last-child) {
+    margin-bottom: 50px;
+  }
+
   .columns.column-separator > div {
     gap: unset;
   }
 
-  .columns > div > div p {
-    margin-bottom: var(--spacing-xsmall);
+  .columns.column-top-aligned > div {
+    align-items: normal;
+  }
+
+  .columns.columns-top-padding-large {
+    margin-top: 50px;
   }
 
   .columns.column-mobile-reverse > div {
-    flex-direction: unset;
+    flex-direction: row;
   }
 
   .columns.column-padding-large > div > div {
@@ -89,8 +119,12 @@
     padding: var(--spacing-medium);
   }
 
+  .columns.column-padding-small > div > div {
+    padding: var(--spacing-small);
+  }
+
   .columns.column-separator > div > div:not(:first-child) {
-    border-left: 1px solid var(--c-copy);
+    border-left: 1px solid var(--c-gray-border);
   }
 
   .columns.columns-2.two-column-3-7 > div > div:first-child {
