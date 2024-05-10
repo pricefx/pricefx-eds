@@ -31,7 +31,7 @@ export default function decorate(block) {
           a.append(pic);
           picParent.append(a);
 
-          if (environmentMode) {
+          if (environmentMode() === 'publish') {
             linkwrapper.remove();
             if (isTarget) {
               isTarget.remove();
