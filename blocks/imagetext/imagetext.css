@@ -151,7 +151,6 @@
 .imagetext .index-16 img,
 .imagetext .index-19 img{
   max-width: 193px;
-  max-height: 74px;
 }
 
 /* Suggestion Description & Link */
@@ -177,9 +176,7 @@
   }
  
   .imagetext .imagetext-right-container {
-    margin : 20px; 
-    align-items: top;
-    padding: 0;
+    padding-left: 73px;
   }
 
   .imagetext .left-container,
