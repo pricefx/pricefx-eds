@@ -11,8 +11,25 @@ export default function decorate(block) {
       const pic = col.querySelector('picture');
       if (pic) {
         const picWrapper = pic.closest('div');
+        const picParent = pic.parentElement;
         if (picWrapper) {
           picWrapper.classList.add('columns-img-col');
+        }
+
+        const linkwrapper = pic.parentElement.nextElementSibling;
+        const aInsideStrong = linkwrapper?.querySelector('strong a');
+        const aInsideEM = linkwrapper?.querySelector('em a');
+        const a = linkwrapper?.querySelector('a');
+        const isTarget = linkwrapper?.nextElementSibling;
+        if (a && !aInsideStrong && !aInsideEM) {
+          a.textContent = '';
+          a.target = isTarget?.textContent.trim() ? '_blank' : '';
+          a.append(pic);
+          picParent.append(a);
+          linkwrapper.remove();
+          if (isTarget) {
+            isTarget.remove();
+          }
         }
       }
     });
