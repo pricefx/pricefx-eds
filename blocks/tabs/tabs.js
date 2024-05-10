@@ -1,8 +1,16 @@
 import { toClassName } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 
-async function hasWrapper(el) {
-  return !!el.firstElementChild && window.getComputedStyle(el.firstElementChild).display === 'block';
+async function loadTabContent(tabPanel, fragmentPath) {
+  if (fragmentPath.includes('/fragments/')) {
+    const fragmentBlock = await loadFragment(fragmentPath);
+    if (fragmentBlock) {
+      const fragmentContent = fragmentBlock.querySelector('.section');
+      if (fragmentContent) {
+        tabPanel.innerHTML = fragmentContent.innerHTML;
+      }
+    }
+  }
 }
 
 async function processTab(tab, index, block, tablist) {
@@ -24,24 +32,15 @@ async function processTab(tab, index, block, tablist) {
       const url = new URL(link);
       const fragmentPath = url.pathname;
 
-      const fragmentBlock = await loadFragment(fragmentPath);
-      if (fragmentBlock) {
-        const lastChild = tabpanel.lastElementChild;
-        const fragmentChild = fragmentBlock.querySelector('.section');
-        if (fragmentChild) {
-          lastChild.innerHTML = fragmentChild.innerHTML;
-        }
-      }
+      await loadTabContent(tabpanel, fragmentPath);
     }
   }
-  tabpanel.className = 'tabs-panel';
+
+  tabpanel.classList.add('tabs-panel');
   tabpanel.id = `tabpanel-${id}`;
   tabpanel.setAttribute('aria-labelledby', `tab-${id}`);
   tabpanel.setAttribute('role', 'tabpanel');
   tabpanel.setAttribute('aria-hidden', index !== 1);
-  if (!await hasWrapper(tabpanel.lastElementChild)) {
-    tabpanel.lastElementChild.innerHTML = `<p>${tabpanel.lastElementChild.innerHTML}</p>`;
-  }
 
   const button = document.createElement('button');
   button.className = 'tabs-tab';
@@ -53,29 +52,26 @@ async function processTab(tab, index, block, tablist) {
   button.setAttribute('type', 'button');
 
   button.addEventListener('click', () => {
-    block.querySelectorAll('[role=tabpanel]').forEach((panel) => {
+    block.querySelectorAll('.tabs-panel').forEach((panel) => {
       panel.setAttribute('aria-hidden', true);
     });
-    tablist.querySelectorAll('button').forEach((btn) => {
+    tablist.querySelectorAll('.tabs-tab').forEach((btn) => {
       btn.setAttribute('aria-selected', false);
     });
     tabpanel.setAttribute('aria-hidden', false);
     button.setAttribute('aria-selected', true);
   });
-  tablist.append(button);
-  tab.remove();
+
+  tablist.appendChild(button);
 }
 
 export default async function decorate(block) {
-  const tablist = document.createElement('div');
+  const tablist = document.createElement('nav');
   tablist.className = 'tabs-list';
   tablist.setAttribute('role', 'tablist');
 
   const tabs = Array.from(block.children).map((child) => child.firstElementChild);
-  await tabs.reduce(async (previousPromise, tab, index) => {
-    await previousPromise;
-    return processTab(tab, index, block, tablist);
-  }, Promise.resolve());
+  tabs.forEach((tab, index) => processTab(tab, index, block, tablist));
 
   block.prepend(tablist);
 }
