@@ -171,14 +171,14 @@
   padding-bottom: 20px;
   display: flex;
   align-items: center;
-  margin-top: 24px;
+  margin: 24px 0 0;
   border-bottom: 1px solid; 
   border-image: linear-gradient(135deg, #DF549D 0%, #41B6E6 51.1%, #F05E25 100%);
   border-image-slice: 1;
 }
 
 .columns.icons-for-li > div li::before {
-  content: url('https://www.pricefx.com/wp-content/plugins/im-modules//assets/dist/img/rainbow-check.svg');
+  content: url('/content/dam/pricefx/style-guide/rainbow-check.png');
   display: inline-block;
   width: 30px;
   height: 30px;
