@@ -73,7 +73,7 @@ text-transform: uppercase;
   }
 
   .tabs.vertical .tabs-panel {
-    margin-left: 50px;
+    margin-left: 64px 0 0 50px;
   }
 
   .tabs.vertical .tabs-tab {
