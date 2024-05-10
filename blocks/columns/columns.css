@@ -29,6 +29,12 @@
   text-align: center;
 }
 
+.columns.column-img-center-aligned > div.columns-img-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .columns.column-mobile-reverse > div {
   flex-direction: column-reverse;
 }
