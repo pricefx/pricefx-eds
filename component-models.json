@@ -542,6 +542,10 @@
           {
             "name": "Entire Columns Top Padding",
             "value": "columns-top-padding-large"
+          },
+          {
+            "name": "Icons for li",
+            "value": "icons-for-li"
           }
         ]
       }
