@@ -411,6 +411,19 @@ button.secondary:focus {
   outline-offset: 2px;
 }
 
+/* Tertiary */
+a.button.tertiary,
+button.tertiary {
+  color: var(--c-extra-dark);
+  font-family: var(--ff-primary);
+  font-size: var(--base-font-size);
+  font-style: normal;
+  font-weight: 500;
+  line-height: var(--base-font-size);
+  letter-spacing: 0.889px;
+  text-transform: uppercase;
+}
+
 @media (width >= 768px) {
   p {
     margin-bottom: 20px;
