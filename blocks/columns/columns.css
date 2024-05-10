@@ -13,12 +13,6 @@
   margin-top: 0;
 }
 
-.columns > div > div strong {
-  font-weight: 600;
-  font-size: var(--heading-font-size-l);
-  line-height: 1.23;
-}
-
 .columns > div > div p:not(:last-child) {
   margin-bottom: 10px;
 }
@@ -92,11 +86,6 @@
 
   .columns.column-gap-medium > div {
     gap: 64px;
-  }
-
-  .columns > div > div strong {
-    font-size: calc((33 / 16) * 1rem);
-    line-height: 1.18;
   }
 
   .columns > div:not(:last-child) {
