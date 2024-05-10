@@ -2385,12 +2385,6 @@
         "name": "caseStudyDescription",
         "label": "Case Study Description",
         "valueType": "string"
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "marketoFormId",
-        "label": "Marketo Form ID"
       }
     ]
   }
