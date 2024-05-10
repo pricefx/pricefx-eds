@@ -733,6 +733,7 @@ export {
   decorateBlock,
   decorateBlocks,
   decorateButtons,
+  decorateIcon,
   decorateIcons,
   decorateSections,
   decorateTemplateAndTheme,
