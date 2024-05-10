@@ -426,12 +426,13 @@ function decorateIcon(span, prefix = '', alt = '') {
 /**
  * Add <img> for icons, prefixed with codeBasePath and optional prefix.
  * @param {Element} [element] Element containing icons
- * @param {string} [prefix] prefix to be added to icon the src
+ * @param {string} [prefix] Prefix to be added to the icon src
+ * @param {string} [alt] Alt text to be added to the icon
  */
-function decorateIcons(element, prefix = '') {
+function decorateIcons(element, prefix = '', alt = '') {
   const icons = [...element.querySelectorAll('span.icon')];
   icons.forEach((span) => {
-    decorateIcon(span, prefix);
+    decorateIcon(span, prefix, alt);
   });
 }
 
@@ -733,7 +734,6 @@ export {
   decorateBlock,
   decorateBlocks,
   decorateButtons,
-  decorateIcon,
   decorateIcons,
   decorateSections,
   decorateTemplateAndTheme,
