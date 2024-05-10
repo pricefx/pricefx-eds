@@ -28,7 +28,9 @@ async function processTab(tab, index, block, tablist) {
       if (fragmentBlock) {
         const lastChild = tabpanel.lastElementChild;
         const fragmentChild = fragmentBlock.querySelector('.section');
-        lastChild.innerHTML = fragmentChild.innerHTML;
+        if (fragmentChild) {
+          lastChild.innerHTML = fragmentChild.innerHTML;
+        }
       }
     }
   }
@@ -46,7 +48,7 @@ async function processTab(tab, index, block, tablist) {
   button.id = `tab-${id}`;
   button.innerHTML = tab.innerText;
   button.setAttribute('aria-controls', `tabpanel-${id}`);
-  button.setAttribute('aria-selected', index === 0);
+  button.setAttribute('aria-selected', index === 1);
   button.setAttribute('role', 'tab');
   button.setAttribute('type', 'button');
 
