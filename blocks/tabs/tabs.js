@@ -1,7 +1,7 @@
 import { toClassName } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 
-function hasWrapper(el) {
+async function hasWrapper(el) {
   return !!el.firstElementChild && window.getComputedStyle(el.firstElementChild).display === 'block';
 }
 
@@ -39,7 +39,7 @@ async function processTab(tab, index, block, tablist) {
   tabpanel.setAttribute('aria-labelledby', `tab-${id}`);
   tabpanel.setAttribute('role', 'tabpanel');
   tabpanel.setAttribute('aria-hidden', index !== 1);
-  if (!hasWrapper(tabpanel.lastElementChild)) {
+  if (!await hasWrapper(tabpanel.lastElementChild)) {
     tabpanel.lastElementChild.innerHTML = `<p>${tabpanel.lastElementChild.innerHTML}</p>`;
   }
 
