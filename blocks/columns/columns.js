@@ -23,7 +23,7 @@ export default function decorate(block) {
         const isTarget = linkwrapper?.nextElementSibling;
         if (a && !aInsideStrong && !aInsideEM) {
           a.textContent = '';
-          a.target = isTarget?.textContent.trim() ? '_blank' : '';
+          a.target = isTarget?.textContent.trim() === 'true' ? '_blank' : '';
           a.append(pic);
           picParent.append(a);
           linkwrapper.remove();
