@@ -51,7 +51,7 @@ function toggleMobileNavAccordion(navToggle) {
 async function decorateLogo(footer) {
   const logoWrapper = document.createElement('div');
   logoWrapper.classList.add('footer-logo-wrapper');
-  logoWrapper.innerHTML = `<a href="/"><span class="icon icon-pricefx-logo-dark"></span></a>`;
+  logoWrapper.innerHTML = `<a href="/" aria-label="Go to Pricefx Homepage" alt="Pricefx Logo"><span class="icon icon-pricefx-logo-dark"></span></a>`;
   decorateIcons(logoWrapper);
   footer.appendChild(logoWrapper);
 }
