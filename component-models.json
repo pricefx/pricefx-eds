@@ -508,6 +508,10 @@
             "value": "column-top-aligned"
           },
           {
+            "name": "Left Aligned",
+            "value": "column-left-aligned"
+          },
+          {
             "name": "Center Aligned",
             "value": "column-center-aligned"
           },
@@ -536,8 +540,20 @@
             "value": "column-padding-medium"
           },
           {
-            "name": "Paragraph Large font",
-            "value": "column-para-font-large"
+            "name": "Add Padding Small",
+            "value": "column-padding-small"
+          },
+          {
+            "name": "Column Gap Large",
+            "value": "column-gap-large"
+          },
+          {
+            "name": "Column Gap Medium",
+            "value": "column-gap-medium"
+          },
+          {
+            "name": "Column Box Shadow",
+            "value": "column-box-shadow"
           },
           {
             "name": "Entire Columns Top Padding",
@@ -1495,7 +1511,10 @@
         "name": "blogNumberOfArticles",
         "label": "Number Of Articles Display",
         "valueType": "number",
-        "value": 0
+        "value": 13,
+        "validation": {
+          "numberMin": 3
+        }
       }
     ]
   },
@@ -1534,29 +1553,30 @@
         "name": "numberOfArticles",
         "label": "Number Of Articles Display",
         "valueType": "number",
-        "value": 0
+        "value": 6,
+        "validation": {
+          "numberMin": 3
+        }
       },
       {
-        "component": "checkbox-group",
-        "label": "Sort By",
+        "component": "multiselect",
         "name": "sortBy",
-        "valueType": "string[]",
+        "label": "Sort By",
+        "valueType": "string",
         "options": [
           {
-            "name": "Asc Date",
-            "value": "asc-date"
+            "name": "Date",
+            "children": [
+              { "name": "Asc Date", "value": "asc-date" },
+              { "name": "Desc Date", "value": "desc-date" }
+            ]
           },
           {
-            "name": "Desc Date",
-            "value": "desc-date"
-          },
-          {
-            "name": "Asc Title",
-            "value": "asc-title"
-          },
-          {
-            "name": "Desc Title",
-            "value": "desc-title"
+            "name": "Title",
+            "children": [
+              { "name": "A-Z", "value": "asc-title" },
+              { "name": "Z-A", "value": "desc-title" }
+            ]
           }
         ]
       },
@@ -1809,13 +1829,6 @@
     "id": "table",
     "fields": [
       {
-        "component": "aem-content",
-        "name": "browseTable",
-        "value": "",
-        "label": "Browse Table",
-        "valueType": "string"
-      },
-      {
         "component": "text-input",
         "valueType": "string",
         "name": "tableTitle",
@@ -1824,9 +1837,30 @@
       },
       {
         "component": "boolean",
-        "label": "Disable Top Row",
-        "name": "disableTopRow",
-        "valueType": "boolean"
+        "label": "Header Row",
+        "name": "isHeaderRow",
+        "valueType": "boolean",
+        "description": "It will create the first row of the table as the header row."
+      },
+      {
+        "component": "select",
+        "label": "Select No. Columns",
+        "name": "noOfColumns",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "2 Column",
+            "value": "twoCol"
+          },
+          {
+            "name": "3 Column",
+            "value": "threeCol"
+          },
+          {
+            "name": "4 Column",
+            "value": "fourCol"
+          }
+        ]
       },
       {
         "component": "select",
@@ -1851,6 +1885,35 @@
             "value": "LevelColor"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "row",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "colOneDescription",
+        "label": "Column 1 Description",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "colTwoDescription",
+        "label": "Column 2 Description",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "colThreeDescription",
+        "label": "Column 3 Description",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "colFourDescription",
+        "label": "Column 4 Description",
+        "valueType": "string"
       }
     ]
   },
@@ -1958,11 +2021,83 @@
         "value": ""
       },
       {
+        "component": "radio-group",
+        "label": "Action Button Style",
+        "name": "buttonStyle",
+        "valueType": "string",
+        "value": "primary",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
+        ]
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "buttonLink",
+        "value": "",
+        "label": "Button Link"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "buttonLabel",
+        "value": "",
+        "label": "Button Label"
+      },
+      {
+        "component": "boolean",
+        "label": "Target Blank",
+        "name": "isTargetBlankOne",
+        "valueType": "boolean"
+      },
+      {
+        "component": "text-area",
+        "valueType": "string",
+        "name": "supportTitle",
+        "label": "Support Title",
+        "value": ""
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "imageTextPreheader1",
+        "label": "Eyebrow Text 1",
+        "value": "",
+        "description": "ⓘEyebrow Text"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "support-image1",
+        "label": "Support Logo Image 1"
+      },
+      {
         "component": "text-area",
         "valueType": "string",
         "name": "supportText1",
         "label": "Support Text 1",
         "value": ""
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "imageTextPreheader2",
+        "label": "Eyebrow Text 2",
+        "value": "",
+        "description": "ⓘEyebrow Text"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "support-image2",
+        "label": "Support Logo Image 2"
       },
       {
         "component": "text-area",
@@ -1972,11 +2107,39 @@
         "value": ""
       },
       {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "imageTextPreheader3",
+        "label": "Eyebrow Text 3",
+        "value": "",
+        "description": "ⓘEyebrow Text"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "support-image3",
+        "label": "Support Logo Image 3"
+      },
+      {
         "component": "text-area",
         "valueType": "string",
         "name": "supportText3",
         "label": "Support Text 3",
         "value": ""
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "imageTextPreheader4",
+        "label": "Eyebrow Text 4",
+        "value": "",
+        "description": "ⓘEyebrow Text"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "support-image4",
+        "label": "Support Logo Image 4"
       },
       {
         "component": "text-area",
@@ -2027,7 +2190,10 @@
         "name": "numberOfPartners",
         "label": "No. Of Partners Display",
         "valueType": "number",
-        "value": 0
+        "value": 6,
+        "validation": {
+          "numberMin": 3
+        }
       },
       {
         "component": "multiselect",
@@ -2148,7 +2314,10 @@
         "name": "noOfResultsPerPage",
         "label": "No. Of Results Per page",
         "valueType": "number",
-        "value": 0
+        "value": 10,
+        "validation": {
+          "numberMin": 3
+        }
       },
       {
         "component": "text-input",
@@ -2165,8 +2334,37 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "totalResultsTitle",
-        "label": "No Results Label"
+        "name": "NoResultsTitle",
+        "label": "No Results Title"
+      }
+    ]
+  },
+  {
+    "id": "marketo-form",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "formTitle",
+        "label": "Form Title"
+      },
+      {
+        "component": "richtext",
+        "name": "formDescription",
+        "label": "Form Description",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "marketoFormId",
+        "label": "Marketo Form ID"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "marketoSuccessUrl",
+        "label": "Marketo Success URL"
       }
     ]
   }

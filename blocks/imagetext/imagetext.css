@@ -1,0 +1,208 @@
+.imagetext-wrapper {
+  display: flex;
+}
+
+.imagetext {
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.imagetext .imagetext-text{
+   text-align: center;
+   font-family: var(--ff-secondary);
+   font-size: var(--body-font-size-l);
+   font-style: normal;
+   font-weight: var(--fw-regular);
+   line-height: 28px;
+}
+
+.imagetext .imagetext-main-container {
+  max-width: 1188px;
+  display: flex;
+  justify-content: space-between; 
+  border-radius: 8px;
+  flex-direction: column; 
+
+}
+
+.imagetext .imagetext-left-container  {
+    width: 100%;
+    border-radius: 8px; 
+    flex: 1;
+}
+
+.imagetext .imagetext-right-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin : 0; 
+    padding-top: 40px;
+}
+
+.imagetext .banner-container  { 
+  height: 100%; 
+}
+
+.imagetext .banner-image { 
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.imagetext .banner-image img { 
+  width: 100%;
+  height: 100%; 
+  object-fit: cover; 
+  border-radius: 8px;
+}
+
+.imagetext .imagetext-action{ 
+   font-family: var(--ff-secondary);
+   font-size: var(--body-font-size-l);
+   font-style: normal;
+   font-weight: var(--fw-regular);
+   line-height: 28px;
+   height: 40%;
+}
+
+.imagetext .supportContainer {
+  height: calc(50% - 1px);
+  }
+
+.imagetext .cross-line {
+    display: block;
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid #ccc;
+    margin: 1rem 0;
+    background: var(--c-primary-lt);
+}
+
+.imagetext .container {
+    display: flex;
+    justify-content: space-between; 
+    padding-top: 20px;
+    align-items: center;
+}
+
+.imagetext .left-container, .right-container {
+    margin: 10px;
+}
+
+.imagetext .imagetext-para {
+    margin-left: 20px;
+}
+
+.imagetext .imagetext-icon {
+    display: flex;
+}
+
+.imagetext .imagetext svg {
+   width: 45px;
+   height: 37px;
+   flex-shrink: 0;
+}
+
+.imagetext .content p {
+  margin: 0; 
+  padding: 0; 
+  margin-bottom: 10px; 
+  color: var(--c-copy);
+  font-style: normal;
+  font-family: var(--ff-secondary);
+  font-size: var(--body-font-size-l);
+}
+
+
+.imagetext .content p:first-child {
+  font-family: var(--ff-primary);
+  font-size: var(--heading-font-size-s);
+  line-height: var(--heading-font-size-l);
+}
+
+.imagetext .suggestion-title {
+    display: block; 
+    color: var(--c-copy);
+    font-family: var(--ff-primary);
+    font-size: var(--heading-font-size-s);
+    font-style: normal;
+    font-weight: var(--fw-bold);
+    line-height: 27px; 
+}
+
+/* Suggestion Eyebrow */
+.imagetext .index-9,
+.imagetext .index-12,
+.imagetext .index-15,
+.imagetext .index-18 {
+  color: var(--c-copy);
+  font-family: var(--ff-primary);
+  font-size: var(--heading-font-size-s);
+  font-style: normal;
+  font-weight: var(--fw-med);
+  line-height: 26px; 
+}
+
+/* Suggestion Logo */
+
+.imagetext .index-10 img,
+.imagetext .index-13 img,
+.imagetext .index-16 img,
+.imagetext .index-19 img{
+  max-width: 193px;
+}
+
+/* Suggestion Description & Link */
+
+.imagetext .index-11,
+.imagetext .index-14,
+.imagetext .index-17,
+.imagetext .index-20 {
+  color: var(--c-copy);
+  font-family: var(--ff-secondary);
+  font-size: var(--body-font-size-l);
+  font-style: normal;
+  font-weight: var(--fw-regular);
+  line-height: 24px; 
+  }
+
+
+/* Media Query for Desktop */
+
+@media (width >= 986px) { 
+  .imagetext .imagetext-main-container {
+    flex-direction: row; 
+  }
+ 
+  .imagetext .imagetext-right-container {
+    padding-left: 73px;
+  }
+
+  .imagetext .left-container,
+  .imagetext .right-container{
+    margin: 0;
+  }
+
+  .imagetext .imagetext-action, .imagetext .supportContainer{
+    height: 50%;
+  }
+  
+  .imagetext .cross-line {
+    background: linear-gradient(135deg, #DF549D 0%, #41B6E6 51.1%, #F05E25 100%);
+    fill: #E6F5FC;
+  }
+
+  .imagetext .imagetext-action {
+    max-width: 474px;;
+  }
+
+  .imagetext .index-9,
+  .imagetext .index-12,
+  .imagetext .index-15 {
+    font-family: var(--ff-secondary);
+    font-size: var(--body-font-size-l);
+    font-weight: var(--fw-bold);
+    line-height: 28px; 
+}
+}

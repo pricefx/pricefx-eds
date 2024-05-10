@@ -9,6 +9,7 @@ indices:
       - /footer
       - /fragments
       - /metadata
+      - /style-guide
     target: /query-index.json
     properties:
       title:
@@ -32,6 +33,8 @@ indices:
   articles:
     include:
       - /learning-center/**
+    exclude:
+      - /learning-center/writer/
     target: /article-index.json
     properties:
       lastModified:
@@ -93,6 +96,12 @@ indices:
         value: attribute(el, "content")
       url:
         select: head > meta[property="og:url"]
+        value: attribute(el, "content")
+      category:
+        select: head > meta[name="category"]
+        value: attribute(el, "content")
+      topics:
+        select: head > meta[name="topics"]
         value: attribute(el, "content")
       cq-tags:
         select: head > meta[name="cq-tags"]

@@ -1,4 +1,5 @@
 import ffetch from '../../scripts/ffetch.js';
+import { createOptimizedPicture } from '../../scripts/aem.js';
 import { environmentMode } from '../../scripts/global-functions.js';
 import { BASE_CONTENT_PATH } from '../../scripts/url-constants.js';
 
@@ -129,10 +130,9 @@ export default async function decorate(block) {
   // Fetch Header content from JSON endpoint
   const articleData = await ffetch(searchPath.textContent.trim()).all();
 
-  // TODO: Placeholder for Featured Article path until authoring is fixed
-  featuredArticle.textContent = '/learning-center/article-4';
-  const featuredArticleData = articleData.find((data) => data.path === featuredArticle.textContent.trim());
-  const noFeaturedArticleData = articleData.filter((data) => data.path !== featuredArticle.textContent.trim());
+  const featuredArticlePath = featuredArticle.textContent.trim().split('/en')[1];
+  const featuredArticleData = articleData.find((data) => data.path.includes(featuredArticlePath));
+  const noFeaturedArticleData = articleData.filter((data) => !data.path.includes(featuredArticlePath));
   const defaultSortedArticle = noFeaturedArticleData.sort(
     (a, b) => new Date(b.articlePublishDate) - new Date(a.articlePublishDate),
   );
@@ -334,13 +334,12 @@ export default async function decorate(block) {
     let authorsParentPagePathFormatted = authorDirectoryPath.textContent.trim();
     const isPublishEnvironment = environmentMode() === 'publish';
 
-    if (!isPublishEnvironment) {
-      // In the author environment, ensure the URL does not end with a slash
-      // Append a slash only if the URL doesn't already end with it
-      if (!authorsParentPagePathFormatted.endsWith('/')) {
-        authorsParentPagePathFormatted += '/';
-      }
-    } else {
+    // Append a slash only if the URL doesn't already end with it
+    if (!authorsParentPagePathFormatted.endsWith('/')) {
+      authorsParentPagePathFormatted += '/';
+    }
+
+    if (isPublishEnvironment) {
       // In the publish environment, remove the base path if present
       authorsParentPagePathFormatted = authorsParentPagePathFormatted.replace(BASE_CONTENT_PATH, '');
     }
@@ -357,7 +356,7 @@ export default async function decorate(block) {
       if (!isPublishEnvironment) {
         authorPageLink = `${authorsParentPagePathFormatted}${removePrefixAuthor}.html`;
       } else {
-        authorPageLink = `/authors/${removePrefixAuthor}`;
+        authorPageLink = `${authorsParentPagePathFormatted}${removePrefixAuthor}`;
       }
 
       innerMarkup +=
@@ -371,7 +370,11 @@ export default async function decorate(block) {
 
   // Render Featured Article
   featuredArticleContainer.innerHTML = `
-    <div class="article-image"><img src="${featuredArticleData.image}" alt="${featuredArticleData.imageAlt || featuredArticleData.title}"></div>
+    <div class="article-image">
+      <picture>
+        <img src="${featuredArticleData.image || ''}" alt="${featuredArticleData.imageAlt || featuredArticleData.title}">
+      </picture>
+    </div>
     <div class="article-content">
       ${
         featuredArticleData.category !== '' ||
@@ -392,6 +395,14 @@ export default async function decorate(block) {
     </div>
   `;
 
+  featuredArticleContainer
+    .querySelectorAll('img')
+    .forEach((img) =>
+      img
+        .closest('picture')
+        .replaceWith(createOptimizedPicture(img.src, img.alt, true, [{ media: '(min-width: 640px)', width: '594' }])),
+    );
+
   // Render Learning Center Article Card
   const renderArticleCard = (articleDataList) => {
     let initialArticleData = articleDataList;
@@ -407,7 +418,11 @@ export default async function decorate(block) {
       renderArticleAuthors(article);
       markup += `
         <li class="article-card">
-          <div class="article-image"><img src="${article.image}" alt="${article.imageAlt || article.title}"></div>
+          <div class="article-image">
+            <picture>
+              <img src="${article.image || ''}" alt="${article.imageAlt || article.title}">
+            </picture>
+          </div>
           <div class="article-content">
             ${
               article.category !== '' ||
@@ -436,6 +451,14 @@ export default async function decorate(block) {
     articlesContainer.innerHTML = renderArticleCard(articleJsonData);
   };
   appendLearningCenterArticles(defaultSortedArticle);
+
+  articlesContainer
+    .querySelectorAll('img')
+    .forEach((img) =>
+      img
+        .closest('picture')
+        .replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ media: '(min-width: 640px)', width: '594' }])),
+    );
 
   // Render pagination pages
   const renderPages = (articlePerPage, articleList, currentPage) => {
