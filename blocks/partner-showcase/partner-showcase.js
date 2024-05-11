@@ -119,9 +119,10 @@ const updateBrowserUrl = (searchParams, key, value) => {
  */
 export default async function decorate(block) {
   const [
+    configTab,
     numberOfPartners,
     sortBy,
-    cardCtaLabel,
+    filterTab,
     filterOneTitle,
     filterOneMultiSelect,
     filterOneTags,
@@ -135,16 +136,15 @@ export default async function decorate(block) {
     filterFourMultiSelect,
     filterFourTags,
   ] = block.children;
+  configTab.innerHTML = '';
+  filterTab.innerHTML = '';
   block.innerHTML = '';
 
   // Fetch Partners content from JSON endpoint
   const url = '/partners-index.json';
   const partnersData = await ffetch(url).all();
 
-  // Go through JSON data and replace all instance of '&amp;' to facilitate handling of data in filters
-  const processPartnerData = JSON.parse(JSON.stringify(partnersData).replaceAll('&amp;', '&'));
-
-  const defaultSortedPartners = processPartnerData.sort((a, b) => a.title.localeCompare(b.title));
+  const defaultSortedPartners = partnersData.sort((a, b) => a.title.localeCompare(b.title));
   let currentPartnersData = [...defaultSortedPartners];
 
   const queryStr = 'page=1&sortBy=asc-title';
@@ -268,6 +268,83 @@ export default async function decorate(block) {
     return markup;
   };
 
+  // Click event for Filter Menu Toggle
+  const filterMenuToggle = document.querySelector('.ps-filter-menu-toggle');
+  filterMenuToggle.addEventListener('click', () => {
+    toggleFilterMenu(filterMenuToggle, filter, partnerShowcaseContent);
+  });
+
+  // Watch for screen size change and switch between Desktop and Mobile Filter
+  window.addEventListener('resize', () => {
+    if (!isDesktop.matches && filterMenuToggle.getAttribute('aria-expanded') === 'true') {
+      filterMenuToggle.setAttribute('aria-expanded', 'false');
+      filterMenuToggle.setAttribute('aria-label', 'Toggle Filter Menu');
+      filter.setAttribute('aria-hidden', 'true');
+    } else if (isDesktop.matches && filterMenuToggle.getAttribute('aria-expanded') === 'false') {
+      filterMenuToggle.setAttribute('aria-expanded', 'true');
+      filter.setAttribute('aria-hidden', 'false');
+    }
+  });
+  if (!isDesktop.matches && filterMenuToggle.getAttribute('aria-expanded') === 'true') {
+    filterMenuToggle.setAttribute('aria-expanded', 'false');
+    filterMenuToggle.setAttribute('aria-label', 'Toggle Filter Menu');
+    filter.setAttribute('aria-hidden', 'true');
+  }
+
+  // Render Filter Categories
+  const renderFilterCategory = (
+    filterNum,
+    filterCategoryLabel,
+    filterIsMultiSelect,
+    filterCategoryOptions,
+    filterCategoryName,
+    isHidden,
+  ) => {
+    const optionsArray = filterCategoryOptions.textContent.trim().split(',');
+    let filterOptionsMarkup = '';
+    optionsArray.forEach((option) => {
+      const optionSplit = option.split('/')[2];
+      const optionReplaceHypen = optionSplit.replaceAll('-', ' ');
+      const optionReplaceAmpersand = optionSplit.replaceAll('&', 'and');
+      const optionTextTransform =
+        optionReplaceHypen.length <= 4 ? optionReplaceHypen.toUpperCase() : optionReplaceHypen;
+      if (filterIsMultiSelect.textContent.trim() === 'false') {
+        filterOptionsMarkup += `
+          <li class="ps-filter-category-item">
+            <input type="radio" id="filter-${optionSplit.includes('&') ? `${filterCategoryName}-${optionReplaceAmpersand}` : `${filterCategoryName}-${optionSplit}`}" name="filter-${filterCategoryName}" value="${optionSplit.includes('&') ? optionReplaceAmpersand : optionSplit}" data-filter-category="filter-${filterCategoryName}" />
+            <label for="filter-${optionSplit.includes('&') ? `${filterCategoryName}-${optionReplaceAmpersand}` : `${filterCategoryName}-${optionSplit}`}">${optionTextTransform}</label>
+          </li>
+        `;
+      } else {
+        filterOptionsMarkup += `
+          <li class="ps-filter-category-item">
+            <input type="checkbox" id="filter-${optionSplit.includes('&') ? `${filterCategoryName}-${optionReplaceAmpersand}` : `${filterCategoryName}-${optionSplit}`}" name="${optionSplit}" value="${optionSplit.includes('&') ? optionReplaceAmpersand : optionSplit}" data-filter-category="filter-${filterCategoryName}" />
+            <label for="filter-${optionSplit.includes('&') ? `${filterCategoryName}-${optionReplaceAmpersand}` : `${filterCategoryName}-${optionSplit}`}">${optionTextTransform}</label>
+          </li>
+        `;
+      }
+    });
+
+    const markup = `
+      <div class="ps-filter-category">
+        <button class="ps-filter-category-toggle" id="ps-filter-category-${filterNum}-toggle" aria-controls="ps-filter-category-${filterNum}-content" aria-expanded=${isHidden === true ? 'false' : 'true'}>${filterCategoryLabel.textContent.trim()}<span class="accordion-icon"></span></button>
+        <ul class="ps-filter-category-content" id="ps-filter-category-${filterNum}-content" aria-labelledby="ps-filter-category-${filterNum}-toggle" aria-hidden=${isHidden}>
+          ${
+            filterIsMultiSelect.textContent.trim() === 'false'
+              ? `<li class="ps-filter-category-item">
+                <input type="radio" id="filter-all-${filterCategoryName}" name="filter-${filterCategoryName}" value="filter-all-${filterCategoryName}" data-filter-category="filter-${filterCategoryName}" checked />
+                <label for="filter-all-${filterCategoryName}">All</label>
+              </li>`
+              : ``
+          }
+            ${filterOptionsMarkup}
+        </ul>
+      </div>
+    `;
+    return markup;
+  };
+
+  // TODO: Fix titleZa value in component-models.json and the below render logic
   filter.innerHTML = `
     ${
       sortBy.textContent.trim() !== ''
@@ -373,7 +450,7 @@ export default async function decorate(block) {
                 : ''
             }
             <div class="partner-cta-container">
-              <a class="partner-link" href="${partner.path}">${cardCtaLabel.textContent.trim() === '' ? 'Learn More' : cardCtaLabel.textContent.trim()}</a>
+              <a class="partner-link" href="${partner.path}" target="_blank">Learn More</a>
             </div>
           </div>
         </li>
@@ -384,17 +461,22 @@ export default async function decorate(block) {
 
   const appendPartnerShowcasePartners = (partnersJsonData) => {
     partnersContainer.innerHTML = renderPartnerCard(partnersJsonData);
-    partnersContainer
-      .querySelectorAll('img')
-      .forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false)));
   };
   appendPartnerShowcasePartners(defaultSortedPartners);
+
+  partnersContainer
+    .querySelectorAll('img')
+    .forEach((img) =>
+      img
+        .closest('picture')
+        .replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ media: '(min-width: 640px)', width: '577' }])),
+    );
 
   // Render pagination pages
   const renderPages = (partnerPerPage, partnersList, currentPage) => {
     const totalPartners = partnersList.length;
     const totalPageNumber = Math.ceil(totalPartners / partnerPerPage);
-    const firstPageMarkup = `<li class="pagination-page" id="page-1"><button>1</button></li>`;
+    const firstPageMarkup = `<li class="pagination-page active-page" id="page-1"><button>1</button></li>`;
     const lastPageMarkup = `<li class="pagination-page" id="page-${totalPageNumber}"><button>${totalPageNumber}</button></li>`;
     let paginationMarkup = '';
     let middlePageMarkup = '';
@@ -456,21 +538,6 @@ export default async function decorate(block) {
     paginationContainer.classList.remove('hidden');
   }
 
-  if (window.location.search !== '') {
-    const currentUrlParam = new URLSearchParams(window.location.search);
-    const pageNum = currentUrlParam.get('page');
-    if (Number(pageNum) > 1) {
-      prevPageButton.classList.remove('hidden');
-      paginationPageList.children[0].classList.remove('active-page');
-    } else {
-      prevPageButton.classList.add('hidden');
-      paginationPageList.children[0].classList.add('active-page');
-    }
-  } else {
-    prevPageButton.classList.add('hidden');
-    paginationPageList.children[0].classList.add('active-page');
-  }
-
   // Defining some variables for filter, sort and search logic
   const sortByEl = document.getElementById('ps-sort-content');
   let currentFilteredPartners;
@@ -481,23 +548,6 @@ export default async function decorate(block) {
     'filter-industry': [],
     'filter-type': [],
     'filter-speciality': [],
-  };
-
-  // Updates the URL Params based on selected filters
-  const updateFiltersUrlParams = () => {
-    if (selectedFilters['filter-geography'].length > 0) {
-      updateBrowserUrl(searchParams, 'filter-geography', selectedFilters['filter-geography'][0]);
-    }
-    if (selectedFilters['filter-industry'].length > 0) {
-      updateBrowserUrl(searchParams, 'filter-industry', selectedFilters['filter-industry'][0]);
-    }
-    if (selectedFilters['filter-type'].length > 0) {
-      updateBrowserUrl(searchParams, 'filter-type', selectedFilters['filter-type'][0]);
-    }
-    if (selectedFilters['filter-speciality'].length > 0) {
-      const valuesString = selectedFilters['filter-speciality'].toString();
-      updateBrowserUrl(searchParams, 'filter-speciality', valuesString);
-    }
   };
 
   // Partner Showcase Sort By logic
@@ -525,17 +575,15 @@ export default async function decorate(block) {
         <h4 class="no-partners">Sorry, there are no results based on these choices. Please update and try again.</h4>
       `;
       paginationContainer.classList.add('hidden');
-      updateBrowserUrl(searchParams, 'page', 1);
+      searchParams.set('page', 1);
     } else {
       paginationContainer.classList.remove('hidden');
-      const currentPage = paginationPageList.children[0];
+      const currentPage = [...paginationPageList.children].find((page) => page.classList.contains('active-page'));
       paginationPageList.innerHTML = renderPages(
         numberOfPartners.textContent.trim(),
         currentSortedPartners,
         Number(currentPage.textContent),
       );
-      paginationPageList.children[0].classList.add('active-page');
-      nextPageButton.classList.remove('hidden');
       if (paginationPageList.children.length <= 1) {
         paginationContainer.classList.add('hidden');
       } else {
@@ -568,15 +616,34 @@ export default async function decorate(block) {
     if (paginationPageList.children[0].className.includes('active-page')) {
       prevPageButton.classList.add('hidden');
     }
-    updateBrowserUrl(searchParams, 'page', 1);
-    updateBrowserUrl(searchParams, 'sortBy', e.target.value);
+    searchParams.set('sortBy', e.target.value);
+    const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
+    window.history.pushState(null, '', newRelativePathQuery);
   });
+
+  // Updates the URL Params based on selected filters
+  const updateFiltersUrlParams = () => {
+    if (selectedFilters['filter-geography'].length > 0) {
+      searchParams.set('filter-geography', selectedFilters['filter-geography'][0]);
+    }
+    if (selectedFilters['filter-industry'].length > 0) {
+      searchParams.set('filter-industry', selectedFilters['filter-industry'][0]);
+    }
+    if (selectedFilters['filter-type'].length > 0) {
+      searchParams.set('filter-type', selectedFilters['filter-type'][0]);
+    }
+    if (selectedFilters['filter-speciality'].length > 0) {
+      const valuesString = selectedFilters['filter-speciality'].toString();
+      searchParams.set('filter-speciality', valuesString);
+    }
+  };
 
   // Partner Showcase Filter logic
   const updateSelectedFilters = (state, key, value) => {
     if (state === true && value.includes('all')) {
       selectedFilters[key].pop();
       searchParams.delete(key);
+      updateFiltersUrlParams();
     } else if (state === true && key !== 'filter-speciality') {
       selectedFilters[key].pop();
       selectedFilters[key].push(value);
@@ -586,7 +653,7 @@ export default async function decorate(block) {
       updateFiltersUrlParams();
     } else if (state === false && selectedFilters[key].includes(value)) {
       selectedFilters[key].splice(selectedFilters[key].indexOf(value), 1);
-      searchParams.delete(key);
+      updateFiltersUrlParams();
     }
     const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
     window.history.pushState(null, '', newRelativePathQuery);
@@ -624,18 +691,19 @@ export default async function decorate(block) {
         <h4 class="no-partners">Sorry, there are no results based on these choices. Please update and try again.</h4>
       `;
       paginationContainer.classList.add('hidden');
-      updateBrowserUrl(searchParams, 'page', 1);
+      searchParams.set('page', 1);
     } else {
       appendPartnerShowcasePartners(partnersJson);
       paginationContainer.classList.remove('hidden');
-      const currentPage = paginationPageList.children[0];
+      const currentPage = [...paginationPageList.children].find((page) => page.classList.contains('active-page'));
       paginationPageList.innerHTML = renderPages(
         numberOfPartners.textContent.trim(),
         currentFilteredPartners,
         Number(currentPage.textContent),
       );
-      paginationPageList.children[0].classList.add('active-page');
-      nextPageButton.classList.remove('hidden');
+      if (partnersJson.length <= Number(numberOfPartners.textContent.trim())) {
+        searchParams.set('page', 1);
+      }
       if (paginationPageList.children.length <= 1) {
         paginationContainer.classList.add('hidden');
       } else {
@@ -662,8 +730,6 @@ export default async function decorate(block) {
         currentPartnersData = currentSortedPartners;
         handleFilter(selectedFilters, currentSortedPartners);
       }
-
-      updateBrowserUrl(searchParams, 'page', 1);
 
       if (paginationPageList.children[0].className.includes('active-page')) {
         prevPageButton.classList.add('hidden');
@@ -723,7 +789,9 @@ export default async function decorate(block) {
       currentPartnersData,
     );
 
-    updateBrowserUrl(searchParams, 'page', nextActivePage.textContent);
+    searchParams.set('page', nextActivePage.textContent);
+    const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
+    window.history.pushState(null, '', newRelativePathQuery);
   };
 
   paginationContainer.addEventListener('click', (e) => {
@@ -749,7 +817,9 @@ export default async function decorate(block) {
         currentPartnersData,
       );
 
-      updateBrowserUrl(searchParams, 'page', target.textContent);
+      searchParams.set('page', target.textContent);
+      const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
+      window.history.pushState(null, '', newRelativePathQuery);
     }
   });
 
@@ -779,7 +849,6 @@ export default async function decorate(block) {
     if (loadedSearchParams.get('sortBy') !== 'asc-title') {
       sortByEl.value = loadedSearchParams.get('sortBy');
       handleSort(loadedSearchParams.get('sortBy'), partnersOnLoad);
-      searchParams.set('sortBy', loadedSearchParams.get('sortBy'));
     }
 
     if (
@@ -850,9 +919,6 @@ export default async function decorate(block) {
             page.classList.add('active-page');
           }
         });
-      }
-      if (paginationPageList.lastElementChild.classList.contains('active-page')) {
-        nextPageButton.classList.add('hidden');
       }
       appendNewActivePartnerPage(
         Number(loadedSearchParams.get('page')) * Number(numberOfPartners.textContent.trim()) -
