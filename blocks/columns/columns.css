@@ -84,6 +84,21 @@
   color: var(--c-copy);
 }
 
+.columns.column-links-color-secondary > div a:hover,
+.columns.column-links-color-secondary > div a:focus {
+  color: var(--c-mega-menu-link);
+}
+
+.columns.column-download .columns-img-col {
+  position: relative;
+}
+
+.columns.column-download .columns-img-col .download-btn {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
 @media (width >= 985px) {
   .columns > div {
     align-items: center;
