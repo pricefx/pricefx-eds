@@ -1,11 +1,11 @@
 .columns > div {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: var(--spacing-medium);
 }
 
 .columns > div:not(:last-child) {
-  margin-bottom: 32px;
+  margin-bottom: var(--spacing-medium);
 }
 
 
