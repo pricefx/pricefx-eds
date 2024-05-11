@@ -560,6 +560,10 @@
             "value": "column-box-shadow"
           },
           {
+            "name": "Column Links to Secondary",
+            "value": "column-links-color-secondary"
+          },
+          {
             "name": "Entire Columns Top Padding",
             "value": "columns-top-padding-large"
           }

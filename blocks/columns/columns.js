@@ -14,6 +14,7 @@ export default function decorate(block) {
       }
 
       if (col.querySelector('a')?.textContent === 'download') {
+        col.querySelector('a').parentElement.classList.add('column-download');
         const downloadLink = col.querySelector('a');
         const downloadImg = `<img src="/content/dam/pricefx/style-guide/download-icon.png" alt="download" />`;
         downloadLink.innerHTML = downloadImg;

@@ -80,6 +80,10 @@
   box-shadow: 0 6px 8px 0 rgb(0 0 0 / 10%);
 }
 
+.columns.column-links-color-secondary > div a {
+  color: var(--c-copy);
+}
+
 @media (width >= 985px) {
   .columns > div {
     align-items: center;
