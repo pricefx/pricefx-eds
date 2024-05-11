@@ -33,7 +33,7 @@ export default function decorate(block) {
         const aInsideEM = linkwrapper?.querySelector('em a');
         const a = linkwrapper?.querySelector('a');
         const isTarget = linkwrapper?.nextElementSibling;
-        if (a && !aInsideStrong && !aInsideEM && a.textContent !== 'download') {
+        if (a && !aInsideStrong && !aInsideEM && !a.classList.contains('download-btn')) {
           a.textContent = '';
           a.target = isTarget?.textContent.trim() === 'true' ? '_blank' : '';
           a.append(pic);
