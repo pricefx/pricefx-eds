@@ -83,7 +83,7 @@ const toggleFilterMenu = (filterMenuToggle, filterMenu, contentWrapper) => {
 
 // Close Mobile Navigation on ESC Key
 const closeMobileFilterOnEscape = (e) => {
-  if (e.code === 'Escape') {
+  if (e.code === 'Escape' && !isDesktop.matches) {
     const filterMenuToggle = document.getElementById('filter-menu-toggle');
     const filterMenu = document.getElementById('filter-menu');
     if (filterMenuToggle.getAttribute('aria-expanded') === 'true') {
@@ -127,7 +127,7 @@ export default async function decorate(block) {
   ] = block.children;
   block.innerHTML = '';
 
-  // Fetch Header content from JSON endpoint
+  // Fetch Articles content from JSON endpoint
   const articleData = await ffetch(searchPath.textContent.trim()).all();
 
   const featuredArticlePath = featuredArticle.textContent.trim().split('/en')[1];
