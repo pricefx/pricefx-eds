@@ -4,6 +4,11 @@
   gap: 32px;
 }
 
+.columns > div:not(:last-child) {
+  margin-bottom: 32px;
+}
+
+
 .columns > div > div h1,
 .columns > div > div h2,
 .columns > div > div h3,
@@ -96,7 +101,7 @@
 .columns.column-download .columns-img-col .download-btn {
   position: absolute;
   right: 10px;
-  bottom: 10px;
+  bottom: 0;
 }
 
 @media (width >= 985px) {
@@ -115,10 +120,6 @@
 
   .columns.column-gap-medium > div {
     gap: 64px;
-  }
-
-  .columns > div:not(:last-child) {
-    margin-bottom: 50px;
   }
 
   .columns.column-separator > div {
@@ -183,5 +184,9 @@
 
   .columns.columns-2.two-column-7-3 > div > div:last-child {
     flex: 30%;
+  }
+
+  .columns.column-download .columns-img-col .download-btn {
+    bottom: 10px;
   }
 }
