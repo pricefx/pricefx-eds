@@ -438,10 +438,10 @@ function decorateIcon(span, prefix = '', alt = '') {
  * @param {Element} [element] Element containing icons
  * @param {string} [prefix] prefix to be added to icon the src
  */
-function decorateIcons(element, prefix = '') {
+function decorateIcons(element, prefix = '', alt = '') {
   const icons = [...element.querySelectorAll('span.icon')];
   icons.forEach((span) => {
-    decorateIcon(span, prefix);
+    decorateIcon(span, prefix, alt);
   });
 }
 
