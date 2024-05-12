@@ -313,7 +313,13 @@
   text-transform: capitalize;
 }
 
-.article-title {
+h2.article-title,
+.no-articles {
+  -webkit-text-fill-color: var(--c-extra-dark);
+  background: transparent;
+  color: var(--c-extra-dark);
+  font-size: var(--heading-font-size-l);
+  font-weight: var(--fw-med);
   margin: 0 0 5px;
 }
 
@@ -379,6 +385,8 @@ a.article-link::after {
 }
 
 .article-card .article-image img {
+  aspect-ratio: auto 16 / 9;
+  border-radius: 16px;
   display: block;
   height: 100%;
   width: 100%;
@@ -532,6 +540,14 @@ a.article-link::after {
 }
 
 @media (width <= 985px) {
+  main:has(.learning-center) {
+    margin-top: 60px;
+  }
+
+  .learning-center-content {
+    width: 100%;
+  }
+  
   .filter-controls {
     background: var(--c-white);
     border: none;
