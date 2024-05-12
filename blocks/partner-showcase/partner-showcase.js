@@ -114,6 +114,10 @@ window.addEventListener('keydown', closeMobileFilterOnEscape);
 export default async function decorate(block) {
   const [
     configTab,
+    featuredPartner,
+    searchPath,
+    searchPlaceholder,
+    partnersPath,
     numberOfPartners,
     sortBy,
     filterTab,
@@ -133,6 +137,12 @@ export default async function decorate(block) {
   configTab.innerHTML = '';
   filterTab.innerHTML = '';
   block.innerHTML = '';
+
+  // TODO: Remove from component-models.json
+  featuredPartner.innerHTML = '';
+  searchPath.innerHTML = '';
+  searchPlaceholder.innerHTML = '';
+  partnersPath.innerHTML = '';
 
   // Fetch Partners content from JSON endpoint
   const url = '/partners-index.json';
