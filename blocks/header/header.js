@@ -304,7 +304,7 @@ export default async function decorate(block) {
   // Render Mobile Brand Logo
   const brandWrapperMobile = document.createElement('div');
   brandWrapperMobile.classList.add('brand');
-  const brandLogo = `<a class="brand-logo-wrapper" href="/" aria-label="Go to Pricefx homepage"><span class="icon icon-pricefx-logo-light"></span></a>`;
+  const brandLogo = `<a class="brand-logo-wrapper" href="/" aria-label="Go to Pricefx homepage"><span class="icon icon-pricefx-logo-white"></span></a>`;
   brandWrapperMobile.innerHTML = brandLogo;
   decorateIcons(brandWrapperMobile, '', 'Pricefx');
   mobileHeader.append(brandWrapperMobile);
