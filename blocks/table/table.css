@@ -1,25 +1,32 @@
 .table {
   font-family: var(--ff-secondary);
   border-collapse: collapse;
+  max-width: 1188px;
+  overflow-x:auto
 }
 
 /* Default Table */
-.table-default {
+.table .table-default {
   font-family: var(--ff-secondary);
   border-collapse: collapse;
   border: 2px solid black;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 0;
+  align-self: stretch;
+  
 }
 
-.table-default td, .table-default th {
+.table  .table-default td, .table .table-default th {
   border: 1px solid #ddd;
   padding: 24px 32px;
 }
 
-.table-default tr:nth-child(odd) {
+.table .table-default tr:nth-child(odd) {
     background-color: var(--c-disabled);
 }
 
-.table-default th {
+.table .table-default th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
@@ -28,24 +35,24 @@
 }
 
 /* Level Table & Level Color common */
-.table-level, .levelcolor {
+.table .table-level, .table .levelcolor {
   font-family: var(--ff-secondary);
   border-collapse: collapse;
 }
 
-.table-level td, .table-level th, .levelcolor td, .levelcolor th {
+.table .table-level td,.table  .table-level th, .table .levelcolor td, .table .levelcolor th {
   padding: 24px 32px;
 }
 
-.table-level th, .levelcolor th {
+.table .table-level th, .table .levelcolor th {
     font-family: var( --ff-primary);
 }
 
-.table-level tr:nth-child(odd), .levelcolor tr:nth-child(odd){
+.table .table-level tr:nth-child(odd), .table .levelcolor tr:nth-child(odd){
     background-color: #E6F5FC;
 }
 
-.table-level th {
+.table .table-level th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
@@ -54,33 +61,67 @@
 }
 
 /* level color table */
-.levelcolor td {
+.table .levelcolor td {
     font-weight: 700;
 }
 
-.levelcolor th {
+.table .levelcolor th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
   background-color: #3C5EA3;
 }
 
-.concentric-circle {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  padding: 10px;
-  position: relative;
-  border:10px solid #304F8C;
+.table .concentric-circle {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
 }
 
-.table-icon {
+.table .table-icon {
   font-family: var(--ff-secondary);
-  border-collapse: collapse;
   border: 2px solid black;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: var(--c-disabled);
+  color: var(--c-black);
+  text-align: center;
+   border-collapse: collapse; 
 }
 
-.table-icon th {
-  border: 20px solid #ddd;
+.table .table-icon th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: var(--c-copy);
+  color: var(--c-white);
+}
+
+.table .table-icon td{
   padding: 24px 32px;
 }
+
+.table .table-icon td,.table .table-icon th {
+  border: 4px solid #ddd;
+  font-weight: var(--fw-bold);
+}
+
+/* IM-connect table */
+
+.table .table-im-connect td, .table .table-im-connect th {
+  border: 1px solid #ddd;
+  padding: 24px 32px;
+}
+
+ .table .table-im-connect th {
+  height: 52px;
+ }
+
+.table .table-im-connect {
+  color: var(--c-full-black);
+  font-family: var(--ff-secondary);
+  font-size: var(--base-font-size);
+  font-style: normal;
+  font-weight: var(--fw-regular);
+  line-height: 24px; 
+}
+

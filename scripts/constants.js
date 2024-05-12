@@ -55,6 +55,18 @@ const PLAYBUTTON = `<svg xmlns="http://www.w3.org/2000/svg" width="7" height="11
   <path fill-rule="evenodd" clip-rule="evenodd" d="M6.66211 5.5L0.61293 10.5L0.61293 0.5L6.66211 5.5Z" fill="#484D56"/>
 </svg>`;
 
+const CIRCLEICON = `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+  <circle cx="15" cy="15" r="15" fill="url(#paint0_linear_185_4617)"/>
+  <circle cx="15" cy="15" r="7" fill="white"/>
+  <circle cx="15" cy="15" r="7" fill="white"/>
+  <defs>
+    <linearGradient id="paint0_linear_185_4617" x1="-7.00607" y1="18.2" x2="19.8655" y2="35.6347" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#304F8C"/>
+      <stop offset="1" stop-color="#466CB9"/>
+    </linearGradient>
+  </defs>
+</svg>`;
+
 export {
   EMAIL,
   FACEBOOK,
@@ -70,4 +82,5 @@ export {
   RIGHTCHEVRON,
   IMAGETEXT,
   PLAYBUTTON,
+  CIRCLEICON,
 };
