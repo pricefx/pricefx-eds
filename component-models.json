@@ -1860,55 +1860,6 @@
       },
       {
         "component": "select",
-        "label": "Select No. Columns",
-        "name": "noOfColumns",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "2 Column",
-            "value": "twoCol"
-          },
-          {
-            "name": "3 Column",
-            "value": "threeCol"
-          },
-          {
-            "name": "4 Column",
-            "value": "fourCol"
-          }
-        ]
-      },
-      {
-        "id": "table-row",
-        "fields": [
-          {
-            "component": "richtext",
-            "name": "colOneDescription",
-            "label": "Column 1 Description",
-            "valueType": "string"
-          },
-          {
-            "component": "richtext",
-            "name": "colTwoDescription",
-            "label": "Column 2 Description",
-            "valueType": "string"
-          },
-          {
-            "component": "richtext",
-            "name": "colThreeDescription",
-            "label": "Column 3 Description",
-            "valueType": "string"
-          },
-          {
-            "component": "richtext",
-            "name": "colFourDescription",
-            "label": "Column 4 Description",
-            "valueType": "string"
-          }
-        ]
-      },
-      {
-        "component": "select",
         "label": "Select Table Variation",
         "name": "tableVariation",
         "valueType": "string",
@@ -2440,35 +2391,6 @@
         "name": "caseStudyDescription",
         "label": "Case Study Description",
         "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "marketo-form",
-    "fields": [
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "formTitle",
-        "label": "Form Title"
-      },
-      {
-        "component": "richtext",
-        "name": "formDescription",
-        "label": "Form Description",
-        "valueType": "string"
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "marketoFormId",
-        "label": "Marketo Form ID"
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "marketoSuccessUrl",
-        "label": "Marketo Success URL"
       }
     ]
   }
