@@ -114,10 +114,6 @@ window.addEventListener('keydown', closeMobileFilterOnEscape);
 export default async function decorate(block) {
   const [
     configTab,
-    featuredPartner,
-    searchPath,
-    searchPlaceholder,
-    partnersPath,
     numberOfPartners,
     sortBy,
     filterTab,
@@ -138,19 +134,15 @@ export default async function decorate(block) {
   filterTab.innerHTML = '';
   block.innerHTML = '';
 
-  // TODO: Remove from component-models.json
-  featuredPartner.innerHTML = '';
-  searchPath.innerHTML = '';
-  searchPlaceholder.innerHTML = '';
-  partnersPath.innerHTML = '';
-
   // Fetch Partners content from JSON endpoint
   const url = '/partners-index.json';
   const partnersData = await ffetch(url).all();
+
   const defaultSortedPartners = partnersData.sort((a, b) => a.title.localeCompare(b.title));
   let currentPartnersData = [...defaultSortedPartners];
-  // TODO: Remove later
-  console.log(currentPartnersData);
+
+  const queryStr = 'page=1&sortBy=asc-title';
+  const searchParams = new URLSearchParams(queryStr);
 
   // Creates a div container to hold the Filter Menu Toggle
   const filterControls = document.createElement('div');
@@ -263,7 +255,6 @@ export default async function decorate(block) {
     return markup;
   };
 
-  // TODO: Fix titleZa value in component-models.json and the below render logic
   filter.innerHTML = `
     ${
       sortBy.textContent.trim() !== ''
@@ -286,7 +277,7 @@ export default async function decorate(block) {
               ? `
             <optgroup label="Title">
               ${sortBy.textContent.trim().includes('titleAZ') ? `<option value="asc-title" selected>Sort by: Title (A → Z)</option>` : ''}
-              ${sortBy.textContent.trim().includes('titleZa') ? `<option value="desc-title">Sort by: Title (Z → A)</option>` : ''}
+              ${sortBy.textContent.trim().includes('titleZA') ? `<option value="desc-title">Sort by: Title (Z → A)</option>` : ''}
             </optgroup>
           `
               : ''
@@ -391,17 +382,71 @@ export default async function decorate(block) {
         .replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ media: '(min-width: 640px)', width: '577' }])),
     );
 
+  // Render pagination pages
+  const renderPages = (partnerPerPage, partnersList, currentPage) => {
+    const totalPartners = partnersList.length;
+    const totalPageNumber = Math.ceil(totalPartners / partnerPerPage);
+    const firstPageMarkup = `<li class="pagination-page active-page" id="page-1"><button>1</button></li>`;
+    const lastPageMarkup = `<li class="pagination-page" id="page-${totalPageNumber}"><button>${totalPageNumber}</button></li>`;
+    let paginationMarkup = '';
+    let middlePageMarkup = '';
+
+    if (totalPageNumber <= 1) {
+      return firstPageMarkup;
+    }
+    const center = [currentPage - 2, currentPage - 1, currentPage, currentPage + 1, currentPage + 2];
+    const filteredCenter = center.filter((p) => p > 1 && p < totalPageNumber);
+    const includeThreeLeft = currentPage === 5;
+    const includeThreeRight = currentPage === totalPageNumber - 4;
+    const includeLeftDots = currentPage > 5;
+    const includeRightDots = currentPage < totalPageNumber - 4;
+
+    if (includeThreeLeft) {
+      filteredCenter.unshift(2);
+    }
+    if (includeThreeRight) {
+      filteredCenter.push(totalPageNumber - 1);
+    }
+
+    if (includeLeftDots) {
+      filteredCenter.unshift('...');
+    }
+    if (includeRightDots) {
+      filteredCenter.push('...');
+    }
+
+    filteredCenter.forEach((centerPage) => {
+      if (centerPage === '...') {
+        middlePageMarkup += `
+          <li class="pagination-ellipses"><span>${centerPage}</span></li>
+        `;
+      } else {
+        middlePageMarkup += `
+          <li class="pagination-page" id="page-${centerPage}"><button>${centerPage}</button></li>
+        `;
+      }
+    });
+    paginationMarkup = firstPageMarkup + middlePageMarkup + lastPageMarkup;
+    return paginationMarkup;
+  };
+
   paginationContainer.innerHTML = `
-    <button class="pagination-prev" aria-label="Previous Page">${LEFTCHEVRON}</button>
-    <ul class="pagination-page-list">
-      <li class="pagination-page" id="ps-page-1"><button>1</button></li>
-      <li class="pagination-page" id="ps-page-2"><button>2</button></li>
-      <li class="pagination-page" id="ps-page-3"><button>3</button></li>
-      <li class="pagination-page"><span>...</span></li>
-      <li class="pagination-page" id="ps-page-6"><button>6</button></li>
+    ${Number(numberOfPartners.textContent.trim()) > defaultSortedPartners.length ? '' : `<button class="pagination-prev hidden" aria-label="Previous Page">${LEFTCHEVRON}</button>`}
+    <ul class="pagination-pages-list">
+      ${renderPages(numberOfPartners.textContent.trim(), defaultSortedPartners, 1)}
     </ul>
-    <button class="pagination-next" aria-label="Nexst Page">${RIGHTCHEVRON}</button>
+    ${Number(numberOfPartners.textContent.trim()) > defaultSortedPartners.length ? '' : `<button class="pagination-next" aria-label="Nexst Page">${RIGHTCHEVRON}</button>`}
   `;
+
+  const paginationPageList = document.querySelector('.pagination-pages-list');
+  const prevPageButton = document.querySelector('.pagination-prev');
+  const nextPageButton = document.querySelector('.pagination-next');
+
+  if (paginationPageList.children.length === 1) {
+    paginationContainer.classList.add('hidden');
+  } else {
+    paginationContainer.classList.remove('hidden');
+  }
 
   // Defining some variables for filter, sort and search logic
   const sortByEl = document.getElementById('ps-sort-content');
@@ -439,20 +484,21 @@ export default async function decorate(block) {
       partnersContainer.innerHTML = `
         <h4 class="no-partners">Sorry, there are no results based on these choices. Please update and try again.</h4>
       `;
-      // paginationContainer.classList.add('hidden');
+      paginationContainer.classList.add('hidden');
+      searchParams.set('page', 1);
     } else {
-      // paginationContainer.classList.remove('hidden');
-      // const currentPage = [...paginationPageList.children].find((page) => page.classList.contains('active-page'));
-      // paginationPageList.innerHTML = renderPages(
-      //   numOfArticles.textContent.trim(),
-      //   currentSortedArticles,
-      //   Number(currentPage.textContent),
-      // );
-      // if (paginationPageList.children.length <= 1) {
-      //   paginationContainer.classList.add('hidden');
-      // } else {
-      //   paginationContainer.classList.remove('hidden');
-      // }
+      paginationContainer.classList.remove('hidden');
+      const currentPage = [...paginationPageList.children].find((page) => page.classList.contains('active-page'));
+      paginationPageList.innerHTML = renderPages(
+        numberOfPartners.textContent.trim(),
+        currentSortedPartners,
+        Number(currentPage.textContent),
+      );
+      if (paginationPageList.children.length <= 1) {
+        paginationContainer.classList.add('hidden');
+      } else {
+        paginationContainer.classList.remove('hidden');
+      }
     }
 
     if (selectedFiltersArray.length > 0) {
@@ -477,39 +523,50 @@ export default async function decorate(block) {
       handleSort(e.target.value, sortedPartners);
     }
 
-    // if (paginationPageList.children[0].className.includes('active-page')) {
-    //   prevPageButton.classList.add('hidden');
-    // }
-    // searchParams.set('sortBy', e.target.value);
-    // const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
-    // window.history.pushState(null, '', newRelativePathQuery);
+    if (paginationPageList.children[0].className.includes('active-page')) {
+      prevPageButton.classList.add('hidden');
+    }
+    searchParams.set('sortBy', e.target.value);
+    const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
+    window.history.pushState(null, '', newRelativePathQuery);
   });
+
+  // Updates the URL Params based on selected filters
+  const updateFiltersUrlParams = () => {
+    if (selectedFilters['filter-geography'].length > 0) {
+      searchParams.set('filter-geography', selectedFilters['filter-geography'][0]);
+    }
+    if (selectedFilters['filter-industry'].length > 0) {
+      searchParams.set('filter-industry', selectedFilters['filter-industry'][0]);
+    }
+    if (selectedFilters['filter-type'].length > 0) {
+      searchParams.set('filter-type', selectedFilters['filter-type'][0]);
+    }
+    if (selectedFilters['filter-speciality'].length > 0) {
+      const valuesString = selectedFilters['filter-speciality'].toString();
+      searchParams.set('filter-speciality', valuesString);
+    }
+  };
 
   // Partner Showcase Filter logic
   const updateSelectedFilters = (state, key, value) => {
     if (state === true && value.includes('all')) {
       selectedFilters[key].pop();
-      // searchParams.delete(key);
+      searchParams.delete(key);
+      updateFiltersUrlParams();
     } else if (state === true && key !== 'filter-speciality') {
       selectedFilters[key].pop();
       selectedFilters[key].push(value);
-      // searchParams.set(key, value);
+      updateFiltersUrlParams();
     } else if (state === true && !selectedFilters[key].includes(value)) {
       selectedFilters[key].push(value);
-      // const valuesString = selectedFilters[key].toString();
-      // searchParams.set(key, valuesString);
+      updateFiltersUrlParams();
     } else if (state === false && selectedFilters[key].includes(value)) {
       selectedFilters[key].splice(selectedFilters[key].indexOf(value), 1);
-      // const valuesString = selectedFilters[key].toString();
-      // if (selectedFilters[key].length === 0) {
-      //   searchParams.delete(key);
-      // } else {
-      //   searchParams.set(key, valuesString);
-      // }
+      updateFiltersUrlParams();
     }
-    // const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
-    // window.history.pushState(null, '', newRelativePathQuery);
-    console.log(selectedFilters);
+    const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
+    window.history.pushState(null, '', newRelativePathQuery);
     return selectedFilters;
   };
 
@@ -528,10 +585,12 @@ export default async function decorate(block) {
       partnersJson = partnersJson.filter((partner) => partner.category.includes(filters['filter-type']));
     }
 
-    if (filters['filter-speciality'].length > 0) {
+    if (filters['filter-speciality'].length > 1 && Array.isArray(filters['filter-speciality'])) {
       partnersJson = partnersJson.filter((partner) =>
         filters['filter-speciality'].some((filterValue) => partner.topics.includes(filterValue)),
       );
+    } else {
+      partnersJson = partnersJson.filter((partner) => partner.topics.includes(filters['filter-speciality']));
     }
 
     currentFilteredPartners = partnersJson;
@@ -541,21 +600,25 @@ export default async function decorate(block) {
       partnersContainer.innerHTML = `
         <h4 class="no-partners">Sorry, there are no results based on these choices. Please update and try again.</h4>
       `;
-      // paginationContainer.classList.add('hidden');
+      paginationContainer.classList.add('hidden');
+      searchParams.set('page', 1);
     } else {
       appendPartnerShowcasePartners(partnersJson);
-      // paginationContainer.classList.remove('hidden');
-      // const currentPage = [...paginationPageList.children].find((page) => page.classList.contains('active-page'));
-      // paginationPageList.innerHTML = renderPages(
-      //   numOfArticles.textContent.trim(),
-      //   currentFilteredArticles,
-      //   Number(currentPage.textContent),
-      // );
-      // if (paginationPageList.children.length <= 1) {
-      //   paginationContainer.classList.add('hidden');
-      // } else {
-      //   paginationContainer.classList.remove('hidden');
-      // }
+      paginationContainer.classList.remove('hidden');
+      const currentPage = [...paginationPageList.children].find((page) => page.classList.contains('active-page'));
+      paginationPageList.innerHTML = renderPages(
+        numberOfPartners.textContent.trim(),
+        currentFilteredPartners,
+        Number(currentPage.textContent),
+      );
+      if (partnersJson.length <= Number(numberOfPartners.textContent.trim())) {
+        searchParams.set('page', 1);
+      }
+      if (paginationPageList.children.length <= 1) {
+        paginationContainer.classList.add('hidden');
+      } else {
+        paginationContainer.classList.remove('hidden');
+      }
     }
 
     if (sortByEl.value !== '') {
@@ -578,11 +641,203 @@ export default async function decorate(block) {
         handleFilter(selectedFilters, currentSortedPartners);
       }
 
-      // if (paginationPageList.children[0].className.includes('active-page')) {
-      //   prevPageButton.classList.add('hidden');
-      // }
-      // const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
-      // window.history.pushState(null, '', newRelativePathQuery);
+      if (paginationPageList.children[0].className.includes('active-page')) {
+        prevPageButton.classList.add('hidden');
+      }
     });
   });
+
+  // Append partners based on active page
+  const appendNewActivePartnerPage = (startIndex, endIndex, currentPage, partnersJson) => {
+    let newCurrentPartnersData;
+    if (Number(currentPage.textContent) * Number(numberOfPartners.textContent.trim()) >= partnersJson.length) {
+      newCurrentPartnersData = partnersJson.slice(startIndex);
+    } else {
+      newCurrentPartnersData = partnersJson.slice(startIndex, endIndex);
+    }
+    appendPartnerShowcasePartners(newCurrentPartnersData);
+  };
+
+  const handlePageClick = (paginations, activePage) => {
+    const newPageList = paginations.querySelectorAll('.pagination-page');
+    newPageList.forEach((newPage) => {
+      newPage.classList.remove('active-page');
+      if (activePage === newPage.textContent) {
+        newPage.classList.add('active-page');
+      }
+    });
+
+    if (activePage > '1') {
+      prevPageButton.classList.remove('hidden');
+    } else {
+      prevPageButton.classList.add('hidden');
+    }
+
+    if (activePage === paginations.lastChild.textContent) {
+      nextPageButton.classList.add('hidden');
+    } else {
+      nextPageButton.classList.remove('hidden');
+    }
+  };
+
+  const handlePaginationNav = (paginations, nextActivePage) => {
+    [...paginations.children].forEach((page) => page.classList.remove('active-page'));
+    nextActivePage.classList.add('active-page');
+    paginationPageList.innerHTML = renderPages(
+      numberOfPartners.textContent.trim(),
+      currentPartnersData,
+      Number(nextActivePage.textContent),
+    );
+
+    handlePageClick(paginationPageList, nextActivePage.textContent);
+
+    appendNewActivePartnerPage(
+      Number(nextActivePage.textContent) * Number(numberOfPartners.textContent.trim()) -
+        Number(numberOfPartners.textContent.trim()),
+      Number(nextActivePage.textContent) * Number(numberOfPartners.textContent.trim()),
+      nextActivePage,
+      currentPartnersData,
+    );
+
+    searchParams.set('page', nextActivePage.textContent);
+    const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
+    window.history.pushState(null, '', newRelativePathQuery);
+  };
+
+  paginationContainer.addEventListener('click', (e) => {
+    if (e.target && e.target.nodeName === 'BUTTON' && e.target.className === '') {
+      const { target } = e;
+      const targetPageContainer = target.parentElement.parentElement;
+      [...targetPageContainer.children].forEach((page) => page.classList.remove('active-page'));
+      target.parentElement.classList.add('active-page');
+
+      paginationPageList.innerHTML = renderPages(
+        numberOfPartners.textContent.trim(),
+        currentPartnersData,
+        Number(target.textContent),
+      );
+
+      handlePageClick(paginationPageList, target.textContent);
+
+      appendNewActivePartnerPage(
+        Number(target.textContent) * Number(numberOfPartners.textContent.trim()) -
+          Number(numberOfPartners.textContent.trim()),
+        Number(target.textContent) * Number(numberOfPartners.textContent.trim()),
+        target,
+        currentPartnersData,
+      );
+
+      searchParams.set('page', target.textContent);
+      const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
+      window.history.pushState(null, '', newRelativePathQuery);
+    }
+  });
+
+  nextPageButton.addEventListener('click', () => {
+    const paginationList = nextPageButton.previousElementSibling;
+    const activePage = [...paginationList.children].find((page) => page.classList.contains('active-page'));
+    const nextActivePage = activePage.nextElementSibling;
+    handlePaginationNav(paginationList, nextActivePage);
+  });
+
+  prevPageButton.addEventListener('click', () => {
+    const paginationList = prevPageButton.nextElementSibling;
+    const activePage = [...paginationList.children].find((page) => page.classList.contains('active-page'));
+    const nextActivePage = activePage.previousElementSibling;
+    handlePaginationNav(paginationList, nextActivePage);
+  });
+
+  // Set up page state on load based on URL Params
+  const updateStateFromUrlParams = (partnersJson) => {
+    const getUrlParams = window.location.search;
+    const loadedSearchParams = new URLSearchParams(getUrlParams);
+    const partnersOnLoad = partnersJson;
+    if (getUrlParams === '') {
+      return;
+    }
+
+    if (loadedSearchParams.get('sortBy') !== 'asc-title') {
+      sortByEl.value = loadedSearchParams.get('sortBy');
+      handleSort(loadedSearchParams.get('sortBy'), partnersOnLoad);
+    }
+
+    if (
+      loadedSearchParams.get('filter-geography') !== null ||
+      loadedSearchParams.get('filter-industry') !== null ||
+      loadedSearchParams.get('filter-type') !== null ||
+      loadedSearchParams.get('filter-speciality') !== null
+    ) {
+      let filterSpeciality = [];
+      if (loadedSearchParams.get('filter-geography') !== null) {
+        selectedFilters['filter-geography'].push(loadedSearchParams.get('filter-geography'));
+      }
+      if (loadedSearchParams.get('filter-industry') !== null) {
+        selectedFilters['filter-industry'].push(loadedSearchParams.get('filter-industry'));
+      }
+      if (loadedSearchParams.get('filter-type') !== null) {
+        selectedFilters['filter-type'].push(loadedSearchParams.get('filter-type'));
+      }
+      if (loadedSearchParams.get('filter-speciality') !== null) {
+        filterSpeciality = loadedSearchParams.get('filter-speciality').includes(',')
+          ? loadedSearchParams.get('filter-speciality').split(',')
+          : loadedSearchParams.get('filter-speciality');
+        if (Array.isArray(filterSpeciality)) {
+          filterSpeciality.forEach((specialityItem) => selectedFilters['filter-speciality'].push(specialityItem));
+        } else {
+          selectedFilters['filter-speciality'].push(filterSpeciality);
+        }
+      }
+
+      const loadedFilters = {
+        'filter-geography':
+          loadedSearchParams.get('filter-geography') !== null ? [loadedSearchParams.get('filter-geography')] : [],
+        'filter-industry':
+          loadedSearchParams.get('filter-industry') !== null ? [loadedSearchParams.get('filter-industry')] : [],
+        'filter-type': loadedSearchParams.get('filter-type') !== null ? [loadedSearchParams.get('filter-type')] : [],
+        'filter-speciality': filterSpeciality,
+      };
+      const filterValuesArray = [];
+      const loadedFilterValues = Object.values(loadedFilters);
+      loadedFilterValues.forEach((filterValue) => {
+        if (filterValue.length === 1) {
+          filterValuesArray.push(filterValue[0]);
+        } else if (filterValue.length > 1 && Array.isArray(filterValue)) {
+          filterValue.forEach((value) => filterValuesArray.push(value));
+        } else {
+          filterValuesArray.push(filterValue);
+        }
+      });
+      allFilterOptions.forEach((filterOption) => {
+        if (filterValuesArray.includes(filterOption.value)) {
+          filterOption.checked = true;
+          handleFilter(loadedFilters, partnersOnLoad);
+        }
+      });
+    }
+
+    if (loadedSearchParams.get('page') !== '1') {
+      paginationPageList.innerHTML = renderPages(
+        numberOfPartners.textContent.trim(),
+        currentPartnersData,
+        Number(loadedSearchParams.get('page')),
+      );
+      const pageList = paginationPageList.querySelectorAll('.pagination-page');
+      if (pageList.length > 1) {
+        pageList.forEach((page) => {
+          page.classList.remove('active-page');
+          if (loadedSearchParams.get('page') === page.textContent) {
+            page.classList.add('active-page');
+          }
+        });
+      }
+      appendNewActivePartnerPage(
+        Number(loadedSearchParams.get('page')) * Number(numberOfPartners.textContent.trim()) -
+          Number(numberOfPartners.textContent.trim()),
+        Number(loadedSearchParams.get('page')) * Number(numberOfPartners.textContent.trim()),
+        Number(loadedSearchParams.get('page')),
+        currentPartnersData,
+      );
+    }
+  };
+  updateStateFromUrlParams(defaultSortedPartners);
 }

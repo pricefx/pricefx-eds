@@ -354,7 +354,7 @@ a.partner-link::after {
   fill: var(--c-primary-lt);
 }
 
-.pagination-page-list {
+.pagination-pages-list {
   display: flex;
   align-items: center;
   list-style-type: none;

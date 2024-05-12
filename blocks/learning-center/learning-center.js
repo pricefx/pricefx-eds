@@ -571,6 +571,7 @@ export default async function decorate(block) {
         <h4 class="no-articles">Sorry, there are no results based on these choices. Please update and try again.</h4>
       `;
       paginationContainer.classList.add('hidden');
+      searchParams.set('page', 1);
     } else {
       paginationContainer.classList.remove('hidden');
       const currentPage = [...paginationPageList.children].find((page) => page.classList.contains('active-page'));
@@ -655,6 +656,7 @@ export default async function decorate(block) {
         <h4 class="no-articles">Sorry, there are no results based on these choices. Please update and try again.</h4>
       `;
       paginationContainer.classList.add('hidden');
+      searchParams.set('page', 1);
     } else {
       appendLearningCenterArticles(articleJson);
       paginationContainer.classList.remove('hidden');
@@ -664,6 +666,9 @@ export default async function decorate(block) {
         currentSearchedArticles,
         Number(currentPage.textContent),
       );
+      if (articleJson.length <= Number(numOfArticles.textContent.trim())) {
+        searchParams.set('page', 1);
+      }
       if (paginationPageList.children.length <= 1) {
         paginationContainer.classList.add('hidden');
       } else {
@@ -715,27 +720,40 @@ export default async function decorate(block) {
     window.history.pushState(null, '', newRelativePathQuery);
   });
 
+  // Updates the URL Params based on selected filters
+  const updateFiltersUrlParams = () => {
+    if (selectedFilters['filter-type'].length > 0) {
+      searchParams.set('filter-type', selectedFilters['filter-type'][0]);
+    }
+    if (selectedFilters['filter-industry'].length > 0) {
+      const valuesString = selectedFilters['filter-industry'].toString();
+      searchParams.set('filter-industry', valuesString);
+    }
+    if (selectedFilters['filter-role'].length > 0) {
+      const valuesString = selectedFilters['filter-role'].toString();
+      searchParams.set('filter-role', valuesString);
+    }
+    if (selectedFilters['filter-pfx'].length > 0) {
+      searchParams.set('filter-pfx', selectedFilters['filter-pfx'][0]);
+    }
+  };
+
   // Learning Center Filter logic
   const updateSelectedFilters = (state, key, value) => {
     if (state === true && value.includes('all')) {
       selectedFilters[key].pop();
       searchParams.delete(key);
+      updateFiltersUrlParams();
     } else if ((state === true && key === 'filter-type') || key === 'filter-pfx') {
       selectedFilters[key].pop();
       selectedFilters[key].push(value);
-      searchParams.set(key, value);
+      updateFiltersUrlParams();
     } else if (state === true && !selectedFilters[key].includes(value)) {
       selectedFilters[key].push(value);
-      const valuesString = selectedFilters[key].toString();
-      searchParams.set(key, valuesString);
+      updateFiltersUrlParams();
     } else if (state === false && selectedFilters[key].includes(value)) {
       selectedFilters[key].splice(selectedFilters[key].indexOf(value), 1);
-      const valuesString = selectedFilters[key].toString();
-      if (selectedFilters[key].length === 0) {
-        searchParams.delete(key);
-      } else {
-        searchParams.set(key, valuesString);
-      }
+      updateFiltersUrlParams();
     }
     const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
     window.history.pushState(null, '', newRelativePathQuery);
@@ -748,16 +766,20 @@ export default async function decorate(block) {
       articleJson = articleJson.filter((article) => article.category.includes(filters['filter-type']));
     }
 
-    if (filters['filter-industry'].length > 0) {
+    if (filters['filter-industry'].length > 0 && Array.isArray(filters['filter-industry'])) {
       articleJson = articleJson.filter((article) =>
         filters['filter-industry'].some((filterValue) => article.topics.includes(filterValue)),
       );
+    } else {
+      articleJson = articleJson.filter((article) => article.topics.includes(filters['filter-industry']));
     }
 
-    if (filters['filter-role'].length > 0) {
+    if (filters['filter-role'].length > 0 && Array.isArray(filters['filter-role'])) {
       articleJson = articleJson.filter((article) =>
         filters['filter-role'].some((filterValue) => article.topics.includes(filterValue)),
       );
+    } else {
+      articleJson = articleJson.filter((article) => article.topics.includes(filters['filter-role']));
     }
 
     if (filters['filter-pfx'].length > 0) {
@@ -772,6 +794,7 @@ export default async function decorate(block) {
         <h4 class="no-articles">Sorry, there are no results based on these choices. Please update and try again.</h4>
       `;
       paginationContainer.classList.add('hidden');
+      searchParams.set('page', 1);
     } else {
       appendLearningCenterArticles(articleJson);
       paginationContainer.classList.remove('hidden');
@@ -781,6 +804,9 @@ export default async function decorate(block) {
         currentFilteredArticles,
         Number(currentPage.textContent),
       );
+      if (articleJson.length <= Number(numOfArticles.textContent.trim())) {
+        searchParams.set('page', 1);
+      }
       if (paginationPageList.children.length <= 1) {
         paginationContainer.classList.add('hidden');
       } else {
@@ -820,8 +846,6 @@ export default async function decorate(block) {
       if (paginationPageList.children[0].className.includes('active-page')) {
         prevPageButton.classList.add('hidden');
       }
-      const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
-      window.history.pushState(null, '', newRelativePathQuery);
     });
   });
 
@@ -925,6 +949,7 @@ export default async function decorate(block) {
     handlePaginationNav(paginationList, nextActivePage);
   });
 
+  // Set up page state on load based on URL Params
   const updateStateFromUrlParams = (articleJson) => {
     const getUrlParams = window.location.search;
     const loadedSearchParams = new URLSearchParams(getUrlParams);
@@ -959,17 +984,26 @@ export default async function decorate(block) {
         filterIndustry = loadedSearchParams.get('filter-industry').includes(',')
           ? loadedSearchParams.get('filter-industry').split(',')
           : loadedSearchParams.get('filter-industry');
-        filterIndustry.forEach((industryItem) => selectedFilters['filter-industry'].push(industryItem));
+        if (Array.isArray(filterIndustry)) {
+          filterIndustry.forEach((industryItem) => selectedFilters['filter-industry'].push(industryItem));
+        } else {
+          selectedFilters['filter-industry'].push(filterIndustry);
+        }
       }
       if (loadedSearchParams.get('filter-role') !== null) {
         filterRole = loadedSearchParams.get('filter-role').includes(',')
           ? loadedSearchParams.get('filter-role').split(',')
           : loadedSearchParams.get('filter-role');
-        filterRole.forEach((roleItem) => selectedFilters['filter-role'].push(roleItem));
+        if (Array.isArray(filterRole)) {
+          filterRole.forEach((roleItem) => selectedFilters['filter-role'].push(roleItem));
+        } else {
+          selectedFilters['filter-role'].push(filterRole);
+        }
       }
       if (loadedSearchParams.get('filter-pfx') !== null) {
         selectedFilters['filter-pfx'].push(loadedSearchParams.get('filter-pfx'));
       }
+
       const loadedFilters = {
         'filter-type': loadedSearchParams.get('filter-type') !== null ? [loadedSearchParams.get('filter-type')] : [],
         'filter-industry': filterIndustry,
@@ -981,8 +1015,10 @@ export default async function decorate(block) {
       loadedFilterValues.forEach((filterValue) => {
         if (filterValue.length === 1) {
           filterValuesArray.push(filterValue[0]);
-        } else if (filterValue.length > 1) {
+        } else if (filterValue.length > 1 && Array.isArray(filterValue)) {
           filterValue.forEach((value) => filterValuesArray.push(value));
+        } else {
+          filterValuesArray.push(filterValue);
         }
       });
       allFilterOptions.forEach((filterOption) => {
