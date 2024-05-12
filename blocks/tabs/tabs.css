@@ -22,6 +22,7 @@ font-weight: var(--fw-med);
 gap: 8px;
 justify-content: center;
 line-height: 16px;
+outline-offset: 2px;
 padding: 16px 32px;
 position: relative;
 text-align: center;
@@ -47,7 +48,7 @@ text-transform: uppercase;
 }
 
 .tabs button[aria-selected="true"] {
-  background: #1F3053;
+  background: var(--c-btn-drk);
 }
 
 /* Vertical Tabs Styles */
@@ -73,7 +74,7 @@ text-transform: uppercase;
   }
 
   .tabs.vertical .tabs-panel {
-    margin-left: 64px 0 0 50px;
+    margin: 64px 0 0 50px;
   }
 
   .tabs.vertical .tabs-tab {
