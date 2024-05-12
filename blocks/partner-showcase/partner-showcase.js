@@ -114,6 +114,10 @@ window.addEventListener('keydown', closeMobileFilterOnEscape);
 export default async function decorate(block) {
   const [
     configTab,
+    featuredPartner,
+    searchPath,
+    searchPlaceholder,
+    partnersPath,
     numberOfPartners,
     sortBy,
     filterTab,
