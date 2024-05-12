@@ -13,10 +13,11 @@ export default function decorate(block) {
         col.style.boxShadow = 'none';
       }
 
-      if (col.querySelector('a')?.textContent === 'download') {
-        col.querySelector('a').classList.add('download-btn');
-        const downloadLink = col.querySelector('a');
-        const downloadImg = `<img src="/content/dam/pricefx/style-guide/download-icon.png" alt="download" />`;
+      const downloadLink = col.querySelector('a');
+      if (downloadLink?.textContent === 'download') {
+        downloadLink.classList.add('download-btn');
+        downloadLink.setAttribute('aria-label', 'download');
+        const downloadImg = `<span class="icon icon-download"></span>`;
         downloadLink.innerHTML = downloadImg;
       }
 
