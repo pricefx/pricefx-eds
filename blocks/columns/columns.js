@@ -1,4 +1,5 @@
 import { environmentMode } from '../../scripts/global-functions.js';
+import { decorateIcons } from '../../scripts/aem.js';
 
 export default function decorate(block) {
   const cols = [...block.firstElementChild.children];
@@ -19,6 +20,7 @@ export default function decorate(block) {
         downloadLink.setAttribute('aria-label', 'download');
         const downloadImg = `<span class="icon icon-download"></span>`;
         downloadLink.innerHTML = downloadImg;
+        decorateIcons(downloadLink, '', 'Pricefx', 'png');
       }
 
       const pic = col.querySelector('picture');
