@@ -118,33 +118,47 @@ const updateBrowserUrl = (searchParams, key, value) => {
  * @param {Element} block The Learning Center block element
  */
 export default async function decorate(block) {
-  // const [
-  //   featuredPartner,
-  //   searchPath,
-  //   searchPlaceholder,
-  //   partnersPath,
-  //   numberOfPartners,
-  //   sortBy,
-  //   filterOneTitle,
-  //   filterOneMultiSelect,
-  //   filterOneTags,
-  //   filterTwoTitle,
-  //   filterTwoMultiSelect,
-  //   filterTwoTags,
-  //   filterThreeTitle,
-  //   filterThreeMultiSelect,
-  //   filterThreeTags,
-  //   filterFourTitle,
-  //   filterFourMultiSelect,
-  //   filterFourTags,
-  // ] = block.children;
+  const [
+    configTab,
+    featuredPartner,
+    searchPath,
+    searchPlaceholder,
+    partnersPath,
+    numberOfPartners,
+    sortBy,
+    filterTab,
+    filterOneTitle,
+    filterOneMultiSelect,
+    filterOneTags,
+    filterTwoTitle,
+    filterTwoMultiSelect,
+    filterTwoTags,
+    filterThreeTitle,
+    filterThreeMultiSelect,
+    filterThreeTags,
+    filterFourTitle,
+    filterFourMultiSelect,
+    filterFourTags,
+  ] = block.children;
+  configTab.innerHTML = '';
+  filterTab.innerHTML = '';
   block.innerHTML = '';
 
-  const main = document.querySelector('main');
-  const partnerShowcaseWrapper = document.createElement('div');
-  partnerShowcaseWrapper.classList.add('partner-showcase');
-  main.append(partnerShowcaseWrapper);
+  // TODO: Remove from component-models.json
+  featuredPartner.innerHTML = '';
+  searchPath.innerHTML = '';
+  searchPlaceholder.innerHTML = '';
+  partnersPath.innerHTML = '';
 
+  // Fetch Partners content from JSON endpoint
+  const url = '/partners-index.json';
+  const partnersData = await ffetch(url).all();
+  const defaultSortedPartners = partnersData.sort((a, b) => a.title.localeCompare(b.title));
+  let currentPartnersData = [...defaultSortedPartners];
+  // TODO: Remove later
+  console.log(currentPartnersData);
+
+  // Creates a div container to hold the Filter Menu Toggle
   const filterControls = document.createElement('div');
   filterControls.classList.add('ps-filter-controls');
   block.append(filterControls);
