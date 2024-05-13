@@ -2,7 +2,7 @@
   font-family: var(--ff-secondary);
   border-collapse: collapse;
   max-width: 1188px;
-  overflow-x:auto
+  overflow-x:auto;
 }
 
 /* Default Table */
@@ -14,6 +14,8 @@
   align-items: center;
   flex: 1 0 0;
   align-self: stretch;
+  width: 100%;
+  height: 100%;
   
 }
 
@@ -27,8 +29,6 @@
 }
 
 .table .table-default th {
-  padding-top: 12px;
-  padding-bottom: 12px;
   text-align: left;
   background-color: var(--c-copy);
   color: var(--c-white);
@@ -38,10 +38,13 @@
 .table .table-level, .table .levelcolor {
   font-family: var(--ff-secondary);
   border-collapse: collapse;
+  width: 100%;
+  height: 100%;
 }
 
 .table .table-level td,.table  .table-level th, .table .levelcolor td, .table .levelcolor th {
   padding: 24px 32px;
+  text-align: left;
 }
 
 .table .table-level th, .table .levelcolor th {
@@ -61,9 +64,6 @@
 }
 
 /* level color table */
-.table .levelcolor td {
-    font-weight: 700;
-}
 
 .table .levelcolor th {
   padding-top: 12px;
@@ -81,12 +81,12 @@
 .table .table-icon {
   font-family: var(--ff-secondary);
   border: 2px solid black;
-  padding-top: 12px;
-  padding-bottom: 12px;
   background-color: var(--c-disabled);
   color: var(--c-black);
   text-align: center;
-   border-collapse: collapse; 
+  border-collapse: collapse; 
+  width: 100%;
+  height: 100%;
 }
 
 .table .table-icon th {
@@ -121,7 +121,11 @@
   font-family: var(--ff-secondary);
   font-size: var(--base-font-size);
   font-style: normal;
-  font-weight: var(--fw-regular);
+
+  /* font-weight: var(--fw-regular); */
   line-height: 24px; 
+  background: #F2F2F2;
+  width: 100%;
+  height: 100%;
 }
 

@@ -1,5 +1,9 @@
 import { CIRCLEICON } from '../../scripts/constants.js';
 
+function hasNumber(myString) {
+  return /\d/.test(myString);
+}
+
 export default async function decorate(block) {
   // eslint-disable-next-line no-unused-vars
   const [title, showHeader, numberOfColumns, tableVariation, ...rows] = block.children;
@@ -58,8 +62,12 @@ export default async function decorate(block) {
           } else if (cellText === 'no') {
             cell.textContent = '';
           } else {
+            const hasNum = hasNumber(cellText);
+
+            if (hasNum === true) {
+              cell.style.fontWeight = 'var(--fw-bold)';
+            }
             cell.textContent = cellDiv.textContent;
-            // cell.style.fontWeight = 'bold';
           }
           row.appendChild(cell);
         }
@@ -81,8 +89,12 @@ export default async function decorate(block) {
           } else if (cellText === 'no') {
             cell.textContent = '';
           } else {
+            const hasNum = hasNumber(cellText);
+
+            if (hasNum === true) {
+              cell.style.fontWeight = 'var(--fw-bold)';
+            }
             cell.textContent = cellDiv.textContent;
-            // cell.style.fontWeight = 'bold';
           }
 
           if (rowIndex === 0 && showHeader.textContent.replace(/\s+/g, '') === 'true') {
@@ -92,17 +104,16 @@ export default async function decorate(block) {
           row.appendChild(cell);
         }
       });
-    } else if (variation === 'im-connect') {
+    } else if (variation === 'buttonRow') {
       table.classList.add('table-im-connect');
       [...rowDiv.children].forEach((cellDiv) => {
-        if (cellDiv.textContent.trim() !== '') {
-          const cell =
-            showHeader.textContent.replace(/\s+/g, '') === 'true' && rowIndex === 0
-              ? document.createElement('th')
-              : document.createElement('td');
-          cell.textContent = cellDiv.textContent;
-          row.appendChild(cell);
-        }
+        const cell =
+          showHeader.textContent.replace(/\s+/g, '') === 'true' && rowIndex === 0
+            ? document.createElement('th')
+            : document.createElement('td');
+        cell.textContent = cellDiv.textContent;
+
+        row.appendChild(cell);
       });
     }
 
