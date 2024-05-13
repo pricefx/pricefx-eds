@@ -570,6 +570,10 @@
           {
             "name": "Entire Columns Top Padding",
             "value": "columns-top-padding-large"
+          },
+          {
+            "name": "Icons For List Tag",
+            "value": "icons-for-li"
           }
         ]
       }

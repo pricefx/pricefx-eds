@@ -77,6 +77,29 @@
   padding: var(--spacing-xsmall);
 }
 
+.columns.icons-for-li > div ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.columns.icons-for-li > div li {
+  align-items: center;
+  border-bottom: 1px solid; 
+  border-image: linear-gradient(135deg, var(--c-secondary-pink) 0% var(--c-primary-lt) 51.1%, var(--c-secondary-orange-lt) 100%);
+  border-image-slice: 1;
+  display: flex;
+  margin: 24px 0 0;
+  padding-bottom: 20px;
+}
+
+.columns.icons-for-li > div li::before {
+  content: url("../../icons/list-tag-icon.svg");
+  display: inline-block;
+  height: 30px;
+  margin-right: 19px;
+  width: 30px;
+}
+
 .columns.column-padding-small > div > div {
   padding: var(--spacing-xsmall);
 }
