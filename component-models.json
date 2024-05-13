@@ -2171,33 +2171,6 @@
         "name": "configs"
       },
       {
-        "component": "aem-content",
-        "name": "featuredPartner",
-        "value": "",
-        "label": "Featured Partner (Optional)",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "searchPath",
-        "label": "Search Path",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "searchPlaceholderText",
-        "label": "Search Placeholder Text",
-        "valueType": "string"
-      },
-      {
-        "component": "aem-content",
-        "name": "partnersPath",
-        "value": "",
-        "label": "Partners Directory Path",
-        "valueType": "string",
-        "description": "Please enter the path to the Partners directory."
-      },
-      {
         "component": "number",
         "name": "numberOfPartners",
         "label": "No. Of Partners Display",

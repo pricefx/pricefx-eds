@@ -634,10 +634,10 @@ export default async function decorate(block) {
     let articleJson = articleList;
     articleJson = articleJson.filter(
       (result) =>
-        result.category.includes(query) ||
+        result.category.includes(query.replaceAll(' ', '-')) ||
         result.title.toLowerCase().includes(query) ||
         result.description.toLowerCase().includes(query) ||
-        result['cq-tags'].includes(query),
+        result['cq-tags'].includes(query.replaceAll(' ', '-')),
     );
 
     currentSearchedArticles = articleJson;
@@ -682,7 +682,7 @@ export default async function decorate(block) {
     e.preventDefault();
     let searchedArticles = [...defaultSortedArticle];
     const formData = new FormData(e.target);
-    const value = Object.fromEntries(formData)['filter-search'];
+    const value = Object.fromEntries(formData)['filter-search'].toLowerCase();
 
     // Implement search through filtered articles
     const selectedFiltersValues = Object.values(selectedFilters);
