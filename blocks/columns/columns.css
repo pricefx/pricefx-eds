@@ -1,8 +1,13 @@
 .columns > div {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: var(--spacing-medium);
 }
+
+.columns > div:not(:last-child) {
+  margin-bottom: var(--spacing-medium);
+}
+
 
 .columns > div > div h1,
 .columns > div > div h2,
@@ -27,6 +32,13 @@
 
 .columns.column-center-aligned > div {
   text-align: center;
+}
+
+.columns.column-img-center-aligned .columns-img-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .columns.column-mobile-reverse > div {
@@ -73,6 +85,25 @@
   box-shadow: 0 6px 8px 0 rgb(0 0 0 / 10%);
 }
 
+.columns.column-links-color-secondary > div a {
+  color: var(--c-copy);
+}
+
+.columns.column-links-color-secondary > div a:hover,
+.columns.column-links-color-secondary > div a:focus {
+  color: var(--c-mega-menu-link);
+}
+
+.columns.column-download .columns-img-col {
+  position: relative;
+}
+
+.columns.column-download .columns-img-col .download-btn {
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+}
+
 @media (width >= 985px) {
   .columns > div {
     align-items: center;
@@ -89,10 +120,6 @@
 
   .columns.column-gap-medium > div {
     gap: 64px;
-  }
-
-  .columns > div:not(:last-child) {
-    margin-bottom: 50px;
   }
 
   .columns.column-separator > div {
@@ -157,5 +184,9 @@
 
   .columns.columns-2.two-column-7-3 > div > div:last-child {
     flex: 30%;
+  }
+
+  .columns.column-download .columns-img-col .download-btn {
+    bottom: 10px;
   }
 }

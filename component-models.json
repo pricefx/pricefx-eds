@@ -516,6 +516,10 @@
             "value": "column-center-aligned"
           },
           {
+            "name": "Image Center Aligned",
+            "value": "column-img-center-aligned"
+          },
+          {
             "name": "Image Rounded Corner",
             "value": "column-img-rounded-corner"
           },
@@ -554,6 +558,14 @@
           {
             "name": "Column Box Shadow",
             "value": "column-box-shadow"
+          },
+          {
+            "name": "Column Links to Secondary",
+            "value": "column-links-color-secondary"
+          },
+          {
+            "name": "Column Download Enable",
+            "value": "column-download"
           },
           {
             "name": "Entire Columns Top Padding",
