@@ -1952,12 +1952,6 @@
         "label": "Asset Link",
         "valueType": "string",
         "description": "Provide Asset Link"
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "fileName",
-        "label": "File Name"
       }
     ]
   },
