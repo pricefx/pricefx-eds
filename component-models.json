@@ -2386,21 +2386,65 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "fileReference",
-        "label": "Image",
+        "name": "fileReference1",
+        "label": "Image 1",
         "multi": false
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "caseStudyTitle",
-        "label": "Case Study Title"
+        "name": "caseStudyTitle1",
+        "label": "Case Study Title 1"
       },
       {
         "component": "richtext",
-        "name": "caseStudyDescription",
-        "label": "Case Study Description",
+        "name": "caseStudyDescription1",
+        "label": "Case Study Description 1",
         "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "fileReference2",
+        "label": "Image 2",
+        "multi": false
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "caseStudyTitle2",
+        "label": "Case Study Title 2"
+      },
+      {
+        "component": "richtext",
+        "name": "caseStudyDescription2",
+        "label": "Case Study Description 2",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "fileReference3",
+        "label": "Image 3",
+        "multi": false
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "caseStudyTitle3",
+        "label": "Case Study Title 3"
+      },
+      {
+        "component": "richtext",
+        "name": "caseStudyDescription3",
+        "label": "Case Study Description 3",
+        "valueType": "string"
+      },
+      {
+        "component": "boolean",
+        "label": "Swap Right",
+        "name": "swapImage",
+        "valueType": "boolean"
       }
     ]
   }
