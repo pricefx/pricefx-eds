@@ -77,10 +77,6 @@
     line-height: 19px;
 }
 
-/* .related-articles .cards-card-cta a {
-    display: none;
-} */
-
 .blog-articles-top-section {
     display: flex;
     margin-bottom: var(--spacing-jumbo);
