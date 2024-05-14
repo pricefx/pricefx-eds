@@ -134,6 +134,10 @@
   --c-link-lt: #5fbbe8;
   --c-mega-menu-link: #2d9bd2;
   --c-card-subtitle: #c9559e;
+  --c-table-border: #ddd;
+  --c-table-level: #E6F5FC;
+  --c-table-level-header: #3C5EA3;
+  --c-table-background: #F2F2F2;
 
   /* Alerts */
   --c-disabled-border: var(--c-gray-border);

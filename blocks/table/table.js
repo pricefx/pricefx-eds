@@ -1,4 +1,5 @@
 import { CIRCLEICON } from '../../scripts/constants.js';
+import { decorateButtons } from '../../scripts/aem.js';
 
 function hasNumber(myString) {
   return /\d/.test(myString);
@@ -111,7 +112,13 @@ export default async function decorate(block) {
           showHeader.textContent.replace(/\s+/g, '') === 'true' && rowIndex === 0
             ? document.createElement('th')
             : document.createElement('td');
-        cell.textContent = cellDiv.textContent;
+
+        if (rowIndex === 0) {
+          cell.textContent = cellDiv.textContent;
+        } else if (rowIndex >= 1) {
+          cell.appendChild(cellDiv);
+          decorateButtons(cellDiv);
+        }
 
         row.appendChild(cell);
       });
