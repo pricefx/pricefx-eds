@@ -27,6 +27,8 @@
     font-weight: var(--fw-lt-bold);
     line-height: calc((26 / 16) * 1rem);
     color: var(--c-extra-dark);
+    -webkit-text-fill-color: var(--c-extra-dark);
+    background: transparent;
 }
 
 .related-articles.cards .article-subtitle {
