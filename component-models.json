@@ -1936,7 +1936,7 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "fileReference",
+        "name": "downloadImageFile",
         "label": "DownLoad Image",
         "multi": false
       },
@@ -1944,21 +1944,43 @@
         "component": "text-input",
         "valueType": "string",
         "name": "alt",
-        "value": "Download Alt",
         "label": "Alt Text"
       },
       {
         "component": "aem-content",
-        "name": "assetLink",
-        "label": "Asset Link",
         "valueType": "string",
-        "description": "Provide Asset Link"
+        "name": "assetLink",
+        "value": "",
+        "label": "assetLink"
       },
       {
-        "component": "text-input",
+        "component": "boolean",
+        "valueType": "boolean",
+        "label": "Target Blank",
+        "name": "targetBlank",
+        "description": "When selected, the link will open in a new window"
+      },
+      {
+        "component": "select",
+        "name": "type",
+        "value": "",
+        "label": "Alignment",
         "valueType": "string",
-        "name": "fileName",
-        "label": "File Name"
+        "description": "Choose Alignment for Download image",
+        "options": [
+          {
+            "name": "Left - Default",
+            "value": ""
+          },
+          {
+            "name": "Right",
+            "value": "right"
+          },
+          {
+            "name": "center",
+            "value": "center"
+          }
+        ]
       }
     ]
   },
