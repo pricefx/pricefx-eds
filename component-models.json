@@ -347,7 +347,7 @@
         "valueType": "string",
         "name": "imageAlt",
         "label": "Image Alt Text",
-        "value": ""
+        "value": "Default alt"
       },
       {
         "component": "reference",
@@ -405,6 +405,13 @@
         "label": "Left Right Boxed Content",
         "value": "",
         "description": "ⓘ Heading (H2) and Description"
+      },
+      {
+        "component": "boolean",
+        "label": "Reverse order in mobile",
+        "name": "boxedMobileReverse",
+        "valueType": "boolean",
+        "description": "When selected, Image will be on top."
       }
     ]
   },
@@ -2336,12 +2343,6 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "totalResultsTitle",
-        "label": "Total Results Title"
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
         "name": "NoResultsTitle",
         "label": "No Results Title"
       }
@@ -2404,6 +2405,11 @@
         "name": "fileReference2",
         "label": "Image 2",
         "multi": false
+      },
+      {
+        "component": "tab",
+        "label": "Filters",
+        "name": "filters"
       },
       {
         "component": "text-input",

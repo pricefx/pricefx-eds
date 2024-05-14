@@ -63,7 +63,7 @@ export default async function decorate(block) {
       /* Eyebrow Text */
       if (row.firstElementChild?.textContent !== '') {
         const boxedEyebrowText = document.createElement('span');
-        boxedEyebrowText.classList.add('boxed-eyebrow-text');
+        boxedEyebrowText.classList.add('eyebrow-text');
         boxedEyebrowText.append(row.firstElementChild);
         boxedLeftContainerInner.append(boxedEyebrowText);
       }
@@ -71,6 +71,12 @@ export default async function decorate(block) {
       /* Left Right Boxed Content */
       boxedLeftContainerInner.append(row.firstElementChild || '');
       boxedLeftContainer.append(boxedLeftContainerInner);
+    } else if (index === 9) {
+      /* Reverse order in Mobile */
+      const mobileReverse = row.firstElementChild?.textContent || 'false';
+      if (mobileReverse === 'true') {
+        boxedContainer.classList.add('boxed-mobile-reverse');
+      }
     }
   });
   decorateRightContainer(boxedRightContainer);

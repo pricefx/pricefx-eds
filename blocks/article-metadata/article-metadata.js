@@ -4,32 +4,43 @@ import { BASE_CONTENT_PATH } from '../../scripts/url-constants.js';
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
-  const options = { month: 'long', day: 'numeric', year: 'numeric' };
-  return date.toLocaleDateString('en-US', options);
+  const day = date.getDate();
+  let dayWithSuffix;
+  if (day === 1 || day === 21 || day === 31) {
+    dayWithSuffix = `${day}st`;
+  } else if (day === 2 || day === 22) {
+    dayWithSuffix = `${day}nd`;
+  } else if (day === 3 || day === 23) {
+    dayWithSuffix = `${day}rd`;
+  } else {
+    dayWithSuffix = `${day}th`;
+  }
+  const month = date.toLocaleDateString('en-US', { month: 'long' });
+  const year = date.getFullYear();
+  return `${month} ${dayWithSuffix}, ${year}`;
 };
 
 const formatDateFromTimestamp = (timestamp) => {
   const date = new Date(timestamp);
-  const options = { month: 'short', day: 'numeric', year: 'numeric' };
-  return date.toLocaleDateString('en-US', options);
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const year = date.getFullYear();
+  return `${month}/${day}/${year}`;
 };
 
 const toTitleCase = (str) => str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 
-// Function to generate author page link
 const getAuthorPageLink = (authorName) => `${authorName.replace(/\s+/g, '-').toLowerCase()}`;
 
 export default async function decorate(block) {
   const container = document.createElement('div');
   container.classList.add('article-metadata-container');
 
-  // Extracting metadata
   const articleAuthors = getMetadata('authors');
   const articlePostDate = getMetadata('publishdate');
   const articleReadTime = getMetadata('readingtime');
   const articleUpdatedDate = getMetadata('published-time');
 
-  // Extracting authorsParentPagePath from block's text content
   let authorsParentPagePath = '';
   if (block.children.length > 0) {
     const [firstChild] = block.children;
@@ -38,26 +49,18 @@ export default async function decorate(block) {
 
   block.textContent = '';
 
-  // Formatting authorsParentPagePath
   let authorsParentPagePathFormatted = authorsParentPagePath;
   const isPublishEnvironment = environmentMode() === 'publish';
 
-  if (!isPublishEnvironment) {
-    // In the author environment, ensure the URL does not end with a slash
-    // Append a slash only if the URL doesn't already end with it
-    if (!authorsParentPagePathFormatted.endsWith('/')) {
-      authorsParentPagePathFormatted += '/';
-    }
+  if (!isPublishEnvironment && !authorsParentPagePathFormatted.endsWith('/')) {
+    authorsParentPagePathFormatted += '/';
   } else {
-    // In the publish environment, remove the base path if present
     authorsParentPagePathFormatted = authorsParentPagePathFormatted.replace(BASE_CONTENT_PATH, '');
   }
 
-  // Format post date and updated date
   const postDate = formatDate(articlePostDate);
   const updatedDate = formatDateFromTimestamp(articleUpdatedDate);
 
-  // Generate authors list
   const authors = articleAuthors
     .split(',')
     .map((authorTag) => {
@@ -68,21 +71,17 @@ export default async function decorate(block) {
         .map((word) => toTitleCase(word))
         .join(' ');
       const authorLink = document.createElement('a');
-      let authorPageLink = '';
-      if (!isPublishEnvironment) {
-        authorPageLink = `${authorsParentPagePathFormatted}${getAuthorPageLink(authorName)}.html`;
-      } else {
-        authorPageLink = `/authors/${getAuthorPageLink(authorName)}`;
-      }
+      const authorPageLink = !isPublishEnvironment
+        ? `${authorsParentPagePathFormatted}${getAuthorPageLink(authorName)}.html`
+        : `/authors/${getAuthorPageLink(authorName)}`;
       authorLink.href = authorPageLink;
       authorLink.textContent = authorName;
       return authorLink.outerHTML;
     })
     .join(' & ');
 
-  // Create elements for post date and authors
   const postDateElement = document.createElement('div');
-  postDateElement.textContent = `${postDate} (Updated ${updatedDate}) | ${articleReadTime} min. read`;
+  postDateElement.textContent = `${postDate} (Updated ${updatedDate})${articleReadTime ? ` | ${articleReadTime} min. read` : ''}`;
   const authorsElement = document.createElement('div');
   authorsElement.innerHTML = `By ${authors}`;
 

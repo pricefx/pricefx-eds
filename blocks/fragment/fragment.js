@@ -6,7 +6,6 @@
 
 import { decorateMain } from '../../scripts/scripts.js';
 import { loadBlocks } from '../../scripts/aem.js';
-import { environmentMode } from '../../scripts/global-functions.js';
 
 /**
  * Loads a fragment.
@@ -15,7 +14,8 @@ import { environmentMode } from '../../scripts/global-functions.js';
  */
 export async function loadFragment(path) {
   if (path && path.startsWith('/')) {
-    const resp = await fetch(`${path}.plain.html`);
+    const fragmentPath = path.replace(/\.html$/, '');
+    const resp = await fetch(`${fragmentPath}.plain.html`);
     if (resp.ok) {
       const main = document.createElement('main');
       main.innerHTML = await resp.text();
@@ -46,11 +46,7 @@ export default async function decorate(block) {
     const fragmentSection = fragment.querySelector(':scope .section');
     if (fragmentSection) {
       block.closest('.section').classList.add(...fragmentSection.classList);
-      if (!environmentMode() === 'publish') {
-        block.closest('.fragment').append(...fragment.childNodes);
-      } else {
-        block.closest('.fragment').replaceWith(...fragment.childNodes);
-      }
+      block.closest('.fragment').append(...fragment.childNodes);
     }
   }
 }
