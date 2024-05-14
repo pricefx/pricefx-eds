@@ -23,7 +23,7 @@
 .related-articles.cards .article-title {
     margin-top: 0;
     font-family: var(--ff-secondary);
-    font-size: calc((20 / 16) * 1rem);
+    font-size: var(--heading-font-size-s);
     font-weight: var(--fw-lt-bold);
     line-height: calc((26 / 16) * 1rem);
     color: var(--c-extra-dark);
