@@ -3,7 +3,8 @@ import { IMAGETEXT } from '../../scripts/constants.js';
 function addElementsToContainer(container, elements) {
   const tempContainer = document.createElement('div');
   tempContainer.classList.add('content');
-  elements.forEach((element) => {
+  elements.forEach((element, index) => {
+    element.classList.add(`index-${index}`);
     tempContainer.appendChild(element);
   });
   container.appendChild(tempContainer);
@@ -123,8 +124,6 @@ export default async function decorate(block) {
 
       supportContainer.appendChild(content);
     } else if (index >= 9) {
-      // const elementsInContainer = [];
-
       if (index >= 9 && index <= 11) {
         elementsInContainer.push(row);
         if (index === 11) {
