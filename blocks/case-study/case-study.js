@@ -29,7 +29,7 @@ function createImageContainer(imageSrc, title, text, widthClass) {
 }
 
 export default async function decorate(block) {
-  const [image1, title1, text1, image2, title2, text2, image3, title3, text3, swapRight] = block.children;
+  const [image1, title1, text1, image2, , title2, text2, image3, title3, text3, swapRight] = block.children;
 
   const container = document.createElement('div');
   container.classList.add('container');
