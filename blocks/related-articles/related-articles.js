@@ -457,7 +457,7 @@ export default async function decorate(block) {
   const url = ARTICLE_INDEX_PATH;
   // Get Data
   const data = await ffetch(url).all();
-  const type = block.children[0]?.textContent.trim();
+  const type = block.children[0]?.textContent.trim() || 'related';
   const title = block.children[1]?.textContent.trim();
   const titleEle = `<h2>${title}</h2>`;
   const columnLayout = block.children[2]?.textContent.trim() || 'three-column';
