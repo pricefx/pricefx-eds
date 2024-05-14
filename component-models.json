@@ -347,7 +347,7 @@
         "valueType": "string",
         "name": "imageAlt",
         "label": "Image Alt Text",
-        "value": ""
+        "value": "Default alt"
       },
       {
         "component": "reference",

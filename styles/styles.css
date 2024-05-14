@@ -349,6 +349,19 @@ h6 {
   text-transform: uppercase;
 }
 
+.eyebrow-text p {
+  color: var(--c-copy);
+  text-align: center;
+  font-family: var(--ff-primary);
+  font-size: var(--heading-font-size-s);
+  font-style: normal;
+  font-weight: var(--fw-med);
+  line-height: 25px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+
 /* Button Styles */
 /* button / a.button will be just a link */ 
 a.button.primary,
@@ -483,6 +496,14 @@ button.tertiary::after {
     letter-spacing: normal;
     line-height: 1.27;
     text-transform: none;
+  }
+
+  .eyebrow-text p {
+    font-size: var(--heading-font-size-m);
+    font-weight: var(--fw-bold);
+    line-height: 28px;
+    text-transform: capitalize;
+    letter-spacing: normal;
   }
 }
 

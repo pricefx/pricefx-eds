@@ -63,7 +63,7 @@ export default async function decorate(block) {
       /* Eyebrow Text */
       if (row.firstElementChild?.textContent !== '') {
         const boxedEyebrowText = document.createElement('span');
-        boxedEyebrowText.classList.add('boxed-eyebrow-text');
+        boxedEyebrowText.classList.add('eyebrow-text');
         boxedEyebrowText.append(row.firstElementChild);
         boxedLeftContainerInner.append(boxedEyebrowText);
       }
