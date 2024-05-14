@@ -105,6 +105,10 @@
    flex-shrink: 0;
 }
 
+.imagetext .content{
+  padding: 10px;
+}
+
 .imagetext .content {
   padding: 10px;
 }
