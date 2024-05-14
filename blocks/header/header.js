@@ -1,7 +1,7 @@
 import ffetch from '../../scripts/ffetch.js';
 import { SEARCH } from '../../scripts/constants.js';
 import { decorateIcons } from '../../scripts/aem.js';
-import { SEARCH_PATH } from '../../scripts/url-constants.js';
+import { SEARCH_INDEX_PATH } from '../../scripts/url-constants.js';
 
 const isDesktop = window.matchMedia('(min-width: 986px)');
 
@@ -314,7 +314,7 @@ export default async function decorate(block) {
     }
     allMegamenu.forEach((megamenu) => megamenu.classList.remove('megamenu-wrapper--active'));
     // Mobile Search
-    mobileHeader.querySelector('.megamenu-wrapper--active').classList.remove('megamenu-wrapper--active');
+    mobileHeader.querySelector('.megamenu-wrapper').classList.remove('megamenu-wrapper--active');
   });
 
   // ----------------------------
@@ -505,7 +505,7 @@ export default async function decorate(block) {
       const suggestionDiv = event.target.parentElement.nextElementSibling;
 
       if (searchJson.length === 0) {
-        searchJson = await ffetch(SEARCH_PATH).all();
+        searchJson = await ffetch(SEARCH_INDEX_PATH).all();
       }
 
       if (value.length > 2) {
