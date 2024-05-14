@@ -25,7 +25,7 @@
   font-size: var(--body-font-size-l);
   font-style: normal;
   font-weight: var(--fw-regular);
-  line-height: 27px;
+  line-height: 22px;
   text-align: left ;
   padding-top: calc((20 / 16) * 1rem);
 }
