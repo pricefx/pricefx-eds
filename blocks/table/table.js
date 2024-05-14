@@ -75,7 +75,12 @@ export default async function decorate(block) {
       });
     } else if (variation === 'LevelColor') {
       table.classList.add('levelcolor');
-      const columnColors = ['#FFFFFF', '#f5a057', '#41b6e6', '#6eb74a'];
+      const columnColors = [
+        'var(--c-white)',
+        'var(--c-level-header-1)',
+        'var(--c-level-header-2)',
+        'var(--c-level-header-3)',
+      ];
 
       [...rowDiv.children].forEach((cellDiv, cellIndex) => {
         if (cellDiv.textContent.trim() !== '') {

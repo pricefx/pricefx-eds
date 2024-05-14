@@ -138,6 +138,9 @@
   --c-table-level: #E6F5FC;
   --c-table-level-header: #3C5EA3;
   --c-table-background: #F2F2F2;
+  --c-level-header-1: #f5a057;
+  --c-level-header-2: #41b6e6;
+  --c-level-header-3: #6eb74a;
 
   /* Alerts */
   --c-disabled-border: var(--c-gray-border);

@@ -60,7 +60,7 @@
   padding-top: calc((12 / 16) * 1rem);
   padding-bottom: calc((12 / 16) * 1rem);
   text-align: left;
-  background-color: (--c-outline-drk);
+  background-color: var(--c-outline-drk);
   color: var(--c-white);
 }
 
