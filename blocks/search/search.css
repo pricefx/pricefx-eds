@@ -101,6 +101,11 @@
     color: var(--c-copy);
 }
 
+.search-results-item-publish-date {
+    color: var(--c-copy);
+    margin-top: var(--spacing-xsmall);
+}
+
 .search-no-results {
     text-align: center;
     padding: var(--spacing-xlarge) 0;
