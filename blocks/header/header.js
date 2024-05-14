@@ -307,6 +307,16 @@ export default async function decorate(block) {
     allMegamenu.forEach((megamenu) => megamenu.classList.remove('megamenu-wrapper--active'));
   });
 
+  // Click oustide to close mega menu Event Handler
+  document.addEventListener('click', (event) => {
+    if (block.contains(event.target)) {
+      return;
+    }
+    allMegamenu.forEach((megamenu) => megamenu.classList.remove('megamenu-wrapper--active'));
+    // Mobile Search
+    mobileHeader.querySelector('.megamenu-wrapper--active').classList.remove('megamenu-wrapper--active');
+  });
+
   // ----------------------------
   // FOR MOBILE HEADER & MEGAMENU
   // Render Mobile Brand Logo
