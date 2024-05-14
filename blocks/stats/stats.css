@@ -22,7 +22,6 @@
 
 .stat-title {
     align-items: center;
-    color: var(--c-white);
     display: flex;
     font-family: var(--ff-primary);
     font-size: calc((50 / 16) * 1rem);
@@ -32,10 +31,14 @@
     margin-bottom: 16px;
     text-align: center;
 
-    sup {
-        font-size: calc((28 / 16) * 1rem);
-        font-weight: var(--fw-xx-bold);
-        line-height: 30px; 
+    h1,h2,h3,h4,h5,h6,p {
+        color: var(--c-white);
+
+        sup {
+            font-size: calc((28 / 16) * 1rem);
+            font-weight: var(--fw-xx-bold);
+            line-height: 30px; 
+        }
     }
 }
 
@@ -62,7 +65,9 @@
 
 .no-background .stat-title,
 .no-background .stat-description {
-    color: var(--c-copy);
+    h1,h2,h3,h4,h5,h6,p {
+        color: var(--c-copy);
+    }
 }
 
 .no-background .stat-description {
