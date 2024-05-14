@@ -1445,6 +1445,7 @@
         "component": "select",
         "label": "Article Type",
         "name": "articleType",
+        "value": "related",
         "valueType": "string",
         "description": "Choose the Article Type",
         "options": [
