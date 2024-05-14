@@ -1797,7 +1797,7 @@
         "label": "Alt Text"
       },
       {
-        "component": "text-input",
+        "component": "aem-content",
         "valueType": "string",
         "name": "assetLink",
         "value": "",

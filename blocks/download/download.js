@@ -4,7 +4,7 @@ export default function decorate(block) {
   downloadDiv.classList.add('download-container');
 
   const target = targetDiv.querySelector('p') ? targetDiv.querySelector('p').textContent.trim() : 'false';
-  if (alignmentDiv.querySelector('p')) {
+  if (alignmentDiv?.querySelector('p')) {
     const alignment = alignmentDiv.querySelector('p').textContent;
     downloadDiv.classList.add(alignment);
   }
@@ -16,8 +16,6 @@ export default function decorate(block) {
     assetLink = assetLinkDiv.querySelector('img').src;
   } else if (assetLinkDiv.querySelector('a')) {
     assetLink = assetLinkDiv.querySelector('a').href;
-  } else {
-    assetLink = assetLinkDiv.querySelector('p').textContent;
   }
 
   const image = imageDiv.querySelector('img');
