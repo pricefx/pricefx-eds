@@ -72,6 +72,7 @@ export default async function decorate(block) {
       boxedLeftContainerInner.append(row.firstElementChild || '');
       boxedLeftContainer.append(boxedLeftContainerInner);
     } else if (index === 9) {
+      /* Reverse order in Mobile */
       const mobileReverse = row.firstElementChild?.textContent || 'false';
       if (mobileReverse === 'true') {
         boxedContainer.classList.add('boxed-mobile-reverse');
