@@ -347,7 +347,7 @@
         "valueType": "string",
         "name": "imageAlt",
         "label": "Image Alt Text",
-        "value": ""
+        "value": "Default alt"
       },
       {
         "component": "reference",
@@ -405,6 +405,13 @@
         "label": "Left Right Boxed Content",
         "value": "",
         "description": "ⓘ Heading (H2) and Description"
+      },
+      {
+        "component": "boolean",
+        "label": "Reverse order in mobile",
+        "name": "boxedMobileReverse",
+        "valueType": "boolean",
+        "description": "When selected, Image will be on top."
       }
     ]
   },
