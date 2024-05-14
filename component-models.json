@@ -2336,12 +2336,6 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "totalResultsTitle",
-        "label": "Total Results Title"
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
         "name": "NoResultsTitle",
         "label": "No Results Title"
       }
