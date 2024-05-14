@@ -654,7 +654,7 @@ main .section.highlight {
   margin-top: 0;
 }
 
-.section[data-sectionbuttoninline="true"] .button-wrapper,
+.section[data-sectionbuttoninline="true"] .button-container,
 .section[data-sectionbuttoninline="true"] .button-pfx-wrapper {
   display: inline-block;
   margin-right: 10px;
