@@ -1,6 +1,17 @@
 import { IMAGETEXT } from '../../scripts/constants.js';
 
+function addElementsToContainer(container, elements) {
+  const tempContainer = document.createElement('div');
+  tempContainer.classList.add('content');
+  elements.forEach((element) => {
+    tempContainer.appendChild(element);
+  });
+  container.appendChild(tempContainer);
+}
+
 export default async function decorate(block) {
+  let elementsInContainer = [];
+
   let enableIcon = false;
 
   const imagetext = document.createElement('div');
@@ -30,10 +41,13 @@ export default async function decorate(block) {
   const rightContainer = document.createElement('div');
   rightContainer.classList.add('right-container');
 
-  const button = document.createElement('a');
+  const leftInnerContainer = document.createElement('div');
+  leftInnerContainer.classList.add('inner-left-container');
 
-  const placeholder = document.createElement('div');
-  placeholder.classList.add('placeholder');
+  const rightInnerContainer = document.createElement('div');
+  rightInnerContainer.classList.add('inner-right-container');
+
+  const button = document.createElement('a');
 
   [...block.children].forEach((row, index) => {
     if (index === 0) {
@@ -108,48 +122,41 @@ export default async function decorate(block) {
       content.innerHTML = row.firstElementChild.innerHTML;
 
       supportContainer.appendChild(content);
-    } else if (index >= 9 && index <= 11) {
-      /* Support 1 eyebrow, Logo, description */
-      const firstChild = row.firstElementChild;
-      const className = `index-${index}`;
-      firstChild.classList.add(className);
+    } else if (index >= 9) {
+      // const elementsInContainer = [];
 
-      const content = document.createElement('div');
-      content.classList.add('content');
-      content.appendChild(firstChild);
-      leftContainer.appendChild(content);
-    } else if (index >= 12 && index <= 14) {
-      /* Support 2 eyebrow, Logo, description */
-      const firstChild = row.firstElementChild;
-      const className = `index-${index}`;
-      firstChild.classList.add(className);
-
-      const content = document.createElement('div');
-      content.classList.add('content');
-      content.appendChild(firstChild);
-      rightContainer.appendChild(content);
-    } else if (index >= 15 && index <= 17) {
-      /* Support 3 eyebrow, Logo, description */
-
-      const firstChild = row.firstElementChild;
-      const className = `index-${index}`;
-      firstChild.classList.add(className);
-
-      const content = document.createElement('div');
-      content.classList.add('content');
-      content.appendChild(firstChild);
-      leftContainer.appendChild(content);
-    } else if (index >= 18 && index <= 20) {
-      /* Support 4 eyebrow, Logo, description */
-      const firstChild = row.firstElementChild;
-      const className = `index-${index}`;
-      firstChild.classList.add(className);
-
-      const content = document.createElement('div');
-      content.classList.add('content');
-      content.appendChild(firstChild);
-      rightContainer.appendChild(content);
+      if (index >= 9 && index <= 11) {
+        elementsInContainer.push(row);
+        if (index === 11) {
+          addElementsToContainer(leftInnerContainer, elementsInContainer);
+          elementsInContainer = [];
+        }
+      }
+      if (index >= 12 && index <= 14) {
+        elementsInContainer.push(row);
+        if (index === 14) {
+          addElementsToContainer(rightInnerContainer, elementsInContainer);
+          elementsInContainer = [];
+        }
+      }
+      if (index >= 15 && index <= 17) {
+        elementsInContainer.push(row);
+        if (index === 17) {
+          addElementsToContainer(leftInnerContainer, elementsInContainer);
+          elementsInContainer = [];
+        }
+      }
+      if (index >= 18 && index <= 20) {
+        elementsInContainer.push(row);
+        if (index === 20) {
+          addElementsToContainer(rightInnerContainer, elementsInContainer);
+          elementsInContainer = [];
+        }
+      }
     }
+
+    leftContainer.appendChild(leftInnerContainer);
+    rightContainer.appendChild(rightInnerContainer);
   });
 
   container.appendChild(leftContainer);
