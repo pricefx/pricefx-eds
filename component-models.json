@@ -1786,7 +1786,7 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "fileReference",
+        "name": "downloadImageFile",
         "label": "DownLoad Image",
         "multi": false
       },
