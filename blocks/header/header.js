@@ -1,6 +1,7 @@
 import ffetch from '../../scripts/ffetch.js';
 import { SEARCH } from '../../scripts/constants.js';
 import { decorateIcons } from '../../scripts/aem.js';
+import { SEARCH_PATH } from '../../scripts/url-constants.js';
 
 const isDesktop = window.matchMedia('(min-width: 986px)');
 
@@ -253,14 +254,15 @@ export default async function decorate(block) {
   const searchWrapperDesktop = document.createElement('div');
   searchWrapperDesktop.classList.add('search-wrapper');
   searchWrapperDesktop.innerHTML = `
-    <button class="header-search-cta" aria-label="Search">
+    <button class="header-search-cta" aria-label="Search" aria-haspopup="Search">
       ${SEARCH}
     </button>
-    <div class="search-input-wrapper">
-      <button type="submit">
-        ${SEARCH}
-      </button>
-      <input type="text" name="search" aria-label="Search" placeholder="Search pricefx.com">
+    <div class="search-input-wrapper megamenu-wrapper">
+      <form action="/search">
+        <button type="submit">${SEARCH}</button>
+        <input type="text" name="q" aria-label="Search" placeholder="Search pricefx.com" autocomplete="off">
+      </form>
+      <div class="search-suggestion"></div>
     </div>
   `;
   nav.insertAdjacentElement('afterend', searchWrapperDesktop);
@@ -295,8 +297,24 @@ export default async function decorate(block) {
       activeMegamenu.classList.add('megamenu-wrapper--active');
     });
   });
+
   searchToggle.addEventListener('focus', () => {
     allMegamenu.forEach((megamenu) => megamenu.classList.remove('megamenu-wrapper--active'));
+    searchToggle.nextElementSibling.classList.add('megamenu-wrapper--active');
+  });
+
+  expertCta.addEventListener('focus', () => {
+    allMegamenu.forEach((megamenu) => megamenu.classList.remove('megamenu-wrapper--active'));
+  });
+
+  // Click oustide to close mega menu Event Handler
+  document.addEventListener('click', (event) => {
+    if (block.contains(event.target)) {
+      return;
+    }
+    allMegamenu.forEach((megamenu) => megamenu.classList.remove('megamenu-wrapper--active'));
+    // Mobile Search
+    mobileHeader.querySelector('.megamenu-wrapper--active').classList.remove('megamenu-wrapper--active');
   });
 
   // ----------------------------
@@ -317,14 +335,15 @@ export default async function decorate(block) {
   const searchWrapperMobile = document.createElement('div');
   searchWrapperMobile.classList.add('search-wrapper');
   searchWrapperMobile.innerHTML = `
-    <button class="header-search-cta" aria-label="Search">
+    <button class="header-search-cta" aria-label="Search" aria-haspopup="Search">
       ${SEARCH}
     </button>
-    <div class="search-input-wrapper">
-      <button type="submit">
-        ${SEARCH}
-      </button>
-      <input type="text" name="search" aria-label="Search" placeholder="Search pricefx.com">
+    <div class="search-input-wrapper megamenu-wrapper">
+      <form action="/search">
+        <button type="submit">${SEARCH}</button>
+        <input type="text" name="search" aria-label="Search" placeholder="Search pricefx.com" autocomplete="off">
+      </form>
+      <div class="search-suggestion"></div>
     </div>
   `;
   mobileNavControlWrapper.append(searchWrapperMobile);
@@ -453,6 +472,17 @@ export default async function decorate(block) {
     });
   });
 
+  // Mobile Search
+  const mobileSearchToggle = mobileHeader.querySelector('.header-search-cta');
+  mobileSearchToggle.addEventListener('click', () => {
+    // allMegamenu.forEach((megamenu) => megamenu.classList.remove('megamenu-wrapper--active'));
+    mobileSearchToggle.nextElementSibling.classList.add('megamenu-wrapper--active');
+  });
+
+  hamburger.addEventListener('focus', () => {
+    mobileHeader.querySelector('.megamenu-wrapper--active').classList.remove('megamenu-wrapper--active');
+  });
+
   // Render Mobile Talk to an Expert CTA
   const mobileExpertCta = document.createElement('a');
   mobileExpertCta.classList.add('expert-cta');
@@ -464,4 +494,38 @@ export default async function decorate(block) {
   const backdrop = document.createElement('div');
   backdrop.classList.add('backdrop');
   mobileHeader.append(backdrop);
+
+  // Search Autosuggestion
+  const searchInput = block.querySelectorAll('.search-input-wrapper input');
+  let searchJson = [];
+  let suggestionJson;
+  searchInput.forEach((inputText) =>
+    inputText.addEventListener('keyup', async (event) => {
+      const { value } = event.target;
+      const suggestionDiv = event.target.parentElement.nextElementSibling;
+
+      if (searchJson.length === 0) {
+        searchJson = await ffetch(SEARCH_PATH).all();
+      }
+
+      if (value.length > 2) {
+        suggestionJson = searchJson.filter((item) => item.title.toLowerCase().includes(value));
+
+        if (suggestionJson.length > 1) {
+          let markup = '';
+          const suggestionList = suggestionJson.slice(0, 5);
+          suggestionList.forEach((list) => {
+            markup += `<li><a href="${list.path}">${list.title}</a></li>`;
+          });
+          suggestionDiv.innerHTML = `
+            <ul>
+              ${markup}
+              <li><a href="/search?q=${value}">View All<a>
+            </</ul>`;
+        }
+      } else {
+        suggestionDiv.innerHTML = '';
+      }
+    }),
+  );
 }
