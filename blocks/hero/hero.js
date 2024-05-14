@@ -92,7 +92,7 @@ export default async function decorate(block) {
       /* Eyebrow Text */
       if (row.firstElementChild?.textContent !== '') {
         const heroPreHeader = document.createElement('span');
-        heroPreHeader.classList.add('hero-pre-header');
+        heroPreHeader.classList.add('eyebrow-text');
         heroPreHeader.append(row.firstElementChild);
         heroLeftContainerInner.append(heroPreHeader);
       }

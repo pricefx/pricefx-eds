@@ -134,6 +134,13 @@
   --c-link-lt: #5fbbe8;
   --c-mega-menu-link: #2d9bd2;
   --c-card-subtitle: #c9559e;
+  --c-table-border: #ddd;
+  --c-table-level: #e6f5fc;
+  --c-table-level-header: #3c5ea3;
+  --c-table-background: #f2f2f2;
+  --c-level-header-1: #f5a057;
+  --c-level-header-2: #41b6e6;
+  --c-level-header-3: #6eb74a;
 
   /* Alerts */
   --c-disabled-border: var(--c-gray-border);
@@ -349,6 +356,19 @@ h6 {
   text-transform: uppercase;
 }
 
+.eyebrow-text p {
+  color: var(--c-copy);
+  text-align: center;
+  font-family: var(--ff-primary);
+  font-size: var(--heading-font-size-s);
+  font-style: normal;
+  font-weight: var(--fw-med);
+  line-height: 25px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+
 /* Button Styles */
 /* button / a.button will be just a link */ 
 a.button.primary,
@@ -483,6 +503,14 @@ button.tertiary::after {
     letter-spacing: normal;
     line-height: 1.27;
     text-transform: none;
+  }
+
+  .eyebrow-text p {
+    font-size: var(--heading-font-size-m);
+    font-weight: var(--fw-bold);
+    line-height: 28px;
+    text-transform: capitalize;
+    letter-spacing: normal;
   }
 }
 

@@ -55,6 +55,22 @@ const PLAYBUTTON = `<svg xmlns="http://www.w3.org/2000/svg" width="7" height="11
   <path fill-rule="evenodd" clip-rule="evenodd" d="M6.66211 5.5L0.61293 10.5L0.61293 0.5L6.66211 5.5Z" fill="#484D56"/>
 </svg>`;
 
+const CIRCLEICON = `<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
+  <circle cx="15" cy="15" r="15" fill="url(#paint0_linear_185_4617)"/>
+  <circle cx="15" cy="15" r="7" fill="white"/>
+  <circle cx="15" cy="15" r="7" fill="white"/>
+  <defs>
+    <linearGradient id="paint0_linear_185_4617" x1="-7.00607" y1="18.2" x2="19.8655" y2="35.6347" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#304F8C"/>
+      <stop offset="1" stop-color="#466CB9"/>
+    </linearGradient>
+  </defs>
+</svg>`;
+
+const PLUSICON = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+  <path d="M12 9V12M12 12V15M12 12H15M12 12H9M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="#545F71" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`;
+
 export {
   EMAIL,
   FACEBOOK,
@@ -70,4 +86,6 @@ export {
   RIGHTCHEVRON,
   IMAGETEXT,
   PLAYBUTTON,
+  CIRCLEICON,
+  PLUSICON,
 };
