@@ -21,18 +21,18 @@
 }
 
 .stat-title {
-    align-items: center;
-    display: flex;
-    font-family: var(--ff-primary);
-    font-size: calc((50 / 16) * 1rem);
-    font-weight: var(--fw-bold);
-    height: auto;
-    line-height: 56px;
-    margin-bottom: 16px;
-    text-align: center;
-
     h1,h2,h3,h4,h5,h6,p {
+        align-items: center;
         color: var(--c-white);
+        display: flex;
+        font-family: var(--ff-primary);
+        font-size: calc((50 / 16) * 1rem);
+        font-weight: var(--fw-bold);
+        height: auto;
+        line-height: 56px;
+        margin: 0;
+        margin-bottom: 16px;
+        text-align: center;
 
         sup {
             font-size: calc((28 / 16) * 1rem);
