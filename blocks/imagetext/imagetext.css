@@ -14,8 +14,6 @@
    font-style: normal;
    font-weight: var(--fw-regular);
    line-height: 28px;
-   width: 100%;
-   height: auto;
 }
 
 .imagetext .imagetext-main-container {
@@ -153,7 +151,8 @@
 .imagetext .index-13 img,
 .imagetext .index-16 img,
 .imagetext .index-19 img{
-  max-width: 193px;
+  max-width: 163px;
+  height: 74px;
 }
 
 /* Suggestion Description & Link */
@@ -168,7 +167,13 @@
   font-style: normal;
   font-weight: var(--fw-regular);
   line-height: 24px; 
+  width:100%;
+  height: auto;
   }
+
+#benefits-statement {
+  height: 55px;
+}
 
 
 /* Media Query for Desktop */

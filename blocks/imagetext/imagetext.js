@@ -30,6 +30,11 @@ export default async function decorate(block) {
   const rightContainer = document.createElement('div');
   rightContainer.classList.add('right-container');
 
+  const button = document.createElement('a');
+
+  const placeholder = document.createElement('div');
+  placeholder.classList.add('placeholder');
+
   [...block.children].forEach((row, index) => {
     if (index === 0) {
       /* Description */
@@ -80,11 +85,17 @@ export default async function decorate(block) {
       imagetextAction.appendChild(action);
 
       imagetextRightContainer.appendChild(imagetextAction);
+    } else if (index === 4) {
+      button.classList.add('button');
+      button.classList.add(row.textContent.replace(/\s+/g, ''));
     } else if (index === 5) {
-      /* Button Component */
-      const button = document.createElement('div');
-      button.classList.add('button-container');
-      button.appendChild(row.firstElementChild);
+      button.href = row.textContent.replace(/\s+/g, '');
+    } else if (index === 6) {
+      button.innerHTML = row.textContent.replace(/\s+/g, '');
+    } else if (index === 7) {
+      if (row.textContent.replace(/\s+/g, '') === 'true') {
+        button.target = '_blank';
+      }
       imagetextAction.appendChild(button);
     } else if (index === 8) {
       /* Support Title */
