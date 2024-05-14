@@ -244,6 +244,12 @@ header nav {
   padding: 0;
 }
 
+.search-wrapper:hover .search-input-wrapper.megamenu-wrapper {
+  max-height: 600px;
+  opacity: 1;
+  visibility: visible;
+}
+
 .header-search-cta:hover path,
 .header-search-cta:focus path {
   stroke: var(--c-mega-menu-link);
