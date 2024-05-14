@@ -1,0 +1,90 @@
+.case-study {
+    display: flex;
+}
+
+.container {
+    display: flex;
+    flex-direction: column; 
+}
+
+.image-container {
+    width: 100%;
+    position: relative;
+}
+
+.banner {
+    position: absolute;
+    bottom:0;
+    width: 70%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.7518;
+    background: #41B6E6;
+    padding: 20px;
+    box-sizing: border-box; 
+    margin: 20px;
+}
+
+.image {
+    position: relative;
+}
+
+.image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.left-container,
+.right-container {
+    width: 100%; 
+    height: auto;
+    box-sizing: border-box;
+}
+
+.right-container {
+    position: relative; 
+}
+
+.top-container,
+.bottom-container {
+    width: 100%; 
+    height: auto; 
+}
+
+
+
+@media (width>= 768px) {
+    .container {
+        display: flex;
+        flex-direction: row; 
+    }
+
+    .left-container,
+    .right-container {
+        width: 50%; 
+    }
+
+    .right-container  {
+        height: 100%; 
+       object-fit: cover; 
+    }
+    
+    .top-container,
+    .bottom-container {
+        height: 50%; 
+    }
+
+    .top-container img,
+    .bottom-container img {
+        height: 50%; 
+        object-fit: cover; 
+    }
+
+    .image img{
+        object-fit: cover;
+    }
+}
