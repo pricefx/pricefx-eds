@@ -36,6 +36,10 @@
     h1,h2,h3,h4,h5,h6 {
         background: var(--c-white);
         background-clip: text;
+        font-family: var(--ff-primary);
+        font-size: calc((50 / 16) * 1rem);
+        font-weight: var(--fw-bold);
+        margin: 0;
     }
 
     sup {
@@ -89,7 +93,9 @@
 }
 
 .stat-title.large {
-    font-size: calc((70 / 16) * 1rem);
+    h1,h2,h3,h4,h5,h6,p {
+        font-size: calc((70 / 16) * 1rem);
+    }
 }
 
 .stats-container-wrap.no-background {

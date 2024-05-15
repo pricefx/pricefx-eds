@@ -36,9 +36,7 @@ export default function decorate(block) {
         if (titleSize) {
           titleDiv.classList.add(titleSize);
         }
-        const titleContent = document.createElement('p');
-        titleContent.innerHTML = pTag.innerHTML;
-        titleDiv.appendChild(titleContent);
+        titleDiv.appendChild(pTag.cloneNode(true));
         childDiv.appendChild(titleDiv);
         const line = document.createElement('div');
         line.classList.add('line');
