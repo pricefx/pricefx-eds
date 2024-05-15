@@ -35,6 +35,10 @@
   width: 100%;
 }
 
+.hero .hero-content:not(.hero-no-bg-image) {
+  text-align: left;
+}
+
 .hero .eyebrow-text {
   display: inline-block;
   margin-bottom: 20px;
@@ -47,6 +51,10 @@
 .hero .hero-content-container h5,
 .hero .hero-content-container h6 {
     margin: 0 0 32px;
+}
+
+.hero .hero-content-container h1 {
+  text-transform: uppercase;
 }
 
 .hero .hero-right-container .hero-image-container img {

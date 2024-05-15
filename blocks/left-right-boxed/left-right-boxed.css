@@ -15,6 +15,7 @@
     .left-right-boxed .boxed-left-container {
         width: 100%;
         padding: var(--spacing-xlarge) var(--spacing-small);
+        text-align: left;
     }
 
     .left-right-boxed .eyebrow-text {
