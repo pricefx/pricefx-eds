@@ -62,20 +62,20 @@
   background-color: var(--c-white);
 }
 
-.columns.column-padding-64px > div > div {
-  padding: var(--spacing-medium);
-}
-
-.columns.column-padding-32px > div > div {
-  padding: var(--spacing-xsmall);
-}
-
 .columns.column-padding-large > div > div {
-  padding: var(--spacing-medium);
+  padding: var(--spacing-medium) var(--spacing-small);
 }
 
 .columns.column-padding-medium > div > div {
-  padding: var(--spacing-xsmall);
+  padding: var(--spacing-xsmall) var(--spacing-small);
+}
+
+.columns.column-padding-small > div > div {
+  padding: var(--spacing-xsmall) var(--spacing-small);
+}
+
+.columns.column-padding-xsmall > div > div {
+  padding: var(--spacing-xsmall) var(--spacing-small);
 }
 
 .columns.icons-for-li > div ul {
@@ -100,10 +100,6 @@
   height: 30px;
   margin-right: 19px;
   width: 30px;
-}
-
-.columns.column-padding-small > div > div {
-  padding: var(--spacing-xsmall);
 }
 
 .columns.column-box-shadow > div > div {
@@ -173,6 +169,10 @@
 
   .columns.column-padding-small > div > div {
     padding: var(--spacing-small);
+  }
+
+  .columns.column-padding-xsmall > div > div {
+    padding: var(--spacing-xsmall);
   }
 
   .columns.column-separator > div > div:not(:first-child) {

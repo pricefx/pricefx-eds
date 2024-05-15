@@ -555,6 +555,10 @@
             "value": "column-padding-small"
           },
           {
+            "name": "Add Padding XSmall",
+            "value": "column-padding-xsmall"
+          },
+          {
             "name": "Column Gap Large",
             "value": "column-gap-large"
           },
