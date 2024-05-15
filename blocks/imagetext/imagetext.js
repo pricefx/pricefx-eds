@@ -1,5 +1,3 @@
-import { IMAGETEXT } from '../../scripts/constants.js';
-
 function addElementsToContainer(container, elements) {
   const tempContainer = document.createElement('div');
   tempContainer.classList.add('content');
@@ -87,7 +85,6 @@ export default async function decorate(block) {
           if (enableIcon === 'true') {
             const icon = document.createElement('div');
             icon.classList.add('imagetext-icon');
-            icon.innerHTML = IMAGETEXT;
             icon.appendChild(newParagraph);
 
             node.insertBefore(icon, node.firstChild);
