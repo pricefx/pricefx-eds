@@ -1,6 +1,5 @@
 function createImageContainer(imageSrc, title, text, widthClass) {
   const imageContainer = document.createElement('div');
-  imageContainer.classList.add('image-container');
   imageContainer.classList.add(widthClass);
 
   const caseImage = imageSrc.firstElementChild.querySelector('picture img');
@@ -29,55 +28,29 @@ function createImageContainer(imageSrc, title, text, widthClass) {
 }
 
 export default async function decorate(block) {
+  // eslint-disable-next-line no-unused-vars
   const [image1, title1, text1, image2, , title2, text2, image3, title3, text3, swapRight] = block.children;
 
   const container = document.createElement('div');
-  container.classList.add('container');
 
-  const leftContainer = document.createElement('div');
-  leftContainer.classList.add('left-container');
+  const firstImageContainer = createImageContainer(image1, title1, text1, 'image-1');
 
-  const rightContainer = document.createElement('div');
-  rightContainer.classList.add('right-container');
-
-  const firstImageContainer = createImageContainer(image1, title1, text1, 'half-width');
-
-  const secondImageContainer = createImageContainer(image2, title2, text2, 'half-width');
+  const secondImageContainer = createImageContainer(image2, title2, text2, 'image-2');
 
   if (
     title1.textContent.replace(/\s+/g, '') &&
     title2.textContent.replace(/\s+/g, '') &&
     title3.textContent.replace(/\s+/g, '')
   ) {
-    const thirdImageContainer = createImageContainer(image3, title3, text3, 'half-width');
-
-    leftContainer.appendChild(firstImageContainer);
-
-    const topContainer = document.createElement('div');
-    topContainer.classList.add('top-container');
-
-    const bottomContainer = document.createElement('div');
-    bottomContainer.classList.add('bottom-container');
-
-    topContainer.appendChild(secondImageContainer);
-    bottomContainer.appendChild(thirdImageContainer);
-
-    rightContainer.appendChild(topContainer);
-
-    rightContainer.appendChild(bottomContainer);
-
-    if (swapRight.textContent === 'true') {
-      container.appendChild(rightContainer);
-      container.appendChild(leftContainer);
-    } else {
-      container.appendChild(leftContainer);
-      container.appendChild(rightContainer);
-    }
+    const thirdImageContainer = createImageContainer(image3, title3, text3, 'image-3');
+    container.classList.add('grid-container-3');
+    container.appendChild(firstImageContainer);
+    container.appendChild(secondImageContainer);
+    container.appendChild(thirdImageContainer);
   } else if (title1.textContent.replace(/\s+/g, '') && title2.textContent.replace(/\s+/g, '')) {
-    leftContainer.appendChild(firstImageContainer);
-    rightContainer.appendChild(secondImageContainer);
-    container.appendChild(leftContainer);
-    container.appendChild(rightContainer);
+    container.classList.add('grid-container-2');
+    container.appendChild(firstImageContainer);
+    container.appendChild(secondImageContainer);
   }
 
   block.textContent = '';
