@@ -30,23 +30,29 @@
     height: auto;
     line-height: 56px;
     margin-bottom: 16px;
-    text-align: center;
-
-    h1,h2,h3,h4,h5,h6 {
-        background: var(--c-white);
-        background-clip: text;
-        font-family: var(--ff-primary);
-        font-size: calc((50 / 16) * 1rem);
-        font-weight: var(--fw-bold);
-        margin: 0;
-    }
-
-    sup {
-        font-size: calc((28 / 16) * 1rem);
-        font-weight: var(--fw-xx-bold);
-        line-height: 30px; 
-    }  
+    text-align: center; 
 }
+
+.stat-title sup {
+    font-size: calc((28 / 16) * 1rem);
+    font-weight: var(--fw-xx-bold);
+    line-height: 30px; 
+} 
+
+.stat-title h1,
+.stat-title h2,
+.stat-title h3,
+.stat-title h4,
+.stat-title h5,
+.stat-title h6 {
+    background: var(--c-white);
+    background-clip: text;
+    font-family: var(--ff-primary);
+    font-size: calc((50 / 16) * 1rem);
+    font-weight: var(--fw-bold);
+    margin: 0;
+}
+
 
 .line {
     background: linear-gradient(135deg, var(--c-secondary-pink) 0%, var(--c-primary-lt) 51.1%, var(--c-secondary-orange-lt) 100%);
@@ -71,14 +77,19 @@
 
 .no-background .stat-title,
 .no-background .stat-description {
-    color: var(--c-copy);
-
-    h1,h2,h3,h4,h5,h6 {
-        background: var(--c-copy);
-        background-clip: text;
-    }
-    
+    color: var(--c-copy);  
 }
+
+.no-background .stat-title h1,
+.no-background .stat-title h2,
+.no-background .stat-title h3,
+.no-background .stat-title h4,
+.no-background .stat-title h5,
+.no-background .stat-title h6 {
+    background: var(--c-copy);
+    background-clip: text;
+}
+
 
 .no-background .stat-description {
     font-weight: var(--fw-regular);
