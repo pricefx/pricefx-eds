@@ -137,6 +137,7 @@ export default async function decorate(block) {
   // Fetch Partners content from JSON endpoint
   const url = '/partners-index.json';
   const partnersData = await ffetch(url).all();
+  
   const defaultSortedPartners = partnersData.sort((a, b) => a.title.localeCompare(b.title));
   
   let currentPartnersData = [...defaultSortedPartners];
@@ -435,7 +436,7 @@ export default async function decorate(block) {
     <ul class="pagination-pages-list">
       ${renderPages(numberOfPartners.textContent.trim(), defaultSortedPartners, 1)}
     </ul>
-    <button class="pagination-next" aria-label="Nexst Page">${RIGHTCHEVRON}</button>
+    ${Number(numberOfPartners.textContent.trim()) > defaultSortedPartners.length ? '' : `<button class="pagination-next" aria-label="Nexst Page">${RIGHTCHEVRON}</button>`}
   `;
 
    const paginationPageList = document.querySelector('.pagination-pages-list');
