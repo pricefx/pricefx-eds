@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-medium);
+  word-break: break-word;
 }
 
 .columns > div:not(:last-child) {
@@ -88,6 +89,7 @@
   border-image: linear-gradient(135deg, var(--c-secondary-pink) 0% var(--c-primary-lt) 51.1%, var(--c-secondary-orange-lt) 100%);
   border-image-slice: 1;
   display: flex;
+  line-height: 28px;
   margin: 24px 0 0;
   padding-bottom: 20px;
 }

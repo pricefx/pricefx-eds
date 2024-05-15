@@ -70,10 +70,11 @@ export default async function decorate(block) {
     paths.forEach((pathPart) => breadcrumbLinks.push(createLink(pathPart).outerHTML));
     if (hideCurrentPage === 'false') {
       const currentPath = document.createElement('span');
-      currentPath.innerText = document.querySelector('title').innerText;
+      const currentTitle = document.querySelector('title').innerText;
+      currentPath.innerText = currentTitle.replace(' | Pricefx', '');
       breadcrumbLinks.push(currentPath.outerHTML);
     }
     breadcrumb.innerHTML = breadcrumbLinks.join(`<span class="breadcrumb-separator">${RIGHTARROW}</span>`);
     block.append(breadcrumb);
-  }, 500);
+  }, 0);
 }

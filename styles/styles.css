@@ -455,6 +455,7 @@ button.tertiary {
   line-height: var(--base-font-size);
   letter-spacing: 0.889px;
   text-transform: uppercase;
+  background: transparent;
 }
 
 a.button.tertiary::after,
@@ -651,6 +652,12 @@ main .section.highlight {
 
 .section[data-iframetwocolumn="true"] >  div:nth-child(2) {
   margin-top: 0;
+}
+
+.section[data-sectionbuttoninline="true"] .button-container,
+.section[data-sectionbuttoninline="true"] .button-pfx-wrapper {
+  display: inline-block;
+  margin-right: 10px;
 }
 
 @media (width >= 768px) {
