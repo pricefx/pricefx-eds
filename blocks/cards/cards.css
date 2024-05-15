@@ -1,3 +1,7 @@
+.cards {
+  text-align: left;
+}
+
 .cards > ul {
   list-style: none;
   margin: 0;

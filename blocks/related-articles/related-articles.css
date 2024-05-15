@@ -124,11 +124,12 @@
 }
 
 .blog-articles .article-card .article-image img {
-    aspect-ratio: auto 16 / 9;
+    aspect-ratio: 16 / 9;
     border-radius: 16px;
     display: block;
     height: 100%;
     width: 100%;
+    object-fit: cover;
 }
 
 .blog-articles .article-card .article-content {
