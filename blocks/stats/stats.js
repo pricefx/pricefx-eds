@@ -15,7 +15,7 @@ export default function decorate(block) {
   let childDiv = null;
   [...block.children].forEach((row, index) => {
     if (index < 6) {
-      const propValue = row.querySelector('p');
+      const propValue = row.querySelector('p, h1, h2, h3, h4, h5, h6');
       // If either a title or description is left empty, add a corresponding empty tag
       if (propValue && index % 2 === 0) {
         // If title is authored without description
@@ -30,7 +30,7 @@ export default function decorate(block) {
         }
         childDiv = document.createElement('div');
         childDiv.classList.add('stat');
-        const pTag = row.querySelector('p');
+        const pTag = row.querySelector('p, h1, h2, h3, h4, h5, h6');
         const titleDiv = document.createElement('div');
         titleDiv.classList.add('stat-title');
         if (titleSize) {
@@ -58,7 +58,7 @@ export default function decorate(block) {
           line.classList.add('line');
           childDiv.appendChild(line);
         }
-        const pTag = row.querySelector('p');
+        const pTag = row.querySelector('p, h1, h2, h3, h4, h5, h6');
         const textDiv = document.createElement('div');
         textDiv.classList.add('stat-description');
         textDiv.appendChild(pTag.cloneNode(true));
