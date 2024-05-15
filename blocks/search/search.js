@@ -223,12 +223,13 @@ export default async function decorate(block) {
   // Search logic
   const handleSearch = (query, loadPage) => {
     let searchJson = searchData;
+    const searchString = query.toLowerCase();
     searchJson = searchJson.filter(
       (result) =>
-        result.topics.includes(query) ||
-        result.title.toLowerCase().includes(query) ||
-        result.description.toLowerCase().includes(query) ||
-        result['cq-tags'].includes(query),
+        result.topics.toLowerCase().includes(searchString) ||
+        result.title.toLowerCase().includes(searchString) ||
+        result.description.toLowerCase().includes(searchString) ||
+        result['cq-tags'].toLowerCase().includes(searchString),
     );
     currentSearchJSON = searchJson;
 
