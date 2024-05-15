@@ -86,10 +86,6 @@ text-transform: uppercase;
     left: calc(100% - 6px);
     top: calc(50% - 6px);
   }
-
-  .tabs-container .default-content-wrapper {
-    text-align: center;
-  }
 }
 
 
