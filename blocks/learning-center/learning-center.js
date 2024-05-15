@@ -130,7 +130,8 @@ export default async function decorate(block) {
   // Fetch Articles content from JSON endpoint
   const articleData = await ffetch(searchPath.textContent.trim()).all();
 
-  const featuredArticlePath = featuredArticle.textContent.trim().split('/en')[1];
+  const deconstructFeaturedArticlePath = featuredArticle.textContent.trim().split('/');
+  const featuredArticlePath = deconstructFeaturedArticlePath[deconstructFeaturedArticlePath.length - 1];
   const featuredArticleData = articleData.find((data) => data.path.includes(featuredArticlePath));
   const noFeaturedArticleData = articleData.filter((data) => !data.path.includes(featuredArticlePath));
   const defaultSortedArticle = noFeaturedArticleData.sort(
