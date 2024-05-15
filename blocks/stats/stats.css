@@ -21,25 +21,29 @@
 }
 
 .stat-title {
-    h1,h2,h3,h4,h5,h6,p {
-        align-items: center;
-        color: var(--c-white);
-        display: flex;
-        font-family: var(--ff-primary);
-        font-size: calc((50 / 16) * 1rem);
-        font-weight: var(--fw-bold);
-        height: auto;
-        line-height: 56px;
-        margin: 0;
-        margin-bottom: 16px;
-        text-align: center;
+    align-items: center;
+    color: var(--c-white);
+    display: flex;
+    font-family: var(--ff-primary);
+    font-size: calc((50 / 16) * 1rem);
+    font-weight: var(--fw-bold);
+    height: auto;
+    line-height: 56px;
+    margin: 0;
+    margin-bottom: 16px;
+    text-align: center;
 
-        sup {
-            font-size: calc((28 / 16) * 1rem);
-            font-weight: var(--fw-xx-bold);
-            line-height: 30px; 
-        }
+    h1,h2,h3,h4,h5,h6 {
+        background: var(--c-white);
+        background-clip: text;
     }
+
+    sup {
+        font-size: calc((28 / 16) * 1rem);
+        font-weight: var(--fw-xx-bold);
+        line-height: 30px; 
+    }
+    
 }
 
 .line {
@@ -65,9 +69,13 @@
 
 .no-background .stat-title,
 .no-background .stat-description {
-    h1,h2,h3,h4,h5,h6,p {
-        color: var(--c-copy);
+    color: var(--c-copy);
+
+    h1,h2,h3,h4,h5,h6 {
+        background: var(--c-copy);
+        background-clip: text;
     }
+    
 }
 
 .no-background .stat-description {
