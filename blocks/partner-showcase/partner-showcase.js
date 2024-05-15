@@ -137,9 +137,8 @@ export default async function decorate(block) {
   // Fetch Partners content from JSON endpoint
   const url = '/partners-index.json';
   const partnersData = await ffetch(url).all();
-  
+
   const defaultSortedPartners = partnersData.sort((a, b) => a.title.localeCompare(b.title));
-  
   let currentPartnersData = [...defaultSortedPartners];
 
   const queryStr = 'page=1&sortBy=asc-title';
@@ -255,7 +254,7 @@ export default async function decorate(block) {
     `;
     return markup;
   };
-  
+
   filter.innerHTML = `
     ${
       sortBy.textContent.trim() !== ''
@@ -439,7 +438,7 @@ export default async function decorate(block) {
     ${Number(numberOfPartners.textContent.trim()) > defaultSortedPartners.length ? '' : `<button class="pagination-next" aria-label="Nexst Page">${RIGHTCHEVRON}</button>`}
   `;
 
-   const paginationPageList = document.querySelector('.pagination-pages-list');
+  const paginationPageList = document.querySelector('.pagination-pages-list');
   const prevPageButton = document.querySelector('.pagination-prev');
   const nextPageButton = document.querySelector('.pagination-next');
 
@@ -448,7 +447,7 @@ export default async function decorate(block) {
   } else {
     paginationContainer.classList.remove('hidden');
   }
-  
+
   // Defining some variables for filter, sort and search logic
   const sortByEl = document.getElementById('ps-sort-content');
   let currentFilteredPartners;
@@ -486,12 +485,13 @@ export default async function decorate(block) {
         <h4 class="no-partners">Sorry, there are no results based on these choices. Please update and try again.</h4>
       `;
       paginationContainer.classList.add('hidden');
+      searchParams.set('page', 1);
     } else {
       paginationContainer.classList.remove('hidden');
       const currentPage = [...paginationPageList.children].find((page) => page.classList.contains('active-page'));
       paginationPageList.innerHTML = renderPages(
-        numOfArticles.textContent.trim(),
-        currentSortedArticles,
+        numberOfPartners.textContent.trim(),
+        currentSortedPartners,
         Number(currentPage.textContent),
       );
       if (paginationPageList.children.length <= 1) {
@@ -531,7 +531,7 @@ export default async function decorate(block) {
     window.history.pushState(null, '', newRelativePathQuery);
   });
 
-   // Updates the URL Params based on selected filters
+  // Updates the URL Params based on selected filters
   const updateFiltersUrlParams = () => {
     if (selectedFilters['filter-geography'].length > 0) {
       searchParams.set('filter-geography', selectedFilters['filter-geography'][0]);
@@ -547,16 +547,17 @@ export default async function decorate(block) {
       searchParams.set('filter-speciality', valuesString);
     }
   };
-  
+
   // Partner Showcase Filter logic
   const updateSelectedFilters = (state, key, value) => {
     if (state === true && value.includes('all')) {
       selectedFilters[key].pop();
       searchParams.delete(key);
+      updateFiltersUrlParams();
     } else if (state === true && key !== 'filter-speciality') {
       selectedFilters[key].pop();
       selectedFilters[key].push(value);
-      searchParams.set(key, value);
+      updateFiltersUrlParams();
     } else if (state === true && !selectedFilters[key].includes(value)) {
       selectedFilters[key].push(value);
       updateFiltersUrlParams();
@@ -566,7 +567,6 @@ export default async function decorate(block) {
     }
     const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
     window.history.pushState(null, '', newRelativePathQuery);
-    console.log(selectedFilters);
     return selectedFilters;
   };
 
@@ -585,13 +585,13 @@ export default async function decorate(block) {
       partnersJson = partnersJson.filter((partner) => partner.category.includes(filters['filter-type']));
     }
 
-    if (filters['filter-speciality'].length > 1 && Array.isArray(filters['filter-speciality']))
+    if (filters['filter-speciality'].length > 1 && Array.isArray(filters['filter-speciality'])) {
       partnersJson = partnersJson.filter((partner) =>
         filters['filter-speciality'].some((filterValue) => partner.topics.includes(filterValue)),
       );
     } else {
       partnersJson = partnersJson.filter((partner) => partner.topics.includes(filters['filter-speciality']));
-  }
+    }
 
     currentFilteredPartners = partnersJson;
     currentPartnersData = partnersJson;
@@ -601,6 +601,7 @@ export default async function decorate(block) {
         <h4 class="no-partners">Sorry, there are no results based on these choices. Please update and try again.</h4>
       `;
       paginationContainer.classList.add('hidden');
+      searchParams.set('page', 1);
     } else {
       appendPartnerShowcasePartners(partnersJson);
       paginationContainer.classList.remove('hidden');
@@ -640,7 +641,7 @@ export default async function decorate(block) {
         handleFilter(selectedFilters, currentSortedPartners);
       }
 
-       if (paginationPageList.children[0].className.includes('active-page')) {
+      if (paginationPageList.children[0].className.includes('active-page')) {
         prevPageButton.classList.add('hidden');
       }
     });
