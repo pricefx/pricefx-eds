@@ -1,9 +1,8 @@
 export default function decorate(block) {
-  const [imageDiv, altTextDiv, assetLinkDiv, targetDiv, alignmentDiv] = [...block.children];
+  const [imageDiv, altTextDiv, assetLinkDiv, alignmentDiv] = [...block.children];
   const downloadDiv = document.createElement('div');
   downloadDiv.classList.add('download-container');
 
-  const target = targetDiv.querySelector('p') ? targetDiv.querySelector('p').textContent.trim() : 'false';
   if (alignmentDiv?.querySelector('p')) {
     const alignment = alignmentDiv.querySelector('p').textContent;
     downloadDiv.classList.add(alignment);
@@ -34,11 +33,8 @@ export default function decorate(block) {
 
     const linkTag = document.createElement('a');
     linkTag.href = assetPath;
-    if (target !== 'false') {
-      linkTag.target = '__blank';
-    } else {
-      linkTag.download = fileName;
-    }
+    linkTag.download = fileName;
+
     linkTag.appendChild(image);
     linkTag.setAttribute('tabIndex', 0);
     linkTag.setAttribute('role', 'button');

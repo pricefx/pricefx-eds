@@ -1967,13 +1967,6 @@
         "label": "assetLink"
       },
       {
-        "component": "boolean",
-        "valueType": "boolean",
-        "label": "Target Blank",
-        "name": "targetBlank",
-        "description": "When selected, the link will open in a new window"
-      },
-      {
         "component": "select",
         "name": "type",
         "value": "",
