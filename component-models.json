@@ -946,6 +946,12 @@
       },
       {
         "component": "boolean",
+        "label": "Section buttons inline",
+        "name": "sectionButtonInline",
+        "valueType": "boolean"
+      },
+      {
+        "component": "boolean",
         "label": "Iframe Two Column",
         "name": "iframeTwoColumn",
         "valueType": "boolean"

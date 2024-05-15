@@ -1,14 +1,15 @@
 import ffetch from '../../scripts/ffetch.js';
 import { createOptimizedPicture } from '../../scripts/aem.js';
-import { SEARCH_PATH } from '../../scripts/url-constants.js';
+import { SEARCH_INDEX_PATH } from '../../scripts/url-constants.js';
+import { formatDate } from '../../scripts/global-functions.js';
 
 export default async function decorate(block) {
   // Fetch Search content from JSON endpoint
-  const searchData = await ffetch(SEARCH_PATH).all();
+  const searchData = await ffetch(SEARCH_INDEX_PATH).all();
   let currentSearchJSON = [];
 
   const [placeholderText, numberOfResults, resultTitle, noResultTitle] = block.children;
-  const pageView = Number(numberOfResults.textContent.trim());
+  const pageView = Number(numberOfResults.textContent.trim() || '10');
   block.textContent = '';
 
   // Creates a div container to hold the Search Fom & Title
@@ -101,7 +102,7 @@ export default async function decorate(block) {
   const renderSearchResults = (newSearchJson) => {
     let markup = '';
     newSearchJson.forEach((list) => {
-      const { description, image, imageAlt, path, title } = list;
+      const { description, image, imageAlt, lastPublished, path, title } = list;
       markup += `
         <div class="search-results-item">
             <a class="search-results-item-link" href="${path}">
@@ -110,6 +111,7 @@ export default async function decorate(block) {
                     ${list['cq-tags'] ? `<h6>${list['cq-tags'].replace('pricefx:content-types/', '')}</h6>` : ''}
                     ${title ? `<h4>${title}</h6>` : ''}
                     ${description ? `<div class="search-results-item-description">${description}</div>` : ''}
+                    ${lastPublished ? `<p class="search-results-item-publish-date" >${formatDate(lastPublished)}</p>` : ''}
                 </div>
             </a>
         </div>

@@ -1,38 +1,7 @@
 import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
-import { environmentMode } from '../../scripts/global-functions.js';
-import { BASE_CONTENT_PATH } from '../../scripts/url-constants.js';
+import { environmentMode, formatDate } from '../../scripts/global-functions.js';
+import { ARTICLE_INDEX_PATH, BASE_CONTENT_PATH } from '../../scripts/url-constants.js';
 import ffetch from '../../scripts/ffetch.js';
-
-function generateCardDom(article) {
-  const { articlePublishDate, image, imageAlt, title, path, readingTime } = article;
-
-  // Build DOM
-  const cardDOM = document.createRange().createContextualFragment(`
-    <li class='card-item'>
-      <a class='cards-card-link' href='${path}'>
-        <div class='cards-card-image'>
-        <picture>
-            <img src='${image || ''}'  alt='${imageAlt || ''}'/>
-        </picture>
-        </div>
-        <div class='cards-card-body'>
-            ${title ? `<div class='cards-card-title'><h6>${title}</h6></div>` : ``}
-            <div class='cards-card-cta'>
-              <div class='cards-card-published-date'>${articlePublishDate}</div>
-              ${readingTime ? `<div class='cards-card-reading-time'>${readingTime} min read</div>` : ''}
-            </div>
-        </div>
-      </a>
-    </li>
-    `);
-  return cardDOM;
-}
-
-const formatDate = (dateString) => {
-  const date = new Date(dateString);
-  const options = { month: 'long', day: 'numeric', year: 'numeric' };
-  return date.toLocaleDateString('en-US', options);
-};
 
 // Clean-up and Render Article Category
 const renderArticleCategory = (articles) => {
@@ -96,6 +65,37 @@ const renderArticleAuthors = (article, authorDirectoryPath) => {
   markup = `<p class="article-info">${article.author !== '' ? `By ${innerMarkup}` : ''} ${article.articlePublishDate !== '' ? `${article.author !== '' ? 'on' : ''} ${postDate}</p>` : ''}`;
   return markup;
 };
+
+function generateCardDom(article, authorDirectoryPath) {
+  const { articlePublishDate, authors, category, image, imageAlt, title, path, readingTime } = article;
+
+  // Build DOM
+  const cardDOM = document.createRange().createContextualFragment(`
+    <li class='card-item'>
+      <div class='cards-card-image'>
+        <picture>
+            <img src='${image || ''}'  alt='${imageAlt || ''}'/>
+        </picture>
+      </div>
+      <div class='cards-card-body'>
+        ${
+          category !== '' || title !== '' || authors !== '' || articlePublishDate !== ''
+            ? `<div class="article-details">
+            ${article.category !== '' ? renderArticleCategory(article) : ''}
+            ${article.title !== '' ? `<h6 class="article-title">${article.title}</h6>` : ''}
+            ${article.authors !== '' || article.articlePublishDate !== '' ? renderArticleAuthors(article, authorDirectoryPath) : ''}
+          </div>`
+            : ''
+        }
+        <div class='cards-card-cta'>
+          <a class="article-link" href="${path}">Read Now</a>
+          ${readingTime ? `<div class='cards-card-reading-time'>${readingTime} min read</div>` : ''}
+        </div>
+      </div>
+    </li>
+    `);
+  return cardDOM;
+}
 
 function decorateTopArticles(topArticles) {
   // eslint-disable-next-line no-unused-vars
@@ -225,6 +225,16 @@ function decorateBlogArticles(articlesJSON, block, props) {
     articleSection1.innerHTML = markup1;
     articleSection2.innerHTML = markup2;
     decorateTopArticles(articleSection1);
+
+    articlesContainer
+      .querySelectorAll('img')
+      .forEach((img) =>
+        img
+          .closest('picture')
+          .replaceWith(
+            createOptimizedPicture(img.src, img.alt, false, [{ media: '(min-width: 640px)', width: '594' }]),
+          ),
+      );
   };
 
   const appendBlogArticles = (articleJsonData) => {
@@ -444,10 +454,10 @@ const filterBasedOnProp = (data = [], filterProps = [], filterValues = {}) =>
   );
 
 export default async function decorate(block) {
-  const url = '/article-index.json';
+  const url = ARTICLE_INDEX_PATH;
   // Get Data
   const data = await ffetch(url).all();
-  const type = block.children[0]?.textContent.trim();
+  const type = block.children[0]?.textContent.trim() || 'related';
   const title = block.children[1]?.textContent.trim();
   const titleEle = `<h2>${title}</h2>`;
   const columnLayout = block.children[2]?.textContent.trim() || 'three-column';
@@ -455,7 +465,7 @@ export default async function decorate(block) {
   const topicTags = block.children[4]?.textContent.trim()?.split(',');
   const authorTags = block.children[5]?.textContent.trim()?.split(',');
   const authorPath = block.children[7]?.textContent.trim();
-  const numOfArticles = block.children[8]?.textContent.trim();
+  const numOfArticles = block.children[8]?.textContent.trim() || '13';
   if (categoryTags.toString().length === 0) {
     categoryTags = getMetadata('category')?.split(',');
   }
@@ -484,7 +494,14 @@ export default async function decorate(block) {
         return;
       }
 
-      ul.append(generateCardDom(article));
+      ul.append(generateCardDom(article, authorPath));
+      ul.querySelectorAll('img').forEach((img) =>
+        img
+          .closest('picture')
+          .replaceWith(
+            createOptimizedPicture(img.src, img.alt, false, [{ media: '(min-width: 640px)', width: '594' }]),
+          ),
+      );
       block.append(ul);
     });
   } else {
@@ -496,9 +513,4 @@ export default async function decorate(block) {
 
     decorateBlogArticles(filteredData, block, props);
   }
-  block
-    .querySelectorAll('img')
-    .forEach((img) =>
-      img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])),
-    );
 }
