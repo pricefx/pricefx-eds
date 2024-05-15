@@ -63,7 +63,7 @@ text-transform: uppercase;
   }
 
   .tabs .tabs-list {
-    flex-direction: row;
+    flex-flow: row wrap;
     gap: 16px;
     margin: 54px 0 64px;
   }
