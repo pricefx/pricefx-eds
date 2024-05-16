@@ -6,8 +6,7 @@ function hasNumber(myString) {
 }
 
 export default async function decorate(block) {
-  // eslint-disable-next-line no-unused-vars
-  const [title, showHeader, numberOfColumns, tableVariation, ...rows] = block.children;
+  const [title, showHeader, , tableVariation, ...rows] = block.children;
 
   const tableContainer = document.createElement('div');
   tableContainer.classList.add('table-container');
@@ -19,7 +18,14 @@ export default async function decorate(block) {
 
   /* Table component  */
   const table = document.createElement('table');
-  const variation = tableVariation.textContent.trim();
+
+  let variation = '';
+  if (tableVariation && tableVariation.textContent !== undefined) {
+    variation = tableVariation.textContent.trim();
+  } else {
+    variation = 'default';
+  }
+  // const variation = tableVariation.textContent.trim();
 
   rows.forEach((rowDiv, rowIndex) => {
     const row = document.createElement('tr');
