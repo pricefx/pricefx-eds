@@ -2,6 +2,7 @@ import ffetch from '../../scripts/ffetch.js';
 import { SEARCH } from '../../scripts/constants.js';
 import { decorateIcons } from '../../scripts/aem.js';
 import { SEARCH_INDEX_PATH } from '../../scripts/url-constants.js';
+import { sortByDate } from '../../scripts/global-functions.js';
 
 const isDesktop = window.matchMedia('(min-width: 986px)');
 
@@ -557,6 +558,9 @@ export default async function decorate(block) {
 
       if (value.length > 2) {
         suggestionJson = searchJson.filter((item) => item.title.toLowerCase().includes(value.toLowerCase()));
+
+        // Filter By Last Published Date
+        suggestionJson = sortByDate(suggestionJson, 'lastPublished');
 
         if (suggestionJson.length > 1) {
           let markup = '';
