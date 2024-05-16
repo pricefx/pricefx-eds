@@ -83,7 +83,6 @@
 }
 
 .imagetext .container {
-    display: flex;
     justify-content: space-between; 
     padding-top: 20px;
     align-items: center;
@@ -91,6 +90,11 @@
 
 .imagetext .left-container, .right-container {
     margin: 10px;
+}
+
+.imagetext .inner-left-container, .inner-right-container {
+    display: flex;
+    flex-direction: row;
 }
 
 .imagetext .imagetext-para {
@@ -109,10 +113,10 @@
 
 .imagetext .content {
   padding: 10px;
+  width: 50%;
 }
 
 .imagetext .content .index-0 div p {
-  display: flex;
   margin-bottom: 10px; 
   color: var(--c-copy);
   font-style: normal;
@@ -204,7 +208,6 @@
 
   .imagetext .left-container {
     margin: 0;
-    padding-right: 36px;
   }
 
   .imagetext .banner-image { 
