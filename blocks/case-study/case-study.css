@@ -14,7 +14,7 @@
 }
 
 .case-study .grid-container-3 img , .grid-container-2 img {
-  height: 600px;
+  height: auto;
 }
 
 .case-study .title-text  {
@@ -53,14 +53,14 @@
   margin: 20px;
 }
 
-@media (width<= 767px){
+@media (width<= 985px){
   .case-study .banner {
       top:0;
       left:0;
   }
 }
 
-@media (width>= 768px) { 
+@media (width>= 986px) { 
  .case-study .grid-container-3 ,.case-study .grid-container-2 {
     display: flex;
     flex-direction: row; 
