@@ -19,7 +19,7 @@ export default async function decorate(block) {
 
   /* Table component  */
   const table = document.createElement('table');
-  const variation = tableVariation.textContent.replace(/\s+/g, ' ').trim();
+  const variation = tableVariation.textContent.replace(/\s+/g, ' ');
 
   rows.forEach((rowDiv, rowIndex) => {
     const row = document.createElement('tr');
