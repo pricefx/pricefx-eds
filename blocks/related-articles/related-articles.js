@@ -489,7 +489,7 @@ export default async function decorate(block) {
     block.classList.add(columnLayout, 'cards', 'aspect-ratio-16-9');
     block.innerHTML = titleEle;
     filteredData?.forEach((article, index) => {
-      if (index > 6) {
+      if (index > 7) {
         return;
       }
 
