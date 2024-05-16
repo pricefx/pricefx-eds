@@ -48,8 +48,7 @@
       "partner-showcase",
       "search",
       "marketo-form",
-      "case-study",
-      "testblock"
+      "case-study"
     ]
   },
   {
@@ -67,9 +66,5 @@
   {
     "id": "table",
     "components": ["row"]
-  },
-  {
-    "id": "testblock",
-    "components": ["testBlockItem"]
   }
 ]
