@@ -104,7 +104,7 @@
     padding: 64px 0;
 }
 
-@media (width >= 930px) {
+@media (width >= 986px) {
     .stats.block {
         padding: 0;
     }
