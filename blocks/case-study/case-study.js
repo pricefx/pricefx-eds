@@ -48,10 +48,17 @@ export default async function decorate(block) {
     halfContainer.classList.add('half-container');
 
     container.classList.add('grid-container-3');
-    container.appendChild(firstImageContainer);
+
     halfContainer.appendChild(secondImageContainer);
     halfContainer.appendChild(thirdImageContainer);
-    container.appendChild(halfContainer);
+
+    if (swapRight.textContent.trim() === 'true') {
+      container.appendChild(halfContainer);
+      container.appendChild(firstImageContainer);
+    } else {
+      container.appendChild(firstImageContainer);
+      container.appendChild(halfContainer);
+    }
   } else if (title1.textContent.replace(/\s+/g, '') && title2.textContent.replace(/\s+/g, '')) {
     container.classList.add('grid-container-2');
     container.appendChild(firstImageContainer);
