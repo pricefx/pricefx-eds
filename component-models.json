@@ -1522,7 +1522,7 @@
         "valueType": "string"
       },
       {
-        "component": "aem-content",
+        "component": "text",
         "name": "basePath",
         "value": "",
         "label": "Base Path",
