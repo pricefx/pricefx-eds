@@ -1,7 +1,7 @@
 import ffetch from '../../scripts/ffetch.js';
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { SEARCH_INDEX_PATH } from '../../scripts/url-constants.js';
-import { formatDate } from '../../scripts/global-functions.js';
+import { formatDate, sortByDate } from '../../scripts/global-functions.js';
 
 export default async function decorate(block) {
   // Fetch Search content from JSON endpoint
@@ -231,7 +231,7 @@ export default async function decorate(block) {
         result.description.toLowerCase().includes(searchString) ||
         result['cq-tags'].toLowerCase().includes(searchString),
     );
-    currentSearchJSON = searchJson;
+    currentSearchJSON = sortByDate(searchJson, 'lastPublished');
 
     block.querySelector('.search-result-text').classList.remove('hidden');
     const count = block.querySelector('.search-count');
