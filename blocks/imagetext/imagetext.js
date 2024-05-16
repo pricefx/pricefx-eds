@@ -13,6 +13,8 @@ export default async function decorate(block) {
 
   let enableIcon = false;
 
+  let buttonDisable = false;
+
   const imagetext = document.createElement('div');
   imagetext.classList.add('imagetext-container');
 
@@ -103,12 +105,18 @@ export default async function decorate(block) {
     } else if (index === 5) {
       button.href = row.textContent.replace(/\s+/g, '');
     } else if (index === 6) {
-      button.innerHTML = row.textContent.replace(/\s+/g, '');
+      if (row.textContent.trim() !== '') {
+        button.innerHTML = row.textContent.replace(/\s+/g, '');
+      } else {
+        buttonDisable = true;
+      }
     } else if (index === 7) {
-      if (row.textContent.replace(/\s+/g, '') === 'true') {
+      if (row.textContent.replace(/\s+/g, '') === 'true' && buttonDisable === false) {
         button.target = '_blank';
       }
-      imagetextAction.appendChild(button);
+      if (buttonDisable === false) {
+        imagetextAction.appendChild(button);
+      }
     } else if (index === 8) {
       /* Support Title */
       const line = document.createElement('div');
