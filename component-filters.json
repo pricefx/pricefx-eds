@@ -42,6 +42,7 @@
       "learningCenter",
       "iframe",
       "fragment",
+      "table",
       "carousel",
       "imageText",
       "partner-showcase",
@@ -62,6 +63,10 @@
   {
     "id": "tabs",
     "components": ["tab-item"]
+  },
+  {
+    "id": "table",
+    "components": ["row"]
   },
   {
     "id": "testblock",
