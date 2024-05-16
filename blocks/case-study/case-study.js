@@ -43,10 +43,15 @@ export default async function decorate(block) {
     title3.textContent.replace(/\s+/g, '')
   ) {
     const thirdImageContainer = createImageContainer(image3, title3, text3, 'image-3');
+
+    const halfContainer = document.createElement('div');
+    halfContainer.classList.add('half-container');
+
     container.classList.add('grid-container-3');
     container.appendChild(firstImageContainer);
-    container.appendChild(secondImageContainer);
-    container.appendChild(thirdImageContainer);
+    halfContainer.appendChild(secondImageContainer);
+    halfContainer.appendChild(thirdImageContainer);
+    container.appendChild(halfContainer);
   } else if (title1.textContent.replace(/\s+/g, '') && title2.textContent.replace(/\s+/g, '')) {
     container.classList.add('grid-container-2');
     container.appendChild(firstImageContainer);
