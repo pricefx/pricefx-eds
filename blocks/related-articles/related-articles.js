@@ -12,7 +12,7 @@ const renderArticleCategory = (articles) => {
     const removePrefixCategory = firstCategory.split('/')[1];
     const removeHyphenCategory =
       removePrefixCategory !== 'e-books' && removePrefixCategory !== 'c-suite'
-        ? removePrefixCategory.replaceAll('-', ' ')
+        ? removePrefixCategory?.replaceAll('-', ' ')
         : removePrefixCategory;
     markup = `<p class="article-subtitle">${removeHyphenCategory}</p>`;
     return markup;
@@ -401,14 +401,14 @@ function decorateBlogArticles(articlesJSON, block, props) {
     }
   });
 
-  nextPageButton.addEventListener('click', () => {
+  nextPageButton?.addEventListener('click', () => {
     const paginationList = nextPageButton.previousElementSibling;
     const activePage = [...paginationList.children].find((page) => page.classList.contains('active-page'));
     const nextActivePage = activePage.nextElementSibling;
     handlePaginationNav(paginationList, nextActivePage);
   });
 
-  prevPageButton.addEventListener('click', () => {
+  prevPageButton?.addEventListener('click', () => {
     const paginationList = prevPageButton.nextElementSibling;
     const activePage = [...paginationList.children].find((page) => page.classList.contains('active-page'));
     const nextActivePage = activePage.previousElementSibling;
