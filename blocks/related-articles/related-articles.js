@@ -12,7 +12,7 @@ const renderArticleCategory = (article) => {
     const removePrefixCategory = firstCategory.split('/')[1];
     const removeHyphenCategory =
       removePrefixCategory !== 'e-books' && removePrefixCategory !== 'c-suite'
-        ? removePrefixCategory?.replaceAll('-', ' ')
+        ? removePrefixCategory.replaceAll('-', ' ')
         : removePrefixCategory;
     markup = `<p class="article-subtitle">${removeHyphenCategory}</p>`;
     return markup;
