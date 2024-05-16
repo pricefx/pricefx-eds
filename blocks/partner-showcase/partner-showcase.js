@@ -377,16 +377,11 @@ export default async function decorate(block) {
 
   const appendPartnerShowcasePartners = (partnersJsonData) => {
     partnersContainer.innerHTML = renderPartnerCard(partnersJsonData);
+    partnersContainer
+      .querySelectorAll('img')
+      .forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false)));
   };
   appendPartnerShowcasePartners(defaultSortedPartners);
-
-  partnersContainer
-    .querySelectorAll('img')
-    .forEach((img) =>
-      img
-        .closest('picture')
-        .replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ media: '(min-width: 640px)', width: '577' }])),
-    );
 
   // Render pagination pages
   const renderPages = (partnerPerPage, partnersList, currentPage) => {
