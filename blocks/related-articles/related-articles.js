@@ -4,15 +4,15 @@ import { ARTICLE_INDEX_PATH, BASE_CONTENT_PATH } from '../../scripts/url-constan
 import ffetch from '../../scripts/ffetch.js';
 
 // Clean-up and Render Article Category
-const renderArticleCategory = (articles) => {
-  const categoriesArray = articles.category.split(',');
+const renderArticleCategory = (article) => {
+  const categoriesArray = article.category.split(',');
   if (categoriesArray.length !== 0) {
-    const firstCategory = categoriesArray[0];
+    const firstCategory = categoriesArray.find((category) => category.includes('/'));
     let markup = '';
     const removePrefixCategory = firstCategory.split('/')[1];
     const removeHyphenCategory =
       removePrefixCategory !== 'e-books' && removePrefixCategory !== 'c-suite'
-        ? removePrefixCategory?.replaceAll('-', ' ')
+        ? removePrefixCategory.replaceAll('-', ' ')
         : removePrefixCategory;
     markup = `<p class="article-subtitle">${removeHyphenCategory}</p>`;
     return markup;
@@ -31,13 +31,12 @@ const renderArticleAuthors = (article, authorDirectoryPath) => {
   let authorsParentPagePathFormatted = authorDirectoryPath;
   const isPublishEnvironment = environmentMode() === 'publish';
 
-  if (!isPublishEnvironment) {
-    // In the author environment, ensure the URL does not end with a slash
-    // Append a slash only if the URL doesn't already end with it
-    if (!authorsParentPagePathFormatted.endsWith('/')) {
-      authorsParentPagePathFormatted += '/';
-    }
-  } else {
+  // Append a slash only if the URL doesn't already end with it
+  if (!authorsParentPagePathFormatted.endsWith('/')) {
+    authorsParentPagePathFormatted += '/';
+  }
+
+  if (isPublishEnvironment) {
     // In the publish environment, remove the base path if present
     authorsParentPagePathFormatted = authorsParentPagePathFormatted.replace(BASE_CONTENT_PATH, '');
   }
@@ -54,7 +53,7 @@ const renderArticleAuthors = (article, authorDirectoryPath) => {
     if (!isPublishEnvironment) {
       authorPageLink = `${authorsParentPagePathFormatted}${removePrefixAuthor}.html`;
     } else {
-      authorPageLink = `/authors/${removePrefixAuthor}`;
+      authorPageLink = `${authorsParentPagePathFormatted}${removePrefixAuthor}`;
     }
 
     innerMarkup +=
@@ -433,6 +432,21 @@ function decorateBlogArticles(articlesJSON, block, props) {
           }
         });
       }
+
+      const activePage = [...pageList].find((page) => page.classList.contains('active-page'));
+
+      if (activePage.textContent > '1') {
+        prevPageButton.classList.remove('hidden');
+      } else {
+        prevPageButton.classList.add('hidden');
+      }
+
+      if (activePage.textContent === pageList[pageList.length - 1].textContent) {
+        nextPageButton.classList.add('hidden');
+      } else {
+        nextPageButton.classList.remove('hidden');
+      }
+
       appendNewActiveArticlePage(
         Number(loadedSearchParams.get('page')) * Number(numOfArticles) - Number(numOfArticles),
         Number(loadedSearchParams.get('page')) * Number(numOfArticles),
@@ -454,9 +468,6 @@ const filterBasedOnProp = (data = [], filterProps = [], filterValues = {}) =>
   );
 
 export default async function decorate(block) {
-  const url = ARTICLE_INDEX_PATH;
-  // Get Data
-  const data = await ffetch(url).all();
   const type = block.children[0]?.textContent.trim() || 'related';
   const title = block.children[1]?.textContent.trim();
   const titleEle = `<h2>${title}</h2>`;
@@ -464,8 +475,14 @@ export default async function decorate(block) {
   let categoryTags = block.children[3]?.textContent.trim()?.split(',');
   const topicTags = block.children[4]?.textContent.trim()?.split(',');
   const authorTags = block.children[5]?.textContent.trim()?.split(',');
+  const path = block.children[6]?.textContent.trim();
   const authorPath = block.children[7]?.textContent.trim();
   const numOfArticles = block.children[8]?.textContent.trim() || '13';
+
+  const url = path || ARTICLE_INDEX_PATH;
+  // Get Data
+  const data = await ffetch(url).all();
+
   if (categoryTags.toString().length === 0) {
     categoryTags = getMetadata('category')?.split(',');
   }
