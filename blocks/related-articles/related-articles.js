@@ -1,5 +1,5 @@
 import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
-import { environmentMode, formatDate } from '../../scripts/global-functions.js';
+import { environmentMode, formatDate, sortByDate } from '../../scripts/global-functions.js';
 import { ARTICLE_INDEX_PATH, BASE_CONTENT_PATH } from '../../scripts/url-constants.js';
 import ffetch from '../../scripts/ffetch.js';
 
@@ -475,14 +475,13 @@ export default async function decorate(block) {
 
   // filter by other tags
   const filteryByTopics = filterBasedOnProp(filteryByCategory, ['topics'], { topics: topicTags });
-  const filteredData = filterBasedOnProp(filteryByTopics, ['authors'], { authors: authorTags });
+  const filterByAuthors = filterBasedOnProp(filteryByTopics, ['authors'], { authors: authorTags });
+
+  // Filter Current Article
+  let filteredData = filterByAuthors.filter((article) => !article.path.includes(window.location.pathname));
 
   // Sorting Article by Date published
-  filteredData.sort((a, b) => {
-    const date1 = new Date(a.articlePublishDate).getTime();
-    const date2 = new Date(b.articlePublishDate).getTime();
-    return date2 - date1;
-  });
+  filteredData = sortByDate(filteredData, 'articlePublishDate');
 
   const ul = document.createElement('ul');
   block.textContent = '';
