@@ -227,11 +227,18 @@
   margin: 0;
 }
 
+.partner-card .partner-image {
+  align-items: center;
+  background: var(--c-dark-blue-gradient);
+  border-radius: 8px 8px 0 0;
+  display: flex;
+  justify-content: center;
+  min-height: 170px;
+}
+
 .partner-card .partner-image img {
-  aspect-ratio: auto 16 / 9;
   border-radius: 8px 8px 0 0;
   display: block;
-  height: 100%;
   width: 100%;
 }
 

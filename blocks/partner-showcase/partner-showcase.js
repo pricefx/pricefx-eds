@@ -107,6 +107,12 @@ const closeMobileFilterOnEscape = (e) => {
 };
 window.addEventListener('keydown', closeMobileFilterOnEscape);
 
+const updateBrowserUrl = (searchParams, key, value) => {
+  searchParams.set(key, value);
+  const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
+  window.history.pushState(null, '', newRelativePathQuery);
+};
+
 /**
  * Decorates Learning Center on DOM
  * @param {Element} block The Learning Center block element
@@ -386,7 +392,7 @@ export default async function decorate(block) {
   const renderPages = (partnerPerPage, partnersList, currentPage) => {
     const totalPartners = partnersList.length;
     const totalPageNumber = Math.ceil(totalPartners / partnerPerPage);
-    const firstPageMarkup = `<li class="pagination-page active-page" id="page-1"><button>1</button></li>`;
+    const firstPageMarkup = `<li class="pagination-page" id="page-1"><button>1</button></li>`;
     const lastPageMarkup = `<li class="pagination-page" id="page-${totalPageNumber}"><button>${totalPageNumber}</button></li>`;
     let paginationMarkup = '';
     let middlePageMarkup = '';
@@ -431,7 +437,7 @@ export default async function decorate(block) {
   };
 
   paginationContainer.innerHTML = `
-    ${Number(numberOfPartners.textContent.trim()) > defaultSortedPartners.length ? '' : `<button class="pagination-prev hidden" aria-label="Previous Page">${LEFTCHEVRON}</button>`}
+    ${Number(numberOfPartners.textContent.trim()) > defaultSortedPartners.length ? '' : `<button class="pagination-prev" aria-label="Previous Page">${LEFTCHEVRON}</button>`}
     <ul class="pagination-pages-list">
       ${renderPages(numberOfPartners.textContent.trim(), defaultSortedPartners, 1)}
     </ul>
@@ -448,6 +454,21 @@ export default async function decorate(block) {
     paginationContainer.classList.remove('hidden');
   }
 
+  if (window.location.search !== '') {
+    const currentUrlParam = new URLSearchParams(window.location.search);
+    const pageNum = currentUrlParam.get('page');
+    if (Number(pageNum) > 1) {
+      prevPageButton.classList.remove('hidden');
+      paginationPageList.children[0].classList.remove('active-page');
+    } else {
+      prevPageButton.classList.add('hidden');
+      paginationPageList.children[0].classList.add('active-page');
+    }
+  } else {
+    prevPageButton.classList.add('hidden');
+    paginationPageList.children[0].classList.add('active-page');
+  }
+
   // Defining some variables for filter, sort and search logic
   const sortByEl = document.getElementById('ps-sort-content');
   let currentFilteredPartners;
@@ -458,6 +479,23 @@ export default async function decorate(block) {
     'filter-industry': [],
     'filter-type': [],
     'filter-speciality': [],
+  };
+
+  // Updates the URL Params based on selected filters
+  const updateFiltersUrlParams = () => {
+    if (selectedFilters['filter-geography'].length > 0) {
+      updateBrowserUrl(searchParams, 'filter-geography', selectedFilters['filter-geography'][0]);
+    }
+    if (selectedFilters['filter-industry'].length > 0) {
+      updateBrowserUrl(searchParams, 'filter-industry', selectedFilters['filter-industry'][0]);
+    }
+    if (selectedFilters['filter-type'].length > 0) {
+      updateBrowserUrl(searchParams, 'filter-type', selectedFilters['filter-type'][0]);
+    }
+    if (selectedFilters['filter-speciality'].length > 0) {
+      const valuesString = selectedFilters['filter-speciality'].toString();
+      updateBrowserUrl(searchParams, 'filter-speciality', valuesString);
+    }
   };
 
   // Partner Showcase Sort By logic
@@ -485,15 +523,17 @@ export default async function decorate(block) {
         <h4 class="no-partners">Sorry, there are no results based on these choices. Please update and try again.</h4>
       `;
       paginationContainer.classList.add('hidden');
-      searchParams.set('page', 1);
+      updateBrowserUrl(searchParams, 'page', 1);
     } else {
       paginationContainer.classList.remove('hidden');
-      const currentPage = [...paginationPageList.children].find((page) => page.classList.contains('active-page'));
+      const currentPage = paginationPageList.children[0];
       paginationPageList.innerHTML = renderPages(
         numberOfPartners.textContent.trim(),
         currentSortedPartners,
         Number(currentPage.textContent),
       );
+      paginationPageList.children[0].classList.add('active-page');
+      nextPageButton.classList.remove('hidden');
       if (paginationPageList.children.length <= 1) {
         paginationContainer.classList.add('hidden');
       } else {
@@ -526,34 +566,15 @@ export default async function decorate(block) {
     if (paginationPageList.children[0].className.includes('active-page')) {
       prevPageButton.classList.add('hidden');
     }
-    searchParams.set('sortBy', e.target.value);
-    const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
-    window.history.pushState(null, '', newRelativePathQuery);
+    updateBrowserUrl(searchParams, 'page', 1);
+    updateBrowserUrl(searchParams, 'sortBy', e.target.value);
   });
-
-  // Updates the URL Params based on selected filters
-  const updateFiltersUrlParams = () => {
-    if (selectedFilters['filter-geography'].length > 0) {
-      searchParams.set('filter-geography', selectedFilters['filter-geography'][0]);
-    }
-    if (selectedFilters['filter-industry'].length > 0) {
-      searchParams.set('filter-industry', selectedFilters['filter-industry'][0]);
-    }
-    if (selectedFilters['filter-type'].length > 0) {
-      searchParams.set('filter-type', selectedFilters['filter-type'][0]);
-    }
-    if (selectedFilters['filter-speciality'].length > 0) {
-      const valuesString = selectedFilters['filter-speciality'].toString();
-      searchParams.set('filter-speciality', valuesString);
-    }
-  };
 
   // Partner Showcase Filter logic
   const updateSelectedFilters = (state, key, value) => {
     if (state === true && value.includes('all')) {
       selectedFilters[key].pop();
       searchParams.delete(key);
-      updateFiltersUrlParams();
     } else if (state === true && key !== 'filter-speciality') {
       selectedFilters[key].pop();
       selectedFilters[key].push(value);
@@ -563,7 +584,7 @@ export default async function decorate(block) {
       updateFiltersUrlParams();
     } else if (state === false && selectedFilters[key].includes(value)) {
       selectedFilters[key].splice(selectedFilters[key].indexOf(value), 1);
-      updateFiltersUrlParams();
+      searchParams.delete(key);
     }
     const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
     window.history.pushState(null, '', newRelativePathQuery);
@@ -601,19 +622,18 @@ export default async function decorate(block) {
         <h4 class="no-partners">Sorry, there are no results based on these choices. Please update and try again.</h4>
       `;
       paginationContainer.classList.add('hidden');
-      searchParams.set('page', 1);
+      updateBrowserUrl(searchParams, 'page', 1);
     } else {
       appendPartnerShowcasePartners(partnersJson);
       paginationContainer.classList.remove('hidden');
-      const currentPage = [...paginationPageList.children].find((page) => page.classList.contains('active-page'));
+      const currentPage = paginationPageList.children[0];
       paginationPageList.innerHTML = renderPages(
         numberOfPartners.textContent.trim(),
         currentFilteredPartners,
         Number(currentPage.textContent),
       );
-      if (partnersJson.length <= Number(numberOfPartners.textContent.trim())) {
-        searchParams.set('page', 1);
-      }
+      paginationPageList.children[0].classList.add('active-page');
+      nextPageButton.classList.remove('hidden');
       if (paginationPageList.children.length <= 1) {
         paginationContainer.classList.add('hidden');
       } else {
@@ -640,6 +660,8 @@ export default async function decorate(block) {
         currentPartnersData = currentSortedPartners;
         handleFilter(selectedFilters, currentSortedPartners);
       }
+
+      updateBrowserUrl(searchParams, 'page', 1);
 
       if (paginationPageList.children[0].className.includes('active-page')) {
         prevPageButton.classList.add('hidden');
@@ -699,9 +721,7 @@ export default async function decorate(block) {
       currentPartnersData,
     );
 
-    searchParams.set('page', nextActivePage.textContent);
-    const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
-    window.history.pushState(null, '', newRelativePathQuery);
+    updateBrowserUrl(searchParams, 'page', nextActivePage.textContent);
   };
 
   paginationContainer.addEventListener('click', (e) => {
@@ -727,9 +747,7 @@ export default async function decorate(block) {
         currentPartnersData,
       );
 
-      searchParams.set('page', target.textContent);
-      const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
-      window.history.pushState(null, '', newRelativePathQuery);
+      updateBrowserUrl(searchParams, 'page', target.textContent);
     }
   });
 
@@ -759,6 +777,7 @@ export default async function decorate(block) {
     if (loadedSearchParams.get('sortBy') !== 'asc-title') {
       sortByEl.value = loadedSearchParams.get('sortBy');
       handleSort(loadedSearchParams.get('sortBy'), partnersOnLoad);
+      searchParams.set('sortBy', loadedSearchParams.get('sortBy'));
     }
 
     if (
@@ -829,6 +848,9 @@ export default async function decorate(block) {
             page.classList.add('active-page');
           }
         });
+      }
+      if (paginationPageList.lastElementChild.classList.contains('active-page')) {
+        nextPageButton.classList.add('hidden');
       }
       appendNewActivePartnerPage(
         Number(loadedSearchParams.get('page')) * Number(numberOfPartners.textContent.trim()) -
