@@ -384,11 +384,15 @@ a.article-link::after {
   margin: 0;
 }
 
+.article-card .article-image {
+  min-height: 218.7px;
+}
+
 .article-card .article-image img {
-  aspect-ratio: auto 16 / 9;
   border-radius: 16px;
   display: block;
   height: 100%;
+  object-fit: cover;
   width: 100%;
 }
 
@@ -621,13 +625,8 @@ a.article-link::after {
   }
 
   .featured-article .article-image {
-    height: auto;
+    height: 218.7px;
     width: 100%;
-  }
-
-  .featured-article .article-image img {
-    display: block;
-    height: auto;
   }
 
   .featured-article .article-content {
