@@ -8,7 +8,7 @@
   color: var(--c-white);
 }
 
-.quote-text {
+.quote .quote-text {
   color: var(--c-white);
   font-family: var(--ff-secondary);
   font-size: var(--heading-font-size-s);
@@ -19,7 +19,7 @@
   padding-top: calc((20 / 16) * 1rem);
 }
 
-.author{
+.quote .author {
   color: var(--c-white);
   font-family: var(--ff-secondary);
   font-size: var(--body-font-size-l);
@@ -30,17 +30,17 @@
   padding-top: calc((20 / 16) * 1rem);
 }
 
-.quote-icon{
+.quote .quote-icon{
   padding-bottom: calc((30 / 16) * 1rem);
 }
 
-.quote-logo{
+.quote .quote-logo{
   width: 136px;
   height: calc((40 / 16) * 1rem);
   margin-bottom: calc((20 / 16) * 1rem);
 }
 
-.quote-main-container {
+.quote .quote-main-container {
     display: grid;
     grid-template-columns: 1fr; 
     grid-template-rows: auto;
@@ -48,80 +48,84 @@
     border-radius: 8px;
 }
 
-.black-background {
+.quote .black-background {
   background-color: var(--c-extra-dark);
 }
 
-.quote-no-image-container {
+.quote .quote-no-image-container {
   justify-content: center;
   text-align: center;
   display: none;
 }
 
-.quote-left-container {
+.quote .quote-left-container {
     flex: 0 0 35%;
     border-radius: 8px; 
 }
 
-.quote-image-container {
+.quote .quote-image-container {
     width: 100%;
     border-radius: 8px; 
     object-fit: cover;
 }
 
-.quote-right-container {
+.quote .quote-right-container {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     margin: calc((40 / 16) * 1rem);
 }
 
-.quote-no-left-container {
-  .quote-text, p{
+.quote .quote-no-left-container {
+  .quote .quote-text, .quote .quote-text p{
     text-align: center;
   }
 
-  .quote-logo {
+  .quote .quote-logo {
     display: block;
     margin-left: auto;
     margin-right: auto;
   }
 }
 
-.quote-no-image-container .quote-right-container {
+.quote .quote-no-image-container .quote-right-container {
     text-align: center;
 }
 
 /* Desktop View */
 @media (width >= 768px) {
-  .quote-main-container {
+  .quote .quote-main-container {
     display: flex;
     justify-content: space-between;
     max-width: 780px;
     max-height: 407px;
 }
 
-  .quote-text, p{
+  .quote .quote-text , .quote .quote-text p{
       text-align: center;
   }
 
-  .quote-logo {
+  .quote .quote-logo {
     margin-left: auto;
     margin-right: auto;
   }
 
-   .quote-left-container, .quote-right-container {
+  .quote .quote-left-container, .quote-right-container {
     max-width: 100%;
   }
 
-  .quote-left-container{
+  .quote .quote-left-container{
     overflow: hidden;
   }
 
-  .quote-image-container {
+  .quote .quote-image-container {
     max-width: 280px;
     min-height: 475px;
     overflow: hidden;
+  }
+
+  .quote .author{
+    text-align: center;
   }
 }
 
