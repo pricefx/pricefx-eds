@@ -2463,28 +2463,5 @@
         "valueType": "boolean"
       }
     ]
-  },
-  {
-    "id": "testblock",
-    "fields": [
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "tableTitle",
-        "value": "",
-        "label": "Table Title"
-      }
-    ]
-  },
-  {
-    "id": "testBlockItem",
-    "fields": [
-      {
-        "component": "richtext",
-        "name": "colOneDescription",
-        "label": "Column 1 Description",
-        "valueType": "string"
-      }
-    ]
   }
 ]
