@@ -19,7 +19,7 @@
   padding-top: calc((20 / 16) * 1rem);
 }
 
-.quote .author{
+.quote .author {
   color: var(--c-white);
   font-family: var(--ff-secondary);
   font-size: var(--body-font-size-l);
@@ -77,7 +77,7 @@
 }
 
 .quote .quote-no-left-container {
-  .quote .quote-text, p{
+  .quote .quote-text, .quote .quote-text p{
     text-align: center;
   }
 
@@ -101,7 +101,7 @@
     max-height: 407px;
 }
 
-  .quote .quote-text, p{
+  .quote .quote-text , .quote .quote-text p{
       text-align: center;
   }
 
@@ -122,6 +122,10 @@
     max-width: 280px;
     min-height: 475px;
     overflow: hidden;
+  }
+
+  .quote .author{
+    text-align: center;
   }
 }
 
