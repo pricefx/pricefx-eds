@@ -2,6 +2,7 @@ import ffetch from '../../scripts/ffetch.js';
 import { SEARCH } from '../../scripts/constants.js';
 import { decorateIcons } from '../../scripts/aem.js';
 import { SEARCH_INDEX_PATH } from '../../scripts/url-constants.js';
+import { sortByDate } from '../../scripts/global-functions.js';
 
 const isDesktop = window.matchMedia('(min-width: 986px)');
 
@@ -379,7 +380,7 @@ export default async function decorate(block) {
     <div class="search-input-wrapper megamenu-wrapper" aria-hidden="true">
       <form action="/search">
         <button type="submit">${SEARCH}</button>
-        <input type="text" name="search" aria-label="Search" placeholder="Search pricefx.com" autocomplete="off">
+        <input type="text" name="q" aria-label="Search" placeholder="Search pricefx.com" autocomplete="off">
       </form>
       <div class="search-suggestion"></div>
     </div>
@@ -557,6 +558,9 @@ export default async function decorate(block) {
 
       if (value.length > 2) {
         suggestionJson = searchJson.filter((item) => item.title.toLowerCase().includes(value.toLowerCase()));
+
+        // Filter By Last Published Date
+        suggestionJson = sortByDate(suggestionJson, 'lastPublished');
 
         if (suggestionJson.length > 1) {
           let markup = '';

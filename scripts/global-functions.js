@@ -19,5 +19,19 @@ const formatDate = (dateString) => {
   return date.toLocaleDateString('en-US', options);
 };
 
+/**
+ * Function to sort the JSON By Date in Descending order.
+ * @params {data} JSON Array
+ * @params {prop} object property name
+ * @returns {JSON}
+ */
+function sortByDate(data, prop) {
+  return data.sort((a, b) => {
+    const date1 = new Date(a[prop]).getTime();
+    const date2 = new Date(b[prop]).getTime();
+    return date2 - date1;
+  });
+}
+
 // eslint-disable-next-line import/prefer-default-export
-export { environmentMode, formatDate };
+export { environmentMode, formatDate, sortByDate };
