@@ -101,17 +101,17 @@ export default async function decorate(block) {
       imagetextRightContainer.appendChild(imagetextAction);
     } else if (index === 4) {
       button.classList.add('button');
-      button.classList.add(row.textContent.replace(/\s+/g, ''));
+      button.classList.add(row.textContent.trim());
     } else if (index === 5) {
-      button.href = row.textContent.replace(/\s+/g, '');
+      button.href = row.textContent.trim();
     } else if (index === 6) {
       if (row.textContent.trim() !== '') {
-        button.innerHTML = row.textContent.replace(/\s+/g, '');
+        button.innerHTML = row.textContent.trim();
       } else {
         buttonDisable = true;
       }
     } else if (index === 7) {
-      if (row.textContent.replace(/\s+/g, '') === 'true' && buttonDisable === false) {
+      if (row.textContent.trim() === 'true' && buttonDisable === false) {
         button.target = '_blank';
       }
       if (buttonDisable === false) {

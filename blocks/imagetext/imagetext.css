@@ -158,8 +158,11 @@
 
 .imagetext .index-1 img {
     width: 193px;
-    height: 74px;
     display: flex;
+}
+
+.imagetext .index-1 div p {
+  height: 74px
 }
 
 .imagetext div li {
@@ -210,6 +213,10 @@
   text-align: center;
 }
 
+.imagetext .imagetext-action:empty::after {
+  content: ""; 
+  flex: 1; 
+}
 
 /* Media Query for Desktop */
 
@@ -233,7 +240,7 @@
 
   .imagetext .banner-image { 
     width: 539px;
-    min-height: 753px;
+    height: 753px;
     flex-shrink: 0;
 }
 
