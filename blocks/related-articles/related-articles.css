@@ -61,10 +61,11 @@
 
 .related-articles h2 {
     text-align: center;
-    margin-bottom: var(--spacing-large);
+    margin: 0 auto var(--spacing-large) auto;
     color: var(--c-copy);
     background: none;
     -webkit-text-fill-color: unset;
+    max-width: 780px;
 }
 
 .related-articles .cards-card-published-date,

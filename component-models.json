@@ -1545,6 +1545,14 @@
         "validation": {
           "numberMin": 3
         }
+      },
+      {
+        "component": "aem-content",
+        "name": "marketoFragmentPath",
+        "value": "",
+        "label": "Marketo Form Fragment Path",
+        "valueType": "string",
+        "description": "Applicable for Blog Articles"
       }
     ]
   },
