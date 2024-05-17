@@ -695,3 +695,20 @@ main .section.highlight {
     padding: 87px 36px 36px 18px;
   }
 }
+
+
+
+/* Artile Styles */
+.article .article-metadata {
+  margin-bottom: 40px;
+}
+
+.article .p {
+  margin-bottom: 40px;
+}
+
+.article {
+  h1, h2, h3, h4, h5, h6 {
+    margin: 64px 0;
+  }
+}
