@@ -692,19 +692,27 @@ main .section.highlight {
   }
 }
 
-
-
 /* Artile Styles */
-.article .article-metadata {
-  margin-bottom: 40px;
-}
-
-.article p:not(:last-child) {
-  margin-bottom: 40px;
-}
-
 .article {
-  h1, h2, h3, h4, h5, h6 {
-    margin: 64px 0;
+  .article-metadata {
+    margin-bottom: 40px;
+  }
+
+  p:not(:last-child) {
+    margin-bottom: 40px;
+  }
+
+  p:last-child {
+    margin-bottom: 64px;
+  }
+  
+  h1 {
+    font-size: 50px;
+    text-transform: uppercase;
+    margin: 0 0 40px;
+  }
+
+  h2, h3, h4, h5, h6 {
+    margin: 0 0 64px;
   }
 }
