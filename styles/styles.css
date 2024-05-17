@@ -261,12 +261,8 @@ figure {
   padding: 0;
 }
 
-p {
+p:not(:last-child) {
   margin-bottom: 20px;
-}
-
-p:last-child {
-  margin-bottom: 0;
 }
 
 img {
@@ -703,7 +699,7 @@ main .section.highlight {
   margin-bottom: 40px;
 }
 
-.article .p {
+.article p:not(:last-child) {
   margin-bottom: 40px;
 }
 
