@@ -105,6 +105,13 @@ async function applyChanges(event) {
   return false;
 }
 
+function updateAriaLabel(readingTime) {
+  const inputField = document.querySelector('input[aria-label="Article Read Time"]');
+  if (inputField) {
+    inputField.value = readingTime;
+  }
+}
+
 function attachEventListners(main) {
   ['aue:content-patch', 'aue:content-update', 'aue:content-add', 'aue:content-move', 'aue:content-remove'].forEach(
     (eventType) =>
@@ -130,13 +137,6 @@ function attachEventListners(main) {
         }
       }),
   );
-}
-
-function updateAriaLabel(readingTime) {
-  const inputField = document.querySelector('input[aria-label="Article Read Time"]');
-  if (inputField) {
-    inputField.value = readingTime;
-  }
 }
 
 attachEventListners(document.querySelector('main'));
