@@ -105,19 +105,28 @@ async function applyChanges(event) {
   return false;
 }
 
-async function waitForFieldAndUpdate(readingTime) {
-  const checkField = () => {
-    const inputField = document.querySelector('input[aria-label="Article Read Time"]');
-    if (inputField) {
-      inputField.value = readingTime;
-    } else {
-      setTimeout(checkField, 100); // Check again after 100ms
-    }
-  };
+// Function to read window field when it becomes available
+function readWindowFieldWhenAvailable(windowFieldName, fieldIdentifier) {
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'childList') {
+        const targetField = document.querySelector(fieldIdentifier);
+        if (targetField) {
+          const windowFieldValue = window[windowFieldName];
+          if (windowFieldValue !== undefined) {
+            targetField.value = windowFieldValue;
+          } else {
+            // eslint-disable-next-line no-console
+            console.warn(`Field "${windowFieldName}" not found on the window object.`);
+          }
+          observer.disconnect(); // Stop observing after first field appearance
+        }
+      }
+    });
+  });
 
-  checkField();
+  observer.observe(document.body, { childList: true, subtree: true });
 }
-
 
 function attachEventListners(main) {
   ['aue:content-patch', 'aue:content-update', 'aue:content-add', 'aue:content-move', 'aue:content-remove'].forEach(
@@ -132,12 +141,23 @@ function attachEventListners(main) {
         const wordCount = wordsArray.length;
         const wordsPerMinute = 200;
         const readingTime = Math.ceil(wordCount / wordsPerMinute);
-
+        
+        // Store read time in the window object for accessibility
+        window.articleReadTime = readingTime;
+        
         // eslint-disable-next-line no-console
         console.log(
           `This article has ${wordCount} words and will take approximately ${readingTime} minute(s) to read.`
         );
-        waitForFieldAndUpdate(readingTime);
+        
+        // (Optional) Update input field if it's already available
+        const inputField = document.querySelector('input[aria-label="Article Read Time"]');
+        if (inputField) {
+          inputField.value = readingTime;
+        } else {
+          // Handle scenario where input field is not initially available
+          readWindowFieldWhenAvailable('articleReadTime', '.article-info'); // Assuming a parent element with class 'article-info'
+        }
 
         if (!applied) {
           window.location.reload();
