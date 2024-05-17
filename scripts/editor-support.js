@@ -113,7 +113,6 @@ async function waitForFieldAndUpdate(readingTime) {
       if (mutation.type === 'childList') {
         const inputField = document.querySelector('input[aria-label="Article Read Time"]');
         if (inputField) {
-          inputField.setAttribute('aria-label', `This article will take approximately ${readingTime} minute(s) to read.`);
           inputField.value = readingTime;
           observer.disconnect();
           break;
