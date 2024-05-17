@@ -106,15 +106,15 @@ async function applyChanges(event) {
 }
 
 // Function to read window field when it becomes available
-function readWindowFieldWhenAvailable(windowFieldName, fieldIdentifier) {
+function readWindowFieldWhenAvailable(windowFieldName) {
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       if (mutation.type === 'childList') {
-        const targetField = document.querySelector(fieldIdentifier);
-        if (targetField) {
+        const inputField = document.querySelector('input[aria-label="Article Read Time"]');
+        if (inputField) {
           const windowFieldValue = window[windowFieldName];
           if (windowFieldValue !== undefined) {
-            targetField.value = windowFieldValue;
+            inputField.value = windowFieldValue;
           } else {
             // eslint-disable-next-line no-console
             console.warn(`Field "${windowFieldName}" not found on the window object.`);
@@ -150,13 +150,13 @@ function attachEventListners(main) {
           `This article has ${wordCount} words and will take approximately ${readingTime} minute(s) to read.`
         );
         
-        // (Optional) Update input field if it's already available
+        // Update input field if it's already available
         const inputField = document.querySelector('input[aria-label="Article Read Time"]');
         if (inputField) {
           inputField.value = readingTime;
         } else {
-          // Handle scenario where input field is not initially available
-          readWindowFieldWhenAvailable('articleReadTime', '.article-info'); // Assuming a parent element with class 'article-info'
+          // Call readWindowFieldWhenAvailable to handle potential later appearance
+          readWindowFieldWhenAvailable('articleReadTime');
         }
 
         if (!applied) {
