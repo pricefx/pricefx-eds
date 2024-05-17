@@ -86,6 +86,8 @@ export default async function decorate(block) {
   authorsElement.innerHTML = `By ${authors}`;
 
   container.appendChild(postDateElement);
-  container.appendChild(authorsElement);
+  if (articleAuthors) {
+    container.appendChild(authorsElement);
+  }
   block.appendChild(container);
 }
