@@ -896,6 +896,27 @@
       },
       {
         "component": "select",
+        "name": "removePadding",
+        "value": "",
+        "label": "Remove Top / Bottom Padding",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Remove Top Padding",
+            "value": "section-remove-top-padding"
+          },
+          {
+            "name": "Remove Bottom Padding",
+            "value": "section-remove-bottom-padding"
+          }
+        ]
+      },
+      {
+        "component": "select",
         "name": "roundedCorner",
         "value": "",
         "label": "Rounded Corner for Image/Video",
