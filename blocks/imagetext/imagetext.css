@@ -7,6 +7,11 @@
   border-radius: 0.5rem;
 }
 
+.imagetext .imagetext-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .imagetext .imagetext-text{
    text-align: center;
    font-family: var(--ff-secondary);
@@ -14,6 +19,7 @@
    font-style: normal;
    font-weight: var(--fw-regular);
    line-height: 28px;
+   display: flex;
 }
 
 .imagetext .imagetext-main-container {
@@ -23,6 +29,7 @@
   border-radius: 8px;
   flex-direction: column; 
   padding-top: 44px;
+  padding-bottom: 89px;
   min-height: 753px;;
 }
 
@@ -133,10 +140,16 @@
 }
 
 .imagetext .index-0 div p:first-child {
+  text-align: left;
   font-family: var(--ff-primary);
   font-size: var(--heading-font-size-s);
   line-height: 28px;
   font-weight: var(--fw-med);
+}
+
+.imagetext .index-2 div p:first-child  {
+    height: 84px;
+    width: 270px;
 }
 
 .imagetext .index-1 {
@@ -144,24 +157,24 @@
 }
 
 .imagetext .index-1 img {
-    width: 100px; 
-    height: auto; 
+    width: 193px;
+    height: 74px;
     display: flex;
 }
 
- .imagetext div li {
-    align-items: center;
+.imagetext div li {
     display: flex;
     line-height: 28px;
-    margin: 24px 0 0;
+    margin: 0;
     padding-bottom: 20px;
+    min-width: 474px;
 }
 
 .imagetext  li::before {
   content: url("../../icons/image-text.svg");
   display: inline-block;
   height: 37px;
-  width: 30px;
+  width: 45px;
   list-style: none;
   margin-right: 30px;
 }
@@ -174,6 +187,7 @@
     font-style: normal;
     font-weight: var(--fw-bold);
     line-height: 27px; 
+    text-align: left;
 }
 
 /* Suggestion Description & Link */
@@ -193,6 +207,7 @@
 
 #benefits-statement {
   height: 55px;
+  text-align: center;
 }
 
 
@@ -202,6 +217,7 @@
   .imagetext .imagetext-text{ 
     width: 984px;
     height: 56px;
+    margin: 0 auto;
   }
 
   .imagetext .imagetext-main-container {
@@ -212,6 +228,7 @@
     margin: 0;
     padding-top: 0;
     padding-left: 37px;
+    display: grid;
   }
 
   .imagetext .banner-image { 
