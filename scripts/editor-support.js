@@ -105,11 +105,27 @@ async function applyChanges(event) {
   return false;
 }
 
-function updateAriaLabel(readingTime) {
-  const inputField = document.querySelector('input[aria-label="Article Read Time"]');
-  if (inputField) {
-    inputField.value = readingTime;
-  }
+async function waitForFieldAndUpdate(readingTime) {
+  const targetNode = document.body;
+
+  const observer = new MutationObserver((mutationsList, observer) => {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'childList') {
+        const inputField = document.querySelector('input[aria-label="Article Read Time"]');
+        if (inputField) {
+          inputField.setAttribute('aria-label', `This article will take approximately ${readingTime} minute(s) to read.`);
+          inputField.value = readingTime;
+          observer.disconnect();
+          break;
+        }
+      }
+    }
+  });
+
+  observer.observe(targetNode, {
+    childList: true,
+    subtree: true
+  });
 }
 
 function attachEventListners(main) {
