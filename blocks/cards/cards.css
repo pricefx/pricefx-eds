@@ -120,6 +120,7 @@
   word-break: break-word;
   background: none;
   margin: 0;
+  text-transform: uppercase;
 }
 
 .cards .cards-card-cta a::after,
@@ -218,7 +219,6 @@ div.cards-card-eyebrow + div.cards-card-description {
 }
 
 .icon-variation.cards .cards-card-title h6 {
-  margin-top: 0;
   text-align: center;
 }
 
