@@ -1750,13 +1750,14 @@
         "label": "Article Read Time",
         "placeholder": "Enter time in number format",
         "description": "Please enter article read time in mins.",
-        "condition": {"if": [
-                        { "==": ["var.window.articleType", "long"] },
-                        { ">": ["window.userLevel", 2] }         
-                      ],
-                      "then": 20, 
-                      "else": 10 
-                    },
+        "condition": {
+          "if": [
+            { "==": ["var.window.articleType", "long"] },
+            { ">": ["window.userLevel", 2] }
+          ],
+          "then": 20,
+          "else": 10
+        }
       }
     ]
   },
