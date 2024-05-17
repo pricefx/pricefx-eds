@@ -597,6 +597,14 @@ main .section.highlight {
   padding: 0;
 }
 
+.section[data-removepadding="section-remove-top-padding"] {
+  padding-top: 0;
+}
+
+.section[data-removepadding="section-remove-bottom-padding"] {
+  padding-bottom: 0;
+}
+
 /* section image & iframe video styles */
 .section[data-roundedcorner="rounded-corner-small"] img,
 .section[data-roundedcorner="rounded-corner-small"] iframe {
@@ -662,8 +670,8 @@ main .section.highlight {
     margin-bottom: 24px;
   }
 
-  .columns, .embed, p picture img {
-    margin: 32px 0;
+  .columns, .embed, p picture img, h2, h3, h4, h5, h6 {
+    margin: var(--spacing-medium) 0;
   }
 
   .embed .embed-default {
@@ -678,10 +686,6 @@ main .section.highlight {
 
   h2 {
     font-size: calc((36 / 16) * 1rem);
-  }
-
-  h2, h3, h4, h5, h6 {
-    margin: 32px 0;
   }
 }
 
@@ -700,6 +704,14 @@ main .section.highlight {
 
   .section[data-padding="section-padding-small"] {
     padding: var(--spacing-medium) var(--spacing-small);
+  }
+
+  .section[data-removepadding="section-remove-top-padding"] {
+    padding-top: 0;
+  }
+
+  .section[data-removepadding="section-remove-bottom-padding"] {
+    padding-bottom: 0;
   }
 
   .section[data-iframetwocolumn="true"] {
@@ -721,11 +733,4 @@ main .section.highlight {
   }
 }
 
-.section[data-removepadding="section-remove-top-padding"] {
-  padding-top: 0;
-}
-
-.section[data-removepadding="section-remove-bottom-padding"] {
-  padding-bottom: 0;
-}
 
