@@ -866,8 +866,8 @@
         ]
       },
       {
-        "component": "select",
-        "name": "padding",
+        "component": "multiselect",
+        "name": "classes",
         "value": "",
         "label": "Padding",
         "valueType": "string",
@@ -891,6 +891,14 @@
           {
             "name": "No Padding",
             "value": "section-no-padding"
+          },
+          {
+            "name": "Remove Top Padding",
+            "value": "section-remove-top-padding"
+          },
+          {
+            "name": "Remove Bottom Padding",
+            "value": "section-remove-bottom-padding"
           }
         ]
       },

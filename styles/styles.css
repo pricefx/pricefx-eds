@@ -698,7 +698,7 @@ main .section.highlight {
     margin-bottom: 24px;
   }
 
-  .columns, .embed, p img {
+  .columns, .embed, p picture img {
     margin: 32px 0;
   }
 
