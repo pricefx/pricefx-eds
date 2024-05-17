@@ -671,7 +671,8 @@ body.article {
   }
 
   .columns, .embed, p picture img, h2, h3, h4, h5, h6 {
-    margin: var(--spacing-medium) 0;
+    margin-top: var(--spacing-medium);
+    margin-bottom: var(--spacing-medium);
   }
 
   .embed .embed-default {
@@ -681,7 +682,8 @@ body.article {
   h1 {
     font-size: 50px;
     text-transform: uppercase;
-    margin: 0 0 40px;
+    margin-top: 0;
+    margin-bottom: 40px;
   }
 
   h2 {
