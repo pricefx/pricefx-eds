@@ -468,10 +468,6 @@ button.tertiary::after {
 }
 
 @media (width >= 768px) {
-  p {
-    margin-bottom: 20px;
-  }
-  
   h1 {
     line-height: 1.075;
   }
@@ -698,14 +694,14 @@ main .section.highlight {
     margin-bottom: 40px;
   }
 
-  p:not(:last-child) {
+  p {
     margin-bottom: 40px;
   }
 
-  p:last-child {
+  p:last-child , .columns, .embed {
     margin-bottom: 64px;
   }
-  
+
   h1 {
     font-size: 50px;
     text-transform: uppercase;
