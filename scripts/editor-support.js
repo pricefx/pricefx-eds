@@ -106,26 +106,18 @@ async function applyChanges(event) {
 }
 
 async function waitForFieldAndUpdate(readingTime) {
-  const targetNode = document.body;
-
-  const observer = new MutationObserver((mutationsList, observer) => {
-    for (const mutation of mutationsList) {
-      if (mutation.type === 'childList') {
-        const inputField = document.querySelector('input[aria-label="Article Read Time"]');
-        if (inputField) {
-          inputField.value = readingTime;
-          observer.disconnect();
-          break;
-        }
-      }
+  const checkField = () => {
+    const inputField = document.querySelector('input[aria-label="Article Read Time"]');
+    if (inputField) {
+      inputField.value = readingTime;
+    } else {
+      setTimeout(checkField, 100); // Check again after 100ms
     }
-  });
+  };
 
-  observer.observe(targetNode, {
-    childList: true,
-    subtree: true
-  });
+  checkField();
 }
+
 
 function attachEventListners(main) {
   ['aue:content-patch', 'aue:content-update', 'aue:content-add', 'aue:content-move', 'aue:content-remove'].forEach(
