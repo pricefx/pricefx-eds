@@ -36,11 +36,7 @@ export default async function decorate(block) {
 
   const secondImageContainer = createImageContainer(image2, title2, text2, 'image-2');
 
-  if (
-    title1.textContent.replace(/\s+/g, '') &&
-    title2.textContent.replace(/\s+/g, '') &&
-    title3.textContent.replace(/\s+/g, '')
-  ) {
+  if (title1.textContent.trim() && title2.textContent.trim() && title3.textContent.trim()) {
     const thirdImageContainer = createImageContainer(image3, title3, text3, 'image-3');
 
     const halfContainer = document.createElement('div');
@@ -58,7 +54,7 @@ export default async function decorate(block) {
       container.appendChild(firstImageContainer);
       container.appendChild(halfContainer);
     }
-  } else if (title1.textContent.replace(/\s+/g, '') && title2.textContent.replace(/\s+/g, '')) {
+  } else if (title1.textContent.trim() && title2.textContent.trim()) {
     container.classList.add('grid-container-2');
     container.appendChild(firstImageContainer);
     container.appendChild(secondImageContainer);
