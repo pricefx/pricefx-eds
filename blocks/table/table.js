@@ -6,8 +6,7 @@ function hasNumber(myString) {
 }
 
 export default async function decorate(block) {
-  // eslint-disable-next-line no-unused-vars
-  const [title, showHeader, numberOfColumns, tableVariation, ...rows] = block.children;
+  const [title, showHeader, , tableVariation, ...rows] = block.children;
 
   const tableContainer = document.createElement('div');
   tableContainer.classList.add('table-container');
@@ -19,17 +18,26 @@ export default async function decorate(block) {
 
   /* Table component  */
   const table = document.createElement('table');
-  const variation = tableVariation.textContent.trim();
+
+  let variation = '';
+  if (tableVariation && tableVariation.textContent !== undefined) {
+    variation = tableVariation.textContent.trim();
+  } else {
+    variation = 'default';
+  }
 
   rows.forEach((rowDiv, rowIndex) => {
     const row = document.createElement('tr');
+    [...rowDiv.attributes].forEach(({ nodeName, nodeValue }) => {
+      row.setAttribute(nodeName, nodeValue);
+    });
 
     if (variation === 'default') {
       table.classList.add('table-default');
       [...rowDiv.children].forEach((cellDiv) => {
         if (cellDiv.textContent.trim() !== '') {
           const cell =
-            showHeader.textContent.replace(/\s+/g, '') === 'true' && rowIndex === 0
+            showHeader.textContent.trim() === 'true' && rowIndex === 0
               ? document.createElement('th')
               : document.createElement('td');
           cell.textContent = cellDiv.textContent;
@@ -41,7 +49,7 @@ export default async function decorate(block) {
       [...rowDiv.children].forEach((cellDiv) => {
         if (cellDiv.textContent.trim() !== '') {
           const cell =
-            showHeader.textContent.replace(/\s+/g, '') === 'true' && rowIndex === 0
+            showHeader.textContent.trim() === 'true' && rowIndex === 0
               ? document.createElement('th')
               : document.createElement('td');
           cell.textContent = cellDiv.textContent;
@@ -53,7 +61,7 @@ export default async function decorate(block) {
       [...rowDiv.children].forEach((cellDiv) => {
         if (cellDiv.textContent.trim() !== '') {
           const cell =
-            showHeader.textContent.replace(/\s+/g, '') === 'true' && rowIndex === 0
+            showHeader.textContent.trim() === 'true' && rowIndex === 0
               ? document.createElement('th')
               : document.createElement('td');
           const cellText = cellDiv.textContent.trim().toLowerCase();
@@ -85,7 +93,7 @@ export default async function decorate(block) {
       [...rowDiv.children].forEach((cellDiv, cellIndex) => {
         if (cellDiv.textContent.trim() !== '') {
           const cell =
-            showHeader.textContent.replace(/\s+/g, '') === 'true' && rowIndex === 0
+            showHeader.textContent.trim() === 'true' && rowIndex === 0
               ? document.createElement('th')
               : document.createElement('td');
           const cellText = cellDiv.textContent.trim().toLowerCase();
@@ -103,7 +111,7 @@ export default async function decorate(block) {
             cell.textContent = cellDiv.textContent;
           }
 
-          if (rowIndex === 0 && showHeader.textContent.replace(/\s+/g, '') === 'true') {
+          if (rowIndex === 0 && showHeader.textContent.trim() === 'true') {
             cell.style.color = columnColors[cellIndex];
           }
 
@@ -114,7 +122,7 @@ export default async function decorate(block) {
       table.classList.add('table-im-connect');
       [...rowDiv.children].forEach((cellDiv) => {
         const cell =
-          showHeader.textContent.replace(/\s+/g, '') === 'true' && rowIndex === 0
+          showHeader.textContent.trim() === 'true' && rowIndex === 0
             ? document.createElement('th')
             : document.createElement('td');
 
