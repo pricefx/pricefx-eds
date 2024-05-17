@@ -145,7 +145,7 @@ function attachEventListners(main) {
         console.log(
           `This article has ${wordCount} words and will take approximately ${readingTime} minute(s) to read.`
         );
-        updateAriaLabel(readingTime);
+        waitForFieldAndUpdate(readingTime);
 
         if (!applied) {
           window.location.reload();
