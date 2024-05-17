@@ -11,23 +11,29 @@ export default async function decorate(block) {
   const tableContainer = document.createElement('div');
   tableContainer.classList.add('table-container');
 
-  const titleContent = title.textContent.trim() || 'default';
   const tableTitle = document.createElement('div');
   tableTitle.classList.add('table-title');
-  tableTitle.innerHTML = `<h3>${titleContent} </h3>`;
+  tableTitle.innerHTML = `<h3>${title.textContent} </h3>`;
   tableContainer.appendChild(tableTitle);
 
   /* Table component  */
   const table = document.createElement('table');
-  const variation = tableVariation?.textContent.trim() || 'default';
 
-  await rows.reduce(async (previousPromise, rowDiv, rowIndex) => {
-    await previousPromise;
+  let variation = '';
+  if (tableVariation && tableVariation.textContent !== undefined) {
+    variation = tableVariation.textContent.trim();
+  } else {
+    variation = 'default';
+  }
+
+  rows.forEach((rowDiv, rowIndex) => {
+    const row = document.createElement('tr');
+    [...rowDiv.attributes].forEach(({ nodeName, nodeValue }) => {
+      row.setAttribute(nodeName, nodeValue);
+    });
+
     if (variation === 'default') {
       table.classList.add('table-default');
-      const row = document.createElement('tr');
-      row.className = 'row-element';
-      row.setAttribute('role', 'row');
       [...rowDiv.children].forEach((cellDiv) => {
         if (cellDiv.textContent.trim() !== '') {
           const cell =
@@ -38,11 +44,8 @@ export default async function decorate(block) {
           row.appendChild(cell);
         }
       });
-      table.appendChild(row);
     } else if (variation === 'icon') {
       table.classList.add('table-icon');
-      const row = document.createElement('tr');
-
       [...rowDiv.children].forEach((cellDiv) => {
         if (cellDiv.textContent.trim() !== '') {
           const cell =
@@ -53,10 +56,8 @@ export default async function decorate(block) {
           row.appendChild(cell);
         }
       });
-      table.appendChild(row);
     } else if (variation === 'level') {
       table.classList.add('table-level');
-      const row = document.createElement('tr');
       [...rowDiv.children].forEach((cellDiv) => {
         if (cellDiv.textContent.trim() !== '') {
           const cell =
@@ -79,7 +80,6 @@ export default async function decorate(block) {
           }
           row.appendChild(cell);
         }
-        table.appendChild(row);
       });
     } else if (variation === 'LevelColor') {
       table.classList.add('levelcolor');
@@ -89,7 +89,7 @@ export default async function decorate(block) {
         'var(--c-level-header-2)',
         'var(--c-level-header-3)',
       ];
-      const row = document.createElement('tr');
+
       [...rowDiv.children].forEach((cellDiv, cellIndex) => {
         if (cellDiv.textContent.trim() !== '') {
           const cell =
@@ -117,12 +117,9 @@ export default async function decorate(block) {
 
           row.appendChild(cell);
         }
-        table.appendChild(row);
       });
     } else if (variation === 'buttonRow') {
       table.classList.add('table-im-connect');
-      const row = document.createElement('tr');
-
       [...rowDiv.children].forEach((cellDiv) => {
         const cell =
           showHeader.textContent.trim() === 'true' && rowIndex === 0
@@ -138,10 +135,10 @@ export default async function decorate(block) {
 
         row.appendChild(cell);
       });
-      table.appendChild(row);
     }
-  }, Promise.resolve());
 
+    table.appendChild(row);
+  });
   tableContainer.appendChild(table);
 
   block.textContent = '';
