@@ -2255,6 +2255,14 @@
         ]
       },
       {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "cardCtaLabel",
+        "value": "",
+        "label": "Card CTA Label",
+        "description": "Customize card CTA label. If left empty, label will default to 'Learn More'."
+      },
+      {
         "component": "tab",
         "label": "Filters",
         "name": "filters"

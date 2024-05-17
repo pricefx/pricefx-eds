@@ -122,6 +122,7 @@ export default async function decorate(block) {
     configTab,
     numberOfPartners,
     sortBy,
+    cardCtaLabel,
     filterTab,
     filterOneTitle,
     filterOneMultiSelect,
@@ -144,7 +145,10 @@ export default async function decorate(block) {
   const url = '/partners-index.json';
   const partnersData = await ffetch(url).all();
 
-  const defaultSortedPartners = partnersData.sort((a, b) => a.title.localeCompare(b.title));
+  // Go through JSON data and replace all instance of '&amp;' to facilitate handling of data in filters
+  const processPartnerData = JSON.parse(JSON.stringify(partnersData).replaceAll('&amp;', '&'));
+
+  const defaultSortedPartners = processPartnerData.sort((a, b) => a.title.localeCompare(b.title));
   let currentPartnersData = [...defaultSortedPartners];
 
   const queryStr = 'page=1&sortBy=asc-title';
@@ -191,6 +195,15 @@ export default async function decorate(block) {
     toggleFilterMenu(filterMenuToggle, filter, partnerShowcaseContent);
   });
 
+  // Close Filter Menu when clicking outside of it on Mobile
+  document.addEventListener('click', (e) => {
+    if (!isDesktop.matches && filterMenuToggle.getAttribute('aria-expanded') === 'true') {
+      if (e.target === flexContainer) {
+        filterMenuToggle.click();
+      }
+    }
+  });
+
   // Watch for screen size change and switch between Desktop and Mobile Filter
   window.addEventListener('resize', () => {
     if (!isDesktop.matches && filterMenuToggle.getAttribute('aria-expanded') === 'true') {
@@ -198,8 +211,7 @@ export default async function decorate(block) {
       filterMenuToggle.setAttribute('aria-label', 'Toggle Filter Menu');
       filter.setAttribute('aria-hidden', 'true');
     } else if (isDesktop.matches && filterMenuToggle.getAttribute('aria-expanded') === 'false') {
-      filterMenuToggle.setAttribute('aria-expanded', 'true');
-      filter.setAttribute('aria-hidden', 'false');
+      filterMenuToggle.click();
     }
   });
   if (!isDesktop.matches && filterMenuToggle.getAttribute('aria-expanded') === 'true') {
@@ -222,21 +234,20 @@ export default async function decorate(block) {
     optionsArray.forEach((option) => {
       const optionSplit = option.split('/')[2];
       const optionReplaceHypen = optionSplit.replaceAll('-', ' ');
-      const optionReplaceAmpersand = optionSplit.replaceAll('&', 'and');
       const optionTextTransform =
         optionReplaceHypen.length <= 4 ? optionReplaceHypen.toUpperCase() : optionReplaceHypen;
       if (filterIsMultiSelect.textContent.trim() === 'false') {
         filterOptionsMarkup += `
           <li class="ps-filter-category-item">
-            <input type="radio" id="filter-${optionSplit.includes('&') ? `${filterCategoryName}-${optionReplaceAmpersand}` : `${filterCategoryName}-${optionSplit}`}" name="filter-${filterCategoryName}" value="${optionSplit.includes('&') ? optionReplaceAmpersand : optionSplit}" data-filter-category="filter-${filterCategoryName}" />
-            <label for="filter-${optionSplit.includes('&') ? `${filterCategoryName}-${optionReplaceAmpersand}` : `${filterCategoryName}-${optionSplit}`}">${optionTextTransform}</label>
+            <input type="radio" id="filter-${optionSplit.includes('&') ? `${filterCategoryName}-${optionSplit}` : `${filterCategoryName}-${optionSplit}`}" name="filter-${filterCategoryName}" value="${optionSplit.includes('&') ? optionSplit : optionSplit}" data-filter-category="filter-${filterCategoryName}" />
+            <label for="filter-${optionSplit.includes('&') ? `${filterCategoryName}-${optionSplit}` : `${filterCategoryName}-${optionSplit}`}">${optionTextTransform}</label>
           </li>
         `;
       } else {
         filterOptionsMarkup += `
           <li class="ps-filter-category-item">
-            <input type="checkbox" id="filter-${optionSplit.includes('&') ? `${filterCategoryName}-${optionReplaceAmpersand}` : `${filterCategoryName}-${optionSplit}`}" name="${optionSplit}" value="${optionSplit.includes('&') ? optionReplaceAmpersand : optionSplit}" data-filter-category="filter-${filterCategoryName}" />
-            <label for="filter-${optionSplit.includes('&') ? `${filterCategoryName}-${optionReplaceAmpersand}` : `${filterCategoryName}-${optionSplit}`}">${optionTextTransform}</label>
+            <input type="checkbox" id="filter-${optionSplit.includes('&') ? `${filterCategoryName}-${optionSplit}` : `${filterCategoryName}-${optionSplit}`}" name="${optionSplit}" value="${optionSplit.includes('&') ? optionSplit : optionSplit}" data-filter-category="filter-${filterCategoryName}" />
+            <label for="filter-${optionSplit.includes('&') ? `${filterCategoryName}-${optionSplit}` : `${filterCategoryName}-${optionSplit}`}">${optionTextTransform}</label>
           </li>
         `;
       }
@@ -366,7 +377,7 @@ export default async function decorate(block) {
                 : ''
             }
             <div class="partner-cta-container">
-              <a class="partner-link" href="${partner.path}" target="_blank">Learn More</a>
+              <a class="partner-link" href="${partner.path}" target="_blank">${cardCtaLabel.textContent.trim() === '' ? 'Learn More' : cardCtaLabel.textContent.trim()}</a>
             </div>
           </div>
         </li>
