@@ -694,12 +694,12 @@ main .section.highlight {
     margin-bottom: 40px;
   }
 
-  p {
-    margin-bottom: 40px;
+  p:not(:last-child) {
+    margin-bottom: 24;
   }
 
-  p:last-child , .columns, .embed {
-    margin-bottom: 64px;
+  .columns, .embed {
+    margin: 32px 0;
   }
 
   h1 {
@@ -709,6 +709,6 @@ main .section.highlight {
   }
 
   h2, h3, h4, h5, h6 {
-    margin: 0 0 64px;
+    margin: 32px 0;
   }
 }
