@@ -3,6 +3,23 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 import { SEARCH_INDEX_PATH } from '../../scripts/url-constants.js';
 import { formatDate, sortByDate } from '../../scripts/global-functions.js';
 
+// Clean-up and Render Article Category
+const renderArticleCategory = (article) => {
+  const categoriesArray = article.category.split(',');
+  if (categoriesArray.length !== 0) {
+    const firstCategory = categoriesArray.find((category) => category.includes('/'));
+    let markup = '';
+    const removePrefixCategory = firstCategory.split('/')[1];
+    const removeHyphenCategory =
+      removePrefixCategory !== 'e-books' && removePrefixCategory !== 'c-suite'
+        ? removePrefixCategory.replaceAll('-', ' ')
+        : removePrefixCategory;
+    markup = `<h6 class="article-subtitle">${removeHyphenCategory}</h6>`;
+    return markup;
+  }
+  return null;
+};
+
 export default async function decorate(block) {
   // Fetch Search content from JSON endpoint
   const searchData = await ffetch(SEARCH_INDEX_PATH).all();
@@ -102,13 +119,13 @@ export default async function decorate(block) {
   const renderSearchResults = (newSearchJson) => {
     let markup = '';
     newSearchJson.forEach((list) => {
-      const { description, image, imageAlt, lastPublished, path, title } = list;
+      const { category, description, image, imageAlt, lastPublished, path, title } = list;
       markup += `
         <div class="search-results-item">
             <a class="search-results-item-link" href="${path}">
                 ${image ? `<div class="search-results-item-image"><picture><img src="${image}" alt="${imageAlt}"/></picture></div>` : ``}
                 <div class="search-results-item-content">
-                    ${list['cq-tags'] ? `<h6>${list['cq-tags'].replace('pricefx:content-types/', '')}</h6>` : ''}
+                    ${category !== '' ? `${renderArticleCategory(list)}` : ''}
                     ${title ? `<h4>${title}</h6>` : ''}
                     ${description ? `<div class="search-results-item-description">${description}</div>` : ''}
                     ${lastPublished ? `<p class="search-results-item-publish-date" >${formatDate(lastPublished)}</p>` : ''}
@@ -174,7 +191,7 @@ export default async function decorate(block) {
       Number(nextActivePage.textContent) * pageView - pageView,
       Number(nextActivePage.textContent) * pageView,
       nextActivePage,
-      searchData,
+      currentSearchJSON,
     );
 
     searchParams.set('page', nextActivePage.textContent);
@@ -197,7 +214,7 @@ export default async function decorate(block) {
         Number(target.textContent) * pageView - pageView,
         Number(target.textContent) * pageView,
         target,
-        searchData,
+        currentSearchJSON,
       );
 
       searchParams.set('page', target.textContent);
@@ -295,6 +312,7 @@ export default async function decorate(block) {
     }
     const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
     window.history.pushState(null, '', newRelativePathQuery);
+    handlePageClick(paginationPageList, '1');
   });
 
   const updateStateFromUrlParams = () => {

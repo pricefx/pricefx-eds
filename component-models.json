@@ -1545,6 +1545,14 @@
         "validation": {
           "numberMin": 3
         }
+      },
+      {
+        "component": "aem-content",
+        "name": "marketoFragmentPath",
+        "value": "",
+        "label": "Marketo Form Fragment Path",
+        "valueType": "string",
+        "description": "Applicable for Blog Articles"
       }
     ]
   },
@@ -2245,6 +2253,14 @@
             ]
           }
         ]
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "cardCtaLabel",
+        "value": "",
+        "label": "Card CTA Label",
+        "description": "Customize card CTA label. If left empty, label will default to 'Learn More'."
       },
       {
         "component": "tab",
