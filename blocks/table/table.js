@@ -6,32 +6,26 @@ function hasNumber(myString) {
 }
 
 export default async function decorate(block) {
+  // eslint-disable-next-line no-unused-vars
   const [title, showHeader, , tableVariation, ...rows] = block.children;
 
   const tableContainer = document.createElement('div');
   tableContainer.classList.add('table-container');
 
+  const titleContent = title.textContent.trim() || 'default';
   const tableTitle = document.createElement('div');
   tableTitle.classList.add('table-title');
-  tableTitle.innerHTML = `<h3>${title.textContent} </h3>`;
+  tableTitle.innerHTML = `<h3>${titleContent} </h3>`;
   tableContainer.appendChild(tableTitle);
 
   /* Table component  */
   const table = document.createElement('table');
+  const variation = tableVariation?.textContent.trim() || 'default';
 
-  let variation = '';
-  if (tableVariation && tableVariation.textContent !== undefined) {
-    variation = tableVariation.textContent.trim();
-  } else {
-    variation = 'default';
-  }
-  // const variation = tableVariation.textContent.trim();
-
-  rows.forEach((rowDiv, rowIndex) => {
+  if (variation === 'default') {
+    table.classList.add('table-default');
     const row = document.createElement('tr');
-
-    if (variation === 'default') {
-      table.classList.add('table-default');
+    rows.forEach((rowDiv, rowIndex) => {
       [...rowDiv.children].forEach((cellDiv) => {
         if (cellDiv.textContent.trim() !== '') {
           const cell =
@@ -42,8 +36,12 @@ export default async function decorate(block) {
           row.appendChild(cell);
         }
       });
-    } else if (variation === 'icon') {
-      table.classList.add('table-icon');
+      table.appendChild(row);
+    });
+  } else if (variation === 'icon') {
+    table.classList.add('table-icon');
+    const row = document.createElement('tr');
+    rows.forEach((rowDiv, rowIndex) => {
       [...rowDiv.children].forEach((cellDiv) => {
         if (cellDiv.textContent.trim() !== '') {
           const cell =
@@ -54,8 +52,12 @@ export default async function decorate(block) {
           row.appendChild(cell);
         }
       });
-    } else if (variation === 'level') {
-      table.classList.add('table-level');
+      table.appendChild(row);
+    });
+  } else if (variation === 'level') {
+    table.classList.add('table-level');
+    const row = document.createElement('tr');
+    rows.forEach((rowDiv, rowIndex) => {
       [...rowDiv.children].forEach((cellDiv) => {
         if (cellDiv.textContent.trim() !== '') {
           const cell =
@@ -79,15 +81,18 @@ export default async function decorate(block) {
           row.appendChild(cell);
         }
       });
-    } else if (variation === 'LevelColor') {
-      table.classList.add('levelcolor');
-      const columnColors = [
-        'var(--c-white)',
-        'var(--c-level-header-1)',
-        'var(--c-level-header-2)',
-        'var(--c-level-header-3)',
-      ];
-
+      table.appendChild(row);
+    });
+  } else if (variation === 'LevelColor') {
+    table.classList.add('levelcolor');
+    const columnColors = [
+      'var(--c-white)',
+      'var(--c-level-header-1)',
+      'var(--c-level-header-2)',
+      'var(--c-level-header-3)',
+    ];
+    const row = document.createElement('tr');
+    rows.forEach((rowDiv, rowIndex) => {
       [...rowDiv.children].forEach((cellDiv, cellIndex) => {
         if (cellDiv.textContent.trim() !== '') {
           const cell =
@@ -116,8 +121,12 @@ export default async function decorate(block) {
           row.appendChild(cell);
         }
       });
-    } else if (variation === 'buttonRow') {
-      table.classList.add('table-im-connect');
+      table.appendChild(row);
+    });
+  } else if (variation === 'buttonRow') {
+    table.classList.add('table-im-connect');
+    const row = document.createElement('tr');
+    rows.forEach((rowDiv, rowIndex) => {
       [...rowDiv.children].forEach((cellDiv) => {
         const cell =
           showHeader.textContent.replace(/\s+/g, '') === 'true' && rowIndex === 0
@@ -133,10 +142,10 @@ export default async function decorate(block) {
 
         row.appendChild(cell);
       });
-    }
+      table.appendChild(row);
+    });
+  }
 
-    table.appendChild(row);
-  });
   tableContainer.appendChild(table);
 
   block.textContent = '';
