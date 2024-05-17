@@ -380,7 +380,7 @@ export default async function decorate(block) {
     <div class="search-input-wrapper megamenu-wrapper" aria-hidden="true">
       <form action="/search">
         <button type="submit">${SEARCH}</button>
-        <input type="text" name="search" aria-label="Search" placeholder="Search pricefx.com" autocomplete="off">
+        <input type="text" name="q" aria-label="Search" placeholder="Search pricefx.com" autocomplete="off">
       </form>
       <div class="search-suggestion"></div>
     </div>
