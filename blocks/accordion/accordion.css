@@ -36,6 +36,7 @@
   color: var(--c-copy);
   font-size: var(--heading-font-size-s);
   line-height: 28px;
+  text-align: left;
 }
 
 .accordion-button {
