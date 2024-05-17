@@ -6,7 +6,6 @@ function hasNumber(myString) {
 }
 
 export default async function decorate(block) {
-  // eslint-disable-next-line no-unused-vars
   const [title, showHeader, , tableVariation, ...rows] = block.children;
 
   const tableContainer = document.createElement('div');
@@ -22,10 +21,12 @@ export default async function decorate(block) {
   const table = document.createElement('table');
   const variation = tableVariation?.textContent.trim() || 'default';
 
-  if (variation === 'default') {
-    table.classList.add('table-default');
-    const row = document.createElement('tr');
-    rows.forEach((rowDiv, rowIndex) => {
+  await rows.reduce(async (previousPromise, rowDiv, rowIndex) => {
+    await previousPromise;
+    if (variation === 'default') {
+      table.classList.add('table-default');
+      const row = document.createElement('tr');
+
       [...rowDiv.children].forEach((cellDiv) => {
         if (cellDiv.textContent.trim() !== '') {
           const cell =
@@ -37,11 +38,10 @@ export default async function decorate(block) {
         }
       });
       table.appendChild(row);
-    });
-  } else if (variation === 'icon') {
-    table.classList.add('table-icon');
-    const row = document.createElement('tr');
-    rows.forEach((rowDiv, rowIndex) => {
+    } else if (variation === 'icon') {
+      table.classList.add('table-icon');
+      const row = document.createElement('tr');
+
       [...rowDiv.children].forEach((cellDiv) => {
         if (cellDiv.textContent.trim() !== '') {
           const cell =
@@ -53,11 +53,9 @@ export default async function decorate(block) {
         }
       });
       table.appendChild(row);
-    });
-  } else if (variation === 'level') {
-    table.classList.add('table-level');
-    const row = document.createElement('tr');
-    rows.forEach((rowDiv, rowIndex) => {
+    } else if (variation === 'level') {
+      table.classList.add('table-level');
+      const row = document.createElement('tr');
       [...rowDiv.children].forEach((cellDiv) => {
         if (cellDiv.textContent.trim() !== '') {
           const cell =
@@ -80,19 +78,17 @@ export default async function decorate(block) {
           }
           row.appendChild(cell);
         }
+        table.appendChild(row);
       });
-      table.appendChild(row);
-    });
-  } else if (variation === 'LevelColor') {
-    table.classList.add('levelcolor');
-    const columnColors = [
-      'var(--c-white)',
-      'var(--c-level-header-1)',
-      'var(--c-level-header-2)',
-      'var(--c-level-header-3)',
-    ];
-    const row = document.createElement('tr');
-    rows.forEach((rowDiv, rowIndex) => {
+    } else if (variation === 'LevelColor') {
+      table.classList.add('levelcolor');
+      const columnColors = [
+        'var(--c-white)',
+        'var(--c-level-header-1)',
+        'var(--c-level-header-2)',
+        'var(--c-level-header-3)',
+      ];
+      const row = document.createElement('tr');
       [...rowDiv.children].forEach((cellDiv, cellIndex) => {
         if (cellDiv.textContent.trim() !== '') {
           const cell =
@@ -120,13 +116,12 @@ export default async function decorate(block) {
 
           row.appendChild(cell);
         }
+        table.appendChild(row);
       });
-      table.appendChild(row);
-    });
-  } else if (variation === 'buttonRow') {
-    table.classList.add('table-im-connect');
-    const row = document.createElement('tr');
-    rows.forEach((rowDiv, rowIndex) => {
+    } else if (variation === 'buttonRow') {
+      table.classList.add('table-im-connect');
+      const row = document.createElement('tr');
+
       [...rowDiv.children].forEach((cellDiv) => {
         const cell =
           showHeader.textContent.replace(/\s+/g, '') === 'true' && rowIndex === 0
@@ -143,8 +138,8 @@ export default async function decorate(block) {
         row.appendChild(cell);
       });
       table.appendChild(row);
-    });
-  }
+    }
+  }, Promise.resolve());
 
   tableContainer.appendChild(table);
 
