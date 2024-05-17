@@ -691,14 +691,14 @@ main .section.highlight {
 /* Artile Styles */
 .article {
   .article-metadata {
-    margin-bottom: 40px;
+    margin-bottom: 8px;
   }
 
   p:not(:last-child) {
-    margin-bottom: 24;
+    margin-bottom: 24px;
   }
 
-  .columns, .embed {
+  .columns, .embed, p img {
     margin: 32px 0;
   }
 
