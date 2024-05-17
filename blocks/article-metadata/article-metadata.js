@@ -73,7 +73,7 @@ export default async function decorate(block) {
       const authorLink = document.createElement('a');
       const authorPageLink = !isPublishEnvironment
         ? `${authorsParentPagePathFormatted}${getAuthorPageLink(authorName)}.html`
-        : `/authors/${getAuthorPageLink(authorName)}`;
+        : `/learning-center/writer/${getAuthorPageLink(authorName)}`;
       authorLink.href = authorPageLink;
       authorLink.textContent = authorName;
       return authorLink.outerHTML;

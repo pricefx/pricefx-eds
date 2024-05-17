@@ -1543,7 +1543,7 @@
         "valueType": "string"
       },
       {
-        "component": "aem-content",
+        "component": "text",
         "name": "basePath",
         "value": "",
         "label": "Base Path",
@@ -1566,6 +1566,14 @@
         "validation": {
           "numberMin": 3
         }
+      },
+      {
+        "component": "aem-content",
+        "name": "marketoFragmentPath",
+        "value": "",
+        "label": "Marketo Form Fragment Path",
+        "valueType": "string",
+        "description": "Applicable for Blog Articles"
       }
     ]
   },
@@ -2268,6 +2276,14 @@
         ]
       },
       {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "cardCtaLabel",
+        "value": "",
+        "label": "Card CTA Label",
+        "description": "Customize card CTA label. If left empty, label will default to 'Learn More'."
+      },
+      {
         "component": "tab",
         "label": "Filters",
         "name": "filters"
@@ -2482,29 +2498,6 @@
         "label": "Swap Right",
         "name": "swapImage",
         "valueType": "boolean"
-      }
-    ]
-  },
-  {
-    "id": "testblock",
-    "fields": [
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "tableTitle",
-        "value": "",
-        "label": "Table Title"
-      }
-    ]
-  },
-  {
-    "id": "testBlockItem",
-    "fields": [
-      {
-        "component": "richtext",
-        "name": "colOneDescription",
-        "label": "Column 1 Description",
-        "valueType": "string"
       }
     ]
   }
