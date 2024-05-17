@@ -1751,10 +1751,7 @@
         "placeholder": "Enter time in number format",
         "description": "Please enter article read time in mins.",
         "condition": {
-          "if": [
-            { "==": ["var.window.articleType", "long"] },
-            { ">": ["window.userLevel", 2] }
-          ],
+          "if": { "==": ["iframe.contentWindow.window.articleType", "long"] },
           "then": 20,
           "else": 10
         }
