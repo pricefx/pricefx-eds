@@ -26,11 +26,12 @@ export default async function decorate(block) {
     if (variation === 'default') {
       table.classList.add('table-default');
       const row = document.createElement('tr');
-
+      row.className = 'row-element';
+      row.setAttribute('role', 'row');
       [...rowDiv.children].forEach((cellDiv) => {
         if (cellDiv.textContent.trim() !== '') {
           const cell =
-            showHeader.textContent.replace(/\s+/g, '') === 'true' && rowIndex === 0
+            showHeader.textContent.trim() === 'true' && rowIndex === 0
               ? document.createElement('th')
               : document.createElement('td');
           cell.textContent = cellDiv.textContent;
@@ -45,7 +46,7 @@ export default async function decorate(block) {
       [...rowDiv.children].forEach((cellDiv) => {
         if (cellDiv.textContent.trim() !== '') {
           const cell =
-            showHeader.textContent.replace(/\s+/g, '') === 'true' && rowIndex === 0
+            showHeader.textContent.trim() === 'true' && rowIndex === 0
               ? document.createElement('th')
               : document.createElement('td');
           cell.textContent = cellDiv.textContent;
@@ -59,7 +60,7 @@ export default async function decorate(block) {
       [...rowDiv.children].forEach((cellDiv) => {
         if (cellDiv.textContent.trim() !== '') {
           const cell =
-            showHeader.textContent.replace(/\s+/g, '') === 'true' && rowIndex === 0
+            showHeader.textContent.trim() === 'true' && rowIndex === 0
               ? document.createElement('th')
               : document.createElement('td');
           const cellText = cellDiv.textContent.trim().toLowerCase();
@@ -92,7 +93,7 @@ export default async function decorate(block) {
       [...rowDiv.children].forEach((cellDiv, cellIndex) => {
         if (cellDiv.textContent.trim() !== '') {
           const cell =
-            showHeader.textContent.replace(/\s+/g, '') === 'true' && rowIndex === 0
+            showHeader.textContent.trim() === 'true' && rowIndex === 0
               ? document.createElement('th')
               : document.createElement('td');
           const cellText = cellDiv.textContent.trim().toLowerCase();
@@ -110,7 +111,7 @@ export default async function decorate(block) {
             cell.textContent = cellDiv.textContent;
           }
 
-          if (rowIndex === 0 && showHeader.textContent.replace(/\s+/g, '') === 'true') {
+          if (rowIndex === 0 && showHeader.textContent.trim() === 'true') {
             cell.style.color = columnColors[cellIndex];
           }
 
@@ -124,7 +125,7 @@ export default async function decorate(block) {
 
       [...rowDiv.children].forEach((cellDiv) => {
         const cell =
-          showHeader.textContent.replace(/\s+/g, '') === 'true' && rowIndex === 0
+          showHeader.textContent.trim() === 'true' && rowIndex === 0
             ? document.createElement('th')
             : document.createElement('td');
 
