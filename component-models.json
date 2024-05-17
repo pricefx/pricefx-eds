@@ -867,7 +867,7 @@
       },
       {
         "component": "multiselect",
-        "name": "classes",
+        "name": "padding",
         "value": "",
         "label": "Padding",
         "valueType": "string",
