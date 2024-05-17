@@ -49,6 +49,19 @@ async function applyChanges(event) {
       newMain.style.display = null;
       // eslint-disable-next-line no-use-before-define
       attachEventListners(newMain);
+
+      // Calculate read time for the main content
+      const articleText = newMain.innerText;
+      const wordsArray = articleText.split(' ');
+      const wordCount = wordsArray.length;
+      const wordsPerMinute = 200;
+      const readingTime = Math.ceil(wordCount / wordsPerMinute);
+
+      // eslint-disable-next-line no-console
+      console.log(
+        `This article has ${wordCount} words and will take approximately ${readingTime} minute(s) to read.`
+      );
+
       return true;
     }
 
@@ -67,6 +80,19 @@ async function applyChanges(event) {
         await loadBlock(newBlock);
         block.remove();
         newBlock.style.display = null;
+
+        // Calculate read time for the block content
+        const articleText = newBlock.innerText;
+        const wordsArray = articleText.split(' ');
+        const wordCount = wordsArray.length;
+        const wordsPerMinute = 200;
+        const readingTime = Math.ceil(wordCount / wordsPerMinute);
+
+        // eslint-disable-next-line no-console
+        console.log(
+          `This block has ${wordCount} words and will take approximately ${readingTime} minute(s) to read.`
+        );
+
         return true;
       }
     } else {
@@ -88,11 +114,36 @@ async function applyChanges(event) {
           await loadBlocks(parentElement);
           element.remove();
           newSection.style.display = null;
+
+          // Calculate read time for the section content
+          const articleText = newSection.innerText;
+          const wordsArray = articleText.split(' ');
+          const wordCount = wordsArray.length;
+          const wordsPerMinute = 200;
+          const readingTime = Math.ceil(wordCount / wordsPerMinute);
+
+          // eslint-disable-next-line no-console
+          console.log(
+            `This section has ${wordCount} words and will take approximately ${readingTime} minute(s) to read.`
+          );
+
         } else {
           element.replaceWith(...newElements);
           decorateButtons(parentElement);
           decorateIcons(parentElement);
           decorateRichtext(parentElement);
+
+          // Calculate read time for the parent element content
+          const articleText = parentElement.innerText;
+          const wordsArray = articleText.split(' ');
+          const wordCount = wordsArray.length;
+          const wordsPerMinute = 200;
+          const readingTime = Math.ceil(wordCount / wordsPerMinute);
+
+          // eslint-disable-next-line no-console
+          console.log(
+            `This content has ${wordCount} words and will take approximately ${readingTime} minute(s) to read.`
+          );
         }
         return true;
       }
@@ -108,6 +159,19 @@ function attachEventListners(main) {
       main?.addEventListener(eventType, async (event) => {
         event.stopPropagation();
         const applied = await applyChanges(event);
+
+        // Calculate read time for the main content
+        const articleText = main.innerText;
+        const wordsArray = articleText.split(' ');
+        const wordCount = wordsArray.length;
+        const wordsPerMinute = 200;
+        const readingTime = Math.ceil(wordCount / wordsPerMinute);
+
+        // eslint-disable-next-line no-console
+        console.log(
+          `This article has ${wordCount} words and will take approximately ${readingTime} minute(s) to read.`
+        );
+
         if (!applied) {
           window.location.reload();
         }
