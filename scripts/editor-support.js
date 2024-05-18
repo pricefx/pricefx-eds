@@ -10,6 +10,7 @@ import {
 // eslint-disable-next-line import/no-unresolved
 import { decorateRichtext } from './editor-support-rte.js';
 import { decorateMain } from './scripts.js';
+import { processArticleReadingTime } from './editor-support-article.js';
 
 async function applyChanges(event) {
   // redecorate default content and blocks on patches (in the properties rail)
