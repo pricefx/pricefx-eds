@@ -69,9 +69,6 @@ function postReadTime(readingTime, dynamicUrl) {
 }
 
 export function processArticleReadingTime() {
-  const pageTemplate = getMetadata('template');
-
-  if (pageTemplate === 'article') {
     const main = document.querySelector('main');
     if (!main) {
       // eslint-disable-next-line no-console
@@ -90,5 +87,4 @@ export function processArticleReadingTime() {
 
     const contentPath = window.location.href;
     postReadTime(readTime, contentPath);
-  }
 }
