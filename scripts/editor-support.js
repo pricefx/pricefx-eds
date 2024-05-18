@@ -107,6 +107,10 @@ async function applyChanges(event) {
 
 
 function postReadTime(readingTime) {
+  // Retrieve the tokenValue from the session storage
+  const sessionData = JSON.parse(sessionStorage.getItem('adobeid_ims_access_token/exc_app/false/AdobeID'));
+  const tokenValue = sessionData.tokenValue;
+
   const postData = {
     connections: [
       {
@@ -132,21 +136,21 @@ function postReadTime(readingTime) {
   fetch("https://universal-editor-service.experiencecloud.live/patch", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${tokenValue}`
     },
     body: JSON.stringify(postData)
   })
     .then(response => response.json())
     .then(data => {
-       // eslint-disable-next-line no-console
+      // eslint-disable-next-line no-console
       console.log("Success:", data);
     })
     .catch((error) => {
-       // eslint-disable-next-line no-console
+      // eslint-disable-next-line no-console
       console.error("Error:", error);
     });
 }
-
 
 function attachEventListners(main) {
   ['aue:content-patch', 'aue:content-update', 'aue:content-add', 'aue:content-move', 'aue:content-remove'].forEach(
