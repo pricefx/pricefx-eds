@@ -105,28 +105,48 @@ async function applyChanges(event) {
   return false;
 }
 
-// Function to read window field when it becomes available
-function readWindowFieldWhenAvailable(windowFieldName) {
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      if (mutation.type === 'childList') {
-        const inputField = document.querySelector('input[aria-label="Article Read Time"]');
-        if (inputField) {
-          const windowFieldValue = window[windowFieldName];
-          if (windowFieldValue !== undefined) {
-            inputField.value = windowFieldValue;
-          } else {
-            // eslint-disable-next-line no-console
-            console.warn(`Field "${windowFieldName}" not found on the window object.`);
-          }
-          observer.disconnect(); // Stop observing after first field appearance
-        }
-      }
-    });
-  });
 
-  observer.observe(document.body, { childList: true, subtree: true });
+function postReadTime(readingTime) {
+  const postData = {
+    connections: [
+      {
+        name: "aemconnection",
+        protocol: "xwalk",
+        uri: "https://author-p131512-e1282665.adobeaemcloud.com"
+      }
+    ],
+    target: {
+      resource: "urn:aemconnection:/content/pricefx/en/learning-center/10-cool-things-your-business-can-do-with-dynamic-pricing/jcr:content",
+      type: "component",
+      prop: ""
+    },
+    patch: [
+      {
+        op: "replace",
+        path: "/readingtime",
+        value: readingTime.toString()
+      }
+    ]
+  };
+
+  fetch("https://universal-editor-service.experiencecloud.live/patch", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(postData)
+  })
+    .then(response => response.json())
+    .then(data => {
+       // eslint-disable-next-line no-console
+      console.log("Success:", data);
+    })
+    .catch((error) => {
+       // eslint-disable-next-line no-console
+      console.error("Error:", error);
+    });
 }
+
 
 function attachEventListners(main) {
   ['aue:content-patch', 'aue:content-update', 'aue:content-add', 'aue:content-move', 'aue:content-remove'].forEach(
@@ -142,22 +162,13 @@ function attachEventListners(main) {
         const wordsPerMinute = 200;
         const readingTime = Math.ceil(wordCount / wordsPerMinute);
         
-        // Store read time in the window object for accessibility
-        window.articleReadTime = readingTime;
-        
+      
         // eslint-disable-next-line no-console
         console.log(
           `This article has ${wordCount} words and will take approximately ${readingTime} minute(s) to read.`
         );
         
-        // Update input field if it's already available
-        const inputField = document.querySelector('input[aria-label="Article Read Time"]');
-        if (inputField) {
-          inputField.value = readingTime;
-        } else {
-          // Call readWindowFieldWhenAvailable to handle potential later appearance
-          readWindowFieldWhenAvailable('articleReadTime');
-        }
+        postReadTime(readingTime)
 
         if (!applied) {
           window.location.reload();
