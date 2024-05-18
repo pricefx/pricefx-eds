@@ -2,8 +2,6 @@
 /* eslint-disable no-cond-assign */
 /* eslint-disable import/prefer-default-export */
 
-import { getMetadata } from './aem.js';
-
 function getTokenValue() {
   for (let i = 0; i < sessionStorage.length; i += 1) {
     const key = sessionStorage.key(i);
