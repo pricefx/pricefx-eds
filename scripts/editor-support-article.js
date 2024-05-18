@@ -20,8 +20,9 @@ function getTokenValue() {
 
 function postReadTime(readingTime, dynamicUrl) {
   const tokenValue = getTokenValue();
-  if (!tokenValue) return;
-
+  if (!tokenValue) { 
+    return;
+  }
   const postData = {
     connections: [
       {
