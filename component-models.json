@@ -1749,8 +1749,7 @@
         "name": "readingtime",
         "label": "Article Read Time",
         "placeholder": "Enter time in number format",
-        "description": "Please enter article read time in mins.",
-        "condition": { "===": [{"var" : "reveal"}, true] }
+        "description": "Please enter article read time in mins."
       }
     ]
   },
