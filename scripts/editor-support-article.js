@@ -20,7 +20,7 @@ function getTokenValue() {
   return null;
 }
 
-function postReadTime(readingTime, dynamicUrl) {
+function postReadTime(readingTime, contentPath) {
   const tokenValue = getTokenValue();
   if (!tokenValue) { 
     return;
@@ -34,7 +34,7 @@ function postReadTime(readingTime, dynamicUrl) {
       },
     ],
     target: {
-      resource: `urn:aemconnection:${dynamicUrl.replace(window.location.origin, '')}/jcr:content`,
+      resource: `urn:aemconnection:${contentPath.replace(window.location.origin, '').replace(/\.html\?.*$/, '')}/jcr:content`,
       type: 'component',
       prop: '',
     },
