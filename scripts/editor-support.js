@@ -102,72 +102,7 @@ async function applyChanges(event) {
       }
     }
   }
-
   return false;
-}
-
-function getTokenValue() {
-  for (let i = 0; i < sessionStorage.length; i += 1) {
-    const key = sessionStorage.key(i);
-    if (key.startsWith('adobeid_ims_access_token')) {
-      const sessionData = sessionStorage.getItem(key);
-      if (sessionData) {
-        const parsedData = JSON.parse(sessionData);
-        if (parsedData.tokenValue) {
-          return parsedData.tokenValue;
-        }
-      }
-    }
-  }
-  // eslint-disable-next-line no-console
-  console.error('Token not found in session storage.');
-  return null;
-}
-
-
-function postReadTime(readingTime) {
-  // Retrieve the tokenValue from the session storage
-  const tokenValue = getTokenValue();
-
-  const postData = {
-    connections: [
-      {
-        name: "aemconnection",
-        protocol: "xwalk",
-        uri: "https://author-p131512-e1282665.adobeaemcloud.com"
-      }
-    ],
-    target: {
-      resource: "urn:aemconnection:/content/pricefx/en/learning-center/10-cool-things-your-business-can-do-with-dynamic-pricing/jcr:content",
-      type: "component",
-      prop: ""
-    },
-    patch: [
-      {
-        op: "replace",
-        path: "/readingtime",
-        value: readingTime.toString()
-      }
-    ]
-  };
-
-  fetch("https://universal-editor-service.experiencecloud.live/patch", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${tokenValue}`
-    },
-    body: JSON.stringify(postData)
-  })
-    .then(response => response.json())
-    .then(data => {
-      // eslint-disable-next-line no-console
-      console.log("Success:", data);
-    })
-    .catch((error) => {
-      // eslint-disable-next-line no-console
-      console.error("Error:", error);
-    });
 }
 
 function attachEventListners(main) {
@@ -176,21 +111,8 @@ function attachEventListners(main) {
       main?.addEventListener(eventType, async (event) => {
         event.stopPropagation();
         const applied = await applyChanges(event);
-
-        // Calculate read time for the main content
-        const articleText = main.innerText;
-        const wordsArray = articleText.split(' ');
-        const wordCount = wordsArray.length;
-        const wordsPerMinute = 200;
-        const readingTime = Math.ceil(wordCount / wordsPerMinute);
         
-      
-        // eslint-disable-next-line no-console
-        console.log(
-          `This article has ${wordCount} words and will take approximately ${readingTime} minute(s) to read.`
-        );
-        
-        postReadTime(readingTime)
+        processArticleReadingTime();
 
         if (!applied) {
           window.location.reload();
