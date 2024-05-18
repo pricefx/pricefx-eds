@@ -105,11 +105,27 @@ async function applyChanges(event) {
   return false;
 }
 
+function getTokenValue() {
+  for (let i = 0; i < sessionStorage.length; i++) {
+    const key = sessionStorage.key(i);
+    if (key.startsWith('adobeid_ims_access_token')) {
+      const sessionData = sessionStorage.getItem(key);
+      if (sessionData) {
+        const parsedData = JSON.parse(sessionData);
+        if (parsedData.tokenValue) {
+          return parsedData.tokenValue;
+        }
+      }
+    }
+  }
+  console.error('Token not found in session storage.');
+  return null;
+}
+
 
 function postReadTime(readingTime) {
   // Retrieve the tokenValue from the session storage
-  const sessionData = JSON.parse(sessionStorage.getItem('adobeid_ims_access_token/exc_app/false/AdobeID'));
-  const tokenValue = sessionData.tokenValue;
+  const tokenValue = getTokenValue();
 
   const postData = {
     connections: [
