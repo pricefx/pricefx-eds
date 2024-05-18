@@ -64,7 +64,7 @@ function postReadTime(readingTime, dynamicUrl) {
     });
 }
 
-export function processArticleReadingTime() {
+ function processArticleReadingTime() {
   const pageTemplate = getMetadata('template');
 
   if (pageTemplate === 'article') {
@@ -88,3 +88,5 @@ export function processArticleReadingTime() {
     postReadTime(readTime, contentPath);
   }
 }
+
+export default processArticleReadingTime;
