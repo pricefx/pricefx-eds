@@ -1,4 +1,4 @@
-import { getMetadata } from '../../scripts/aem.js';
+import { getMetadata } from './aem.js';
 
 function getTokenValue() {
   for (let i = 0; i < sessionStorage.length; i += 1) {
@@ -63,7 +63,7 @@ function postReadTime(readingTime, dynamicUrl) {
     });
 }
 
-async function processArticleReadingTime() {
+export function processArticleReadingTime() {
   const pageTemplate = getMetadata('template');
 
   if (pageTemplate === 'article') {
@@ -81,7 +81,7 @@ async function processArticleReadingTime() {
     const readTime = Math.ceil(wordCount / wordsPerMinute);
 
     // eslint-disable-next-line no-console
-    console.log(`This article has ${wordCount} words and will take approximately ${readingTime} minute(s) to read.`);
+    console.log(`This article has ${wordCount} words and will take approximately ${readTime} minute(s) to read.`);
 
     const contentPath = window.location.href;
     postReadTime(readTime, contentPath);
