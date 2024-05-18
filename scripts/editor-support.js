@@ -10,6 +10,7 @@ import {
 // eslint-disable-next-line import/no-unresolved
 import { decorateRichtext } from './editor-support-rte.js';
 import { decorateMain } from './scripts.js';
+// eslint-disable-next-line import/no-unresolved
 import { processArticleReadingTime } from './editor-support-article.js';
 
 async function applyChanges(event) {
