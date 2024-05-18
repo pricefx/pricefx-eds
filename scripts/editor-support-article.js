@@ -1,3 +1,7 @@
+/* eslint-disable no-console */
+/* eslint-disable no-cond-assign */
+/* eslint-disable import/prefer-default-export */
+
 import { getMetadata } from './aem.js';
 
 function getTokenValue() {
@@ -64,7 +68,7 @@ function postReadTime(readingTime, dynamicUrl) {
     });
 }
 
- function processArticleReadingTime() {
+export function processArticleReadingTime() {
   const pageTemplate = getMetadata('template');
 
   if (pageTemplate === 'article') {
@@ -88,5 +92,3 @@ function postReadTime(readingTime, dynamicUrl) {
     postReadTime(readTime, contentPath);
   }
 }
-
-export default processArticleReadingTime;
