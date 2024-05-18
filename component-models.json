@@ -1750,11 +1750,7 @@
         "label": "Article Read Time",
         "placeholder": "Enter time in number format",
         "description": "Please enter article read time in mins.",
-        "condition": {
-          "if": { "==": ["iframe.contentWindow.window.articleType", "long"] },
-          "then": 20,
-          "else": 10
-        }
+        "condition": { "===": [{"var" : "reveal"}, true] }
       }
     ]
   },
