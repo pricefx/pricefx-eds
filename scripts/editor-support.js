@@ -106,7 +106,7 @@ async function applyChanges(event) {
 }
 
 function getTokenValue() {
-  for (let i = 0; i < sessionStorage.length; i++) {
+  for (let i = 0; i < sessionStorage.length; i += 1) {
     const key = sessionStorage.key(i);
     if (key.startsWith('adobeid_ims_access_token')) {
       const sessionData = sessionStorage.getItem(key);
@@ -118,6 +118,7 @@ function getTokenValue() {
       }
     }
   }
+  // eslint-disable-next-line no-console
   console.error('Token not found in session storage.');
   return null;
 }
