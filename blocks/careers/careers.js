@@ -1,19 +1,7 @@
-async function loadJobsData(filterVal, sortVal) {
-  try {
-    const response = await fetch('/careers.json', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      data: {
-        sort: filterVal + sortVal,
-      },
-    });
-    const result = await response.json();
-    console.log(result);
-  } catch (error) {
-    console.log(error);
-  }
+import jobScore from './jobScore.js';
+
+function loadJobsData() {
+  console.log(jobScore);
 }
 
 function renderCareers() {
@@ -39,14 +27,6 @@ function renderCareers() {
 }
 
 export default async function decorate() {
-  // Fetch Careers content from JSON endpoint
-  // const careersUrl = 'https://careers.jobscore.com/jobs/pricefx/feed.json';
-  // loadJobsData(careersUrl)
-  // const careersData = '';
-  // renderCareers(careersData);
-  // console.log(careersData);
   renderCareers();
-  const filterVal = 'department';
-  const sortVal = '';
-  loadJobsData(filterVal, sortVal);
+  loadJobsData();
 }
