@@ -1,3 +1,5 @@
+import { createOptimizedPicture } from '../../scripts/aem.js';
+
 function createImageContainer(imageSrc, title, text, widthClass) {
   const imageContainer = document.createElement('div');
   imageContainer.classList.add(widthClass);
@@ -23,6 +25,12 @@ function createImageContainer(imageSrc, title, text, widthClass) {
   banner.appendChild(textNode);
 
   imageContainer.appendChild(banner);
+
+  imageContainer
+    .querySelectorAll('img')
+    .forEach((img) =>
+      img.closest('img').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])),
+    );
 
   return imageContainer;
 }
