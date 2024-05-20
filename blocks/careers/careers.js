@@ -1,7 +1,7 @@
 async function loadJobsData() {
   try {
     const response = await fetch('https://careers.jobscore.com/jobs/pricefx/feed.json', {
-      method: 'POST',
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
