@@ -1,6 +1,5 @@
-function loadJobsData() {
-  const jobScoreData = sessionStorage.getItem('jobScore');
-  console.log(jobScoreData);
+function loadJobsData(jobScore) {
+  console.log(jobScore);
 }
 
 function renderCareers() {
@@ -319,7 +318,7 @@ export default async function decorate() {
     company_shortcode: 'pricefx',
     last_updated: '2024-05-19T17:41:10.312Z',
   };
-  sessionStorage.setItem('jobScore', jobScore);
+
   renderCareers();
-  loadJobsData();
+  loadJobsData(jobScore);
 }
