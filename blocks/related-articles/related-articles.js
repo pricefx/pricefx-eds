@@ -80,10 +80,10 @@ function generateCardDom(article, authorDirectoryPath) {
             ? `<div class="article-details">
             ${article.category !== '' ? renderArticleCategory(article) : ''}
             ${article.title !== '' ? `<h6 class="article-title">${article.title}</h6>` : ''}
-            ${article.authors !== '' || article.articlePublishDate !== '' ? renderArticleAuthors(article, authorDirectoryPath) : ''}
           </div>`
             : ''
         }
+        ${article.authors !== '' || article.articlePublishDate !== '' ? renderArticleAuthors(article, authorDirectoryPath) : ''}
         <div class='cards-card-cta'>
           <a class="article-link" href="${path}">Read Now</a>
           ${readingTime ? `<div class='cards-card-reading-time'>${readingTime} min read</div>` : ''}
@@ -161,10 +161,10 @@ async function decorateBlogArticles(articlesJSON, block, props) {
                   ? `<div class="article-details">
                   ${article.category !== '' ? renderArticleCategory(article) : ''}
                   ${article.title !== '' ? `<h2 class="article-title">${article.title}</h2>` : ''}
-                  ${article.authors !== '' || article.articlePublishDate !== '' ? renderArticleAuthors(article, authorDirectoryPath) : ''}
                 </div>`
                   : ''
               }
+              ${article.authors !== '' || article.articlePublishDate !== '' ? renderArticleAuthors(article, authorDirectoryPath) : ''}
               <div class="article-cta-container">
                 <a class="article-link" href="${article.path}">Read Now</a>
                 ${article.readingTime !== '' ? `<p class="article-readtime">${article.readingTime} min read</p>` : ''}
@@ -186,10 +186,10 @@ async function decorateBlogArticles(articlesJSON, block, props) {
                 ? `<div class="article-details">
                 ${article.category !== '' ? renderArticleCategory(article) : ''}
                 ${article.title !== '' ? `<h2 class="article-title">${article.title}</h2>` : ''}
-                ${article.authors !== '' || article.articlePublishDate !== '' ? renderArticleAuthors(article, authorDirectoryPath) : ''}
               </div>`
                 : ''
             }
+            ${article.authors !== '' || article.articlePublishDate !== '' ? renderArticleAuthors(article, authorDirectoryPath) : ''}
             <div class="article-cta-container">
               <a class="article-link" href="${article.path}">Read Now</a>
               ${article.readingTime !== '' ? `<p class="article-readtime">${article.readingTime} min read</p>` : ''}
@@ -213,10 +213,10 @@ async function decorateBlogArticles(articlesJSON, block, props) {
                 ? `<div class="article-details">
                 ${article.category !== '' ? renderArticleCategory(article) : ''}
                 ${article.title !== '' ? `<h2 class="article-title">${article.title}</h2>` : ''}
-                ${article.authors !== '' || article.articlePublishDate !== '' ? renderArticleAuthors(article, authorDirectoryPath) : ''}
               </div>`
                 : ''
             }
+            ${article.authors !== '' || article.articlePublishDate !== '' ? renderArticleAuthors(article, authorDirectoryPath) : ''}
             <div class="article-cta-container">
               <a class="article-link" href="${article.path}">Read Now</a>
               ${article.readingTime !== '' ? `<p class="article-readtime">${article.readingTime} min read</p>` : ''}

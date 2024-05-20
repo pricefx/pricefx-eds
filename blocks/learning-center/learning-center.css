@@ -515,10 +515,6 @@ a.article-link::after {
   text-decoration: underline;
 }
 
-.hidden {
-  display: none;
-}
-
 /* MOBILE & RESPONSIVE STYLES */
 @media (width <= 1600px) {
   .learning-center {

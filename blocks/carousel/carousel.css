@@ -266,10 +266,6 @@ main:has(.carousel[data-carousel-type='carousel-quote']) p {
   display: none;
 }
 
-.hidden {
-  display: none;
-}
-
 /* RESPONSIVE STYLES */
 @media (width <= 1199px) {
   .carousel[data-carousel-type='carousel-quote'] {
