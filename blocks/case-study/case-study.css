@@ -87,7 +87,7 @@
   }
 
   .case-study .grid-container-3 .image-1 img {
-     max-height: 767px;
+     min-height: 767px;
      height: 100%;
      overflow: hidden;
      object-fit: cover;
@@ -100,12 +100,12 @@
 
   .case-study .half-container {
     flex-direction: column;
-     max-height: 767px;
+     min-height: 767px;
       width: 50%;
   }
 
   .case-study .half-container img {
-    max-height: 381px;
+    min-height: 381px;
     overflow: hidden;
     object-fit: cover;
     height: 100%;
@@ -114,6 +114,7 @@
   .case-study .grid-container-2 .image-1,
   .case-study .grid-container-2 .image-2 {
     width: 50%; 
+    height:100%;
   }
 
   .case-study .grid-container-2 img {
@@ -121,6 +122,7 @@
     overflow: hidden;
     object-fit: cover;
     width: 100%;
+    max-height: 797px;
   }
 
   .case-study .banner {
