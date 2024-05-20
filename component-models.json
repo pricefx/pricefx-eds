@@ -896,6 +896,27 @@
       },
       {
         "component": "select",
+        "name": "removePadding",
+        "value": "",
+        "label": "Remove Top / Bottom Padding",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Remove Top Padding",
+            "value": "section-remove-top-padding"
+          },
+          {
+            "name": "Remove Bottom Padding",
+            "value": "section-remove-bottom-padding"
+          }
+        ]
+      },
+      {
+        "component": "select",
         "name": "roundedCorner",
         "value": "",
         "label": "Rounded Corner for Image/Video",
@@ -1560,6 +1581,11 @@
     "id": "learningCenter",
     "fields": [
       {
+        "component": "tab",
+        "label": "Configs",
+        "name": "configs"
+      },
+      {
         "component": "aem-content",
         "name": "featuredArticle",
         "value": "",
@@ -1617,6 +1643,54 @@
             ]
           }
         ]
+      },
+      {
+        "component": "text",
+        "name": "articlesContentCta",
+        "label": "Articles Cards CTA Label",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "ebooksContentCta",
+        "label": "E-Books Cards CTA Label",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "podcastsContentCta",
+        "label": "Podcasts Cards CTA Label",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "caseStudyContentCta",
+        "label": "Case Study Cards CTA Label",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "videosContentCta",
+        "label": "Videos Cards CTA Label",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "reportsContentCta",
+        "label": "Analyst Reports Cards CTA Label",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "defaultContentCta",
+        "label": "Default Cards CTA Label",
+        "valueType": "string",
+        "description": "This will be used as a fallback label in case an article card is missing a content type indicator or doesn't match the provided content types."
+      },
+      {
+        "component": "tab",
+        "label": "Filters",
+        "name": "filters"
       },
       {
         "component": "text-input",

@@ -163,10 +163,12 @@
 .ps-filter-category-toggle .accordion-icon::after {
   color: var(--c-copy);
   font-family: var(--ff-pricefx-icons);
-  font-size: 11px;
+  font-size: 12px;
+  height: 11px;
   position: absolute;
   right: 4px;
   top: 0;
+  width: 11px;
 }
 
 .ps-filter-category-toggle[aria-expanded = 'false'] .accordion-icon::after {
@@ -225,6 +227,7 @@
   display: flex;
   flex-direction: column;
   margin: 0;
+  min-height: 372px;
 }
 
 .partner-card .partner-image {
@@ -366,6 +369,7 @@ a.partner-link::after {
   display: flex;
   align-items: center;
   list-style-type: none;
+  height: 20px;
 }
 
 .pagination-page,

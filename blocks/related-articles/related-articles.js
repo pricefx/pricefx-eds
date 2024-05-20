@@ -1,5 +1,5 @@
 import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
-import { environmentMode, formatDate, sortByDate } from '../../scripts/global-functions.js';
+import { environmentMode, formatDate, sortByDate, replaceBasePath } from '../../scripts/global-functions.js';
 import { ARTICLE_INDEX_PATH, BASE_CONTENT_PATH } from '../../scripts/url-constants.js';
 import { loadFragment } from '../fragment/fragment.js';
 import ffetch from '../../scripts/ffetch.js';
@@ -37,10 +37,7 @@ const renderArticleAuthors = (article, authorDirectoryPath) => {
     authorsParentPagePathFormatted += '/';
   }
 
-  if (isPublishEnvironment) {
-    // In the publish environment, remove the base path if present
-    authorsParentPagePathFormatted = authorsParentPagePathFormatted.replace(BASE_CONTENT_PATH, '');
-  }
+  replaceBasePath(isPublishEnvironment, authorsParentPagePathFormatted, BASE_CONTENT_PATH);
 
   authorsArray.forEach((author) => {
     if (author === '') {

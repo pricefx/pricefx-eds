@@ -4,6 +4,10 @@
         padding: 0;
     }
 
+    .section.left-right-boxed-container > div {
+        max-width: 100%;
+    }
+
     .left-right-boxed .boxed-main-container {
         display: flex;
         align-items: flex-start;
