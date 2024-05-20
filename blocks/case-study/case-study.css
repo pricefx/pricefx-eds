@@ -1,3 +1,7 @@
+.section.case-study-container > div {
+  max-width: 100%;
+}
+
 .case-study {
     display: flex;
 }
@@ -104,6 +108,7 @@
     max-height: 381px;
     overflow: hidden;
     object-fit: cover;
+    height: 100%;
   }
   
   .case-study .grid-container-2 .image-1,
