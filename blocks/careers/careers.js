@@ -1,7 +1,10 @@
-import jobScore from './jobScore.js';
-
 function loadJobsData() {
-  console.log(jobScore);
+  fetch('./jobScore.json')
+    .then((res) => res.json())
+    .then((data) => {
+      // do stuff with the data
+      console.log(data);
+    });
 }
 
 function renderCareers() {
