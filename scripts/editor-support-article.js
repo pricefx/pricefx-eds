@@ -34,7 +34,7 @@ function postReadTime(readingTime, contentPath) {
       },
     ],
     target: {
-      resource: `urn:aemconnection:${contentPath.replace(window.location.origin, '').replace(/\.html\?.*$/, '')}/jcr:content`,
+      resource: `urn:aemconnection:${contentPath.replace(window.location.origin, '').replace(/\.html(\?.*)?$/, '')}/jcr:content`,
       type: 'component',
       prop: '',
     },

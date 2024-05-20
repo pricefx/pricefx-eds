@@ -7,8 +7,8 @@ indices:
       - /configuration/**
       - /nav/**
       - /footer/**
-      - /fragments/**
       - /metadata/**
+      - /fragments/**
       - /style-guide/**
     target: /query-index.json
     properties:
