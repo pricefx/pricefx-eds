@@ -381,10 +381,6 @@ a.partner-link::after {
   margin-right: 0;
 }
 
-.hidden {
-  display: none;
-}
-
 /* MOBILE & RESPONSIVE STYLES */
 @media (width <= 1260px) {
   .partner-showcase {

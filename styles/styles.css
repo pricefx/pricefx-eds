@@ -735,4 +735,7 @@ body.article {
   }
 }
 
-
+/* Helper  CSS */
+.hidden {
+  display: none !important;
+}
