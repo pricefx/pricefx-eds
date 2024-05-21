@@ -104,6 +104,11 @@
       width: 50%;
   }
 
+  .case-study .half-container .image-2,
+  .case-study .half-container .image-3 {
+    height: 50%
+  }
+
   .case-study .half-container img {
     min-height: 381px;
     overflow: hidden;
@@ -117,12 +122,18 @@
     height:100%;
   }
 
+  .case-study .grid-container-3 .image,
+  .case-study .grid-container-2 .image {
+    height:100%;
+  }
+
   .case-study .grid-container-2 img {
     max-width: 100%;
     overflow: hidden;
     object-fit: cover;
     width: 100%;
     max-height: 797px;
+    height: 100%;
   }
 
   .case-study .banner {
