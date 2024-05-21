@@ -472,10 +472,6 @@ button.tertiary::after {
 }
 
 @media (width >= 768px) {
-  p {
-    margin-bottom: 20px;
-  }
-  
   h1 {
     line-height: 1.075;
   }
