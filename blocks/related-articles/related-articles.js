@@ -1,5 +1,5 @@
 import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
-import { environmentMode, formatDate, sortByDate } from '../../scripts/global-functions.js';
+import { environmentMode, formatDate, sortByDate, replaceBasePath } from '../../scripts/global-functions.js';
 import { ARTICLE_INDEX_PATH, BASE_CONTENT_PATH } from '../../scripts/url-constants.js';
 import { loadFragment } from '../fragment/fragment.js';
 import ffetch from '../../scripts/ffetch.js';
@@ -37,10 +37,7 @@ const renderArticleAuthors = (article, authorDirectoryPath) => {
     authorsParentPagePathFormatted += '/';
   }
 
-  if (isPublishEnvironment) {
-    // In the publish environment, remove the base path if present
-    authorsParentPagePathFormatted = authorsParentPagePathFormatted.replace(BASE_CONTENT_PATH, '');
-  }
+  replaceBasePath(isPublishEnvironment, authorsParentPagePathFormatted, BASE_CONTENT_PATH);
 
   authorsArray.forEach((author) => {
     if (author === '') {
@@ -83,10 +80,10 @@ function generateCardDom(article, authorDirectoryPath) {
             ? `<div class="article-details">
             ${article.category !== '' ? renderArticleCategory(article) : ''}
             ${article.title !== '' ? `<h6 class="article-title">${article.title}</h6>` : ''}
-            ${article.authors !== '' || article.articlePublishDate !== '' ? renderArticleAuthors(article, authorDirectoryPath) : ''}
           </div>`
             : ''
         }
+        ${article.authors !== '' || article.articlePublishDate !== '' ? renderArticleAuthors(article, authorDirectoryPath) : ''}
         <div class='cards-card-cta'>
           <a class="article-link" href="${path}">Read Now</a>
           ${readingTime ? `<div class='cards-card-reading-time'>${readingTime} min read</div>` : ''}
@@ -164,10 +161,10 @@ async function decorateBlogArticles(articlesJSON, block, props) {
                   ? `<div class="article-details">
                   ${article.category !== '' ? renderArticleCategory(article) : ''}
                   ${article.title !== '' ? `<h2 class="article-title">${article.title}</h2>` : ''}
-                  ${article.authors !== '' || article.articlePublishDate !== '' ? renderArticleAuthors(article, authorDirectoryPath) : ''}
                 </div>`
                   : ''
               }
+              ${article.authors !== '' || article.articlePublishDate !== '' ? renderArticleAuthors(article, authorDirectoryPath) : ''}
               <div class="article-cta-container">
                 <a class="article-link" href="${article.path}">Read Now</a>
                 ${article.readingTime !== '' ? `<p class="article-readtime">${article.readingTime} min read</p>` : ''}
@@ -189,10 +186,10 @@ async function decorateBlogArticles(articlesJSON, block, props) {
                 ? `<div class="article-details">
                 ${article.category !== '' ? renderArticleCategory(article) : ''}
                 ${article.title !== '' ? `<h2 class="article-title">${article.title}</h2>` : ''}
-                ${article.authors !== '' || article.articlePublishDate !== '' ? renderArticleAuthors(article, authorDirectoryPath) : ''}
               </div>`
                 : ''
             }
+            ${article.authors !== '' || article.articlePublishDate !== '' ? renderArticleAuthors(article, authorDirectoryPath) : ''}
             <div class="article-cta-container">
               <a class="article-link" href="${article.path}">Read Now</a>
               ${article.readingTime !== '' ? `<p class="article-readtime">${article.readingTime} min read</p>` : ''}
@@ -216,10 +213,10 @@ async function decorateBlogArticles(articlesJSON, block, props) {
                 ? `<div class="article-details">
                 ${article.category !== '' ? renderArticleCategory(article) : ''}
                 ${article.title !== '' ? `<h2 class="article-title">${article.title}</h2>` : ''}
-                ${article.authors !== '' || article.articlePublishDate !== '' ? renderArticleAuthors(article, authorDirectoryPath) : ''}
               </div>`
                 : ''
             }
+            ${article.authors !== '' || article.articlePublishDate !== '' ? renderArticleAuthors(article, authorDirectoryPath) : ''}
             <div class="article-cta-container">
               <a class="article-link" href="${article.path}">Read Now</a>
               ${article.readingTime !== '' ? `<p class="article-readtime">${article.readingTime} min read</p>` : ''}

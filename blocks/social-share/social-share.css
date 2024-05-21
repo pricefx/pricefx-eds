@@ -24,7 +24,7 @@
 }
 
 .social-share .a2a_default_style > li:not(:last-child) {
-    padding-right: 40px;
+    padding-right: 28px;
 }
 
 .social-share .social-follow > li:not(:last-child) {
@@ -46,6 +46,12 @@
 }
 
 /* Resposive Styles */
+@media (width >= 480px) {
+    .social-share .a2a_default_style > li:not(:last-child) {
+        padding-right: 40px;
+    }
+}
+
 @media (width >= 768px) {
     .social-share .a2a_default_style > li:not(:last-child) {
         padding-right: 45px;

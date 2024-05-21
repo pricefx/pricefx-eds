@@ -1,71 +1,85 @@
-.title-pfx.title-dark-blue-gradient h1,
-.title-pfx.title-dark-blue-gradient h2,
-.title-pfx.title-dark-blue-gradient h3,
-.title-pfx.title-dark-blue-gradient h4,
-.title-pfx.title-dark-blue-gradient h5,
-.title-pfx.title-dark-blue-gradient h6 {
-    background: var(--c-dark-blue-gradient);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+.title-pfx.title-dark-blue-gradient {
+    h1, h2, h3, h4, h5, h6 {
+        background: var(--c-dark-blue-gradient);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
 }
 
-.title-pfx.title-dark-grey h1,
-.title-pfx.title-dark-grey h2,
-.title-pfx.title-dark-grey h3,
-.title-pfx.title-dark-grey h4,
-.title-pfx.title-dark-grey h5,
-.title-pfx.title-dark-grey h6 {
-    background: var(--c-copy);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+.title-pfx.title-dark-grey {
+    h1, h2, h3, h4, h5, h6 {
+        background: var(--c-copy);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
 }
 
 .title-pfx.title-spacer-small {
-    margin-top: 12px;
-    margin-bottom: 12px;
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
 }
 
 .title-pfx.title-spacer-medium {
-    margin-top: var(--spacing-xsmall);
-    margin-bottom: var(--spacing-xsmall);
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: var(--spacing-xsmall);
+        margin-bottom: var(--spacing-xsmall);
+    }
 }
 
 .title-pfx.title-spacer-large {
-    margin-top: var(--spacing-small);
-    margin-bottom: var(--spacing-small);
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: var(--spacing-small);
+        margin-bottom: var(--spacing-small);
+    }
 }
 
 .title-pfx.title-spacer-extra-large {
-    margin-top: var(--spacing-medium);
-    margin-bottom: var(--spacing-medium);
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: var(--spacing-medium);
+        margin-bottom: var(--spacing-medium);
+    }
 }
 
 @media (width >= 768px) {
     .title-pfx.title-spacer-small {
-        margin-top: var(--spacing-small);
-        margin-bottom: var(--spacing-small);
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: var(--spacing-small);
+            margin-bottom: var(--spacing-small);
+        }
     }
     
     .title-pfx.title-spacer-medium {
-        margin-top: var(--spacing-medium);
-        margin-bottom: var(--spacing-medium);
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: var(--spacing-medium);
+            margin-bottom: var(--spacing-medium);
+        }
     }
     
     .title-pfx.title-spacer-large {
-        margin-top: var(--spacing-large);
-        margin-bottom: var(--spacing-large);
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: var(--spacing-large);
+            margin-bottom: var(--spacing-large);
+        }
     }
     
     .title-pfx.title-spacer-extra-large {
-        margin-top: var(--spacing-xlarge);
-        margin-bottom: var(--spacing-xlarge);
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: var(--spacing-xlarge);
+            margin-bottom: var(--spacing-xlarge);
+        }
     }
 }
 
 .title-pfx.title-no-top-margin {
-    margin-top: 0;
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 0;
+    }
 }
 
 .title-pfx.title-no-bottom-margin {
-    margin-bottom: 0;
+    h1, h2, h3, h4, h5, h6 {
+        margin-bottom: 0;
+    }
 }

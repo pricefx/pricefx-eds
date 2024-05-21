@@ -45,7 +45,7 @@ const updateCarouselCtaState = (slides, prevCta, nextCta, targetIndex) => {
 
 // Get the max height of the carousel slides
 const getMaxHeight = (slides, carousel, slideContentClass, isCarouselImage) => {
-  let slideHeightArray = [];
+  const slideHeightArray = [];
   slides.forEach((slide) => {
     const slideContent = slide.querySelector(slideContentClass);
     if (!slideContent) {
@@ -53,7 +53,6 @@ const getMaxHeight = (slides, carousel, slideContentClass, isCarouselImage) => {
     }
 
     const slideHeight = slideContent.getBoundingClientRect().height;
-    slideHeightArray = [];
     slideHeightArray.push(slideHeight);
     const maxHeight = Math.max(...slideHeightArray);
     if (!isCarouselImage) {
@@ -68,6 +67,9 @@ export default async function decorate(block) {
   const [carouselTitle, carouselDescription, carouselSlideFrag, isAutoSlide] = block.children;
   block.innerHTML = '';
   const enableAutoSlider = isAutoSlide.textContent.trim();
+  if (carouselSlideFrag.textContent.trim() === '') {
+    return;
+  }
 
   // load Carousel Fragment
   const carouselFragPath = carouselSlideFrag.querySelector('a').href;
@@ -116,10 +118,17 @@ export default async function decorate(block) {
       slide.setAttribute('aria-hidden', 'false');
     }
   });
+
+  // Indicate whether it's a Carousel Quote or Carousel Image
   if (carouselContent.querySelector('.quote')) {
     block.setAttribute('data-carousel-type', 'carousel-quote');
   } else {
     block.setAttribute('data-carousel-type', 'carousel-image');
+  }
+
+  // Checks if Carousel only has 1 slide, then append custom class for styling
+  if (carouselSlides.length === 1) {
+    block.classList.add('single-slide');
   }
 
   setTimeout(() => {
@@ -131,7 +140,7 @@ export default async function decorate(block) {
       setSlidesPosition(carouselSlides, slideWidth, true);
       getMaxHeight(carouselSlides, carouselContent, '.columns', true);
     }
-  }, 100);
+  }, 150);
 
   // Assigns carousel content height dynamically
   window.addEventListener('resize', () => {
@@ -236,7 +245,7 @@ export default async function decorate(block) {
     updateCarouselCtaState(carouselSlides, carouselPrevCta, carouselNextCta, targetIndex);
   });
 
-  if (enableAutoSlider !== 'false') {
+  if (enableAutoSlider !== 'false' && carouselSlides.length > 1) {
     setInterval(() => {
       const currentSlide = carouselTrack.querySelector('.current-slide');
       const currentIndex = carouselSlides.findIndex((slide) => slide === currentSlide);

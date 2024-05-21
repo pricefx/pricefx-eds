@@ -1,5 +1,3 @@
-import { IMAGETEXT } from '../../scripts/constants.js';
-
 function addElementsToContainer(container, elements) {
   const tempContainer = document.createElement('div');
   tempContainer.classList.add('content');
@@ -14,6 +12,8 @@ export default async function decorate(block) {
   let elementsInContainer = [];
 
   let enableIcon = false;
+
+  let buttonDisable = false;
 
   const imagetext = document.createElement('div');
   imagetext.classList.add('imagetext-container');
@@ -87,7 +87,6 @@ export default async function decorate(block) {
           if (enableIcon === 'true') {
             const icon = document.createElement('div');
             icon.classList.add('imagetext-icon');
-            icon.innerHTML = IMAGETEXT;
             icon.appendChild(newParagraph);
 
             node.insertBefore(icon, node.firstChild);
@@ -102,16 +101,22 @@ export default async function decorate(block) {
       imagetextRightContainer.appendChild(imagetextAction);
     } else if (index === 4) {
       button.classList.add('button');
-      button.classList.add(row.textContent.replace(/\s+/g, ''));
+      button.classList.add(row.textContent.trim());
     } else if (index === 5) {
-      button.href = row.textContent.replace(/\s+/g, '');
+      button.href = row.textContent.trim();
     } else if (index === 6) {
-      button.innerHTML = row.textContent.replace(/\s+/g, '');
+      if (row.textContent.trim() !== '') {
+        button.innerHTML = row.textContent.trim();
+      } else {
+        buttonDisable = true;
+      }
     } else if (index === 7) {
-      if (row.textContent.replace(/\s+/g, '') === 'true') {
+      if (row.textContent.trim() === 'true' && buttonDisable === false) {
         button.target = '_blank';
       }
-      imagetextAction.appendChild(button);
+      if (buttonDisable === false) {
+        imagetextAction.appendChild(button);
+      }
     } else if (index === 8) {
       /* Support Title */
       const line = document.createElement('div');
