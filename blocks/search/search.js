@@ -259,6 +259,7 @@ export default async function decorate(block) {
 
     if (currentSearchJSON.length === 0) {
       resultWrapper.innerHTML = `<h4 class="search-no-results">${noResultTitle.textContent.trim()}</h4>`;
+      paginationContainer.classList.add('pagination-wrapper', 'hidden');
       return;
     }
 

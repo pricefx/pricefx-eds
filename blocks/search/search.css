@@ -187,10 +187,6 @@
     margin: 0 var(--spacing-micro) 0 0;
 }
 
-.hidden {
-    display: none;
-}
-
 /* Resposive Styles */
 @media (width >= 1024px) {
     .search-results-item-link {

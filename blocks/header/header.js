@@ -56,6 +56,7 @@ const toggleHamburgerNav = (hamburger, mobileNav) => {
   const hamburgerAriaExpanded = hamburger.attributes[4].value;
   const setHamburgerAriaExpanded = hamburgerAriaExpanded === 'false' ? 'true' : 'false';
   hamburger.setAttribute('aria-expanded', setHamburgerAriaExpanded);
+  const mobileSearch = document.querySelector('.mobile-header .search-wrapper');
 
   if (hamburgerAriaExpanded === 'false') {
     mobileNav.focus();
@@ -63,6 +64,8 @@ const toggleHamburgerNav = (hamburger, mobileNav) => {
     if (!isDesktop.matches) {
       bodyEl.classList.add('scroll-lock');
     }
+
+    mobileSearch.classList.add('hidden');
   } else {
     mobileNav.blur();
     hamburger.setAttribute('aria-label', 'Open Mobile Navigation');
@@ -73,6 +76,7 @@ const toggleHamburgerNav = (hamburger, mobileNav) => {
     if (!isDesktop.matches) {
       bodyEl.classList.remove('scroll-lock');
     }
+    mobileSearch.classList.remove('hidden');
   }
 
   const navMobileAriaHidden = mobileNav.attributes[3].value;
@@ -528,7 +532,7 @@ export default async function decorate(block) {
   });
 
   hamburger.addEventListener('focus', () => {
-    mobileHeader.querySelector('.megamenu-wrapper--active').classList.remove('megamenu-wrapper--active');
+    mobileHeader.querySelector('.megamenu-wrapper').classList.remove('megamenu-wrapper--active');
   });
 
   // Render Mobile Talk to an Expert CTA

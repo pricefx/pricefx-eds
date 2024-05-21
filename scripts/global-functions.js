@@ -33,5 +33,19 @@ function sortByDate(data, prop) {
   });
 }
 
+/**
+ * Function to remove the base path in the publish environment if present
+ * @param {Boolean} isPublishEnvironment Checks if environment is Publish or Author
+ * @param {string} pagePath Page path that needs the base content path taken out
+ * @param {string} baseContentPath The part of the path that needs to be replaced
+ */
+const replaceBasePath = (isPublishEnvironment, pagePath, baseContentPath) => {
+  if (isPublishEnvironment) {
+    const newPagePath = pagePath.replace(baseContentPath, '');
+    return newPagePath;
+  }
+  return null;
+};
+
 // eslint-disable-next-line import/prefer-default-export
-export { environmentMode, formatDate, sortByDate };
+export { environmentMode, formatDate, sortByDate, replaceBasePath };
