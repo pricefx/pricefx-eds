@@ -50,19 +50,6 @@ async function loadJobsData(sortBy, filterBy, block) {
         block.append(jobPosting);
       }
     });
-
-    document.addEventListener('click', (e) => {
-      const target = e.target.closest('.job-header');
-      if (target) {
-        const targetParent = target.parentElement.parentElement;
-        targetParent.classList.toggle('active');
-        if (targetParent.classList.contains('active')) {
-          target.nextElementSibling.setAttribute('data-expanded', 'true');
-        } else {
-          target.nextElementSibling.setAttribute('data-expanded', 'false');
-        }
-      }
-    });
   } catch (error) {
     error.log(error);
   }
@@ -100,9 +87,19 @@ function renderCareers(block) {
   block.append(careersDropdown);
 }
 
-export default async function decorate(block) {
-  renderCareers(block);
-  loadJobsData('deparment', '', block);
+function addEventListeners(block) {
+  document.addEventListener('click', (e) => {
+    const target = e.target.closest('.job-header');
+    if (target) {
+      const targetParent = target.parentElement.parentElement;
+      targetParent.classList.toggle('active');
+      if (targetParent.classList.contains('active')) {
+        target.nextElementSibling.setAttribute('data-expanded', 'true');
+      } else {
+        target.nextElementSibling.setAttribute('data-expanded', 'false');
+      }
+    }
+  });
   document.addEventListener('change', (e) => {
     const targetSort = e.target.closest('#sortby');
     const targetFilter = e.target.closest('#filterby');
@@ -116,4 +113,10 @@ export default async function decorate(block) {
     }
     loadJobsData(sortBy, filterBy, block);
   });
+}
+
+export default async function decorate(block) {
+  renderCareers(block);
+  loadJobsData('deparment', '', block);
+  addEventListeners(block);
 }
