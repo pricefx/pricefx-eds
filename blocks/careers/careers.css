@@ -18,12 +18,34 @@
     width: 100%;
 }
 
-.careers .careers-filter , .careers .careers-sort {
-    width: 50%;
+.careers .careers-select select {
+    width: 100%;
+    padding: 14px 20px 16px;
+    appearance: none;
 }
 
-.careers .careers-filter .form-control , .careers .careers-sort .form-control {
-    width: 100%;
+.careers .careers-select select::-ms-expand {
+    display: none;
+}
+
+.careers .careers-filter , .careers .careers-sort {
+    width: 50%;
+    position: relative;
+}
+
+.careers .careers-filter::after, .careers .careers-sort::after {
+    content: '';
+    display: block;
+    border-bottom: 2px solid #545f71;
+    border-right: 2px solid #545f71;
+    transform: rotate(45deg);
+    height: 8px;
+    width: 8px;
+    position: absolute;
+    cursor: pointer;
+    top: 42%;
+    right: 28px;
+
 }
 
 .careers .careers-postings > h3 {
@@ -58,9 +80,23 @@
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 25%);
 }
 
+.careers .careers-postings > div > ul li .job-header::after {
+    content:'';
+    display: block;
+    border-bottom: 2px solid #545f71;
+    border-right: 2px solid #545f71;
+    transform: rotate(45deg);
+    height: 12px;
+    width: 12px;
+    position: absolute;
+    cursor: pointer;
+    right: 40px;
+    top: 45%;
+}
+
 .careers .careers-postings > div > ul li.active .job-header::after {
     top: 50%;
-    transform: translateY(-50%) rotate(180deg);
+    transform: translateY(0%) rotate(225deg);
     transition: .3s linear all;
 }
 
