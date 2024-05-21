@@ -11,7 +11,6 @@ import {
   loadBlocks,
   loadCSS,
 } from './aem.js';
-// import { environmentMode } from './global-functions.js';
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 
@@ -69,8 +68,8 @@ async function loadFonts() {
 }
 
 /**
- * Decorates links within the specified container element by setting their "target" attribute to "_blank" if they contain "#_target" in the URL.
- *
+ * Decorates links within the specified container element by setting their "target" attribute to "_blank" either if it is external domain.
+ * or the texcontent having {{_blank}}
  * @param {HTMLElement} main - The main container element to search for and decorate links.
  */
 export function decorateExternalLinks(main) {
