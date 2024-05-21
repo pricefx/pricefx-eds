@@ -35,8 +35,10 @@
   color: var(--c-white);
 }
 
-.table .table-default .cell-title h6,h5,h4,h3,h2,h1 {
+.table .table-default .cell-title {
+  h6,h5,h4,h3,h2,h1 {
   text-align: center;
+  }
 }
 
 /* Level Table & Level Color common */
