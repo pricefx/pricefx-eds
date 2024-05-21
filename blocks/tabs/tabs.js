@@ -5,6 +5,17 @@ function hasWrapper(el) {
   return !!el.firstElementChild && window.getComputedStyle(el.firstElementChild).display === 'block';
 }
 
+function resetMobileAccordion(block) {
+  const mobileAccordion = block.querySelectorAll('.tabs-tab-mobile');
+  mobileAccordion.forEach((button) => {
+    const content = button.nextElementSibling;
+    button.setAttribute('aria-expanded', false);
+    content.style.visibility = '';
+    content.style.maxHeight = '';
+    content?.setAttribute('aria-hidden', true);
+  });
+}
+
 async function processTab(tab, index, block, tablist) {
   if (index === 0) {
     if (tab.textContent) {
@@ -27,6 +38,7 @@ async function processTab(tab, index, block, tablist) {
       const fragmentBlock = await loadFragment(fragmentPath);
       if (fragmentBlock) {
         const lastChild = tabpanel.lastElementChild;
+        lastChild.className = `tab-content-wrapper`;
         const fragmentChild = fragmentBlock.querySelector('.section');
         if (fragmentChild) {
           lastChild.innerHTML = fragmentChild.innerHTML;
@@ -34,6 +46,7 @@ async function processTab(tab, index, block, tablist) {
       }
     }
   }
+
   tabpanel.className = 'tabs-panel';
   tabpanel.id = `tabpanel-${id}`;
   tabpanel.setAttribute('aria-labelledby', `tab-${id}`);
@@ -50,7 +63,14 @@ async function processTab(tab, index, block, tablist) {
   button.setAttribute('aria-controls', `tabpanel-${id}`);
   button.setAttribute('aria-selected', index === 1);
   button.setAttribute('role', 'tab');
-  button.setAttribute('type', 'button');
+
+  const mobileAccordion = document.createElement('button');
+  mobileAccordion.className = 'tabs-tab-mobile';
+  mobileAccordion.id = `tab-${id}`;
+  mobileAccordion.innerHTML = tab.innerText;
+  mobileAccordion.setAttribute('aria-expanded', false);
+  const tabContent = tabpanel.querySelector('.tab-content-wrapper');
+  tabContent?.setAttribute('aria-hidden', true);
 
   button.addEventListener('click', () => {
     block.querySelectorAll('[role=tabpanel]').forEach((panel) => {
@@ -62,7 +82,28 @@ async function processTab(tab, index, block, tablist) {
     tabpanel.setAttribute('aria-hidden', false);
     button.setAttribute('aria-selected', true);
   });
+
+  // Mobile Accordion
+  mobileAccordion.addEventListener('click', () => {
+    if (window.innerWidth > 767) {
+      return;
+    }
+
+    const content = mobileAccordion.nextElementSibling;
+    if (mobileAccordion.getAttribute('aria-expanded') === 'true') {
+      mobileAccordion.setAttribute('aria-expanded', false);
+      content?.setAttribute('aria-hidden', true);
+      content.style.visibility = 'hidden';
+      content.style.maxHeight = '0px';
+    } else {
+      mobileAccordion.setAttribute('aria-expanded', true);
+      content?.setAttribute('aria-hidden', false);
+      content.style.visibility = 'visible';
+      content.style.maxHeight = `${content.scrollHeight}px`;
+    }
+  });
   tablist.append(button);
+  tabpanel.prepend(mobileAccordion);
   tab.remove();
 }
 
@@ -78,4 +119,12 @@ export default async function decorate(block) {
   }, Promise.resolve());
 
   block.prepend(tablist);
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth < 767) {
+      return;
+    }
+
+    resetMobileAccordion(block);
+  });
 }
