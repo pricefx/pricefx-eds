@@ -5,6 +5,15 @@ function hasNumber(myString) {
   return /\d/.test(myString);
 }
 
+function hasUlList(div) {
+  const ul = div.querySelector('ul');
+  let list = false;
+  if (ul !== null) {
+    list = true;
+  }
+  return list;
+}
+
 export default async function decorate(block) {
   const [title, showHeader, , tableVariation, ...rows] = block.children;
 
@@ -35,12 +44,18 @@ export default async function decorate(block) {
     if (variation === 'default') {
       table.classList.add('table-default');
       [...rowDiv.children].forEach((cellDiv) => {
+        const hasList = hasUlList(cellDiv);
         if (cellDiv.textContent.trim() !== '') {
           const cell =
             showHeader.textContent.trim() === 'true' && rowIndex === 0
               ? document.createElement('th')
               : document.createElement('td');
-          cell.textContent = cellDiv.textContent;
+          if (hasList === true) {
+            cell.classList.add('cell-title');
+            cell.appendChild(cellDiv);
+          } else {
+            cell.textContent = cellDiv.textContent;
+          }
           row.appendChild(cell);
         }
       });
