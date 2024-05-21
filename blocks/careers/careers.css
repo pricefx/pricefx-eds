@@ -16,6 +16,7 @@
     justify-content: center;
     gap: 40px;
     width: 100%;
+    flex-direction: column;
 }
 
 .careers .careers-select select {
@@ -29,7 +30,7 @@
 }
 
 .careers .careers-filter , .careers .careers-sort {
-    width: 50%;
+    width: 100%;
     position: relative;
 }
 
@@ -117,4 +118,27 @@
 
 .careers .careers-postings > div > ul li.job-details ul li {
     list-style-type: disc;
+}
+
+.careers .careers-postings > div > ul li .job-details button.primary {
+    margin-bottom: 51px;
+}
+
+.careers .careers-social-links a:not(:last-child) {
+    margin-right: 30px;
+}
+
+.careers .careers-social-links svg {
+    width: 22px;
+    height: 22px;
+}
+
+@media (width >= 768px) {
+    .careers .careers-select {
+        flex-direction: row;
+    }
+
+    .careers .careers-filter , .careers .careers-sort {
+        width: 50%;
+    }
 }

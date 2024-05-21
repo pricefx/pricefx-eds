@@ -1,3 +1,5 @@
+import { FACEBOOK, TWITTER, PINTEREST, LINKEDIN } from '../../scripts/constants.js';
+
 async function loadJobsData(sortBy, filterBy, block) {
   try {
     const response = await fetch(`https://careers.jobscore.com/jobs/pricefx/feed.json?sort=${filterBy}${sortBy}`, {
@@ -29,15 +31,15 @@ async function loadJobsData(sortBy, filterBy, block) {
             <div class="job-container">                                 
               <div class="job-header">                                   
               <h3>${job.title}</h3>   
-              <p>${job.city + job.state} " - " ${job.country} </p>
+              <p>${job.city + job.state} - ${job.country}</p>
               </div>                                   
               <div class="job-details" data-expanded="false">${job.description}                                     
                 <a href="${job.detail_url}" target="_blank" class="button primary">Apply Now</a>                                 
-                <div class="a2a-default-style">
-                  <a class="a2a-button-facebook"></a>
-                  <a class="a2a-button-twitter"></a>
-                  <a class="a2a-button-pinterest"></a>        
-                  <a class="a2a-dd" href="https://www.addtoany.com/share"></a>
+                <div class="careers-social-links">
+                  <a class="button-facebook" target="_blank" href="/#facebook">${FACEBOOK}</a>
+                  <a class="button-twitter" target="_blank" href="/#twitter">${TWITTER}</a>
+                  <a class="button-linkedin" target="_blank" href="/#linkedin">${LINKEDIN}</a>
+                  <a class="button-pinterest" target="_blank" href="/#pinterest">${PINTEREST}</a>        
                 </div>
               </div>
             </div>                      
