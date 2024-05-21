@@ -64,7 +64,7 @@ async function loadJobsData(sortBy, filterBy, block) {
       }
     });
   } catch (error) {
-    console.log(error);
+    error.log(error);
   }
 }
 
