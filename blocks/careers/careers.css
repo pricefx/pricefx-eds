@@ -49,6 +49,13 @@
 
 }
 
+.careers .careers-postings-container.loading::before {
+    content: url("../../icons/loading-animation.svg");
+    display: inline-block;
+    height: 37px;
+    width: 45px;
+}
+
 .careers .careers-postings > h3 {
     text-align: center;
     margin-top: 80px;
@@ -68,7 +75,6 @@
 .careers .careers-postings .job-container {
     background: var(--c-white);
 }
-
 
 .careers .careers-postings .job-header h3 {
     margin-top: 0;

@@ -1,6 +1,12 @@
 import { FACEBOOK, TWITTER, PINTEREST, LINKEDIN } from '../../scripts/constants.js';
 
 async function loadJobsData(sortBy, filterBy, block) {
+  document.querySelector('.careers-postings-container')?.remove();
+  document.querySelector('.careers-postings-container')?.remove();
+  const jobPosting = document.createElement('div');
+  jobPosting.classList.add('careers-postings-container');
+  jobPosting.classList.add('loading');
+  block.append(jobPosting);
   try {
     const response = await fetch(`https://careers.jobscore.com/jobs/pricefx/feed.json?sort=${filterBy}${sortBy}`, {
       method: 'GET',
@@ -12,10 +18,8 @@ async function loadJobsData(sortBy, filterBy, block) {
 
     const { jobs } = jobScore;
     const departments = [];
-    document.querySelector('.careers-postings-container')?.remove();
-    const jobPosting = document.createElement('div');
-    jobPosting.classList.add('careers-postings-container');
 
+    jobPosting.querySelector('.careers-loader')?.classList.add('loaded');
     jobs.forEach((job) => {
       const departmentName = job.department;
       const departmentID = departmentName.replace(/[^a-zA-Z0-9]/g, '_');
@@ -47,7 +51,7 @@ async function loadJobsData(sortBy, filterBy, block) {
         </ul>
         </div>`;
         jobPosting.append(departmentDiv);
-        block.append(jobPosting);
+        jobPosting.classList.remove('loading');
       }
     });
   } catch (error) {
