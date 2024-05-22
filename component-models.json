@@ -2478,6 +2478,20 @@
         "valueType": "string",
         "name": "marketoSuccessUrl",
         "label": "Marketo Success URL"
+      },
+      {
+        "component": "boolean",
+        "label": "2-Columns View",
+        "name": "twoColumnsView",
+        "valueType": "boolean",
+        "description": "Moves Title and Description to the left column and the form to the right column."
+      },
+      {
+        "component": "boolean",
+        "label": "Hide Form Labels",
+        "name": "hideFormLabels",
+        "valueType": "boolean",
+        "description": "Hide form labels visually (can still be read by screen readers)."
       }
     ]
   },
