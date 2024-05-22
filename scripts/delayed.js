@@ -32,7 +32,7 @@ function loadGTM() {
   document.head.prepend(scriptTag);
 }
 
-if (window.location.hostname.includes('localhost') && environmentMode() === 'publish') {
+if (!window.location.hostname.includes('localhost') && environmentMode() === 'publish') {
   // Load GTM
   loadGTM();
 }
