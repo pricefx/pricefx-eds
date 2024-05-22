@@ -1,4 +1,5 @@
 import { FACEBOOK, TWITTER, PINTEREST, LINKEDIN } from '../../scripts/constants.js';
+import { CAREERS_PATH } from '../../scripts/url-constants.js';
 
 async function loadJobsData(sortBy, filterBy, block) {
   document.querySelector('.careers-postings-container')?.remove();
@@ -8,7 +9,7 @@ async function loadJobsData(sortBy, filterBy, block) {
   jobPosting.classList.add('loading');
   block.append(jobPosting);
   try {
-    const response = await fetch(`https://careers.jobscore.com/jobs/pricefx/feed.json?sort=${filterBy}${sortBy}`, {
+    const response = await fetch(`${CAREERS_PATH}?sort=${filterBy}${sortBy}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -55,7 +56,7 @@ async function loadJobsData(sortBy, filterBy, block) {
       }
     });
   } catch (error) {
-    error.log(error);
+    console.error(error);
   }
 }
 

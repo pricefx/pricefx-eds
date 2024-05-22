@@ -51,9 +51,14 @@
 
 .careers .careers-postings-container.loading::before {
     content: url("../../icons/loading-animation.svg");
-    display: inline-block;
     height: 37px;
-    width: 45px;
+    width: 100%;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 50px;
 }
 
 .careers .careers-postings > h3 {
