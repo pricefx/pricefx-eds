@@ -50,7 +50,6 @@
   border:none;
 }
 
-
 .accordion .plus-icon{
   color: var(--c-mega-menu-link);
   cursor:pointer;
@@ -77,6 +76,10 @@
 
 .accordion .accordion-item-label p {
   margin-bottom: 0;
+}
+
+.accordion .accordion-item-label h3 {
+  margin: 0;
 }
 
 .accordion .accordion-item[open] .plus-icon::after {
