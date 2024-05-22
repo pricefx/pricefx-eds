@@ -1,8 +1,14 @@
 .columns > div {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: var(--spacing-medium);
+  word-break: break-word;
 }
+
+.columns > div:not(:last-child) {
+  margin-bottom: var(--spacing-medium);
+}
+
 
 .columns > div > div h1,
 .columns > div > div h2,
@@ -13,12 +19,6 @@
   margin-top: 0;
 }
 
-.columns > div > div strong {
-  font-weight: 600;
-  font-size: var(--heading-font-size-l);
-  line-height: 1.23;
-}
-
 .columns > div > div p:not(:last-child) {
   margin-bottom: 10px;
 }
@@ -27,17 +27,23 @@
   margin-top: 25px;
 }
 
+.columns.column-left-aligned > div {
+  text-align: left;
+}
+
 .columns.column-center-aligned > div {
   text-align: center;
 }
 
-.columns.column-mobile-reverse > div {
-  flex-direction: column-reverse;
+.columns.column-img-center-aligned .columns-img-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.columns.column-bg-color-gray > div,
-.columns.column-bg-color-white > div {
-  align-items: normal;
+.columns.column-mobile-reverse > div {
+  flex-direction: column-reverse;
 }
 
 .columns.column-img-rounded-corner > div img {
@@ -56,25 +62,67 @@
   background-color: var(--c-white);
 }
 
-.columns.column-padding-64px > div > div {
-  padding: var(--spacing-medium);
-}
-
-.columns.column-padding-32px > div > div {
-  padding: var(--spacing-xsmall);
-}
-
-.columns.column-para-font-large > div > div p {
-  font-size: 20px;
-  line-height: 1.3;
-}
-
 .columns.column-padding-large > div > div {
-  padding: var(--spacing-medium);
+  padding: var(--spacing-medium) var(--spacing-small);
 }
 
 .columns.column-padding-medium > div > div {
-  padding: var(--spacing-xsmall);
+  padding: var(--spacing-xsmall) var(--spacing-small);
+}
+
+.columns.column-padding-small > div > div {
+  padding: var(--spacing-xsmall) var(--spacing-small);
+}
+
+.columns.column-padding-xsmall > div > div {
+  padding: var(--spacing-xsmall) var(--spacing-small);
+}
+
+.columns.icons-for-li > div ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.columns.icons-for-li > div li {
+  align-items: center;
+  border-bottom: 1px solid; 
+  border-image: linear-gradient(135deg, var(--c-secondary-pink) 0% var(--c-primary-lt) 51.1%, var(--c-secondary-orange-lt) 100%);
+  border-image-slice: 1;
+  display: flex;
+  line-height: 28px;
+  margin: 24px 0 0;
+  padding-bottom: 20px;
+}
+
+.columns.icons-for-li > div li::before {
+  content: url("../../icons/list-tag-icon.svg");
+  display: inline-block;
+  height: 30px;
+  margin-right: 19px;
+  width: 30px;
+}
+
+.columns.column-box-shadow > div > div {
+  box-shadow: 0 6px 8px 0 rgb(0 0 0 / 10%);
+}
+
+.columns.column-links-color-secondary > div a {
+  color: var(--c-copy);
+}
+
+.columns.column-links-color-secondary > div a:hover,
+.columns.column-links-color-secondary > div a:focus {
+  color: var(--c-mega-menu-link);
+}
+
+.columns.column-download .columns-img-col {
+  position: relative;
+}
+
+.columns.column-download .columns-img-col .download-btn {
+  position: absolute;
+  right: 10px;
+  bottom: 0;
 }
 
 @media (width >= 985px) {
@@ -87,13 +135,12 @@
     flex: 1;
   }
 
-  .columns > div > div strong {
-    font-size: calc((33 / 16) * 1rem);
-    line-height: 1.18;
+  .columns.column-gap-large > div {
+    gap: 125px;
   }
 
-  .columns > div:not(:last-child) {
-    margin-bottom: 50px;
+  .columns.column-gap-medium > div {
+    gap: 64px;
   }
 
   .columns.column-separator > div {
@@ -101,7 +148,7 @@
   }
 
   .columns.column-top-aligned > div {
-    align-items: flex-start;
+    align-items: normal;
   }
 
   .columns.columns-top-padding-large {
@@ -120,9 +167,12 @@
     padding: var(--spacing-medium);
   }
 
-  .columns.column-para-font-large > div > div p {
-    font-size: var(--heading-font-size-m);
-    line-height: 1.27;
+  .columns.column-padding-small > div > div {
+    padding: var(--spacing-small);
+  }
+
+  .columns.column-padding-xsmall > div > div {
+    padding: var(--spacing-xsmall);
   }
 
   .columns.column-separator > div > div:not(:first-child) {
@@ -159,5 +209,9 @@
 
   .columns.columns-2.two-column-7-3 > div > div:last-child {
     flex: 30%;
+  }
+
+  .columns.column-download .columns-img-col .download-btn {
+    bottom: 10px;
   }
 }

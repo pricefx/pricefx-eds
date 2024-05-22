@@ -1,5 +1,6 @@
 import ffetch from '../../scripts/ffetch.js';
-import { environmentMode } from '../../scripts/global-functions.js';
+import { createOptimizedPicture } from '../../scripts/aem.js';
+import { environmentMode, replaceBasePath } from '../../scripts/global-functions.js';
 import { BASE_CONTENT_PATH } from '../../scripts/url-constants.js';
 
 const isDesktop = window.matchMedia('(min-width: 986px)');
@@ -82,7 +83,7 @@ const toggleFilterMenu = (filterMenuToggle, filterMenu, contentWrapper) => {
 
 // Close Mobile Navigation on ESC Key
 const closeMobileFilterOnEscape = (e) => {
-  if (e.code === 'Escape') {
+  if (e.code === 'Escape' && !isDesktop.matches) {
     const filterMenuToggle = document.getElementById('filter-menu-toggle');
     const filterMenu = document.getElementById('filter-menu');
     if (filterMenuToggle.getAttribute('aria-expanded') === 'true') {
@@ -99,18 +100,33 @@ const formatDate = (dateString) => {
   return date.toLocaleDateString('en-US', options);
 };
 
+const updateBrowserUrl = (searchParams, key, value) => {
+  searchParams.set(key, value);
+  const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
+  window.history.pushState(null, '', newRelativePathQuery);
+};
+
 /**
  * Decorates Learning Center on DOM
  * @param {Element} block The Learning Center block element
  */
 export default async function decorate(block) {
   const [
+    configTab,
     featuredArticle,
     searchPath,
     searchPlaceholder,
     authorDirectoryPath,
     numOfArticles,
     defaultSort,
+    articlesContentCta,
+    ebooksContentCta,
+    podcastsContentCta,
+    caseStudyContentCta,
+    videosContentCta,
+    reportsContentCta,
+    defaultContentCta,
+    filterTab,
     filterOne,
     filterOneIsMultiSelect,
     filterOneOptions,
@@ -124,15 +140,22 @@ export default async function decorate(block) {
     filterFourIsMultiSelect,
     filterFourOptions,
   ] = block.children;
+  configTab.innerHTML = '';
+  filterTab.innerHTML = '';
   block.innerHTML = '';
 
-  // Fetch Header content from JSON endpoint
+  // Fetch Articles content from JSON endpoint
   const articleData = await ffetch(searchPath.textContent.trim()).all();
 
-  // TODO: Placeholder for Featured Article path until authoring is fixed
-  featuredArticle.textContent = '/learning-center/article-4';
-  const featuredArticleData = articleData.find((data) => data.path === featuredArticle.textContent.trim());
-  const noFeaturedArticleData = articleData.filter((data) => data.path !== featuredArticle.textContent.trim());
+  const deconstructFeaturedArticlePath = featuredArticle.textContent.trim().split('/');
+  const featuredArticlePath = deconstructFeaturedArticlePath[deconstructFeaturedArticlePath.length - 1];
+  const featuredArticleData = articleData.find((data) => data.path.includes(featuredArticlePath));
+  let noFeaturedArticleData;
+  if (featuredArticlePath !== '') {
+    noFeaturedArticleData = articleData.filter((data) => !data.path.includes(featuredArticlePath));
+  } else {
+    noFeaturedArticleData = articleData;
+  }
   const defaultSortedArticle = noFeaturedArticleData.sort(
     (a, b) => new Date(b.articlePublishDate) - new Date(a.articlePublishDate),
   );
@@ -166,8 +189,10 @@ export default async function decorate(block) {
   articlesContainer.classList.add('articles-container');
   const featuredArticleContainer = document.createElement('div');
   featuredArticleContainer.classList.add('featured-article');
+  if (featuredArticlePath !== '' && featuredArticleData) {
+    learningCenterContent.append(featuredArticleContainer);
+  }
   flexContainer.append(learningCenterContent);
-  learningCenterContent.append(featuredArticleContainer);
   learningCenterContent.append(articlesContainer);
 
   // Creates a div container to hold pagination
@@ -179,7 +204,7 @@ export default async function decorate(block) {
   filterControls.innerHTML = `
     <button class="filter-menu-toggle" id="filter-menu-toggle" aria-controls="filter-menu" aria-expanded="true"><span class="filter-icon"></span><span class="toggle-label">Hide Filters</span></button>
     ${
-      defaultSort.textContent !== ''
+      defaultSort.textContent.trim() !== ''
         ? `<div class="sort-content-wrapper">
         <label for="sort-content" class="sr-only">Short by</label>
         <select name="sort-content" id="sort-content">
@@ -212,6 +237,15 @@ export default async function decorate(block) {
     toggleFilterMenu(filterMenuToggle, filter, learningCenterContent);
   });
 
+  // Close Filter Menu when clicking outside of it on Mobile
+  document.addEventListener('click', (e) => {
+    if (!isDesktop.matches && filterMenuToggle.getAttribute('aria-expanded') === 'true') {
+      if (e.target === flexContainer) {
+        filterMenuToggle.click();
+      }
+    }
+  });
+
   // Watch for screen size change and switch between Desktop and Mobile Filter
   window.addEventListener('resize', () => {
     if (!isDesktop.matches && filterMenuToggle.getAttribute('aria-expanded') === 'true') {
@@ -219,8 +253,7 @@ export default async function decorate(block) {
       filterMenuToggle.setAttribute('aria-label', 'Toggle Filter Menu');
       filter.setAttribute('aria-hidden', 'true');
     } else if (isDesktop.matches && filterMenuToggle.getAttribute('aria-expanded') === 'false') {
-      filterMenuToggle.setAttribute('aria-expanded', 'true');
-      filter.setAttribute('aria-hidden', 'false');
+      filterMenuToggle.click();
     }
   });
   if (!isDesktop.matches && filterMenuToggle.getAttribute('aria-expanded') === 'true') {
@@ -239,33 +272,39 @@ export default async function decorate(block) {
     filterCategoryName,
   ) => {
     const optionsArray = filterCategoryOptions.textContent.trim().split(',');
+    let markup = '';
     let filterOptionsMarkup = '';
     optionsArray.forEach((option) => {
       const optionSplit = option.split('/')[1];
       const optionReplace = optionSplit.replaceAll('-', ' ');
-      if (filterIsMultiSelect.textContent.trim() === 'false') {
+      const optionTextTransform =
+        optionReplace.length <= 4 && optionReplace !== 'news' && optionReplace !== 'food'
+          ? optionReplace.toUpperCase()
+          : optionReplace;
+      const optionLabel = optionTextTransform === 'it professionals' ? 'IT Professionals' : optionTextTransform;
+      if (filterIsMultiSelect.textContent.trim() !== 'true') {
         filterOptionsMarkup += `
           <li class="filter-category-item">
             <input type="radio" id="filter-${optionSplit}" name="${filterCategoryName}" value="${optionSplit}" data-filter-category="${filterCategoryName}" />
-            <label for="filter-${optionSplit}">${optionSplit === 'e-books' || optionSplit === 'c-suite' ? optionSplit : optionReplace}</label>
+            <label for="filter-${optionSplit}">${optionSplit === 'e-books' || optionSplit === 'c-suite' ? optionSplit : optionTextTransform}</label>
           </li>
         `;
       } else {
         filterOptionsMarkup += `
           <li class="filter-category-item">
             <input type="checkbox" id="filter-${optionSplit}" name="${optionSplit}" value="${optionSplit}" data-filter-category="${filterCategoryName}" />
-            <label for="filter-${optionSplit}">${optionSplit === 'e-books' || optionSplit === 'c-suite' ? optionSplit : optionReplace}</label>
+            <label for="filter-${optionSplit}">${optionSplit === 'e-books' || optionSplit === 'c-suite' ? optionSplit : optionLabel}</label>
           </li>
         `;
       }
     });
 
-    const markup = `
+    markup = `
       <div class="filter-category">
         <button class="filter-category-toggle" id="filter-category-${filterNum}-toggle" aria-controls="filter-category-${filterNum}-content" aria-expanded="true">${filterCategoryLabel.textContent.trim()}<span class="accordion-icon"></span></button>
         <ul class="filter-category-content" id="filter-category-${filterNum}-content" aria-labelledby="filter-category-${filterNum}-toggle" aria-hidden="false">
           ${
-            filterIsMultiSelect.textContent.trim() === 'false'
+            filterIsMultiSelect.textContent.trim() !== 'true'
               ? `<li class="filter-category-item">
               <input type="radio" id="${filterAllId}" name="${filterCategoryName}" value="${filterAllId}" data-filter-category="${filterCategoryName}" checked />
               <label for="${filterAllId}">All</label>
@@ -282,13 +321,13 @@ export default async function decorate(block) {
   filter.innerHTML = `
     <form class="filter-search-wrapper">
       <label for="filter-search" class="sr-only">Search</label>
-      <input type="text" name="filter-search" id="filter-search" placeholder=${searchPlaceholder.textContent.trim()} />
+      <input type="text" name="filter-search" id="filter-search" placeholder="${searchPlaceholder.textContent.trim()}" />
       <button type="submit" aria-label="Submit search"></button>
     </form>
-    ${renderFilterCategory(1, filterOne, filterOneIsMultiSelect, filterOneOptions, 'filter-all-content-type', 'filter-type')}
-    ${renderFilterCategory(2, filterTwo, filterTwoIsMultiSelect, filterTwoOptions, 'filter-all-industry', 'filter-industry')}
-    ${renderFilterCategory(3, filterThree, filterThreeIsMultiSelect, filterThreeOptions, 'filter-all-role', 'filter-role')}
-    ${renderFilterCategory(4, filterFour, filterFourIsMultiSelect, filterFourOptions, 'filter-all-pfx', 'filter-pfx')}
+    ${filterOne.textContent.trim() !== '' ? renderFilterCategory(1, filterOne, filterOneIsMultiSelect, filterOneOptions, 'filter-all-content-type', 'filter-type') : ''}
+    ${filterTwo.textContent.trim() !== '' ? renderFilterCategory(2, filterTwo, filterTwoIsMultiSelect, filterTwoOptions, 'filter-all-industry', 'filter-industry') : ''}
+    ${filterThree.textContent.trim() !== '' ? renderFilterCategory(3, filterThree, filterThreeIsMultiSelect, filterThreeOptions, 'filter-all-role', 'filter-role') : ''}
+    ${filterFour.textContent.trim() !== '' ? renderFilterCategory(4, filterFour, filterFourIsMultiSelect, filterFourOptions, 'filter-all-pfx', 'filter-pfx') : ''}
   `;
 
   // Set initial max-height for Filter Categories to create smooth accordion transition
@@ -307,10 +346,10 @@ export default async function decorate(block) {
   });
 
   // Clean-up and Render Article Category
-  const renderArticleCategory = (articles) => {
-    const categoriesArray = articles.category.split(',');
-    if (categoriesArray.length !== 0) {
-      const firstCategory = categoriesArray[0];
+  const renderArticleCategory = (article) => {
+    const categoriesArray = article.category.split(',');
+    if (categoriesArray.length >= 1 && categoriesArray[0] !== '') {
+      const firstCategory = categoriesArray.find((category) => category.includes('/'));
       let markup = '';
       const removePrefixCategory = firstCategory.split('/')[1];
       const removeHyphenCategory =
@@ -334,16 +373,12 @@ export default async function decorate(block) {
     let authorsParentPagePathFormatted = authorDirectoryPath.textContent.trim();
     const isPublishEnvironment = environmentMode() === 'publish';
 
-    if (!isPublishEnvironment) {
-      // In the author environment, ensure the URL does not end with a slash
-      // Append a slash only if the URL doesn't already end with it
-      if (!authorsParentPagePathFormatted.endsWith('/')) {
-        authorsParentPagePathFormatted += '/';
-      }
-    } else {
-      // In the publish environment, remove the base path if present
-      authorsParentPagePathFormatted = authorsParentPagePathFormatted.replace(BASE_CONTENT_PATH, '');
+    // Append a slash only if the URL doesn't already end with it
+    if (!authorsParentPagePathFormatted.endsWith('/')) {
+      authorsParentPagePathFormatted += '/';
     }
+
+    replaceBasePath(isPublishEnvironment, authorsParentPagePathFormatted, BASE_CONTENT_PATH);
 
     authorsArray.forEach((author) => {
       if (author === '') {
@@ -357,7 +392,7 @@ export default async function decorate(block) {
       if (!isPublishEnvironment) {
         authorPageLink = `${authorsParentPagePathFormatted}${removePrefixAuthor}.html`;
       } else {
-        authorPageLink = `/authors/${removePrefixAuthor}`;
+        authorPageLink = `${authorsParentPagePathFormatted}${removePrefixAuthor}`;
       }
 
       innerMarkup +=
@@ -365,32 +400,96 @@ export default async function decorate(block) {
           ? `<a class="article-author-link" href="${authorPageLink}">${removeHyphenAuthor}</a>`
           : `<a class="article-author-link" href="${authorPageLink}">${removeHyphenAuthor}</a> & `;
     });
-    markup = `<p class="article-info">${article.author !== '' ? `By ${innerMarkup}` : ''} ${article.articlePublishDate !== '' ? `${article.author !== '' ? 'on' : ''} ${postDate}</p>` : ''}`;
+    markup = `
+      <p class="article-info">
+        ${article.authors !== '' && article.authors !== undefined ? `By ${innerMarkup}` : ''} 
+        ${article.articlePublishDate !== '' && article.authors !== '' && article.authors !== undefined ? 'on' : ''} 
+        ${postDate}
+      </p>
+    `;
+    return markup;
+  };
+
+  // Dynamically update the card CTA label based on article Content Type
+  const renderArticleCtaLabel = (article) => {
+    const categoriesArray = article.category.includes(',') ? article.category.split(',') : [article.category];
+    let markup = '';
+    if (categoriesArray.length >= 1 && categoriesArray[0] !== '') {
+      const firstCategory = categoriesArray.find((category) => category.includes('/'));
+      const removePrefixCategory = firstCategory.split('/')[1];
+      switch (removePrefixCategory) {
+        case 'articles':
+          markup = `<a class="article-link" href="${article.path}">${articlesContentCta.textContent.trim()}</a>`;
+          break;
+        case 'videos':
+          markup = `<a class="article-link" href="${article.path}">${videosContentCta.textContent.trim()}</a>`;
+          break;
+        case 'podcasts':
+          markup = `<a class="article-link" href="${article.path}">${podcastsContentCta.textContent.trim()}</a>`;
+          break;
+        case 'case-study':
+          markup = `<a class="article-link" href="${article.path}">${caseStudyContentCta.textContent.trim()}</a>`;
+          break;
+        case 'analyst-reports':
+          markup = `<a class="article-link" href="${article.path}">${reportsContentCta.textContent.trim()}</a>`;
+          break;
+        case 'e-books':
+          markup = `<a class="article-link" href="${article.path}">${ebooksContentCta.textContent.trim()}</a>`;
+          break;
+        default:
+          markup = `<a class="article-link" href="${article.path}">${defaultContentCta.textContent.trim()}</a>`;
+      }
+    } else {
+      markup = `<a class="article-link" href="${article.path}">${defaultContentCta.textContent.trim()}</a>`;
+    }
     return markup;
   };
 
   // Render Featured Article
-  featuredArticleContainer.innerHTML = `
-    <div class="article-image"><img src="${featuredArticleData.image}" alt="${featuredArticleData.imageAlt || featuredArticleData.title}"></div>
-    <div class="article-content">
-      ${
-        featuredArticleData.category !== '' ||
-        featuredArticleData.title !== '' ||
-        featuredArticleData.authors !== '' ||
-        featuredArticleData.articlePublishDate !== ''
-          ? `<div class="article-details">
-          ${featuredArticleData.category !== '' ? renderArticleCategory(featuredArticleData) : ''}
-          ${featuredArticleData.title !== '' ? `<h2 class="article-title">${featuredArticleData.title}</h2>` : ''}
-          ${featuredArticleData.authors !== '' || featuredArticleData.articlePublishDate !== '' ? renderArticleAuthors(featuredArticleData) : ''}
-        </div>`
-          : ''
-      }
-      <div class="article-cta-container">
-        <a class="article-link" href="${featuredArticleData.path}">Read Now</a>
-        ${featuredArticleData.readingTime !== '' ? `<p class="article-readtime">${featuredArticleData.readingTime} min read</p>` : ''}
+  if (featuredArticlePath !== '' && featuredArticleData) {
+    featuredArticleContainer.innerHTML = `
+      <div class="article-image">
+        <picture>
+          <img src="${featuredArticleData.image || ''}" alt="${featuredArticleData.imageAlt || featuredArticleData.title}">
+        </picture>
       </div>
-    </div>
-  `;
+      <div class="article-content">
+        ${
+          featuredArticleData.category !== '' ||
+          featuredArticleData.title !== '' ||
+          featuredArticleData.authors !== '' ||
+          featuredArticleData.articlePublishDate !== ''
+            ? `<div class="article-details">
+            ${featuredArticleData.category !== '' ? renderArticleCategory(featuredArticleData) : ''}
+            ${featuredArticleData.title !== '' ? `<h2 class="article-title">${featuredArticleData.title}</h2>` : ''}
+            ${featuredArticleData.authors !== '' || featuredArticleData.articlePublishDate !== '' ? renderArticleAuthors(featuredArticleData) : ''}
+          </div>`
+            : ''
+        }
+        <div class="article-cta-container">
+          ${renderArticleCtaLabel(featuredArticleData)}
+          ${featuredArticleData.readingTime !== '' ? `<p class="article-readtime">${featuredArticleData.readingTime} min read</p>` : ''}
+        </div>
+      </div>
+    `;
+
+    featuredArticleContainer
+      .querySelectorAll('img')
+      .forEach((img) =>
+        img
+          .closest('picture')
+          .replaceWith(
+            createOptimizedPicture(img.src, img.alt, true, [
+              { media: '(max-width: 412px)', width: '349' },
+              { media: '(max-width: 460px)', width: '397' },
+              { media: '(max-width: 640px)', width: '577' },
+              { width: '594' },
+            ]),
+          ),
+      );
+  } else {
+    featuredArticleContainer.innerHTML = '';
+  }
 
   // Render Learning Center Article Card
   const renderArticleCard = (articleDataList) => {
@@ -407,7 +506,11 @@ export default async function decorate(block) {
       renderArticleAuthors(article);
       markup += `
         <li class="article-card">
-          <div class="article-image"><img src="${article.image}" alt="${article.imageAlt || article.title}"></div>
+          <div class="article-image">
+            <picture>
+              <img src="${article.image || ''}" alt="${article.imageAlt || article.title}">
+            </picture>
+          </div>
           <div class="article-content">
             ${
               article.category !== '' ||
@@ -422,7 +525,7 @@ export default async function decorate(block) {
                 : ''
             }
             <div class="article-cta-container">
-              <a class="article-link" href="${article.path}">Read Now</a>
+              ${renderArticleCtaLabel(article)}
               ${article.readingTime !== '' ? `<p class="article-readtime">${article.readingTime} min read</p>` : ''}
             </div>
           </div>
@@ -434,6 +537,19 @@ export default async function decorate(block) {
 
   const appendLearningCenterArticles = (articleJsonData) => {
     articlesContainer.innerHTML = renderArticleCard(articleJsonData);
+    articlesContainer
+      .querySelectorAll('img')
+      .forEach((img) =>
+        img
+          .closest('picture')
+          .replaceWith(
+            createOptimizedPicture(img.src, img.alt, false, [
+              { media: '(max-width: 412px)', width: '349' },
+              { media: '(max-width: 460px)', width: '397' },
+              { width: '577' },
+            ]),
+          ),
+      );
   };
   appendLearningCenterArticles(defaultSortedArticle);
 
@@ -441,7 +557,7 @@ export default async function decorate(block) {
   const renderPages = (articlePerPage, articleList, currentPage) => {
     const totalArticles = articleList.length;
     const totalPageNumber = Math.ceil(totalArticles / articlePerPage);
-    const firstPageMarkup = `<li class="pagination-page active-page" id="page-1"><button>1</button></li>`;
+    const firstPageMarkup = `<li class="pagination-page" id="page-1"><button>1</button></li>`;
     const lastPageMarkup = `<li class="pagination-page" id="page-${totalPageNumber}"><button>${totalPageNumber}</button></li>`;
     let paginationMarkup = '';
     let middlePageMarkup = '';
@@ -486,7 +602,7 @@ export default async function decorate(block) {
   };
 
   paginationContainer.innerHTML = `
-    ${Number(numOfArticles.textContent.trim()) > defaultSortedArticle.length ? '' : '<button class="pagination-prev hidden">Previous</button>'}
+    ${Number(numOfArticles.textContent.trim()) > defaultSortedArticle.length ? '' : '<button class="pagination-prev">Previous</button>'}
     <ul class="pagination-pages-list">
       ${renderPages(numOfArticles.textContent.trim(), defaultSortedArticle, 1)}
     </ul>
@@ -501,6 +617,21 @@ export default async function decorate(block) {
     paginationContainer.classList.add('hidden');
   } else {
     paginationContainer.classList.remove('hidden');
+  }
+
+  if (window.location.search !== '') {
+    const currentUrlParam = new URLSearchParams(window.location.search);
+    const pageNum = currentUrlParam.get('page');
+    if (Number(pageNum) > 1) {
+      prevPageButton.classList.remove('hidden');
+      paginationPageList.children[0].classList.remove('active-page');
+    } else {
+      prevPageButton.classList.add('hidden');
+      paginationPageList.children[0].classList.add('active-page');
+    }
+  } else {
+    prevPageButton.classList.add('hidden');
+    paginationPageList.children[0].classList.add('active-page');
   }
 
   // Defining some variables for filter, sort and search logic
@@ -518,6 +649,24 @@ export default async function decorate(block) {
     'filter-industry': [],
     'filter-role': [],
     'filter-pfx': [],
+  };
+
+  // Updates the URL Params based on selected filters
+  const updateFiltersUrlParams = () => {
+    if (selectedFilters['filter-type'].length > 0) {
+      updateBrowserUrl(searchParams, 'filter-type', selectedFilters['filter-type'][0]);
+    }
+    if (selectedFilters['filter-industry'].length > 0) {
+      const valuesString = selectedFilters['filter-industry'].toString();
+      updateBrowserUrl(searchParams, 'filter-industry', valuesString);
+    }
+    if (selectedFilters['filter-role'].length > 0) {
+      const valuesString = selectedFilters['filter-role'].toString();
+      updateBrowserUrl(searchParams, 'filter-role', valuesString);
+    }
+    if (selectedFilters['filter-pfx'].length > 0) {
+      updateBrowserUrl(searchParams, 'filter-pfx', selectedFilters['filter-pfx'][0]);
+    }
   };
 
   // Learning Center Sort By logic
@@ -548,14 +697,17 @@ export default async function decorate(block) {
         <h4 class="no-articles">Sorry, there are no results based on these choices. Please update and try again.</h4>
       `;
       paginationContainer.classList.add('hidden');
+      updateBrowserUrl(searchParams, 'page', 1);
     } else {
       paginationContainer.classList.remove('hidden');
-      const currentPage = [...paginationPageList.children].find((page) => page.classList.contains('active-page'));
+      const currentPage = paginationPageList.children[0];
       paginationPageList.innerHTML = renderPages(
         numOfArticles.textContent.trim(),
         currentSortedArticles,
         Number(currentPage.textContent),
       );
+      paginationPageList.children[0].classList.add('active-page');
+      nextPageButton.classList.remove('hidden');
       if (paginationPageList.children.length <= 1) {
         paginationContainer.classList.add('hidden');
       } else {
@@ -600,9 +752,8 @@ export default async function decorate(block) {
     if (paginationPageList.children[0].className.includes('active-page')) {
       prevPageButton.classList.add('hidden');
     }
-    searchParams.set('sortBy', e.target.value);
-    const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
-    window.history.pushState(null, '', newRelativePathQuery);
+    updateBrowserUrl(searchParams, 'page', 1);
+    updateBrowserUrl(searchParams, 'sortBy', e.target.value);
   });
 
   // Learning Center Search logic
@@ -610,14 +761,38 @@ export default async function decorate(block) {
     let articleJson = articleList;
     articleJson = articleJson.filter(
       (result) =>
-        result.category.includes(query) ||
+        result.category.includes(query.replaceAll(' ', '-')) ||
         result.title.toLowerCase().includes(query) ||
         result.description.toLowerCase().includes(query) ||
-        result['cq-tags'].includes(query),
+        result['cq-tags'].includes(query.replaceAll(' ', '-')),
     );
 
     currentSearchedArticles = articleJson;
     currentArticleData = articleJson;
+
+    if (articleJson.length === 0) {
+      articlesContainer.innerHTML = `
+        <h4 class="no-articles">Sorry, there are no results based on these choices. Please update and try again.</h4>
+      `;
+      paginationContainer.classList.add('hidden');
+      updateBrowserUrl(searchParams, 'page', 1);
+    } else {
+      appendLearningCenterArticles(articleJson);
+      paginationContainer.classList.remove('hidden');
+      const currentPage = paginationPageList.children[0];
+      paginationPageList.innerHTML = renderPages(
+        numOfArticles.textContent.trim(),
+        currentSearchedArticles,
+        Number(currentPage.textContent),
+      );
+      paginationPageList.children[0].classList.add('active-page');
+      nextPageButton.classList.remove('hidden');
+      if (paginationPageList.children.length <= 1) {
+        paginationContainer.classList.add('hidden');
+      } else {
+        paginationContainer.classList.remove('hidden');
+      }
+    }
 
     if (sortByEl.value !== '') {
       currentSearchAndSortedArticles = articleJson;
@@ -626,27 +801,6 @@ export default async function decorate(block) {
       currentSearchedAndFilteredArticles = articleJson;
       currentArticleData = articleJson;
     }
-
-    if (articleJson.length === 0) {
-      articlesContainer.innerHTML = `
-        <h4 class="no-articles">Sorry, there are no results based on these choices. Please update and try again.</h4>
-      `;
-      paginationContainer.classList.add('hidden');
-    } else {
-      appendLearningCenterArticles(articleJson);
-      paginationContainer.classList.remove('hidden');
-      const currentPage = [...paginationPageList.children].find((page) => page.classList.contains('active-page'));
-      paginationPageList.innerHTML = renderPages(
-        numOfArticles.textContent.trim(),
-        currentSearchedArticles,
-        Number(currentPage.textContent),
-      );
-      if (paginationPageList.children.length <= 1) {
-        paginationContainer.classList.add('hidden');
-      } else {
-        paginationContainer.classList.remove('hidden');
-      }
-    }
   };
 
   const searchForm = document.querySelector('.filter-search-wrapper');
@@ -654,7 +808,7 @@ export default async function decorate(block) {
     e.preventDefault();
     let searchedArticles = [...defaultSortedArticle];
     const formData = new FormData(e.target);
-    const value = Object.fromEntries(formData)['filter-search'];
+    const value = Object.fromEntries(formData)['filter-search'].toLowerCase();
 
     // Implement search through filtered articles
     const selectedFiltersValues = Object.values(selectedFilters);
@@ -676,20 +830,27 @@ export default async function decorate(block) {
       searchedArticles = currentFilteredArticles;
       currentArticleData = currentFilteredArticles;
       handleSearch(value, searchedArticles);
+    } else if (value === '') {
+      handleSearch(value, defaultSortedArticle);
     } else {
       handleSearch(value, searchedArticles);
     }
+
+    updateBrowserUrl(searchParams, 'page', 1);
 
     if (paginationPageList.children[0].className.includes('active-page')) {
       prevPageButton.classList.add('hidden');
     }
     if (value !== '') {
-      searchParams.set('search', value);
+      updateBrowserUrl(searchParams, 'search', value);
+      const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
+      window.history.pushState(null, '', newRelativePathQuery);
     } else {
       searchParams.delete('search');
+      const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
+      window.history.pushState(null, '', newRelativePathQuery);
     }
-    const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
-    window.history.pushState(null, '', newRelativePathQuery);
+    updateFiltersUrlParams();
   });
 
   // Learning Center Filter logic
@@ -700,19 +861,13 @@ export default async function decorate(block) {
     } else if ((state === true && key === 'filter-type') || key === 'filter-pfx') {
       selectedFilters[key].pop();
       selectedFilters[key].push(value);
-      searchParams.set(key, value);
+      updateFiltersUrlParams();
     } else if (state === true && !selectedFilters[key].includes(value)) {
       selectedFilters[key].push(value);
-      const valuesString = selectedFilters[key].toString();
-      searchParams.set(key, valuesString);
+      updateFiltersUrlParams();
     } else if (state === false && selectedFilters[key].includes(value)) {
       selectedFilters[key].splice(selectedFilters[key].indexOf(value), 1);
-      const valuesString = selectedFilters[key].toString();
-      if (selectedFilters[key].length === 0) {
-        searchParams.delete(key);
-      } else {
-        searchParams.set(key, valuesString);
-      }
+      searchParams.delete(key);
     }
     const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
     window.history.pushState(null, '', newRelativePathQuery);
@@ -725,16 +880,20 @@ export default async function decorate(block) {
       articleJson = articleJson.filter((article) => article.category.includes(filters['filter-type']));
     }
 
-    if (filters['filter-industry'].length > 0) {
+    if (filters['filter-industry'].length > 0 && Array.isArray(filters['filter-industry'])) {
       articleJson = articleJson.filter((article) =>
         filters['filter-industry'].some((filterValue) => article.topics.includes(filterValue)),
       );
+    } else {
+      articleJson = articleJson.filter((article) => article.topics.includes(filters['filter-industry']));
     }
 
-    if (filters['filter-role'].length > 0) {
+    if (filters['filter-role'].length > 0 && Array.isArray(filters['filter-role'])) {
       articleJson = articleJson.filter((article) =>
         filters['filter-role'].some((filterValue) => article.topics.includes(filterValue)),
       );
+    } else {
+      articleJson = articleJson.filter((article) => article.topics.includes(filters['filter-role']));
     }
 
     if (filters['filter-pfx'].length > 0) {
@@ -749,15 +908,18 @@ export default async function decorate(block) {
         <h4 class="no-articles">Sorry, there are no results based on these choices. Please update and try again.</h4>
       `;
       paginationContainer.classList.add('hidden');
+      updateBrowserUrl(searchParams, 'page', 1);
     } else {
       appendLearningCenterArticles(articleJson);
       paginationContainer.classList.remove('hidden');
-      const currentPage = [...paginationPageList.children].find((page) => page.classList.contains('active-page'));
+      const currentPage = paginationPageList.children[0];
       paginationPageList.innerHTML = renderPages(
         numOfArticles.textContent.trim(),
         currentFilteredArticles,
         Number(currentPage.textContent),
       );
+      paginationPageList.children[0].classList.add('active-page');
+      nextPageButton.classList.remove('hidden');
       if (paginationPageList.children.length <= 1) {
         paginationContainer.classList.add('hidden');
       } else {
@@ -794,11 +956,11 @@ export default async function decorate(block) {
         handleFilterArticles(selectedFilters, filteredArticles);
       }
 
+      updateBrowserUrl(searchParams, 'page', 1);
+
       if (paginationPageList.children[0].className.includes('active-page')) {
         prevPageButton.classList.add('hidden');
       }
-      const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
-      window.history.pushState(null, '', newRelativePathQuery);
     });
   });
 
@@ -853,10 +1015,7 @@ export default async function decorate(block) {
       nextActivePage,
       currentArticleData,
     );
-
-    searchParams.set('page', nextActivePage.textContent);
-    const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
-    window.history.pushState(null, '', newRelativePathQuery);
+    updateBrowserUrl(searchParams, 'page', nextActivePage.textContent);
   };
 
   paginationContainer.addEventListener('click', (e) => {
@@ -881,10 +1040,7 @@ export default async function decorate(block) {
         target,
         currentArticleData,
       );
-
-      searchParams.set('page', target.textContent);
-      const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
-      window.history.pushState(null, '', newRelativePathQuery);
+      updateBrowserUrl(searchParams, 'page', target.textContent);
     }
   });
 
@@ -902,6 +1058,7 @@ export default async function decorate(block) {
     handlePaginationNav(paginationList, nextActivePage);
   });
 
+  // Set up page state on load based on URL Params
   const updateStateFromUrlParams = (articleJson) => {
     const getUrlParams = window.location.search;
     const loadedSearchParams = new URLSearchParams(getUrlParams);
@@ -913,12 +1070,7 @@ export default async function decorate(block) {
     if (loadedSearchParams.get('sortBy') !== 'desc-date') {
       sortByEl.value = loadedSearchParams.get('sortBy');
       handleSortArticles(loadedSearchParams.get('sortBy'), articlesOnLoad);
-    }
-
-    if (loadedSearchParams.get('search') !== null) {
-      searchInput.setAttribute('value', loadedSearchParams.get('search'));
-      searchInput.value = loadedSearchParams.get('search');
-      handleSearch(loadedSearchParams.get('search'), articlesOnLoad);
+      searchParams.set('sortBy', loadedSearchParams.get('sortBy'));
     }
 
     if (
@@ -936,17 +1088,26 @@ export default async function decorate(block) {
         filterIndustry = loadedSearchParams.get('filter-industry').includes(',')
           ? loadedSearchParams.get('filter-industry').split(',')
           : loadedSearchParams.get('filter-industry');
-        filterIndustry.forEach((industryItem) => selectedFilters['filter-industry'].push(industryItem));
+        if (Array.isArray(filterIndustry)) {
+          filterIndustry.forEach((industryItem) => selectedFilters['filter-industry'].push(industryItem));
+        } else {
+          selectedFilters['filter-industry'].push(filterIndustry);
+        }
       }
       if (loadedSearchParams.get('filter-role') !== null) {
         filterRole = loadedSearchParams.get('filter-role').includes(',')
           ? loadedSearchParams.get('filter-role').split(',')
           : loadedSearchParams.get('filter-role');
-        filterRole.forEach((roleItem) => selectedFilters['filter-role'].push(roleItem));
+        if (Array.isArray(filterRole)) {
+          filterRole.forEach((roleItem) => selectedFilters['filter-role'].push(roleItem));
+        } else {
+          selectedFilters['filter-role'].push(filterRole);
+        }
       }
       if (loadedSearchParams.get('filter-pfx') !== null) {
         selectedFilters['filter-pfx'].push(loadedSearchParams.get('filter-pfx'));
       }
+
       const loadedFilters = {
         'filter-type': loadedSearchParams.get('filter-type') !== null ? [loadedSearchParams.get('filter-type')] : [],
         'filter-industry': filterIndustry,
@@ -958,8 +1119,10 @@ export default async function decorate(block) {
       loadedFilterValues.forEach((filterValue) => {
         if (filterValue.length === 1) {
           filterValuesArray.push(filterValue[0]);
-        } else if (filterValue.length > 1) {
+        } else if (filterValue.length > 1 && Array.isArray(filterValue)) {
           filterValue.forEach((value) => filterValuesArray.push(value));
+        } else {
+          filterValuesArray.push(filterValue);
         }
       });
       allFilterOptions.forEach((filterOption) => {
@@ -968,6 +1131,13 @@ export default async function decorate(block) {
           handleFilterArticles(loadedFilters, articlesOnLoad);
         }
       });
+    }
+
+    if (loadedSearchParams.get('search') !== null) {
+      searchInput.setAttribute('value', loadedSearchParams.get('search'));
+      searchInput.value = loadedSearchParams.get('search');
+      handleSearch(loadedSearchParams.get('search'), currentArticleData);
+      searchParams.set('search', loadedSearchParams.get('search'));
     }
 
     if (loadedSearchParams.get('page') !== '1') {
@@ -984,6 +1154,9 @@ export default async function decorate(block) {
             page.classList.add('active-page');
           }
         });
+      }
+      if (paginationPageList.lastElementChild.classList.contains('active-page')) {
+        nextPageButton.classList.add('hidden');
       }
       appendNewActiveArticlePage(
         Number(loadedSearchParams.get('page')) * Number(numOfArticles.textContent.trim()) -

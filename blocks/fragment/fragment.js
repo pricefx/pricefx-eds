@@ -14,7 +14,8 @@ import { loadBlocks } from '../../scripts/aem.js';
  */
 export async function loadFragment(path) {
   if (path && path.startsWith('/')) {
-    const resp = await fetch(`${path}.plain.html`);
+    const fragmentPath = path.replace(/\.html$/, '');
+    const resp = await fetch(`${fragmentPath}.plain.html`);
     if (resp.ok) {
       const main = document.createElement('main');
       main.innerHTML = await resp.text();
@@ -37,17 +38,10 @@ export async function loadFragment(path) {
 }
 
 export default async function decorate(block) {
-  const [fragmentPath] = block.children;
+  const link = block.querySelector('a');
   block.textContent = '';
-
-  if (!fragmentPath || !fragmentPath.textContent) {
-    block.textContent = 'Please configure the fragment path';
-    return;
-  }
-
-  const path = fragmentPath.textContent.trim();
+  const path = link ? link.getAttribute('href') : block.textContent.trim();
   const fragment = await loadFragment(path);
-
   if (fragment) {
     const fragmentSection = fragment.querySelector(':scope .section');
     if (fragmentSection) {

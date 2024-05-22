@@ -377,6 +377,7 @@ function decorateButtons(element) {
     if (a.href !== a.textContent) {
       const up = a.parentElement;
       const twoup = a.parentElement.parentElement;
+      const threeup = a.parentElement.parentElement.parentElement;
       if (!a.querySelector('img')) {
         if (up.childNodes.length === 1 && (up.tagName === 'P' || up.tagName === 'DIV')) {
           a.className = 'button'; // default
@@ -400,6 +401,15 @@ function decorateButtons(element) {
           a.className = 'button secondary';
           twoup.classList.add('button-container');
         }
+        if (
+          up.childNodes.length === 1 &&
+          (up.tagName === 'EM' || up.tagName === 'STRONG') &&
+          twoup.childNodes.length === 1 &&
+          (twoup.tagName === 'STRONG' || twoup.tagName === 'EM')
+        ) {
+          a.className = 'button tertiary';
+          threeup.classList.add('button-container');
+        }
       }
     }
   });
@@ -411,13 +421,17 @@ function decorateButtons(element) {
  * @param {string} [prefix] prefix to be added to icon src
  * @param {string} [alt] alt text to be added to icon
  */
-function decorateIcon(span, prefix = '', alt = '') {
+function decorateIcon(span, prefix = '', alt = '', type = '') {
   const iconName = Array.from(span.classList)
     .find((c) => c.startsWith('icon-'))
     .substring(5);
   const img = document.createElement('img');
   img.dataset.iconName = iconName;
-  img.src = `${window.hlx.codeBasePath}${prefix}/icons/${iconName}.svg`;
+  if (type === 'png') {
+    img.src = `${window.hlx.codeBasePath}${prefix}/icons/${iconName}.png`;
+  } else {
+    img.src = `${window.hlx.codeBasePath}${prefix}/icons/${iconName}.svg`;
+  }
   img.alt = alt;
   img.loading = 'lazy';
   span.append(img);
@@ -428,10 +442,10 @@ function decorateIcon(span, prefix = '', alt = '') {
  * @param {Element} [element] Element containing icons
  * @param {string} [prefix] prefix to be added to icon the src
  */
-function decorateIcons(element, prefix = '') {
+function decorateIcons(element, prefix = '', alt = '', type = '') {
   const icons = [...element.querySelectorAll('span.icon')];
   icons.forEach((span) => {
-    decorateIcon(span, prefix);
+    decorateIcon(span, prefix, alt, type);
   });
 }
 
@@ -453,13 +467,6 @@ function decorateSections(main) {
         }
       }
       wrappers[wrappers.length - 1].append(e);
-
-      // Setting Target Blank for Links
-      e.querySelectorAll('a[title$="{{_blank}}"]')?.forEach((anchor) => {
-        anchor.target = '_blank';
-        anchor.title = anchor.title.replace('{{_blank}}', '');
-        anchor.textContent = anchor.textContent.replace('{{_blank}}', '');
-      });
     });
     wrappers.forEach((wrapper) => section.append(wrapper));
     section.classList.add('section');

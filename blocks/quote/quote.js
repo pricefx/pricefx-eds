@@ -30,7 +30,7 @@ export default async function decorate(block) {
 
       quoteRightContainerInner.appendChild(quoteIcon);
     } else if (index === 2) {
-      const imageLogo = document.querySelector('picture img');
+      const imageLogo = row.firstElementChild.querySelector('picture img');
       if (imageLogo) {
         const quoteLogo = document.createElement('div');
         quoteLogo.classList.add('quote-logo');

@@ -1,5 +1,5 @@
 import ffetch from '../../scripts/ffetch.js';
-import { getMetadata } from '../../scripts/aem.js';
+import { getMetadata, decorateIcons } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 /**
@@ -50,7 +50,8 @@ function toggleMobileNavAccordion(navToggle) {
 async function decorateLogo(footer) {
   const logoWrapper = document.createElement('div');
   logoWrapper.classList.add('footer-logo-wrapper');
-  logoWrapper.innerHTML = `<a href="/"><img src="../../icons/logo.svg" alt="Pricefx" loading="lazy" /></a>`;
+  logoWrapper.innerHTML = `<a href="/" aria-label="Go to Pricefx Homepage"><span class="icon icon-pricefx-logo-dark"></span></a>`;
+  decorateIcons(logoWrapper, '', 'Pricefx');
   footer.appendChild(logoWrapper);
 }
 
