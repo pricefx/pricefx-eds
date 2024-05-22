@@ -204,7 +204,7 @@ export default async function decorate(block) {
   filterControls.innerHTML = `
     <button class="filter-menu-toggle" id="filter-menu-toggle" aria-controls="filter-menu" aria-expanded="true"><span class="filter-icon"></span><span class="toggle-label">Hide Filters</span></button>
     ${
-      defaultSort.textContent !== ''
+      defaultSort.textContent.trim() !== ''
         ? `<div class="sort-content-wrapper">
         <label for="sort-content" class="sr-only">Short by</label>
         <select name="sort-content" id="sort-content">
@@ -272,6 +272,7 @@ export default async function decorate(block) {
     filterCategoryName,
   ) => {
     const optionsArray = filterCategoryOptions.textContent.trim().split(',');
+    let markup = '';
     let filterOptionsMarkup = '';
     optionsArray.forEach((option) => {
       const optionSplit = option.split('/')[1];
@@ -281,7 +282,7 @@ export default async function decorate(block) {
           ? optionReplace.toUpperCase()
           : optionReplace;
       const optionLabel = optionTextTransform === 'it professionals' ? 'IT Professionals' : optionTextTransform;
-      if (filterIsMultiSelect.textContent.trim() === 'false') {
+      if (filterIsMultiSelect.textContent.trim() !== 'true') {
         filterOptionsMarkup += `
           <li class="filter-category-item">
             <input type="radio" id="filter-${optionSplit}" name="${filterCategoryName}" value="${optionSplit}" data-filter-category="${filterCategoryName}" />
@@ -298,12 +299,12 @@ export default async function decorate(block) {
       }
     });
 
-    const markup = `
+    markup = `
       <div class="filter-category">
         <button class="filter-category-toggle" id="filter-category-${filterNum}-toggle" aria-controls="filter-category-${filterNum}-content" aria-expanded="true">${filterCategoryLabel.textContent.trim()}<span class="accordion-icon"></span></button>
         <ul class="filter-category-content" id="filter-category-${filterNum}-content" aria-labelledby="filter-category-${filterNum}-toggle" aria-hidden="false">
           ${
-            filterIsMultiSelect.textContent.trim() === 'false'
+            filterIsMultiSelect.textContent.trim() !== 'true'
               ? `<li class="filter-category-item">
               <input type="radio" id="${filterAllId}" name="${filterCategoryName}" value="${filterAllId}" data-filter-category="${filterCategoryName}" checked />
               <label for="${filterAllId}">All</label>
@@ -323,10 +324,10 @@ export default async function decorate(block) {
       <input type="text" name="filter-search" id="filter-search" placeholder="${searchPlaceholder.textContent.trim()}" />
       <button type="submit" aria-label="Submit search"></button>
     </form>
-    ${renderFilterCategory(1, filterOne, filterOneIsMultiSelect, filterOneOptions, 'filter-all-content-type', 'filter-type')}
-    ${renderFilterCategory(2, filterTwo, filterTwoIsMultiSelect, filterTwoOptions, 'filter-all-industry', 'filter-industry')}
-    ${renderFilterCategory(3, filterThree, filterThreeIsMultiSelect, filterThreeOptions, 'filter-all-role', 'filter-role')}
-    ${renderFilterCategory(4, filterFour, filterFourIsMultiSelect, filterFourOptions, 'filter-all-pfx', 'filter-pfx')}
+    ${filterOne.textContent.trim() !== '' ? renderFilterCategory(1, filterOne, filterOneIsMultiSelect, filterOneOptions, 'filter-all-content-type', 'filter-type') : ''}
+    ${filterTwo.textContent.trim() !== '' ? renderFilterCategory(2, filterTwo, filterTwoIsMultiSelect, filterTwoOptions, 'filter-all-industry', 'filter-industry') : ''}
+    ${filterThree.textContent.trim() !== '' ? renderFilterCategory(3, filterThree, filterThreeIsMultiSelect, filterThreeOptions, 'filter-all-role', 'filter-role') : ''}
+    ${filterFour.textContent.trim() !== '' ? renderFilterCategory(4, filterFour, filterFourIsMultiSelect, filterFourOptions, 'filter-all-pfx', 'filter-pfx') : ''}
   `;
 
   // Set initial max-height for Filter Categories to create smooth accordion transition
@@ -399,7 +400,13 @@ export default async function decorate(block) {
           ? `<a class="article-author-link" href="${authorPageLink}">${removeHyphenAuthor}</a>`
           : `<a class="article-author-link" href="${authorPageLink}">${removeHyphenAuthor}</a> & `;
     });
-    markup = `<p class="article-info">${article.author !== '' ? `By ${innerMarkup}` : ''} ${article.articlePublishDate !== '' ? `${article.author !== '' ? 'on' : ''} ${postDate}</p>` : ''}`;
+    markup = `
+      <p class="article-info">
+        ${article.authors !== '' && article.authors !== undefined ? `By ${innerMarkup}` : ''} 
+        ${article.articlePublishDate !== '' && article.authors !== '' && article.authors !== undefined ? 'on' : ''} 
+        ${postDate}
+      </p>
+    `;
     return markup;
   };
 
