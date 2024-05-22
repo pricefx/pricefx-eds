@@ -9,12 +9,7 @@ async function loadJobsData(sortBy, filterBy, block) {
   jobPosting.classList.add('loading');
   block.append(jobPosting);
   try {
-    const response = await fetch(`${CAREERS_PATH}?sort=${filterBy}${sortBy}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    const response = await fetch(`${CAREERS_PATH}?sort=${filterBy}${sortBy}`);
     const jobScore = await response.json();
 
     const { jobs } = jobScore;
@@ -56,7 +51,7 @@ async function loadJobsData(sortBy, filterBy, block) {
       }
     });
   } catch (error) {
-    jobPosting.innerHTML = `<p>Something went wrong. Please try again later</p>`;
+    jobPosting.innerHTML = `<p>Something went wrong. Please try again later.</p>`;
   }
 }
 
