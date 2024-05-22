@@ -56,7 +56,7 @@ async function loadJobsData(sortBy, filterBy, block) {
       }
     });
   } catch (error) {
-    console.error(error);
+    jobPosting.innerHTML = `<p>Something went wrong. Please try again later</p>`;
   }
 }
 
