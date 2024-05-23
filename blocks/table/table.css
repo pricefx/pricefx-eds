@@ -35,6 +35,12 @@
   color: var(--c-white);
 }
 
+.table .table-default .cell-title {
+  h6,h5,h4,h3,h2,h1 {
+  text-align: center;
+  }
+}
+
 /* Level Table & Level Color common */
 .table .table-level, .table .levelcolor {
   font-family: var(--ff-secondary);
@@ -130,19 +136,26 @@
 
 .table .table-im-connect td, .table .table-im-connect th {
   border: 1px solid var(--c-table-border);
-  padding: var(--spacing-small) var(--spacing-medium);
+  width: 25%;
 }
 
- .table .table-im-connect th {
-  height: 52px;
- }
+.table .table-im-connect th {
+  padding: 12px;
+}
+
+.table .table-im-connect td {
+  padding: 20px 12px;
+}
+
+.table .table-im-connect td a.button {
+  margin: 0;
+}
 
 .table .table-im-connect {
   color: var(--c-full-black);
   font-family: var(--ff-secondary);
   font-size: var(--base-font-size);
   font-style: normal;
-  font-weight: var(--fw-regular);
   line-height: 24px; 
   background: var( --c-table-background);
   width: 100%;

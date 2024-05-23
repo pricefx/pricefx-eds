@@ -12,6 +12,8 @@ import {
   loadCSS,
 } from './aem.js';
 
+import addPageSchema from './schema.js';
+
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 
 /**
@@ -68,6 +70,28 @@ async function loadFonts() {
 }
 
 /**
+ * Decorates links within the specified container element by setting their "target" attribute to "_blank" either if it is external domain.
+ * or the texcontent having {{_blank}}
+ * @param {HTMLElement} main - The main container element to search for and decorate links.
+ */
+export function decorateExternalLinks(main) {
+  main.querySelectorAll('a').forEach((a) => {
+    const href = a.getAttribute('href');
+    if (!href) {
+      return;
+    }
+
+    if (a.hostname !== window.location.hostname || a.textContent.includes('{{_blank}}')) {
+      a.target = '_blank';
+      a.title = a.title.replace('{{_blank}}', '');
+      a.textContent = a.textContent.replace('{{_blank}}', '');
+      a.setAttribute('aria-label', `${a.textContent} opens in a new tab`);
+      a.setAttribute('rel', 'noopener noreferrer');
+    }
+  });
+}
+
+/**
  * links to a /modals/ path  are automatically transformed into a modal.
  * @param {Element} element
  */
@@ -109,6 +133,7 @@ async function updateMetadata() {
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
   // hopefully forward compatible button decoration
+  decorateExternalLinks(main);
   decorateButtons(main);
   decorateIcons(main);
   buildAutoBlocks(main);
@@ -176,6 +201,7 @@ function loadDelayed() {
   // eslint-disable-next-line import/no-cycle
   window.setTimeout(() => import('./delayed.js'), 3000);
   // load anything that can be postponed to the latest here
+  addPageSchema();
 }
 
 async function loadPage() {
