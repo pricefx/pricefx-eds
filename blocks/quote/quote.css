@@ -72,7 +72,7 @@
 .quote .quote-right-container {
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     margin: calc((40 / 16) * 1rem);
 }
 
@@ -108,6 +108,10 @@
   .quote .quote-logo {
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .quote .quote-right-container {
+    overflow: auto;
   }
 
   .quote .quote-left-container, .quote-right-container {
