@@ -112,7 +112,6 @@ const updateBrowserUrl = (searchParams, key, value) => {
  */
 export default async function decorate(block) {
   const [
-    configTab,
     featuredArticle,
     searchPath,
     searchPlaceholder,
@@ -126,7 +125,6 @@ export default async function decorate(block) {
     videosContentCta,
     reportsContentCta,
     defaultContentCta,
-    filterTab,
     filterOne,
     filterOneIsMultiSelect,
     filterOneOptions,
@@ -140,8 +138,6 @@ export default async function decorate(block) {
     filterFourIsMultiSelect,
     filterFourOptions,
   ] = block.children;
-  configTab.innerHTML = '';
-  filterTab.innerHTML = '';
   block.innerHTML = '';
 
   // Fetch Articles content from JSON endpoint
@@ -276,6 +272,7 @@ export default async function decorate(block) {
     let filterOptionsMarkup = '';
     optionsArray.forEach((option) => {
       const optionSplit = option.split('/')[1];
+      console.log(optionsArray);
       const optionReplace = optionSplit.replaceAll('-', ' ');
       const optionTextTransform =
         optionReplace.length <= 4 && optionReplace !== 'news' && optionReplace !== 'food'
@@ -378,7 +375,13 @@ export default async function decorate(block) {
       authorsParentPagePathFormatted += '/';
     }
 
-    replaceBasePath(isPublishEnvironment, authorsParentPagePathFormatted, BASE_CONTENT_PATH);
+    if (isPublishEnvironment) {
+      authorsParentPagePathFormatted = replaceBasePath(
+        isPublishEnvironment,
+        authorsParentPagePathFormatted,
+        BASE_CONTENT_PATH,
+      );
+    }
 
     authorsArray.forEach((author) => {
       if (author === '') {
