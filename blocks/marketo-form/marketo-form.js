@@ -1,16 +1,4 @@
-const loadScript = (url, attrs) => {
-  const head = document.querySelector('head');
-  const script = document.createElement('script');
-  script.src = url;
-  if (attrs) {
-    // eslint-disable-next-line no-restricted-syntax, guard-for-in
-    for (const attr in attrs) {
-      script.setAttribute(attr, attrs[attr]);
-    }
-  }
-  head.append(script);
-  return script;
-};
+import { loadScript } from '../../scripts/aem.js';
 
 const formatFormLabel = (label) => {
   const removeLabelAsterix = label.textContent.includes('*') ? label.textContent.slice(1) : label.textContent;
@@ -24,7 +12,7 @@ const formatFormLabel = (label) => {
 const embedMarketoForm = (marketoId, formId, successUrl, isHideLabels, block, formElement) => {
   if (marketoId && formId) {
     const mktoScriptTag = loadScript('//lp.pricefx.com/js/forms2/js/forms2.min.js');
-    mktoScriptTag.onload = () => {
+    mktoScriptTag.then(() => {
       if (successUrl) {
         window.MktoForms2.loadForm('//lp.pricefx.com', marketoId, formId, (form) => {
           // Add hide form labels class if boolean is true
@@ -72,7 +60,7 @@ const embedMarketoForm = (marketoId, formId, successUrl, isHideLabels, block, fo
       } else {
         window.MktoForms2.loadForm('//lp.pricefx.com', marketoId, formId);
       }
-    };
+    });
   }
 };
 
