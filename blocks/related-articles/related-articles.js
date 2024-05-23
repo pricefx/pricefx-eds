@@ -516,11 +516,8 @@ export default async function decorate(block) {
   if (type === 'related') {
     block.classList.add(columnLayout, 'cards', 'aspect-ratio-16-9');
     block.innerHTML = titleEle;
-    filteredData?.forEach((article, index) => {
-      if (index > 7) {
-        return;
-      }
-
+    const relatedArticles = filteredData.slice(0, 8);
+    relatedArticles?.forEach((article) => {
       ul.append(generateCardDom(article, authorPath));
       ul.querySelectorAll('img').forEach((img) =>
         img
