@@ -33,19 +33,14 @@ function generateCardDom(props) {
     isClickable,
   ] = props;
   const picture = imageContainer.querySelector('picture');
-  let isTopContent = '';
-  if (isContent?.textContent.trim() === 'true') {
-    isTopContent = `<div class="cards-card-top-content">${cardTopContent}</div>`;
-  } else {
-    isTopContent = `<div class="cards-card-image">${picture ? picture.outerHTML : ''}</div>`;
-  }
+  const isTopContent = isContent?.textContent.trim();
 
   // Build DOM
   if (isClickable?.textContent.trim() === 'true') {
     const link = cta.querySelector('a');
     const cardDOM = `
           <a class="cards-card-link" href="${link ? link.href : '#'}" target="${ctaTarget.textContent.trim() === 'true' ? '_blank' : ''}">
-          ${isTopContent}
+          ${isTopContent === true ? `<div class="cards-card-top-content">${cardTopContent}</div>` : `<div class="cards-card-image">${picture ? picture.outerHTML : ''}</div>`}
           <div class='cards-card-body'>
               ${eyebrow?.textContent.trim() !== '' ? `<div class='cards-card-eyebrow'>${eyebrow.textContent.trim().toUpperCase()}</div>` : ``}
               ${title?.children.length > 0 ? `<div class='cards-card-title'><h6>${title.textContent.trim()}</h6></div>` : ``}
@@ -57,7 +52,7 @@ function generateCardDom(props) {
     return cardDOM;
   }
   const cardDOM = `
-        ${isTopContent}
+        ${isTopContent === true ? `<div class="cards-card-top-content">${cardTopContent}</div>` : `<div class="cards-card-image">${picture ? picture.outerHTML : ''}</div>`}
         <div class='cards-card-body'>
             ${eyebrow?.textContent.trim() !== '' ? `<div class='cards-card-eyebrow'>${eyebrow.textContent.trim().toUpperCase()}</div>` : ``}
             ${title?.children.length > 0 ? `<div class='cards-card-title'><h6>${title.textContent.trim()}</h6></div>` : ``}
