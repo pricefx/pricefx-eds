@@ -37,7 +37,11 @@ const renderArticleAuthors = (article, authorDirectoryPath) => {
     authorsParentPagePathFormatted += '/';
   }
 
-  replaceBasePath(isPublishEnvironment, authorsParentPagePathFormatted, BASE_CONTENT_PATH);
+  authorsParentPagePathFormatted = replaceBasePath(
+    isPublishEnvironment,
+    authorsParentPagePathFormatted,
+    BASE_CONTENT_PATH,
+  );
 
   authorsArray.forEach((author) => {
     if (author === '') {
