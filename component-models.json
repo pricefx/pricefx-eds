@@ -687,7 +687,7 @@
         "multi": false
       },
       {
-        "component": "richtext",
+        "component": "text-area",
         "valueType": "string",
         "name": "cardTopContent",
         "value": "",
