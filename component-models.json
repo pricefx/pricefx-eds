@@ -676,11 +676,25 @@
     "id": "card",
     "fields": [
       {
+        "component": "boolean",
+        "label": "Image / Content",
+        "name": "isContent",
+        "valueType": "boolean",
+        "description": "ⓘ When selected, Content will be displayed"
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "image",
         "label": "Image",
         "multi": false
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "cardTopContent",
+        "value": "",
+        "label": "Card Top Content"
       },
       {
         "component": "text-input",
