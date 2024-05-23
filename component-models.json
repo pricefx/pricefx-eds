@@ -667,6 +667,14 @@
           {
             "name": "Card BG Color - Black",
             "value": "card-bg-black"
+          },
+          {
+            "name": "Card Top BG Color - Blue",
+            "value": "card-top-bg-blue"
+          },
+          {
+            "name": "Card Top Text Variation",
+            "value": "card-top-text-variation"
           }
         ]
       }
@@ -675,13 +683,6 @@
   {
     "id": "card",
     "fields": [
-      {
-        "component": "boolean",
-        "label": "Image / Content",
-        "name": "isContent",
-        "valueType": "boolean",
-        "description": "ⓘ When selected, Content will be displayed"
-      },
       {
         "component": "reference",
         "valueType": "string",

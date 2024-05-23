@@ -20,18 +20,7 @@ function decorateCTA(cta, ctaLabel, ctaTarget, isClickable) {
 }
 
 function generateCardDom(props) {
-  const [
-    isContent,
-    imageContainer,
-    cardTopContent,
-    eyebrow,
-    title,
-    description,
-    cta,
-    ctaLabel,
-    ctaTarget,
-    isClickable,
-  ] = props;
+  const [imageContainer, cardTopContent, eyebrow, title, description, cta, ctaLabel, ctaTarget, isClickable] = props;
   const picture = imageContainer.querySelector('picture');
 
   // Build DOM
@@ -39,7 +28,8 @@ function generateCardDom(props) {
     const link = cta.querySelector('a');
     const cardDOM = `
           <a class="cards-card-link" href="${link ? link.href : '#'}" target="${ctaTarget.textContent.trim() === 'true' ? '_blank' : ''}">
-          ${isContent?.textContent.trim() === true ? `<div class='cards-card-top-content'>${cardTopContent.textContent.trim()}</div>` : `<div class='cards-card-image'>${picture ? picture.outerHTML : ''}</div>`}
+          <div class='cards-card-image'>${picture ? picture.outerHTML : ''}</div>
+          <div class='cards-card-top-content'>${cardTopContent?.textContent.trim()}</div>
           <div class='cards-card-body'>
               ${eyebrow?.textContent.trim() !== '' ? `<div class='cards-card-eyebrow'>${eyebrow.textContent.trim().toUpperCase()}</div>` : ``}
               ${title?.children.length > 0 ? `<div class='cards-card-title'><h6>${title.textContent.trim()}</h6></div>` : ``}
@@ -51,7 +41,8 @@ function generateCardDom(props) {
     return cardDOM;
   }
   const cardDOM = `
-        ${isContent?.textContent.trim() === true ? `<div class='cards-card-top-content'>${cardTopContent.textContent.trim()}</div>` : `<div class='cards-card-image'>${picture ? picture.outerHTML : ''}</div>`}
+        <div class='cards-card-image'>${picture ? picture.outerHTML : ''}</div>
+        <div class='cards-card-top-content'>${cardTopContent?.textContent.trim()}</div>
         <div class='cards-card-body'>
             ${eyebrow?.textContent.trim() !== '' ? `<div class='cards-card-eyebrow'>${eyebrow.textContent.trim().toUpperCase()}</div>` : ``}
             ${title?.children.length > 0 ? `<div class='cards-card-title'><h6>${title.textContent.trim()}</h6></div>` : ``}
