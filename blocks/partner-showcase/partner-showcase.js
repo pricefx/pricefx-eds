@@ -119,11 +119,9 @@ const updateBrowserUrl = (searchParams, key, value) => {
  */
 export default async function decorate(block) {
   const [
-    configTab,
     numberOfPartners,
     sortBy,
     cardCtaLabel,
-    filterTab,
     filterOneTitle,
     filterOneMultiSelect,
     filterOneTags,
@@ -137,8 +135,6 @@ export default async function decorate(block) {
     filterFourMultiSelect,
     filterFourTags,
   ] = block.children;
-  configTab.innerHTML = '';
-  filterTab.innerHTML = '';
   block.innerHTML = '';
 
   // Fetch Partners content from JSON endpoint
@@ -377,7 +373,7 @@ export default async function decorate(block) {
                 : ''
             }
             <div class="partner-cta-container">
-              <a class="partner-link" href="${partner.path}" target="_blank">${cardCtaLabel.textContent.trim() === '' ? 'Learn More' : cardCtaLabel.textContent.trim()}</a>
+              <a class="partner-link" href="${partner.path}">${cardCtaLabel.textContent.trim() === '' ? 'Learn More' : cardCtaLabel.textContent.trim()}</a>
             </div>
           </div>
         </li>
