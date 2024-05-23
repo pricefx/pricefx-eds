@@ -20,15 +20,32 @@ function decorateCTA(cta, ctaLabel, ctaTarget, isClickable) {
 }
 
 function generateCardDom(props) {
-  const [imageContainer, eyebrow, title, description, cta, ctaLabel, ctaTarget, isClickable] = props;
+  const [
+    isContent,
+    imageContainer,
+    cardTopContent,
+    eyebrow,
+    title,
+    description,
+    cta,
+    ctaLabel,
+    ctaTarget,
+    isClickable,
+  ] = props;
   const picture = imageContainer.querySelector('picture');
+  let isTopContent = '';
+  if (isContent?.textContent.trim() === 'true') {
+    isTopContent = `<div class="cards-card-top-content">${cardTopContent}</div>`;
+  } else {
+    isTopContent = `<div class="cards-card-image">${picture ? picture.outerHTML : ''}</div>`;
+  }
 
   // Build DOM
   if (isClickable?.textContent.trim() === 'true') {
     const link = cta.querySelector('a');
     const cardDOM = `
-        <a class="cards-card-link" href="${link ? link.href : '#'}" target="${ctaTarget.textContent.trim() === 'true' ? '_blank' : ''}">
-          <div class='cards-card-image'>${picture ? picture.outerHTML : ''}</div>
+          <a class="cards-card-link" href="${link ? link.href : '#'}" target="${ctaTarget.textContent.trim() === 'true' ? '_blank' : ''}">
+          ${isTopContent}
           <div class='cards-card-body'>
               ${eyebrow?.textContent.trim() !== '' ? `<div class='cards-card-eyebrow'>${eyebrow.textContent.trim().toUpperCase()}</div>` : ``}
               ${title?.children.length > 0 ? `<div class='cards-card-title'><h6>${title.textContent.trim()}</h6></div>` : ``}
@@ -40,7 +57,7 @@ function generateCardDom(props) {
     return cardDOM;
   }
   const cardDOM = `
-        <div class='cards-card-image'>${picture ? picture.outerHTML : ''}</div>
+        ${isTopContent}
         <div class='cards-card-body'>
             ${eyebrow?.textContent.trim() !== '' ? `<div class='cards-card-eyebrow'>${eyebrow.textContent.trim().toUpperCase()}</div>` : ``}
             ${title?.children.length > 0 ? `<div class='cards-card-title'><h6>${title.textContent.trim()}</h6></div>` : ``}
