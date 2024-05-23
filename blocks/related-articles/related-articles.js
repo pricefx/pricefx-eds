@@ -1,13 +1,14 @@
 import { createOptimizedPicture, getMetadata } from '../../scripts/aem.js';
-import { environmentMode, formatDate } from '../../scripts/global-functions.js';
+import { environmentMode, formatDate, sortByDate, replaceBasePath } from '../../scripts/global-functions.js';
 import { ARTICLE_INDEX_PATH, BASE_CONTENT_PATH } from '../../scripts/url-constants.js';
+import { loadFragment } from '../fragment/fragment.js';
 import ffetch from '../../scripts/ffetch.js';
 
 // Clean-up and Render Article Category
-const renderArticleCategory = (articles) => {
-  const categoriesArray = articles.category.split(',');
+const renderArticleCategory = (article) => {
+  const categoriesArray = article.category.split(',');
   if (categoriesArray.length !== 0) {
-    const firstCategory = categoriesArray[0];
+    const firstCategory = categoriesArray.find((category) => category.includes('/'));
     let markup = '';
     const removePrefixCategory = firstCategory.split('/')[1];
     const removeHyphenCategory =
@@ -31,16 +32,12 @@ const renderArticleAuthors = (article, authorDirectoryPath) => {
   let authorsParentPagePathFormatted = authorDirectoryPath;
   const isPublishEnvironment = environmentMode() === 'publish';
 
-  if (!isPublishEnvironment) {
-    // In the author environment, ensure the URL does not end with a slash
-    // Append a slash only if the URL doesn't already end with it
-    if (!authorsParentPagePathFormatted.endsWith('/')) {
-      authorsParentPagePathFormatted += '/';
-    }
-  } else {
-    // In the publish environment, remove the base path if present
-    authorsParentPagePathFormatted = authorsParentPagePathFormatted.replace(BASE_CONTENT_PATH, '');
+  // Append a slash only if the URL doesn't already end with it
+  if (!authorsParentPagePathFormatted.endsWith('/')) {
+    authorsParentPagePathFormatted += '/';
   }
+
+  replaceBasePath(isPublishEnvironment, authorsParentPagePathFormatted, BASE_CONTENT_PATH);
 
   authorsArray.forEach((author) => {
     if (author === '') {
@@ -54,7 +51,7 @@ const renderArticleAuthors = (article, authorDirectoryPath) => {
     if (!isPublishEnvironment) {
       authorPageLink = `${authorsParentPagePathFormatted}${removePrefixAuthor}.html`;
     } else {
-      authorPageLink = `/authors/${removePrefixAuthor}`;
+      authorPageLink = `${authorsParentPagePathFormatted}${removePrefixAuthor}`;
     }
 
     innerMarkup +=
@@ -83,10 +80,10 @@ function generateCardDom(article, authorDirectoryPath) {
             ? `<div class="article-details">
             ${article.category !== '' ? renderArticleCategory(article) : ''}
             ${article.title !== '' ? `<h6 class="article-title">${article.title}</h6>` : ''}
-            ${article.authors !== '' || article.articlePublishDate !== '' ? renderArticleAuthors(article, authorDirectoryPath) : ''}
           </div>`
             : ''
         }
+        ${article.authors !== '' || article.articlePublishDate !== '' ? renderArticleAuthors(article, authorDirectoryPath) : ''}
         <div class='cards-card-cta'>
           <a class="article-link" href="${path}">Read Now</a>
           ${readingTime ? `<div class='cards-card-reading-time'>${readingTime} min read</div>` : ''}
@@ -108,8 +105,8 @@ function decorateTopArticles(topArticles) {
   topArticles.append(column2);
 }
 
-function decorateBlogArticles(articlesJSON, block, props) {
-  const { authorDirectoryPath, numOfArticles } = props;
+async function decorateBlogArticles(articlesJSON, block, props) {
+  const { authorDirectoryPath, marketoFormPath, numOfArticles } = props;
   const queryStr = 'page=1';
   const searchParams = new URLSearchParams(queryStr);
 
@@ -121,11 +118,17 @@ function decorateBlogArticles(articlesJSON, block, props) {
   articleSection2.classList.add('blog-articles-bottom-section');
   const marketoForm = document.createElement('div');
   marketoForm.classList.add('blog-marketo-form');
-  marketoForm.innerHTML = `<h2>Marketo Form Placeholder</h2>`;
   articlesContainer.appendChild(articleSection1);
   articlesContainer.appendChild(marketoForm);
   articlesContainer.appendChild(articleSection2);
   block.append(articlesContainer);
+
+  if (marketoFormPath && marketoFormPath.includes('/fragments/')) {
+    const fragmentBlock = await loadFragment(marketoFormPath.replace('/content/pricefx/en', ''));
+    while (fragmentBlock.firstElementChild) {
+      marketoForm.append(fragmentBlock.firstElementChild);
+    }
+  }
 
   // Creates a div container to hold pagination
   const paginationContainer = document.createElement('div');
@@ -158,10 +161,10 @@ function decorateBlogArticles(articlesJSON, block, props) {
                   ? `<div class="article-details">
                   ${article.category !== '' ? renderArticleCategory(article) : ''}
                   ${article.title !== '' ? `<h2 class="article-title">${article.title}</h2>` : ''}
-                  ${article.authors !== '' || article.articlePublishDate !== '' ? renderArticleAuthors(article, authorDirectoryPath) : ''}
                 </div>`
                   : ''
               }
+              ${article.authors !== '' || article.articlePublishDate !== '' ? renderArticleAuthors(article, authorDirectoryPath) : ''}
               <div class="article-cta-container">
                 <a class="article-link" href="${article.path}">Read Now</a>
                 ${article.readingTime !== '' ? `<p class="article-readtime">${article.readingTime} min read</p>` : ''}
@@ -183,10 +186,10 @@ function decorateBlogArticles(articlesJSON, block, props) {
                 ? `<div class="article-details">
                 ${article.category !== '' ? renderArticleCategory(article) : ''}
                 ${article.title !== '' ? `<h2 class="article-title">${article.title}</h2>` : ''}
-                ${article.authors !== '' || article.articlePublishDate !== '' ? renderArticleAuthors(article, authorDirectoryPath) : ''}
               </div>`
                 : ''
             }
+            ${article.authors !== '' || article.articlePublishDate !== '' ? renderArticleAuthors(article, authorDirectoryPath) : ''}
             <div class="article-cta-container">
               <a class="article-link" href="${article.path}">Read Now</a>
               ${article.readingTime !== '' ? `<p class="article-readtime">${article.readingTime} min read</p>` : ''}
@@ -210,10 +213,10 @@ function decorateBlogArticles(articlesJSON, block, props) {
                 ? `<div class="article-details">
                 ${article.category !== '' ? renderArticleCategory(article) : ''}
                 ${article.title !== '' ? `<h2 class="article-title">${article.title}</h2>` : ''}
-                ${article.authors !== '' || article.articlePublishDate !== '' ? renderArticleAuthors(article, authorDirectoryPath) : ''}
               </div>`
                 : ''
             }
+            ${article.authors !== '' || article.articlePublishDate !== '' ? renderArticleAuthors(article, authorDirectoryPath) : ''}
             <div class="article-cta-container">
               <a class="article-link" href="${article.path}">Read Now</a>
               ${article.readingTime !== '' ? `<p class="article-readtime">${article.readingTime} min read</p>` : ''}
@@ -401,14 +404,14 @@ function decorateBlogArticles(articlesJSON, block, props) {
     }
   });
 
-  nextPageButton.addEventListener('click', () => {
+  nextPageButton?.addEventListener('click', () => {
     const paginationList = nextPageButton.previousElementSibling;
     const activePage = [...paginationList.children].find((page) => page.classList.contains('active-page'));
     const nextActivePage = activePage.nextElementSibling;
     handlePaginationNav(paginationList, nextActivePage);
   });
 
-  prevPageButton.addEventListener('click', () => {
+  prevPageButton?.addEventListener('click', () => {
     const paginationList = prevPageButton.nextElementSibling;
     const activePage = [...paginationList.children].find((page) => page.classList.contains('active-page'));
     const nextActivePage = activePage.previousElementSibling;
@@ -433,6 +436,21 @@ function decorateBlogArticles(articlesJSON, block, props) {
           }
         });
       }
+
+      const activePage = [...pageList].find((page) => page.classList.contains('active-page'));
+
+      if (activePage.textContent > '1') {
+        prevPageButton.classList.remove('hidden');
+      } else {
+        prevPageButton.classList.add('hidden');
+      }
+
+      if (activePage.textContent === pageList[pageList.length - 1].textContent) {
+        nextPageButton.classList.add('hidden');
+      } else {
+        nextPageButton.classList.remove('hidden');
+      }
+
       appendNewActiveArticlePage(
         Number(loadedSearchParams.get('page')) * Number(numOfArticles) - Number(numOfArticles),
         Number(loadedSearchParams.get('page')) * Number(numOfArticles),
@@ -454,9 +472,6 @@ const filterBasedOnProp = (data = [], filterProps = [], filterValues = {}) =>
   );
 
 export default async function decorate(block) {
-  const url = ARTICLE_INDEX_PATH;
-  // Get Data
-  const data = await ffetch(url).all();
   const type = block.children[0]?.textContent.trim() || 'related';
   const title = block.children[1]?.textContent.trim();
   const titleEle = `<h2>${title}</h2>`;
@@ -464,8 +479,15 @@ export default async function decorate(block) {
   let categoryTags = block.children[3]?.textContent.trim()?.split(',');
   const topicTags = block.children[4]?.textContent.trim()?.split(',');
   const authorTags = block.children[5]?.textContent.trim()?.split(',');
+  const path = block.children[6]?.textContent.trim();
   const authorPath = block.children[7]?.textContent.trim();
   const numOfArticles = block.children[8]?.textContent.trim() || '13';
+  const marketoFormPath = block.children[9]?.textContent.trim();
+
+  const url = path || ARTICLE_INDEX_PATH;
+  // Get Data
+  const data = await ffetch(url).all();
+
   if (categoryTags.toString().length === 0) {
     categoryTags = getMetadata('category')?.split(',');
   }
@@ -475,14 +497,13 @@ export default async function decorate(block) {
 
   // filter by other tags
   const filteryByTopics = filterBasedOnProp(filteryByCategory, ['topics'], { topics: topicTags });
-  const filteredData = filterBasedOnProp(filteryByTopics, ['authors'], { authors: authorTags });
+  const filterByAuthors = filterBasedOnProp(filteryByTopics, ['authors'], { authors: authorTags });
+
+  // Filter Current Article
+  let filteredData = filterByAuthors.filter((article) => !article.path.includes(window.location.pathname));
 
   // Sorting Article by Date published
-  filteredData.sort((a, b) => {
-    const date1 = new Date(a.articlePublishDate).getTime();
-    const date2 = new Date(b.articlePublishDate).getTime();
-    return date2 - date1;
-  });
+  filteredData = sortByDate(filteredData, 'articlePublishDate');
 
   const ul = document.createElement('ul');
   block.textContent = '';
@@ -490,7 +511,7 @@ export default async function decorate(block) {
     block.classList.add(columnLayout, 'cards', 'aspect-ratio-16-9');
     block.innerHTML = titleEle;
     filteredData?.forEach((article, index) => {
-      if (index > 6) {
+      if (index > 7) {
         return;
       }
 
@@ -507,6 +528,7 @@ export default async function decorate(block) {
   } else {
     block.classList.add('blog-articles');
     const props = {
+      marketoFormPath,
       numOfArticles,
       authorDirectoryPath: authorPath,
     };

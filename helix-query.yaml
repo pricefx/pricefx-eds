@@ -4,12 +4,12 @@ indices:
     include:
       - /**
     exclude:
-      - /configuration
-      - /nav
-      - /footer
-      - /fragments
-      - /metadata
-      - /style-guide
+      - /configuration/**
+      - /nav/**
+      - /footer/**
+      - /metadata/**
+      - /fragments/**
+      - /style-guide/**
     target: /query-index.json
     properties:
       title:
@@ -37,7 +37,7 @@ indices:
     include:
       - /learning-center/**
     exclude:
-      - /learning-center/writer/
+      - /learning-center/writer/**
     target: /article-index.json
     properties:
       lastModified:

@@ -2,6 +2,7 @@ import ffetch from '../../scripts/ffetch.js';
 import { SEARCH } from '../../scripts/constants.js';
 import { decorateIcons } from '../../scripts/aem.js';
 import { SEARCH_INDEX_PATH } from '../../scripts/url-constants.js';
+import { sortByDate } from '../../scripts/global-functions.js';
 
 const isDesktop = window.matchMedia('(min-width: 986px)');
 
@@ -55,6 +56,7 @@ const toggleHamburgerNav = (hamburger, mobileNav) => {
   const hamburgerAriaExpanded = hamburger.attributes[4].value;
   const setHamburgerAriaExpanded = hamburgerAriaExpanded === 'false' ? 'true' : 'false';
   hamburger.setAttribute('aria-expanded', setHamburgerAriaExpanded);
+  const mobileSearch = document.querySelector('.mobile-header .search-wrapper');
 
   if (hamburgerAriaExpanded === 'false') {
     mobileNav.focus();
@@ -62,6 +64,8 @@ const toggleHamburgerNav = (hamburger, mobileNav) => {
     if (!isDesktop.matches) {
       bodyEl.classList.add('scroll-lock');
     }
+
+    mobileSearch.classList.add('hidden');
   } else {
     mobileNav.blur();
     hamburger.setAttribute('aria-label', 'Open Mobile Navigation');
@@ -72,6 +76,7 @@ const toggleHamburgerNav = (hamburger, mobileNav) => {
     if (!isDesktop.matches) {
       bodyEl.classList.remove('scroll-lock');
     }
+    mobileSearch.classList.remove('hidden');
   }
 
   const navMobileAriaHidden = mobileNav.attributes[3].value;
@@ -379,7 +384,7 @@ export default async function decorate(block) {
     <div class="search-input-wrapper megamenu-wrapper" aria-hidden="true">
       <form action="/search">
         <button type="submit">${SEARCH}</button>
-        <input type="text" name="search" aria-label="Search" placeholder="Search pricefx.com" autocomplete="off">
+        <input type="text" name="q" aria-label="Search" placeholder="Search pricefx.com" autocomplete="off">
       </form>
       <div class="search-suggestion"></div>
     </div>
@@ -527,7 +532,7 @@ export default async function decorate(block) {
   });
 
   hamburger.addEventListener('focus', () => {
-    mobileHeader.querySelector('.megamenu-wrapper--active').classList.remove('megamenu-wrapper--active');
+    mobileHeader.querySelector('.megamenu-wrapper').classList.remove('megamenu-wrapper--active');
   });
 
   // Render Mobile Talk to an Expert CTA
@@ -557,6 +562,9 @@ export default async function decorate(block) {
 
       if (value.length > 2) {
         suggestionJson = searchJson.filter((item) => item.title.toLowerCase().includes(value.toLowerCase()));
+
+        // Filter By Last Published Date
+        suggestionJson = sortByDate(suggestionJson, 'lastPublished');
 
         if (suggestionJson.length > 1) {
           let markup = '';

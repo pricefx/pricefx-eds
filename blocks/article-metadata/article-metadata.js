@@ -73,7 +73,7 @@ export default async function decorate(block) {
       const authorLink = document.createElement('a');
       const authorPageLink = !isPublishEnvironment
         ? `${authorsParentPagePathFormatted}${getAuthorPageLink(authorName)}.html`
-        : `/authors/${getAuthorPageLink(authorName)}`;
+        : `/learning-center/writer/${getAuthorPageLink(authorName)}`;
       authorLink.href = authorPageLink;
       authorLink.textContent = authorName;
       return authorLink.outerHTML;
@@ -86,6 +86,8 @@ export default async function decorate(block) {
   authorsElement.innerHTML = `By ${authors}`;
 
   container.appendChild(postDateElement);
-  container.appendChild(authorsElement);
+  if (articleAuthors) {
+    container.appendChild(authorsElement);
+  }
   block.appendChild(container);
 }
