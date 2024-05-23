@@ -93,7 +93,7 @@ export default function addPageSchema() {
               'query-input': 'required name=search_term_string',
               target: {
                 '@type': 'EntryPoint',
-                urlTemplate: `${pricefxRootURL}/search?q={search_term_string}`,
+                urlTemplate: `${pricefxRootURL}search?q={search_term_string}`,
               },
             },
           },
