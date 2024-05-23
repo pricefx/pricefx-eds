@@ -13,7 +13,7 @@ export default function addPageSchema() {
     const pricefxRootURL = 'https://www.pricefx.com/';
     const pricefxLogoURL = 'https://www.pricefx.com/icons/pricefx-logo-dark.svg';
 
-    const pageURL = document.querySelector("link[rel='canonical']").href;
+    const pageURL = document.querySelector("link[rel='canonical']")?.href || window.location.href;
     const h1 = document.querySelector('main h1');
     const schemaTitle = h1 ? h1.textContent : getMetadata('og:title');
 
@@ -93,7 +93,7 @@ export default function addPageSchema() {
               'query-input': 'required name=search_term_string',
               target: {
                 '@type': 'EntryPoint',
-                urlTemplate: `${pricefxRootURL}/search?q={search_term_string}`,
+                urlTemplate: `${pricefxRootURL}search?q={search_term_string}`,
               },
             },
           },

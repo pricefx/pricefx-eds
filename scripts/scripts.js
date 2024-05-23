@@ -11,6 +11,7 @@ import {
   loadBlocks,
   loadCSS,
 } from './aem.js';
+import { environmentMode } from './global-functions.js';
 
 import addPageSchema from './schema.js';
 
@@ -201,7 +202,10 @@ function loadDelayed() {
   // eslint-disable-next-line import/no-cycle
   window.setTimeout(() => import('./delayed.js'), 3000);
   // load anything that can be postponed to the latest here
-  addPageSchema();
+  // Load on Publish Mode
+  if (environmentMode() === 'publish') {
+    addPageSchema();
+  }
 }
 
 async function loadPage() {
