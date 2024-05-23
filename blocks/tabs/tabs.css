@@ -67,7 +67,7 @@
   font-size: var(--base-font-size);
   font-style: normal;
   font-weight: var(--fw-med);
-  line-height: 16px;
+  line-height: 24px;
   text-transform: uppercase;
   width: 100%;
   text-align: left;
@@ -78,6 +78,7 @@
   font-family: var(--ff-pricefx-icons);
   font-size: 24px;
   font-weight: var(--fw-regular);
+  list-style: normal;
   content: var(--icon-plus);
   position: absolute;
   right: 0;
