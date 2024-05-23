@@ -85,6 +85,35 @@ export default function decorate(block) {
     img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])),
   );
 
+  // Adjust Height of card top content
+  const cardTopContentHeight = () => {
+    setTimeout(() => {
+      const cardTopContent = ul.querySelectorAll('.cards-card-top-content');
+      let maxHeight = 0;
+      cardTopContent.forEach((topText) => {
+        const height = topText.offsetHeight;
+        maxHeight = Math.max(maxHeight, height);
+      });
+      if (maxHeight !== 0) {
+        cardTopContent.forEach((topText) => {
+          topText.style.height = `${maxHeight}px`;
+        });
+      }
+    }, 0); // Delay to ensure proper recalculation after content changes
+  };
+
+  // Attach resize event listener to adjust heights on window resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768) {
+      cardTopContentHeight();
+    }
+  });
+
+  // Initial call to adjust heights
+  if (window.innerWidth >= 768) {
+    cardTopContentHeight();
+  }
+
   block.textContent = '';
   block.append(ul);
 }

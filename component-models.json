@@ -669,10 +669,6 @@
             "value": "card-bg-black"
           },
           {
-            "name": "Card Top BG Color - Blue",
-            "value": "card-top-bg-blue"
-          },
-          {
             "name": "Card Top Text Variation",
             "value": "card-top-text-variation"
           }
@@ -691,7 +687,7 @@
         "multi": false
       },
       {
-        "component": "text-area",
+        "component": "richtext",
         "valueType": "string",
         "name": "cardTopContent",
         "value": "",

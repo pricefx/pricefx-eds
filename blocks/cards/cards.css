@@ -244,6 +244,19 @@ div.cards-card-eyebrow + div.cards-card-description {
   display: none;
 }
 
+/* Card Top Text Variation */
+.cards.card-top-text-variation .cards-card-top-content {
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  padding: 24px;
+  color: var(--c-white);
+  background: var(--c-dark-blue-gradient);
+}
+
+.cards.card-top-text-variation .cards-card-body {
+  height: auto;
+}
+
 /* Resposive Styles */
 @media (width >= 768px) {
   .cards > ul {
