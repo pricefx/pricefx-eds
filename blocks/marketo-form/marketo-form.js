@@ -12,12 +12,52 @@ const loadScript = (url, attrs) => {
   return script;
 };
 
-const embedMarketoForm = (marketoId, formId, successUrl) => {
+const formatFormLabel = (label) => {
+  const removeLabelAsterix = label.textContent.includes('*') ? label.textContent.slice(1) : label.textContent;
+  const removeLabelColon = removeLabelAsterix.includes(':')
+    ? removeLabelAsterix.substring(0, removeLabelAsterix.length - 1)
+    : removeLabelAsterix;
+
+  return removeLabelColon;
+};
+
+const embedMarketoForm = (marketoId, formId, successUrl, isHideLabels, block, formElement) => {
   if (marketoId && formId) {
     const mktoScriptTag = loadScript('//lp.pricefx.com/js/forms2/js/forms2.min.js');
     mktoScriptTag.onload = () => {
       if (successUrl) {
         window.MktoForms2.loadForm('//lp.pricefx.com', marketoId, formId, (form) => {
+          // Add hide form labels class if boolean is true
+          if (isHideLabels === 'true') {
+            block.classList.add('form-hide-labels');
+            const allFormLabels = formElement.querySelectorAll('label');
+            allFormLabels.forEach((label) => {
+              const parentEl = label.parentElement;
+              const inputTextEl = parentEl.querySelector('input[type="text"]');
+              const inputEmailEl = parentEl.querySelector('input[type="email"]');
+              const textareaEl = parentEl.querySelector('textarea');
+              const selectEl = parentEl.querySelector('select');
+              if (inputTextEl) {
+                const formattedLabel = formatFormLabel(label);
+                inputTextEl.setAttribute('placeholder', formattedLabel);
+              }
+              if (inputEmailEl) {
+                const formattedLabel = formatFormLabel(label);
+                inputEmailEl.setAttribute('placeholder', formattedLabel);
+              }
+              if (textareaEl) {
+                const formattedLabel = formatFormLabel(label);
+                textareaEl.setAttribute('placeholder', formattedLabel);
+              }
+              if (selectEl) {
+                const formattedLabel = formatFormLabel(label);
+                selectEl.children[0].textContent = formattedLabel;
+              }
+            });
+          } else {
+            block.classList.remove('form-hide-labels');
+          }
+
           // Add an onSuccess handler
           // eslint-disable-next-line no-unused-vars
           form.onSuccess((values, followUpUrl) => {
@@ -37,7 +77,7 @@ const embedMarketoForm = (marketoId, formId, successUrl) => {
 };
 
 export default function decorate(block) {
-  const [formTitle, formDescription, marketoFormId, marketoSuccessUrl] = block.children;
+  const [formTitle, formDescription, marketoFormId, marketoSuccessUrl, twoColumnsView, hideFormLabels] = block.children;
   block.innerHTML = '';
 
   const title = formTitle.textContent.trim();
@@ -45,25 +85,44 @@ export default function decorate(block) {
   const formId = marketoFormId.textContent.trim();
   const successUrl = marketoSuccessUrl.querySelector('a').href;
   const marketoId = '289-DOX-852';
+  const isTwoColumns = twoColumnsView.textContent.trim();
+  const hideLabels = hideFormLabels.textContent.trim();
 
   if (formId && marketoId) {
     // Create the form element
     const formElement = document.createElement('form');
     formElement.id = `mktoForm_${formId}`;
 
-    // Create and append form title (if available)
-    if (title !== '') {
-      const titleElement = document.createElement('h2');
-      titleElement.classList.add('form-title');
-      titleElement.textContent = title;
-      block.append(titleElement);
+    if (title !== '' || description !== '') {
+      const formInfoWrapper = document.createElement('div');
+      formInfoWrapper.classList.add('form-info-wrapper');
+
+      // Create and append form title (if available)
+      if (title !== '') {
+        const titleElement = document.createElement('h2');
+        titleElement.classList.add('form-title');
+        titleElement.textContent = title;
+        formInfoWrapper.append(titleElement);
+        block.append(formInfoWrapper);
+      }
+
+      // Create and append form description (if available)
+      if (description !== '') {
+        const descriptionElement = formDescription.firstElementChild;
+        descriptionElement.classList.add('form-description');
+        formInfoWrapper.append(descriptionElement);
+
+        if (descriptionElement.children.length > 1) {
+          descriptionElement.children[0].classList.add('form-description--highlight');
+        }
+      }
     }
 
-    // Create and append form description (if available)
-    if (description !== '') {
-      const descriptionElement = formDescription.firstElementChild;
-      descriptionElement.classList.add('form-description');
-      block.append(descriptionElement);
+    // Add 2 columns view class if boolean is true
+    if (isTwoColumns === 'true') {
+      block.classList.add('form-two-columns');
+    } else {
+      block.classList.remove('form-two-columns');
     }
 
     // Append the form element
@@ -73,7 +132,7 @@ export default function decorate(block) {
     const observer = new IntersectionObserver((entries) => {
       if (entries.some((e) => e.isIntersecting)) {
         // Embed the Marketo form
-        embedMarketoForm(marketoId, formId, successUrl);
+        embedMarketoForm(marketoId, formId, successUrl, hideLabels, block, formElement);
         observer.disconnect();
       }
     });
