@@ -431,7 +431,7 @@ async function decorateBlogArticles(articlesJSON, block, props) {
       return;
     }
 
-    if (loadedSearchParams.get('page') !== '1') {
+    if (loadedSearchParams.get('page') && loadedSearchParams.get('page') !== '1') {
       paginationPageList.innerHTML = renderPages(numOfArticles, articlesJSON, Number(loadedSearchParams.get('page')));
       const pageList = paginationPageList.querySelectorAll('.pagination-page');
       if (pageList.length > 1) {
