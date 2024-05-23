@@ -98,7 +98,7 @@
     display: flex;
     justify-content: space-between;
     max-width: 780px;
-    max-height: 407px;
+    min-height: 407px;
 }
 
   .quote .quote-text , .quote .quote-text p{
@@ -110,9 +110,6 @@
     margin-right: auto;
   }
 
-  .quote .quote-right-container {
-    overflow: auto;
-  }
 
   .quote .quote-left-container, .quote-right-container {
     max-width: 100%;
@@ -126,6 +123,8 @@
     max-width: 280px;
     min-height: 475px;
     overflow: hidden;
+    object-fit: cover;
+    height: 100%;
   }
 
   .quote .author{
