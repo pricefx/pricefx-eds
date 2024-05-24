@@ -1,5 +1,8 @@
 import ffetch from '../../scripts/ffetch.js';
 import { SEARCH } from '../../scripts/constants.js';
+import { decorateIcons } from '../../scripts/aem.js';
+import { SEARCH_INDEX_PATH } from '../../scripts/url-constants.js';
+import { sortByDate } from '../../scripts/global-functions.js';
 
 const isDesktop = window.matchMedia('(min-width: 986px)');
 
@@ -17,6 +20,17 @@ window.addEventListener('scroll', () => {
     headerEl.classList.remove('header-opacity');
   }
 });
+
+/**
+ * Reset Search CTA ADA
+ * @param {Element} searchToggle
+ */
+const resetSearchCTA = (searchToggle) => {
+  const nextElement = searchToggle.nextElementSibling;
+
+  nextElement.setAttribute('aria-hidden', 'true');
+  searchToggle.setAttribute('aria-expanded', 'false');
+};
 
 /**
  * Reset All Mobile Navigation Accordions
@@ -42,6 +56,7 @@ const toggleHamburgerNav = (hamburger, mobileNav) => {
   const hamburgerAriaExpanded = hamburger.attributes[4].value;
   const setHamburgerAriaExpanded = hamburgerAriaExpanded === 'false' ? 'true' : 'false';
   hamburger.setAttribute('aria-expanded', setHamburgerAriaExpanded);
+  const mobileSearch = document.querySelector('.mobile-header .search-wrapper');
 
   if (hamburgerAriaExpanded === 'false') {
     mobileNav.focus();
@@ -49,6 +64,8 @@ const toggleHamburgerNav = (hamburger, mobileNav) => {
     if (!isDesktop.matches) {
       bodyEl.classList.add('scroll-lock');
     }
+
+    mobileSearch.classList.add('hidden');
   } else {
     mobileNav.blur();
     hamburger.setAttribute('aria-label', 'Open Mobile Navigation');
@@ -59,6 +76,7 @@ const toggleHamburgerNav = (hamburger, mobileNav) => {
     if (!isDesktop.matches) {
       bodyEl.classList.remove('scroll-lock');
     }
+    mobileSearch.classList.remove('hidden');
   }
 
   const navMobileAriaHidden = mobileNav.attributes[3].value;
@@ -83,6 +101,9 @@ const closeDesktopNavOnEscape = (e) => {
   if (e.code === 'Escape' && isDesktop.matches) {
     const allMegamenu = document.querySelectorAll('.desktop-header .megamenu-wrapper');
     allMegamenu.forEach((megamenu) => megamenu.classList.remove('megamenu-wrapper--active'));
+
+    // Reset Desktop Search ADA
+    resetSearchCTA(document.querySelector('.desktop-header .header-search-cta'));
   }
 };
 window.addEventListener('keydown', closeDesktopNavOnEscape);
@@ -134,8 +155,9 @@ export default async function decorate(block) {
   const brandWrapperDesktop = document.createElement('div');
   brandWrapperDesktop.classList.add('brand');
   brandWrapperDesktop.innerHTML = `
-    <a class="brand-logo-wrapper" href="/"><img src="../../icons/price-fx-logo.png" alt="Pricefx" loading="lazy"></a>
+    <a class="brand-logo-wrapper" href="/" aria-label="Go to Pricefx homepage"><span class="icon icon-pricefx-logo-light"></span></a>
   `;
+  decorateIcons(brandWrapperDesktop, '', 'Pricefx');
   desktopHeader.append(brandWrapperDesktop);
 
   // Render Navigation
@@ -251,14 +273,15 @@ export default async function decorate(block) {
   const searchWrapperDesktop = document.createElement('div');
   searchWrapperDesktop.classList.add('search-wrapper');
   searchWrapperDesktop.innerHTML = `
-    <button class="header-search-cta" aria-label="Search">
+    <button class="header-search-cta" aria-label="Search" aria-expanded="false">
       ${SEARCH}
     </button>
-    <div class="search-input-wrapper">
-      <button type="submit">
-        ${SEARCH}
-      </button>
-      <input type="text" name="search" aria-label="Search" placeholder="Search pricefx.com">
+    <div class="search-input-wrapper megamenu-wrapper" aria-hidden="true">
+      <form action="/search">
+        <button type="submit">${SEARCH}</button>
+        <input type="text" name="q" aria-label="Search" placeholder="Search pricefx.com" autocomplete="off">
+      </form>
+      <div class="search-suggestion"></div>
     </div>
   `;
   nav.insertAdjacentElement('afterend', searchWrapperDesktop);
@@ -285,7 +308,15 @@ export default async function decorate(block) {
         }
       });
     });
+
+    navListLevelOne.addEventListener('mouseover', () => {
+      allMegamenu.forEach((megamenu) => megamenu.classList.remove('megamenu-wrapper--active'));
+
+      // Reset Search ADA
+      resetSearchCTA(searchToggle);
+    });
   });
+
   allMegamenuLinks.forEach((link) => {
     link.addEventListener('focus', () => {
       allMegamenu.forEach((megamenu) => megamenu.classList.remove('megamenu-wrapper--active'));
@@ -293,8 +324,40 @@ export default async function decorate(block) {
       activeMegamenu.classList.add('megamenu-wrapper--active');
     });
   });
-  searchToggle.addEventListener('focus', () => {
+
+  // Search Toggle
+  searchToggle.addEventListener('click', () => {
+    allMegamenu.forEach((megamenu) => {
+      if (!megamenu.classList.contains('search-input-wrapper')) {
+        megamenu.classList.remove('megamenu-wrapper--active');
+      }
+    });
+
+    searchToggle.nextElementSibling.classList.toggle('megamenu-wrapper--active');
+    if (searchToggle.getAttribute('aria-expanded') === 'false') {
+      searchToggle.setAttribute('aria-expanded', 'true');
+      searchToggle.nextElementSibling.setAttribute('aria-hidden', 'false');
+      setTimeout(() => desktopHeader.querySelector('input').focus(), 50);
+    } else {
+      // Reset Search ADA
+      resetSearchCTA(searchToggle);
+    }
+  });
+
+  // Click oustide to close mega menu Event Handler
+  document.addEventListener('click', (event) => {
+    if (block.contains(event.target)) {
+      return;
+    }
     allMegamenu.forEach((megamenu) => megamenu.classList.remove('megamenu-wrapper--active'));
+    // Reset Search ADA
+    resetSearchCTA(searchToggle);
+
+    // Mobile Search
+    mobileHeader.querySelector('.megamenu-wrapper').classList.remove('megamenu-wrapper--active');
+
+    // Reset Mobile Search ADA
+    resetSearchCTA(mobileHeader.querySelector('.mobile-header .header-search-cta'));
   });
 
   // ----------------------------
@@ -302,8 +365,9 @@ export default async function decorate(block) {
   // Render Mobile Brand Logo
   const brandWrapperMobile = document.createElement('div');
   brandWrapperMobile.classList.add('brand');
-  const brandLogo = `<a class="brand-logo-wrapper" href="/"><img src="../../icons/price-fx-logo-white.png" alt="Pricefx" loading="lazy"></a>`;
+  const brandLogo = `<a class="brand-logo-wrapper" href="/" aria-label="Go to Pricefx homepage"><span class="icon icon-pricefx-logo-white"></span></a>`;
   brandWrapperMobile.innerHTML = brandLogo;
+  decorateIcons(brandWrapperMobile, '', 'Pricefx');
   mobileHeader.append(brandWrapperMobile);
 
   const mobileNavControlWrapper = document.createElement('div');
@@ -314,14 +378,15 @@ export default async function decorate(block) {
   const searchWrapperMobile = document.createElement('div');
   searchWrapperMobile.classList.add('search-wrapper');
   searchWrapperMobile.innerHTML = `
-    <button class="header-search-cta" aria-label="Search">
+    <button class="header-search-cta" aria-label="Search" aria-expanded="false">
       ${SEARCH}
     </button>
-    <div class="search-input-wrapper">
-      <button type="submit">
-        ${SEARCH}
-      </button>
-      <input type="text" name="search" aria-label="Search" placeholder="Search pricefx.com">
+    <div class="search-input-wrapper megamenu-wrapper" aria-hidden="true">
+      <form action="/search">
+        <button type="submit">${SEARCH}</button>
+        <input type="text" name="q" aria-label="Search" placeholder="Search pricefx.com" autocomplete="off">
+      </form>
+      <div class="search-suggestion"></div>
     </div>
   `;
   mobileNavControlWrapper.append(searchWrapperMobile);
@@ -450,6 +515,26 @@ export default async function decorate(block) {
     });
   });
 
+  // Mobile Search
+  const mobileSearchToggle = mobileHeader.querySelector('.header-search-cta');
+  mobileSearchToggle.addEventListener('click', () => {
+    mobileSearchToggle.nextElementSibling.classList.toggle('megamenu-wrapper--active');
+    if (mobileSearchToggle.getAttribute('aria-expanded') === 'false') {
+      mobileSearchToggle.setAttribute('aria-expanded', 'true');
+      mobileSearchToggle.nextElementSibling.setAttribute('aria-hidden', 'false');
+      setTimeout(() => {
+        mobileSearchToggle.nextElementSibling.querySelector('input').focus();
+      }, 50);
+    } else {
+      // Reset ADA
+      resetSearchCTA(mobileSearchToggle);
+    }
+  });
+
+  hamburger.addEventListener('focus', () => {
+    mobileHeader.querySelector('.megamenu-wrapper').classList.remove('megamenu-wrapper--active');
+  });
+
   // Render Mobile Talk to an Expert CTA
   const mobileExpertCta = document.createElement('a');
   mobileExpertCta.classList.add('expert-cta');
@@ -461,4 +546,41 @@ export default async function decorate(block) {
   const backdrop = document.createElement('div');
   backdrop.classList.add('backdrop');
   mobileHeader.append(backdrop);
+
+  // Search Autosuggestion
+  const searchInput = block.querySelectorAll('.search-input-wrapper input');
+  let searchJson = [];
+  let suggestionJson;
+  searchInput.forEach((inputText) =>
+    inputText.addEventListener('keyup', async (event) => {
+      const { value } = event.target;
+      const suggestionDiv = event.target.parentElement.nextElementSibling;
+
+      if (searchJson.length === 0) {
+        searchJson = await ffetch(SEARCH_INDEX_PATH).all();
+      }
+
+      if (value.length > 2) {
+        suggestionJson = searchJson.filter((item) => item.title.toLowerCase().includes(value.toLowerCase()));
+
+        // Filter By Last Published Date
+        suggestionJson = sortByDate(suggestionJson, 'lastPublished');
+
+        if (suggestionJson.length > 1) {
+          let markup = '';
+          const suggestionList = suggestionJson.slice(0, 5);
+          suggestionList.forEach((list) => {
+            markup += `<li><a href="${list.path}">${list.title}</a></li>`;
+          });
+          suggestionDiv.innerHTML = `
+            <ul>
+              ${markup}
+              <li><a href="/search?q=${value}">View All<a>
+            </</ul>`;
+        }
+      } else {
+        suggestionDiv.innerHTML = '';
+      }
+    }),
+  );
 }

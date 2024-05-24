@@ -9,7 +9,7 @@
   },
   {
     "id": "column",
-    "components": ["button", "image", "text", "title", "google-map"]
+    "components": ["button", "image", "link-pfx", "text", "title", "google-map"]
   },
   {
     "id": "section",
@@ -46,7 +46,11 @@
       "carousel",
       "imageText",
       "partner-showcase",
-      "search"
+      "search",
+      "marketo-form",
+      "case-study",
+      "careers",
+      "tabbed-filter"
     ]
   },
   {
@@ -60,5 +64,9 @@
   {
     "id": "tabs",
     "components": ["tab-item"]
+  },
+  {
+    "id": "table",
+    "components": ["row"]
   }
 ]

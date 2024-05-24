@@ -347,7 +347,7 @@
         "valueType": "string",
         "name": "imageAlt",
         "label": "Image Alt Text",
-        "value": ""
+        "value": "Default alt"
       },
       {
         "component": "reference",
@@ -405,6 +405,13 @@
         "label": "Left Right Boxed Content",
         "value": "",
         "description": "ⓘ Heading (H2) and Description"
+      },
+      {
+        "component": "boolean",
+        "label": "Reverse order in mobile",
+        "name": "boxedMobileReverse",
+        "valueType": "boolean",
+        "description": "When selected, Image will be on top."
       }
     ]
   },
@@ -508,8 +515,16 @@
             "value": "column-top-aligned"
           },
           {
+            "name": "Left Aligned",
+            "value": "column-left-aligned"
+          },
+          {
             "name": "Center Aligned",
             "value": "column-center-aligned"
+          },
+          {
+            "name": "Image Center Aligned",
+            "value": "column-img-center-aligned"
           },
           {
             "name": "Image Rounded Corner",
@@ -536,12 +551,40 @@
             "value": "column-padding-medium"
           },
           {
-            "name": "Paragraph Large font",
-            "value": "column-para-font-large"
+            "name": "Add Padding Small",
+            "value": "column-padding-small"
+          },
+          {
+            "name": "Add Padding XSmall",
+            "value": "column-padding-xsmall"
+          },
+          {
+            "name": "Column Gap Large",
+            "value": "column-gap-large"
+          },
+          {
+            "name": "Column Gap Medium",
+            "value": "column-gap-medium"
+          },
+          {
+            "name": "Column Box Shadow",
+            "value": "column-box-shadow"
+          },
+          {
+            "name": "Column Links to Secondary",
+            "value": "column-links-color-secondary"
+          },
+          {
+            "name": "Column Download Enable",
+            "value": "column-download"
           },
           {
             "name": "Entire Columns Top Padding",
             "value": "columns-top-padding-large"
+          },
+          {
+            "name": "Icons For List Tag",
+            "value": "icons-for-li"
           }
         ]
       }
@@ -624,6 +667,10 @@
           {
             "name": "Card BG Color - Black",
             "value": "card-bg-black"
+          },
+          {
+            "name": "Card IM Pricing Variation",
+            "value": "card-im-pricing"
           }
         ]
       }
@@ -638,6 +685,13 @@
         "name": "image",
         "label": "Image",
         "multi": false
+      },
+      {
+        "component": "text-area",
+        "valueType": "string",
+        "name": "cardTopContent",
+        "value": "",
+        "label": "Card Top Content"
       },
       {
         "component": "text-input",
@@ -853,6 +907,27 @@
       },
       {
         "component": "select",
+        "name": "removePadding",
+        "value": "",
+        "label": "Remove Top / Bottom Padding",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Remove Top Padding",
+            "value": "section-remove-top-padding"
+          },
+          {
+            "name": "Remove Bottom Padding",
+            "value": "section-remove-bottom-padding"
+          }
+        ]
+      },
+      {
+        "component": "select",
         "name": "roundedCorner",
         "value": "",
         "label": "Rounded Corner for Image/Video",
@@ -904,6 +979,12 @@
         "name": "sectionID",
         "label": "ID",
         "value": ""
+      },
+      {
+        "component": "boolean",
+        "label": "Section buttons inline",
+        "name": "sectionButtonInline",
+        "valueType": "boolean"
       },
       {
         "component": "boolean",
@@ -1413,6 +1494,7 @@
         "component": "select",
         "label": "Article Type",
         "name": "articleType",
+        "value": "related",
         "valueType": "string",
         "description": "Choose the Article Type",
         "options": [
@@ -1472,7 +1554,7 @@
         "valueType": "string"
       },
       {
-        "component": "aem-content",
+        "component": "text",
         "name": "basePath",
         "value": "",
         "label": "Base Path",
@@ -1491,13 +1573,29 @@
         "name": "blogNumberOfArticles",
         "label": "Number Of Articles Display",
         "valueType": "number",
-        "value": 0
+        "value": 13,
+        "validation": {
+          "numberMin": 3
+        }
+      },
+      {
+        "component": "aem-content",
+        "name": "marketoFragmentPath",
+        "value": "",
+        "label": "Marketo Form Fragment Path",
+        "valueType": "string",
+        "description": "Applicable for Blog Articles"
       }
     ]
   },
   {
     "id": "learningCenter",
     "fields": [
+      {
+        "component": "tab",
+        "label": "Configs",
+        "name": "configs"
+      },
       {
         "component": "aem-content",
         "name": "featuredArticle",
@@ -1530,31 +1628,80 @@
         "name": "numberOfArticles",
         "label": "Number Of Articles Display",
         "valueType": "number",
-        "value": 0
+        "value": 6,
+        "validation": {
+          "numberMin": 3
+        }
       },
       {
-        "component": "checkbox-group",
-        "label": "Sort By",
+        "component": "multiselect",
         "name": "sortBy",
-        "valueType": "string[]",
+        "label": "Sort By",
+        "valueType": "string",
         "options": [
           {
-            "name": "Asc Date",
-            "value": "asc-date"
+            "name": "Date",
+            "children": [
+              { "name": "Asc Date", "value": "asc-date" },
+              { "name": "Desc Date", "value": "desc-date" }
+            ]
           },
           {
-            "name": "Desc Date",
-            "value": "desc-date"
-          },
-          {
-            "name": "Asc Title",
-            "value": "asc-title"
-          },
-          {
-            "name": "Desc Title",
-            "value": "desc-title"
+            "name": "Title",
+            "children": [
+              { "name": "A-Z", "value": "asc-title" },
+              { "name": "Z-A", "value": "desc-title" }
+            ]
           }
         ]
+      },
+      {
+        "component": "text",
+        "name": "articlesContentCta",
+        "label": "Articles Cards CTA Label",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "ebooksContentCta",
+        "label": "E-Books Cards CTA Label",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "podcastsContentCta",
+        "label": "Podcasts Cards CTA Label",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "caseStudyContentCta",
+        "label": "Case Study Cards CTA Label",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "videosContentCta",
+        "label": "Videos Cards CTA Label",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "reportsContentCta",
+        "label": "Analyst Reports Cards CTA Label",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "defaultContentCta",
+        "label": "Default Cards CTA Label",
+        "valueType": "string",
+        "description": "This will be used as a fallback label in case an article card is missing a content type indicator or doesn't match the provided content types."
+      },
+      {
+        "component": "tab",
+        "label": "Filters",
+        "name": "filters"
       },
       {
         "component": "text-input",
@@ -1805,13 +1952,6 @@
     "id": "table",
     "fields": [
       {
-        "component": "aem-content",
-        "name": "browseTable",
-        "value": "",
-        "label": "Browse Table",
-        "valueType": "string"
-      },
-      {
         "component": "text-input",
         "valueType": "string",
         "name": "tableTitle",
@@ -1820,9 +1960,30 @@
       },
       {
         "component": "boolean",
-        "label": "Disable Top Row",
-        "name": "disableTopRow",
-        "valueType": "boolean"
+        "label": "Header Row",
+        "name": "isHeaderRow",
+        "valueType": "boolean",
+        "description": "It will create the first row of the table as the header row."
+      },
+      {
+        "component": "select",
+        "label": "Select No. Columns",
+        "name": "noOfColumns",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "2 Column",
+            "value": "twoCol"
+          },
+          {
+            "name": "3 Column",
+            "value": "threeCol"
+          },
+          {
+            "name": "4 Column",
+            "value": "fourCol"
+          }
+        ]
       },
       {
         "component": "select",
@@ -1835,6 +1996,10 @@
             "value": "default"
           },
           {
+            "name": "Default List Row",
+            "value": "defaultListRow"
+          },
+          {
             "name": "Icon Variation",
             "value": "icon"
           },
@@ -1845,8 +2010,41 @@
           {
             "name": "Level Variation color",
             "value": "LevelColor"
+          },
+          {
+            "name": "Button Row Variation",
+            "value": "buttonRow"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "row",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "colOneDescription",
+        "label": "Column 1 Description",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "colTwoDescription",
+        "label": "Column 2 Description",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "colThreeDescription",
+        "label": "Column 3 Description",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "colFourDescription",
+        "label": "Column 4 Description",
+        "valueType": "string"
       }
     ]
   },
@@ -1856,7 +2054,7 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "fileReference",
+        "name": "downloadImageFile",
         "label": "DownLoad Image",
         "multi": false
       },
@@ -1864,21 +2062,43 @@
         "component": "text-input",
         "valueType": "string",
         "name": "alt",
-        "value": "Download Alt",
         "label": "Alt Text"
       },
       {
         "component": "aem-content",
-        "name": "assetLink",
-        "label": "Asset Link",
         "valueType": "string",
-        "description": "Provide Asset Link"
+        "name": "assetLink",
+        "value": "",
+        "label": "assetLink"
       },
       {
-        "component": "text-input",
+        "component": "boolean",
+        "valueType": "boolean",
+        "label": "Target Blank",
+        "name": "targetBlank",
+        "description": "When selected, the link will open in a new window"
+      },
+      {
+        "component": "select",
+        "name": "type",
+        "value": "",
+        "label": "Alignment",
         "valueType": "string",
-        "name": "fileName",
-        "label": "File Name"
+        "description": "Choose Alignment for Download image",
+        "options": [
+          {
+            "name": "Left - Default",
+            "value": ""
+          },
+          {
+            "name": "Right",
+            "value": "right"
+          },
+          {
+            "name": "center",
+            "value": "center"
+          }
+        ]
       }
     ]
   },
@@ -1954,11 +2174,83 @@
         "value": ""
       },
       {
+        "component": "radio-group",
+        "label": "Action Button Style",
+        "name": "buttonStyle",
+        "valueType": "string",
+        "value": "primary",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
+        ]
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "buttonLink",
+        "value": "",
+        "label": "Button Link"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "buttonLabel",
+        "value": "",
+        "label": "Button Label"
+      },
+      {
+        "component": "boolean",
+        "label": "Target Blank",
+        "name": "isTargetBlankOne",
+        "valueType": "boolean"
+      },
+      {
+        "component": "text-area",
+        "valueType": "string",
+        "name": "supportTitle",
+        "label": "Support Title",
+        "value": ""
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "imageTextPreheader1",
+        "label": "Eyebrow Text 1",
+        "value": "",
+        "description": "ⓘEyebrow Text"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "support-image1",
+        "label": "Support Logo Image 1"
+      },
+      {
         "component": "text-area",
         "valueType": "string",
         "name": "supportText1",
         "label": "Support Text 1",
         "value": ""
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "imageTextPreheader2",
+        "label": "Eyebrow Text 2",
+        "value": "",
+        "description": "ⓘEyebrow Text"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "support-image2",
+        "label": "Support Logo Image 2"
       },
       {
         "component": "text-area",
@@ -1968,11 +2260,39 @@
         "value": ""
       },
       {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "imageTextPreheader3",
+        "label": "Eyebrow Text 3",
+        "value": "",
+        "description": "ⓘEyebrow Text"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "support-image3",
+        "label": "Support Logo Image 3"
+      },
+      {
         "component": "text-area",
         "valueType": "string",
         "name": "supportText3",
         "label": "Support Text 3",
         "value": ""
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "imageTextPreheader4",
+        "label": "Eyebrow Text 4",
+        "value": "",
+        "description": "ⓘEyebrow Text"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "support-image4",
+        "label": "Support Logo Image 4"
       },
       {
         "component": "text-area",
@@ -1992,38 +2312,14 @@
         "name": "configs"
       },
       {
-        "component": "aem-content",
-        "name": "featuredPartner",
-        "value": "",
-        "label": "Featured Partner (Optional)",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "searchPath",
-        "label": "Search Path",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "searchPlaceholderText",
-        "label": "Search Placeholder Text",
-        "valueType": "string"
-      },
-      {
-        "component": "aem-content",
-        "name": "partnersPath",
-        "value": "",
-        "label": "Partners Directory Path",
-        "valueType": "string",
-        "description": "Please enter the path to the Partners directory."
-      },
-      {
         "component": "number",
         "name": "numberOfPartners",
         "label": "No. Of Partners Display",
         "valueType": "number",
-        "value": 0
+        "value": 6,
+        "validation": {
+          "numberMin": 3
+        }
       },
       {
         "component": "multiselect",
@@ -2042,10 +2338,18 @@
             "name": "Title",
             "children": [
               { "name": "A-Z", "value": "titleAZ" },
-              { "name": "Z-A", "value": "titleZa" }
+              { "name": "Z-A", "value": "titleZA" }
             ]
           }
         ]
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "cardCtaLabel",
+        "value": "",
+        "label": "Card CTA Label",
+        "description": "Customize card CTA label. If left empty, label will default to 'Learn More'."
       },
       {
         "component": "tab",
@@ -2144,7 +2448,10 @@
         "name": "noOfResultsPerPage",
         "label": "No. Of Results Per page",
         "valueType": "number",
-        "value": 0
+        "value": 10,
+        "validation": {
+          "numberMin": 3
+        }
       },
       {
         "component": "text-input",
@@ -2155,14 +2462,138 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "totalResultsTitle",
-        "label": "Total Results Title"
+        "name": "NoResultsTitle",
+        "label": "No Results Title"
+      }
+    ]
+  },
+  {
+    "id": "marketo-form",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "formTitle",
+        "label": "Form Title"
+      },
+      {
+        "component": "richtext",
+        "name": "formDescription",
+        "label": "Form Description",
+        "valueType": "string"
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "totalResultsTitle",
-        "label": "No Results Label"
+        "name": "marketoFormId",
+        "label": "Marketo Form ID"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "marketoSuccessUrl",
+        "label": "Marketo Success URL"
+      },
+      {
+        "component": "boolean",
+        "label": "2-Columns View",
+        "name": "twoColumnsView",
+        "valueType": "boolean",
+        "description": "Moves Title and Description to the left column and the form to the right column."
+      },
+      {
+        "component": "boolean",
+        "label": "Hide Form Labels",
+        "name": "hideFormLabels",
+        "valueType": "boolean",
+        "description": "Hide form labels visually (can still be read by screen readers)."
+      }
+    ]
+  },
+  {
+    "id": "case-study",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "fileReference1",
+        "label": "Image 1",
+        "multi": false
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "caseStudyTitle1",
+        "label": "Case Study Title 1"
+      },
+      {
+        "component": "richtext",
+        "name": "caseStudyDescription1",
+        "label": "Case Study Description 1",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "fileReference2",
+        "label": "Image 2",
+        "multi": false
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "caseStudyTitle2",
+        "label": "Case Study Title 2"
+      },
+      {
+        "component": "richtext",
+        "name": "caseStudyDescription2",
+        "label": "Case Study Description 2",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "fileReference3",
+        "label": "Image 3",
+        "multi": false
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "caseStudyTitle3",
+        "label": "Case Study Title 3"
+      },
+      {
+        "component": "richtext",
+        "name": "caseStudyDescription3",
+        "label": "Case Study Description 3",
+        "valueType": "string"
+      },
+      {
+        "component": "boolean",
+        "label": "Swap Right",
+        "name": "swapImage",
+        "valueType": "boolean"
+      }
+    ]
+  },
+  {
+    "id": "tabbed-filter",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "spreadsheetPath",
+        "value": "",
+        "label": "Spreadsheet Path"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "showMoreLabel",
+        "label": "Show More Label",
+        "value": "Show More"
       }
     ]
   }

@@ -14,10 +14,19 @@ const getPageTitle = async (url) => {
 
 const getAllPathsExceptCurrent = async (paths, startLevel) => {
   const result = [];
+  let startLevelVal = startLevel;
+  // Excluding content/pricefx/en in main url
+  if (!window.location.host.includes('author')) {
+    if (startLevelVal <= 4) {
+      startLevelVal = 1;
+    } else {
+      startLevelVal -= 3;
+    }
+  }
   // remove first and last slash characters
   const pathsList = paths.replace(/^\/|\/$/g, '').split('/');
   let pathVal = '';
-
+  // Excluding current link
   for (let i = 0; i <= pathsList.length - 2; i += 1) {
     pathVal = `${pathVal}/${pathsList[i]}`;
     let url = `${window.location.origin}${pathVal}`;
@@ -25,7 +34,7 @@ const getAllPathsExceptCurrent = async (paths, startLevel) => {
       url = `${window.location.origin}${pathVal}.html`;
     }
 
-    if (i >= startLevel - 1) {
+    if (i >= startLevelVal - 1) {
       // eslint-disable-next-line no-await-in-loop
       const name = await getPageTitle(url);
       if (name) {
@@ -70,10 +79,11 @@ export default async function decorate(block) {
     paths.forEach((pathPart) => breadcrumbLinks.push(createLink(pathPart).outerHTML));
     if (hideCurrentPage === 'false') {
       const currentPath = document.createElement('span');
-      currentPath.innerText = document.querySelector('title').innerText;
+      const currentTitle = document.querySelector('title').innerText;
+      currentPath.innerText = currentTitle.replace(' | Pricefx', '');
       breadcrumbLinks.push(currentPath.outerHTML);
     }
     breadcrumb.innerHTML = breadcrumbLinks.join(`<span class="breadcrumb-separator">${RIGHTARROW}</span>`);
     block.append(breadcrumb);
-  }, 500);
+  }, 0);
 }

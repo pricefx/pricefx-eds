@@ -1,0 +1,143 @@
+.section.case-study-container > div {
+  max-width: 100%;
+}
+
+.case-study {
+    display: flex;
+}
+
+.case-study .grid-container-3,
+.case-study .grid-container-2 {
+  display: flex;
+  flex-direction: column; 
+  overflow: hidden;
+  justify-content: space-between; 
+  width: 100%;
+}
+
+.case-study .grid-container-3 .image-1,
+.case-study .grid-container-3 .image-2, 
+.case-study .grid-container-3 .image-3, 
+.case-study .grid-container-2 .image-1,
+.case-study .grid-container-2 .image-2 {
+  position: relative;
+}
+
+.case-study .grid-container-3 img,
+.case-study .grid-container-2 img {
+  height: auto;
+  width: 100%;
+}
+
+.case-study .title-text {
+  color: var(--c-white);
+  font-family: var(--ff-primary);
+  font-size: var(--heading-font-size-l);
+  font-style: normal;
+  font-weight: var(--fw-med);
+  line-height: 30px; 
+  margin: 10px;
+} 
+
+.case-study .text {
+  color: var(--c-white);
+  font-family: var(--ff-secondary);
+  font-size: var(--body-font-size-l);
+  font-style: normal;
+  font-weight: var(--fw-regular);
+  line-height: 30px; 
+  margin: 10px;
+}
+
+.case-study .banner {
+  position: absolute;
+  width: 90%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  opacity: 0.7518;
+  background-color: var(--c-gray-med-2);
+  color: var(--c-white);
+  padding-left: 20px;
+  box-sizing: border-box;
+  margin: 20px;
+  padding-bottom: 40px;
+  padding-top: 40px;
+}
+
+@media (width<= 1024px) {
+  .case-study .banner {
+      top:0;
+      left:0;
+  }
+}
+
+@media (width>= 1025px) { 
+ .case-study .grid-container-3,
+ .case-study .grid-container-2 {
+    display: flex;
+    flex-direction: row; 
+    width: 100%;
+  }
+
+  .case-study .grid-container-3 .image-1 {
+    width: 50%;
+  }
+
+  .case-study .grid-container-3 .image-1 img {
+     min-height: 767px;
+     height: 100%;
+     overflow: hidden;
+     object-fit: cover;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+
+  }
+
+  .case-study .half-container {
+    flex-direction: column;
+     min-height: 767px;
+      width: 50%;
+  }
+
+  .case-study .half-container .image-2,
+  .case-study .half-container .image-3 {
+    height: 50%
+  }
+
+  .case-study .half-container img {
+    min-height: 381px;
+    overflow: hidden;
+    object-fit: cover;
+    height: 100%;
+  }
+  
+  .case-study .grid-container-2 .image-1,
+  .case-study .grid-container-2 .image-2 {
+    width: 50%; 
+    height:100%;
+  }
+
+  .case-study .grid-container-3 .image,
+  .case-study .grid-container-2 .image {
+    height:100%;
+  }
+
+  .case-study .grid-container-2 img {
+    max-width: 100%;
+    overflow: hidden;
+    object-fit: cover;
+    width: 100%;
+    max-height: 797px;
+    height: 100%;
+  }
+
+  .case-study .banner {
+    bottom: 0;
+  }
+  
+}

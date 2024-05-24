@@ -9,6 +9,8 @@ import {
 } from './aem.js';
 // eslint-disable-next-line import/no-unresolved
 import { decorateRichtext } from './editor-support-rte.js';
+// eslint-disable-next-line import/no-unresolved
+import { processArticleReadingTime } from './editor-support-article.js';
 import { decorateMain } from './scripts.js';
 
 async function applyChanges(event) {
@@ -108,6 +110,9 @@ function attachEventListners(main) {
       main?.addEventListener(eventType, async (event) => {
         event.stopPropagation();
         const applied = await applyChanges(event);
+        if (window.location.pathname.includes('/learning-center') && !window.location.pathname.includes('/writer')) {
+          processArticleReadingTime();
+        }
         if (!applied) {
           window.location.reload();
         }
