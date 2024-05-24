@@ -14,10 +14,19 @@ const getPageTitle = async (url) => {
 
 const getAllPathsExceptCurrent = async (paths, startLevel) => {
   const result = [];
+  let startLevelVal = startLevel;
+  // Excluding content/pricefx/en in main url
+  if (!window.location.host.includes('author')) {
+    if (startLevelVal <= 4) {
+      startLevelVal = 1;
+    } else {
+      startLevelVal -= 3;
+    }
+  }
   // remove first and last slash characters
   const pathsList = paths.replace(/^\/|\/$/g, '').split('/');
   let pathVal = '';
-
+  // Excluding current link
   for (let i = 0; i <= pathsList.length - 2; i += 1) {
     pathVal = `${pathVal}/${pathsList[i]}`;
     let url = `${window.location.origin}${pathVal}`;
@@ -25,7 +34,7 @@ const getAllPathsExceptCurrent = async (paths, startLevel) => {
       url = `${window.location.origin}${pathVal}.html`;
     }
 
-    if (i >= startLevel - 1) {
+    if (i >= startLevelVal - 1) {
       // eslint-disable-next-line no-await-in-loop
       const name = await getPageTitle(url);
       if (name) {

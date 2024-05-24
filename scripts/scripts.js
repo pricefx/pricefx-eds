@@ -11,6 +11,9 @@ import {
   loadBlocks,
   loadCSS,
 } from './aem.js';
+import { environmentMode } from './global-functions.js';
+
+import addPageSchema from './schema.js';
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
 
@@ -199,6 +202,10 @@ function loadDelayed() {
   // eslint-disable-next-line import/no-cycle
   window.setTimeout(() => import('./delayed.js'), 3000);
   // load anything that can be postponed to the latest here
+  // Load on Publish Mode
+  if (environmentMode() === 'publish') {
+    addPageSchema();
+  }
 }
 
 async function loadPage() {
