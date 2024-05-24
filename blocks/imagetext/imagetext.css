@@ -138,7 +138,7 @@
 .imagetext .index-0 div p:first-child {
   text-align: left;
   font-family: var(--ff-secondary);
-  font-size: var(--heading-font-size-s);
+  font-size: var(--body-font-size-l);
   line-height: 28px;
   font-weight: var(--fw-bold);
 }
