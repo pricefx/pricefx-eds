@@ -1,5 +1,5 @@
 import { loadScript } from '../../scripts/aem.js';
-import { FACEBOOK, TWITTER, PINTEREST, LINKEDIN } from '../../scripts/constants.js';
+import { FACEBOOK, TWITTER, INSTAGRAM, LINKEDIN } from '../../scripts/constants.js';
 import { CAREERS_PATH } from '../../scripts/url-constants.js';
 
 async function loadJobsData(sortBy, filterBy, block) {
@@ -39,7 +39,7 @@ async function loadJobsData(sortBy, filterBy, block) {
                   <a class="a2a_button_facebook" target="_blank" href="/#facebook">${FACEBOOK}</a>
                   <a class="a2a_button_twitter" target="_blank" href="/#twitter">${TWITTER}</a>
                   <a class="a2a_button_linkedin" target="_blank" href="/#linkedin">${LINKEDIN}</a>
-                  <a class="a2a_button_pinterest" target="_blank" href="/#pinterest">${PINTEREST}</a>        
+                  <a class="a2a_button_instagram" target="_blank" href="/#instagram">${INSTAGRAM}</a>        
                 </div>
               </div>
             </div>                      
