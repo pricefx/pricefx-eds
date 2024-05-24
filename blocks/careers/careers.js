@@ -47,9 +47,10 @@ async function loadJobsData(sortBy, filterBy, block) {
           </div>                      
         </li>`;
       jobPosting.querySelector(`#${departmentID}`).append(jobItem);
-      loadScript('https://static.addtoany.com/menu/page.js', { async: true });
+
       jobPosting.classList.remove('loading');
     });
+    loadScript('https://static.addtoany.com/menu/page.js', { async: true });
   } catch (error) {
     jobPosting.innerHTML = `<p>Something went wrong. Please try again later.</p>`;
   }
