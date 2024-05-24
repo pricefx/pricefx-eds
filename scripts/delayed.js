@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 // eslint-disable-next-line import/no-cycle
 /* eslint-disable no-undef */
 import { sampleRUM } from './aem.js';
