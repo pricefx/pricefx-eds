@@ -1996,6 +1996,10 @@
             "value": "default"
           },
           {
+            "name": "Default List Row",
+            "value": "defaultListRow"
+          },
+          {
             "name": "Icon Variation",
             "value": "icon"
           },

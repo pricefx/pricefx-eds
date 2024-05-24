@@ -23,7 +23,7 @@ export async function createModal(contentNodes, isFragment) {
   closeButton.type = 'button';
   closeButton.innerHTML = '<span class="icon icon-close"></span>';
   closeButton.addEventListener('click', () => dialog.close());
-  dialog.append(closeButton);
+  dialog.prepend(closeButton);
 
   // close dialog on clicks outside the dialog.
   dialog.addEventListener('click', (event) => {
@@ -39,7 +39,8 @@ export async function createModal(contentNodes, isFragment) {
   });
 
   const block = buildBlock('modal', '');
-  document.querySelector('main').append(block);
+  document.querySelector('body').append(block);
+  block.textContent = '';
   decorateBlock(block);
   await loadBlock(block);
 

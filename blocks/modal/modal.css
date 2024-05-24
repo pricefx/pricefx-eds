@@ -3,28 +3,21 @@ body.modal-open {
 }
 
 .modal dialog {
-  --dialog-border-radius: 8px;
-
   overscroll-behavior: none;
   border: 1px solid #ccc;
-  border-radius: var(--dialog-border-radius);
+  border-radius: 0;
   width: 100vw;
+  max-height: 90%;
 }
 
 .modal dialog .modal-content {
-  overflow-y: auto;
   overscroll-behavior: none;
-  max-height: calc(100dvh - 60px);
 }
 
 @media (width >= 600px) {
   .modal dialog {
     padding: 30px;
-    width: 80vw;
-  }
-
-  .modal dialog .modal-content {
-    max-height: calc(100vh - 90px);
+    width: 900px;
   }
 }
 
@@ -36,21 +29,18 @@ body.modal-open {
   position: absolute;
   top: 0;
   right: 0;
-  width: 20px;
-  height: 100%;
-  max-height: 30px;
-  border-radius: 0 var(--dialog-border-radius) 0 0;
-  background: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 0;
+  background: rgba(0 0 0 / 0%);
   text-overflow: clip;
   margin: 0;
   border: none;
-  padding-right: 30px;
-}
-
-.modal .close-button .icon-close {
-  width: 30px;
-  height: 30px;
-  display: inline-block;
+  padding: 10px;
+  box-shadow: 2px 1px 10px rgba(0 0 0 / 50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal .close-button .icon-close::before {
@@ -59,9 +49,6 @@ body.modal-open {
   font-size: var(--heading-font-size-s);
   font-weight: var(--fw-bold);
   color: var(--c-black);
-  position: absolute;
-  top: 0;
-  right: 0;
 }
 
 .modal dialog .section {
