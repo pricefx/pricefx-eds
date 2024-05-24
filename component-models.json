@@ -669,8 +669,8 @@
             "value": "card-bg-black"
           },
           {
-            "name": "Card Top Text Variation",
-            "value": "card-top-text-variation"
+            "name": "Card IM Pricing Variation",
+            "value": "card-im-pricing"
           }
         ]
       }

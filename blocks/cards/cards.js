@@ -22,7 +22,7 @@ function decorateCTA(cta, ctaLabel, ctaTarget, isClickable) {
 function generateCardDom(props, block) {
   const [imageContainer, cardTopContent, eyebrow, title, description, cta, ctaLabel, ctaTarget, isClickable] = props;
   const picture = imageContainer.querySelector('picture');
-  const cardTopText = block.classList.contains('card-top-text-variation');
+  const cardTopText = block.classList.contains('card-im-pricing');
 
   // Build DOM
   if (isClickable?.textContent.trim() === 'true') {
