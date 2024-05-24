@@ -1,4 +1,5 @@
-import { FACEBOOK, TWITTER, PINTEREST, LINKEDIN } from '../../scripts/constants.js';
+import { loadScript } from '../../scripts/aem.js';
+import { FACEBOOK, TWITTER, INSTAGRAM, LINKEDIN } from '../../scripts/constants.js';
 import { CAREERS_PATH } from '../../scripts/url-constants.js';
 
 async function loadJobsData(sortBy, filterBy, block) {
@@ -34,11 +35,11 @@ async function loadJobsData(sortBy, filterBy, block) {
               </div>                                   
               <div class="job-details" data-expanded="false">${job.description}                                     
                 <a href="${job.detail_url}" target="_blank" class="button primary">Apply Now</a>                                 
-                <div class="careers-social-links">
-                  <a class="button-facebook" target="_blank" href="/#facebook">${FACEBOOK}</a>
-                  <a class="button-twitter" target="_blank" href="/#twitter">${TWITTER}</a>
-                  <a class="button-linkedin" target="_blank" href="/#linkedin">${LINKEDIN}</a>
-                  <a class="button-pinterest" target="_blank" href="/#pinterest">${PINTEREST}</a>        
+                <div class="a2a_kit a2a_kit_size_32 a2a_default_style careers-social-links">
+                  <a class="a2a_button_facebook" target="_blank" href="/#facebook">${FACEBOOK}</a>
+                  <a class="a2a_button_twitter" target="_blank" href="/#twitter">${TWITTER}</a>
+                  <a class="a2a_button_linkedin" target="_blank" href="/#linkedin">${LINKEDIN}</a>
+                  <a class="a2a_button_instagram" target="_blank" href="/#instagram">${INSTAGRAM}</a>        
                 </div>
               </div>
             </div>                      
@@ -46,6 +47,7 @@ async function loadJobsData(sortBy, filterBy, block) {
         </ul>
         </div>`;
         jobPosting.append(departmentDiv);
+        loadScript('https://static.addtoany.com/menu/page.js', { async: true });
         jobPosting.classList.remove('loading');
       }
     });

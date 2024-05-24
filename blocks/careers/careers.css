@@ -137,6 +137,10 @@
     margin-bottom: 51px;
 }
 
+.careers .careers-social-links.a2a_kit {
+    display: block;
+}
+
 .careers .careers-social-links a:not(:last-child) {
     margin-right: 20px;
 }
