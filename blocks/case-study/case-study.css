@@ -35,18 +35,22 @@
   font-size: var(--heading-font-size-l);
   font-style: normal;
   font-weight: var(--fw-med);
-  line-height: 30px; 
-  margin: 10px;
+  line-height: 40px; 
+  margin-top: 15px;
+  margin-left: 40px;
+  margin-right: 40px;
 } 
 
 .case-study .text {
   color: var(--c-white);
   font-family: var(--ff-secondary);
-  font-size: var(--body-font-size-l);
+  font-size: var(--heading-font-size-s);
   font-style: normal;
   font-weight: var(--fw-regular);
   line-height: 30px; 
-  margin: 10px;
+  margin-top: 15px;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
 .case-study .banner {
@@ -132,7 +136,7 @@
     overflow: hidden;
     object-fit: cover;
     width: 100%;
-    max-height: 797px;
+    min-height: 797px;
     height: 100%;
   }
 
