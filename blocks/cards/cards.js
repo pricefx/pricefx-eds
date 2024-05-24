@@ -19,16 +19,17 @@ function decorateCTA(cta, ctaLabel, ctaTarget, isClickable) {
   return ctaLabel.children.length > 0 ? ctaLabel?.firstElementChild : ctaLabel;
 }
 
-function generateCardDom(props) {
-  const [imageContainer, eyebrow, title, description, cta, ctaLabel, ctaTarget, isClickable] = props;
+function generateCardDom(props, block) {
+  const [imageContainer, cardTopContent, eyebrow, title, description, cta, ctaLabel, ctaTarget, isClickable] = props;
   const picture = imageContainer.querySelector('picture');
+  const cardImPricing = block.classList.contains('card-im-pricing');
 
   // Build DOM
   if (isClickable?.textContent.trim() === 'true') {
     const link = cta.querySelector('a');
     const cardDOM = `
-        <a class="cards-card-link" href="${link ? link.href : '#'}" target="${ctaTarget.textContent.trim() === 'true' ? '_blank' : ''}">
-          <div class='cards-card-image'>${picture ? picture.outerHTML : ''}</div>
+          <a class="cards-card-link" href="${link ? link.href : '#'}" target="${ctaTarget.textContent.trim() === 'true' ? '_blank' : ''}">
+          ${cardImPricing ? `<div class='cards-card-top-content'>${cardTopContent.innerHTML}</div>` : `<div class='cards-card-image'>${picture ? picture.outerHTML : ''}</div>`}
           <div class='cards-card-body'>
               ${eyebrow?.textContent.trim() !== '' ? `<div class='cards-card-eyebrow'>${eyebrow.textContent.trim().toUpperCase()}</div>` : ``}
               ${title?.children.length > 0 ? `<div class='cards-card-title'><h6>${title.textContent.trim()}</h6></div>` : ``}
@@ -40,7 +41,7 @@ function generateCardDom(props) {
     return cardDOM;
   }
   const cardDOM = `
-        <div class='cards-card-image'>${picture ? picture.outerHTML : ''}</div>
+      ${cardImPricing ? `<div class='cards-card-top-content'>${cardTopContent.innerHTML}</div>` : `<div class='cards-card-image'>${picture ? picture.outerHTML : ''}</div>`}
         <div class='cards-card-body'>
             ${eyebrow?.textContent.trim() !== '' ? `<div class='cards-card-eyebrow'>${eyebrow.textContent.trim().toUpperCase()}</div>` : ``}
             ${title?.children.length > 0 ? `<div class='cards-card-title'><h6>${title.textContent.trim()}</h6></div>` : ``}
@@ -75,13 +76,42 @@ export default function decorate(block) {
       }
       return;
     }
-    li.innerHTML = generateCardDom(row.children);
+    li.innerHTML = generateCardDom(row.children, block);
     ul.append(li);
   });
 
   ul.querySelectorAll('img').forEach((img) =>
     img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])),
   );
+
+  // Adjust Height of card top content
+  const cardTopContentHeight = () => {
+    setTimeout(() => {
+      const cardTopContent = ul.querySelectorAll('.cards-card-top-content');
+      let maxHeight = 0;
+      cardTopContent.forEach((topText) => {
+        const height = topText.offsetHeight;
+        maxHeight = Math.max(maxHeight, height);
+      });
+      if (maxHeight !== 0) {
+        cardTopContent.forEach((topText) => {
+          topText.style.height = `${maxHeight}px`;
+        });
+      }
+    }, 0); // Delay to ensure proper recalculation after content changes
+  };
+
+  // Attach resize event listener to adjust heights on window resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768) {
+      cardTopContentHeight();
+    }
+  });
+
+  // Initial call to adjust heights
+  if (window.innerWidth >= 768) {
+    cardTopContentHeight();
+  }
 
   block.textContent = '';
   block.append(ul);

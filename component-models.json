@@ -667,6 +667,10 @@
           {
             "name": "Card BG Color - Black",
             "value": "card-bg-black"
+          },
+          {
+            "name": "Card IM Pricing Variation",
+            "value": "card-im-pricing"
           }
         ]
       }
@@ -681,6 +685,13 @@
         "name": "image",
         "label": "Image",
         "multi": false
+      },
+      {
+        "component": "text-area",
+        "valueType": "string",
+        "name": "cardTopContent",
+        "value": "",
+        "label": "Card Top Content"
       },
       {
         "component": "text-input",
