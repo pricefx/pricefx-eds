@@ -33,13 +33,34 @@
   text-align: left;
   background-color: var(--c-copy);
   color: var(--c-white);
+  font-size: var(--heading-font-size-s);
+  font-style: normal;
+  font-weight: var(--fw-lt-bold);
+  line-height: 28px;
 }
 
-.table .table-default .cell-title {
-  h6,h5,h4,h3,h2,h1 {
+.table .table-default td {
+  color: var(--c-copy);
+  font-family: var(--ff-secondary);
+  font-size: var(--body-font-size-l);
+  font-style: normal;
+  font-weight: var(--fw-regular);
+  line-height: 24px;
+}
+
+.table .table-default .cell-title p {
+  text-align: center;
+  font-family: var(--ff-primary);
+  font-size: var(--body-font-size-l);
+  font-style: normal;
+  font-weight: var(--fw-med);
+  line-height: 20px;
+}
+
+ .table .table-default .cell-title h6,h5,h4,h3,h2,h1 {
   text-align: center;
   }
-}
+
 
 /* Level Table & Level Color common */
 .table .table-level, .table .levelcolor {
@@ -54,20 +75,29 @@
   text-align: left;
 }
 
-.table .table-level th, .table .levelcolor th {
-    font-family: var( --ff-primary);
-}
-
 .table .table-level tr:nth-child(odd), .table .levelcolor tr:nth-child(odd){
-    background-color: var(--c-table-level);
+  background-color: var(--c-table-level);
 }
 
-.table .table-level th {
+.table .table-level th, .table .levelcolor th  {
   padding-top: calc((12 / 16) * 1rem);
   padding-bottom: calc((12 / 16) * 1rem);
   text-align: left;
   background-color: var(--c-outline-drk);
   color: var(--c-white);
+  font-size: var(--heading-font-size-s);
+  font-family: var( --ff-primary);
+  font-style: normal;
+  font-weight: var(--fw-bold);
+  line-height: 27px;
+}
+
+.table .table-level td, .table .levelcolor td {
+  color: var(--c-extra-dark);
+  font-size: var(--body-font-size-l);
+  font-style: normal;
+  font-weight: var(--fw-regular);
+  line-height: 28px;
 }
 
 /* level color table */
