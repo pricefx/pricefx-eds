@@ -14,7 +14,6 @@ async function loadJobsData(sortBy, filterBy, block) {
 
     const { jobs } = jobScore;
     const departments = [];
-
     jobPosting.querySelector('.careers-loader')?.classList.add('loaded');
     jobs.forEach((job) => {
       const departmentName = job.department;
@@ -25,31 +24,31 @@ async function loadJobsData(sortBy, filterBy, block) {
         const departmentDiv = document.createElement('div');
         departmentDiv.classList.add('careers-postings');
         departmentDiv.innerHTML = `<h3><strong>${departmentName}</strong></h3>
-        <div class="careers-content-container">
-        <ul id="${departmentID}">
-          <li class="job-item">                        
-            <div class="job-container">                                 
-              <div class="job-header">                                   
-              <h3>${job.title}</h3>   
-              <p>${job.city + job.state} - ${job.country}</p>
-              </div>                                   
-              <div class="job-details" data-expanded="false">${job.description}                                     
-                <a href="${job.detail_url}" target="_blank" class="button primary">Apply Now</a>                                 
-                <div class="a2a_kit a2a_kit_size_32 a2a_default_style careers-social-links">
-                  <a class="a2a_button_facebook" target="_blank" href="/#facebook">${FACEBOOK}</a>
-                  <a class="a2a_button_twitter" target="_blank" href="/#twitter">${TWITTER}</a>
-                  <a class="a2a_button_linkedin" target="_blank" href="/#linkedin">${LINKEDIN}</a>
-                  <a class="a2a_button_pinterest" target="_blank" href="/#pinterest">${PINTEREST}</a>        
-                </div>
-              </div>
-            </div>                      
-          </li>
-        </ul>
-        </div>`;
+        <div class="careers-content-container"><ul id="${departmentID}"></ul></div>`;
         jobPosting.append(departmentDiv);
-        loadScript('https://static.addtoany.com/menu/page.js', { async: true });
-        jobPosting.classList.remove('loading');
       }
+      const jobItem = document.createElement('div');
+      jobItem.classList.add('job-item');
+      jobItem.innerHTML = `<li class="job-item">                        
+          <div class="job-container">                                 
+            <div class="job-header">                                   
+            <h3>${job.title}</h3>   
+            <p>${job.city + job.state} - ${job.country}</p>
+            </div>                                   
+            <div class="job-details" data-expanded="false">${job.description}                                     
+              <a href="${job.detail_url}" target="_blank" class="button primary">Apply Now</a>                                 
+              <div class="a2a_kit a2a_kit_size_32 a2a_default_style careers-social-links">
+                <a class="a2a_button_facebook" target="_blank" href="/#facebook">${FACEBOOK}</a>
+                <a class="a2a_button_twitter" target="_blank" href="/#twitter">${TWITTER}</a>
+                <a class="a2a_button_linkedin" target="_blank" href="/#linkedin">${LINKEDIN}</a>
+                <a class="a2a_button_pinterest" target="_blank" href="/#pinterest">${PINTEREST}</a>        
+              </div>
+            </div>
+          </div>                      
+        </li>`;
+      jobPosting.querySelector(`#${departmentID}`).append(jobItem);
+      loadScript('https://static.addtoany.com/menu/page.js', { async: true });
+      jobPosting.classList.remove('loading');
     });
   } catch (error) {
     jobPosting.innerHTML = `<p>Something went wrong. Please try again later.</p>`;
