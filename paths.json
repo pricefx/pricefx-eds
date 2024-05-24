@@ -11,7 +11,8 @@
     "/content/pricefx/en/configuration/redirects:/redirects.json",
     "/content/pricefx.resource/query-index.json:/query-index.json",
     "/content/pricefx.resource/article-index.json:/article-index.json",
-    "/content/pricefx.resource/partners-index.json:/partners-index.json"
+    "/content/pricefx.resource/partners-index.json:/partners-index.json",
+    "/content/pricefx/en/spreadsheets/client-logos:/client-logos.json"
   ],
   "includes": ["/content/pricefx/"]
 }

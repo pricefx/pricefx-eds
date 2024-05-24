@@ -2478,6 +2478,20 @@
         "valueType": "string",
         "name": "marketoSuccessUrl",
         "label": "Marketo Success URL"
+      },
+      {
+        "component": "boolean",
+        "label": "2-Columns View",
+        "name": "twoColumnsView",
+        "valueType": "boolean",
+        "description": "Moves Title and Description to the left column and the form to the right column."
+      },
+      {
+        "component": "boolean",
+        "label": "Hide Form Labels",
+        "name": "hideFormLabels",
+        "valueType": "boolean",
+        "description": "Hide form labels visually (can still be read by screen readers)."
       }
     ]
   },
@@ -2509,11 +2523,6 @@
         "name": "fileReference2",
         "label": "Image 2",
         "multi": false
-      },
-      {
-        "component": "tab",
-        "label": "Filters",
-        "name": "filters"
       },
       {
         "component": "text-input",
@@ -2551,6 +2560,25 @@
         "label": "Swap Right",
         "name": "swapImage",
         "valueType": "boolean"
+      }
+    ]
+  },
+  {
+    "id": "tabbed-filter",
+    "fields": [
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "spreadsheetPath",
+        "value": "",
+        "label": "Spreadsheet Path"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "showMoreLabel",
+        "label": "Show More Label",
+        "value": "Show More"
       }
     ]
   }
