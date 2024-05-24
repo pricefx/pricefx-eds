@@ -249,8 +249,43 @@ div.cards-card-eyebrow + div.cards-card-description {
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
   padding: 24px;
-  color: var(--c-white);
   background: var(--c-dark-blue-gradient);
+}
+
+.cards.card-top-text-variation .cards-card-top-content h1,
+.cards.card-top-text-variation .cards-card-top-content h2,
+.cards.card-top-text-variation .cards-card-top-content h3,
+.cards.card-top-text-variation .cards-card-top-content h4,
+.cards.card-top-text-variation .cards-card-top-content h5,
+.cards.card-top-text-variation .cards-card-top-content h6,
+.cards.card-top-text-variation .cards-card-top-content p {
+  background: var(--c-white);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 0;
+}
+
+.cards.card-top-text-variation .cards-card-description {
+  text-align: left;
+}
+
+.cards.card-top-text-variation .cards-card-description ul li {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+.cards.card-top-text-variation .cards-card-description ul li::before {
+  content: url("../../icons/tick-mark.svg");
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  list-style: none;
+  margin-right: 10px;
+}
+
+.cards.card-top-text-variation .cards-card-description ul li p {
+  margin-bottom: 0;
+  display: inline-block;
 }
 
 .cards.card-top-text-variation .cards-card-body {
