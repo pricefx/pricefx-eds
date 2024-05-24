@@ -292,6 +292,48 @@ div.cards-card-eyebrow + div.cards-card-description {
   height: auto;
 }
 
+.cards.card-top-text-variation .cards-card-cta a,
+.cards.card-top-text-variation .cards-card-cta p {
+  appearance: none;
+  background: linear-gradient(123deg, #304f8c 4.85%, #466cb9 43.45%, #304f8c 54.85%, #283f6f 86.9%);
+  background-position: left;
+  background-size: 300%;
+  border: none;
+  border-radius: 4px;
+  color: var(--c-white);
+  cursor: pointer;
+  display: inline-block;
+  font-family: var(--ff-primary);
+  font-size: var(--base-font-size);
+  font-weight: var(--fw-med);
+  line-height: 1;
+  margin: var(--spacing-xsmall) 0 0;
+  padding: var(--spacing-xsmall) var(--spacing-medium);
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: var(--base-transition);
+}
+
+.cards.card-top-text-variation .cards-card-cta a:focus,
+.cards.card-top-text-variation .cards-card-cta p:focus {
+  outline: 2px solid var(--c-outline-drk);
+  outline-offset: 2px;
+}
+
+.cards.card-top-text-variation .cards-card-cta a:focus,
+.cards.card-top-text-variation .cards-card-cta a:hover,
+.cards.card-top-text-variation .cards-card-cta p:focus,
+.cards.card-top-text-variation .cards-card-cta p:hover {
+  background-position: right;
+}
+
+.cards.card-top-text-variation .cards-card-cta a::after,
+.cards.card-top-text-variation .cards-card-cta p::after {
+  content: unset;
+}
+
 /* Resposive Styles */
 @media (width >= 768px) {
   .cards > ul {

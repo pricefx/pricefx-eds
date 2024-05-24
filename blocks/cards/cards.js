@@ -19,17 +19,17 @@ function decorateCTA(cta, ctaLabel, ctaTarget, isClickable) {
   return ctaLabel.children.length > 0 ? ctaLabel?.firstElementChild : ctaLabel;
 }
 
-function generateCardDom(props) {
+function generateCardDom(props, block) {
   const [imageContainer, cardTopContent, eyebrow, title, description, cta, ctaLabel, ctaTarget, isClickable] = props;
   const picture = imageContainer.querySelector('picture');
+  const cardTopText = block.classList.contains('card-top-text-variation');
 
   // Build DOM
   if (isClickable?.textContent.trim() === 'true') {
     const link = cta.querySelector('a');
     const cardDOM = `
           <a class="cards-card-link" href="${link ? link.href : '#'}" target="${ctaTarget.textContent.trim() === 'true' ? '_blank' : ''}">
-          <div class='cards-card-image'>${picture ? picture.outerHTML : ''}</div>
-          <div class='cards-card-top-content'>${cardTopContent.innerHTML}</div>
+          ${cardTopText ? `<div class='cards-card-top-content'>${cardTopContent.innerHTML}</div>` : `<div class='cards-card-image'>${picture ? picture.outerHTML : ''}</div>`}
           <div class='cards-card-body'>
               ${eyebrow?.textContent.trim() !== '' ? `<div class='cards-card-eyebrow'>${eyebrow.textContent.trim().toUpperCase()}</div>` : ``}
               ${title?.children.length > 0 ? `<div class='cards-card-title'><h6>${title.textContent.trim()}</h6></div>` : ``}
@@ -41,8 +41,7 @@ function generateCardDom(props) {
     return cardDOM;
   }
   const cardDOM = `
-        <div class='cards-card-image'>${picture ? picture.outerHTML : ''}</div>
-        <div class='cards-card-top-content'>${cardTopContent.innerHTML}</div>
+      ${cardTopText ? `<div class='cards-card-top-content'>${cardTopContent.innerHTML}</div>` : `<div class='cards-card-image'>${picture ? picture.outerHTML : ''}</div>`}
         <div class='cards-card-body'>
             ${eyebrow?.textContent.trim() !== '' ? `<div class='cards-card-eyebrow'>${eyebrow.textContent.trim().toUpperCase()}</div>` : ``}
             ${title?.children.length > 0 ? `<div class='cards-card-title'><h6>${title.textContent.trim()}</h6></div>` : ``}
@@ -77,7 +76,7 @@ export default function decorate(block) {
       }
       return;
     }
-    li.innerHTML = generateCardDom(row.children);
+    li.innerHTML = generateCardDom(row.children, block);
     ul.append(li);
   });
 
