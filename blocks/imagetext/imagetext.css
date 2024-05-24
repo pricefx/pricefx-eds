@@ -46,6 +46,7 @@
 
 .imagetext .banner-container  { 
   height: 100%; 
+  max-width: 539px;
 }
 
 .imagetext .banner-image { 
