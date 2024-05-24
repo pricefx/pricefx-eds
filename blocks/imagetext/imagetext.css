@@ -163,7 +163,7 @@
     line-height: 28px;
     margin: 0;
     padding-bottom: 20px;
-    width: 540px;
+    max-width: 540px;
 }
 
 .imagetext li::before {
