@@ -644,7 +644,7 @@
                   "model": "tabbed-filter",
                   "showMoreLabel": "Show More",
                   "filterIndustryAllLabel": "Industries",
-                  "filterRegionOptions": "All Regions"
+                  "filterRegionAllLabel": "All Regions"
                 }
               }
             }
