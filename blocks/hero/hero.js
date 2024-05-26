@@ -100,7 +100,7 @@ export default async function decorate(block) {
       /* Hero Content */
       row.firstElementChild?.classList.add('hero-content-container');
       heroLeftContainerInner.append(row.firstElementChild || '');
-    } else {
+    } else if (index >= 9 && index <= 20) {
       /* Hero Buttons */
       if (buttonContainer.children.length >= 0 && count === 5) {
         heroLeftContainerInner.append(buttonContainer);

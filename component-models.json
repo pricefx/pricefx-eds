@@ -1225,6 +1225,13 @@
         "label": "Target Blank",
         "name": "isTargetBlankThree",
         "valueType": "boolean"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "heroStats",
+        "label": "Stats in Hero",
+        "value": ""
       }
     ]
   },
