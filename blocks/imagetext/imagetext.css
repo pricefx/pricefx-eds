@@ -46,6 +46,7 @@
 
 .imagetext .banner-container  { 
   height: 100%; 
+  max-width: 539px;
 }
 
 .imagetext .banner-image { 
@@ -61,7 +62,7 @@
   border-radius: 8px;
 }
 
-.imagetext .imagetext-action{ 
+.imagetext .imagetext-action { 
    font-family: var(--ff-secondary);
    font-size: var(--body-font-size-l);
    font-style: normal;
@@ -70,6 +71,7 @@
    height: 40%;
    text-align: left;
    align-items: left;
+   min-height: 376px;
 }
 
 .imagetext .supportContainer {
@@ -91,11 +93,13 @@
     align-items: center;
 }
 
-.imagetext .left-container, .imagetext .right-container {
+.imagetext .left-container, 
+.imagetext .right-container {
     margin: 10px;
 }
 
-.imagetext .inner-left-container, .imagetext .inner-right-container {
+.imagetext .inner-left-container, 
+.imagetext .inner-right-container {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -134,10 +138,10 @@
 
 .imagetext .index-0 div p:first-child {
   text-align: left;
-  font-family: var(--ff-primary);
-  font-size: var(--heading-font-size-s);
+  font-family: var(--ff-secondary);
+  font-size: var(--body-font-size-l);
   line-height: 28px;
-  font-weight: var(--fw-med);
+  font-weight: var(--fw-bold);
 }
 
 
@@ -159,15 +163,16 @@
     line-height: 28px;
     margin: 0;
     padding-bottom: 20px;
+    max-width: 540px;
 }
 
-.imagetext  li::before {
+.imagetext li::before {
   content: url("../../icons/image-text.svg");
   display: inline-block;
   height: 37px;
   width: 45px;
   list-style: none;
-  margin-right: 30px;
+  margin-right: 20px;
 }
 
 .imagetext .suggestion-title {
@@ -179,6 +184,8 @@
     font-weight: var(--fw-bold);
     line-height: 27px; 
     text-align: left;
+    padding-left: 10px;
+    margin: 10px;
 }
 
 /* Suggestion Description & Link */
@@ -196,9 +203,15 @@
   padding: 0 0 16px;
   }
 
+.imagetext .index-2 p {
+    max-width: 270px;
+  }
+
 #benefits-statement {
   height: 55px;
   text-align: center;
+  margin-top: 48px;
+  max-width: 1188px;
 }
 
 /* Media Query for Desktop */
@@ -237,6 +250,8 @@
   .imagetext .cross-line {
     background: linear-gradient(135deg, #DF549D 0%, #41B6E6 51.1%, #F05E25 100%);
     fill: var(--c-table-level);
+    width: 576px;
+    height: 1.5px;
   }
 
   .imagetext .container {
