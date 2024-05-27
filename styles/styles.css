@@ -559,6 +559,11 @@ main .section.highlight {
   text-align: right;
 }
 
+.section[data-maxwidth="section-full-bleed"] {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .section[data-maxwidth="section-full-bleed"] > div {
   max-width: 100%;
 }
