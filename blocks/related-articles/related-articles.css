@@ -1,7 +1,18 @@
 @import url('../cards/cards.css');
 
+.section.related-articles-container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
 .section.related-articles-container .related-articles-wrapper {
+    max-width: 100%;
+}
+
+.related-articles:not(.blog-articles) {
     max-width: 1432px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-small);
 }
 
 .related-articles.cards > ul {
@@ -87,8 +98,10 @@
 
 .blog-articles-top-section {
     display: flex;
-    margin-bottom: var(--spacing-jumbo);
     flex-direction: column;
+    margin: 0 auto var(--spacing-jumbo);
+    max-width: 1432px;
+    padding: 0 var(--spacing-small);
 }
 
 .blog-articles-top-section .col-1 {
@@ -107,6 +120,9 @@
     grid-template-columns: repeat(1, 1fr);
     gap: var(--spacing-small);
     list-style: none;
+    margin: 0 auto;
+    max-width: 1432px;
+    padding: 0 var(--spacing-small);
 }
 
 .blog-marketo-form {
@@ -309,7 +325,7 @@
 }
 
 /* Resposive Styles */
-@media (width >= 768px) {  
+@media (width >= 768px) {
     .related-articles.cards > ul > li {
         width: calc(50% - 18px);
     }
@@ -371,5 +387,16 @@
     .blog-articles .article-readtime {
         width: auto;
         text-align: left;
+    }
+}
+
+@media (width >= 1470px) {
+    .related-articles:not(.blog-articles) {
+        padding: 0;
+    }
+
+    .blog-articles-top-section,
+    .blog-articles-bottom-section {
+        padding: 0;
     }
 }

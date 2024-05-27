@@ -1,4 +1,5 @@
 import { decorateEmbed } from '../embed/embed.js';
+import { loadFragment } from '../fragment/fragment.js';
 
 function decorateButton(heroLeftContainer) {
   heroLeftContainer.querySelectorAll('.button-container').forEach((btn) => {
@@ -60,6 +61,27 @@ function decorateRightContainer(heroRightContainer) {
   }
 }
 
+async function loadStats(statsData, heroLeftContainerInner) {
+  if (statsData.querySelector('a')) {
+    const link = statsData.querySelector('a').href;
+
+    if (link.includes('/fragments/')) {
+      const url = new URL(link);
+      const fragmentPath = url.pathname;
+
+      const fragmentBlock = await loadFragment(fragmentPath);
+      if (fragmentBlock) {
+        const lastChild = statsData.lastElementChild;
+        lastChild.className = `hero-stats-content`;
+        const fragmentChild = fragmentBlock.querySelector('.section.stats-container .stats-wrapper');
+        if (fragmentChild) {
+          heroLeftContainerInner.append(fragmentChild);
+        }
+      }
+    }
+  }
+}
+
 export default async function decorate(block) {
   const heroContainer = document.createElement('div');
   heroContainer.classList.add('hero-main-container');
@@ -100,7 +122,7 @@ export default async function decorate(block) {
       /* Hero Content */
       row.firstElementChild?.classList.add('hero-content-container');
       heroLeftContainerInner.append(row.firstElementChild || '');
-    } else {
+    } else if (index >= 9 && index <= 20) {
       /* Hero Buttons */
       if (buttonContainer.children.length >= 0 && count === 5) {
         heroLeftContainerInner.append(buttonContainer);
@@ -112,6 +134,9 @@ export default async function decorate(block) {
       buttonContainer.append(row.firstElementChild);
       heroLeftContainerInner.append(buttonContainer);
       heroLeftContainer.append(heroLeftContainerInner);
+    } else if (index === 21) {
+      const statsData = row.firstElementChild;
+      loadStats(statsData, heroLeftContainerInner);
     }
   });
 
