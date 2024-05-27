@@ -96,6 +96,10 @@
   text-align: center;
 }
 
+.hero .hero-left-container .stats-wrapper {
+  margin-top: 42px;
+}
+
 @media (width <= 985px) {
   .hero .hero-right-container .hero-image-container {
     background-image: unset !important;
@@ -104,6 +108,12 @@
   .hero .hero-right-container {
     width: 100%;
   }
+}
+
+@media (width <= 1280px) {
+  .hero .hero-left-container .stats-container-wrap {
+    padding: 53px 40px;
+   }
 }
 
 /* Media Query for Desktop */
@@ -116,7 +126,7 @@
   .hero .hero-left-container {
     max-width: 1188px;
     margin: 0 auto;
-    z-index: 2;
+    z-index: 3;
     padding: 54px 0;
     min-height: 465px;
     display: flex;

@@ -7,7 +7,7 @@ body.modal-open {
   border: 1px solid #ccc;
   border-radius: 0;
   width: 100vw;
-  max-height: 90%;
+  padding: 50px 10px 30px;
 }
 
 .modal dialog .modal-content {
@@ -16,7 +16,7 @@ body.modal-open {
 
 @media (width >= 600px) {
   .modal dialog {
-    padding: 30px;
+    padding: 50px 30px 30px;
     width: 900px;
   }
 }
