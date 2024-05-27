@@ -643,6 +643,8 @@
                   "name": "Tabbed Filter",
                   "model": "tabbed-filter",
                   "showMoreLabel": "Show More",
+                  "showLessLabel": "Show Less",
+                  "noResultsText": "Sorry, there are no results based on these choices. Please update and try again.",
                   "filterIndustryAllLabel": "Industries",
                   "filterRegionAllLabel": "All Regions"
                 }

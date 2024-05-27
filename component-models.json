@@ -2619,6 +2619,20 @@
       {
         "component": "text-input",
         "valueType": "string",
+        "name": "showLessLabel",
+        "label": "Show Less Label",
+        "value": "Show Less"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "noResultsText",
+        "label": "No Results Text",
+        "value": "Sorry, there are no results based on these choices. Please update and try again."
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
         "name": "filterIndustryAllLabel",
         "label": "Filter Industry All Label",
         "value": "Industries",
