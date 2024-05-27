@@ -291,7 +291,7 @@ export default async function decorate(block) {
   expertCta.classList.add('expert-cta');
   expertCta.href = '/pricing-software-demo';
   expertCta.textContent = 'Talk to an Expert';
-  expertCta.setAttribute('target', '_blank');
+  expertCta.setAttribute('target', '_self');
   desktopHeader.insertAdjacentElement('beforeend', expertCta);
 
   // Desktop Keyboard Navigation
@@ -540,7 +540,7 @@ export default async function decorate(block) {
   mobileExpertCta.classList.add('expert-cta');
   mobileExpertCta.href = '/pricing-software-demo';
   mobileExpertCta.textContent = 'Talk to an Expert';
-  mobileExpertCta.setAttribute('target', '_blank');
+  mobileExpertCta.setAttribute('target', '_self');
   navMobileWrapper.append(mobileExpertCta);
 
   const backdrop = document.createElement('div');
