@@ -55,12 +55,16 @@ const embedMarketoForm = (marketoId, formId, successUrl, isHideLabels, block, fo
             let newSuccessUrl;
             // Take the lead to a different page on successful submit,
             // ignoring the form's configured followUpUrl
-            if (successUrl !== '') {
-              if (isPublishEnvironment) {
+            if (isPublishEnvironment) {
+              if (successUrl !== '') {
                 newSuccessUrl = replaceBasePath(isPublishEnvironment, successUrl, BASE_CONTENT_PATH);
+              } else {
+                newSuccessUrl = '/';
               }
-            } else if (isPublishEnvironment) {
-              newSuccessUrl = replaceBasePath(isPublishEnvironment, BASE_CONTENT_PATH, BASE_CONTENT_PATH);
+            } else if (successUrl !== '') {
+              newSuccessUrl = successUrl;
+            } else {
+              newSuccessUrl = '/';
             }
             window.location.href = newSuccessUrl;
 
