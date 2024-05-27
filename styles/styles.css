@@ -564,6 +564,18 @@ main .section.highlight {
   padding-right: 0;
 }
 
+.section[data-maxwidth="section-full-bleed"] h1,
+.section[data-maxwidth="section-full-bleed"] h2,
+.section[data-maxwidth="section-full-bleed"] h3,
+.section[data-maxwidth="section-full-bleed"] h4,
+.section[data-maxwidth="section-full-bleed"] h5,
+.section[data-maxwidth="section-full-bleed"] h6,
+.section[data-maxwidth="section-full-bleed"] p:not(:has(*)),
+.section[data-maxwidth="section-full-bleed"] .button-container {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
 .section[data-maxwidth="section-full-bleed"] > div {
   max-width: 100%;
 }
