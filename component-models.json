@@ -1225,6 +1225,13 @@
         "label": "Target Blank",
         "name": "isTargetBlankThree",
         "valueType": "boolean"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "heroStats",
+        "label": "Stats in Hero",
+        "value": ""
       }
     ]
   },
@@ -2591,9 +2598,53 @@
       {
         "component": "text-input",
         "valueType": "string",
+        "name": "eyebrowText",
+        "label": "Eyebrow Text",
+        "value": ""
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "tittle",
+        "label": "Title",
+        "value": ""
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
         "name": "showMoreLabel",
         "label": "Show More Label",
         "value": "Show More"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "showLessLabel",
+        "label": "Show Less Label",
+        "value": "Show Less"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "noResultsText",
+        "label": "No Results Text",
+        "value": "Sorry, there are no results based on these choices. Please update and try again."
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "filterIndustryAllLabel",
+        "label": "Filter Industry All Label",
+        "value": "Industries",
+        "description": "Label for the default industry filter option. Will serve as an 'all' filter option."
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "filterRegionAllLabel",
+        "label": "Filter Region All Label",
+        "value": "All Regions",
+        "description": "Label for the default region filter option. Will serve as an 'all' filter option."
       }
     ]
   }
