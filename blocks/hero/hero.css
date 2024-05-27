@@ -110,6 +110,12 @@
   }
 }
 
+@media (width <= 1280px) {
+  .hero .hero-left-container .stats-container-wrap {
+    padding: 53px 40px;
+   }
+}
+
 /* Media Query for Desktop */
 @media (width >= 986px) {
   .hero .hero-main-container {
@@ -211,9 +217,5 @@
     font-size: calc((27 / 16) * 1rem);
     line-height: 33px;
   }
-
-  .hero .hero-left-container .stats.block {
-    place-content: normal;
-   }
 }
   
