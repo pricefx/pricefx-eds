@@ -34,6 +34,11 @@
   width: 100%;
 }
 
+.case-study .half-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .case-study .imageSpan {
     display: flex; 
     width: 100%;
@@ -69,7 +74,7 @@
 }
 
  .case-study .banner {
-  width: 90%;
+  width: 80%;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -78,12 +83,13 @@
   opacity: 0.7518;
   background-color: var(--c-gray-med-2);
   color: var(--c-white);
-  padding-left: 20px;
   box-sizing: border-box;
-  padding-bottom: 40px;
-  padding-top: 40px;
+  margin: 20px;
 } 
 
+.case-study .banner-content {
+  padding: 20px;
+}
 
 
 @media (width<= 1024px) {
@@ -97,6 +103,10 @@
     width: 100%;
     margin: 0;
     padding: 41% 0 0;
+  }
+
+  .case-study .button-container {
+      padding-bottom: 20px;
   }
 }
 
@@ -171,7 +181,7 @@
   .case-study .grid-container-2 .banner {
     bottom: 0;
     position: absolute;
-    margin: 20px;
+    padding: 30px;
   }
   
 } 

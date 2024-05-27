@@ -25,7 +25,12 @@ function createImageContainer(imageSrc, title, text, widthClass) {
   banner.appendChild(titleNode);
   banner.appendChild(textNode);
 
-  imageContainer.appendChild(banner);
+  const bannerContent = document.createElement('div');
+  bannerContent.classList.add('banner-content');
+
+  bannerContent.appendChild(banner);
+
+  imageContainer.appendChild(bannerContent);
 
   const spacer = document.createElement('span');
   spacer.classList.add('spacer');
