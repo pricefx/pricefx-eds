@@ -156,6 +156,7 @@
   --c-banner-lt: var(--c-gray-lt);
   --c-banner-lt-striping: var(--c-gray-border);
   --c-btn-drk: #1f3053;
+  --c-footer-drk: #4B4F53;
 
   /* Gradients */
   --c-blue-gradient-lt: linear-gradient(135deg, #c1d2f3 -3.03%, #a1d8f4 100%);

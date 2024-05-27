@@ -47,10 +47,10 @@ function toggleMobileNavAccordion(navToggle) {
 }
 
 // Rendering Brand Logo
-async function decorateLogo(footer) {
+async function decorateLogo(footer, logo) {
   const logoWrapper = document.createElement('div');
   logoWrapper.classList.add('footer-logo-wrapper');
-  logoWrapper.innerHTML = `<a href="/" aria-label="Go to Pricefx Homepage"><span class="icon icon-pricefx-logo-dark"></span></a>`;
+  logoWrapper.innerHTML = `<a href="/" aria-label="Go to Pricefx Homepage"><span class="icon icon-${logo}"></span></a>`;
   decorateIcons(logoWrapper, '', 'Pricefx');
   footer.appendChild(logoWrapper);
 }
@@ -97,7 +97,16 @@ async function decorateMenu(footer, menuItems) {
  */
 export default async function decorate(block) {
   const footerMeta = getMetadata('footer');
+  const footerTheme = getMetadata('footertheme');
   block.textContent = '';
+  let logo;
+
+  if (footerTheme === 'white' || footerTheme === 'grey') {
+    block.classList.add(`footer--${footerTheme}`);
+    logo = 'pricefx-logo-dark';
+  } else {
+    logo = 'pricefx-logo-light';
+  }
 
   // load footer fragment
   const footerPath = footerMeta.footer || '/footer';
@@ -139,7 +148,7 @@ export default async function decorate(block) {
     copyrightText.innerHTML = copyrightText.innerHTML.replace('{{currentYear}}', currentYear);
   }
 
-  await decorateLogo(footerMenuSection);
+  await decorateLogo(footerMenuSection, logo);
   await decorateMenu(footerMenuSection, menuItems);
   block.append(copyrightSection);
 
