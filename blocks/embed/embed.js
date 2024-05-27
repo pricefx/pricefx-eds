@@ -193,9 +193,6 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
 
   if (config) {
     if (config.match.includes('scene7')) {
-      if (scene7VideoElement) {
-        scene7VideoElement.remove();
-      }
       // Load the Scene7 video
       config
         .embed(url, autoplay, block)
