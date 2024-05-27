@@ -1,4 +1,6 @@
 import { loadScript } from '../../scripts/aem.js';
+import { environmentMode, replaceBasePath } from '../../scripts/global-functions.js';
+import { BASE_CONTENT_PATH } from '../../scripts/url-constants.js';
 
 const formatFormLabel = (label) => {
   const removeLabelAsterix = label.textContent.includes('*') ? label.textContent.slice(1) : label.textContent;
@@ -49,9 +51,18 @@ const embedMarketoForm = (marketoId, formId, successUrl, isHideLabels, block, fo
           // Add an onSuccess handler
           // eslint-disable-next-line no-unused-vars
           form.onSuccess((values, followUpUrl) => {
+            const isPublishEnvironment = environmentMode() === 'publish';
+            let newSuccessUrl;
             // Take the lead to a different page on successful submit,
             // ignoring the form's configured followUpUrl
-            window.location.href = successUrl;
+            if (successUrl !== '') {
+              if (isPublishEnvironment) {
+                newSuccessUrl = replaceBasePath(isPublishEnvironment, successUrl, BASE_CONTENT_PATH);
+              }
+            } else if (isPublishEnvironment) {
+              newSuccessUrl = replaceBasePath(isPublishEnvironment, BASE_CONTENT_PATH, BASE_CONTENT_PATH);
+            }
+            window.location.href = newSuccessUrl;
 
             // Return false to prevent the submission handler continuing with its own processing
             return false;
