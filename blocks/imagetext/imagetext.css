@@ -152,6 +152,7 @@
 .imagetext .index-1 img {
     width: 193px;
     display: flex;
+    min-height: 74px;
 }
 
 .imagetext .index-1 div p {
@@ -204,7 +205,7 @@
   }
 
 .imagetext .index-2 p {
-    max-width: 270px;
+    min-width: 270px;
   }
 
 #benefits-statement {
@@ -251,7 +252,7 @@
     background: linear-gradient(135deg, #DF549D 0%, #41B6E6 51.1%, #F05E25 100%);
     fill: var(--c-table-level);
     width: 576px;
-    height: 1.5px;
+    height: 1px;
   }
 
   .imagetext .container {
