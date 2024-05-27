@@ -81,25 +81,26 @@ const embedYoutube = (url, autoplay) => {
     </div>`;
 };
 
-const embedScene7 = (url, autoplay) => {
+const embedScene7 = (url, autoplay, block) => {
   const params = new URLSearchParams(url.search);
   const asset = params.get('asset');
   const serverurl = DM_SERVER_URL;
   const videoserverurl = DM_VIDEO_SERVER_URL;
 
   return new Promise((resolve, reject) => {
+    const timestamp = new Date().getTime();
     const s7viewerDiv = document.createElement('div');
-    s7viewerDiv.id = 's7viewer';
+    s7viewerDiv.id = `s7viewer-${timestamp}`;
     s7viewerDiv.style.cssText = 'position:relative;';
 
-    document.body.appendChild(s7viewerDiv);
+    block.appendChild(s7viewerDiv);
 
     loadScript('https://s7d9.scene7.com/s7viewers/html5/js/VideoViewer.js')
       .then(() => {
         const scene7Script = document.createElement('script');
         scene7Script.textContent = `
         var videoViewer = new s7viewers.VideoViewer({
-          "containerId": "s7viewer",
+          "containerId": "s7viewer-${timestamp}",
           "params": {
             "autoplay":"${autoplay ? '1' : '0'}",
             "asset": "${asset}",
@@ -108,7 +109,7 @@ const embedScene7 = (url, autoplay) => {
           }
         }).init();`;
 
-        document.body.appendChild(scene7Script);
+        block.appendChild(scene7Script);
         resolve(s7viewerDiv);
       })
       .catch(reject);
@@ -163,13 +164,13 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
   if (isPopup === 'true') {
     if (config) {
       if (config.match.includes('scene7')) {
+        const container = document.createElement('div');
         config
-          .embed(url, autoplay)
+          .embed(url, autoplay, container)
           .then((holder) => {
-            const container = document.createElement('div');
             container.classList = `embed embed-${config.match[0]}`;
             container.classList.add('embed-is-loaded');
-            container.innerHTML(holder);
+            container.append(holder);
             loadModal(container);
           })
           .catch(() => {});
@@ -197,14 +198,16 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
       }
       // Load the Scene7 video
       config
-        .embed(url, autoplay)
+        .embed(url, autoplay, block)
         .then((holder) => {
           scene7VideoElement = holder;
-          block.innerHTML(scene7VideoElement);
+          block.textContent = '';
+          block.append(scene7VideoElement);
           block.classList = `block embed embed-${config.match[0]}`;
           block.classList.add('embed-is-loaded');
         })
         .catch((error) => {
+          // eslint-disable-next-line no-console
           console.error('Error loading Scene7 video:', error);
         });
     } else {
