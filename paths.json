@@ -12,7 +12,7 @@
     "/content/pricefx.resource/query-index.json:/query-index.json",
     "/content/pricefx.resource/article-index.json:/article-index.json",
     "/content/pricefx.resource/partners-index.json:/partners-index.json",
-    "/content/pricefx/en/spreadsheets/client-logos:/client-logos.json"
+    "/content/pricefx/en/spreadsheets/customers-logo:/customers-logo.json"
   ],
   "includes": ["/content/pricefx/"]
 }
