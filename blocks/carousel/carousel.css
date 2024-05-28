@@ -1,6 +1,6 @@
 /* stylelint-disable no-descending-specificity */
 /* QUOTE CAROUSEL STYLES */
-main:has(.carousel[data-carousel-type='carousel-quote']) p {
+main .carousel:has(.carousel[data-carousel-type='carousel-quote']) .carousel > p {
  text-align: left;
 }
 
