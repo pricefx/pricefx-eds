@@ -183,5 +183,9 @@
     position: absolute;
     padding: 30px;
   }
+
+  .case-study .spacer {
+    display: none;
+  }
   
 } 
