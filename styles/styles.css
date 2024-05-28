@@ -672,6 +672,15 @@ body.article {
     margin-bottom: 24px;
   }
 
+  ul li p:not(:last-child),
+  ol li p:not(:last-child) {
+    margin-bottom: 0;
+  }
+
+  ul + p {
+    margin-top: 24px;
+  }
+
   .columns, .embed, p picture img, h2, h3, h4, h5, h6 {
     margin-top: var(--spacing-medium);
     margin-bottom: var(--spacing-medium);
