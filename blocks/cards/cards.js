@@ -101,7 +101,7 @@ export default function decorate(block) {
     }, 0); // Delay to ensure proper recalculation after content changes
   };
 
-  const DefaultCardTopContentHeight = () => {
+  const defaultCardTopContentHeight = () => {
     const cardTopContent = ul.querySelectorAll('.cards-card-top-content');
     cardTopContent.forEach((topText) => {
       topText.style.height = 'auto';
@@ -112,7 +112,7 @@ export default function decorate(block) {
     if (window.innerWidth >= 768) {
       cardTopContentHeight();
     }
-    DefaultCardTopContentHeight();
+    defaultCardTopContentHeight();
   });
 
   // Initial call to adjust heights
