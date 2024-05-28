@@ -95,18 +95,11 @@ export default function decorate(block) {
       });
       if (maxHeight !== 0) {
         cardTopContent.forEach((topText) => {
-          topText.style.height = `${maxHeight}px`;
+          topText.style.height = `${maxHeight + 24}px`;
         });
       }
     }, 0); // Delay to ensure proper recalculation after content changes
   };
-
-  // Attach resize event listener to adjust heights on window resize
-  window.addEventListener('resize', () => {
-    if (window.innerWidth >= 768) {
-      cardTopContentHeight();
-    }
-  });
 
   // Initial call to adjust heights
   if (window.innerWidth >= 768) {
