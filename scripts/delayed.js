@@ -8,29 +8,30 @@ import { environmentMode } from './global-functions.js';
 sampleRUM('cwv');
 
 // MARKETO SANDBOX INTEGRATION SCRIPT
-(function () {
+const mktoSandboxIntegration = () => {
   let didInit = false;
-  function initMunchkin() {
+  const initMunchkin = () => {
     if (didInit === false) {
       didInit = true;
       Munchkin.init('542-QYC-710');
     }
-  }
+  };
   const s = document.createElement('script');
   s.type = 'text/javascript';
   s.async = true;
   s.src = '//munchkin.marketo.net/munchkin.js';
-  s.onreadystatechange = function () {
+  s.onreadystatechange = () => {
     if (this.readyState === 'complete' || this.readyState === 'loaded') {
       initMunchkin();
     }
   };
   s.onload = initMunchkin;
   document.getElementsByTagName('head')[0].appendChild(s);
-})();
+};
+mktoSandboxIntegration();
 
 // MARKETO PRODUCTION INTEGRATION SCRIPT
-(function () {
+const mktoProdIntegration = () => {
   let didInit = false;
   function initMunchkin() {
     if (didInit === false) {
@@ -49,7 +50,7 @@ sampleRUM('cwv');
   };
   s.onload = initMunchkin;
   document.getElementsByTagName('head')[0].appendChild(s);
-})();
+};
 
 // add more delayed functionality here
 
@@ -169,6 +170,9 @@ function loadGTM() {
 if (!window.location.hostname.includes('localhost') && environmentMode() === 'publish') {
   // Load GTM
   loadGTM();
+
+  // Load Marketo
+  mktoProdIntegration();
 
   // Load Drift Chat Widget & Events
   loadDriftChatWidget();
