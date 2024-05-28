@@ -8,6 +8,10 @@
   aspect-ratio: 16/9;
 }
 
+.embed.buzzsprout {
+  aspect-ratio: auto;
+}
+
 .embed > div {
   display: flex;
   justify-content: center;
