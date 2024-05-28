@@ -127,6 +127,11 @@
   bottom: 0;
 }
 
+.imagetext .index-2 .button-container .button {
+  margin: 0;
+  padding: 0;
+}
+
 .imagetext .content .index-0 div p {
   margin-bottom: 10px; 
   color: var(--c-copy);
