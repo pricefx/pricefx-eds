@@ -110,7 +110,7 @@
       padding-bottom: 20px;
   }
 
-  .case-study .button-container a {
+  .case-study .button-container .button {
     display: flex;
     align-items: center;
   }
