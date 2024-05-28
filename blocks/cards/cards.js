@@ -95,11 +95,25 @@ export default function decorate(block) {
       });
       if (maxHeight !== 0) {
         cardTopContent.forEach((topText) => {
-          topText.style.height = `${maxHeight + 24}px`;
+          topText.style.height = `${maxHeight}px`;
         });
       }
     }, 0); // Delay to ensure proper recalculation after content changes
   };
+
+  const defaultCardTopContentHeight = () => {
+    const cardTopContent = ul.querySelectorAll('.cards-card-top-content');
+    cardTopContent.forEach((topText) => {
+      topText.style.height = 'auto';
+    });
+  };
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768) {
+      cardTopContentHeight();
+    }
+    defaultCardTopContentHeight();
+  });
 
   // Initial call to adjust heights
   if (window.innerWidth >= 768) {
