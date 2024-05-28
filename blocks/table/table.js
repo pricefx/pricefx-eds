@@ -44,6 +44,20 @@ export default async function decorate(block) {
     if (variation === 'default') {
       table.classList.add('table-default');
       [...rowDiv.children].forEach((cellDiv) => {
+        if (cellDiv.textContent.trim() !== '') {
+          const cell =
+            showHeader.textContent.trim() === 'true' && rowIndex === 0
+              ? document.createElement('th')
+              : document.createElement('td');
+
+          cell.textContent = cellDiv.textContent;
+
+          row.appendChild(cell);
+        }
+      });
+    } else if (variation === 'defaultListRow') {
+      table.classList.add('table-listRow');
+      [...rowDiv.children].forEach((cellDiv) => {
         const hasList = hasUlList(cellDiv);
         if (cellDiv.textContent.trim() !== '') {
           const cell =

@@ -10,23 +10,43 @@
 .case-study .grid-container-2 {
   display: flex;
   flex-direction: column; 
-  overflow: hidden;
   justify-content: space-between; 
   width: 100%;
 }
 
 .case-study .grid-container-3 .image-1,
 .case-study .grid-container-3 .image-2, 
-.case-study .grid-container-3 .image-3, 
+.case-study .grid-container-3 .image-3 {
+  position: relative;
+  flex: 1;
+}
+
 .case-study .grid-container-2 .image-1,
 .case-study .grid-container-2 .image-2 {
   position: relative;
+  overflow: hidden;
+  min-height: 767px;
 }
 
-.case-study .grid-container-3 img,
-.case-study .grid-container-2 img {
-  height: auto;
+.case-study .grid-container-3 span,
+.case-study .grid-container-2 span {
+  height: 100%;
   width: 100%;
+}
+
+.case-study .half-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.case-study .imageSpan {
+    display: flex; 
+    width: 100%;
+    height: 100%; 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    position: absolute;
 }
 
 .case-study .title-text {
@@ -35,23 +55,26 @@
   font-size: var(--heading-font-size-l);
   font-style: normal;
   font-weight: var(--fw-med);
-  line-height: 30px; 
-  margin: 10px;
+  line-height: 40px; 
+  margin-top: 15px;
+  margin-left: 40px;
+  margin-right: 40px;
 } 
 
 .case-study .text {
   color: var(--c-white);
   font-family: var(--ff-secondary);
-  font-size: var(--body-font-size-l);
+  font-size: var(--heading-font-size-s);
   font-style: normal;
   font-weight: var(--fw-regular);
   line-height: 30px; 
-  margin: 10px;
+  margin-top: 15px;
+  margin-left: 40px;
+  margin-right: 40px;
 }
 
-.case-study .banner {
-  position: absolute;
-  width: 90%;
+ .case-study .banner {
+  width: 80%;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -60,22 +83,40 @@
   opacity: 0.7518;
   background-color: var(--c-gray-med-2);
   color: var(--c-white);
-  padding-left: 20px;
   box-sizing: border-box;
   margin: 20px;
-  padding-bottom: 40px;
-  padding-top: 40px;
+} 
+
+.case-study .banner-content {
+  padding: 20px;
 }
+
 
 @media (width<= 1024px) {
   .case-study .banner {
       top:0;
       left:0;
   }
+
+  .case-study .case-study-spacer {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 41% 0 0;
+  }
+
+  .case-study .button-container {
+      padding-bottom: 20px;
+  }
 }
 
-@media (width>= 1025px) { 
- .case-study .grid-container-3,
+ @media (width>= 1025px) { 
+ .case-study .grid-container-3 {
+   display: flex;
+   flex-direction: row; 
+    width: 100%;
+ }
+
  .case-study .grid-container-2 {
     display: flex;
     flex-direction: row; 
@@ -86,10 +127,9 @@
     width: 50%;
   }
 
-  .case-study .grid-container-3 .image-1 img {
+  .case-study .grid-container-3 .image-1 span {
      min-height: 767px;
      height: 100%;
-     overflow: hidden;
      object-fit: cover;
      position: absolute;
      top: 50%;
@@ -99,6 +139,7 @@
   }
 
   .case-study .half-container {
+    display: flex;
     flex-direction: column;
      min-height: 767px;
       width: 50%;
@@ -109,7 +150,7 @@
     height: 50%
   }
 
-  .case-study .half-container img {
+  .case-study .half-container span {
     min-height: 381px;
     overflow: hidden;
     object-fit: cover;
@@ -127,17 +168,24 @@
     height:100%;
   }
 
-  .case-study .grid-container-2 img {
+  .case-study .grid-container-2 span {
     max-width: 100%;
     overflow: hidden;
     object-fit: cover;
     width: 100%;
-    max-height: 797px;
+    min-height: 797px;
     height: 100%;
   }
 
-  .case-study .banner {
+  .case-study .grid-container-3 .banner, 
+  .case-study .grid-container-2 .banner {
     bottom: 0;
+    position: absolute;
+    padding: 30px;
+  }
+
+  .case-study .case-study-spacer {
+    display: none;
   }
   
-}
+} 

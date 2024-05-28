@@ -1,15 +1,14 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
-
 function createImageContainer(imageSrc, title, text, widthClass) {
   const imageContainer = document.createElement('div');
   imageContainer.classList.add(widthClass);
 
-  const caseImage = imageSrc.firstElementChild.querySelector('picture img');
+  const caseImage = imageSrc.firstElementChild.querySelector('picture img').src;
 
-  const image = document.createElement('div');
-  image.classList.add('image');
+  const image = document.createElement('span');
+  image.classList.add('imageSpan');
+
   if (caseImage !== null) {
-    image.appendChild(caseImage);
+    image.style.backgroundImage = `url(${caseImage})`;
   }
   imageContainer.appendChild(image);
 
@@ -26,13 +25,17 @@ function createImageContainer(imageSrc, title, text, widthClass) {
   banner.appendChild(titleNode);
   banner.appendChild(textNode);
 
-  imageContainer.appendChild(banner);
+  const bannerContent = document.createElement('div');
+  bannerContent.classList.add('banner-content');
 
-  imageContainer
-    .querySelectorAll('img')
-    .forEach((img) =>
-      img.closest('img').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])),
-    );
+  bannerContent.appendChild(banner);
+
+  imageContainer.appendChild(bannerContent);
+
+  const spacer = document.createElement('span');
+  spacer.classList.add('case-study-spacer');
+
+  imageContainer.appendChild(spacer);
 
   return imageContainer;
 }
