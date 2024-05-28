@@ -101,11 +101,18 @@ export default function decorate(block) {
     }, 0); // Delay to ensure proper recalculation after content changes
   };
 
-  // Attach resize event listener to adjust heights on window resize
+  const defaultCardTopContentHeight = () => {
+    const cardTopContent = ul.querySelectorAll('.cards-card-top-content');
+    cardTopContent.forEach((topText) => {
+      topText.style.height = 'auto';
+    });
+  };
+
   window.addEventListener('resize', () => {
     if (window.innerWidth >= 768) {
       cardTopContentHeight();
     }
+    defaultCardTopContentHeight();
   });
 
   // Initial call to adjust heights

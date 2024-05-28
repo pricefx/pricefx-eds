@@ -35,15 +35,15 @@ const embedVidyard = (url, autoplay) => {
   const { length, [length - 1]: video } = url.pathname.split('/');
   loadScript('https://play.vidyard.com/embed/v4.js', {});
   return `<div>
-      <img class="vidyard-player-embed"
-           src="https://play.vidyard.com/${video}.jpg"
-           alt=""
-           data-uuid="${video}"
-           data-v="4"
-           data-type="inline"
-           data-autoplay="${autoplay ? '1' : '0'}"
-           data-muted="${autoplay ? '1' : '0'}"
-           loading="lazy"/>
+    <img class="vidyard-player-embed"
+          src="https://play.vidyard.com/${video}.jpg"
+          alt=""
+          data-uuid="${video}"
+          data-v="4"
+          data-type="inline"
+          data-autoplay="${autoplay ? '1' : '0'}"
+          data-muted="${autoplay ? '1' : '0'}"
+          loading="lazy"/>
   </div>`;
 };
 
@@ -213,8 +213,9 @@ const loadEmbed = (block, link, autoplay, isPopup) => {
       block.classList.add('embed-is-loaded');
     }
   } else {
+    const buzzSprout = url.hostname.includes('buzzsprout') ? 'buzzsprout' : '';
     block.innerHTML = getDefaultEmbed(url);
-    block.classList = 'block embed';
+    block.classList = `block embed ${buzzSprout}`;
     block.classList.add('embed-is-loaded');
   }
 };
