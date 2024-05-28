@@ -98,7 +98,7 @@
       left:0;
   }
 
-  .case-study .spacer {
+  .case-study .case-study-spacer {
     display: block;
     width: 100%;
     margin: 0;
@@ -184,7 +184,7 @@
     padding: 30px;
   }
 
-  .case-study .spacer {
+  .case-study .case-study-spacer {
     display: none;
   }
   
