@@ -33,7 +33,7 @@ function createImageContainer(imageSrc, title, text, widthClass) {
   imageContainer.appendChild(bannerContent);
 
   const spacer = document.createElement('span');
-  spacer.classList.add('spacer');
+  spacer.classList.add('case-study-spacer');
 
   imageContainer.appendChild(spacer);
 
