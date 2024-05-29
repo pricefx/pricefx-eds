@@ -334,6 +334,12 @@ div.cards-card-eyebrow + div.cards-card-description {
   content: unset;
 }
 
+.cards.card-text-inline ul li:first-child {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+} 
+
 /* Resposive Styles */
 @media (width >= 768px) {
   .cards > ul {
