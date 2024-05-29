@@ -338,7 +338,16 @@ div.cards-card-eyebrow + div.cards-card-description {
   border: none;
   background: transparent;
   box-shadow: none;
-} 
+}
+
+.cards.two-column.card-featured-resource ul li:first-child {
+  align-items: center;
+  justify-content: center;
+}
+
+.cards.two-column.card-featured-resource ul li:first-child .cards-card-body {
+  height: auto;
+}
 
 /* Resposive Styles */
 @media (width >= 768px) {
