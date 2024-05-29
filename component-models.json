@@ -2076,7 +2076,7 @@
         "label": "Alt Text"
       },
       {
-        "component": "aem-content",
+        "component": "reference",
         "valueType": "string",
         "name": "assetLink",
         "value": "",
