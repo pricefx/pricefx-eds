@@ -267,6 +267,15 @@ p:not(:last-child) {
   margin-bottom: 20px;
 }
 
+ul + p,
+ol + p {
+  margin-top: 24px;
+}
+
+ol li ol li {
+  list-style-type: lower-alpha;
+}
+
 img {
   height: auto;
   max-width: 100%;
@@ -275,6 +284,7 @@ img {
 ul li, ol li {
     margin-bottom: 5px;
     margin-left: 25px;
+    text-align: left;
 }
 
 /*
@@ -675,10 +685,6 @@ body.article {
   ul li p:not(:last-child),
   ol li p:not(:last-child) {
     margin-bottom: 0;
-  }
-
-  ul + p {
-    margin-top: 24px;
   }
 
   .columns, .embed, p picture img, h2, h3, h4, h5, h6 {
