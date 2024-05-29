@@ -1,7 +1,7 @@
 [
   {
     "id": "main",
-    "components": ["section", "spacer"]
+    "components": ["section", "spacer", "cookie-banner"]
   },
   {
     "id": "columns",
