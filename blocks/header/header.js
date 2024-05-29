@@ -208,9 +208,18 @@ export default async function decorate(block) {
       if (level2Label.includes('|')) {
         const linkInfoArray = level2Label.split('|');
         markup += `
-          <li class="nav-list-level-2-item">
-            <a href="${linkInfoArray[1].trim()}" target="${linkInfoArray.length >= 2 ? linkInfoArray[2].trim() : '_self'}" ${linkInfoArray.length >= 2 ? "class='level-2-item-link'" : ''} tabindex="0">${linkInfoArray[0].trim()}</a>
-          </li>
+          ${
+            linkInfoArray[0].trim().includes('Sign In')
+              ? `<li class="nav-list-level-2-item">
+              <a href="${linkInfoArray[1].trim()}" target="${linkInfoArray[2].trim()}" class="level-2-item-link level-2-item-link--sign-in" tabindex="0">${linkInfoArray[0].trim()}</a>
+            </li>`
+              : `<li class="nav-list-level-2-item category">
+              <a href="${linkInfoArray[1].trim()}" target="${linkInfoArray[2].trim()}" class="nav-list-level-2-item-category">${linkInfoArray[0].trim()}</a>
+              <ul class="nav-list-level-3">
+                ${renderLevelThreeItems(level2Label)}
+              </ul>
+            </li>`
+          }
         `;
       } else if (!level2Label.includes('|') && level2Label !== '') {
         markup += `
@@ -310,7 +319,11 @@ export default async function decorate(block) {
     });
 
     navListLevelOne.addEventListener('mouseover', () => {
-      allMegamenu.forEach((megamenu) => megamenu.classList.remove('megamenu-wrapper--active'));
+      navListLevelOne.blur();
+      allMegamenu.forEach((megamenu) => {
+        megamenu.classList.remove('megamenu-wrapper--active');
+        megamenu.addEventListener('mouseout', () => navListLevelOne.blur());
+      });
 
       // Reset Search ADA
       resetSearchCTA(searchToggle);
@@ -457,7 +470,14 @@ export default async function decorate(block) {
       if (level2Label.includes('|')) {
         const linkInfoArray = level2Label.split('|');
         markup += `
-          <a class="nav-mobile-list-level-2-category-link" href="${linkInfoArray[1].trim()}" target="${linkInfoArray.length >= 2 ? linkInfoArray[2].trim() : '_self'}">${linkInfoArray[0].trim()}</a>
+          ${
+            linkInfoArray[0].trim().includes('Sign In')
+              ? `<a class="nav-mobile-list-level-2-category-link" href="${linkInfoArray[1].trim()}" target="${linkInfoArray[2].trim()}">${linkInfoArray[0].trim()}</a>`
+              : `<ul class="nav-mobile-list-level-2-category">
+              <a class="nav-mobile-list-level-2-category-link" href="${linkInfoArray[1].trim()}" target="${linkInfoArray[2].trim()}">${linkInfoArray[0].trim()}</a>
+              ${renderMobileLevelThreeItems(level2Label)}
+            </ul>`
+          }
         `;
       } else if (!level2Label.includes('|') && level2Label !== '') {
         markup += `
