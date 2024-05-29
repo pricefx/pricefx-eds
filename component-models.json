@@ -991,6 +991,12 @@
         "label": "Iframe Two Column",
         "name": "iframeTwoColumn",
         "valueType": "boolean"
+      },
+      {
+        "component": "boolean",
+        "label": "Section Text / Card inline",
+        "name": "sectionCardInline",
+        "valueType": "boolean"
       }
     ]
   },
