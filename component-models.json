@@ -673,8 +673,8 @@
             "value": "card-im-pricing"
           },
           {
-            "name": "Card / Text Inline",
-            "value": "card-text-inline"
+            "name": "Card Two Featured Resource",
+            "value": "card-featured-resource"
           }
         ]
       }

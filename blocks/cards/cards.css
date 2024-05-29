@@ -334,7 +334,7 @@ div.cards-card-eyebrow + div.cards-card-description {
   content: unset;
 }
 
-.cards.card-text-inline ul li:first-child {
+.cards.card-featured-resource ul li:first-child {
   border: none;
   background: transparent;
   box-shadow: none;
