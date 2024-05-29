@@ -334,6 +334,25 @@ div.cards-card-eyebrow + div.cards-card-description {
   content: unset;
 }
 
+.cards.card-featured-resource ul li:first-child {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+.cards.two-column.card-featured-resource ul li:first-child {
+  align-items: center;
+  justify-content: center;
+}
+
+.cards.two-column.card-featured-resource ul li:first-child .cards-card-body {
+  height: auto;
+}
+
+.cards.two-column.card-featured-resource ul li:first-child .cards-card-description {
+  margin-bottom: 0;
+}
+
 /* Resposive Styles */
 @media (width >= 768px) {
   .cards > ul {
