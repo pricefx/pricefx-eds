@@ -671,6 +671,10 @@
           {
             "name": "Card IM Pricing Variation",
             "value": "card-im-pricing"
+          },
+          {
+            "name": "Card / Text Inline",
+            "value": "card-text-inline"
           }
         ]
       }
@@ -990,12 +994,6 @@
         "component": "boolean",
         "label": "Iframe Two Column",
         "name": "iframeTwoColumn",
-        "valueType": "boolean"
-      },
-      {
-        "component": "boolean",
-        "label": "Section Text / Card inline",
-        "name": "sectionCardInline",
         "valueType": "boolean"
       }
     ]
