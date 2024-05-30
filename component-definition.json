@@ -696,7 +696,7 @@
                 "template": {
                   "name": "Cookie Banner",
                   "model": "cookie-banner",
-                  "cookieBannerTitle": "We value your privacy",
+                  "cookieBannerText": "We value your privacy",
                   "rejectCtaLabel": "Reject All",
                   "acceptCtaLabel": "Accept All"
                 }
