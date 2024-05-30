@@ -1004,7 +1004,7 @@
       {
         "component": "aem-content",
         "valueType": "string",
-        "name": "content_button1Link",
+        "name": "content_button1",
         "value": "",
         "label": "Button Link"
       },
