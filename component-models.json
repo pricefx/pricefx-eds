@@ -1002,7 +1002,7 @@
     "id": "hero",
     "fields": [
       {
-        "component": "text-input",
+        "component": "aem-content",
         "valueType": "string",
         "name": "hero_cta",
         "value": "",
