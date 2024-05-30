@@ -1004,14 +1004,14 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "content_cta1",
+        "name": "hero_cta",
         "value": "",
         "label": "Button Link"
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "content_cta1Text",
+        "name": "hero_ctaText",
         "value": "",
         "label": "Button Text"
       }
