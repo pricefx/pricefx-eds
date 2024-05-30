@@ -671,6 +671,10 @@
           {
             "name": "Card IM Pricing Variation",
             "value": "card-im-pricing"
+          },
+          {
+            "name": "Card Two Featured Resource",
+            "value": "card-featured-resource"
           }
         ]
       }

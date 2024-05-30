@@ -14,5 +14,8 @@
     "/content/pricefx.resource/partners-index.json:/partners-index.json",
     "/content/pricefx/en/spreadsheets/customers-logo:/customers-logo.json"
   ],
-  "includes": ["/content/pricefx/"]
+  "includes": [
+    "/content/pricefx/",
+    "/content/dam/pricefx/"
+  ]
 }

@@ -36,8 +36,7 @@
 
 .quote .quote-logo{
   width: 136px;
-  height: calc((40 / 16) * 1rem);
-  margin-bottom: calc((20 / 16) * 1rem);
+  min-height: calc((40 / 16) * 1rem);
 }
 
 .quote .quote-main-container {

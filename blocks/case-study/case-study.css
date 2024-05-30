@@ -85,6 +85,7 @@
   color: var(--c-white);
   box-sizing: border-box;
   margin: 20px;
+  word-break: break-word;
 } 
 
 .case-study .banner-content {
@@ -105,8 +106,10 @@
     padding: 41% 0 0;
   }
 
-  .case-study .button-container {
-      padding-bottom: 20px;
+  .case-study .button-container .button {
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
   }
 }
 
