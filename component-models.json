@@ -1032,14 +1032,14 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "image",
+        "name": "hero_image",
         "label": "Image",
         "multi": false
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "imageAlt",
+        "name": "hero_imageAlt",
         "label": "Image Alt Text",
         "value": ""
       },
