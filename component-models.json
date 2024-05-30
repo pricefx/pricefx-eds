@@ -159,6 +159,13 @@
         "name": "alt",
         "value": "Default alt",
         "label": "Alt Text"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "imageLink",
+        "value": "",
+        "label": "Link"
       }
     ]
   },
