@@ -88,33 +88,12 @@
         ]
       },
       {
-        "component": "select",
-        "name": "fontColor",
-        "value": "title-dark-grey",
-        "label": "Color",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Gray - Default",
-            "value": "title-dark-grey"
-          },
-          {
-            "name": "Dark Blue",
-            "value": "title-dark-blue-gradient"
-          }
-        ]
-      },
-      {
         "component": "multiselect",
         "name": "classes",
-        "placeholder": "Select Spacing",
-        "label": "Spacing",
+        "placeholder": "Color, Spacing",
+        "label": "Color, Spacing",
         "valueType": "string",
         "options": [
-          {
-            "name": "Default",
-            "value": ""
-          },
           {
             "name": "Small",
             "value": "title-spacer-small"
@@ -138,6 +117,14 @@
           {
             "name": "Remove Bottom Spacer",
             "value": "title-no-bottom-margin"
+          },
+          {
+            "name": "Gray",
+            "value": "title-dark-grey"
+          },
+          {
+            "name": "Dark Blue - Default",
+            "value": "title-dark-blue-gradient"
           }
         ]
       }
