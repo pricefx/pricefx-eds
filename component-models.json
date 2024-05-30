@@ -1004,21 +1004,14 @@
       {
         "component": "aem-content",
         "valueType": "string",
-        "name": "link",
+        "name": "hero_cta1",
         "value": "",
         "label": "Button Link"
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "linkTitle",
-        "value": "",
-        "label": "Button Title"
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "linkText",
+        "name": "hero_cta1Text",
         "value": "",
         "label": "Button Text"
       }
