@@ -1021,29 +1021,6 @@
         "name": "linkText",
         "value": "",
         "label": "Button Text"
-      },
-      {
-        "component": "radio-group",
-        "label": "Button 1 Style",
-        "name": "linkType",
-        "valueType": "string",
-        "value": "primary",
-        "options": [
-          {
-            "name": "Primary",
-            "value": "primary"
-          },
-          {
-            "name": "Secondary",
-            "value": "secondary"
-          }
-        ]
-      },
-      {
-        "component": "boolean",
-        "label": "Target Blank",
-        "name": "linkTarget",
-        "valueType": "boolean"
       }
     ]
   },
