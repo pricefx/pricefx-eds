@@ -1004,21 +1004,21 @@
       {
         "component": "aem-content",
         "valueType": "string",
-        "name": "content_button1",
+        "name": "content_cta1",
         "value": "",
         "label": "Button Link"
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "content_button1Title",
+        "name": "content_cta1Title",
         "value": "",
         "label": "Button Title"
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "content_button1Text",
+        "name": "content_cta1Text",
         "value": "",
         "label": "Button Text"
       }
