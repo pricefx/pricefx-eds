@@ -721,14 +721,14 @@
       {
         "component": "aem-content",
         "valueType": "string",
-        "name": "buttonLink",
+        "name": "card_cta",
         "value": "",
         "label": "Button Link"
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "buttonLabel",
+        "name": "card_ctaText",
         "value": "",
         "label": "Button Label"
       },
