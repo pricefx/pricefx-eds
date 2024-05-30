@@ -1009,7 +1009,7 @@
         "label": "Button Link"
       },
       {
-        "component": "aem-content",
+        "component": "text-input",
         "valueType": "string",
         "name": "content_button1Text",
         "value": "",
