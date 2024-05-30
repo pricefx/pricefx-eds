@@ -1131,14 +1131,14 @@
         "valueType": "string",
         "name": "linkTitle",
         "value": "",
-        "label": "Button Label"
+        "label": "Button Title"
       },
       {
         "component": "text-input",
         "valueType": "string",
         "name": "linkText",
         "value": "",
-        "label": "Button Label"
+        "label": "Button Text"
       },
       {
         "component": "radio-group",
