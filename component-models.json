@@ -2651,5 +2651,30 @@
         "description": "Label for the default region filter option. Will serve as an 'all' filter option."
       }
     ]
+  },
+  {
+    "id": "cookie-banner",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "cookieBannerText",
+        "label": "Cookie Banner Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "rejectCtaLabel",
+        "value": "Reject All",
+        "label": "Reject CTA Label"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "acceptCtaLabel",
+        "value": "Accept All",
+        "label": "Accept CTA Label"
+      }
+    ]
   }
 ]

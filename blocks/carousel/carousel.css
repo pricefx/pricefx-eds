@@ -234,6 +234,12 @@ main .carousel:has(.carousel[data-carousel-type='carousel-quote']) .carousel > p
   padding: 0;
 }
 
+.carousel-slide a.button {
+  background: transparent;
+  margin: 0;
+  padding: 0;
+}
+
 .carousel-prev-cta,
 .carousel-next-cta {
   background: transparent;
@@ -270,7 +276,7 @@ main .carousel:has(.carousel[data-carousel-type='carousel-quote']) .carousel > p
 @media (width <= 1199px) {
   .carousel[data-carousel-type='carousel-quote'] {
     flex-direction: column;
-    padding: 0;
+    padding: var(--spacing-xlarge) 0;
   }
 
   .carousel[data-carousel-type='carousel-quote'] .carousel-details,
