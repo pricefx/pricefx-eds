@@ -1011,6 +1011,13 @@
       {
         "component": "text-input",
         "valueType": "string",
+        "name": "content_button1Title",
+        "value": "",
+        "label": "Button Title"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
         "name": "content_button1Text",
         "value": "",
         "label": "Button Text"
