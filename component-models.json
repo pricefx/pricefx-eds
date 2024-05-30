@@ -1002,9 +1002,9 @@
     "id": "hero",
     "fields": [
       {
-        "component": "text-input",
+        "component": "aem-content",
         "valueType": "string",
-        "name": "content_button1",
+        "name": "content_button1Link",
         "value": "",
         "label": "Button Link"
       },
