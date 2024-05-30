@@ -149,23 +149,16 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "image",
+        "name": "fileReference",
         "label": "Image",
         "multi": false
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "imageAlt",
+        "name": "alt",
         "value": "Default alt",
         "label": "Alt Text"
-      },
-      {
-        "component": "aem-content",
-        "valueType": "string",
-        "name": "imageLink",
-        "value": "",
-        "label": "Image Link"
       }
     ]
   },
@@ -1032,14 +1025,14 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "hero_image",
+        "name": "image",
         "label": "Image",
         "multi": false
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "hero_imageAlt",
+        "name": "imageAlt",
         "label": "Image Alt Text",
         "value": ""
       },
