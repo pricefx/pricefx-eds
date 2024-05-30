@@ -71,13 +71,13 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "heading",
+        "name": "title",
         "value": "",
         "label": "Title"
       },
       {
         "component": "select",
-        "name": "headingType",
+        "name": "titleType",
         "value": "h2",
         "label": "Type",
         "valueType": "string",
@@ -111,8 +111,8 @@
       {
         "component": "multiselect",
         "name": "classes",
-        "placeholder": "Color, Spacing",
-        "label": "Color, Spacing",
+        "placeholder": "Title Pfx Styles",
+        "label": "Title Pfx Styles",
         "valueType": "string",
         "options": [
           {
