@@ -1122,7 +1122,7 @@
       {
         "component": "radio-group",
         "label": "Button 1 Style",
-        "name": "buttonOneStyle",
+        "name": "linkType",
         "valueType": "string",
         "value": "primary",
         "options": [
@@ -1139,21 +1139,21 @@
       {
         "component": "aem-content",
         "valueType": "string",
-        "name": "buttonOneLink",
+        "name": "link",
         "value": "",
         "label": "Button Link"
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "buttonOneLabel",
+        "name": "linkTitle",
         "value": "",
         "label": "Button Label"
       },
       {
         "component": "boolean",
         "label": "Target Blank",
-        "name": "isTargetBlankOne",
+        "name": "linkTarget",
         "valueType": "boolean"
       },
       {
