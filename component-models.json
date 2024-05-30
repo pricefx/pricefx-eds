@@ -41,6 +41,23 @@
             "value": "h6"
           }
         ]
+      },
+      {
+        "component": "select",
+        "name": "fontColor",
+        "value": "title-dark-grey",
+        "label": "Color",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Gray - Default",
+            "value": "title-dark-grey"
+          },
+          {
+            "name": "Dark Blue",
+            "value": "title-dark-blue-gradient"
+          }
+        ]
       }
     ]
   },
