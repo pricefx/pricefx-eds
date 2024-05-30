@@ -1,9 +1,10 @@
 export default async function decorate(block) {
-  const titleText = block.children[0]?.querySelector('p')?.textContent.trim() || '';
-  const titleType = block.children[1]?.querySelector('p')?.textContent.trim() || 'h2';
-  block.innerHTML = '';
+  const [heading, headingType] = block;
+  const titleText = heading?.textContent.trim() || '';
+  const titleType = headingType?.textContent.trim() || 'h2';
+  block.textContent = '';
   if (titleText) {
-    const titleElement = document.createElement(titleType);
+    const titleElement = block.createElement(titleType);
     titleElement.innerHTML = titleText;
     block.append(titleElement);
   }
