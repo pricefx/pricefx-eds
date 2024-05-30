@@ -1122,21 +1122,21 @@
       {
         "component": "aem-content",
         "valueType": "string",
-        "name": "link",
+        "name": "cta1",
         "value": "",
         "label": "Button Link"
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "linkText",
+        "name": "cta1Text",
         "value": "",
         "label": "Button Label"
       },
       {
         "component": "radio-group",
         "label": "Button 1 Style",
-        "name": "linkType",
+        "name": "cta1Type",
         "valueType": "string",
         "value": "primary",
         "options": [
@@ -1153,7 +1153,7 @@
       {
         "component": "boolean",
         "label": "Target Blank",
-        "name": "linkTarget",
+        "name": "cta1Target",
         "valueType": "boolean"
       }
     ]
