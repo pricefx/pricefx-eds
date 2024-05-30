@@ -71,13 +71,13 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "title",
+        "name": "heading",
         "value": "",
         "label": "Title"
       },
       {
         "component": "select",
-        "name": "titleType",
+        "name": "headingType",
         "value": "h2",
         "label": "Type",
         "valueType": "string",
