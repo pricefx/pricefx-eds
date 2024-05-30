@@ -41,6 +41,27 @@
             "value": "h6"
           }
         ]
+      },
+      {
+        "component": "select",
+        "name": "style",
+        "value": "",
+        "label": "Color",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "default",
+            "value": ""
+          },
+          {
+            "name": "primary",
+            "value": "primary"
+          },
+          {
+            "name": "secondary",
+            "value": "secondary"
+          }
+        ]
       }
     ]
   },
