@@ -67,7 +67,7 @@ async function processTab(tab, index, block, tablist) {
   const mobileAccordion = document.createElement('button');
   mobileAccordion.className = 'tabs-tab-mobile';
   mobileAccordion.id = `tab-${id}`;
-  button.innerHTML = tab.innerHTML;
+  mobileAccordion.innerHTML = tab.innerHTML;
   mobileAccordion.setAttribute('aria-expanded', false);
   const tabContent = tabpanel.querySelector('.tab-content-wrapper');
   tabContent?.setAttribute('aria-hidden', true);
