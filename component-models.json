@@ -585,6 +585,10 @@
           {
             "name": "Icons For List Tag",
             "value": "icons-for-li"
+          },
+          {
+            "name": "Aspect Ratio 4:3",
+            "value": "aspect-ratio-4-3"
           }
         ]
       }
