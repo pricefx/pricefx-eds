@@ -88,6 +88,10 @@
   content: var(--icon-minus);
 }
 
+.tabs .tabs-tab p:not(:last-child) {
+  margin-bottom: 10px;
+}
+
 /* Vertical Tabs Styles */
 .tabs.vertical .tabs-tab {
   padding: 10px 20px;
