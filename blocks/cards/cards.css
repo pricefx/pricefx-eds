@@ -340,6 +340,19 @@ div.cards-card-eyebrow + div.cards-card-description {
   box-shadow: none;
 }
 
+.cards.card-featured-resource ul li:first-child h1,
+.cards.card-featured-resource ul li:first-child h2,
+.cards.card-featured-resource ul li:first-child h3,
+.cards.card-featured-resource ul li:first-child h4,
+.cards.card-featured-resource ul li:first-child h5,
+.cards.card-featured-resource ul li:first-child h6 {
+  margin-top: 0;
+}
+
+.cards.card-featured-resource ul li:first-child .cards-card-body {
+  margin: 0;
+}
+
 .cards.two-column.card-featured-resource ul li:first-child {
   align-items: center;
   justify-content: center;
