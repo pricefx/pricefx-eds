@@ -1297,6 +1297,19 @@
         "value": ""
       },
       {
+        "component": "multiselect",
+        "label": "Variations",
+        "name": "classes",
+        "valueType": "string",
+        "value": "",
+        "options": [
+          {
+            "name": "Overlay Text Dark Variation",
+            "value": "embed-overlay-text--dark"
+          }
+        ]
+      },
+      {
         "component": "boolean",
         "label": "Enable PopUp Modal",
         "name": "popUpModal",
