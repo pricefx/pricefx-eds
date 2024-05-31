@@ -82,6 +82,7 @@
   content: var(--icon-plus);
   position: absolute;
   right: 0;
+  top: 14px;
 }
 
 .tabs .tabs-tab-mobile[aria-expanded = 'true']::after {
