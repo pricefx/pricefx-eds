@@ -1,4 +1,4 @@
-import { environmentMode } from '../../scripts/global-functions.js';
+import { environmentMode, processUrl } from '../../scripts/global-functions.js';
 import { decorateIcons } from '../../scripts/aem.js';
 
 export default function decorate(block) {
@@ -19,6 +19,8 @@ export default function decorate(block) {
         if (download?.textContent.trim() === 'download') {
           download.classList.add('download-btn');
           download.setAttribute('aria-label', 'download');
+          const processLink = processUrl(download.href);
+          download.href = processLink;
           const downloadImg = `<span class="icon icon-download"></span>`;
           download.innerHTML = downloadImg;
           decorateIcons(download, '', 'Pricefx', 'png');
