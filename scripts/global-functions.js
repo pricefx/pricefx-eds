@@ -99,7 +99,7 @@ function prependDomain(url, env) {
   }
 
   const domain = getEnvironmentDomain(env);
-  return domain ? `${domain}${url}` : url;
+  return domain ? `https://${domain}${url}` : url;
 }
 
 /**
