@@ -679,6 +679,10 @@
           {
             "name": "Card Two Featured Resource",
             "value": "card-featured-resource"
+          },
+          {
+            "name": "Card Left Aligned",
+            "value": "card-left-aligned"
           }
         ]
       }

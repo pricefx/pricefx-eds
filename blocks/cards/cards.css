@@ -398,4 +398,8 @@ div.cards-card-eyebrow + div.cards-card-description {
   .cards.four-column > ul > li {
     width: calc(25% - 16px);
   }
+
+  .cards.card-left-aligned > ul {
+    justify-content: left;
+  }
 }
