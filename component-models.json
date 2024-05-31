@@ -2689,5 +2689,16 @@
         "label": "Accept CTA Label"
       }
     ]
+  },
+  {
+    "id": "audio-embed",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "audioInput",
+        "label": "Audio File Path",
+        "valueType": "string"
+      }
+    ]
   }
 ]
