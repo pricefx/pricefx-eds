@@ -799,7 +799,7 @@
     "id": "tab-item",
     "fields": [
       {
-        "component": "text",
+        "component": "richtext",
         "valueType": "string",
         "name": "tab-title",
         "label": "Tab Title",
