@@ -23,6 +23,7 @@
   font-size: var(--base-font-size);
   font-style: normal;
   font-weight: var(--fw-med);
+  flex-direction: column;
   gap: 8px;
   justify-content: center;
   line-height: 16px;
