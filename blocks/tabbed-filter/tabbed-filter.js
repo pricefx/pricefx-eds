@@ -27,17 +27,34 @@ const getFilterOptions = (clientsDataJson, filterName) => {
   return uniqueOptionsArray;
 };
 
+// Remove duplicate client from data
+const removeDuplicate = (clientsDataJson) => {
+  const uniqueClientsData = clientsDataJson.reduce((allData, currentData) => {
+    const i = allData.findIndex((e) => e.logo === currentData.logo);
+    if (i > -1) {
+      allData[i].logo = currentData.logo;
+    } else {
+      allData.push(currentData);
+    }
+    return allData;
+  }, []);
+  return uniqueClientsData;
+};
+
 // Render client logos from JSON data
 const renderClientLogos = (clientsDataJson, noResultsText) => {
   let markup = '';
   if (clientsDataJson.length > 0) {
-    clientsDataJson.forEach((client) => {
+    const uniqueClientsData = removeDuplicate(clientsDataJson);
+    uniqueClientsData.forEach((client) => {
       const imageAltText = client['alt text'].includes('-')
         ? client['alt text'].replaceAll('-', ' ')
         : client['alt text'];
       markup += `
         <li class="tabbed-filter__content-item">
-          <img class="tabbed-filter__content-item-image" src="${client.logo}" alt="${imageAltText}">
+          <picture>
+            <img class="tabbed-filter__content-item-image" src="${client.logo}" alt="${imageAltText}">
+          </picture>
         </li>
       `;
     });
@@ -62,7 +79,11 @@ const renderFilterOptions = (filterOptions) => {
 
 // Append client logos markup
 const appendClientLogos = (clientsDataJson, clientLogosContainer, noResultsText) => {
+  clientLogosContainer.classList.remove('tabbed-filter__content-container--rendered');
   clientLogosContainer.innerHTML = renderClientLogos(clientsDataJson, noResultsText);
+  setTimeout(() => {
+    clientLogosContainer.classList.add('tabbed-filter__content-container--rendered');
+  }, 700);
 };
 
 // Handle filter logic
@@ -77,17 +98,20 @@ const handleFilter = (
 ) => {
   let currentFilteredData = [...clientsDataJson];
   let initialCurrentFilteredData;
+  let uniqueFilteredData;
   if (industriesFilter.value !== 'all-industries' && regionsFilter.value === 'all-regions') {
     currentFilteredData = currentFilteredData.filter(
       (filteredData) => filteredData.industries.trim().toLowerCase() === industriesFilter.value,
     );
-    initialCurrentFilteredData = currentFilteredData.slice(currentFilteredData, 12);
+    uniqueFilteredData = removeDuplicate(currentFilteredData);
+    initialCurrentFilteredData = uniqueFilteredData.slice(uniqueFilteredData, 12);
     appendClientLogos(initialCurrentFilteredData, clientLogosContainer, noResultsText);
   } else if (industriesFilter.value === 'all-industries' && regionsFilter.value !== 'all-regions') {
     currentFilteredData = currentFilteredData.filter(
       (filteredData) => filteredData.region.trim().toLowerCase() === regionsFilter.value,
     );
-    initialCurrentFilteredData = currentFilteredData.slice(currentFilteredData, 12);
+    uniqueFilteredData = removeDuplicate(currentFilteredData);
+    initialCurrentFilteredData = uniqueFilteredData.slice(uniqueFilteredData, 12);
     appendClientLogos(initialCurrentFilteredData, clientLogosContainer, noResultsText);
   } else if (industriesFilter.value !== 'all-industries' && regionsFilter.value !== 'all-regions') {
     currentFilteredData = currentFilteredData.filter(
@@ -95,10 +119,11 @@ const handleFilter = (
         filteredData.industries.trim().toLowerCase() === industriesFilter.value &&
         filteredData.region.trim().toLowerCase() === regionsFilter.value,
     );
-    initialCurrentFilteredData = currentFilteredData.slice(currentFilteredData, 12);
+    uniqueFilteredData = removeDuplicate(currentFilteredData);
+    initialCurrentFilteredData = uniqueFilteredData.slice(uniqueFilteredData, 12);
     appendClientLogos(initialCurrentFilteredData, clientLogosContainer, noResultsText);
   } else {
-    currentFilteredData = clientsDataJson;
+    currentFilteredData = removeDuplicate(clientsDataJson);
     initialCurrentFilteredData = currentFilteredData.slice(currentFilteredData, 12);
     appendClientLogos(initialCurrentFilteredData, clientLogosContainer, noResultsText);
   }
@@ -149,7 +174,8 @@ export default async function decorate(block) {
 
   // Fetch client logos from JSON endpoint
   const clientData = await ffetch(spreadsheetPath.textContent.trim()).all();
-  const initialClientData = clientData.slice(clientData, 12);
+  const uniqueClientsData = removeDuplicate(clientData);
+  const initialClientData = uniqueClientsData.slice(clientData, 12);
   let filteredClientsData = clientData;
 
   // Create eyebrow element
@@ -251,6 +277,7 @@ export default async function decorate(block) {
     block.append(showMoreCta);
 
     showMoreCta.addEventListener('click', () => {
+      contentContainer.innerHTML = '';
       if (showMoreCta.getAttribute('aria-expanded') === 'false') {
         showMoreCta.setAttribute('aria-expanded', 'true');
         showMoreCta.textContent = showLessLabel.textContent.trim();
@@ -258,7 +285,9 @@ export default async function decorate(block) {
       } else {
         showMoreCta.setAttribute('aria-expanded', 'false');
         showMoreCta.textContent = showMoreLabel.textContent.trim();
-        handleCtaClick(industriesFilter, regionsFilter, initialClientData, filteredClientsData, contentContainer);
+        const uniqueFilteredData = removeDuplicate(filteredClientsData);
+        const initialFilteredData = uniqueFilteredData.slice(uniqueFilteredData, 12);
+        handleCtaClick(industriesFilter, regionsFilter, initialClientData, initialFilteredData, contentContainer);
       }
     });
   }
@@ -266,6 +295,7 @@ export default async function decorate(block) {
   // Handle filter logics
   const showMoreCta = document.querySelector('.tabbed-filter__show-more-cta');
   industriesFilter.addEventListener('change', () => {
+    contentContainer.innerHTML = '';
     filteredClientsData = handleFilter(
       clientData,
       industriesFilter,
@@ -277,6 +307,7 @@ export default async function decorate(block) {
   });
 
   regionsFilter.addEventListener('change', () => {
+    contentContainer.innerHTML = '';
     filteredClientsData = handleFilter(
       clientData,
       industriesFilter,

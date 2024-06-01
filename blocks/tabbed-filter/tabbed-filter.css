@@ -95,7 +95,14 @@
   list-style-type: none;
   margin: 0 auto 80px;
   max-width: 963px;
+  opacity: 0;
+  transition: var(--base-transition);
   width: 100%;
+}
+
+.tabbed-filter__content-container--rendered {
+  opacity: 1;
+  transition: var(--base-transition);
 }
 
 .tabbed-filter__content-item {
@@ -130,6 +137,7 @@
   display: block;
   height: 100%;
   max-height: 81px;
+  padding: 0 19px;
   object-fit: contain;
   width: auto;
 }
