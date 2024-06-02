@@ -1128,6 +1128,13 @@
         "description": "ⓘ Heading (H1) and Description"
       },
       {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "button1",
+        "value": "",
+        "label": "Button Link"
+      },
+      {
         "component": "radio-group",
         "label": "Button 1 Style",
         "name": "button1Type",
@@ -1145,13 +1152,6 @@
         ]
       },
       {
-        "component": "aem-content",
-        "valueType": "string",
-        "name": "button1",
-        "value": "",
-        "label": "Button Link"
-      },
-      {
         "component": "text-input",
         "valueType": "string",
         "name": "button1Text",
@@ -1163,6 +1163,13 @@
         "label": "Target Blank",
         "name": "button1Target",
         "valueType": "boolean"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "button2",
+        "value": "",
+        "label": "Button Link"
       },
       {
         "component": "radio-group",
@@ -1182,13 +1189,6 @@
         ]
       },
       {
-        "component": "aem-content",
-        "valueType": "string",
-        "name": "button2",
-        "value": "",
-        "label": "Button Link"
-      },
-      {
         "component": "text-input",
         "valueType": "string",
         "name": "button2Text",
@@ -1200,6 +1200,13 @@
         "label": "Target Blank",
         "name": "button2Target",
         "valueType": "boolean"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "button3",
+        "value": "",
+        "label": "Button Link"
       },
       {
         "component": "radio-group",
@@ -1217,13 +1224,6 @@
             "value": "secondary"
           }
         ]
-      },
-      {
-        "component": "aem-content",
-        "valueType": "string",
-        "name": "button3",
-        "value": "",
-        "label": "Button Link"
       },
       {
         "component": "text-input",
