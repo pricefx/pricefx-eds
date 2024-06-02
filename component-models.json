@@ -1130,7 +1130,7 @@
       {
         "component": "radio-group",
         "label": "Button 1 Style",
-        "name": "buttonOneStyle",
+        "name": "button1Type",
         "valueType": "string",
         "value": "primary",
         "options": [
@@ -1147,27 +1147,27 @@
       {
         "component": "aem-content",
         "valueType": "string",
-        "name": "buttonOneLink",
+        "name": "button1",
         "value": "",
         "label": "Button Link"
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "buttonOneLabel",
+        "name": "button1Text",
         "value": "",
         "label": "Button Label"
       },
       {
         "component": "boolean",
         "label": "Target Blank",
-        "name": "isTargetBlankOne",
+        "name": "button1Target",
         "valueType": "boolean"
       },
       {
         "component": "radio-group",
         "label": "Button 2 Style",
-        "name": "buttonTwoStyle",
+        "name": "button2Type",
         "value": "primary",
         "valueType": "string",
         "options": [
@@ -1184,27 +1184,27 @@
       {
         "component": "aem-content",
         "valueType": "string",
-        "name": "buttonTwoLink",
+        "name": "button2",
         "value": "",
         "label": "Button Link"
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "buttonTwoLabel",
+        "name": "button2Text",
         "value": "",
         "label": "Button Label"
       },
       {
         "component": "boolean",
         "label": "Target Blank",
-        "name": "isTargetBlankTwo",
+        "name": "button2Target",
         "valueType": "boolean"
       },
       {
         "component": "radio-group",
         "label": "Button 3 Style",
-        "name": "buttonThreeStyle",
+        "name": "button3Type",
         "valueType": "string",
         "value": "primary",
         "options": [
@@ -1221,21 +1221,21 @@
       {
         "component": "aem-content",
         "valueType": "string",
-        "name": "buttonThreeLink",
+        "name": "button3",
         "value": "",
         "label": "Button Link"
       },
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "buttonThreeLabel",
+        "name": "button3Text",
         "value": "",
         "label": "Button Label"
       },
       {
         "component": "boolean",
         "label": "Target Blank",
-        "name": "isTargetBlankThree",
+        "name": "button3Target",
         "valueType": "boolean"
       },
       {
