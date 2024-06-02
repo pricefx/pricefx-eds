@@ -1135,6 +1135,13 @@
         "label": "Button Link"
       },
       {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "content_button1Text",
+        "value": "",
+        "label": "Button Label"
+      },
+      {
         "component": "radio-group",
         "label": "Button 1 Style",
         "name": "content_button1Type",
@@ -1152,13 +1159,6 @@
         ]
       },
       {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "content_button1Text",
-        "value": "",
-        "label": "Button Label"
-      },
-      {
         "component": "boolean",
         "label": "Target Blank",
         "name": "button1Target",
@@ -1170,6 +1170,13 @@
         "name": "content_button2",
         "value": "",
         "label": "Button Link"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "content_button2Text",
+        "value": "",
+        "label": "Button Label"
       },
       {
         "component": "radio-group",
@@ -1189,13 +1196,6 @@
         ]
       },
       {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "content_button2Text",
-        "value": "",
-        "label": "Button Label"
-      },
-      {
         "component": "boolean",
         "label": "Target Blank",
         "name": "button2Target",
@@ -1207,6 +1207,13 @@
         "name": "content_button3",
         "value": "",
         "label": "Button Link"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "content_button3Text",
+        "value": "",
+        "label": "Button Label"
       },
       {
         "component": "radio-group",
@@ -1224,13 +1231,6 @@
             "value": "secondary"
           }
         ]
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "content_button3Text",
-        "value": "",
-        "label": "Button Label"
       },
       {
         "component": "boolean",
