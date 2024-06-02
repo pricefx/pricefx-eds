@@ -1130,14 +1130,14 @@
       {
         "component": "aem-content",
         "valueType": "string",
-        "name": "button1",
+        "name": "content_button1",
         "value": "",
         "label": "Button Link"
       },
       {
         "component": "radio-group",
         "label": "Button 1 Style",
-        "name": "button1Type",
+        "name": "content_button1Type",
         "valueType": "string",
         "value": "primary",
         "options": [
@@ -1154,7 +1154,7 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "button1Text",
+        "name": "content_button1Text",
         "value": "",
         "label": "Button Label"
       },
@@ -1167,14 +1167,14 @@
       {
         "component": "aem-content",
         "valueType": "string",
-        "name": "button2",
+        "name": "content_button2",
         "value": "",
         "label": "Button Link"
       },
       {
         "component": "radio-group",
         "label": "Button 2 Style",
-        "name": "button2Type",
+        "name": "content_button2Type",
         "value": "primary",
         "valueType": "string",
         "options": [
@@ -1191,7 +1191,7 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "button2Text",
+        "name": "content_button2Text",
         "value": "",
         "label": "Button Label"
       },
@@ -1204,14 +1204,14 @@
       {
         "component": "aem-content",
         "valueType": "string",
-        "name": "button3",
+        "name": "content_button3",
         "value": "",
         "label": "Button Link"
       },
       {
         "component": "radio-group",
         "label": "Button 3 Style",
-        "name": "button3Type",
+        "name": "content_button3Type",
         "valueType": "string",
         "value": "primary",
         "options": [
@@ -1228,7 +1228,7 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "button3Text",
+        "name": "content_button3Text",
         "value": "",
         "label": "Button Label"
       },
