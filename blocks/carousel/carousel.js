@@ -66,14 +66,16 @@ const getMaxHeight = (slides, carousel, slideContentClass, isCarouselImage) => {
 // Get the max height of the images in carousel and set that height to all image container
 const setCarouselImageHeight = (slideImageContainers, slideImages) => {
   const slideImageHeightArray = [];
-  slideImages.forEach((slideImage) => {
-    const slideImageHeight = slideImage.offsetHeight;
-    slideImageHeightArray.push(slideImageHeight);
-  });
-  const maxImageHeight = Math.max(...slideImageHeightArray);
-  slideImageContainers.forEach((container) => {
-    container.style.height = `${maxImageHeight}px`;
-  });
+  setTimeout(() => {
+    slideImages.forEach((slideImage) => {
+      const slideImageHeight = slideImage.offsetHeight;
+      slideImageHeightArray.push(slideImageHeight);
+    });
+    const maxImageHeight = Math.max(...slideImageHeightArray);
+    slideImageContainers.forEach((container) => {
+      container.style.height = `${maxImageHeight}px`;
+    });
+  }, 50);
 };
 
 export default async function decorate(block) {
