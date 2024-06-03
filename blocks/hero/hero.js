@@ -1,5 +1,7 @@
 import { decorateEmbed } from '../embed/embed.js';
 import { loadFragment } from '../fragment/fragment.js';
+import { environmentMode, replaceBasePath } from '../../scripts/global-functions.js';
+import { BASE_CONTENT_PATH } from '../../scripts/url-constants.js';
 
 function decorateButton(heroLeftContainer) {
   heroLeftContainer.querySelectorAll('.button-container').forEach((btn) => {
@@ -12,11 +14,11 @@ function decorateButton(heroLeftContainer) {
       btn.remove();
     } else {
       const heroButton = document.createElement('a');
-      heroButton.classList.add('button');
-      heroButton.classList.add(btnStyle);
+      heroButton.classList.add('button', btnStyle);
       heroButton.innerHTML = btnLabel;
       if (btnLink) {
-        heroButton.href = btnLink;
+        const isPublishEnvironment = environmentMode() === 'publish';
+        heroButton.href = replaceBasePath(isPublishEnvironment, btnLink, BASE_CONTENT_PATH);
       }
 
       if (btnTarget === 'true') {
