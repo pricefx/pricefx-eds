@@ -163,7 +163,7 @@ div.cards-card-eyebrow + div.cards-card-description {
 }
 
 /* Alignment */
-.cards.align-center {
+.cards.align-center ul li {
   text-align: center;
 }
 
@@ -179,7 +179,7 @@ div.cards-card-eyebrow + div.cards-card-description {
   justify-content: center;
 }
 
-.cards.align-right {
+.cards.align-right ul li {
   text-align: right;
 }
 
