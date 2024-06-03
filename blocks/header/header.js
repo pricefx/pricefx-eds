@@ -535,6 +535,12 @@ export default async function decorate(block) {
     accordion.addEventListener('click', () => {
       toggleMobileNavAccordion(accordion);
       navMobileWrapper.classList.add('mobile-nav-list--expanded');
+      const hasExpanded = [...mobileNavAccordions].some(
+        (mobileAccordion) => mobileAccordion.getAttribute('aria-expanded') === 'true',
+      );
+      if (!hasExpanded) {
+        navMobileWrapper.classList.remove('mobile-nav-list--expanded');
+      }
     });
   });
 
