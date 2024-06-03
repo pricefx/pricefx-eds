@@ -90,6 +90,18 @@
   content: var(--icon-minus);
 }
 
+.tabs .tabs-tab h1,
+.tabs .tabs-tab h2, 
+.tabs .tabs-tab h3,
+.tabs .tabs-tab h4,
+.tabs .tabs-tab h5,
+.tabs .tabs-tab h6 {
+  background: var(--c-white);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+}
+
 .tabs .tabs-tab p:not(:last-child) {
   margin-bottom: 10px;
 }
