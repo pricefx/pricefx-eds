@@ -313,13 +313,14 @@ export default async function decorate(block) {
       allMegamenu.forEach((megamenu) => megamenu.classList.remove('megamenu-wrapper--active'));
       window.addEventListener('keydown', (e) => {
         if (e.code === 'Escape' && isDesktop.matches) {
-          navListLevelOne.blur();
+          allNavListLevelOne.forEach((levelOneNav) => levelOneNav.blur());
+          allMegamenu.forEach((megamenu) => megamenu.classList.remove('megamenu-wrapper--active'));
         }
       });
     });
 
     navListLevelOne.addEventListener('mouseover', () => {
-      navListLevelOne.blur();
+      allNavListLevelOne.forEach((levelOneNav) => levelOneNav.blur());
       allMegamenu.forEach((megamenu) => {
         megamenu.classList.remove('megamenu-wrapper--active');
         megamenu.addEventListener('mouseout', () => navListLevelOne.blur());
