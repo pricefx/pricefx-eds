@@ -69,6 +69,7 @@ const toggleHamburgerNav = (hamburger, mobileNav) => {
   } else {
     mobileNav.blur();
     hamburger.setAttribute('aria-label', 'Open Mobile Navigation');
+    mobileNav.classList.remove('mobile-nav-list--expanded');
     const mobileNavAccordions = document.querySelectorAll('.nav-mobile-list-level-1-item-toggle');
     mobileNavAccordions.forEach((accordion) => {
       resetAllMobileNavAccordion(accordion);
@@ -533,6 +534,7 @@ export default async function decorate(block) {
   mobileNavAccordions.forEach((accordion) => {
     accordion.addEventListener('click', () => {
       toggleMobileNavAccordion(accordion);
+      navMobileWrapper.classList.add('mobile-nav-list--expanded');
     });
   });
 
