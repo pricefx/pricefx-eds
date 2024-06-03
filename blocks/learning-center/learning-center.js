@@ -272,7 +272,7 @@ export default async function decorate(block) {
     let filterOptionsMarkup = '';
     optionsArray.forEach((option) => {
       const optionSplit = option.split('/')[1];
-      const optionReplace = optionSplit.replaceAll('-', ' ');
+      const optionReplace = optionSplit.includes('-') ? optionSplit.replaceAll('-', ' ') : optionSplit;
       const optionTextTransform =
         optionReplace.length <= 4 && optionReplace !== 'news' && optionReplace !== 'food'
           ? optionReplace.toUpperCase()

@@ -229,7 +229,7 @@ export default async function decorate(block) {
     let filterOptionsMarkup = '';
     optionsArray.forEach((option) => {
       const optionSplit = option.split('/')[2];
-      const optionReplaceHypen = optionSplit.replaceAll('-', ' ');
+      const optionReplaceHypen = optionSplit.includes('-') ? optionSplit.replaceAll('-', ' ') : optionSplit;
       const optionTextTransform =
         optionReplaceHypen.length <= 4 ? optionReplaceHypen.toUpperCase() : optionReplaceHypen;
       if (filterIsMultiSelect.textContent.trim() === 'false') {
