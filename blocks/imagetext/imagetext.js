@@ -1,3 +1,5 @@
+import { createOptimizedPicture } from '../../scripts/aem.js';
+
 function addElementsToContainer(container, elements) {
   const tempContainer = document.createElement('div');
   tempContainer.classList.add('content');
@@ -68,6 +70,9 @@ export default async function decorate(block) {
       if (bannerImage) {
         const image = document.createElement('div');
         image.classList.add('banner-container');
+        if (window.matchMedia('(min-width:986px)').matches && bannerImage.querySelector('img') !== null) {
+          image.setAttribute('style', `background-image:url(${bannerImage.querySelector('img').src})`);
+        }
         image.appendChild(bannerImage);
         imagetextLeftContainer.appendChild(image);
       }
@@ -180,6 +185,12 @@ export default async function decorate(block) {
   supportContainer.appendChild(container);
 
   imagetextRightContainer.appendChild(supportContainer);
+
+  imagetextLeftContainer
+    .querySelectorAll('img')
+    .forEach((img) =>
+      img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])),
+    );
 
   imagetextContainer.appendChild(imagetextLeftContainer);
   imagetextContainer.appendChild(imagetextRightContainer);
