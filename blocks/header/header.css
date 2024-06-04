@@ -342,17 +342,21 @@ header nav {
 
 .mobile-nav-wrapper {
   background: var(--c-extra-dark);
-  height: 100%;
   left: 0;
   opacity: 0;
-  min-height: 816px;
-  overflow-y: scroll;
+  min-height: 420px;
   position: absolute;
   top: -400px;
   transition: all 0.3s ease-in-out;
   visibility: hidden;
   width: 100%;
   z-index: 2;
+}
+
+.mobile-nav-list--expanded {
+  height: 100%;
+  min-height: 640px;
+  overflow-y: scroll;
 }
 
 .mobile-nav {

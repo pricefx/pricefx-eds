@@ -69,6 +69,7 @@ const toggleHamburgerNav = (hamburger, mobileNav) => {
   } else {
     mobileNav.blur();
     hamburger.setAttribute('aria-label', 'Open Mobile Navigation');
+    mobileNav.classList.remove('mobile-nav-list--expanded');
     const mobileNavAccordions = document.querySelectorAll('.nav-mobile-list-level-1-item-toggle');
     mobileNavAccordions.forEach((accordion) => {
       resetAllMobileNavAccordion(accordion);
@@ -313,13 +314,14 @@ export default async function decorate(block) {
       allMegamenu.forEach((megamenu) => megamenu.classList.remove('megamenu-wrapper--active'));
       window.addEventListener('keydown', (e) => {
         if (e.code === 'Escape' && isDesktop.matches) {
-          navListLevelOne.blur();
+          allNavListLevelOne.forEach((levelOneNav) => levelOneNav.blur());
+          allMegamenu.forEach((megamenu) => megamenu.classList.remove('megamenu-wrapper--active'));
         }
       });
     });
 
     navListLevelOne.addEventListener('mouseover', () => {
-      navListLevelOne.blur();
+      allNavListLevelOne.forEach((levelOneNav) => levelOneNav.blur());
       allMegamenu.forEach((megamenu) => {
         megamenu.classList.remove('megamenu-wrapper--active');
         megamenu.addEventListener('mouseout', () => navListLevelOne.blur());
@@ -532,6 +534,13 @@ export default async function decorate(block) {
   mobileNavAccordions.forEach((accordion) => {
     accordion.addEventListener('click', () => {
       toggleMobileNavAccordion(accordion);
+      navMobileWrapper.classList.add('mobile-nav-list--expanded');
+      const hasExpanded = [...mobileNavAccordions].some(
+        (mobileAccordion) => mobileAccordion.getAttribute('aria-expanded') === 'true',
+      );
+      if (!hasExpanded) {
+        navMobileWrapper.classList.remove('mobile-nav-list--expanded');
+      }
     });
   });
 
