@@ -1,5 +1,7 @@
 import { decorateEmbed } from '../embed/embed.js';
 import { loadFragment } from '../fragment/fragment.js';
+import { environmentMode, replaceBasePath } from '../../scripts/global-functions.js';
+import { BASE_CONTENT_PATH } from '../../scripts/url-constants.js';
 
 function decorateButton(heroLeftContainer) {
   heroLeftContainer.querySelectorAll('.button-container').forEach((btn) => {
@@ -12,11 +14,11 @@ function decorateButton(heroLeftContainer) {
       btn.remove();
     } else {
       const heroButton = document.createElement('a');
-      heroButton.classList.add('button');
-      heroButton.classList.add(btnStyle);
+      heroButton.classList.add('button', btnStyle);
       heroButton.innerHTML = btnLabel;
       if (btnLink) {
-        heroButton.href = btnLink;
+        const isPublishEnvironment = environmentMode() === 'publish';
+        heroButton.href = replaceBasePath(isPublishEnvironment, btnLink, BASE_CONTENT_PATH);
       }
 
       if (btnTarget === 'true') {
@@ -99,17 +101,16 @@ export default async function decorate(block) {
       if (index === 0) {
         const variationOption = row.firstElementChild?.textContent;
         if (variationOption === 'noVariation') {
-          heroLeftContainerInner.classList.add('hero-no-bg-image');
+          heroContainer.classList.add('hero-no-bg-image');
         } else if (variationOption === 'videoVariation') {
-          heroLeftContainerInner.classList.add('hero-content-video');
-          heroRightContainer.classList.add('hero-video');
+          heroContainer.classList.add('hero-video');
         }
       }
       heroRightContainer.append(row.firstElementChild);
       heroRightContainer.classList.add('hero-right-container');
     } else if (index === 6) {
       /*  Height Variation */
-      heroLeftContainer.classList.add(row.firstElementChild?.textContent || 'hero-primary-height');
+      heroContainer.classList.add(row.firstElementChild?.textContent || 'hero-primary-height');
     } else if (index === 7) {
       /* Eyebrow Text */
       if (row.firstElementChild?.textContent !== '') {
