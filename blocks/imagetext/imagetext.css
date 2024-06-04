@@ -129,10 +129,7 @@
 .imagetext .index-1 img {
     width: 193px;
     display: flex;
-}
-
-.imagetext .index-1 div p {
-  height: 74px
+    min-height: 74px;
 }
 
 .imagetext .imagetext-action div li {
@@ -205,6 +202,7 @@
   .imagetext .banner-container { 
     background-repeat: no-repeat;
     background-position: top center;
+    border-radius: 8px;
   }
 
   .imagetext .banner-container img { 
