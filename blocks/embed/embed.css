@@ -8,6 +8,10 @@
   aspect-ratio: 16/9;
 }
 
+.embed.buzzsprout {
+  aspect-ratio: auto;
+}
+
 .embed > div {
   display: flex;
   justify-content: center;
@@ -129,4 +133,9 @@
     border-left: 50px solid var(--c-full-black);
     margin-left: 10px;
   }  
+}
+
+/* Style System */
+.embed-overlay-text--dark.embed .embed-play-title {
+ color: var(--c-copy);
 }

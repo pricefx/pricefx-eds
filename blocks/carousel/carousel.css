@@ -1,6 +1,6 @@
 /* stylelint-disable no-descending-specificity */
 /* QUOTE CAROUSEL STYLES */
-main:has(.carousel[data-carousel-type='carousel-quote']) p {
+main .carousel:has(.carousel[data-carousel-type='carousel-quote']) .carousel > p {
  text-align: left;
 }
 
@@ -151,7 +151,10 @@ main:has(.carousel[data-carousel-type='carousel-quote']) p {
 }
 
 .carousel[data-carousel-type='carousel-image'] .carousel-slide .columns .columns-img-col {
+  align-items: center;
   border-right: 1px solid var(--c-gray-border);
+  display: flex;
+  height: auto;
   margin: 0 60px 0 0;
   padding: 0 60px 0 0;
 }
@@ -234,6 +237,12 @@ main:has(.carousel[data-carousel-type='carousel-quote']) p {
   padding: 0;
 }
 
+.carousel-slide a.button {
+  background: transparent;
+  margin: 0;
+  padding: 0;
+}
+
 .carousel-prev-cta,
 .carousel-next-cta {
   background: transparent;
@@ -270,7 +279,7 @@ main:has(.carousel[data-carousel-type='carousel-quote']) p {
 @media (width <= 1199px) {
   .carousel[data-carousel-type='carousel-quote'] {
     flex-direction: column;
-    padding: 0;
+    padding: var(--spacing-xlarge) 0;
   }
 
   .carousel[data-carousel-type='carousel-quote'] .carousel-details,

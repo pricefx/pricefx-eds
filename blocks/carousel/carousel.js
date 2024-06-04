@@ -63,6 +63,21 @@ const getMaxHeight = (slides, carousel, slideContentClass, isCarouselImage) => {
   });
 };
 
+// Get the max height of the images in carousel and set that height to all image container
+const setCarouselImageHeight = (slideImageContainers, slideImages) => {
+  const slideImageHeightArray = [];
+  setTimeout(() => {
+    slideImages.forEach((slideImage) => {
+      const slideImageHeight = slideImage.offsetHeight;
+      slideImageHeightArray.push(slideImageHeight);
+    });
+    const maxImageHeight = Math.max(...slideImageHeightArray);
+    slideImageContainers.forEach((container) => {
+      container.style.height = `${maxImageHeight}px`;
+    });
+  }, 50);
+};
+
 export default async function decorate(block) {
   const [carouselTitle, carouselDescription, carouselSlideFrag, isAutoSlide] = block.children;
   block.innerHTML = '';
@@ -111,6 +126,10 @@ export default async function decorate(block) {
   const carouselSlides = Array.from(carouselTrack.children);
   carouselSlides.forEach((slide) => {
     slide.classList.add('carousel-slide');
+    const slideImages = slide.querySelectorAll('.carousel .columns-img-col img');
+    slideImages.forEach((image) => {
+      image.setAttribute('loading', 'eager');
+    });
     if (carouselSlides.indexOf(slide) > 0) {
       slide.setAttribute('aria-hidden', 'true');
     } else {
@@ -131,6 +150,9 @@ export default async function decorate(block) {
     block.classList.add('single-slide');
   }
 
+  const slideImages = document.querySelectorAll('.carousel .columns-img-col img');
+  const slideImageContainers = document.querySelectorAll('.carousel .columns-img-col');
+
   setTimeout(() => {
     const slideWidth = carouselSlides[0].getBoundingClientRect().width;
     if (block.getAttribute('data-carousel-type') === 'carousel-quote') {
@@ -139,6 +161,7 @@ export default async function decorate(block) {
     } else {
       setSlidesPosition(carouselSlides, slideWidth, true);
       getMaxHeight(carouselSlides, carouselContent, '.columns', true);
+      setCarouselImageHeight(slideImageContainers, slideImages);
     }
   }, 150);
 
@@ -161,6 +184,7 @@ export default async function decorate(block) {
       getMaxHeight(carouselSlides, carouselContent, '.columns div', true);
       const slideHeight = carouselContent.getBoundingClientRect().height;
       carouselContent.style.height = `${slideHeight + 30}px`;
+      setCarouselImageHeight(slideImageContainers, slideImages);
     }
   });
 

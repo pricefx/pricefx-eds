@@ -163,7 +163,7 @@ div.cards-card-eyebrow + div.cards-card-description {
 }
 
 /* Alignment */
-.cards.align-center {
+.cards.align-center ul li {
   text-align: center;
 }
 
@@ -179,7 +179,7 @@ div.cards-card-eyebrow + div.cards-card-description {
   justify-content: center;
 }
 
-.cards.align-right {
+.cards.align-right ul li {
   text-align: right;
 }
 
@@ -334,6 +334,38 @@ div.cards-card-eyebrow + div.cards-card-description {
   content: unset;
 }
 
+.cards.card-featured-resource ul li:first-child {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+.cards.card-featured-resource ul li:first-child h1,
+.cards.card-featured-resource ul li:first-child h2,
+.cards.card-featured-resource ul li:first-child h3,
+.cards.card-featured-resource ul li:first-child h4,
+.cards.card-featured-resource ul li:first-child h5,
+.cards.card-featured-resource ul li:first-child h6 {
+  margin-top: 0;
+}
+
+.cards.card-featured-resource ul li:first-child .cards-card-body {
+  margin: 0;
+}
+
+.cards.two-column.card-featured-resource ul li:first-child {
+  align-items: center;
+  justify-content: center;
+}
+
+.cards.two-column.card-featured-resource ul li:first-child .cards-card-body {
+  height: auto;
+}
+
+.cards.two-column.card-featured-resource ul li:first-child .cards-card-description {
+  margin-bottom: 0;
+}
+
 /* Resposive Styles */
 @media (width >= 768px) {
   .cards > ul {
@@ -365,5 +397,9 @@ div.cards-card-eyebrow + div.cards-card-description {
 
   .cards.four-column > ul > li {
     width: calc(25% - 16px);
+  }
+
+  .cards.card-left-aligned > ul {
+    justify-content: left;
   }
 }

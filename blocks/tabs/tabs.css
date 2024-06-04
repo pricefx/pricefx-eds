@@ -23,6 +23,7 @@
   font-size: var(--base-font-size);
   font-style: normal;
   font-weight: var(--fw-med);
+  flex-direction: column;
   gap: 8px;
   justify-content: center;
   line-height: 16px;
@@ -82,10 +83,27 @@
   content: var(--icon-plus);
   position: absolute;
   right: 0;
+  top: 14px;
 }
 
 .tabs .tabs-tab-mobile[aria-expanded = 'true']::after {
   content: var(--icon-minus);
+}
+
+.tabs .tabs-tab h1,
+.tabs .tabs-tab h2, 
+.tabs .tabs-tab h3,
+.tabs .tabs-tab h4,
+.tabs .tabs-tab h5,
+.tabs .tabs-tab h6 {
+  background: var(--c-white);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+}
+
+.tabs .tabs-tab p:not(:last-child) {
+  margin-bottom: 10px;
 }
 
 /* Vertical Tabs Styles */

@@ -585,6 +585,10 @@
           {
             "name": "Icons For List Tag",
             "value": "icons-for-li"
+          },
+          {
+            "name": "Aspect Ratio 4:3",
+            "value": "aspect-ratio-4-3"
           }
         ]
       }
@@ -671,6 +675,14 @@
           {
             "name": "Card IM Pricing Variation",
             "value": "card-im-pricing"
+          },
+          {
+            "name": "Card Two Featured Resource",
+            "value": "card-featured-resource"
+          },
+          {
+            "name": "Card Left Aligned",
+            "value": "card-left-aligned"
           }
         ]
       }
@@ -787,7 +799,7 @@
     "id": "tab-item",
     "fields": [
       {
-        "component": "text-input",
+        "component": "richtext",
         "valueType": "string",
         "name": "tab-title",
         "label": "Tab Title",
@@ -1291,6 +1303,19 @@
         "name": "overlayText",
         "label": "Overlay Text",
         "value": ""
+      },
+      {
+        "component": "multiselect",
+        "label": "Variations",
+        "name": "classes",
+        "valueType": "string",
+        "value": "",
+        "options": [
+          {
+            "name": "Overlay Text Dark Variation",
+            "value": "embed-overlay-text--dark"
+          }
+        ]
       },
       {
         "component": "boolean",
@@ -1921,11 +1946,16 @@
     "id": "iframe",
     "fields": [
       {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "href",
-        "value": "",
-        "label": "Link"
+        "component": "richtext",
+        "name": "badgeLinks",
+        "label": "Badge Links",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "iframeLinks",
+        "label": "iFrame Links",
+        "valueType": "string"
       },
       {
         "component": "text-input",
@@ -2645,6 +2675,42 @@
         "label": "Filter Region All Label",
         "value": "All Regions",
         "description": "Label for the default region filter option. Will serve as an 'all' filter option."
+      }
+    ]
+  },
+  {
+    "id": "cookie-banner",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "cookieBannerText",
+        "label": "Cookie Banner Text",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "rejectCtaLabel",
+        "value": "Reject All",
+        "label": "Reject CTA Label"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "acceptCtaLabel",
+        "value": "Accept All",
+        "label": "Accept CTA Label"
+      }
+    ]
+  },
+  {
+    "id": "audio-embed",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "audioInput",
+        "label": "Audio File Path",
+        "valueType": "string"
       }
     ]
   }

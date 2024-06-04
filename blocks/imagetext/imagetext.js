@@ -55,12 +55,15 @@ export default async function decorate(block) {
       /* Description */
       const imagetextEl = document.createElement('p');
       imagetextEl.classList.add('imagetext-text');
-      imagetextEl.textContent = row.firstElementChild.textContent;
+
+      if (row.firstElementChild.textContent !== '') {
+        imagetextEl.textContent = row.firstElementChild?.textContent;
+      }
 
       imagetext.appendChild(imagetextEl);
     } else if (index === 1) {
       /* Left Container image */
-      const bannerImage = document.querySelector('picture');
+      const bannerImage = row.firstElementChild?.querySelector('picture');
       bannerImage.classList.add('banner-image');
       if (bannerImage) {
         const image = document.createElement('div');
@@ -70,40 +73,48 @@ export default async function decorate(block) {
       }
     } else if (index === 2) {
       /* Enable icon for Action Text */
-      enableIcon = row.firstElementChild.textContent;
+
+      if (row.firstElementChild.textContent !== '') {
+        enableIcon = row.firstElementChild?.textContent;
+      }
     } else if (index === 3) {
       /* Action Text */
 
       const action = row.firstElementChild;
 
-      action.childNodes.forEach((node) => {
-        if (node.nodeType === 1 && node.tagName === 'P') {
-          node.classList.add('icon-text');
+      if (action.childNodes.length > 0) {
+        action.childNodes.forEach((node) => {
+          if (node.nodeType === 1 && node.tagName === 'P') {
+            node.classList.add('icon-text');
 
-          const newParagraph = document.createElement('p');
-          newParagraph.classList.add('imagetext-para');
-          newParagraph.appendChild(node.firstChild);
+            const newParagraph = document.createElement('p');
+            newParagraph.classList.add('imagetext-para');
+            newParagraph.appendChild(node.firstChild);
 
-          if (enableIcon === 'true') {
-            const icon = document.createElement('div');
-            icon.classList.add('imagetext-icon');
-            icon.appendChild(newParagraph);
+            if (enableIcon === 'true') {
+              const icon = document.createElement('div');
+              icon.classList.add('imagetext-icon');
+              icon.appendChild(newParagraph);
 
-            node.insertBefore(icon, node.firstChild);
-          } else {
-            node.insertBefore(newParagraph, node.firstChild);
+              node.insertBefore(icon, node.firstChild);
+            } else {
+              node.insertBefore(newParagraph, node.firstChild);
+            }
           }
-        }
-      });
+        });
+      }
 
       imagetextAction.appendChild(action);
 
       imagetextRightContainer.appendChild(imagetextAction);
     } else if (index === 4) {
       button.classList.add('button');
-      button.classList.add(row.textContent.trim());
+
+      if (row.textContent.trim() !== '') {
+        button.classList.add(row.textContent.trim());
+      }
     } else if (index === 5) {
-      button.href = row.textContent.trim();
+      button.href = row.textContent?.trim() || '';
     } else if (index === 6) {
       if (row.textContent.trim() !== '') {
         button.innerHTML = row.textContent.trim();

@@ -85,6 +85,7 @@
   color: var(--c-white);
   box-sizing: border-box;
   margin: 20px;
+  word-break: break-word;
 } 
 
 .case-study .banner-content {
@@ -98,15 +99,17 @@
       left:0;
   }
 
-  .case-study .spacer {
+  .case-study .case-study-spacer {
     display: block;
     width: 100%;
     margin: 0;
     padding: 41% 0 0;
   }
 
-  .case-study .button-container {
-      padding-bottom: 20px;
+  .case-study .button-container .button {
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
   }
 }
 
@@ -182,6 +185,10 @@
     bottom: 0;
     position: absolute;
     padding: 30px;
+  }
+
+  .case-study .case-study-spacer {
+    display: none;
   }
   
 } 

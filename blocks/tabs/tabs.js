@@ -59,7 +59,7 @@ async function processTab(tab, index, block, tablist) {
   const button = document.createElement('button');
   button.className = 'tabs-tab';
   button.id = `tab-${id}`;
-  button.innerHTML = tab.innerText;
+  button.innerHTML = tab.innerHTML;
   button.setAttribute('aria-controls', `tabpanel-${id}`);
   button.setAttribute('aria-selected', index === 1);
   button.setAttribute('role', 'tab');
@@ -67,7 +67,7 @@ async function processTab(tab, index, block, tablist) {
   const mobileAccordion = document.createElement('button');
   mobileAccordion.className = 'tabs-tab-mobile';
   mobileAccordion.id = `tab-${id}`;
-  mobileAccordion.innerHTML = tab.innerText;
+  mobileAccordion.innerHTML = tab.innerHTML;
   mobileAccordion.setAttribute('aria-expanded', false);
   const tabContent = tabpanel.querySelector('.tab-content-wrapper');
   tabContent?.setAttribute('aria-hidden', true);

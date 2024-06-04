@@ -1,4 +1,4 @@
-import { environmentMode } from '../../scripts/global-functions.js';
+import { environmentMode, processUrl } from '../../scripts/global-functions.js';
 import { decorateIcons } from '../../scripts/aem.js';
 
 export default function decorate(block) {
@@ -14,14 +14,18 @@ export default function decorate(block) {
         col.style.boxShadow = 'none';
       }
 
-      const downloadLink = col.querySelector('a');
-      if (downloadLink?.textContent === 'download') {
-        downloadLink.classList.add('download-btn');
-        downloadLink.setAttribute('aria-label', 'download');
-        const downloadImg = `<span class="icon icon-download"></span>`;
-        downloadLink.innerHTML = downloadImg;
-        decorateIcons(downloadLink, '', 'Pricefx', 'png');
-      }
+      const downloadLink = col.querySelectorAll('a');
+      downloadLink.forEach((download) => {
+        if (download?.textContent.trim() === 'download') {
+          download.classList.add('download-btn');
+          download.setAttribute('aria-label', 'download');
+          const processLink = processUrl(download.href);
+          download.href = processLink;
+          const downloadImg = `<span class="icon icon-download"></span>`;
+          download.innerHTML = downloadImg;
+          decorateIcons(download, '', 'Pricefx', 'png');
+        }
+      });
 
       const pic = col.querySelector('picture');
       if (pic) {

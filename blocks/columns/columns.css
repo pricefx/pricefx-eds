@@ -125,6 +125,12 @@
   bottom: 0;
 }
 
+.columns.aspect-ratio-4-3 .columns-img-col img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
 @media (width >= 985px) {
   .columns > div {
     align-items: center;
