@@ -112,6 +112,7 @@ const updateBrowserUrl = (searchParams, key, value) => {
  */
 export default async function decorate(block) {
   const [
+    configsTab,
     featuredArticle,
     searchPath,
     searchPlaceholder,
@@ -125,6 +126,7 @@ export default async function decorate(block) {
     videosContentCta,
     reportsContentCta,
     defaultContentCta,
+    filtersTab,
     filterOne,
     filterOneIsMultiSelect,
     filterOneOptions,
@@ -139,6 +141,8 @@ export default async function decorate(block) {
     filterFourOptions,
   ] = block.children;
   block.innerHTML = '';
+  configsTab.innerHTML = '';
+  filtersTab.innerHTML = '';
 
   // Fetch Articles content from JSON endpoint
   const articleData = await ffetch(searchPath.textContent.trim()).all();

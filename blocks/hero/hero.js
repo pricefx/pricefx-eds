@@ -101,17 +101,16 @@ export default async function decorate(block) {
       if (index === 0) {
         const variationOption = row.firstElementChild?.textContent;
         if (variationOption === 'noVariation') {
-          heroLeftContainerInner.classList.add('hero-no-bg-image');
+          heroContainer.classList.add('hero-no-bg-image');
         } else if (variationOption === 'videoVariation') {
-          heroLeftContainerInner.classList.add('hero-content-video');
-          heroRightContainer.classList.add('hero-video');
+          heroContainer.classList.add('hero-video');
         }
       }
       heroRightContainer.append(row.firstElementChild);
       heroRightContainer.classList.add('hero-right-container');
     } else if (index === 6) {
       /*  Height Variation */
-      heroLeftContainer.classList.add(row.firstElementChild?.textContent || 'hero-primary-height');
+      heroContainer.classList.add(row.firstElementChild?.textContent || 'hero-primary-height');
     } else if (index === 7) {
       /* Eyebrow Text */
       if (row.firstElementChild?.textContent !== '') {
