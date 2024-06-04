@@ -119,9 +119,11 @@ const updateBrowserUrl = (searchParams, key, value) => {
  */
 export default async function decorate(block) {
   const [
+    configsTab,
     numberOfPartners,
     sortBy,
     cardCtaLabel,
+    filtersTab,
     filterOneTitle,
     filterOneMultiSelect,
     filterOneTags,
@@ -136,6 +138,8 @@ export default async function decorate(block) {
     filterFourTags,
   ] = block.children;
   block.innerHTML = '';
+  configsTab.innerHTML = '';
+  filtersTab.innerHTML = '';
 
   // Fetch Partners content from JSON endpoint
   const url = '/partners-index.json';

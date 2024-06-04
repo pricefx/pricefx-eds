@@ -1946,11 +1946,16 @@
     "id": "iframe",
     "fields": [
       {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "href",
-        "value": "",
-        "label": "Link"
+        "component": "richtext",
+        "name": "badgeLinks",
+        "label": "Badge Links",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "iframeLinks",
+        "label": "iFrame Links",
+        "valueType": "string"
       },
       {
         "component": "text-input",
