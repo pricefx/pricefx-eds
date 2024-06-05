@@ -367,7 +367,7 @@
           { "name": "Left", "value": "image-position-left" },
           { "name": "Center", "value": "image-position-center" },
           { "name": "Right - Default", "value": "image-position-right" },
-          { "name": "fullImage", "value": "full-image" }
+          { "name": "Full Image", "value": "full-image" }
         ]
       },
       {
