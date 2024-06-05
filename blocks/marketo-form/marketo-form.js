@@ -25,6 +25,7 @@ const embedMarketoForm = (marketoId, formId, successUrl, isHideLabels, block, fo
               const parentEl = label.parentElement;
               const inputTextEl = parentEl.querySelector('input[type="text"]');
               const inputEmailEl = parentEl.querySelector('input[type="email"]');
+              const inputTelEl = parentEl.querySelector('input[type="tel"]');
               const textareaEl = parentEl.querySelector('textarea');
               const selectEl = parentEl.querySelector('select');
               if (inputTextEl) {
@@ -34,6 +35,10 @@ const embedMarketoForm = (marketoId, formId, successUrl, isHideLabels, block, fo
               if (inputEmailEl) {
                 const formattedLabel = formatFormLabel(label);
                 inputEmailEl.setAttribute('placeholder', formattedLabel);
+              }
+              if (inputTelEl) {
+                const formattedLabel = formatFormLabel(label);
+                inputTelEl.setAttribute('placeholder', formattedLabel);
               }
               if (textareaEl) {
                 const formattedLabel = formatFormLabel(label);
