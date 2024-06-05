@@ -366,7 +366,8 @@
         "options": [
           { "name": "Left", "value": "image-position-left" },
           { "name": "Center", "value": "image-position-center" },
-          { "name": "Right - Default", "value": "image-position-right" }
+          { "name": "Right - Default", "value": "image-position-right" },
+          { "name": "Full Image", "value": "full-image" }
         ]
       },
       {
@@ -1946,11 +1947,16 @@
     "id": "iframe",
     "fields": [
       {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "href",
-        "value": "",
-        "label": "Link"
+        "component": "richtext",
+        "name": "badgeLinks",
+        "label": "Badge Links",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "iframeLinks",
+        "label": "iFrame Links",
+        "valueType": "string"
       },
       {
         "component": "text-input",

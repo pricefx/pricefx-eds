@@ -272,6 +272,7 @@ div.cards-card-eyebrow + div.cards-card-description {
 .cards.card-im-pricing .cards-card-description ul li {
   list-style-type: none;
   margin-left: 0;
+  display: flex;
 }
 
 .cards.card-im-pricing .cards-card-description ul li::before {

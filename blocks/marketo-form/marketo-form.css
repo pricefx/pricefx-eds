@@ -58,6 +58,7 @@
 .marketo-form-wrapper .mktoForm .mktoAsterix,
 .marketo-form-wrapper .mktoForm input[type='text'],
 .marketo-form-wrapper .mktoForm input[type='email'],
+.marketo-form-wrapper .mktoForm input[type='tel'],
 .marketo-form-wrapper .mktoForm textarea,
 .marketo-form-wrapper .mktoForm select.mktoField,
 .marketo-form-wrapper .mktoForm .mktoCheckboxList label {
@@ -75,6 +76,7 @@
 
 .marketo-form-wrapper .mktoForm input[type='text'],
 .marketo-form-wrapper .mktoForm input[type='email'],
+.marketo-form-wrapper .mktoForm input[type='tel'],
 .marketo-form-wrapper .mktoForm textarea.mktoField,
 .marketo-form-wrapper .mktoForm select.mktoField {
   border: 2px solid var(--c-gray-border);
@@ -241,6 +243,7 @@
 /* HIDE FORM LABELS STYLES */
 .form-hide-labels .mktoForm .mktoFormRow:has(input[type='text']) label:not(:focus, :active),
 .form-hide-labels .mktoForm .mktoFormRow:has(input[type='email']) label:not(:focus, :active),
+.form-hide-labels .mktoForm .mktoFormRow:has(input[type='tel']) label:not(:focus, :active),
 .form-hide-labels .mktoForm .mktoFormRow:has(textarea) label:not(:focus, :active),
 .form-hide-labels .mktoForm .mktoFormRow:has(select) label:not(:focus, :active) {
   clip: rect(0 0 0 0); 
@@ -254,6 +257,7 @@
 
 .marketo-form-wrapper .mktoForm input[type='text']::placeholder,
 .marketo-form-wrapper .mktoForm input[type='email']::placeholder,
+.marketo-form-wrapper .mktoForm input[type='tel']::placeholder,
 .marketo-form-wrapper .mktoForm textarea.mktoField::placeholder,
 .marketo-form-wrapper .mktoForm select.mktoField {
   color: rgba(53 53 53 / 80%);
@@ -293,6 +297,7 @@
 
   .marketo-form-wrapper .mktoForm input[type='text'],
   .marketo-form-wrapper .mktoForm input[type='email'],
+  .marketo-form-wrapper .mktoForm input[type='tel'],
   .marketo-form-wrapper .mktoForm textarea,
   .marketo-form-wrapper .mktoForm select.mktoField {
     height: auto;
