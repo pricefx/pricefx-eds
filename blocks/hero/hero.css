@@ -105,6 +105,11 @@
   cursor: pointer;
 }
 
+.hero .hero-content-container {
+  word-break: break-word;
+}
+
+
 @media (width <= 985px) {
   .hero .hero-right-container .hero-image-container {
     background-image: unset !important;
