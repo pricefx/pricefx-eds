@@ -34,7 +34,7 @@ const renderIframes = (iframes, height, width) => {
       leftColumn.style.maxWidth = `${width + 36}px`;
     }
 
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 2; i += 1) {
       const iframeContainer = document.createElement('div');
       iframeContainer.classList.add('iframe__container');
       if (width) {
