@@ -40,6 +40,10 @@
         margin: 0 0 25px;
     }
 
+    .left-right-boxed .boxed-right-container .embed {
+        cursor: pointer;
+    }
+
     .left-right-boxed .boxed-right-container .embed .embed-play-title {
         text-align: center;
     }
