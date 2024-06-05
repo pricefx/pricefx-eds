@@ -105,6 +105,10 @@
   cursor: pointer;
 }
 
+.hero .hero-right-container .embed .embed-play-title {
+  text-align: center;
+}
+
 .hero .hero-content-container {
   word-break: break-word;
 }

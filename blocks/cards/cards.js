@@ -86,19 +86,21 @@ export default function decorate(block) {
 
   // Adjust Height of card top content
   const cardTopContentHeight = () => {
-    setTimeout(() => {
-      const cardTopContent = ul.querySelectorAll('.cards-card-top-content');
-      let maxHeight = 0;
-      cardTopContent.forEach((topText) => {
-        const height = topText.offsetHeight;
-        maxHeight = Math.max(maxHeight, height);
-      });
-      if (maxHeight !== 0) {
+    const cardTopContent = ul.querySelectorAll('.cards-card-top-content');
+    if (cardTopContent.length > 0) {
+      setTimeout(() => {
+        let maxHeight = 0;
         cardTopContent.forEach((topText) => {
-          topText.style.height = `${maxHeight}px`;
+          const height = topText.offsetHeight;
+          maxHeight = Math.max(maxHeight, height);
         });
-      }
-    }, 0); // Delay to ensure proper recalculation after content changes
+        if (maxHeight !== 0) {
+          cardTopContent.forEach((topText) => {
+            topText.style.height = `${maxHeight}px`;
+          });
+        }
+      }, 150); // Delay to ensure proper recalculation after content changes
+    }
   };
 
   const defaultCardTopContentHeight = () => {

@@ -40,6 +40,10 @@
         margin: 0 0 25px;
     }
 
+    .left-right-boxed .boxed-right-container .embed .embed-play-title {
+        text-align: center;
+    }
+    
     @media (width <= 985px) {
         .left-right-boxed .boxed-right-container .boxed-image-container {
             background-image: unset !important;
