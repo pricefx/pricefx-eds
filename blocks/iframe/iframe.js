@@ -14,6 +14,7 @@ const renderBadges = (badges) => {
     badgeImg.alt = badge.textContent;
     badgeImg.dataset.src = badge.href;
     badgeImg.src = badge.href;
+    badgeImg.loading = 'lazy'; // Add lazy loading for images
     badgeImg.classList.add('lazyloaded', 'badge__icon');
 
     badgeLink.appendChild(badgeImg);
@@ -44,6 +45,7 @@ const renderIframes = (iframes, height, width) => {
       const iframe = document.createElement('iframe');
       iframe.src = iframes[i].textContent.trim();
       iframe.frameBorder = '0';
+      iframe.loading = 'lazy'; // Add lazy loading for iframes
       if (height) {
         iframe.style.minHeight = `${height}px`;
       }
@@ -67,6 +69,7 @@ const renderIframes = (iframes, height, width) => {
     const rightIframe = document.createElement('iframe');
     rightIframe.src = iframes[2].textContent.trim();
     rightIframe.frameBorder = '0';
+    rightIframe.loading = 'lazy'; // Add lazy loading for iframes
     if (height) {
       rightIframe.style.minHeight = `${height + height + 36}px`;
     }
@@ -87,6 +90,7 @@ const renderIframes = (iframes, height, width) => {
       const iframeElement = document.createElement('iframe');
       iframeElement.src = iframe.textContent.trim();
       iframeElement.frameBorder = '0';
+      iframeElement.loading = 'lazy'; // Add lazy loading for iframes
       if (height) {
         iframeElement.style.minHeight = `${height}px`;
       }
@@ -99,6 +103,15 @@ const renderIframes = (iframes, height, width) => {
   return fragment;
 };
 
+function debounce(func, wait) {
+  let timeout;
+  return function (...args) {
+    const context = this;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(context, args), wait);
+  };
+}
+
 export default function decorate(block) {
   const [badgeLinks, iframeLinks, widthElement, heightElement] = block.children;
   const badgeItems = badgeLinks.querySelectorAll('a');
@@ -107,26 +120,30 @@ export default function decorate(block) {
   const width = Number(widthElement.textContent);
   block.textContent = '';
 
-  if (badgeLinks.textContent.trim() !== '') {
-    const badgeWrapper = document.createElement('div');
-    badgeWrapper.classList.add('badge__wrapper');
-    badgeWrapper.appendChild(renderBadges(badgeItems));
-    block.appendChild(badgeWrapper);
-  }
-
-  if (iframeLinks.textContent.trim() !== '') {
-    const iframeWrapper = document.createElement('div');
-    iframeWrapper.classList.add('iframe__wrapper');
-
-    if (iframeItems.length === 3) {
-      iframeWrapper.classList.add('iframe__wrapper--three-iframes');
-    }
-
+  const renderContent = debounce(() => {
     if (badgeLinks.textContent.trim() !== '') {
-      iframeWrapper.classList.add('frame__wrapper--with-badge');
+      const badgeWrapper = document.createElement('div');
+      badgeWrapper.classList.add('badge__wrapper');
+      badgeWrapper.appendChild(renderBadges(badgeItems));
+      block.appendChild(badgeWrapper);
     }
 
-    iframeWrapper.appendChild(renderIframes(iframeItems, height, width));
-    block.appendChild(iframeWrapper);
-  }
+    if (iframeLinks.textContent.trim() !== '') {
+      const iframeWrapper = document.createElement('div');
+      iframeWrapper.classList.add('iframe__wrapper');
+
+      if (iframeItems.length === 3) {
+        iframeWrapper.classList.add('iframe__wrapper--three-iframes');
+      }
+
+      if (badgeLinks.textContent.trim() !== '') {
+        iframeWrapper.classList.add('frame__wrapper--with-badge');
+      }
+
+      iframeWrapper.appendChild(renderIframes(iframeItems, height, width));
+      block.appendChild(iframeWrapper);
+    }
+  }, 100);
+
+  renderContent();
 }
