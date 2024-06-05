@@ -66,6 +66,8 @@
         }
 
         .left-right-boxed .boxed-left-container {
+            max-width: 1188px;
+            margin: 0 auto;
             z-index: 2;
             padding: 95px 0;
             min-height: 545px;
