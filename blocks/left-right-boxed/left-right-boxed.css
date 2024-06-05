@@ -110,13 +110,14 @@
 
         .left-right-boxed.full-image .boxed-image-container,
         .left-right-boxed.full-image .embed {
-            background-image: unset !important;
+            background-size: contain;
+            background-position: top center;
+            background-repeat: no-repeat;
             align-items: flex-start;
         }
 
-        .left-right-boxed.full-image .boxed-right-container .embed .embed-placeholder img,
-        .left-right-boxed.full-image .boxed-right-container .boxed-image-container img  {
-            display: block;
+        .left-right-boxed.full-image .embed .embed-placeholder .embed-placeholder-play {
+            top: 50%;
         }
 
         .left-right-boxed .boxed-main-container.boxed-content-right .boxed-left-container {
