@@ -151,7 +151,10 @@ main .carousel:has(.carousel[data-carousel-type='carousel-quote']) .carousel > p
 }
 
 .carousel[data-carousel-type='carousel-image'] .carousel-slide .columns .columns-img-col {
+  align-items: center;
   border-right: 1px solid var(--c-gray-border);
+  display: flex;
+  height: auto;
   margin: 0 60px 0 0;
   padding: 0 60px 0 0;
 }

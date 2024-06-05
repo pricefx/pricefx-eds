@@ -123,9 +123,18 @@ function buildAutoBlocks() {
 }
 
 async function updateMetadata() {
-  document.title = `${document.title} | Pricefx`;
-  document.head.querySelector('meta[property="og:title"]').content = document.title;
-  document.head.querySelector('meta[name="twitter:title"]').content = document.title;
+  document.title = `${document.title || ''} | Pricefx`;
+
+  const ogTitleMeta = document.head.querySelector('meta[property="og:title"]');
+  const twitterTitleMeta = document.head.querySelector('meta[name="twitter:title"]');
+
+  if (ogTitleMeta) {
+    ogTitleMeta.content = document.title;
+  }
+
+  if (twitterTitleMeta) {
+    twitterTitleMeta.content = document.title;
+  }
 }
 
 /**
