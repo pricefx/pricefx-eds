@@ -108,6 +108,12 @@
             background-position: center;
         }
 
+        .left-right-boxed.full-image .boxed-image-container,
+        .left-right-boxed.full-image .embed {
+            background-size: contain;
+            background-position: top center;
+        }
+
         .left-right-boxed .boxed-main-container.boxed-content-right .boxed-left-container {
             justify-content: flex-end;
         }
