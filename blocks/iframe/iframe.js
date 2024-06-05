@@ -103,15 +103,6 @@ const renderIframes = (iframes, height, width) => {
   return fragment;
 };
 
-function debounce(func, wait) {
-  let timeout;
-  return function (...args) {
-    const context = this;
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func.apply(context, args), wait);
-  };
-}
-
 export default function decorate(block) {
   const [badgeLinks, iframeLinks, widthElement, heightElement] = block.children;
   const badgeItems = badgeLinks.querySelectorAll('a');
@@ -120,30 +111,26 @@ export default function decorate(block) {
   const width = Number(widthElement.textContent);
   block.textContent = '';
 
-  const renderContent = debounce(() => {
+  if (badgeLinks.textContent.trim() !== '') {
+    const badgeWrapper = document.createElement('div');
+    badgeWrapper.classList.add('badge__wrapper');
+    badgeWrapper.appendChild(renderBadges(badgeItems));
+    block.appendChild(badgeWrapper);
+  }
+
+  if (iframeLinks.textContent.trim() !== '') {
+    const iframeWrapper = document.createElement('div');
+    iframeWrapper.classList.add('iframe__wrapper');
+
+    if (iframeItems.length === 3) {
+      iframeWrapper.classList.add('iframe__wrapper--three-iframes');
+    }
+
     if (badgeLinks.textContent.trim() !== '') {
-      const badgeWrapper = document.createElement('div');
-      badgeWrapper.classList.add('badge__wrapper');
-      badgeWrapper.appendChild(renderBadges(badgeItems));
-      block.appendChild(badgeWrapper);
+      iframeWrapper.classList.add('frame__wrapper--with-badge');
     }
 
-    if (iframeLinks.textContent.trim() !== '') {
-      const iframeWrapper = document.createElement('div');
-      iframeWrapper.classList.add('iframe__wrapper');
-
-      if (iframeItems.length === 3) {
-        iframeWrapper.classList.add('iframe__wrapper--three-iframes');
-      }
-
-      if (badgeLinks.textContent.trim() !== '') {
-        iframeWrapper.classList.add('frame__wrapper--with-badge');
-      }
-
-      iframeWrapper.appendChild(renderIframes(iframeItems, height, width));
-      block.appendChild(iframeWrapper);
-    }
-  }, 100);
-
-  renderContent();
+    iframeWrapper.appendChild(renderIframes(iframeItems, height, width));
+    block.appendChild(iframeWrapper);
+  }
 }
