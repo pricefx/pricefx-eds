@@ -85,13 +85,11 @@
 
 .columns.icons-for-li > div li {
   align-items: center;
-  border-bottom: 1px solid; 
-  border-image: linear-gradient(135deg, var(--c-secondary-pink) 0% var(--c-primary-lt) 51.1%, var(--c-secondary-orange-lt) 100%);
-  border-image-slice: 1;
-  display: flex;
   line-height: 28px;
   margin: 24px 0 0;
   padding-bottom: 20px;
+  position: relative;
+  padding-left: 54px;
 }
 
 .columns.icons-for-li > div li::before {
@@ -100,6 +98,18 @@
   height: 30px;
   margin-right: 19px;
   width: 30px;
+  position: absolute;
+  left: 0;
+  top: 20px;
+  transform: translateY(-50%);
+}
+
+.columns.icons-for-li > div li::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;height: 1px; background: linear-gradient(135deg, var(--c-secondary-pink) 0%, var(--c-primary-lt) 51.1%, var(--c-secondary-orange-lt) 100%);
 }
 
 .columns.column-box-shadow > div > div {

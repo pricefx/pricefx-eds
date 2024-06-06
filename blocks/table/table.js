@@ -15,7 +15,16 @@ function hasUlList(div) {
 }
 
 export default async function decorate(block) {
-  const [title, showHeader, , tableVariation, ...rows] = block.children;
+  const [title, showHeader, totalColumns, tableVariation, ...rows] = block.children;
+
+  const columnOptions = {
+    twoCol: 2,
+    threeCol: 3,
+    fourCol: 4,
+  };
+
+  const selectedOption = totalColumns.textContent.trim();
+  const columns = columnOptions[selectedOption];
 
   const tableContainer = document.createElement('div');
   tableContainer.classList.add('table-container');
@@ -41,74 +50,69 @@ export default async function decorate(block) {
       row.setAttribute(nodeName, nodeValue);
     });
 
+    const rowCells = [...rowDiv.children].slice(0, columns);
+
     if (variation === 'default') {
       table.classList.add('table-default');
-      [...rowDiv.children].forEach((cellDiv) => {
-        if (cellDiv.textContent.trim() !== '') {
-          const cell =
-            showHeader.textContent.trim() === 'true' && rowIndex === 0
-              ? document.createElement('th')
-              : document.createElement('td');
+      rowCells.forEach((cellDiv) => {
+        const cell =
+          showHeader.textContent.trim() === 'true' && rowIndex === 0
+            ? document.createElement('th')
+            : document.createElement('td');
 
-          cell.textContent = cellDiv.textContent;
+        cell.textContent = cellDiv.textContent;
 
-          row.appendChild(cell);
-        }
+        row.appendChild(cell);
       });
     } else if (variation === 'defaultListRow') {
       table.classList.add('table-listRow');
-      [...rowDiv.children].forEach((cellDiv) => {
+      rowCells.forEach((cellDiv) => {
         const hasList = hasUlList(cellDiv);
-        if (cellDiv.textContent.trim() !== '') {
-          const cell =
-            showHeader.textContent.trim() === 'true' && rowIndex === 0
-              ? document.createElement('th')
-              : document.createElement('td');
-          if (hasList === true) {
-            cell.classList.add('cell-title');
-            cell.appendChild(cellDiv);
-          } else {
-            cell.textContent = cellDiv.textContent;
-          }
-          row.appendChild(cell);
+
+        const cell =
+          showHeader.textContent.trim() === 'true' && rowIndex === 0
+            ? document.createElement('th')
+            : document.createElement('td');
+        if (hasList === true) {
+          cell.classList.add('cell-title');
+          cell.appendChild(cellDiv);
+        } else {
+          cell.textContent = cellDiv.textContent;
         }
+        row.appendChild(cell);
       });
     } else if (variation === 'icon') {
       table.classList.add('table-icon');
-      [...rowDiv.children].forEach((cellDiv) => {
-        if (cellDiv.textContent.trim() !== '') {
-          const cell =
-            showHeader.textContent.trim() === 'true' && rowIndex === 0
-              ? document.createElement('th')
-              : document.createElement('td');
-          cell.textContent = cellDiv.textContent;
-          row.appendChild(cell);
-        }
+      rowCells.forEach((cellDiv) => {
+        const cell =
+          showHeader.textContent.trim() === 'true' && rowIndex === 0
+            ? document.createElement('th')
+            : document.createElement('td');
+        cell.textContent = cellDiv.textContent;
+        row.appendChild(cell);
       });
     } else if (variation === 'level') {
       table.classList.add('table-level');
-      [...rowDiv.children].forEach((cellDiv) => {
-        if (cellDiv.textContent.trim() !== '') {
-          const cell =
-            showHeader.textContent.trim() === 'true' && rowIndex === 0
-              ? document.createElement('th')
-              : document.createElement('td');
-          const cellText = cellDiv.textContent.trim().toLowerCase();
-          if (cellText === 'yes') {
-            cell.classList.add('concentric-circle');
-            cell.innerHTML = CIRCLEICON;
-          } else if (cellText === 'no') {
-            cell.textContent = '';
-          } else {
-            const hasNum = hasNumber(cellText);
+      rowCells.forEach((cellDiv) => {
+        const cell =
+          showHeader.textContent.trim() === 'true' && rowIndex === 0
+            ? document.createElement('th')
+            : document.createElement('td');
+        const cellText = cellDiv.textContent.trim().toLowerCase();
+        if (cellText === 'yes') {
+          cell.classList.add('concentric-circle');
+          cell.innerHTML = CIRCLEICON;
+        } else if (cellText === 'no') {
+          cell.textContent = '';
+        } else {
+          const hasNum = hasNumber(cellText);
 
-            if (hasNum === true) {
-              cell.style.fontWeight = 'var(--fw-bold)';
-            }
-            cell.textContent = cellDiv.textContent;
+          if (hasNum === true) {
+            cell.style.fontWeight = 'var(--fw-bold)';
           }
-          row.appendChild(cell);
+          cell.textContent = cellDiv.textContent;
         }
+        row.appendChild(cell);
       });
     } else if (variation === 'LevelColor') {
       table.classList.add('levelcolor');
@@ -119,37 +123,35 @@ export default async function decorate(block) {
         'var(--c-level-header-3)',
       ];
 
-      [...rowDiv.children].forEach((cellDiv, cellIndex) => {
-        if (cellDiv.textContent.trim() !== '') {
-          const cell =
-            showHeader.textContent.trim() === 'true' && rowIndex === 0
-              ? document.createElement('th')
-              : document.createElement('td');
-          const cellText = cellDiv.textContent.trim().toLowerCase();
-          if (cellText === 'yes') {
-            cell.classList.add('concentric-circle');
-            cell.innerHTML = CIRCLEICON;
-          } else if (cellText === 'no') {
-            cell.textContent = '';
-          } else {
-            const hasNum = hasNumber(cellText);
+      rowCells.forEach((cellDiv, cellIndex) => {
+        const cell =
+          showHeader.textContent.trim() === 'true' && rowIndex === 0
+            ? document.createElement('th')
+            : document.createElement('td');
+        const cellText = cellDiv.textContent.trim().toLowerCase();
+        if (cellText === 'yes') {
+          cell.classList.add('concentric-circle');
+          cell.innerHTML = CIRCLEICON;
+        } else if (cellText === 'no') {
+          cell.textContent = '';
+        } else {
+          const hasNum = hasNumber(cellText);
 
-            if (hasNum === true) {
-              cell.style.fontWeight = 'var(--fw-bold)';
-            }
-            cell.textContent = cellDiv.textContent;
+          if (hasNum === true) {
+            cell.style.fontWeight = 'var(--fw-bold)';
           }
-
-          if (rowIndex === 0 && showHeader.textContent.trim() === 'true') {
-            cell.style.color = columnColors[cellIndex];
-          }
-
-          row.appendChild(cell);
+          cell.textContent = cellDiv.textContent;
         }
+
+        if (rowIndex === 0 && showHeader.textContent.trim() === 'true') {
+          cell.style.color = columnColors[cellIndex];
+        }
+
+        row.appendChild(cell);
       });
     } else if (variation === 'buttonRow') {
       table.classList.add('table-im-connect');
-      [...rowDiv.children].forEach((cellDiv) => {
+      rowCells.forEach((cellDiv) => {
         const cell =
           showHeader.textContent.trim() === 'true' && rowIndex === 0
             ? document.createElement('th')
