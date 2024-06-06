@@ -35,8 +35,8 @@ function decorateRightContainer(heroRightContainer) {
     const heroImageContainer = document.createElement('div');
     heroImageContainer.classList.add('hero-image-container');
     const heroImage = heroRightContainer.children[1];
-    if (window.matchMedia('(min-width:986px)').matches && heroImage.querySelector('img') !== null) {
-      heroImageContainer.setAttribute('style', `background-image:url(${heroImage.querySelector('img').src})`);
+    if (window.matchMedia('(min-width:986px)').matches && heroImage?.querySelector('img') !== null) {
+      heroImageContainer.setAttribute('style', `background-image:url(${heroImage?.querySelector('img').src})`);
     }
     heroImageContainer.append(heroImage);
     heroRightContainer.textContent = '';
