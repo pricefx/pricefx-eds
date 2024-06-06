@@ -140,11 +140,10 @@ export default async function decorate(block) {
       loadStats(statsData, heroLeftContainerInner);
     }
   });
-
+  block.textContent = '';
   decorateButton(heroLeftContainer);
   decorateRightContainer(heroRightContainer);
   heroContainer.append(heroLeftContainer);
   heroContainer.append(heroRightContainer);
-  block.textContent = '';
   block.append(heroContainer);
 }
