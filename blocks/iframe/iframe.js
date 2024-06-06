@@ -71,7 +71,6 @@ export default function decorate(block) {
 
   // Create iFrame wrapper element and render individual iFrames
   if (iframeLinks.textContent.trim() !== '') {
-    const fragment = document.createDocumentFragment();
     const iframeWrapper = document.createElement('div');
     iframeWrapper.classList.add('iframe__wrapper');
 
@@ -86,7 +85,6 @@ export default function decorate(block) {
     }
 
     iframeWrapper.innerHTML = renderIframes(iframeItems, height, width);
-    fragment.append(iframeWrapper);
-    block.append(fragment);
+    block.append(iframeWrapper);
   }
 }
