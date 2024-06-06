@@ -70,6 +70,7 @@ const toggleHamburgerNav = (hamburger, mobileNav) => {
     mobileNav.blur();
     hamburger.setAttribute('aria-label', 'Open Mobile Navigation');
     mobileNav.classList.remove('mobile-nav-list--expanded');
+    mobileNav.classList.remove('mobile-nav-list--expanded-last');
     const mobileNavAccordions = document.querySelectorAll('.nav-mobile-list-level-1-item-toggle');
     mobileNavAccordions.forEach((accordion) => {
       resetAllMobileNavAccordion(accordion);

@@ -359,12 +359,12 @@ header nav {
 }
 
 .mobile-nav-list--expanded {
-  height: calc(100vh + 550px);
+  height: calc(100vh + 400px);
   overflow-y: scroll;
 }
 
 .mobile-nav-list--expanded-last {
-  height: calc(100vh - 116px);
+  height: calc(100vh - 166px);
   overflow-y: scroll;
 }
 
