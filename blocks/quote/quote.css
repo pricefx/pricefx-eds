@@ -19,6 +19,17 @@
   padding-top: calc((20 / 16) * 1rem);
 }
 
+.quote .quote-text h1,
+.quote .quote-text h2,
+.quote .quote-text h3,
+.quote .quote-text h4,
+.quote .quote-text h5,
+.quote .quote-text h6 {
+  background: var(--c-white);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .quote .author {
   color: var(--c-white);
   font-family: var(--ff-secondary);
@@ -30,7 +41,7 @@
   padding-top: calc((20 / 16) * 1rem);
 }
 
-.quote .quote-icon{
+.quote .quote-icon {
   padding-bottom: calc((30 / 16) * 1rem);
 }
 
@@ -59,12 +70,14 @@
 
 .quote .quote-left-container {
     flex: 0 0 35%;
-    border-radius: 8px; 
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
 }
 
 .quote .quote-image-container {
     width: 100%;
-    border-radius: 8px; 
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
     object-fit: cover;
 }
 

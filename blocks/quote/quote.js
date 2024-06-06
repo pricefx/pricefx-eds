@@ -24,7 +24,7 @@ export default async function decorate(block) {
 
       const quoteEl = document.createElement('p');
       quoteEl.classList.add('quote-text');
-      quoteEl.textContent = row.firstElementChild.textContent;
+      quoteEl.append(row.firstElementChild);
 
       quoteIcon.appendChild(quoteEl);
 
