@@ -25,7 +25,7 @@ const renderBadges = (badges) => {
 const renderIframes = (iframes, height, width) => {
   let markup = '';
   const checkForFalseSource = (iframes[0].textContent.trim().match(/https:/g) || []).length;
-  const iframesArray = checkForFalseSource > 1 ? [...iframes].shift() : iframes;
+  const iframesArray = checkForFalseSource > 1 ? [...iframes].shift() : [...iframes];
   if (iframesArray.length === 3) {
     markup = `
       <div class="iframe__left-column" ${width ? `style=max-width:${width + 36}px;` : ''}>
