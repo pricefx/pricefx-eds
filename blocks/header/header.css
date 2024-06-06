@@ -364,8 +364,12 @@ header nav {
 }
 
 .mobile-nav-list--expanded-last {
-  height: calc(100vh - 200px);
+  height: calc(100vh - 116px);
   overflow-y: scroll;
+}
+
+.mobile-nav-list--expanded-last .expert-cta {
+  margin-bottom: 116px;
 }
 
 .mobile-nav-open {
