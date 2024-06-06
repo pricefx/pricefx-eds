@@ -23,34 +23,30 @@ const renderBadges = (badges) => {
 
 // Render iframes based on authored field
 const renderIframes = (iframes, height, width) => {
-  console.log(iframes);
   let markup = '';
-  if (iframes.length === 3) {
-    const iframeSource = iframes[0].textContent.trim();
-    const checkForFalseSource = (iframeSource.match(/https:/g) || []).length;
-    console.log(checkForFalseSource);
+  const checkForFalseSource = (iframes[0].textContent.trim().match(/https:/g) || []).length;
+  const iframesArray = checkForFalseSource > 1 ? iframes.shift() : iframes;
+  if (iframesArray.length === 3) {
     markup = `
       <div class="iframe__left-column" ${width ? `style=max-width:${width + 36}px;` : ''}>
         <div class="iframe__container" ${width ? `style=max-width:${width + 36}px;` : ''}>
-          <iframe src="${checkForFalseSource === 1 ? iframes[0].textContent.trim() : iframes[1].textContent.trim()}" frameborder="0" style=${height ? `min-height:${height}px;` : ''}></iframe>
+          <iframe src="${iframesArray[0].textContent.trim()}" frameborder="0" style=${height ? `min-height:${height}px;` : ''}></iframe>
         </div>
         <div class="iframe__container" ${width ? `style=max-width:${width + 36}px;` : ''}>
-          <iframe src="${checkForFalseSource === 1 ? iframes[1].textContent.trim() : iframes[2].textContent.trim()}" frameborder="0" style=${height ? `min-height:${height}px;` : ''}></iframe>
+          <iframe src="${iframesArray[1].textContent.trim()}" frameborder="0" style=${height ? `min-height:${height}px;` : ''}></iframe>
         </div>
       </div>
       <div class="iframe__right-column" ${width ? `style=max-width:${width + 36}px;` : ''}>
         <div class="iframe__container" ${width ? `style=max-width:${width + 36}px;` : ''}>
-          <iframe src="${checkForFalseSource === 1 ? iframes[2].textContent.trim() : iframes[3].textContent.trim()}" frameborder="0" style=${height ? `min-height:${height + height + 36}px;` : ''}></iframe>
+          <iframe src="${iframesArray[2].textContent.trim()}" frameborder="0" style=${height ? `min-height:${height + height + 36}px;` : ''}></iframe>
         </div>
       </div>
     `;
   } else {
-    iframes.forEach((iframe) => {
+    iframesArray.forEach((iframe) => {
       const iframeSource = iframe.textContent.trim();
-      const checkForFalseSource = (iframeSource.match(/https:/g) || []).length;
-      console.log(checkForFalseSource);
       markup += `
-        <div class="iframe__container ${checkForFalseSource !== 1 ? 'hidden' : ''}" ${width ? `style=max-width:${width + 36}px;` : ''}>
+        <div class="iframe__container" ${width ? `style=max-width:${width + 36}px;` : ''}>
           <iframe src="${iframeSource}" frameborder="0" style=${height ? `min-height:${height}px;` : ''}></iframe>
         </div>
       `;
