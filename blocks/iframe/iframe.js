@@ -23,36 +23,83 @@ const renderBadges = (badges) => {
 
 // Render iframes based on authored field
 const renderIframes = (iframes, height, width) => {
-  let markup = '';
   const checkForFalseSource = (iframes[0].textContent.trim().match(/https:/g) || []).length;
   const iframesArray = checkForFalseSource > 1 ? Array.from(iframes).slice(1) : Array.from(iframes);
+  const fragment = document.createDocumentFragment();
   if (iframesArray.length === 3) {
-    markup = `
-      <div class="iframe__left-column" ${width ? `style=max-width:${width + 36}px;` : ''}>
-        <div class="iframe__container" ${width ? `style=max-width:${width + 36}px;` : ''}>
-          <iframe src="${iframesArray[0].textContent.trim()}" frameborder="0" style=${height ? `min-height:${height}px;` : ''}></iframe>
-        </div>
-        <div class="iframe__container" ${width ? `style=max-width:${width + 36}px;` : ''}>
-          <iframe src="${iframesArray[1].textContent.trim()}" frameborder="0" style=${height ? `min-height:${height}px;` : ''}></iframe>
-        </div>
-      </div>
-      <div class="iframe__right-column" ${width ? `style=max-width:${width + 36}px;` : ''}>
-        <div class="iframe__container" ${width ? `style=max-width:${width + 36}px;` : ''}>
-          <iframe src="${iframesArray[2].textContent.trim()}" frameborder="0" style=${height ? `min-height:${height + height + 36}px;` : ''}></iframe>
-        </div>
-      </div>
-    `;
+    // Creating left column and children elements
+    const leftColumn = document.createElement('div');
+    leftColumn.classList.add('iframe__left-column');
+    if (width) {
+      leftColumn.setAttribute('style', `max-width:${width + 36}px;`);
+    }
+    const iframeContainerOne = document.createElement('div');
+    iframeContainerOne.classList.add('iframe__container');
+    if (width) {
+      iframeContainerOne.setAttribute('style', `max-width:${width + 36}px;`);
+    }
+    const iframeElOne = document.createElement('iframe');
+    iframeElOne.src = iframesArray[0].textContent.trim();
+    iframeElOne.setAttribute('frameborder', '0');
+    if (height) {
+      iframeElOne.setAttribute('style', `min-height:${height}px;`);
+    }
+    iframeContainerOne.appendChild(iframeElOne);
+    leftColumn.appendChild(iframeContainerOne);
+    const iframeContainerTwo = document.createElement('div');
+    iframeContainerTwo.classList.add('iframe__container');
+    if (width) {
+      iframeContainerTwo.setAttribute('style', `max-width:${width + 36}px;`);
+    }
+    const iframeElTwo = document.createElement('iframe');
+    iframeElTwo.src = iframesArray[1].textContent.trim();
+    iframeElTwo.setAttribute('frameborder', '0');
+    if (height) {
+      iframeElTwo.setAttribute('style', `min-height:${height}px;`);
+    }
+    iframeContainerTwo.appendChild(iframeElTwo);
+    leftColumn.appendChild(iframeContainerTwo);
+    fragment.appendChild(leftColumn);
+
+    // Creating right column and children elements
+    const rightColumn = document.createElement('div');
+    rightColumn.classList.add('iframe__right-column');
+    if (width) {
+      rightColumn.setAttribute('style', `max-width:${width + 36}px;`);
+    }
+    const iframeContainerThree = document.createElement('div');
+    iframeContainerThree.classList.add('iframe__container');
+    if (width) {
+      iframeContainerThree.setAttribute('style', `max-width:${width + 36}px;`);
+    }
+    const iframeElThree = document.createElement('iframe');
+    iframeElThree.src = iframesArray[2].textContent.trim();
+    iframeElThree.setAttribute('frameborder', '0');
+    if (height) {
+      iframeElThree.setAttribute('style', `min-height:${height * 2 + 36}px;`);
+    }
+    iframeContainerThree.appendChild(iframeElThree);
+    rightColumn.appendChild(iframeContainerThree);
+    fragment.appendChild(rightColumn);
   } else {
     iframesArray.forEach((iframe) => {
       const iframeSource = iframe.textContent.trim();
-      markup += `
-        <div class="iframe__container" ${width ? `style=max-width:${width + 36}px;` : ''}>
-          <iframe src="${iframeSource}" frameborder="0" style=${height ? `min-height:${height}px;` : ''}></iframe>
-        </div>
-      `;
+      const iframeContainer = document.createElement('div');
+      iframeContainer.classList.add('iframe__container');
+      if (width) {
+        iframeContainer.setAttribute('style', `max-width:${width + 36}px;`);
+      }
+      const iframeEl = document.createElement('iframe');
+      iframeEl.src = iframeSource;
+      iframeEl.setAttribute('frameborder', '0');
+      if (height) {
+        iframeEl.setAttribute('style', `min-height:${height}px;`);
+      }
+      iframeContainer.appendChild(iframeEl);
+      fragment.appendChild(iframeContainer);
     });
   }
-  return markup;
+  return fragment;
 };
 
 export default function decorate(block) {
@@ -86,7 +133,7 @@ export default function decorate(block) {
       iframeWrapper.classList.add('frame__wrapper--with-badge');
     }
 
-    iframeWrapper.innerHTML = renderIframes(iframeItems, height, width);
+    iframeWrapper.append(renderIframes(iframeItems, height, width));
     block.append(iframeWrapper);
   }
 }
