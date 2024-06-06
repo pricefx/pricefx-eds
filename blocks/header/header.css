@@ -340,27 +340,36 @@ header nav {
   content: var(--icon-x);
 }
 
+.mobile-header-flex-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .mobile-nav-wrapper {
   background: var(--c-extra-dark);
+  height: 427px;
   left: 0;
   opacity: 0;
-  min-height: 420px;
   position: absolute;
-  top: -400px;
-  transition: all 0.3s ease-in-out;
+  top: -500px;
   visibility: hidden;
   width: 100%;
-  z-index: 2;
+  z-index: -1;
 }
 
 .mobile-nav-list--expanded {
-  height: 100%;
-  min-height: 640px;
+  height: calc(100vh + 400px);
   overflow-y: scroll;
 }
 
-.mobile-nav {
-  height: auto;
+.mobile-nav-list--expanded-last {
+  height: calc(100vh - 116px);
+  overflow-y: scroll;
+}
+
+.mobile-nav-list--expanded-last .expert-cta {
+  margin-bottom: 116px;
 }
 
 .mobile-nav-open {

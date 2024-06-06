@@ -54,8 +54,16 @@
   height: 22px;
 }
 
+.marketo-form-wrapper .mktoAsterix {
+  display: none !important;
+}
+
+.marketo-form-wrapper .mktoForm .form-asterix {
+  padding-left: 5px;
+}
+
 .marketo-form-wrapper .mktoForm .mktoLabel,
-.marketo-form-wrapper .mktoForm .mktoAsterix,
+.marketo-form-wrapper .mktoForm .form-asterix,
 .marketo-form-wrapper .mktoForm input[type='text'],
 .marketo-form-wrapper .mktoForm input[type='email'],
 .marketo-form-wrapper .mktoForm input[type='tel'],
@@ -287,10 +295,6 @@
 }
 
 @media (width <= 480px) {
-  .marketo-form-wrapper .mktoForm .mktoAsterix {
-    float: right !important;
-  }
-
   .marketo-form-wrapper .mktoForm .mktoLabel {
     margin-bottom: var(--spacing-micro);
   }
