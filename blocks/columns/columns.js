@@ -50,6 +50,9 @@ export default function decorate(block) {
 
           if (environmentMode() === 'publish') {
             linkwrapper.remove();
+            if (!isTarget.classList.contains('button-container')) {
+              isTarget.remove();
+            }
           }
         }
       }
