@@ -29,35 +29,31 @@ const renderIframes = (iframes, height, width) => {
     const iframeSource = iframes[0].textContent.trim();
     const checkForFalseSource = (iframeSource.match(/https:/g) || []).length;
     console.log(checkForFalseSource);
-    if (checkForFalseSource === 1) {
-      markup = `
-        <div class="iframe__left-column" ${width ? `style=max-width:${width + 36}px;` : ''}>
-          <div class="iframe__container" ${width ? `style=max-width:${width + 36}px;` : ''}>
-            <iframe src="${iframes[0].textContent.trim()}" frameborder="0" style=${height ? `min-height:${height}px;` : ''}></iframe>
-          </div>
-          <div class="iframe__container" ${width ? `style=max-width:${width + 36}px;` : ''}>
-            <iframe src="${iframes[1].textContent.trim()}" frameborder="0" style=${height ? `min-height:${height}px;` : ''}></iframe>
-          </div>
+    markup = `
+      <div class="iframe__left-column" ${width ? `style=max-width:${width + 36}px;` : ''}>
+        <div class="iframe__container" ${width ? `style=max-width:${width + 36}px;` : ''}>
+          <iframe src="${checkForFalseSource === 1 ? iframes[0].textContent.trim() : iframes[1].textContent.trim()}" frameborder="0" style=${height ? `min-height:${height}px;` : ''}></iframe>
         </div>
-        <div class="iframe__right-column" ${width ? `style=max-width:${width + 36}px;` : ''}>
-          <div class="iframe__container" ${width ? `style=max-width:${width + 36}px;` : ''}>
-            <iframe src="${iframes[2].textContent.trim()}" frameborder="0" style=${height ? `min-height:${height + height + 36}px;` : ''}></iframe>
-          </div>
+        <div class="iframe__container" ${width ? `style=max-width:${width + 36}px;` : ''}>
+          <iframe src="${checkForFalseSource === 1 ? iframes[1].textContent.trim() : iframes[2].textContent.trim()}" frameborder="0" style=${height ? `min-height:${height}px;` : ''}></iframe>
         </div>
-      `;
-    }
+      </div>
+      <div class="iframe__right-column" ${width ? `style=max-width:${width + 36}px;` : ''}>
+        <div class="iframe__container" ${width ? `style=max-width:${width + 36}px;` : ''}>
+          <iframe src="${checkForFalseSource === 1 ? iframes[2].textContent.trim() : iframes[3].textContent.trim()}" frameborder="0" style=${height ? `min-height:${height + height + 36}px;` : ''}></iframe>
+        </div>
+      </div>
+    `;
   } else {
     iframes.forEach((iframe) => {
       const iframeSource = iframe.textContent.trim();
       const checkForFalseSource = (iframeSource.match(/https:/g) || []).length;
       console.log(checkForFalseSource);
-      if (checkForFalseSource === 1) {
-        markup += `
-          <div class="iframe__container" ${width ? `style=max-width:${width + 36}px;` : ''}>
-            <iframe src="${iframeSource}" frameborder="0" style=${height ? `min-height:${height}px;` : ''}></iframe>
-          </div>
-        `;
-      }
+      markup += `
+        <div class="iframe__container ${checkForFalseSource !== 1 ? 'hidden' : ''}" ${width ? `style=max-width:${width + 36}px;` : ''}>
+          <iframe src="${iframeSource}" frameborder="0" style=${height ? `min-height:${height}px;` : ''}></iframe>
+        </div>
+      `;
     });
   }
   return markup;
