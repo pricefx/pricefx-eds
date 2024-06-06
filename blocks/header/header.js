@@ -383,11 +383,15 @@ export default async function decorate(block) {
   const brandLogo = `<a class="brand-logo-wrapper" href="/" aria-label="Go to Pricefx homepage"><span class="icon icon-pricefx-logo-white"></span></a>`;
   brandWrapperMobile.innerHTML = brandLogo;
   decorateIcons(brandWrapperMobile, '', 'Pricefx');
-  mobileHeader.append(brandWrapperMobile);
 
   const mobileNavControlWrapper = document.createElement('div');
   mobileNavControlWrapper.classList.add('mobile-nav-control-wrapper');
-  mobileHeader.append(mobileNavControlWrapper);
+
+  const headerFlexContainer = document.createElement('div');
+  headerFlexContainer.classList.add('mobile-header-flex-container');
+  headerFlexContainer.append(brandWrapperMobile);
+  headerFlexContainer.append(mobileNavControlWrapper);
+  mobileHeader.append(headerFlexContainer);
 
   // Render Mobile Header Search
   const searchWrapperMobile = document.createElement('div');
@@ -534,12 +538,17 @@ export default async function decorate(block) {
   mobileNavAccordions.forEach((accordion) => {
     accordion.addEventListener('click', () => {
       toggleMobileNavAccordion(accordion);
-      navMobileWrapper.classList.add('mobile-nav-list--expanded');
       const hasExpanded = [...mobileNavAccordions].some(
         (mobileAccordion) => mobileAccordion.getAttribute('aria-expanded') === 'true',
       );
+      if ([...mobileNavAccordions].indexOf(accordion) === mobileNavAccordions.length - 1) {
+        navMobileWrapper.classList.add('mobile-nav-list--expanded-last');
+      } else {
+        navMobileWrapper.classList.add('mobile-nav-list--expanded');
+      }
       if (!hasExpanded) {
         navMobileWrapper.classList.remove('mobile-nav-list--expanded');
+        navMobileWrapper.classList.remove('mobile-nav-list--expanded-last');
       }
     });
   });
