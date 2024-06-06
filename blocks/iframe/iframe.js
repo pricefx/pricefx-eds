@@ -23,6 +23,7 @@ const renderBadges = (badges) => {
 
 // Render iframes based on authored field
 const renderIframes = (iframes, height, width) => {
+  console.log(iframes);
   let markup = '';
   if (iframes.length === 3) {
     markup = `
