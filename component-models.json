@@ -995,6 +995,12 @@
       },
       {
         "component": "boolean",
+        "label": "Section para large font",
+        "name": "sectionpParaLargeFont",
+        "valueType": "boolean"
+      },
+      {
+        "component": "boolean",
         "label": "Section buttons inline",
         "name": "sectionButtonInline",
         "valueType": "boolean"

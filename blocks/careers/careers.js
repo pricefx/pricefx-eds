@@ -3,7 +3,7 @@ import { FACEBOOK, TWITTER, PINTEREST, LINKEDIN } from '../../scripts/constants.
 import { CAREERS_PATH } from '../../scripts/url-constants.js';
 
 async function loadJobsData(sortBy, filterBy, block) {
-  document.querySelector('.careers-postings-container')?.remove();
+  block.querySelector('.careers-postings-container')?.remove();
   const jobPosting = document.createElement('div');
   jobPosting.classList.add('careers-postings-container');
   jobPosting.classList.add('loading');
