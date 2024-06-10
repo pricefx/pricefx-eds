@@ -17,8 +17,7 @@
   max-width: 1188px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 89px;
-  min-height: 753px;
+  min-height: 600px;
   gap: 37px;
 }
 
