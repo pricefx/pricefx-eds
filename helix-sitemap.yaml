@@ -1,10 +1,9 @@
+version: 1
+auto-generated: true
 sitemaps:
-  example:
+  default:
     origin: https://www.pricefx.com
-    default: en
-    languages:
-      en:
-        source: /query-index.json
-        destination: /sitemap.xml
-        alternate: /{path}
-        hreflang: en
+    source: /query-index.json
+    destination: /sitemap.xml
+    lastmod: YYYY-MM-DD
+    hreflang: en
