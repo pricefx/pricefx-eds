@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import {
   sampleRUM,
   loadHeader,
@@ -13,7 +14,7 @@ import {
   getMetadata,
 } from './aem.js';
 import { environmentMode } from './global-functions.js';
-
+import { loadFragment } from '../blocks/fragment/fragment.js';
 import addPageSchema from './schema.js';
 
 const LCP_BLOCKS = []; // add your LCP blocks to the list
@@ -314,6 +315,11 @@ async function loadLazy(doc) {
   sampleRUM('lazy');
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
   sampleRUM.observe(main.querySelectorAll('picture > img'));
+
+  const bodyEl = document.querySelector('body');
+  const cookieFragmentPath = '/fragments/cookie-banner';
+  const cookiFragment = await loadFragment(cookieFragmentPath);
+  bodyEl.prepend(cookiFragment.firstElementChild);
 }
 
 /**
