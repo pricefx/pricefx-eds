@@ -54,6 +54,7 @@ export default async function decorate(block) {
 
     if (variation === 'default') {
       table.classList.add('table-default');
+      table.classList.add(totalColumns.textContent.trim());
       rowCells.forEach((cellDiv) => {
         const cell =
           showHeader.textContent.trim() === 'true' && rowIndex === 0
@@ -66,6 +67,7 @@ export default async function decorate(block) {
       });
     } else if (variation === 'defaultListRow') {
       table.classList.add('table-listRow');
+      table.classList.add(totalColumns.textContent.trim());
       rowCells.forEach((cellDiv) => {
         const hasList = hasUlList(cellDiv);
 
@@ -83,6 +85,7 @@ export default async function decorate(block) {
       });
     } else if (variation === 'icon') {
       table.classList.add('table-icon');
+      table.classList.add(totalColumns.textContent.trim());
       rowCells.forEach((cellDiv) => {
         const cell =
           showHeader.textContent.trim() === 'true' && rowIndex === 0
@@ -151,6 +154,7 @@ export default async function decorate(block) {
       });
     } else if (variation === 'buttonRow') {
       table.classList.add('table-im-connect');
+      table.classList.add(totalColumns.textContent.trim());
       rowCells.forEach((cellDiv) => {
         const cell =
           showHeader.textContent.trim() === 'true' && rowIndex === 0

@@ -36,6 +36,7 @@
   border: 1px solid var(--c-table-border);
   text-align: left;
   padding: var(--spacing-small) var(--spacing-medium);
+  vertical-align: top;
 }
 
 .table .table-listRow td,
@@ -84,6 +85,8 @@
 }
 
 .table .table-listRow .cell-title {
+  vertical-align: top;
+
   h6,h5,h4,h3,h2,h1 {
   text-align: center;
   }
@@ -113,6 +116,7 @@
 .table .levelcolor th {
   padding: var(--spacing-small) var(--spacing-medium);
   text-align: left;
+  vertical-align: top;
 }
 
 .table .table-level tr:nth-child(odd), 
@@ -160,11 +164,11 @@
 
 .table .table-icon {
   font-family: var(--ff-secondary);
-  border: 2px solid black;
   background-color: var(--c-disabled);
-  color: var(--c-black);
+  color: var(--c-full-black);
   text-align: center;
-  border-collapse: collapse; 
+  border-collapse: separate; 
+  border-spacing: 0;
   width: 100%;
   height: 100%;
 }
@@ -178,22 +182,20 @@
 }
 
 .table .table-icon th:not(:first-child)::after {
-    background: var(--c-primary-lt);
-    border-radius: 100%;
-    color: var(--c-white);
-    content: "+";
-    display: block;
+    content: url("../../icons/table-plus.svg");
+    display: flex;
     font-family: var(--ff-secondary);
     font-size: var(--base-line-height);
     font-weight: var(--fw-xx-bold);
-    height: var(--base-line-height);
     line-height: 24px;
     position: relative;
-    left: -14px;
+    left: -35px;
+    bottom: 3px;
     text-align: center;
     top: 50%;
     transform: translateY(-50%);
-    width: 24px;
+    width: 34px;
+    height: 34px;
 }
 
 .table .table-icon td {
@@ -202,8 +204,15 @@
 
 .table .table-icon td,
 .table .table-icon th {
-  border: 4px solid var(--c-table-border);
+  border: 1px solid var(--c-white);
   font-weight: var(--fw-bold);
+  vertical-align: top;
+  padding: 12px;
+}
+
+.table .table-icon th:not(:last-child),
+.table .table-icon td:not(:last-child) {
+  border-right: 12px solid var(--c-white); 
 }
 
 /* IM-connect table */
@@ -237,3 +246,29 @@
   height: 100%;
 }
 
+@media (width>= 985px) { 
+.table .twoCol th, 
+.table .twoCol td {
+  width: 50%;
+}
+
+.table .threeCol tr th, 
+.table .threeCol td {
+  width: 33.3%;
+}
+
+.table .fourCol th, 
+.table .fourCol td {
+  width: 25%;
+}
+
+.table .table-default,
+.table .table-listRow,
+.table .table-icon,
+.table .table-im-connect {
+  word-break: break-word;
+  table-layout: fixed; 
+
+}
+
+}
