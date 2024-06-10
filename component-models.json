@@ -996,7 +996,7 @@
       {
         "component": "boolean",
         "label": "Section para large font",
-        "name": "sectionpParaLargeFont",
+        "name": "sectionParaLargeFont",
         "valueType": "boolean"
       },
       {
