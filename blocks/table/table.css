@@ -247,28 +247,26 @@
 }
 
 @media (width>= 985px) { 
-.table .twoCol th, 
-.table .twoCol td {
-  width: 50%;
-}
+  .table .twoCol th, 
+  .table .twoCol td {
+    width: 50%;
+  }
 
-.table .threeCol tr th, 
-.table .threeCol td {
-  width: 33.3%;
-}
+  .table .threeCol tr th, 
+  .table .threeCol td {
+    width: 33.3%;
+  }
 
-.table .fourCol th, 
-.table .fourCol td {
-  width: 25%;
-}
+  .table .fourCol th, 
+  .table .fourCol td {
+    width: 25%;
+  }
 
-.table .table-default,
-.table .table-listRow,
-.table .table-icon,
-.table .table-im-connect {
-  word-break: break-word;
-  table-layout: fixed; 
-
-}
-
+  .table .table-default,
+  .table .table-listRow,
+  .table .table-icon,
+  .table .table-im-connect {
+    word-break: break-word;
+    table-layout: fixed; 
+  }
 }
