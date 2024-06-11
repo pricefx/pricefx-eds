@@ -271,6 +271,12 @@
   color: rgba(53 53 53 / 80%);
 }
 
+.marketo-form-wrapper .marketo-form h2.form-title {
+  background: var(--c-dark-blue-gradient);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* RESPONSIVE STYLES */
 @media (width <= 767px) {
   .form-two-columns {

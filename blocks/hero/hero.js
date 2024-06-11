@@ -4,7 +4,7 @@ import { environmentMode, replaceBasePath } from '../../scripts/global-functions
 import { BASE_CONTENT_PATH } from '../../scripts/url-constants.js';
 
 function decorateButton(heroLeftContainer) {
-  heroLeftContainer.querySelectorAll('.button-container').forEach((btn) => {
+  heroLeftContainer.querySelectorAll('div.button-container').forEach((btn) => {
     const btnStyle = btn.children[0]?.textContent || 'primary';
     const btnLink = btn.children[1]?.textContent;
     const btnLabel = btn.children[2]?.textContent;
