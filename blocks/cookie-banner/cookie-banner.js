@@ -3,6 +3,16 @@ const setCookie = (cookieValue) => {
   document.cookie = cookieValue;
 };
 
+// Get existing cookie by name
+const getCookie = (cookieName) => {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${cookieName}=`);
+  if (parts.length === 2) {
+    return parts.pop().split(';').shift();
+  }
+  return value;
+};
+
 // Generate a random token to use as cookie consent ID
 const generateToken = (tokenLength) => {
   const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -14,15 +24,15 @@ const generateToken = (tokenLength) => {
 };
 
 // Handle reject all cookie
-const handleRejectCta = (cookieContainer, cookieID, cookieExpDate) => {
-  cookieContainer.classList.add('hidden');
+const handleRejectCta = (blockParent, block, cookieID, cookieExpDate) => {
+  blockParent.remove(block);
   const rejectCookieValue = `cookieyes-consent=consentid:${cookieID},consent:no,action:yes,necessary:yes,functional:no,analytics:no,performance:no,advertisement:no; path=/; expires=${cookieExpDate}; samesite=strict`;
   setCookie(rejectCookieValue);
 };
 
 // Handle accept all cookie
-const handleAcceptCta = (cookieContainer, cookieID, cookieExpDate) => {
-  cookieContainer.classList.add('hidden');
+const handleAcceptCta = (blockParent, block, cookieID, cookieExpDate) => {
+  blockParent.remove(block);
   const acceptCookieValue = `cookieyes-consent=consentid:${cookieID},consent:yes,action:yes,necessary:yes,functional:yes,analytics:yes,performance:yes,advertisement:yes; path=/; expires=${cookieExpDate}; samesite=strict`;
   setCookie(acceptCookieValue);
 };
@@ -35,11 +45,14 @@ export default async function decorate(block) {
   let cookieExpDate;
   const bodyEl = document.querySelector('body');
   const cookieBannerContainer = document.querySelector('.cookie-banner-container');
+  const blockParent = block.parentElement;
 
   // Move cookie banner to the beginning of <body>
   setTimeout(() => {
-    bodyEl.prepend(cookieBannerContainer);
-  }, 500);
+    if (cookieBannerContainer) {
+      bodyEl.prepend(cookieBannerContainer);
+    }
+  }, 200);
 
   // Create clost CTA element
   const closeCta = document.createElement('button');
@@ -51,7 +64,7 @@ export default async function decorate(block) {
   block.append(closeCta);
 
   closeCta.addEventListener('click', () => {
-    handleRejectCta(cookieBannerContainer, generatedCookieId, cookieExpDate);
+    handleRejectCta(blockParent, block, generatedCookieId, cookieExpDate);
   });
 
   // Create content container element
@@ -71,7 +84,7 @@ export default async function decorate(block) {
   ctaContainer.append(rejectCta);
 
   rejectCta.addEventListener('click', () => {
-    handleRejectCta(cookieBannerContainer, generatedCookieId, cookieExpDate);
+    handleRejectCta(blockParent, block, generatedCookieId, cookieExpDate);
   });
 
   // Create accept CTA element
@@ -80,7 +93,7 @@ export default async function decorate(block) {
   acceptCta.textContent = acceptCtaLabel.textContent.trim();
   ctaContainer.append(acceptCta);
   acceptCta.addEventListener('click', () => {
-    handleAcceptCta(cookieBannerContainer, generatedCookieId, cookieExpDate);
+    handleAcceptCta(blockParent, block, generatedCookieId, cookieExpDate);
   });
 
   // Create cookie on initial load
@@ -98,8 +111,14 @@ export default async function decorate(block) {
     const initialCookieValue = `cookieyes-consent=consentid:${cookieConsentId},consent:no,action:,necessary:yes,functional:no,analytics:no,performance:no,advertisement:no; path=/; expires=${aYearFromNow}; samesite=strict`;
 
     setCookie(initialCookieValue);
-    cookieBannerContainer.classList.remove('hidden');
+    blockParent.append(block);
   } else {
-    cookieBannerContainer.classList.add('hidden');
+    const cookieValue = getCookie('cookieyes-consent');
+    const hasActionValue = cookieValue.includes('action:yes' || 'action:no');
+    if (hasActionValue) {
+      blockParent.remove(block);
+    } else {
+      blockParent.append(block);
+    }
   }
 }
