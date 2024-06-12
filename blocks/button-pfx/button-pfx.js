@@ -1,5 +1,7 @@
 export default async function decorate(block) {
   const [link, target, buttonLabel, type] = block.children;
+  console.log(block);
+  console.log(block.children);
   block.textContent = '';
   const targetValue = target.textContent.trim() === 'true' ? '_blank' : '_self';
 
