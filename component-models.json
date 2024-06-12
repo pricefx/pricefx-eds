@@ -215,7 +215,7 @@
       {
         "component": "aem-content",
         "valueType": "string",
-        "name": "href",
+        "name": "link",
         "label": "Link",
         "value": ""
       },
@@ -229,7 +229,7 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "text",
+        "name": "linkText",
         "label": "Button Label",
         "value": ""
       },
