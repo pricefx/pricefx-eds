@@ -84,6 +84,7 @@ export default function decorate(block) {
     img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])),
   );
 
+  const cardImage = ul.querySelectorAll('.cards-card-image');
   const cardEyebrow = ul.querySelectorAll('.cards-card-eyebrow');
   const cardTitle = ul.querySelectorAll('.cards-card-title');
   const cardDescription = ul.querySelectorAll('.cards-card-description');
@@ -115,11 +116,13 @@ export default function decorate(block) {
 
   window.addEventListener('resize', () => {
     if (window.innerWidth >= 768) {
+      cardInnerHeight(cardImage);
       cardInnerHeight(cardEyebrow);
       cardInnerHeight(cardTitle);
       cardInnerHeight(cardDescription);
       cardInnerHeight(cardTopContent);
     }
+    defaultCardInnerHeight(cardImage);
     defaultCardInnerHeight(cardEyebrow);
     defaultCardInnerHeight(cardTitle);
     defaultCardInnerHeight(cardDescription);
@@ -128,6 +131,7 @@ export default function decorate(block) {
 
   // Initial call to adjust heights
   if (window.innerWidth >= 768) {
+    cardInnerHeight(cardImage);
     cardInnerHeight(cardEyebrow);
     cardInnerHeight(cardTitle);
     cardInnerHeight(cardDescription);
