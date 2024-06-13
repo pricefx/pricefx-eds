@@ -84,7 +84,7 @@ export default function decorate(block) {
     img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])),
   );
 
-  const cardImage = ul.querySelectorAll('.cards-card-image');
+  const cardImage = ul.querySelectorAll('.cards-card-image img');
   const cardEyebrow = ul.querySelectorAll('.cards-card-eyebrow');
   const cardTitle = ul.querySelectorAll('.cards-card-title');
   const cardDescription = ul.querySelectorAll('.cards-card-description');
