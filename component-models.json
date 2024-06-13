@@ -292,7 +292,7 @@
       },
       {
         "component": "select",
-        "name": "type",
+        "name": "linkType",
         "value": "",
         "label": "Tertiary Arrow Variant",
         "valueType": "string",
