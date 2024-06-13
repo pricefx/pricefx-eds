@@ -78,6 +78,15 @@ const setCarouselImageHeight = (slideImageContainers, slideImages) => {
   }, 50);
 };
 
+// load Carousel Fragment
+const processCarousel = async (carouselFrag) => {
+  const carouselFragPath = carouselFrag.querySelector('a').href;
+  const url = new URL(carouselFragPath);
+  const fragmentPath = url.pathname;
+  const fragment = await loadFragment(fragmentPath);
+  return fragment;
+};
+
 export default async function decorate(block) {
   const [carouselTitle, carouselDescription, carouselSlideFrag, isAutoSlide] = block.children;
   block.innerHTML = '';
@@ -85,12 +94,6 @@ export default async function decorate(block) {
   if (carouselSlideFrag.textContent.trim() === '') {
     return;
   }
-
-  // load Carousel Fragment
-  const carouselFragPath = carouselSlideFrag.querySelector('a').href;
-  const url = new URL(carouselFragPath);
-  const fragmentPath = url.pathname;
-  const fragment = await loadFragment(fragmentPath);
 
   // Create container to hold Carousel Title and Description
   const carouselDetails = document.createElement('div');
@@ -120,7 +123,7 @@ export default async function decorate(block) {
   const carouselTrackContainer = document.createElement('div');
   carouselTrackContainer.classList.add('carousel-track-container');
   carouselContent.append(carouselTrackContainer);
-  carouselTrackContainer.append(fragment.firstElementChild);
+  carouselTrackContainer.append((await processCarousel(carouselSlideFrag)).firstElementChild);
   const carouselTrack = carouselTrackContainer.firstChild;
   carouselTrack.classList.add('carousel-track');
   const carouselSlides = Array.from(carouselTrack.children);
