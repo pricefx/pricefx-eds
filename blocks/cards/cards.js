@@ -103,8 +103,8 @@ export default function decorate(block) {
     }
   };
 
-  // Adjust Height of card icon variation
-  const cardIconVariationHeight = () => {
+  // Adjust Inner Element Height Variation
+  const cardInnerHeight = () => {
     const cardEyebrow = ul.querySelectorAll('.cards-card-eyebrow');
     const cardTitle = ul.querySelectorAll('.cards-card-title');
     const cardDescription = ul.querySelectorAll('.cards-card-description');
@@ -157,18 +157,35 @@ export default function decorate(block) {
     });
   };
 
+  const defaultCardInnerHeight = () => {
+    const cardEyebrow = ul.querySelectorAll('.cards-card-eyebrow');
+    const cardTitle = ul.querySelectorAll('.cards-card-title');
+    const cardDescription = ul.querySelectorAll('.cards-card-description');
+
+    cardEyebrow.forEach((eyebrowText) => {
+      eyebrowText.style.height = 'auto';
+    });
+    cardTitle.forEach((titleText) => {
+      titleText.style.height = 'auto';
+    });
+    cardDescription.forEach((descriptionText) => {
+      descriptionText.style.height = 'auto';
+    });
+  };
+
   window.addEventListener('resize', () => {
     if (window.innerWidth >= 768) {
       cardTopContentHeight();
-      cardIconVariationHeight();
+      cardInnerHeight();
     }
     defaultCardTopContentHeight();
+    defaultCardInnerHeight();
   });
 
   // Initial call to adjust heights
   if (window.innerWidth >= 768) {
     cardTopContentHeight();
-    cardIconVariationHeight();
+    cardInnerHeight();
   }
 
   block.textContent = '';
