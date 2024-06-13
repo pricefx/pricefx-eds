@@ -29,7 +29,7 @@
           }
         },
         {
-          "title": "richtext",
+          "title": "Richtext",
           "id": "richtext",
           "plugins": {
             "xwalk": {
