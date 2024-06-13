@@ -290,6 +290,12 @@ async function loadEager(doc) {
   }
 }
 
+async function loadCookieBanner() {
+  const cookieFragmentPath = '/fragments/cookie-banner';
+  const cookieFragment = await loadFragment(cookieFragmentPath);
+  return cookieFragment;
+}
+
 /**
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element
@@ -309,17 +315,18 @@ async function loadLazy(doc) {
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
 
+  const bodyEl = document.querySelector('body');
+  const cookieFrag = await loadCookieBanner();
+  if (cookieFrag) {
+    bodyEl.prepend(cookieFrag.firstElementChild);
+  }
+
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
 
   sampleRUM('lazy');
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
   sampleRUM.observe(main.querySelectorAll('picture > img'));
-
-  const bodyEl = document.querySelector('body');
-  const cookieFragmentPath = '/fragments/cookie-banner';
-  const cookiFragment = await loadFragment(cookieFragmentPath);
-  bodyEl.prepend(cookiFragment.firstElementChild);
 }
 
 /**
