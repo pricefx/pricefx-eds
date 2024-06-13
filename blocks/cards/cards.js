@@ -103,6 +103,53 @@ export default function decorate(block) {
     }
   };
 
+  // Adjust Height of card icon variation
+  const cardIconVariationHeight = () => {
+    const cardEyebrow = ul.querySelectorAll('.cards-card-eyebrow');
+    const cardTitle = ul.querySelectorAll('.cards-card-title');
+    const cardDescription = ul.querySelectorAll('.cards-card-description');
+    if (block.classList.contains('icon-variation')) {
+      setTimeout(() => {
+        if (cardEyebrow.length > 0) {
+          let maxHeight = 0;
+          cardEyebrow.forEach((eyebrowText) => {
+            const height = eyebrowText.offsetHeight;
+            maxHeight = Math.max(maxHeight, height);
+          });
+          if (maxHeight !== 0) {
+            cardEyebrow.forEach((eyebrowText) => {
+              eyebrowText.style.height = `${maxHeight}px`;
+            });
+          }
+        }
+        if (cardTitle.length > 0) {
+          let maxHeight = 0;
+          cardTitle.forEach((titleText) => {
+            const height = titleText.offsetHeight;
+            maxHeight = Math.max(maxHeight, height);
+          });
+          if (maxHeight !== 0) {
+            cardTitle.forEach((titleText) => {
+              titleText.style.height = `${maxHeight}px`;
+            });
+          }
+        }
+        if (cardDescription.length > 0) {
+          let maxHeight = 0;
+          cardDescription.forEach((descriptionText) => {
+            const height = descriptionText.offsetHeight;
+            maxHeight = Math.max(maxHeight, height);
+          });
+          if (maxHeight !== 0) {
+            cardDescription.forEach((descriptionText) => {
+              descriptionText.style.height = `${maxHeight}px`;
+            });
+          }
+        }
+      }, 150); // Delay to ensure proper recalculation after content changes
+    }
+  };
+
   const defaultCardTopContentHeight = () => {
     const cardTopContent = ul.querySelectorAll('.cards-card-top-content');
     cardTopContent.forEach((topText) => {
@@ -113,6 +160,7 @@ export default function decorate(block) {
   window.addEventListener('resize', () => {
     if (window.innerWidth >= 768) {
       cardTopContentHeight();
+      cardIconVariationHeight();
     }
     defaultCardTopContentHeight();
   });
@@ -120,6 +168,7 @@ export default function decorate(block) {
   // Initial call to adjust heights
   if (window.innerWidth >= 768) {
     cardTopContentHeight();
+    cardIconVariationHeight();
   }
 
   block.textContent = '';
