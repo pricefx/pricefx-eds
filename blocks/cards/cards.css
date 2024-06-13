@@ -213,8 +213,6 @@ div.cards-card-eyebrow + div.cards-card-description {
 /* Icon variation */
 .icon-variation.cards .cards-card-image {
   text-align: center;
-  width: 50px;
-  margin: 0 auto;
   padding: 20px 0 0;
 }
 
@@ -224,6 +222,9 @@ div.cards-card-eyebrow + div.cards-card-description {
 
 .icon-variation.cards > ul > li img {
   border-radius: 0;
+  height: 50px;
+  object-fit: contain;
+  width: 50px; 
 }
 
 /* Hide Image */

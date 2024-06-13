@@ -84,42 +84,58 @@ export default function decorate(block) {
     img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])),
   );
 
-  // Adjust Height of card top content
-  const cardTopContentHeight = () => {
-    const cardTopContent = ul.querySelectorAll('.cards-card-top-content');
-    if (cardTopContent.length > 0) {
-      setTimeout(() => {
+  const cardImage = ul.querySelectorAll('.cards-card-image img');
+  const cardEyebrow = ul.querySelectorAll('.cards-card-eyebrow');
+  const cardTitle = ul.querySelectorAll('.cards-card-title');
+  const cardDescription = ul.querySelectorAll('.cards-card-description');
+  const cardTopContent = ul.querySelectorAll('.cards-card-top-content');
+
+  // Adjust Inner Element Height Variation
+  const cardInnerHeight = (innerElement) => {
+    setTimeout(() => {
+      if (innerElement.length > 0) {
         let maxHeight = 0;
-        cardTopContent.forEach((topText) => {
-          const height = topText.offsetHeight;
+        innerElement.forEach((element) => {
+          const height = element.offsetHeight;
           maxHeight = Math.max(maxHeight, height);
         });
         if (maxHeight !== 0) {
-          cardTopContent.forEach((topText) => {
-            topText.style.height = `${maxHeight}px`;
+          innerElement.forEach((element) => {
+            element.style.height = `${maxHeight}px`;
           });
         }
-      }, 150); // Delay to ensure proper recalculation after content changes
-    }
+      }
+    }, 150); // Delay to ensure proper recalculation after content changes
   };
 
-  const defaultCardTopContentHeight = () => {
-    const cardTopContent = ul.querySelectorAll('.cards-card-top-content');
-    cardTopContent.forEach((topText) => {
-      topText.style.height = 'auto';
+  const defaultCardInnerHeight = (innerElement) => {
+    innerElement.forEach((element) => {
+      element.style.height = 'auto';
     });
   };
 
   window.addEventListener('resize', () => {
     if (window.innerWidth >= 768) {
-      cardTopContentHeight();
+      cardInnerHeight(cardImage);
+      cardInnerHeight(cardEyebrow);
+      cardInnerHeight(cardTitle);
+      cardInnerHeight(cardDescription);
+      cardInnerHeight(cardTopContent);
     }
-    defaultCardTopContentHeight();
+    defaultCardInnerHeight(cardImage);
+    defaultCardInnerHeight(cardEyebrow);
+    defaultCardInnerHeight(cardTitle);
+    defaultCardInnerHeight(cardDescription);
+    defaultCardInnerHeight(cardTopContent);
   });
 
   // Initial call to adjust heights
   if (window.innerWidth >= 768) {
-    cardTopContentHeight();
+    cardInnerHeight(cardImage);
+    cardInnerHeight(cardEyebrow);
+    cardInnerHeight(cardTitle);
+    cardInnerHeight(cardDescription);
+    cardInnerHeight(cardTopContent);
   }
 
   block.textContent = '';
