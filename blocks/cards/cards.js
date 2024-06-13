@@ -108,7 +108,7 @@ export default function decorate(block) {
     const cardEyebrow = ul.querySelectorAll('.cards-card-eyebrow');
     const cardTitle = ul.querySelectorAll('.cards-card-title');
     const cardDescription = ul.querySelectorAll('.cards-card-description');
-    if (block.classList.contains('icon-variation')) {
+    if (block.classList.contains('card-inner-even-height')) {
       setTimeout(() => {
         if (cardEyebrow.length > 0) {
           let maxHeight = 0;

@@ -684,6 +684,10 @@
           {
             "name": "Card Left Aligned",
             "value": "card-left-aligned"
+          },
+          {
+            "name": "Card Inner Element Even Height",
+            "value": "card-inner-even-height"
           }
         ]
       }
