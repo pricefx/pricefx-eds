@@ -105,11 +105,24 @@ export default function decorate(block) {
 
   // Adjust Inner Element Height Variation
   const cardInnerHeight = () => {
+    const cardImage = ul.querySelectorAll('.cards-card-image');
     const cardEyebrow = ul.querySelectorAll('.cards-card-eyebrow');
     const cardTitle = ul.querySelectorAll('.cards-card-title');
     const cardDescription = ul.querySelectorAll('.cards-card-description');
     if (block.classList.contains('card-inner-even-height')) {
       setTimeout(() => {
+        if (cardImage.length > 0) {
+          let maxHeight = 0;
+          cardImage.forEach((cardImg) => {
+            const height = cardImg.offsetHeight;
+            maxHeight = Math.max(maxHeight, height);
+          });
+          if (maxHeight !== 0) {
+            cardImage.forEach((cardImg) => {
+              cardImg.style.height = `${maxHeight}px`;
+            });
+          }
+        }
         if (cardEyebrow.length > 0) {
           let maxHeight = 0;
           cardEyebrow.forEach((eyebrowText) => {
@@ -158,10 +171,14 @@ export default function decorate(block) {
   };
 
   const defaultCardInnerHeight = () => {
+    const cardImage = ul.querySelectorAll('.cards-card-image');
     const cardEyebrow = ul.querySelectorAll('.cards-card-eyebrow');
     const cardTitle = ul.querySelectorAll('.cards-card-title');
     const cardDescription = ul.querySelectorAll('.cards-card-description');
 
+    cardImage.forEach((cardImg) => {
+      cardImg.style.height = 'auto';
+    });
     cardEyebrow.forEach((eyebrowText) => {
       eyebrowText.style.height = 'auto';
     });
