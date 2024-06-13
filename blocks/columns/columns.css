@@ -100,8 +100,6 @@
   width: 30px;
   position: absolute;
   left: 0;
-  top: 20px;
-  transform: translateY(-50%);
 }
 
 .columns.icons-for-li > div li::after {
