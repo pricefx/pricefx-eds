@@ -95,13 +95,8 @@ export default function decorate(block) {
       if (innerElement.length > 0) {
         let maxHeight = 0;
         innerElement.forEach((element) => {
-          if (element.classList.contains('cards-card-image')) {
-            const height = element.querySelector('img').offsetHeight;
-            maxHeight = Math.max(maxHeight, height);
-          } else {
-            const height = element.offsetHeight;
-            maxHeight = Math.max(maxHeight, height);
-          }
+          const height = element.offsetHeight;
+          maxHeight = Math.max(maxHeight, height);
         });
         if (maxHeight !== 0) {
           innerElement.forEach((element) => {
