@@ -75,6 +75,16 @@
   line-height: 24px;
 }
 
+.table .table-default td h6,
+.table .table-default td h5,
+.table .table-default td h4,
+.table .table-default td h3,
+.table .table-default td h2,
+.table .table-default td h1 {
+  font-size: var(--body-font-size-l);
+  margin-top: 0;
+}
+
 .table .table-listRow th {
   text-align: center;
   font-family: var(--ff-primary);
@@ -205,7 +215,7 @@
 .table .table-icon td,
 .table .table-icon th {
   border: 1px solid var(--c-white);
-  font-weight: var(--fw-bold);
+  font-weight: var(--fw-regular);
   vertical-align: top;
   padding: 12px;
 }
