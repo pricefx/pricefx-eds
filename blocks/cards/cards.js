@@ -20,7 +20,7 @@ function decorateCTA(cta, ctaLabel, ctaTarget, isClickable) {
 }
 
 function generateCardDom(props, block) {
-  const [imageContainer, , cardTopContent, eyebrow, title, description, cta, ctaLabel, ctaTarget, isClickable] = props;
+  const [imageContainer, cardTopContent, eyebrow, title, description, cta, ctaLabel, ctaTarget, isClickable] = props;
   const picture = imageContainer.querySelector('picture');
   const cardImPricing = block.classList.contains('card-im-pricing');
 
