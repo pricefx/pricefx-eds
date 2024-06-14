@@ -61,7 +61,7 @@ export default async function decorate(block) {
             ? document.createElement('th')
             : document.createElement('td');
 
-        cell.textContent = cellDiv.textContent;
+        cell.appendChild(cellDiv);
 
         row.appendChild(cell);
       });
@@ -91,7 +91,7 @@ export default async function decorate(block) {
           showHeader.textContent.trim() === 'true' && rowIndex === 0
             ? document.createElement('th')
             : document.createElement('td');
-        cell.textContent = cellDiv.textContent;
+        cell.appendChild(cellDiv);
         row.appendChild(cell);
       });
     } else if (variation === 'level') {
@@ -113,7 +113,7 @@ export default async function decorate(block) {
           if (hasNum === true) {
             cell.style.fontWeight = 'var(--fw-bold)';
           }
-          cell.textContent = cellDiv.textContent;
+          cell.appendChild(cellDiv);
         }
         row.appendChild(cell);
       });
@@ -143,7 +143,7 @@ export default async function decorate(block) {
           if (hasNum === true) {
             cell.style.fontWeight = 'var(--fw-bold)';
           }
-          cell.textContent = cellDiv.textContent;
+          cell.appendChild(cellDiv);
         }
 
         if (rowIndex === 0 && showHeader.textContent.trim() === 'true') {

@@ -700,6 +700,13 @@
         "multi": false
       },
       {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "imageAlt",
+        "value": "Default alt",
+        "label": "Alt Text"
+      },
+      {
         "component": "text-area",
         "valueType": "string",
         "name": "cardTopContent",
@@ -1343,6 +1350,13 @@
         "label": "Quote Image"
       },
       {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "quoteImageAlt",
+        "label": "Image Alt",
+        "value": "Default alt"
+      },
+      {
         "component": "text-area",
         "valueType": "string",
         "value": "",
@@ -1354,6 +1368,13 @@
         "valueType": "string",
         "name": "quoteLogo",
         "label": "Quote Logo"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "quoteLogoAlt",
+        "label": "Image Alt",
+        "value": "Default alt"
       },
       {
         "component": "text-area",

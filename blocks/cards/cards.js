@@ -20,7 +20,7 @@ function decorateCTA(cta, ctaLabel, ctaTarget, isClickable) {
 }
 
 function generateCardDom(props, block) {
-  const [imageContainer, cardTopContent, eyebrow, title, description, cta, ctaLabel, ctaTarget, isClickable] = props;
+  const [imageContainer, , cardTopContent, eyebrow, title, description, cta, ctaLabel, ctaTarget, isClickable] = props;
   const picture = imageContainer.querySelector('picture');
   const cardImPricing = block.classList.contains('card-im-pricing');
 
@@ -95,8 +95,13 @@ export default function decorate(block) {
       if (innerElement.length > 0) {
         let maxHeight = 0;
         innerElement.forEach((element) => {
-          const height = element.offsetHeight;
-          maxHeight = Math.max(maxHeight, height);
+          if (element.classList.contains('cards-card-image')) {
+            const height = element.querySelector('img').offsetHeight;
+            maxHeight = Math.max(maxHeight, height);
+          } else {
+            const height = element.offsetHeight;
+            maxHeight = Math.max(maxHeight, height);
+          }
         });
         if (maxHeight !== 0) {
           innerElement.forEach((element) => {

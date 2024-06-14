@@ -17,7 +17,7 @@ export default async function decorate(block) {
   // eslint-disable-next-line no-unused-vars
 
   [...block.children].forEach((row, index) => {
-    if (index === 1) {
+    if (index === 2) {
       const quoteIcon = document.createElement('div');
       quoteIcon.className = 'quote-icon';
       quoteIcon.innerHTML = QUOTES;
@@ -29,7 +29,7 @@ export default async function decorate(block) {
       quoteIcon.appendChild(quoteEl);
 
       quoteRightContainerInner.appendChild(quoteIcon);
-    } else if (index === 2) {
+    } else if (index === 3) {
       const imageLogo = row.firstElementChild.querySelector('picture img');
       if (imageLogo) {
         const quoteLogo = document.createElement('div');
@@ -37,7 +37,7 @@ export default async function decorate(block) {
         quoteLogo.appendChild(imageLogo);
         quoteRightContainerInner.appendChild(quoteLogo);
       }
-    } else if (index === 3) {
+    } else if (index === 5) {
       const authorEl = document.createElement('div');
       authorEl.classList.add('author');
       authorEl.innerHTML = row.firstElementChild.innerHTML;
