@@ -82,6 +82,7 @@
 .table .table-default td h2,
 .table .table-default td h1 {
   font-size: var(--body-font-size-l);
+  margin-top: 0;
 }
 
 .table .table-listRow th {
