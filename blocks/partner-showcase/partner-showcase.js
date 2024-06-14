@@ -1,5 +1,5 @@
 import ffetch from '../../scripts/ffetch.js';
-import { createOptimizedPicture } from '../../scripts/aem.js';
+import { createOptimizedPicture, readBlockConfig } from '../../scripts/aem.js';
 import { LEFTCHEVRON, RIGHTCHEVRON } from '../../scripts/constants.js';
 
 const isDesktop = window.matchMedia('(min-width: 986px)');
@@ -118,28 +118,26 @@ const updateBrowserUrl = (searchParams, key, value) => {
  * @param {Element} block The Learning Center block element
  */
 export default async function decorate(block) {
-  const [
-    configsTab,
-    numberOfPartners,
-    sortBy,
-    cardCtaLabel,
-    filtersTab,
-    filterOneTitle,
-    filterOneMultiSelect,
-    filterOneTags,
-    filterTwoTitle,
-    filterTwoMultiSelect,
-    filterTwoTags,
-    filterThreeTitle,
-    filterThreeMultiSelect,
-    filterThreeTags,
-    filterFourTitle,
-    filterFourMultiSelect,
-    filterFourTags,
-  ] = block.children;
+  const blockConfig = readBlockConfig(block);
+
+  // Extract block configuration details
+  const numberOfPartners = blockConfig.numberofpartners;
+  const sortBy = blockConfig.sortby;
+  const cardCtaLabel = blockConfig.cardctalabel;
+  const filterOneTitle = blockConfig.filteronetitle;
+  const filterOneMultiSelect = blockConfig.filteronemultiselect;
+  const filterOneTags = blockConfig.filteronetags;
+  const filterTwoTitle = blockConfig.filtertwotitle;
+  const filterTwoMultiSelect = blockConfig.filtertwomultiselect;
+  const filterTwoTags = blockConfig.filtertwotags;
+  const filterThreeTitle = blockConfig.filterthreetitle;
+  const filterThreeMultiSelect = blockConfig.filterthreemultiselect;
+  const filterThreeTags = blockConfig.filterthreetags;
+  const filterFourTitle = blockConfig.filterfourtitle;
+  const filterFourMultiSelect = blockConfig.filterfourmultiselect;
+  const filterFourTags = blockConfig.filterfourtags;
+
   block.innerHTML = '';
-  configsTab.innerHTML = '';
-  filtersTab.innerHTML = '';
 
   // Fetch Partners content from JSON endpoint
   const url = '/partners-index.json';
@@ -229,14 +227,14 @@ export default async function decorate(block) {
     filterCategoryName,
     isHidden,
   ) => {
-    const optionsArray = filterCategoryOptions.textContent.trim().split(',');
+    const optionsArray = filterCategoryOptions.split(',');
     let filterOptionsMarkup = '';
     optionsArray.forEach((option) => {
       const optionSplit = option.split('/')[2];
       const optionReplaceHypen = optionSplit.includes('-') ? optionSplit.replaceAll('-', ' ') : optionSplit;
       const optionTextTransform =
         optionReplaceHypen.length <= 4 ? optionReplaceHypen.toUpperCase() : optionReplaceHypen;
-      if (filterIsMultiSelect.textContent.trim() === 'false') {
+      if (filterIsMultiSelect === 'false') {
         filterOptionsMarkup += `
           <li class="ps-filter-category-item">
             <input type="radio" id="filter-${optionSplit.includes('&') ? `${filterCategoryName}-${optionSplit}` : `${filterCategoryName}-${optionSplit}`}" name="filter-${filterCategoryName}" value="${optionSplit.includes('&') ? optionSplit : optionSplit}" data-filter-category="filter-${filterCategoryName}" />
@@ -255,10 +253,10 @@ export default async function decorate(block) {
 
     const markup = `
       <div class="ps-filter-category">
-        <button class="ps-filter-category-toggle" id="ps-filter-category-${filterNum}-toggle" aria-controls="ps-filter-category-${filterNum}-content" aria-expanded=${isHidden === true ? 'false' : 'true'}>${filterCategoryLabel.textContent.trim()}<span class="accordion-icon"></span></button>
+        <button class="ps-filter-category-toggle" id="ps-filter-category-${filterNum}-toggle" aria-controls="ps-filter-category-${filterNum}-content" aria-expanded=${isHidden === true ? 'false' : 'true'}>${filterCategoryLabel}<span class="accordion-icon"></span></button>
         <ul class="ps-filter-category-content" id="ps-filter-category-${filterNum}-content" aria-labelledby="ps-filter-category-${filterNum}-toggle" aria-hidden=${isHidden}>
           ${
-            filterIsMultiSelect.textContent.trim() === 'false'
+            filterIsMultiSelect === 'false'
               ? `<li class="ps-filter-category-item">
                 <input type="radio" id="filter-all-${filterCategoryName}" name="filter-${filterCategoryName}" value="filter-all-${filterCategoryName}" data-filter-category="filter-${filterCategoryName}" checked />
                 <label for="filter-all-${filterCategoryName}">All</label>
@@ -274,27 +272,27 @@ export default async function decorate(block) {
 
   filter.innerHTML = `
     ${
-      sortBy.textContent.trim() !== ''
+      sortBy !== ''
         ? `
       <div class="ps-sort-content-wrapper">
         <label for="ps-sort-content" class="sr-only">Short by</label>
         <select name="ps-sort-content" id="ps-sort-content">
           ${
-            sortBy.textContent.trim().includes('date')
+            sortBy.includes('date')
               ? `
             <optgroup label="Date">
-              ${sortBy.textContent.trim().includes('dateNewOld') ? `<option value="desc-date">Sort by: Date (New → Old)</option>` : ''}
-              ${sortBy.textContent.trim().includes('dateOldNew') ? `<option value="asc-date">Sort by: Date (Old → New)</option>` : ''}
+              ${sortBy.includes('dateNewOld') ? `<option value="desc-date">Sort by: Date (New → Old)</option>` : ''}
+              ${sortBy.includes('dateOldNew') ? `<option value="asc-date">Sort by: Date (Old → New)</option>` : ''}
             </optgroup>
           `
               : ''
           }
           ${
-            sortBy.textContent.trim().includes('title')
+            sortBy.includes('title')
               ? `
             <optgroup label="Title">
-              ${sortBy.textContent.trim().includes('titleAZ') ? `<option value="asc-title" selected>Sort by: Title (A → Z)</option>` : ''}
-              ${sortBy.textContent.trim().includes('titleZA') ? `<option value="desc-title">Sort by: Title (Z → A)</option>` : ''}
+              ${sortBy.includes('titleAZ') ? `<option value="asc-title" selected>Sort by: Title (A → Z)</option>` : ''}
+              ${sortBy.includes('titleZA') ? `<option value="desc-title">Sort by: Title (Z → A)</option>` : ''}
             </optgroup>
           `
               : ''
@@ -351,11 +349,8 @@ export default async function decorate(block) {
   const renderPartnerCard = (partnersDataList) => {
     let initialPartnerData = partnersDataList;
     const initialPartnerCount = initialPartnerData.length;
-    if (
-      Number(numberOfPartners.textContent.trim()) !== '' &&
-      initialPartnerCount > Number(numberOfPartners.textContent.trim())
-    ) {
-      initialPartnerData = partnersDataList.slice(defaultSortedPartners, numberOfPartners.textContent.trim());
+    if (Number(numberOfPartners) !== '' && initialPartnerCount > Number(numberOfPartners)) {
+      initialPartnerData = partnersDataList.slice(defaultSortedPartners, numberOfPartners);
     }
     let markup = '';
     initialPartnerData.forEach((partner) => {
@@ -377,7 +372,7 @@ export default async function decorate(block) {
                 : ''
             }
             <div class="partner-cta-container">
-              <a class="partner-link" href="${partner.path}">${cardCtaLabel.textContent.trim() === '' ? 'Learn More' : cardCtaLabel.textContent.trim()}</a>
+              <a class="partner-link" href="${partner.path}">${cardCtaLabel === '' ? 'Learn More' : cardCtaLabel}</a>
             </div>
           </div>
         </li>
@@ -443,11 +438,11 @@ export default async function decorate(block) {
   };
 
   paginationContainer.innerHTML = `
-    ${Number(numberOfPartners.textContent.trim()) > defaultSortedPartners.length ? '' : `<button class="pagination-prev" aria-label="Previous Page">${LEFTCHEVRON}</button>`}
+    ${Number(numberOfPartners) > defaultSortedPartners.length ? '' : `<button class="pagination-prev" aria-label="Previous Page">${LEFTCHEVRON}</button>`}
     <ul class="pagination-pages-list">
-      ${renderPages(numberOfPartners.textContent.trim(), defaultSortedPartners, 1)}
+      ${renderPages(numberOfPartners, defaultSortedPartners, 1)}
     </ul>
-    ${Number(numberOfPartners.textContent.trim()) > defaultSortedPartners.length ? '' : `<button class="pagination-next" aria-label="Nexst Page">${RIGHTCHEVRON}</button>`}
+    ${Number(numberOfPartners) > defaultSortedPartners.length ? '' : `<button class="pagination-next" aria-label="Nexst Page">${RIGHTCHEVRON}</button>`}
   `;
 
   const paginationPageList = document.querySelector('.pagination-pages-list');
@@ -534,7 +529,7 @@ export default async function decorate(block) {
       paginationContainer.classList.remove('hidden');
       const currentPage = paginationPageList.children[0];
       paginationPageList.innerHTML = renderPages(
-        numberOfPartners.textContent.trim(),
+        numberOfPartners,
         currentSortedPartners,
         Number(currentPage.textContent),
       );
@@ -634,7 +629,7 @@ export default async function decorate(block) {
       paginationContainer.classList.remove('hidden');
       const currentPage = paginationPageList.children[0];
       paginationPageList.innerHTML = renderPages(
-        numberOfPartners.textContent.trim(),
+        numberOfPartners,
         currentFilteredPartners,
         Number(currentPage.textContent),
       );
@@ -678,7 +673,7 @@ export default async function decorate(block) {
   // Append partners based on active page
   const appendNewActivePartnerPage = (startIndex, endIndex, currentPage, partnersJson) => {
     let newCurrentPartnersData;
-    if (Number(currentPage.textContent) * Number(numberOfPartners.textContent.trim()) >= partnersJson.length) {
+    if (Number(currentPage.textContent) * Number(numberOfPartners) >= partnersJson.length) {
       newCurrentPartnersData = partnersJson.slice(startIndex);
     } else {
       newCurrentPartnersData = partnersJson.slice(startIndex, endIndex);
@@ -712,7 +707,7 @@ export default async function decorate(block) {
     [...paginations.children].forEach((page) => page.classList.remove('active-page'));
     nextActivePage.classList.add('active-page');
     paginationPageList.innerHTML = renderPages(
-      numberOfPartners.textContent.trim(),
+      numberOfPartners,
       currentPartnersData,
       Number(nextActivePage.textContent),
     );
@@ -720,9 +715,8 @@ export default async function decorate(block) {
     handlePageClick(paginationPageList, nextActivePage.textContent);
 
     appendNewActivePartnerPage(
-      Number(nextActivePage.textContent) * Number(numberOfPartners.textContent.trim()) -
-        Number(numberOfPartners.textContent.trim()),
-      Number(nextActivePage.textContent) * Number(numberOfPartners.textContent.trim()),
+      Number(nextActivePage.textContent) * Number(numberOfPartners) - Number(numberOfPartners),
+      Number(nextActivePage.textContent) * Number(numberOfPartners),
       nextActivePage,
       currentPartnersData,
     );
@@ -737,18 +731,13 @@ export default async function decorate(block) {
       [...targetPageContainer.children].forEach((page) => page.classList.remove('active-page'));
       target.parentElement.classList.add('active-page');
 
-      paginationPageList.innerHTML = renderPages(
-        numberOfPartners.textContent.trim(),
-        currentPartnersData,
-        Number(target.textContent),
-      );
+      paginationPageList.innerHTML = renderPages(numberOfPartners, currentPartnersData, Number(target.textContent));
 
       handlePageClick(paginationPageList, target.textContent);
 
       appendNewActivePartnerPage(
-        Number(target.textContent) * Number(numberOfPartners.textContent.trim()) -
-          Number(numberOfPartners.textContent.trim()),
-        Number(target.textContent) * Number(numberOfPartners.textContent.trim()),
+        Number(target.textContent) * Number(numberOfPartners) - Number(numberOfPartners),
+        Number(target.textContent) * Number(numberOfPartners),
         target,
         currentPartnersData,
       );
@@ -842,7 +831,7 @@ export default async function decorate(block) {
 
     if (loadedSearchParams.get('page') !== '1') {
       paginationPageList.innerHTML = renderPages(
-        numberOfPartners.textContent.trim(),
+        numberOfPartners,
         currentPartnersData,
         Number(loadedSearchParams.get('page')),
       );
@@ -859,9 +848,8 @@ export default async function decorate(block) {
         nextPageButton.classList.add('hidden');
       }
       appendNewActivePartnerPage(
-        Number(loadedSearchParams.get('page')) * Number(numberOfPartners.textContent.trim()) -
-          Number(numberOfPartners.textContent.trim()),
-        Number(loadedSearchParams.get('page')) * Number(numberOfPartners.textContent.trim()),
+        Number(loadedSearchParams.get('page')) * Number(numberOfPartners) - Number(numberOfPartners),
+        Number(loadedSearchParams.get('page')) * Number(numberOfPartners),
         Number(loadedSearchParams.get('page')),
         currentPartnersData,
       );

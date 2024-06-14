@@ -1,5 +1,5 @@
 import ffetch from '../../scripts/ffetch.js';
-import { createOptimizedPicture } from '../../scripts/aem.js';
+import { createOptimizedPicture, readBlockConfig } from '../../scripts/aem.js';
 import { environmentMode, replaceBasePath } from '../../scripts/global-functions.js';
 import { BASE_CONTENT_PATH } from '../../scripts/url-constants.js';
 
@@ -111,43 +111,43 @@ const updateBrowserUrl = (searchParams, key, value) => {
  * @param {Element} block The Learning Center block element
  */
 export default async function decorate(block) {
-  const [
-    configsTab,
-    featuredArticle,
-    searchPath,
-    searchPlaceholder,
-    authorDirectoryPath,
-    numOfArticles,
-    defaultSort,
-    articlesContentCta,
-    ebooksContentCta,
-    podcastsContentCta,
-    caseStudyContentCta,
-    videosContentCta,
-    reportsContentCta,
-    defaultContentCta,
-    filtersTab,
-    filterOne,
-    filterOneIsMultiSelect,
-    filterOneOptions,
-    filterTwo,
-    filterTwoIsMultiSelect,
-    filterTwoOptions,
-    filterThree,
-    filterThreeIsMultiSelect,
-    filterThreeOptions,
-    filterFour,
-    filterFourIsMultiSelect,
-    filterFourOptions,
-  ] = block.children;
-  block.innerHTML = '';
-  configsTab.innerHTML = '';
-  filtersTab.innerHTML = '';
+  const blockConfig = readBlockConfig(block);
+
+  // Extract block configuration details
+  const featuredArticle = blockConfig.featuredarticle;
+  const searchPath = blockConfig.searchpath;
+  const searchPlaceholder = blockConfig.searchplaceholdertext;
+  const authorDirectoryPath = blockConfig.authorpath;
+  const numOfArticles = blockConfig.numberofarticles;
+  const defaultSort = blockConfig.sortby;
+  const articlesContentCta = blockConfig.articlescontentcta;
+  const ebooksContentCta = blockConfig.ebookscontentcta;
+  const podcastsContentCta = blockConfig.podcastscontentcta;
+  const caseStudyContentCta = blockConfig.casestudycontentcta;
+  const videosContentCta = blockConfig.videoscontentcta;
+  const reportsContentCta = blockConfig.reportscontentcta;
+  const defaultContentCta = blockConfig.defaultcontentcta;
+  const filterOne = blockConfig.filteronetitle;
+  const filterOneIsMultiSelect = blockConfig.filteronemultiselect;
+  const filterOneOptions = blockConfig.filteronetags;
+  const filterTwo = blockConfig.filtertwotitle;
+  const filterTwoIsMultiSelect = blockConfig.filtertwomultiselect;
+  const filterTwoOptions = blockConfig.filtertwotags;
+  const filterThree = blockConfig.filterthreetitle;
+  const filterThreeIsMultiSelect = blockConfig.filterthreemultiselect;
+  const filterThreeOptions = blockConfig.filterthreetags;
+  const filterFour = blockConfig.filterfourtitle;
+  const filterFourIsMultiSelect = blockConfig.filterfourmultiselect;
+  const filterFourOptions = blockConfig.filterfourtags;
+
+  block.textContent = '';
 
   // Fetch Articles content from JSON endpoint
-  const articleData = await ffetch(searchPath.textContent.trim()).all();
+  const searchUrl = new URL(searchPath);
+  const searchUrlPath = searchUrl.pathname;
+  const articleData = await ffetch(searchUrlPath).all();
 
-  const deconstructFeaturedArticlePath = featuredArticle.textContent.trim().split('/');
+  const deconstructFeaturedArticlePath = featuredArticle.split('/');
   const featuredArticlePath = deconstructFeaturedArticlePath[deconstructFeaturedArticlePath.length - 1];
   const featuredArticleData = articleData.find((data) => data.path.includes(featuredArticlePath));
   let noFeaturedArticleData;
@@ -204,24 +204,24 @@ export default async function decorate(block) {
   filterControls.innerHTML = `
     <button class="filter-menu-toggle" id="filter-menu-toggle" aria-controls="filter-menu" aria-expanded="true"><span class="filter-icon"></span><span class="toggle-label">Hide Filters</span></button>
     ${
-      defaultSort.textContent.trim() !== ''
+      defaultSort !== ''
         ? `<div class="sort-content-wrapper">
         <label for="sort-content" class="sr-only">Short by</label>
         <select name="sort-content" id="sort-content">
           <option value="" selected disabled>Sort by</option>
           ${
-            defaultSort.textContent.includes('date')
+            defaultSort.includes('date')
               ? `<optgroup label="Date">
-              ${defaultSort.textContent.includes('desc-date') ? `<option value="desc-date">Date (New → Old)</option>` : ''}
-              ${defaultSort.textContent.includes('asc-date') ? `<option value="asc-date">Date (Old → New)</option>` : ''}
+              ${defaultSort.includes('desc-date') ? `<option value="desc-date">Date (New → Old)</option>` : ''}
+              ${defaultSort.includes('asc-date') ? `<option value="asc-date">Date (Old → New)</option>` : ''}
             </optgroup>`
               : ''
           }
           ${
-            defaultSort.textContent.includes('title')
+            defaultSort.includes('title')
               ? `<optgroup label="Title">
-              ${defaultSort.textContent.includes('asc-title') ? `<option value="asc-title">Title (A → Z)</option>` : ''}
-              ${defaultSort.textContent.includes('desc-title') ? `<option value="desc-title">Title (Z → A)</option>` : ''}
+              ${defaultSort.includes('asc-title') ? `<option value="asc-title">Title (A → Z)</option>` : ''}
+              ${defaultSort.includes('desc-title') ? `<option value="desc-title">Title (Z → A)</option>` : ''}
             </optgroup>`
               : ''
           }
@@ -271,7 +271,7 @@ export default async function decorate(block) {
     filterAllId,
     filterCategoryName,
   ) => {
-    const optionsArray = filterCategoryOptions.textContent.trim().split(',');
+    const optionsArray = filterCategoryOptions.split(',');
     let markup = '';
     let filterOptionsMarkup = '';
     optionsArray.forEach((option) => {
@@ -282,7 +282,7 @@ export default async function decorate(block) {
           ? optionReplace.toUpperCase()
           : optionReplace;
       const optionLabel = optionTextTransform === 'it professionals' ? 'IT Professionals' : optionTextTransform;
-      if (filterIsMultiSelect.textContent.trim() !== 'true') {
+      if (filterIsMultiSelect !== 'true') {
         filterOptionsMarkup += `
           <li class="filter-category-item">
             <input type="radio" id="filter-${optionSplit}" name="${filterCategoryName}" value="${optionSplit}" data-filter-category="${filterCategoryName}" />
@@ -301,10 +301,10 @@ export default async function decorate(block) {
 
     markup = `
       <div class="filter-category">
-        <button class="filter-category-toggle" id="filter-category-${filterNum}-toggle" aria-controls="filter-category-${filterNum}-content" aria-expanded="true">${filterCategoryLabel.textContent.trim()}<span class="accordion-icon"></span></button>
+        <button class="filter-category-toggle" id="filter-category-${filterNum}-toggle" aria-controls="filter-category-${filterNum}-content" aria-expanded="true">${filterCategoryLabel}<span class="accordion-icon"></span></button>
         <ul class="filter-category-content" id="filter-category-${filterNum}-content" aria-labelledby="filter-category-${filterNum}-toggle" aria-hidden="false">
           ${
-            filterIsMultiSelect.textContent.trim() !== 'true'
+            filterIsMultiSelect !== 'true'
               ? `<li class="filter-category-item">
               <input type="radio" id="${filterAllId}" name="${filterCategoryName}" value="${filterAllId}" data-filter-category="${filterCategoryName}" checked />
               <label for="${filterAllId}">All</label>
@@ -321,13 +321,13 @@ export default async function decorate(block) {
   filter.innerHTML = `
     <form class="filter-search-wrapper">
       <label for="filter-search" class="sr-only">Search</label>
-      <input type="text" name="filter-search" id="filter-search" placeholder="${searchPlaceholder.textContent.trim()}" />
+      <input type="text" name="filter-search" id="filter-search" placeholder="${searchPlaceholder}" />
       <button type="submit" aria-label="Submit search"></button>
     </form>
-    ${filterOne.textContent.trim() !== '' ? renderFilterCategory(1, filterOne, filterOneIsMultiSelect, filterOneOptions, 'filter-all-content-type', 'filter-type') : ''}
-    ${filterTwo.textContent.trim() !== '' ? renderFilterCategory(2, filterTwo, filterTwoIsMultiSelect, filterTwoOptions, 'filter-all-industry', 'filter-industry') : ''}
-    ${filterThree.textContent.trim() !== '' ? renderFilterCategory(3, filterThree, filterThreeIsMultiSelect, filterThreeOptions, 'filter-all-role', 'filter-role') : ''}
-    ${filterFour.textContent.trim() !== '' ? renderFilterCategory(4, filterFour, filterFourIsMultiSelect, filterFourOptions, 'filter-all-pfx', 'filter-pfx') : ''}
+    ${filterOne !== '' ? renderFilterCategory(1, filterOne, filterOneIsMultiSelect, filterOneOptions, 'filter-all-content-type', 'filter-type') : ''}
+    ${filterTwo !== '' ? renderFilterCategory(2, filterTwo, filterTwoIsMultiSelect, filterTwoOptions, 'filter-all-industry', 'filter-industry') : ''}
+    ${filterThree !== '' ? renderFilterCategory(3, filterThree, filterThreeIsMultiSelect, filterThreeOptions, 'filter-all-role', 'filter-role') : ''}
+    ${filterFour !== '' ? renderFilterCategory(4, filterFour, filterFourIsMultiSelect, filterFourOptions, 'filter-all-pfx', 'filter-pfx') : ''}
   `;
 
   // Set initial max-height for Filter Categories to create smooth accordion transition
@@ -370,7 +370,10 @@ export default async function decorate(block) {
     let innerMarkup = '';
 
     // Formatting authorsParentPagePath
-    let authorsParentPagePathFormatted = authorDirectoryPath.textContent.trim();
+    const authorUrl = new URL(authorDirectoryPath);
+    const authorUrlPath = authorUrl.pathname;
+
+    let authorsParentPagePathFormatted = authorUrlPath;
     const isPublishEnvironment = environmentMode() === 'publish';
 
     // Append a slash only if the URL doesn't already end with it
@@ -425,28 +428,28 @@ export default async function decorate(block) {
       const removePrefixCategory = firstCategory.split('/')[1];
       switch (removePrefixCategory) {
         case 'articles':
-          markup = `<a class="article-link" href="${article.path}">${articlesContentCta.textContent.trim()}</a>`;
+          markup = `<a class="article-link" href="${article.path}">${articlesContentCta}</a>`;
           break;
         case 'videos':
-          markup = `<a class="article-link" href="${article.path}">${videosContentCta.textContent.trim()}</a>`;
+          markup = `<a class="article-link" href="${article.path}">${videosContentCta}</a>`;
           break;
         case 'podcasts':
-          markup = `<a class="article-link" href="${article.path}">${podcastsContentCta.textContent.trim()}</a>`;
+          markup = `<a class="article-link" href="${article.path}">${podcastsContentCta}</a>`;
           break;
         case 'case-study':
-          markup = `<a class="article-link" href="${article.path}">${caseStudyContentCta.textContent.trim()}</a>`;
+          markup = `<a class="article-link" href="${article.path}">${caseStudyContentCta}</a>`;
           break;
         case 'analyst-reports':
-          markup = `<a class="article-link" href="${article.path}">${reportsContentCta.textContent.trim()}</a>`;
+          markup = `<a class="article-link" href="${article.path}">${reportsContentCta}</a>`;
           break;
         case 'e-books':
-          markup = `<a class="article-link" href="${article.path}">${ebooksContentCta.textContent.trim()}</a>`;
+          markup = `<a class="article-link" href="${article.path}">${ebooksContentCta}</a>`;
           break;
         default:
-          markup = `<a class="article-link" href="${article.path}">${defaultContentCta.textContent.trim()}</a>`;
+          markup = `<a class="article-link" href="${article.path}">${defaultContentCta}</a>`;
       }
     } else {
-      markup = `<a class="article-link" href="${article.path}">${defaultContentCta.textContent.trim()}</a>`;
+      markup = `<a class="article-link" href="${article.path}">${defaultContentCta}</a>`;
     }
     return markup;
   };
@@ -501,11 +504,8 @@ export default async function decorate(block) {
   const renderArticleCard = (articleDataList) => {
     let initialArticleData = articleDataList;
     const initialArticleCount = initialArticleData.length;
-    if (
-      Number(numOfArticles.textContent.trim()) !== '' &&
-      initialArticleCount > Number(numOfArticles.textContent.trim())
-    ) {
-      initialArticleData = articleDataList.slice(noFeaturedArticleData, numOfArticles.textContent.trim());
+    if (Number(numOfArticles) !== '' && initialArticleCount > Number(numOfArticles)) {
+      initialArticleData = articleDataList.slice(noFeaturedArticleData, numOfArticles);
     }
     let markup = '';
     initialArticleData.forEach((article) => {
@@ -608,11 +608,11 @@ export default async function decorate(block) {
   };
 
   paginationContainer.innerHTML = `
-    ${Number(numOfArticles.textContent.trim()) > defaultSortedArticle.length ? '' : '<button class="pagination-prev">Previous</button>'}
+    ${Number(numOfArticles) > defaultSortedArticle.length ? '' : '<button class="pagination-prev">Previous</button>'}
     <ul class="pagination-pages-list">
-      ${renderPages(numOfArticles.textContent.trim(), defaultSortedArticle, 1)}
+      ${renderPages(numOfArticles, defaultSortedArticle, 1)}
     </ul>
-    ${Number(numOfArticles.textContent.trim()) > defaultSortedArticle.length ? '' : '<button class="pagination-next">Next</button>'}
+    ${Number(numOfArticles) > defaultSortedArticle.length ? '' : '<button class="pagination-next">Next</button>'}
   `;
 
   const paginationPageList = document.querySelector('.pagination-pages-list');
@@ -707,11 +707,7 @@ export default async function decorate(block) {
     } else {
       paginationContainer.classList.remove('hidden');
       const currentPage = paginationPageList.children[0];
-      paginationPageList.innerHTML = renderPages(
-        numOfArticles.textContent.trim(),
-        currentSortedArticles,
-        Number(currentPage.textContent),
-      );
+      paginationPageList.innerHTML = renderPages(numOfArticles, currentSortedArticles, Number(currentPage.textContent));
       paginationPageList.children[0].classList.add('active-page');
       nextPageButton.classList.remove('hidden');
       if (paginationPageList.children.length <= 1) {
@@ -787,7 +783,7 @@ export default async function decorate(block) {
       paginationContainer.classList.remove('hidden');
       const currentPage = paginationPageList.children[0];
       paginationPageList.innerHTML = renderPages(
-        numOfArticles.textContent.trim(),
+        numOfArticles,
         currentSearchedArticles,
         Number(currentPage.textContent),
       );
@@ -920,7 +916,7 @@ export default async function decorate(block) {
       paginationContainer.classList.remove('hidden');
       const currentPage = paginationPageList.children[0];
       paginationPageList.innerHTML = renderPages(
-        numOfArticles.textContent.trim(),
+        numOfArticles,
         currentFilteredArticles,
         Number(currentPage.textContent),
       );
@@ -973,7 +969,7 @@ export default async function decorate(block) {
   // Append articles based on active page
   const appendNewActiveArticlePage = (startIndex, endIndex, currentPage, articlesJson) => {
     let newCurrentArticleData;
-    if (Number(currentPage.textContent) * Number(numOfArticles.textContent.trim()) >= articlesJson.length) {
+    if (Number(currentPage.textContent) * Number(numOfArticles) >= articlesJson.length) {
       newCurrentArticleData = articlesJson.slice(startIndex);
     } else {
       newCurrentArticleData = articlesJson.slice(startIndex, endIndex);
@@ -1006,18 +1002,13 @@ export default async function decorate(block) {
   const handlePaginationNav = (paginations, nextActivePage) => {
     [...paginations.children].forEach((page) => page.classList.remove('active-page'));
     nextActivePage.classList.add('active-page');
-    paginationPageList.innerHTML = renderPages(
-      numOfArticles.textContent.trim(),
-      currentArticleData,
-      Number(nextActivePage.textContent),
-    );
+    paginationPageList.innerHTML = renderPages(numOfArticles, currentArticleData, Number(nextActivePage.textContent));
 
     handlePageClick(paginationPageList, nextActivePage.textContent);
 
     appendNewActiveArticlePage(
-      Number(nextActivePage.textContent) * Number(numOfArticles.textContent.trim()) -
-        Number(numOfArticles.textContent.trim()),
-      Number(nextActivePage.textContent) * Number(numOfArticles.textContent.trim()),
+      Number(nextActivePage.textContent) * Number(numOfArticles) - Number(numOfArticles),
+      Number(nextActivePage.textContent) * Number(numOfArticles),
       nextActivePage,
       currentArticleData,
     );
@@ -1031,18 +1022,13 @@ export default async function decorate(block) {
       [...targetPageContainer.children].forEach((page) => page.classList.remove('active-page'));
       target.parentElement.classList.add('active-page');
 
-      paginationPageList.innerHTML = renderPages(
-        numOfArticles.textContent.trim(),
-        currentArticleData,
-        Number(target.textContent),
-      );
+      paginationPageList.innerHTML = renderPages(numOfArticles, currentArticleData, Number(target.textContent));
 
       handlePageClick(paginationPageList, target.textContent);
 
       appendNewActiveArticlePage(
-        Number(target.textContent) * Number(numOfArticles.textContent.trim()) -
-          Number(numOfArticles.textContent.trim()),
-        Number(target.textContent) * Number(numOfArticles.textContent.trim()),
+        Number(target.textContent) * Number(numOfArticles) - Number(numOfArticles),
+        Number(target.textContent) * Number(numOfArticles),
         target,
         currentArticleData,
       );
@@ -1148,7 +1134,7 @@ export default async function decorate(block) {
 
     if (loadedSearchParams.get('page') !== '1') {
       paginationPageList.innerHTML = renderPages(
-        numOfArticles.textContent.trim(),
+        numOfArticles,
         currentArticleData,
         Number(loadedSearchParams.get('page')),
       );
@@ -1165,9 +1151,8 @@ export default async function decorate(block) {
         nextPageButton.classList.add('hidden');
       }
       appendNewActiveArticlePage(
-        Number(loadedSearchParams.get('page')) * Number(numOfArticles.textContent.trim()) -
-          Number(numOfArticles.textContent.trim()),
-        Number(loadedSearchParams.get('page')) * Number(numOfArticles.textContent.trim()),
+        Number(loadedSearchParams.get('page')) * Number(numOfArticles) - Number(numOfArticles),
+        Number(loadedSearchParams.get('page')) * Number(numOfArticles),
         Number(loadedSearchParams.get('page')),
         currentArticleData,
       );
