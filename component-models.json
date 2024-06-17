@@ -461,6 +461,10 @@
           {
             "name": "4 Columns",
             "value": "4"
+          },
+          {
+            "name": "5 Columns",
+            "value": "5"
           }
         ]
       },
