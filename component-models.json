@@ -1097,7 +1097,7 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "embedVideoeAlt",
+        "name": "embedVideoAlt",
         "label": "Video Placeholder Alt Text",
         "value": ""
       },
