@@ -147,16 +147,23 @@ export default async function decorate(block) {
   const searchUrlPath = searchUrl.pathname;
   const articleData = await ffetch(searchUrlPath).all();
 
+  // Getting the featured article data
   const deconstructFeaturedArticlePath = featuredArticle.split('/');
   const featuredArticlePath = deconstructFeaturedArticlePath[deconstructFeaturedArticlePath.length - 1];
   const featuredArticleData = articleData.find((data) => data.path.includes(featuredArticlePath));
+
+  // Filter out the featured article data from the rest of the article data (if applicable)
   let noFeaturedArticleData;
   if (featuredArticlePath !== '') {
     noFeaturedArticleData = articleData.filter((data) => !data.path.includes(featuredArticlePath));
   } else {
     noFeaturedArticleData = articleData;
   }
-  const defaultSortedArticle = noFeaturedArticleData.sort(
+
+  // Remove article data that has no publish date value (these are parent pages and not articles)
+  // Then sort from latest publish date to oldest
+  const hasPublisheDateArticles = noFeaturedArticleData.filter((data) => data.articlePublishDate !== '');
+  const defaultSortedArticle = hasPublisheDateArticles.sort(
     (a, b) => new Date(b.articlePublishDate) - new Date(a.articlePublishDate),
   );
   let currentArticleData = [...defaultSortedArticle];
