@@ -10,7 +10,7 @@ function decorateCTA(cta, ctaTarget, isClickable) {
     if (ctaTarget.textContent.trim() === 'true') {
       link.target = '_blank';
     }
-    return cta;
+    return cta.firstElementChild.firstElementChild;
   }
   cta.innerHTML = `<p>${link.textContent.trim()}</p>`;
   return cta;
