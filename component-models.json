@@ -1168,22 +1168,16 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "buttonOneLabel",
+        "name": "buttonOneLinkText",
         "value": "",
         "label": "Button Label"
       },
       {
-        "component": "boolean",
-        "label": "Target Blank",
-        "name": "isTargetBlankOne",
-        "valueType": "boolean"
-      },
-      {
         "component": "radio-group",
-        "label": "Button 2 Style",
-        "name": "buttonTwoStyle",
-        "value": "primary",
+        "label": "Button 1 Style",
+        "name": "buttonOneLinkType",
         "valueType": "string",
+        "value": "primary",
         "options": [
           {
             "name": "Primary",
@@ -1194,6 +1188,12 @@
             "value": "secondary"
           }
         ]
+      },
+      {
+        "component": "boolean",
+        "label": "Target Blank",
+        "name": "isTargetBlankOne",
+        "valueType": "boolean"
       },
       {
         "component": "aem-content",
@@ -1205,22 +1205,16 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "buttonTwoLabel",
+        "name": "buttonTwoLinkText",
         "value": "",
         "label": "Button Label"
       },
       {
-        "component": "boolean",
-        "label": "Target Blank",
-        "name": "isTargetBlankTwo",
-        "valueType": "boolean"
-      },
-      {
         "component": "radio-group",
-        "label": "Button 3 Style",
-        "name": "buttonThreeStyle",
-        "valueType": "string",
+        "label": "Button 2 Style",
+        "name": "buttonTwoLinkType",
         "value": "primary",
+        "valueType": "string",
         "options": [
           {
             "name": "Primary",
@@ -1233,6 +1227,12 @@
         ]
       },
       {
+        "component": "boolean",
+        "label": "Target Blank",
+        "name": "isTargetBlankTwo",
+        "valueType": "boolean"
+      },
+      {
         "component": "aem-content",
         "valueType": "string",
         "name": "buttonThreeLink",
@@ -1242,9 +1242,26 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "buttonThreeLabel",
+        "name": "buttonThreeLinkText",
         "value": "",
         "label": "Button Label"
+      },
+      {
+        "component": "radio-group",
+        "label": "Button 3 Style",
+        "name": "buttonThreeLinkType",
+        "valueType": "string",
+        "value": "primary",
+        "options": [
+          {
+            "name": "Primary",
+            "value": "primary"
+          },
+          {
+            "name": "Secondary",
+            "value": "secondary"
+          }
+        ]
       },
       {
         "component": "boolean",
