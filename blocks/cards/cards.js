@@ -5,17 +5,17 @@ function decorateCTA(cta, ctaTarget, isClickable) {
   if (link && isClickable?.textContent.trim() !== 'true') {
     if (link.textContent.trim()) {
       const label = link.textContent.trim();
-      cta.title = label;
+      link.title = label;
     }
 
     if (ctaTarget.textContent.trim() === 'true') {
-      cta.target = '_blank';
+      link.target = '_blank';
     }
 
     return cta;
   }
 
-  return cta.children.length > 0 ? cta?.firstElementChild : cta;
+  return link.children.length > 0 ? link?.firstElementChild : link;
 }
 
 function generateCardDom(props, block) {
