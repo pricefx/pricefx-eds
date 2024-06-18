@@ -744,7 +744,7 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "buttonLabel",
+        "name": "buttonLinkText",
         "value": "",
         "label": "Button Label"
       },
