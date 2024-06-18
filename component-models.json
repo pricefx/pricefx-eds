@@ -95,11 +95,11 @@
         "valueType": "string",
         "options": [
           {
-            "name": "Gray",
+            "name": "Title Color Gray",
             "value": "title-dark-grey"
           },
           {
-            "name": "Dark Blue",
+            "name": "Title Color Dark Blue",
             "value": "title-dark-blue-gradient"
           },
           {
