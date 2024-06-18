@@ -90,11 +90,12 @@
       {
         "component": "multiselect",
         "name": "classes",
-        "label": "Title Styles",
+        "placeholder": "Title Pfx Styles",
+        "label": "Title Pfx Styles",
         "valueType": "string",
         "options": [
           {
-            "name": "Gray - Default",
+            "name": "Gray",
             "value": "title-dark-grey"
           },
           {
