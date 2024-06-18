@@ -1,6 +1,5 @@
 export default async function decorate(block) {
-  const [link, target, buttonLabel, type] = block.children;
-  block.textContent = '';
+  const [link, target, type] = block.children;
   const targetValue = target.textContent.trim() === 'true' ? '_blank' : '_self';
 
   if (type.textContent.trim() === 'left-arrow') {
@@ -9,17 +8,16 @@ export default async function decorate(block) {
     block.classList.add('right-arrow');
   }
 
-  if (link.textContent.trim() === '') {
-    const buttonEl = document.createElement('button');
-    buttonEl.classList.add('button');
-    buttonEl.textContent = buttonLabel.textContent.trim();
-    block.appendChild(buttonEl);
-  } else {
-    const buttonEl = document.createElement('a');
-    buttonEl.classList.add('button');
-    buttonEl.textContent = buttonLabel.textContent.trim();
-    buttonEl.href = link.textContent.trim();
+  if (link.textContent.trim() !== '') {
+    const buttonEl = document.querySelector('a');
     buttonEl.setAttribute('target', targetValue);
-    block.appendChild(buttonEl);
+  }
+
+  if (target.textContent.trim() !== '') {
+    target.classList.add('hidden');
+  }
+
+  if (type.textContent.trim() !== '') {
+    type.classList.add('hidden');
   }
 }
