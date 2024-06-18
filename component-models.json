@@ -88,10 +88,9 @@
         ]
       },
       {
-        "component": "select",
+        "component": "multiselect",
         "name": "classes",
-        "value": "title-dark-grey",
-        "label": "Color",
+        "label": "Title Styles",
         "valueType": "string",
         "options": [
           {
@@ -101,42 +100,29 @@
           {
             "name": "Dark Blue",
             "value": "title-dark-blue-gradient"
-          }
-        ]
-      },
-      {
-        "component": "multiselect",
-        "name": "classes",
-        "placeholder": "Select Spacing",
-        "label": "Spacing",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Default",
-            "value": ""
           },
           {
-            "name": "Small",
+            "name": "Padding Small",
             "value": "title-spacer-small"
           },
           {
-            "name": "Medium",
+            "name": "Padding Medium",
             "value": "title-spacer-medium"
           },
           {
-            "name": "Large",
+            "name": "Padding Large",
             "value": "title-spacer-large"
           },
           {
-            "name": "Extra Large",
+            "name": "Padding Extra Large",
             "value": "title-spacer-extra-large"
           },
           {
-            "name": "Remove Top Spacer",
+            "name": "Padding Remove Top Spacer",
             "value": "title-no-top-margin"
           },
           {
-            "name": "Remove Bottom Spacer",
+            "name": "Padding Remove Bottom Spacer",
             "value": "title-no-bottom-margin"
           }
         ]
