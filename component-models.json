@@ -89,7 +89,7 @@
       },
       {
         "component": "select",
-        "name": "fontColor",
+        "name": "classes",
         "value": "title-dark-grey",
         "label": "Color",
         "valueType": "string",
