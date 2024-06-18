@@ -119,11 +119,11 @@
             "value": "title-spacer-extra-large"
           },
           {
-            "name": "Padding Remove Top Spacer",
+            "name": "Remove Top Padding",
             "value": "title-no-top-margin"
           },
           {
-            "name": "Padding Remove Bottom Spacer",
+            "name": "Remove Bottom Padding",
             "value": "title-no-bottom-margin"
           }
         ]
