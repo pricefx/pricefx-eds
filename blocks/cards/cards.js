@@ -7,15 +7,14 @@ function decorateCTA(cta, ctaTarget, isClickable) {
       const label = link.textContent.trim();
       link.title = label;
     }
-
     if (ctaTarget.textContent.trim() === 'true') {
       link.target = '_blank';
     }
-
     return cta;
   }
-
-  return link.children.length > 0 ? link?.firstElementChild : link;
+  const text = link.textContent.trim();
+  cta.replaceWith(`<p>${text}</p>`);
+  return cta;
 }
 
 function generateCardDom(props, block) {
