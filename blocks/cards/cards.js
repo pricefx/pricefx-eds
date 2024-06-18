@@ -12,8 +12,7 @@ function decorateCTA(cta, ctaTarget, isClickable) {
     }
     return cta;
   }
-  const text = link.textContent.trim();
-  cta.replaceWith(`<p>${text}</p>`);
+  cta.innerHTML = `<p>${link.textContent.trim()}</p>`;
   return cta;
 }
 
