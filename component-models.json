@@ -1142,23 +1142,6 @@
         "description": "ⓘ Heading (H1) and Description"
       },
       {
-        "component": "radio-group",
-        "label": "Button 1 Style",
-        "name": "buttonOneStyle",
-        "valueType": "string",
-        "value": "primary",
-        "options": [
-          {
-            "name": "Primary",
-            "value": "primary"
-          },
-          {
-            "name": "Secondary",
-            "value": "secondary"
-          }
-        ]
-      },
-      {
         "component": "aem-content",
         "valueType": "string",
         "name": "buttonOneLink",
