@@ -105,7 +105,7 @@ export default async function decorate(block) {
     if (target1 === true) {
       button1Link.querySelector('a').target = '_blank';
     }
-    button1Link.href = replaceBasePath(isPublishEnvironment, button1Link, BASE_CONTENT_PATH);
+    button1Link.href = replaceBasePath(isPublishEnvironment, button1Link.href, BASE_CONTENT_PATH);
     heroLeftContainerInner.append(button1.firstElementChild);
   }
   if (button2.textContent.trim() !== '') {
@@ -113,7 +113,7 @@ export default async function decorate(block) {
     if (target2 === true) {
       button2Link.querySelector('a').target = '_blank';
     }
-    button2Link.href = replaceBasePath(isPublishEnvironment, button2Link, BASE_CONTENT_PATH);
+    button2Link.href = replaceBasePath(isPublishEnvironment, button2Link.href, BASE_CONTENT_PATH);
     heroLeftContainerInner.append(button2.firstElementChild);
   }
   if (button3.textContent.trim() !== '') {
@@ -121,7 +121,7 @@ export default async function decorate(block) {
     if (target3 === true) {
       button3Link.querySelector('a').target = '_blank';
     }
-    button3Link.href = replaceBasePath(isPublishEnvironment, button3Link, BASE_CONTENT_PATH);
+    button3Link.href = replaceBasePath(isPublishEnvironment, button3Link.href, BASE_CONTENT_PATH);
     heroLeftContainerInner.append(button3.firstElementChild);
   }
 
