@@ -37,7 +37,7 @@ export default async function decorate(block) {
     videoUrl,
     videoOverlay,
     videoPopup,
-    ,
+    heroHeight,
     eyebrow,
     description,
     button1,
@@ -86,6 +86,10 @@ export default async function decorate(block) {
   }
 
   heroRightContainer.classList.add('hero-right-container');
+
+  if (heroHeight.textContent.trim() !== '') {
+    heroContainer.classList.add(heroHeight.textContent.trim() || 'hero-primary-height');
+  }
 
   if (eyebrow.textContent.trim() !== '') {
     const heroPreHeader = document.createElement('span');
