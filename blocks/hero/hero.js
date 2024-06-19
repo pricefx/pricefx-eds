@@ -84,9 +84,7 @@ export default async function decorate(block) {
       heroRightContainer.append(heroImageContainer);
     }
   }
-
   heroRightContainer.classList.add('hero-right-container');
-
   if (heroHeight.textContent.trim() !== '') {
     heroContainer.classList.add(heroHeight.textContent.trim() || 'hero-primary-height');
   }
