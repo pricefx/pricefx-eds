@@ -87,14 +87,14 @@ export default async function decorate(block) {
 
   heroRightContainer.classList.add('hero-right-container');
 
-  if (eyebrow !== '') {
+  if (eyebrow.textContent.trim() !== '') {
     const heroPreHeader = document.createElement('span');
     heroPreHeader.classList.add('eyebrow-text');
     heroPreHeader.append(eyebrow);
     heroLeftContainerInner.append(heroPreHeader);
   }
 
-  if (description !== '') {
+  if (description.textContent.trim() !== '') {
     description?.classList.add('hero-content-container');
     heroLeftContainerInner.append(description || '');
   }
