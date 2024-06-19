@@ -56,7 +56,7 @@
       },
       {
         "component": "select",
-        "name": "type",
+        "name": "titleType",
         "value": "h2",
         "label": "Type",
         "valueType": "string",
@@ -88,55 +88,42 @@
         ]
       },
       {
-        "component": "select",
-        "name": "fontColor",
-        "value": "title-dark-grey",
-        "label": "Color",
+        "component": "multiselect",
+        "name": "classes",
+        "placeholder": "Title Pfx Styles",
+        "label": "Title Pfx Styles",
         "valueType": "string",
         "options": [
           {
-            "name": "Gray - Default",
+            "name": "Title Color Gray",
             "value": "title-dark-grey"
           },
           {
-            "name": "Dark Blue",
+            "name": "Title Color Dark Blue",
             "value": "title-dark-blue-gradient"
-          }
-        ]
-      },
-      {
-        "component": "multiselect",
-        "name": "classes",
-        "placeholder": "Select Spacing",
-        "label": "Spacing",
-        "valueType": "string",
-        "options": [
-          {
-            "name": "Default",
-            "value": ""
           },
           {
-            "name": "Small",
+            "name": "Padding Small",
             "value": "title-spacer-small"
           },
           {
-            "name": "Medium",
+            "name": "Padding Medium",
             "value": "title-spacer-medium"
           },
           {
-            "name": "Large",
+            "name": "Padding Large",
             "value": "title-spacer-large"
           },
           {
-            "name": "Extra Large",
+            "name": "Padding Extra Large",
             "value": "title-spacer-extra-large"
           },
           {
-            "name": "Remove Top Spacer",
+            "name": "Remove Top Padding",
             "value": "title-no-top-margin"
           },
           {
-            "name": "Remove Bottom Spacer",
+            "name": "Remove Bottom Padding",
             "value": "title-no-bottom-margin"
           }
         ]
@@ -744,7 +731,7 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "buttonLabel",
+        "name": "buttonLinkText",
         "value": "",
         "label": "Button Label"
       },
