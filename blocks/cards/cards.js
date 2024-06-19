@@ -1,26 +1,23 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 
-function decorateCTA(cta, ctaLabel, ctaTarget, isClickable) {
+function decorateCTA(cta, ctaTarget, isClickable) {
   const link = cta.querySelector('a');
   if (link && isClickable?.textContent.trim() !== 'true') {
-    if (ctaLabel.textContent.trim()) {
-      const label = ctaLabel.textContent.trim();
-      link.textContent = label;
+    if (link.textContent.trim()) {
+      const label = link.textContent.trim();
       link.title = label;
     }
-
     if (ctaTarget.textContent.trim() === 'true') {
       link.target = '_blank';
     }
-
-    return link;
+    return cta.firstElementChild.firstElementChild;
   }
-
-  return ctaLabel.children.length > 0 ? ctaLabel?.firstElementChild : ctaLabel;
+  cta.innerHTML = `<p>${link.textContent.trim()}</p>`;
+  return cta;
 }
 
 function generateCardDom(props, block) {
-  const [imageContainer, cardTopContent, eyebrow, title, description, cta, ctaLabel, ctaTarget, isClickable] = props;
+  const [imageContainer, cardTopContent, eyebrow, title, description, cta, ctaTarget, isClickable] = props;
   const picture = imageContainer.querySelector('picture');
   const cardImPricing = block.classList.contains('card-im-pricing');
 
@@ -34,7 +31,7 @@ function generateCardDom(props, block) {
               ${eyebrow?.textContent.trim() !== '' ? `<div class='cards-card-eyebrow'>${eyebrow.textContent.trim().toUpperCase()}</div>` : ``}
               ${title?.children.length > 0 ? `<div class='cards-card-title'><h6>${title.textContent.trim()}</h6></div>` : ``}
               ${description?.children.length > 0 ? `<div class='cards-card-description'>${description.innerHTML}</div>` : ``}
-              ${ctaLabel.textContent.trim() ? `<div class='cards-card-cta'>${decorateCTA(cta, ctaLabel, ctaTarget, isClickable).outerHTML}</div>` : ``}
+              ${cta.textContent.trim() ? `<div class='cards-card-cta'>${decorateCTA(cta, ctaTarget, isClickable).outerHTML}</div>` : ``}
           </div>
         </a>
     `;
@@ -46,7 +43,7 @@ function generateCardDom(props, block) {
             ${eyebrow?.textContent.trim() !== '' ? `<div class='cards-card-eyebrow'>${eyebrow.textContent.trim().toUpperCase()}</div>` : ``}
             ${title?.children.length > 0 ? `<div class='cards-card-title'><h6>${title.textContent.trim()}</h6></div>` : ``}
             ${description?.children.length > 0 ? `<div class='cards-card-description'>${description.innerHTML}</div>` : ``}
-            ${ctaLabel.textContent.trim() ? `<div class='cards-card-cta'>${decorateCTA(cta, ctaLabel, ctaTarget).outerHTML}</div>` : ``}
+            ${cta.textContent.trim() ? `<div class='cards-card-cta'>${decorateCTA(cta, ctaTarget).outerHTML}</div>` : ``}
         </div>
     `;
   return cardDOM;
