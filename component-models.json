@@ -2226,9 +2226,23 @@
         "value": ""
       },
       {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "buttonLink",
+        "value": "",
+        "label": "Button Link"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "buttonLinkText",
+        "value": "",
+        "label": "Button Label"
+      },
+      {
         "component": "radio-group",
         "label": "Action Button Style",
-        "name": "buttonStyle",
+        "name": "buttonLinkType",
         "valueType": "string",
         "value": "primary",
         "options": [
@@ -2241,20 +2255,6 @@
             "value": "secondary"
           }
         ]
-      },
-      {
-        "component": "aem-content",
-        "valueType": "string",
-        "name": "buttonLink",
-        "value": "",
-        "label": "Button Link"
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "buttonLabel",
-        "value": "",
-        "label": "Button Label"
       },
       {
         "component": "boolean",
