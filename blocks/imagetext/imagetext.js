@@ -113,25 +113,19 @@ export default async function decorate(block) {
 
       imagetextRightContainer.appendChild(imagetextAction);
     } else if (index === 4) {
-      button.classList.add('button');
-
       if (row.textContent.trim() !== '') {
-        button.classList.add(row.textContent.trim());
-      }
-    } else if (index === 5) {
-      if (row.textContent.trim() !== '') {
-        button.innerHTML = row.textContent.trim();
+        button.append(row.firstElementChild);
       } else {
         buttonDisable = true;
       }
-    } else if (index === 6) {
+    } else if (index === 5) {
       if (row.textContent.trim() === 'true' && buttonDisable === false) {
         button.target = '_blank';
       }
       if (buttonDisable === false) {
         imagetextAction.appendChild(button);
       }
-    } else if (index === 7) {
+    } else if (index === 6) {
       /* Support Title */
       const line = document.createElement('div');
       line.classList.add('cross-line');
@@ -142,31 +136,31 @@ export default async function decorate(block) {
       content.innerHTML = row.firstElementChild.innerHTML;
 
       supportContainer.appendChild(content);
-    } else if (index >= 8) {
-      if (index >= 8 && index <= 10) {
+    } else if (index >= 7) {
+      if (index >= 7 && index <= 9) {
         elementsInContainer.push(row);
-        if (index === 10) {
+        if (index === 9) {
           addElementsToContainer(leftInnerContainer, elementsInContainer);
           elementsInContainer = [];
         }
       }
-      if (index >= 11 && index <= 13) {
+      if (index >= 10 && index <= 11) {
         elementsInContainer.push(row);
-        if (index === 13) {
+        if (index === 12) {
           addElementsToContainer(rightInnerContainer, elementsInContainer);
           elementsInContainer = [];
         }
       }
-      if (index >= 14 && index <= 16) {
+      if (index >= 13 && index <= 15) {
         elementsInContainer.push(row);
-        if (index === 16) {
+        if (index === 15) {
           addElementsToContainer(leftInnerContainer, elementsInContainer);
           elementsInContainer = [];
         }
       }
-      if (index >= 17 && index <= 19) {
+      if (index >= 16 && index <= 18) {
         elementsInContainer.push(row);
-        if (index === 19) {
+        if (index === 18) {
           addElementsToContainer(rightInnerContainer, elementsInContainer);
           elementsInContainer = [];
         }
