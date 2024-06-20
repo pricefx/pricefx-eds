@@ -213,23 +213,23 @@
     background-position: center;
   }
 
-  .hero.image-position-right-60 .hero-image-container  {
+  .hero.image-position-right-40 .hero-image-container  {
     background-position: 60%;
   }
 
-  .hero.image-position-right-65 .hero-image-container  {
+  .hero.image-position-right-35 .hero-image-container  {
     background-position: 65%;
   }
 
-  .hero.image-position-right-70 .hero-image-container  {
+  .hero.image-position-right-30 .hero-image-container  {
     background-position: 70%;
   }
 
-  .hero.image-position-right-75 .hero-image-container  {
+  .hero.image-position-right-25 .hero-image-container  {
     background-position: 75%;
   }
 
-  .hero.image-position-right-80 .hero-image-container  {
+  .hero.image-position-right-20 .hero-image-container  {
     background-position: 80%;
   }
 
