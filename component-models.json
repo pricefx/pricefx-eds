@@ -1087,6 +1087,26 @@
           {
             "name": "Right - Default",
             "value": "image-position-right"
+          },
+          {
+            "name": "Image Position Right 60%",
+            "value": "image-position-right-60"
+          },
+          {
+            "name": "Image Position Right 65%",
+            "value": "image-position-right-65"
+          },
+          {
+            "name": "Image Position Right 70%",
+            "value": "image-position-right-70"
+          },
+          {
+            "name": "Image Position Right 75%",
+            "value": "image-position-right-75"
+          },
+          {
+            "name": "Image Position Right 80%",
+            "value": "image-position-right-80"
           }
         ]
       },
