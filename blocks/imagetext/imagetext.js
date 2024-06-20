@@ -144,7 +144,7 @@ export default async function decorate(block) {
           elementsInContainer = [];
         }
       }
-      if (index >= 10 && index <= 11) {
+      if (index >= 10 && index <= 12) {
         elementsInContainer.push(row);
         if (index === 12) {
           addElementsToContainer(rightInnerContainer, elementsInContainer);
