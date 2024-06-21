@@ -1,3 +1,5 @@
+/* stylelint-disable property-no-vendor-prefix */
+
 /* MARKETO FORM GENERAL STYLES */
 .marketo-form-wrapper {
   margin: 0 auto;
@@ -288,6 +290,7 @@
 .marketo-form-wrapper .marketo-form h2.form-title {
   background: var(--c-dark-blue-gradient);
   background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
