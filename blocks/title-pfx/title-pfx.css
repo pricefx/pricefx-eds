@@ -1,8 +1,6 @@
 .title-pfx.title-dark-blue-gradient {
     h1, h2, h3, h4, h5, h6 {
         background: var(--c-dark-blue-gradient);
-
-        /* stylelint-disable-next-line vendorPrefix */
         background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -11,8 +9,6 @@
 .title-pfx.title-dark-grey {
     h1, h2, h3, h4, h5, h6 {
         background: var(--c-copy);
-
-        /* stylelint-disable-next-line vendorPrefix */
         background-clip: text;
         -webkit-text-fill-color: transparent;
     }

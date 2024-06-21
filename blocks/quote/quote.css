@@ -26,8 +26,6 @@
 .quote .quote-text h5,
 .quote .quote-text h6 {
   background: var(--c-white);
-
-  /* stylelint-disable-next-line vendorPrefix */
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }

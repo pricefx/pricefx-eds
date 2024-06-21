@@ -261,8 +261,6 @@ div.cards-card-eyebrow + div.cards-card-description {
 .cards.card-im-pricing .cards-card-top-content h6,
 .cards.card-im-pricing .cards-card-top-content p {
   background: var(--c-white);
-
-  /* stylelint-disable-next-line vendorPrefix */
   background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-top: 0;

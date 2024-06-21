@@ -46,8 +46,6 @@
 .stat-title h5,
 .stat-title h6 {
     background: var(--c-white);
-
-    /* stylelint-disable-next-line vendorPrefix */
     background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: var(--ff-primary);
@@ -89,8 +87,6 @@
 .no-background .stat-title h5,
 .no-background .stat-title h6 {
     background: var(--c-copy);
-
-    /* stylelint-disable-next-line vendorPrefix */
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
