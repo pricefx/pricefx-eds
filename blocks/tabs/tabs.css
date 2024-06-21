@@ -97,9 +97,8 @@
 .tabs .tabs-tab h5,
 .tabs .tabs-tab h6 {
   background: var(--c-white);
-  background-clip: text;
 
-  /* stylelint-disable-next-line declaration-block-no-duplicate-properties */
+  /* Stylelint-disable-next-line no-vendor-prefix */
   background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 0;
