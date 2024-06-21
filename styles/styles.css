@@ -300,6 +300,8 @@ h4,
 h5,
 h6 {
   background: var(--c-dark-blue-gradient);
+
+  /* stylelint-disable-next-line vendorPrefix */
   background-clip: text;
   -webkit-text-fill-color: transparent;
   line-height: 1;
@@ -313,6 +315,8 @@ h4 strong,
 h5 strong,
 h6 strong {
   background: var(--c-copy);
+
+  /* stylelint-disable-next-line vendorPrefix */
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -545,6 +549,8 @@ main .section.highlight {
 .section[data-sectiontitlecolor="section-title-gray"] h5,
 .section[data-sectiontitlecolor="section-title-gray"] h6 {
   background: var(--c-copy);
+
+  /* stylelint-disable-next-line vendorPrefix */
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }

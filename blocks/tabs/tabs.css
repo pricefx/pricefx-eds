@@ -97,6 +97,8 @@
 .tabs .tabs-tab h5,
 .tabs .tabs-tab h6 {
   background: var(--c-white);
+
+  /* stylelint-disable-next-line vendorPrefix */
   background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 0;

@@ -287,6 +287,8 @@
 
 .marketo-form-wrapper .marketo-form h2.form-title {
   background: var(--c-dark-blue-gradient);
+
+  /* stylelint-disable-next-line vendorPrefix */
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
