@@ -64,7 +64,7 @@ export default async function decorate(block) {
   const hideBreadcrumb = hideBreadcrumbVal?.textContent.trim() || 'false';
   const hideCurrentPage = hideCurrentPageVal?.textContent.trim() || 'false';
   let startLevel = startLevelVal?.textContent.trim() || 1;
-  const metaBreadcrumbLevel = getMetadata('breadcrumbLevel');
+  const metaBreadcrumbLevel = getMetadata('breadcrumblevel');
 
   if (metaBreadcrumbLevel !== '') {
     startLevel = metaBreadcrumbLevel;
