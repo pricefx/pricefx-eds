@@ -174,5 +174,25 @@ function processUrl(url) {
   return url;
 }
 
+/**
+ * Calls the given once callback, when the given element is intersecting the viewport the first time.
+ * @param {*} element element to observe
+ * @param {*} callback callback to call
+ */
+function onceIntersecting(element, callback) {
+  new IntersectionObserver(
+    (entries, observer) => {
+      const [entry] = entries;
+      if (entry.isIntersecting) {
+        callback();
+        observer.disconnect();
+      }
+    },
+    {
+      threshold: 0.01,
+    },
+  ).observe(element);
+}
+
 // eslint-disable-next-line import/prefer-default-export
-export { environmentMode, formatDate, sortByDate, replaceBasePath, processUrl };
+export { environmentMode, formatDate, sortByDate, replaceBasePath, processUrl, onceIntersecting };
