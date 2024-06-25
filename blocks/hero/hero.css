@@ -170,11 +170,14 @@
 
   /* Hero right container styles */
   .hero .hero-right-container {
-    inset: 0 0 0 58%;
+    inset: 0;
     position: absolute;
     z-index: 2;
     display: flex;
     align-items: center;
+    width: 42%;
+    left: 58%;
+    right: 0;
   }
 
   .hero .hero-video .hero-right-container {
@@ -208,6 +211,26 @@
 
   .hero.image-position-center .hero-image-container  {
     background-position: center;
+  }
+
+  .hero.image-position-right-40 .hero-image-container  {
+    background-position: 60%;
+  }
+
+  .hero.image-position-right-35 .hero-image-container  {
+    background-position: 65%;
+  }
+
+  .hero.image-position-right-30 .hero-image-container  {
+    background-position: 70%;
+  }
+
+  .hero.image-position-right-25 .hero-image-container  {
+    background-position: 75%;
+  }
+
+  .hero.image-position-right-20 .hero-image-container  {
+    background-position: 80%;
   }
 
   .hero .hero-right-container .hero-image-container::before {

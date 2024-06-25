@@ -10,6 +10,8 @@
  * governing permissions and limitations under the License.
  */
 
+/* stylelint-disable property-no-vendor-prefix */
+
 /*
 --------------------------------
   CSS VARIABLES
@@ -301,6 +303,7 @@ h5,
 h6 {
   background: var(--c-dark-blue-gradient);
   background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   line-height: 1;
   margin: var(--spacing-xsmall) 0;
@@ -313,8 +316,9 @@ h4 strong,
 h5 strong,
 h6 strong {
   background: var(--c-copy);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 h1,
@@ -546,6 +550,7 @@ main .section.highlight {
 .section[data-sectiontitlecolor="section-title-gray"] h6 {
   background: var(--c-copy);
   background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 

@@ -1,3 +1,5 @@
+import { onceIntersecting } from '../../scripts/global-functions.js';
+
 // Render badges based on authored field
 const renderBadges = (badges) => {
   const fragment = document.createDocumentFragment();
@@ -21,6 +23,23 @@ const renderBadges = (badges) => {
   return fragment;
 };
 
+const setMaxWidthMinHeight = (el, width, height) => {
+  if (width) {
+    el.style.maxWidth = `${width + 36}px`;
+  }
+  if (height) {
+    el.style.minHeight = `${height}px`;
+  }
+};
+
+const appendIframe = (container, src, height) => {
+  const iframeEl = document.createElement('iframe');
+  iframeEl.src = src;
+  iframeEl.setAttribute('frameborder', '0');
+  setMaxWidthMinHeight(iframeEl, null, height);
+  container.appendChild(iframeEl);
+};
+
 // Render iframes based on authored field
 const renderIframes = (iframes, height, width) => {
   const checkForFalseSource = (iframes[0].textContent.trim().match(/https:/g) || []).length;
@@ -30,55 +49,34 @@ const renderIframes = (iframes, height, width) => {
     // Creating left column and children elements
     const leftColumn = document.createElement('div');
     leftColumn.classList.add('iframe__left-column');
-    if (width) {
-      leftColumn.setAttribute('style', `max-width:${width + 36}px;`);
-    }
+    setMaxWidthMinHeight(leftColumn, width);
     const iframeContainerOne = document.createElement('div');
     iframeContainerOne.classList.add('iframe__container');
-    if (width) {
-      iframeContainerOne.setAttribute('style', `max-width:${width + 36}px;`);
-    }
-    const iframeElOne = document.createElement('iframe');
-    iframeElOne.src = iframesArray[0].textContent.trim();
-    iframeElOne.setAttribute('frameborder', '0');
-    if (height) {
-      iframeElOne.setAttribute('style', `min-height:${height}px;`);
-    }
-    iframeContainerOne.appendChild(iframeElOne);
+    setMaxWidthMinHeight(iframeContainerOne, width);
+    onceIntersecting(iframeContainerOne, () =>
+      appendIframe(iframeContainerOne, iframesArray[0].textContent.trim(), height),
+    );
     leftColumn.appendChild(iframeContainerOne);
+
     const iframeContainerTwo = document.createElement('div');
     iframeContainerTwo.classList.add('iframe__container');
-    if (width) {
-      iframeContainerTwo.setAttribute('style', `max-width:${width + 36}px;`);
-    }
-    const iframeElTwo = document.createElement('iframe');
-    iframeElTwo.src = iframesArray[1].textContent.trim();
-    iframeElTwo.setAttribute('frameborder', '0');
-    if (height) {
-      iframeElTwo.setAttribute('style', `min-height:${height}px;`);
-    }
-    iframeContainerTwo.appendChild(iframeElTwo);
+    setMaxWidthMinHeight(iframeContainerTwo, width, height);
+    onceIntersecting(iframeContainerTwo, () =>
+      appendIframe(iframeContainerTwo, iframesArray[1].textContent.trim(), height),
+    );
     leftColumn.appendChild(iframeContainerTwo);
     fragment.appendChild(leftColumn);
 
     // Creating right column and children elements
     const rightColumn = document.createElement('div');
     rightColumn.classList.add('iframe__right-column');
-    if (width) {
-      rightColumn.setAttribute('style', `max-width:${width + 36}px;`);
-    }
+    setMaxWidthMinHeight(rightColumn, width);
     const iframeContainerThree = document.createElement('div');
     iframeContainerThree.classList.add('iframe__container');
-    if (width) {
-      iframeContainerThree.setAttribute('style', `max-width:${width + 36}px;`);
-    }
-    const iframeElThree = document.createElement('iframe');
-    iframeElThree.src = iframesArray[2].textContent.trim();
-    iframeElThree.setAttribute('frameborder', '0');
-    if (height) {
-      iframeElThree.setAttribute('style', `min-height:${height * 2 + 36}px;`);
-    }
-    iframeContainerThree.appendChild(iframeElThree);
+    setMaxWidthMinHeight(iframeContainerThree, width, height);
+    onceIntersecting(iframeContainerThree, () =>
+      appendIframe(iframeContainerThree, iframesArray[2].textContent.trim(), height),
+    );
     rightColumn.appendChild(iframeContainerThree);
     fragment.appendChild(rightColumn);
   } else {
@@ -86,16 +84,8 @@ const renderIframes = (iframes, height, width) => {
       const iframeSource = iframe.textContent.trim();
       const iframeContainer = document.createElement('div');
       iframeContainer.classList.add('iframe__container');
-      if (width) {
-        iframeContainer.setAttribute('style', `max-width:${width + 36}px;`);
-      }
-      const iframeEl = document.createElement('iframe');
-      iframeEl.src = iframeSource;
-      iframeEl.setAttribute('frameborder', '0');
-      if (height) {
-        iframeEl.setAttribute('style', `min-height:${height}px;`);
-      }
-      iframeContainer.appendChild(iframeEl);
+      setMaxWidthMinHeight(iframeContainer, width, height);
+      onceIntersecting(iframeContainer, () => appendIframe(iframeContainer, iframeSource, height));
       fragment.appendChild(iframeContainer);
     });
   }

@@ -34,7 +34,7 @@ export default async function decorate(block) {
       if (imageLogo) {
         const quoteLogo = document.createElement('div');
         quoteLogo.classList.add('quote-logo');
-        quoteLogo.appendChild(imageLogo);
+        quoteLogo.appendChild(imageLogo.parentElement);
         quoteRightContainerInner.appendChild(quoteLogo);
       }
     } else if (index === 3) {
@@ -47,7 +47,7 @@ export default async function decorate(block) {
       if (quoteImage) {
         quoteImage.classList.add('quote-image-container');
         if (quoteImage) {
-          quoteLeftContainer.appendChild(quoteImage);
+          quoteLeftContainer.appendChild(quoteImage.parentElement);
         }
       } else {
         quoteLeftContainer.className = 'quote-no-image-container';

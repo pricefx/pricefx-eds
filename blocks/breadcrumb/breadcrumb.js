@@ -1,5 +1,6 @@
 import { createElement } from '../../scripts/scripts.js';
 import { HOME, RIGHTARROW } from '../../scripts/constants.js';
+import { getMetadata } from '../../scripts/aem.js';
 
 const getPageTitle = async (url) => {
   const resp = await fetch(url);
@@ -59,9 +60,16 @@ const createLink = (path) => {
 };
 
 export default async function decorate(block) {
-  const hideBreadcrumb = block.children[0]?.querySelector('p')?.textContent.trim() || 'false';
-  const hideCurrentPage = block.children[2]?.querySelector('p')?.textContent.trim() || 'false';
-  const startLevel = block.children[1]?.querySelector('p')?.textContent.trim() || 1;
+  const [hideBreadcrumbVal, startLevelVal, hideCurrentPageVal] = block.children;
+  const hideBreadcrumb = hideBreadcrumbVal?.textContent.trim() || 'false';
+  const hideCurrentPage = hideCurrentPageVal?.textContent.trim() || 'false';
+  let startLevel = startLevelVal?.textContent.trim() || 1;
+  const metaBreadcrumbLevel = getMetadata('breadcrumblevel');
+
+  if (metaBreadcrumbLevel !== '') {
+    startLevel = metaBreadcrumbLevel;
+  }
+
   block.innerHTML = '';
 
   if (hideBreadcrumb === 'true') {
