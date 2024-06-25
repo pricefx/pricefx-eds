@@ -84,7 +84,7 @@
   flex-direction: column;
   justify-content: center;
   text-align: left;
-  background-color: var(--c-blue-opacity);
+  background-color: var(--c-black-opacity);
   color: var(--c-white);
   box-sizing: border-box;
   margin: 20px;
@@ -98,6 +98,7 @@
 
 @media (width<= 1024px) {
   .case-study .banner {
+      position: relative;
       top:0;
       left:0;
   }
