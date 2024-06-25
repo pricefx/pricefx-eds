@@ -89,7 +89,11 @@
   box-sizing: border-box;
   margin: 20px;
   word-break: break-word;
-} 
+}
+
+.case-study .banner-content .button-container a {
+  color: var(--c-mega-menu-link);
+}
 
 .case-study .banner-content {
   padding: 20px;
