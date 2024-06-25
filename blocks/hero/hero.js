@@ -105,27 +105,33 @@ export default async function decorate(block) {
 
   if (button1.textContent.trim() !== '') {
     const button1Link = button1.querySelector('a');
-    if (target1 === true) {
-      button1Link.querySelector('a').target = '_blank';
+    if (button1Link !== null) {
+      if (target1 === true) {
+        button1Link.querySelector('a').target = '_blank';
+      }
+      button1Link.href = replaceBasePath(isPublishEnvironment, button1Link.href, BASE_CONTENT_PATH);
+      heroLeftContainerInner.append(button1.firstElementChild);
     }
-    button1Link.href = replaceBasePath(isPublishEnvironment, button1Link.href, BASE_CONTENT_PATH);
-    heroLeftContainerInner.append(button1.firstElementChild);
   }
   if (button2.textContent.trim() !== '') {
     const button2Link = button2.querySelector('a');
-    if (target2 === true) {
-      button2Link.querySelector('a').target = '_blank';
+    if (button2Link !== null) {
+      if (target2 === true) {
+        button2Link.querySelector('a').target = '_blank';
+      }
+      button2Link.href = replaceBasePath(isPublishEnvironment, button2Link.href, BASE_CONTENT_PATH);
+      heroLeftContainerInner.append(button2.firstElementChild);
     }
-    button2Link.href = replaceBasePath(isPublishEnvironment, button2Link.href, BASE_CONTENT_PATH);
-    heroLeftContainerInner.append(button2.firstElementChild);
   }
   if (button3.textContent.trim() !== '') {
     const button3Link = button3.querySelector('a');
-    if (target3 === true) {
-      button3Link.querySelector('a').target = '_blank';
+    if (button3Link !== null) {
+      if (target3 === true) {
+        button3Link.querySelector('a').target = '_blank';
+      }
+      button3Link.href = replaceBasePath(isPublishEnvironment, button3Link.href, BASE_CONTENT_PATH);
+      heroLeftContainerInner.append(button3.firstElementChild);
     }
-    button3Link.href = replaceBasePath(isPublishEnvironment, button3Link.href, BASE_CONTENT_PATH);
-    heroLeftContainerInner.append(button3.firstElementChild);
   }
 
   if (stats !== '') {
