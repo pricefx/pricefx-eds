@@ -17,7 +17,7 @@ main .carousel:has(.carousel[data-carousel-type='carousel-quote']) .carousel > p
 
 .carousel[data-carousel-type='carousel-quote'] .carousel-details {
   margin-right: var(--spacing-small);
-  max-width: 341px;
+  max-width: 348px;
   width: 100%;
 }
 

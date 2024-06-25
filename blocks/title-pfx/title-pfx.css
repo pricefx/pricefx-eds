@@ -1,7 +1,10 @@
+/* stylelint-disable property-no-vendor-prefix */
+
 .title-pfx.title-dark-blue-gradient {
     h1, h2, h3, h4, h5, h6 {
         background: var(--c-dark-blue-gradient);
         background-clip: text;
+        -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
 }
@@ -10,6 +13,7 @@
     h1, h2, h3, h4, h5, h6 {
         background: var(--c-copy);
         background-clip: text;
+        -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
 }

@@ -1,3 +1,5 @@
+/* stylelint-disable property-no-vendor-prefix */
+
 .cards {
   text-align: left;
 }
@@ -262,6 +264,7 @@ div.cards-card-eyebrow + div.cards-card-description {
 .cards.card-im-pricing .cards-card-top-content p {
   background: var(--c-white);
   background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-top: 0;
 }
