@@ -2,6 +2,7 @@ import { decorateEmbed } from '../embed/embed.js';
 import { loadFragment } from '../fragment/fragment.js';
 import { environmentMode, replaceBasePath } from '../../scripts/global-functions.js';
 import { BASE_CONTENT_PATH } from '../../scripts/url-constants.js';
+import { createOptimizedPicture } from '../../scripts/aem.js';
 
 async function loadStats(statsData, heroLeftContainerInner) {
   if (statsData.querySelector('a')) {
@@ -132,6 +133,12 @@ export default async function decorate(block) {
     loadStats(statsData, heroLeftContainerInner);
   }
   heroLeftContainer.append(heroLeftContainerInner);
+
+  heroRightContainer
+    .querySelectorAll('img')
+    .forEach((img) =>
+      img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])),
+    );
 
   heroContainer.append(heroLeftContainer);
   heroContainer.append(heroRightContainer);

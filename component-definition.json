@@ -435,7 +435,8 @@
                 "template": {
                   "name": "Learning Center",
                   "model": "learningCenter",
-                  "numberOfArticles": "6"
+                  "numberOfArticles": "6",
+                  "key-value": true
                 }
               }
             }
@@ -496,7 +497,8 @@
                 "template": {
                   "name": "Partner Showcase",
                   "model": "partner-showcase",
-                  "numberOfPartners": "6"
+                  "numberOfPartners": "6",
+                  "key-value": true
                 }
               }
             }
