@@ -159,8 +159,9 @@
   --c-banner-lt-striping: var(--c-gray-border);
   --c-btn-drk: #1f3053;
   --c-footer-drk: #4B4F53;
+  --c-blue-opacity: rgb(65 182 230 / 75.2%)
 
-  /* Gradients */
+  /* Gradients */;
   --c-blue-gradient-lt: linear-gradient(135deg, #c1d2f3 -3.03%, #a1d8f4 100%);
   --c-blue-gradient-lt-hover: linear-gradient(135deg, #a9c0ec -3.03%, #7fc9ee 100%);
   --c-blue-gradient-lt-active: linear-gradient(135deg, #93aee6 -3.03%, #5fbbe8 100%);
