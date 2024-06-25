@@ -89,6 +89,7 @@
   box-sizing: border-box;
   margin: 20px;
   word-break: break-word;
+  border-radius: 16px;
 }
 
 .case-study .banner-content .button-container a {
