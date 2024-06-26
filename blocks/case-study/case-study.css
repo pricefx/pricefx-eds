@@ -1,4 +1,4 @@
-/* stylelint-disable no-backdrop-filter */
+/* stylelint-disable property-no-vendor-prefix */
 
 .section.case-study-container > div {
   max-width: 100%;
@@ -93,6 +93,7 @@
   word-break: break-word;
   border-radius: 16px;
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .case-study .banner-content .button-container a {
