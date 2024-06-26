@@ -90,6 +90,7 @@
   margin: 20px;
   word-break: break-word;
   border-radius: 16px;
+  backdrop-filter: blur(12px);
 }
 
 .case-study .banner-content .button-container a {
