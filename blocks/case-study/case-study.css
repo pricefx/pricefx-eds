@@ -1,3 +1,5 @@
+/* stylelint-disable no-backdrop-filter */
+
 .section.case-study-container > div {
   max-width: 100%;
 }
