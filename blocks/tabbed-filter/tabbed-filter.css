@@ -65,7 +65,8 @@
   text-decoration: none;
   text-transform: uppercase;
   width: auto;
-  background: url('../../icons/chevron-down.svg') no-repeat center right 22px / 22px 21px;
+  background: url('../../icons/chevron-down.svg') no-repeat center right 18px / 16px 20px;
+  border: none;
 }
 
 .tabbed-filter__filter:active,
@@ -81,7 +82,11 @@
   background-position: right;
 }
 
-.tabbed-filter__filter-container:focus,
+.tabbed-filter__filter:focus {
+  border-radius: 4px;
+}
+
+.tabbed-filter__filter:focus,
 .tabbed-filter__show-more-cta:focus {
   outline: 2px solid var(--c-outline-drk);
   outline-offset: 2px;
@@ -212,8 +217,11 @@
     display: block;
   }
 
-  .tabbed-filter__filter {
+  .tabbed-filter__filter-container {
     margin-bottom: var(--spacing-small);
+  }
+
+  .tabbed-filter__filter {
     max-width: none;
     width: 100%;
   }
