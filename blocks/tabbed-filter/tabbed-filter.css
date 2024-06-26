@@ -65,6 +65,7 @@
   text-decoration: none;
   text-transform: uppercase;
   width: auto;
+  background: url('../../icons/chevron-down.svg') no-repeat center right 22px / 22px 21px;
 }
 
 .tabbed-filter__filter:active,
