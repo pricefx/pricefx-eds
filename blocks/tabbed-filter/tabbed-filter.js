@@ -209,7 +209,7 @@ export default async function decorate(block) {
   // Create industries filter
   if (industriesFilterOptions.length > 0) {
     const industriesFilterContainer = document.createElement('div');
-    industriesFilterContainer.classList.add('tabbed-filter__filter-container', 'tabbed-filter--industries');
+    industriesFilterContainer.classList.add('tabbed-filter__filter-container');
     filtersWrapper.append(industriesFilterContainer);
     const industriesFilterLabel = document.createElement('label');
     setAttributes(industriesFilterLabel, { class: 'sr-only', for: 'filter-industries' });
@@ -232,7 +232,7 @@ export default async function decorate(block) {
   // Create regions filter
   if (regionsFilterOptions.length > 0) {
     const regionsFilterContainer = document.createElement('div');
-    regionsFilterContainer.classList.add('tabbed-filter__filter-container', 'tabbed-filter--regions');
+    regionsFilterContainer.classList.add('tabbed-filter__filter-container');
     filtersWrapper.append(regionsFilterContainer);
     const regionsFilterLabel = document.createElement('label');
     setAttributes(regionsFilterLabel, { class: 'sr-only', for: 'filter-regions' });
@@ -263,8 +263,8 @@ export default async function decorate(block) {
   appendClientLogos(initialClientData, contentContainer, noResultsText);
 
   // Create show more CTA
-  const industriesFilter = document.querySelector('#filter-industries , .tabbed-filter--industries:after');
-  const regionsFilter = document.querySelector('#filter-regions, .tabbed-filter--regions:after');
+  const industriesFilter = document.getElementById('filter-industries');
+  const regionsFilter = document.getElementById('filter-regions');
   if (showMoreLabel.textContent.trim() !== '' && filteredClientsData.length > 12) {
     const showMoreCta = document.createElement('button');
     setAttributes(showMoreCta, {
