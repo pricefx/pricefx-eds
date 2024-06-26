@@ -264,7 +264,7 @@ export default async function decorate(block) {
 
   // Create show more CTA
   const industriesFilter = document.querySelector('#filter-industries , .tabbed-filter--industries:after');
-  const regionsFilter = document.getElementById('filter-regions, .tabbed-filter--regions:after');
+  const regionsFilter = document.querySelector('filter-regions, .tabbed-filter--regions:after');
   if (showMoreLabel.textContent.trim() !== '' && filteredClientsData.length > 12) {
     const showMoreCta = document.createElement('button');
     setAttributes(showMoreCta, {
