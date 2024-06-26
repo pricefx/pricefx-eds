@@ -29,7 +29,6 @@
 }
 
 .tabbed-filter__filter-container {
-  position: relative;
   background: linear-gradient(123deg, #304f8c 4.85%, #466cb9 43.45%, #304f8c 54.85%, #283f6f 86.9%);
   background-position: left;
   background-size: 300%;
@@ -37,18 +36,6 @@
   border-radius: 4px;
   transition: var(--base-transition);
 }
-
-/* .tabbed-filter__filter-container::after {
-  color: var(--c-white);
-  content: var(--icon-chevron-down);
-  font-family: var(--ff-pricefx-icons);
-  font-size: calc((14 / 16) * 1rem);
-  font-weight: var(--fw-bold);
-  position: absolute;
-  top: 11px;
-  right: 32px;
-  z-index: 1;
-} */
 
 .tabbed-filter__filter {
   appearance: none;
