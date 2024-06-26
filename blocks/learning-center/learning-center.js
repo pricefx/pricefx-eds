@@ -466,7 +466,7 @@ export default async function decorate(block) {
     featuredArticleContainer.innerHTML = `
       <div class="article-image">
         <picture>
-          <img src="${featuredArticleData.image || ''}" alt="${featuredArticleData.imageAlt || featuredArticleData.title}">
+          <img source="${featuredArticleData.image || ''}" alt="${featuredArticleData.imageAlt || featuredArticleData.title}">
         </picture>
       </div>
       <div class="article-content">
@@ -521,7 +521,7 @@ export default async function decorate(block) {
         <li class="article-card">
           <div class="article-image">
             <picture>
-              <img src="${article.image || ''}" alt="${article.imageAlt || article.title}">
+              <img source="${article.image || ''}" alt="${article.imageAlt || article.title}">
             </picture>
           </div>
           <div class="article-content">
