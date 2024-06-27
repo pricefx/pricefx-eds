@@ -89,6 +89,8 @@ indices:
       - /partners/enable-and-pricefx-partnership
       - /partners/partner-delivery
       - /partners/partner-showcase
+      - /partners
+      - /partners/rise-with-sap
     target: /partners-index.json
     properties:
       title:
