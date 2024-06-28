@@ -1,3 +1,5 @@
+/* stylelint-disable property-no-vendor-prefix */
+
 .quote-wrapper {
   display: flex;
 }
@@ -27,6 +29,7 @@
 .quote .quote-text h6 {
   background: var(--c-white);
   background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 

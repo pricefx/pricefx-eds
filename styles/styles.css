@@ -10,6 +10,8 @@
  * governing permissions and limitations under the License.
  */
 
+/* stylelint-disable property-no-vendor-prefix */
+
 /*
 --------------------------------
   CSS VARIABLES
@@ -157,6 +159,7 @@
   --c-banner-lt-striping: var(--c-gray-border);
   --c-btn-drk: #1f3053;
   --c-footer-drk: #4B4F53;
+  --c-black-opacity: rgb(53 53 53 / 80%);
 
   /* Gradients */
   --c-blue-gradient-lt: linear-gradient(135deg, #c1d2f3 -3.03%, #a1d8f4 100%);
@@ -301,6 +304,7 @@ h5,
 h6 {
   background: var(--c-dark-blue-gradient);
   background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   line-height: 1;
   margin: var(--spacing-xsmall) 0;
@@ -313,8 +317,9 @@ h4 strong,
 h5 strong,
 h6 strong {
   background: var(--c-copy);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 h1,
@@ -443,6 +448,7 @@ button.secondary {
 a.button.secondary:focus,
 a.button.secondary:hover {
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   background: rgba(255 255 255 / 70%);
 }
 
@@ -546,6 +552,7 @@ main .section.highlight {
 .section[data-sectiontitlecolor="section-title-gray"] h6 {
   background: var(--c-copy);
   background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
