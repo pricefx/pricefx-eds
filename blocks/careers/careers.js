@@ -33,7 +33,7 @@ async function loadJobsData(sortBy, filterBy, block) {
           <div class="job-container">                                 
             <div class="job-header">                                   
             <h3>${job.title}</h3>   
-            <p>${job.city + job.state} - ${job.country}</p>
+            <p>${job.city}, ${job.state} - ${job.country}</p>
             </div>                                   
             <div class="job-details" data-expanded="false">${job.description}                                     
               <a href="${job.detail_url}" target="_blank" class="button primary">Apply Now</a>                                 

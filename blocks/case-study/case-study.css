@@ -1,3 +1,5 @@
+/* stylelint-disable property-no-vendor-prefix */
+
 .section.case-study-container > div {
   max-width: 100%;
 }
@@ -51,6 +53,7 @@
 
 .case-study picture img {
   object-fit: cover;
+  height: 100%;
 }
 
 .case-study .title-text {
@@ -84,13 +87,19 @@
   flex-direction: column;
   justify-content: center;
   text-align: left;
-  opacity: 0.7518;
-  background-color: var(--c-gray-med-2);
+  background-color: var(--c-black-opacity);
   color: var(--c-white);
   box-sizing: border-box;
   margin: 20px;
   word-break: break-word;
-} 
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.case-study .banner-content .button-container a {
+  color: var(--c-mega-menu-link);
+}
 
 .case-study .banner-content {
   padding: 20px;
@@ -99,6 +108,7 @@
 
 @media (width<= 1024px) {
   .case-study .banner {
+      position: relative;
       top:0;
       left:0;
   }
