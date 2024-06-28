@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+Disallow: /configuration/
+Disallow: /nav/
+Disallow: /footer/
+Disallow: /metadata/
+Disallow: /fragments/
+Disallow: /style-guide/
+Disallow: /spreadsheets/
+Disallow: /*?*
+
+User-agent: GPTBot
+User-agent: CCbot
+User-agent: ChatGPT-User
+Disallow: /
+
+Sitemap: https://www.pricefx.com/sitemap.xml
+
+Crawl-delay: 5
