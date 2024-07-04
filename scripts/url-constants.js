@@ -6,6 +6,7 @@ const CAREERS_PATH = 'https://careers.jobscore.com/jobs/pricefx/feed.json';
 const DM_VIDEO_SERVER_URL = 'https://s7d9.scene7.com/is/content/';
 const DM_SERVER_URL = 'https://s7d9.scene7.com/is/image/';
 const SEARCH_INDEX_PATH = '/query-index.json';
+const EVENTS_INDEX_PATH = 'graphql/execute.json/pricefx/events';
 
 // Export the constants
 export {
@@ -16,4 +17,5 @@ export {
   DM_VIDEO_SERVER_URL,
   DM_SERVER_URL,
   SEARCH_INDEX_PATH,
+  EVENTS_INDEX_PATH,
 };

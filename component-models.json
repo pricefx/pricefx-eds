@@ -302,6 +302,199 @@
     ]
   },
   {
+    "id": "events",
+    "fields": [
+      {
+        "component": "tab",
+        "label": "Configs",
+        "name": "configs"
+      },
+      {
+        "component": "aem-content",
+        "name": "featuredEvents",
+        "value": "",
+        "label": "Featured Events",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "searchPath",
+        "label": "Search Path",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "searchPlaceholderText",
+        "label": "Search Placeholder Text",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "authorPath",
+        "value": "",
+        "label": "Author Directory Path",
+        "valueType": "string",
+        "description": "Please enter the path to the author directory."
+      },
+      {
+        "component": "number",
+        "name": "numberOfEvents",
+        "label": "Number Of Events Display",
+        "valueType": "number",
+        "value": 6,
+        "validation": {
+          "numberMin": 3
+        }
+      },
+      {
+        "component": "multiselect",
+        "name": "sortBy",
+        "label": "Sort By",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Date",
+            "children": [
+              { "name": "Asc Date", "value": "asc-date" },
+              { "name": "Desc Date", "value": "desc-date" }
+            ]
+          },
+          {
+            "name": "Title",
+            "children": [
+              { "name": "A-Z", "value": "asc-title" },
+              { "name": "Z-A", "value": "desc-title" }
+            ]
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "name": "eventsContentCta",
+        "label": "Events Cards CTA Label",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "ebooksContentCta",
+        "label": "E-Books Cards CTA Label",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "podcastsContentCta",
+        "label": "Podcasts Cards CTA Label",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "caseStudyContentCta",
+        "label": "Case Study Cards CTA Label",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "videosContentCta",
+        "label": "Videos Cards CTA Label",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "reportsContentCta",
+        "label": "Analyst Reports Cards CTA Label",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "defaultContentCta",
+        "label": "Default Cards CTA Label",
+        "valueType": "string",
+        "description": "This will be used as a fallback label in case an event card is missing a content type indicator or doesn't match the provided content types."
+      },
+      {
+        "component": "tab",
+        "label": "Filters",
+        "name": "filters"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "filterOneTitle",
+        "value": "",
+        "label": "Filter 1 Title"
+      },
+      {
+        "component": "boolean",
+        "label": "Filter 1 is Multi-Select",
+        "name": "filterOneMultiSelect",
+        "valueType": "boolean"
+      },
+      {
+        "component": "aem-tag",
+        "label": "Filter 1 Options",
+        "name": "filterOneTags",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "filterTwoTitle",
+        "value": "",
+        "label": "Filter 2 Title"
+      },
+      {
+        "component": "boolean",
+        "label": "Filter 2 is Multi-Select",
+        "name": "filterTwoMultiSelect",
+        "valueType": "boolean"
+      },
+      {
+        "component": "aem-tag",
+        "label": "Filter 2 Options",
+        "name": "filterTwoTags",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "filterThreeTitle",
+        "value": "",
+        "label": "Filter 3 Title"
+      },
+      {
+        "component": "boolean",
+        "label": "Filter 3 is Multi-Select",
+        "name": "filterThreeMultiSelect",
+        "valueType": "boolean"
+      },
+      {
+        "component": "aem-tag",
+        "label": "Filter 3 Options",
+        "name": "filterThreeTags",
+        "valueType": "string"
+      },
+      {
+        "component": "text-input",
+        "valueType": "string",
+        "name": "filterFourTitle",
+        "value": "",
+        "label": "Filter 4 Title"
+      },
+      {
+        "component": "boolean",
+        "label": "Filter 4 is Multi-Select",
+        "name": "filterFourMultiSelect",
+        "valueType": "boolean"
+      },
+      {
+        "component": "aem-tag",
+        "label": "Filter 4 Options",
+        "name": "filterFourTags",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "left-right-boxed",
     "fields": [
       {
