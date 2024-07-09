@@ -1032,6 +1032,10 @@
             "value": "section-bg-color-gray"
           },
           {
+            "name": "Dark Gray",
+            "value": "section-bg-color-dark-gray"
+          },
+          {
             "name": "White",
             "value": "section-bg-color-white"
           }

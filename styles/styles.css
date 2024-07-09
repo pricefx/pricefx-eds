@@ -112,6 +112,7 @@
   /*  Gray Shades */
   --c-gray: #dfe1e6;
   --c-gray-lt: #ebecee;
+  --c-gray-dark: #323232; 
   --c-gray-med: #b5bac4;
   --c-gray-med-2: #939393;
   --c-gray-med-alt: #bababa;
@@ -562,6 +563,10 @@ main .section.highlight {
 
 .section[data-backgroundcolor="section-bg-color-gray"] {
   background-color: var(--c-gray-lt);
+}
+
+.section[data-backgroundcolor="section-bg-color-dark-gray"] {
+  background-color: var(--c-gray-dark);
 }
 
 .section[data-alignment="section-align-left"] {
