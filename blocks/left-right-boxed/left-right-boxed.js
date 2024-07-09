@@ -52,8 +52,8 @@ export default async function decorate(block) {
     const boxedImageContainer = document.createElement('div');
     boxedImageContainer.classList.add('boxed-image-container');
     const boxedImage = imageContainer;
-    if (boxedImage !== undefined && window.matchMedia('(min-width:986px)').matches) {
-      if (boxedImage?.querySelector('img') !== null) {
+    if (boxedImage !== undefined) {
+      if (boxedImage?.querySelector('img') !== null && window.matchMedia('(min-width:986px)').matches) {
         boxedImageContainer.setAttribute('style', `background-image:url(${boxedImage.querySelector('img').src})`);
       }
       boxedImageContainer.append(boxedImage);
