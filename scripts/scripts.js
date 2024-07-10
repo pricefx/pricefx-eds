@@ -110,6 +110,15 @@ function autolinkModals(element) {
   });
 }
 
+async function loadCookieConsent(footer) {
+  const cookieFragmentPath = '/fragments/cookie-banner';
+  const cookieFragment = await loadFragment(cookieFragmentPath);
+  if (cookieFragment) {
+    footer.append(cookieFragment);
+  }
+}
+
+
 /**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
@@ -290,11 +299,6 @@ async function loadEager(doc) {
   }
 }
 
-async function loadCookieBanner() {
-  const cookieFragmentPath = '/fragments/cookie-banner';
-  const cookieFragment = await loadFragment(cookieFragmentPath);
-  return cookieFragment;
-}
 
 /**
  * Loads everything that doesn't need to be delayed.
@@ -311,15 +315,10 @@ async function loadLazy(doc) {
   if (hash && element) {
     element.scrollIntoView();
   }
-
+  
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
-
-  const bodyEl = document.querySelector('body');
-  const cookieFrag = await loadCookieBanner();
-  if (cookieFrag) {
-    bodyEl.prepend(cookieFrag.firstElementChild);
-  }
+  loadCookieConsent(doc.querySelector('footer'));
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
