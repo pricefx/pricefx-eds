@@ -255,7 +255,7 @@ export default async function decorate(block) {
     count.innerHTML = currentSearchJSON.length;
 
     const searchTerm = block.querySelector('.search-term');
-    searchTerm.innerHTML = `'${query}'`;
+    searchTerm.textContent = `'${query}'`;
 
     if (currentSearchJSON.length === 0) {
       resultWrapper.innerHTML = `<h4 class="search-no-results">${noResultTitle.textContent.trim()}</h4>`;
