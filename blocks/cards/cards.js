@@ -12,7 +12,7 @@ function decorateCTA(cta, ctaTarget, isClickable) {
     }
     return cta.firstElementChild.firstElementChild;
   }
-  cta.innerHTML = `<p>${link.textContent.trim()}</p>`;
+  cta.innerHTML = `<p>${link?.textContent.trim()}</p>`;
   return cta;
 }
 

@@ -71,7 +71,7 @@ const renderFilterOptions = (filterOptions) => {
   let markup = '';
   filterOptions.forEach((option) => {
     markup += `
-      <option value="${option}">${option}</option>
+      <option value="${option}">${option.toUpperCase()}</option>
     `;
   });
   return markup;
@@ -224,7 +224,7 @@ export default async function decorate(block) {
     industriesFilterContainer.append(industriesFilter);
 
     industriesFilter.innerHTML = `
-    <option value="all-industries" selected>${filterIndustryAllLabel.textContent.trim()}</option>
+    <option value="all-industries" selected>${filterIndustryAllLabel.textContent.trim().toUpperCase()}</option>
     ${renderFilterOptions(industriesFilterOptions)}
   `;
   }
@@ -247,7 +247,7 @@ export default async function decorate(block) {
     regionsFilterContainer.append(regionsFilter);
 
     regionsFilter.innerHTML = `
-      <option value="all-regions" selected>${filterRegionAllLabel.textContent.trim()}</option>
+      <option value="all-regions" selected>${filterRegionAllLabel.textContent.trim().toUpperCase()}</option>
       ${renderFilterOptions(regionsFilterOptions)}
     `;
   }

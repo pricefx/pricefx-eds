@@ -47,6 +47,12 @@
     .left-right-boxed .boxed-right-container .embed .embed-play-title {
         text-align: center;
     }
+
+    .left-right-boxed .boxed-right-container .boxed-image-container img {
+        aspect-ratio: 2 / 1;
+        object-fit: cover;
+        width: 100%;
+    }
     
     @media (width <= 985px) {
         .left-right-boxed .boxed-right-container .boxed-image-container {

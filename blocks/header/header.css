@@ -361,7 +361,7 @@ header nav {
 }
 
 .mobile-nav-list--expanded {
-  height: calc(100vh + 400px);
+  height: calc(100vh - 116px);
   overflow-y: scroll;
 }
 

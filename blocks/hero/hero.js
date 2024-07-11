@@ -75,8 +75,8 @@ export default async function decorate(block) {
     const heroImageContainer = document.createElement('div');
     heroImageContainer.classList.add('hero-image-container');
     const heroImage = imageContainer;
-    if (heroImage !== undefined && window.matchMedia('(min-width:986px)').matches) {
-      if (heroImage?.querySelector('img') !== null) {
+    if (heroImage !== undefined) {
+      if (heroImage?.querySelector('img') !== null && window.matchMedia('(min-width:986px)').matches) {
         const imageUrl = heroImage?.querySelector('img').src;
         heroImageContainer.setAttribute('style', `background-image:url(${imageUrl})`);
       }
