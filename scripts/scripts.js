@@ -110,15 +110,6 @@ function autolinkModals(element) {
   });
 }
 
-async function loadCookieConsent(footer) {
-  const cookieFragmentPath = '/fragments/cookie-banner';
-  const cookieFragment = await loadFragment(cookieFragmentPath);
-  if (cookieFragment) {
-    footer.append(cookieFragment);
-  }
-}
-
-
 /**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
@@ -299,6 +290,11 @@ async function loadEager(doc) {
   }
 }
 
+async function loadCookieBanner() {
+  const cookieFragmentPath = '/fragments/cookie-banner';
+  const cookieFragment = await loadFragment(cookieFragmentPath);
+  return cookieFragment;
+}
 
 /**
  * Loads everything that doesn't need to be delayed.
@@ -318,7 +314,21 @@ async function loadLazy(doc) {
   
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
-  loadCookieConsent(doc.querySelector('footer'));
+  // Reserve space for the cookie banner with CSS
+  const cookieBannerPlaceholder = document.createElement('div');
+  cookieBannerPlaceholder.style.visibility = 'hidden';
+  document.body.prepend(cookieBannerPlaceholder);
+
+  const bodyEl = document.querySelector('body');
+  const cookieFrag = await loadCookieBanner();
+  if (cookieFrag) {
+    const cookieBanner = cookieFrag.firstElementChild;
+    cookieBanner.style.display = 'none';
+    bodyEl.replaceChild(cookieBanner, cookieBannerPlaceholder);
+    cookieBanner.style.display = '';
+  } else {
+    cookieBannerPlaceholder.remove();
+  }
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
