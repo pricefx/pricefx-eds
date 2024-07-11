@@ -283,6 +283,6 @@ export default async function decorate(block) {
       } else {
         carouselNextCta.click();
       }
-    }, 2000);
+    }, 10000);
   }
 }
