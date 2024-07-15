@@ -7,7 +7,7 @@ const isCarouselQuoteDesktopBreakpoint = window.matchMedia('(min-width: 768px)')
 const setSlidesPosition = (slides, width, isCarouselImage) => {
   slides.forEach((slide, index) => {
     if (!isCarouselImage) {
-      slide.style.left = `${width * index}px`;
+      slide.style.left = `${(width + 5) * index}px`;
     } else {
       slide.style.left = `${(width + 20) * index}px`;
     }
