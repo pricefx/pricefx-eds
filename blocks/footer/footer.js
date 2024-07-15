@@ -153,21 +153,14 @@ export default async function decorate(block) {
   block.append(copyrightSection);
 
   // Resetting ADA attributes
-  function loadFooter() {
-    if (window.matchMedia('(min-width:768px)').matches) {
-      block.querySelectorAll('.footer-menu-title-mobile')?.forEach((ele) => {
-        ele.setAttribute('aria-expanded', false);
-        const navlist = ele.nextElementSibling;
-        navlist.setAttribute('aria-hidden', false);
-        navlist.style.maxHeight = '';
-        navlist.style.visibility = '';
-      });
-    }
-  }
-  loadFooter();
 
-  window.addEventListener('resize', () => {
-    toggleMobileNavAccordion();
-    loadFooter();
-  });
+  if (window.matchMedia('(min-width:768px)').matches) {
+    block.querySelectorAll('.footer-menu-title-mobile')?.forEach((ele) => {
+      ele.setAttribute('aria-expanded', false);
+      const navlist = ele.nextElementSibling;
+      navlist.setAttribute('aria-hidden', false);
+      navlist.style.maxHeight = '';
+      navlist.style.visibility = '';
+    });
+  }
 }
