@@ -9,6 +9,7 @@ main .carousel:has(.carousel[data-carousel-type='carousel-quote']) .carousel > p
   display: flex;
   justify-content: center;
   padding: 98px 0 98px 15px;
+  box-sizing: border-box;
 }
 
 .carousel[data-carousel-type='carousel-quote'] .carousel-content {

@@ -186,6 +186,7 @@
     line-height: calc((28 / 16) * 1rem);
     margin: 0 0 var(--spacing-micro);
     text-transform: capitalize;
+    text-align: left;
 }
 
 .blog-articles .article-info {
@@ -194,6 +195,7 @@
     line-height: calc((28 / 16) * 1rem);
     padding: 0 var(--spacing-small);
     margin-top: auto;
+    text-align: left;
 }
 
 .blog-articles .article-author-link {
