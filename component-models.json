@@ -218,7 +218,8 @@
         "valueType": "string",
         "name": "linkText",
         "label": "Button Label",
-        "value": ""
+        "value": "",
+        "required": true
       },
       {
         "component": "select",
