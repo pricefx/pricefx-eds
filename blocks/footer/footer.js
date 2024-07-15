@@ -167,6 +167,7 @@ export default async function decorate(block) {
   loadFooter();
 
   window.addEventListener('resize', () => {
+    toggleMobileNavAccordion();
     loadFooter();
   });
 }
