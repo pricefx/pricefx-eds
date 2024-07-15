@@ -19,7 +19,7 @@ function createMenuLink(childMenu) {
  * @param {Element} navToggle The toggle that show/hide the mobile navigation
  */
 function toggleMobileNavAccordion(navToggle) {
-  if (window.innerWidth > 767) {
+  if (window.innerWidth > 985) {
     return;
   }
 
@@ -153,14 +153,15 @@ export default async function decorate(block) {
   block.append(copyrightSection);
 
   // Resetting ADA attributes
-
-  if (window.matchMedia('(min-width:768px)').matches) {
-    block.querySelectorAll('.footer-menu-title-mobile')?.forEach((ele) => {
-      ele.setAttribute('aria-expanded', false);
-      const navlist = ele.nextElementSibling;
-      navlist.setAttribute('aria-hidden', false);
-      navlist.style.maxHeight = '';
-      navlist.style.visibility = '';
-    });
-  }
+  window.addEventListener('resize', () => {
+    if (window.matchMedia('(min-width:986px)').matches) {
+      block.querySelectorAll('.footer-menu-title-mobile')?.forEach((ele) => {
+        ele.setAttribute('aria-expanded', false);
+        const navlist = ele.nextElementSibling;
+        navlist.setAttribute('aria-hidden', false);
+        navlist.style.maxHeight = '';
+        navlist.style.visibility = '';
+      });
+    }
+  });
 }
