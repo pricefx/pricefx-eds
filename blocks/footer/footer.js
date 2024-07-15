@@ -153,7 +153,7 @@ export default async function decorate(block) {
   block.append(copyrightSection);
 
   // Resetting ADA attributes
-  window.addEventListener('resize', () => {
+  function loadFooter() {
     if (window.matchMedia('(min-width:768px)').matches) {
       block.querySelectorAll('.footer-menu-title-mobile')?.forEach((ele) => {
         ele.setAttribute('aria-expanded', false);
@@ -163,5 +163,10 @@ export default async function decorate(block) {
         navlist.style.visibility = '';
       });
     }
+  }
+  loadFooter();
+
+  window.addEventListener('resize', () => {
+    loadFooter();
   });
 }
