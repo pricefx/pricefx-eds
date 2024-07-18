@@ -508,8 +508,10 @@ export default async function decorate(block) {
   // Filter Current Article
   let filteredData = filterByAuthors.filter(
     (article) =>
-      !article.path.includes(window.location.pathname === '/learning-center/casestudies') ||
-      !article.path.includes(window.location.pathname),
+      {
+        if(!(article.path === "/learning-center/casestudies"))
+          !article.path.includes(window.location.pathname)
+      }
   );
 
   // Sorting Article by Date published
