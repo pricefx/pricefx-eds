@@ -506,7 +506,12 @@ export default async function decorate(block) {
   const filterByAuthors = filterBasedOnProp(filteryByTopics, ['authors'], { authors: authorTags });
 
   // Filter Current Article
-  let filteredData = filterByAuthors.filter((article) => !article.path.includes(window.location.pathname));
+  let filteredData;
+  if (window.location.pathname !== '/learning-center/casestudies') {
+    filteredData = filterByAuthors.filter((article) => !article.path.includes(window.location.pathname));
+  } else {
+    filteredData = [...filterByAuthors];
+  }
 
   // Sorting Article by Date published
   filteredData = sortByDate(filteredData, 'articlePublishDate');
