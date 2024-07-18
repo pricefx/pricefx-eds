@@ -114,6 +114,12 @@
   word-break: break-word;
 }
 
+@media (width <= 430px) {
+  .hero .hero-left-container h1 {
+    font-size: calc((32 / 16) * 1rem);
+  }
+}
+
 @media (width <= 985px) {
   .hero .hero-right-container .hero-image-container {
     background-image: unset !important;
