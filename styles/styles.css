@@ -222,6 +222,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   max-width: var(--site-page-width);
   background-color: var(--c-mid-dark);
+  border: 10px solid red;
 }
 
 body.appear {
