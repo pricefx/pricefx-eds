@@ -4,10 +4,41 @@ import { readBlockConfig } from '../../scripts/aem.js';
 
 const isDesktop = window.matchMedia('(min-width: 986px)');
 
-let jsonObject;
+let allEventsData;
+
+function filterAndModifyEvents(events) {
+  const today = new Date().toISOString().split('T')[0];
+  return events.filter((event) => {
+    // Parse the event date
+    const eventDate = new Date(event.eventDate).toISOString().split('T')[0];
+
+    // Skip events that are already passed
+    if (eventDate < today) {
+      if (event.program === 'Event') {
+        return false;
+      }
+      if (event.program === 'Webinar') {
+        event.eventType = 'On-demand';
+      }
+    }
+
+    // Hide events of type "Event"
+
+    // Modify "Webinar" type to "On-demand"
+
+    // Modify eventTags to add "pricefx:status/on-demand" if "pricefx:status/live" exists
+    const liveStatusIndex = event.eventTags.indexOf('pricefx:status/live');
+    if (liveStatusIndex !== -1) {
+      event.eventTags.push('pricefx:status/on-demand');
+    }
+
+    // Return the modified event
+    return true;
+  });
+}
 
 function filterEventsByPath(path) {
-  return jsonObject.data.eventsList.items.filter((event) => path.includes(event._path))[0];
+  return allEventsData.data.eventsList.items.filter((event) => path.includes(event._path))[0];
 }
 
 const updateBrowserUrl = (searchParams, key, value) => {
@@ -22,17 +53,16 @@ const formatDate = (dateString) => {
   return date.toLocaleDateString('en-US', options);
 };
 
-const renderArticleCategory = (article) => {
-  const categoriesArray = article.eventType;
+const renderArticleCategory = (event) => {
+  const categoriesArray = event.eventType;
   if (categoriesArray) {
-    return `<p class="article-subtitle">${categoriesArray}</p>`;
+    return `<p class="event-subtitle">${categoriesArray}</p>`;
   }
   return null;
 };
 
-// Dynamically update the card CTA label based on article Content Type
-const renderArticleCtaLabel = (article) =>
-  `<a class="article-link" href="${article.eventLink}">${article.eventCtaLabel}</a>`;
+// Dynamically update the card CTA label based on event Content Type
+const renderArticleCtaLabel = (event) => `<a class="event-link" href="${event.eventLink}">${event.eventCtaLabel}</a>`;
 
 /**
  * Reset Filter Accordions to Default State
@@ -113,10 +143,11 @@ const toggleFilterAccordion = (toggle) => {
 function fetchEventsData() {
   fetch('https://publish-p131512-e1282665.adobeaemcloud.com/graphql/execute.json/pricefx/events', {
     method: 'GET',
+    mode: 'no-cors',
   })
-    .then((response) => response.json())
+    .then((response) => console.log(response))
     .then((data) => {
-      jsonObject = data;
+      allEventsData = data;
     });
 }
 
@@ -125,7 +156,7 @@ export default async function decorate(block) {
   const blockConfig = readBlockConfig(block);
   const featuredEvent = blockConfig.featuredevents;
   const searchPlaceholder = blockConfig.searchplaceholdertext;
-  const numOfArticles = blockConfig.numberOfEvents ? blockConfig.numberOfEvents : 6;
+  const numOfEvents = blockConfig.numberOfEvents ? blockConfig.numberOfEvents : 3;
   const defaultSort = blockConfig.sortby;
   const filterOne = blockConfig.filteronetitle;
   const filterOneOptions = blockConfig.filteronetags;
@@ -136,6 +167,18 @@ export default async function decorate(block) {
   const filterFour = blockConfig.filterfourtitle;
   const filterFourOptions = blockConfig.filterfourtags;
   block.textContent = '';
+
+  allEventsData.data.eventsList.items = filterAndModifyEvents(allEventsData.data.eventsList.items);
+  let currentEvenData = allEventsData.data.eventsList.items;
+
+  // Filter out the featured article data from the rest of the article data (if applicable)
+
+  let noFeaturedEventData;
+  if (featuredEvent !== '') {
+    noFeaturedEventData = allEventsData.data.eventsList.items.filter((event) => !featuredEvent.includes(event._path));
+  } else {
+    noFeaturedEventData = allEventsData.data.eventsList.items;
+  }
 
   const filterControls = document.createElement('div');
   filterControls.classList.add('filter-controls');
@@ -154,18 +197,18 @@ export default async function decorate(block) {
   filter.setAttribute('aria-hidden', 'false');
   flexContainer.append(filter);
 
-  // Creates a div container to hold Learning Center articles
+  // Creates a div container to hold Events events
   const eventsContent = document.createElement('div');
   eventsContent.classList.add('events-content');
-  const articlesContainer = document.createElement('ul');
-  articlesContainer.classList.add('articles-container');
+  const EventsContainer = document.createElement('ul');
+  EventsContainer.classList.add('event-container');
   const featuredEventContainer = document.createElement('div');
   featuredEventContainer.classList.add('featured-event');
   if (featuredEvent !== '' && featuredEvent) {
     eventsContent.append(featuredEventContainer);
   }
   flexContainer.append(eventsContent);
-  eventsContent.append(articlesContainer);
+  eventsContent.append(EventsContainer);
 
   // Creates a div container to hold pagination
   const paginationContainer = document.createElement('nav');
@@ -174,7 +217,7 @@ export default async function decorate(block) {
   paginationContainer.setAttribute('role', 'navigation');
   eventsContent.append(paginationContainer);
 
-  const defaultSortedArticle = jsonObject.data.eventsList.items.sort(
+  const defaultSortedArticle = allEventsData.data.eventsList.items.sort(
     (a, b) => new Date(b.eventDate) - new Date(a.eventDate),
   );
 
@@ -315,26 +358,31 @@ ${
   // Render Featured Article
   if (featuredEvent !== '' && featuredEventData) {
     featuredEventContainer.innerHTML = `
-      <div class="article-image">
+      <div class="event-image">
         <picture>
           <img src="${featuredEventData.eventImage._dmS7Url || ''}" alt="${featuredEventData.imageAlt || featuredEventData.program}">
         </picture>
       </div>
-      <div class="article-content">
+      <div class="event-content">
         ${
           featuredEventData.eventType !== '' ||
           featuredEventData.eventTitle !== '' ||
           featuredEventData.eventDate !== ''
-            ? `<div class="article-details">
+            ? `<div class="event-details">
             ${featuredEventData.eventType !== '' ? renderArticleCategory(featuredEventData) : ''}
-            ${featuredEventData.eventTitle !== '' ? `<p class="article-info"><b>${featuredEventData.eventTitle} : ${featuredEventData.eventDescription.plaintext}</b></p>` : ''}
+            ${
+              featuredEventData.eventTitle !== ''
+                ? `<p class="event-info"><b>${featuredEventData.eventTitle} </b><br> 
+            ${featuredEventData.eventDescription.plaintext}</p>`
+                : ''
+            }
    
           </div>`
             : ''
         }
-        <div class="article-cta-container">
+        <div class="event-cta-container">
           ${renderArticleCtaLabel(featuredEventData)}
-          ${featuredEventData.readingTime !== '' ? `<p class="article-readtime">${formatDate(featuredEventData.eventDate)}</p>` : ''}
+          ${featuredEventData.readingTime !== '' ? `<p class="event-readtime">${formatDate(featuredEventData.eventDate)}</p>` : ''}
         </div>
       </div>
     `;
@@ -342,31 +390,39 @@ ${
     featuredEventContainer.innerHTML = '';
   }
 
-  // Render Learning Center Article Card
+  // Render Events Article Card
   const renderArticleCard = (articleDataList) => {
-    const initialArticleData = articleDataList;
-
+    let initialArticleData = articleDataList;
+    const initialArticleCount = initialArticleData.length;
+    if (Number(numOfEvents) !== '' && initialArticleCount > Number(numOfEvents)) {
+      initialArticleData = articleDataList.slice(noFeaturedEventData, numOfEvents);
+    }
     let markup = '';
-    initialArticleData.forEach((article) => {
+    initialArticleData.forEach((event) => {
       markup += `
-            <li class="article-card">
-              <div class="article-image">
+            <li class="event-card">
+              <div class="event-image">
                 <picture>
-                  <img src="${article.eventImage._dmS7Url || ''}" alt="${article.imageAlt || article.eventTitle}">
+                  <img src="${event.eventImage._dmS7Url || ''}" alt="${event.imageAlt || event.eventTitle}">
                 </picture>
               </div>
-              <div class="article-content">
+              <div class="event-content">
                 ${
-                  article.eventType !== '' || article.eventTitle !== '' || article.eventDate !== ''
-                    ? `<div class="article-details">
-                    ${article.category !== '' ? renderArticleCategory(article) : ''}
-                    ${article.title !== '' ? `<p class="article-info"><b>${article.eventTitle} : ${article.eventDescription.plaintext}</b></p>` : ''}
+                  event.eventType !== '' || event.eventTitle !== '' || event.eventDate !== ''
+                    ? `<div class="event-details">
+                    ${event.category !== '' ? renderArticleCategory(event) : ''}
+                    ${
+                      event.title !== ''
+                        ? `<p class="event-info"><b>${event.eventTitle} </b><br> 
+                    ${event.eventDescription.plaintext.length > 20 ? `${event.eventDescription.plaintext.substring(0, 50)}...` : event.eventDescription.plaintext}</p>`
+                        : ''
+                    }
                   </div>`
                     : ''
                 }
-                <div class="article-cta-container">
-                  ${renderArticleCtaLabel(article)}
-                  ${article.readingTime !== '' ? `<p class="article-readtime">${formatDate(article.eventDate)}</p>` : ''}
+                <div class="event-cta-container">
+                  ${renderArticleCtaLabel(event)}
+                  ${event.readingTime !== '' ? `<p class="event-readtime">${formatDate(event.eventDate)}</p>` : ''}
                 </div>
               </div>
             </li>
@@ -375,15 +431,15 @@ ${
     return markup;
   };
 
-  const appendLearningCenterArticles = (articleJsonData) => {
-    articlesContainer.innerHTML = renderArticleCard(articleJsonData);
+  const appendEvents = (articleJsonData) => {
+    EventsContainer.innerHTML = renderArticleCard(articleJsonData);
   };
-  appendLearningCenterArticles(jsonObject.data.eventsList.items);
+  appendEvents(allEventsData.data.eventsList.items);
 
   // Render pagination pages
   const renderPages = (articlePerPage, articleList, currentPage) => {
-    const totalArticles = articleList.length;
-    const totalPageNumber = Math.ceil(totalArticles / articlePerPage);
+    const totalEvents = articleList.length;
+    const totalPageNumber = Math.ceil(totalEvents / articlePerPage);
     const firstPageMarkup = `<li class="pagination-page" id="page-1" aria-label="Page 1" aria-current="true"><button>1</button></li>`;
     const lastPageMarkup = `<li class="pagination-page" id="page-${totalPageNumber}" aria-label="Page ${totalPageNumber}"><button>${totalPageNumber}</button></li>`;
     let paginationMarkup = '';
@@ -429,11 +485,11 @@ ${
   };
 
   paginationContainer.innerHTML = `
-    ${Number(numOfArticles) > defaultSortedArticle.length ? '' : '<button class="pagination-prev" aria-label="Previous Page">Previous</button>'}
+    ${Number(numOfEvents) > defaultSortedArticle.length ? '' : '<button class="pagination-prev" aria-label="Previous Page">Previous</button>'}
     <ul class="pagination-pages-list">
-      ${renderPages(numOfArticles, defaultSortedArticle, 1)}
+      ${renderPages(numOfEvents, defaultSortedArticle, 1)}
     </ul>
-    ${Number(numOfArticles) > defaultSortedArticle.length ? '' : '<button class="pagination-next" aria-label="Next Page">Next</button>'}
+    ${Number(numOfEvents) > defaultSortedArticle.length ? '' : '<button class="pagination-next" aria-label="Next Page">Next</button>'}
   `;
 
   const paginationPageList = document.querySelector('.pagination-pages-list');
@@ -446,30 +502,32 @@ ${
     paginationContainer.classList.remove('hidden');
   }
 
-  if (window.location.search !== '') {
-    const currentUrlParam = new URLSearchParams(window.location.search);
-    const pageNum = currentUrlParam.get('page');
-    if (Number(pageNum) > 1) {
-      prevPageButton.classList.remove('hidden');
-      paginationPageList.children[0].classList.remove('active-page');
+  if (prevPageButton && nextPageButton) {
+    if (window.location.search !== '') {
+      const currentUrlParam = new URLSearchParams(window.location.search);
+      const pageNum = currentUrlParam.get('page');
+      if (Number(pageNum) > 1) {
+        prevPageButton.classList.remove('hidden');
+        paginationPageList.children[0].classList.remove('active-page');
+      } else {
+        prevPageButton.classList.add('hidden');
+        paginationPageList.children[0].classList.add('active-page');
+      }
     } else {
       prevPageButton.classList.add('hidden');
       paginationPageList.children[0].classList.add('active-page');
     }
-  } else {
-    prevPageButton.classList.add('hidden');
-    paginationPageList.children[0].classList.add('active-page');
   }
 
   // Defining some variables for filter, sort and search logic
   const sortByEl = document.getElementById('sort-content');
   const searchInput = document.getElementById('filter-search');
-  let currentFilteredArticles;
-  let currentSearchedArticles;
-  let currentSortedArticles;
-  let currentFilteredAndSortedArticles;
-  let currentSearchedAndFilteredArticles;
-  let currentSearchAndSortedArticles;
+  let currentFilteredEvents;
+  let currentSearchedEvents;
+  let currentSortedEvents;
+  let currentFilteredAndSortedEvents;
+  let currentSearchedAndFilteredEvents;
+  let currentSearchAndSortedEvents;
   const selectedFiltersArray = [];
   const selectedFilters = {
     'filter-type': [],
@@ -496,40 +554,42 @@ ${
     }
   };
 
-  // Learning Center Sort By logic
-  const handleSortArticles = (sortBy, articleDataList) => {
+  // Events Sort By logic
+  const handleSortEvents = (sortBy, articleDataList) => {
     let articleJson = articleDataList;
     sortByEl.style.width = 'auto';
     if (sortBy === 'desc-date') {
       articleJson = articleJson.sort((a, b) => new Date(b.eventDate) - new Date(a.eventDate));
-      appendLearningCenterArticles(articleJson);
+      appendEvents(articleJson);
     } else if (sortBy === 'asc-date') {
       articleJson = articleJson.sort((a, b) => new Date(a.eventDate) - new Date(b.eventDate));
-      appendLearningCenterArticles(articleJson);
+      appendEvents(articleJson);
     } else if (sortBy === 'asc-title') {
       sortByEl.style.width = '140px';
       articleJson = articleJson.sort((a, b) => a.eventTitle.localeCompare(b.eventTitle));
-      appendLearningCenterArticles(articleJson);
+      appendEvents(articleJson);
     } else {
       sortByEl.style.width = '140px';
       articleJson = articleJson.sort((a, b) => b.eventTitle.localeCompare(a.eventTitle));
-      appendLearningCenterArticles(articleJson);
+      appendEvents(articleJson);
     }
 
-    currentSortedArticles = jsonObject.data.eventsList.items;
+    currentSortedEvents = allEventsData.data.eventsList.items;
 
     if (articleJson.length === 0) {
-      articlesContainer.innerHTML = `
-        <h4 class="no-articles">Sorry, there are no results based on these choices. Please update and try again.</h4>
+      EventsContainer.innerHTML = `
+        <h4 class="no-events">Sorry, there are no results based on these choices. Please update and try again.</h4>
       `;
       paginationContainer.classList.add('hidden');
       updateBrowserUrl(searchParams, 'page', 1);
     } else {
       paginationContainer.classList.remove('hidden');
       const currentPage = paginationPageList.children[0];
-      paginationPageList.innerHTML = renderPages(numOfArticles, currentSortedArticles, Number(currentPage.textContent));
+      paginationPageList.innerHTML = renderPages(numOfEvents, currentSortedEvents, Number(currentPage.textContent));
       paginationPageList.children[0].classList.add('active-page');
-      nextPageButton.classList.remove('hidden');
+      if (nextPageButton) {
+        nextPageButton.classList.remove('hidden');
+      }
       if (paginationPageList.children.length <= 1) {
         paginationContainer.classList.add('hidden');
       } else {
@@ -538,14 +598,16 @@ ${
     }
 
     if (searchInput.value !== '') {
-      currentSearchAndSortedArticles = articleJson;
+      currentSearchAndSortedEvents = articleJson;
+      currentEvenData = articleJson;
     } else if (selectedFiltersArray.length > 0) {
-      currentFilteredAndSortedArticles = articleJson;
+      currentFilteredAndSortedEvents = articleJson;
+      currentEvenData = articleJson;
     }
   };
 
   sortByEl.addEventListener('change', (e) => {
-    let sortedArticles = [...defaultSortedArticle];
+    let sortedEvents = [...defaultSortedArticle];
     const selectedFiltersValues = Object.values(selectedFilters);
     selectedFiltersValues.forEach((filterValue) => {
       if (filterValue[0] !== undefined) {
@@ -554,29 +616,30 @@ ${
     });
 
     if (searchInput.value !== '' && selectedFiltersArray.length > 0) {
-      sortedArticles = currentSearchedAndFilteredArticles;
+      sortedEvents = currentSearchedAndFilteredEvents;
+      currentEvenData = currentSearchedAndFilteredEvents;
 
-      handleSortArticles(e.target.value, currentSearchedAndFilteredArticles);
+      handleSortEvents(e.target.value, currentSearchedAndFilteredEvents);
     } else if (searchInput.value !== '' && selectedFiltersArray.length <= 0) {
-      sortedArticles = currentSearchedArticles;
-
-      handleSortArticles(e.target.value, currentSearchedArticles);
+      sortedEvents = currentSearchedEvents;
+      currentEvenData = currentSearchedEvents;
+      handleSortEvents(e.target.value, currentSearchedEvents);
     } else if (selectedFiltersArray.length > 0) {
-      sortedArticles = currentFilteredArticles;
-
-      handleSortArticles(e.target.value, currentFilteredArticles);
+      sortedEvents = currentFilteredEvents;
+      currentEvenData = currentFilteredEvents;
+      handleSortEvents(e.target.value, currentFilteredEvents);
     } else {
-      handleSortArticles(e.target.value, sortedArticles);
+      handleSortEvents(e.target.value, sortedEvents);
     }
 
-    if (paginationPageList.children[0].className.includes('active-page')) {
+    if (prevPageButton && paginationPageList.children[0].className.includes('active-page')) {
       prevPageButton.classList.add('hidden');
     }
     updateBrowserUrl(searchParams, 'page', 1);
     updateBrowserUrl(searchParams, 'sortBy', e.target.value);
   });
 
-  // Learning Center Search logic
+  // Events Search logic
   const handleSearch = (query, articleList) => {
     let articleJson = articleList;
     articleJson = articleJson.filter(
@@ -587,25 +650,23 @@ ${
         result.eventTags.includes(query.replaceAll(' ', '-')),
     );
 
-    currentSearchedArticles = articleJson;
+    currentSearchedEvents = articleJson;
 
     if (articleJson.length === 0) {
-      articlesContainer.innerHTML = `
-        <h4 class="no-articles">Sorry, there are no results based on these choices. Please update and try again.</h4>
+      EventsContainer.innerHTML = `
+        <h4 class="no-events">Sorry, there are no results based on these choices. Please update and try again.</h4>
       `;
       paginationContainer.classList.add('hidden');
       updateBrowserUrl(searchParams, 'page', 1);
     } else {
-      appendLearningCenterArticles(articleJson);
+      appendEvents(articleJson);
       paginationContainer.classList.remove('hidden');
       const currentPage = paginationPageList.children[0];
-      paginationPageList.innerHTML = renderPages(
-        numOfArticles,
-        currentSearchedArticles,
-        Number(currentPage.textContent),
-      );
+      paginationPageList.innerHTML = renderPages(numOfEvents, currentSearchedEvents, Number(currentPage.textContent));
       paginationPageList.children[0].classList.add('active-page');
-      nextPageButton.classList.remove('hidden');
+      if (nextPageButton) {
+        nextPageButton.classList.remove('hidden');
+      }
       if (paginationPageList.children.length <= 1) {
         paginationContainer.classList.add('hidden');
       } else {
@@ -614,20 +675,20 @@ ${
     }
 
     if (sortByEl.value !== '') {
-      currentSearchAndSortedArticles = articleJson;
+      currentSearchAndSortedEvents = articleJson;
     } else if (selectedFiltersArray.length > 0) {
-      currentSearchedAndFilteredArticles = articleJson;
+      currentSearchedAndFilteredEvents = articleJson;
     }
   };
 
   const searchForm = document.querySelector('.filter-search-wrapper');
   searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    let searchedArticles = [...defaultSortedArticle];
+    let searchedEvents = [...defaultSortedArticle];
     const formData = new FormData(e.target);
     const value = Object.fromEntries(formData)['filter-search'].toLowerCase();
 
-    // Implement search through filtered articles
+    // Implement search through filtered events
     const selectedFiltersValues = Object.values(selectedFilters);
     selectedFiltersValues.forEach((filterValue) => {
       if (filterValue[0] !== undefined) {
@@ -636,26 +697,26 @@ ${
     });
 
     if (sortByEl.value !== '' && selectedFiltersArray.length > 0) {
-      searchedArticles = currentFilteredAndSortedArticles;
-
-      handleSearch(value, currentFilteredAndSortedArticles);
+      searchedEvents = currentFilteredAndSortedEvents;
+      currentEvenData = currentFilteredAndSortedEvents;
+      handleSearch(value, currentFilteredAndSortedEvents);
     } else if (sortByEl.value !== '' && selectedFiltersArray.length <= 0) {
-      searchedArticles = currentSortedArticles;
-
-      handleSearch(value, currentSortedArticles);
+      searchedEvents = currentSortedEvents;
+      currentEvenData = currentSortedEvents;
+      handleSearch(value, currentSortedEvents);
     } else if (selectedFiltersArray.length > 0) {
-      searchedArticles = currentFilteredArticles;
-
-      handleSearch(value, searchedArticles);
+      searchedEvents = currentFilteredEvents;
+      currentEvenData = currentFilteredEvents;
+      handleSearch(value, searchedEvents);
     } else if (value === '') {
       handleSearch(value, defaultSortedArticle);
     } else {
-      handleSearch(value, searchedArticles);
+      handleSearch(value, searchedEvents);
     }
 
     updateBrowserUrl(searchParams, 'page', 1);
 
-    if (paginationPageList.children[0].className.includes('active-page')) {
+    if (prevPageButton && paginationPageList.children[0].className.includes('active-page')) {
       prevPageButton.classList.add('hidden');
     }
     if (value !== '') {
@@ -670,7 +731,7 @@ ${
     updateFiltersUrlParams();
   });
 
-  // Learning Center Filter logic
+  // Events Filter logic
   const updateSelectedFilters = (state, key, value) => {
     if (state === true && value.includes('all')) {
       selectedFilters[key].pop();
@@ -691,59 +752,58 @@ ${
     return selectedFilters;
   };
 
-  const handleFilterArticles = (filters, articleList) => {
+  const handleFilterEvents = (filters, articleList) => {
     let articleJson = articleList;
     if (filters['filter-type'].length > 0) {
-      articleJson = articleJson.filter((article) =>
+      articleJson = articleJson.filter((event) =>
         filters['filter-type'].some((searchTag) =>
-          article.eventTags.some((tag) => tag.toLowerCase().includes(searchTag.toLowerCase())),
+          event.eventTags.some((tag) => tag.toLowerCase().includes(searchTag.toLowerCase())),
         ),
       );
     }
 
     if (filters['filter-industry'].length > 0 && Array.isArray(filters['filter-industry'])) {
-      articleJson = articleJson.filter((article) =>
+      articleJson = articleJson.filter((event) =>
         filters['filter-industry'].some((searchTag) =>
-          article.eventTags.some((tag) => tag.toLowerCase().includes(searchTag.toLowerCase())),
+          event.eventTags.some((tag) => tag.toLowerCase().includes(searchTag.toLowerCase())),
         ),
       );
     }
 
     if (filters['filter-role'].length > 0 && Array.isArray(filters['filter-role'])) {
-      articleJson = articleJson.filter((article) =>
+      articleJson = articleJson.filter((event) =>
         filters['filter-role'].some((searchTag) =>
-          article.eventTags.some((tag) => tag.toLowerCase().includes(searchTag.toLowerCase())),
+          event.eventTags.some((tag) => tag.toLowerCase().includes(searchTag.toLowerCase())),
         ),
       );
     }
 
     if (filters['filter-pfx'].length > 0) {
-      articleJson = articleJson.filter((article) =>
+      articleJson = articleJson.filter((event) =>
         filters['filter-pfx'].some((searchTag) =>
-          article.eventTags.some((tag) => tag.toLowerCase().includes(searchTag.toLowerCase())),
+          event.eventTags.some((tag) => tag.toLowerCase().includes(searchTag.toLowerCase())),
         ),
       );
     }
 
-    currentFilteredArticles = articleJson;
+    currentFilteredEvents = articleJson;
+    currentEvenData = articleJson;
 
     if (articleJson.length === 0) {
-      articlesContainer.innerHTML = `
-        <h4 class="no-articles">Sorry, there are no results based on these choices. Please update and try again.</h4>
+      EventsContainer.innerHTML = `
+        <h4 class="no-events">Sorry, there are no results based on these choices. Please update and try again.</h4>
       `;
       paginationContainer.classList.add('hidden');
       updateBrowserUrl(searchParams, 'page', 1);
     } else {
-      appendLearningCenterArticles(articleJson);
+      appendEvents(articleJson);
       paginationContainer.classList.remove('hidden');
       const currentPage = paginationPageList.children[0];
-      paginationPageList.innerHTML = renderPages(
-        numOfArticles,
-        currentFilteredArticles,
-        Number(currentPage.textContent),
-      );
+      paginationPageList.innerHTML = renderPages(numOfEvents, currentFilteredEvents, Number(currentPage.textContent));
       paginationPageList.children[0].classList.add('active-page');
-      nextPageButton.classList.remove('hidden');
+      if (nextPageButton) {
+        nextPageButton.classList.remove('hidden');
+      }
       if (paginationPageList.children.length <= 1) {
         paginationContainer.classList.add('hidden');
       } else {
@@ -752,9 +812,9 @@ ${
     }
 
     if (searchInput.value !== '') {
-      currentSearchedAndFilteredArticles = articleJson;
+      currentSearchedAndFilteredEvents = articleJson;
     } else if (sortByEl.value !== '') {
-      currentFilteredAndSortedArticles = articleJson;
+      currentFilteredAndSortedEvents = articleJson;
     }
   };
 
@@ -762,27 +822,119 @@ ${
   allFilterOptions.forEach((filterOption) => {
     filterOption.addEventListener('click', () => {
       updateSelectedFilters(filterOption.checked, filterOption.dataset.filterCategory, filterOption.value);
-      let filteredArticles = [...defaultSortedArticle];
+      let filteredEvents = [...defaultSortedArticle];
 
       if (sortByEl.value !== '' && searchInput.value !== '') {
-        handleFilterArticles(selectedFilters, currentSearchAndSortedArticles);
+        handleFilterEvents(selectedFilters, currentSearchAndSortedEvents);
       } else if (sortByEl.value !== '' && searchInput.value === '') {
-        filteredArticles = currentSortedArticles;
+        filteredEvents = currentSortedEvents;
 
-        handleFilterArticles(selectedFilters, currentSortedArticles);
+        handleFilterEvents(selectedFilters, currentSortedEvents);
       } else if (searchInput.value !== '' && sortByEl.value === '') {
-        filteredArticles = currentSearchedArticles;
+        filteredEvents = currentSearchedEvents;
 
-        handleFilterArticles(selectedFilters, currentSearchedArticles);
+        handleFilterEvents(selectedFilters, currentSearchedEvents);
       } else {
-        handleFilterArticles(selectedFilters, filteredArticles);
+        handleFilterEvents(selectedFilters, filteredEvents);
       }
 
       updateBrowserUrl(searchParams, 'page', 1);
 
-      if (paginationPageList.children[0].className.includes('active-page')) {
+      if (prevPageButton && paginationPageList.children[0].className.includes('active-page')) {
         prevPageButton.classList.add('hidden');
       }
     });
+  });
+
+  // Append articles based on active page
+  const appendNewActiveArticlePage = (startIndex, endIndex, currentPage, articlesJson) => {
+    let newCurrentEvenData;
+    if (Number(currentPage.textContent) * Number(numOfEvents) >= articlesJson.length) {
+      newCurrentEvenData = articlesJson.slice(startIndex);
+    } else {
+      newCurrentEvenData = articlesJson.slice(startIndex, endIndex);
+    }
+    appendEvents(newCurrentEvenData);
+  };
+
+  const handlePageClick = (paginations, activePage) => {
+    const newPageList = paginations.querySelectorAll('.pagination-page');
+    newPageList.forEach((newPage) => {
+      newPage.classList.remove('active-page');
+      if (activePage === newPage.textContent) {
+        newPage.classList.add('active-page');
+      }
+    });
+
+    if (activePage > '1') {
+      prevPageButton.classList.remove('hidden');
+    } else {
+      prevPageButton.classList.add('hidden');
+    }
+
+    if (activePage === paginations.lastChild.textContent) {
+      nextPageButton.classList.add('hidden');
+    } else {
+      nextPageButton.classList.remove('hidden');
+    }
+  };
+
+  const handlePaginationNav = (paginations, nextActivePage) => {
+    [...paginations.children].forEach((page) => page.classList.remove('active-page'));
+    nextActivePage.classList.add('active-page');
+    paginationPageList.innerHTML = renderPages(numOfEvents, currentEvenData, Number(nextActivePage.textContent));
+
+    handlePageClick(paginationPageList, nextActivePage.textContent);
+
+    appendNewActiveArticlePage(
+      Number(nextActivePage.textContent) * Number(numOfEvents) - Number(numOfEvents),
+      Number(nextActivePage.textContent) * Number(numOfEvents),
+      nextActivePage,
+      currentEvenData,
+    );
+    updateBrowserUrl(searchParams, 'page', nextActivePage.textContent);
+  };
+
+  paginationContainer.addEventListener('click', (e) => {
+    if (e.target && e.target.nodeName === 'BUTTON' && e.target.className === '') {
+      const { target } = e;
+      const targetPageContainer = target.parentElement.parentElement;
+      [...targetPageContainer.children].forEach((page) => page.classList.remove('active-page'));
+      target.parentElement.classList.add('active-page');
+
+      paginationPageList.innerHTML = renderPages(numOfEvents, currentEvenData, Number(target.textContent));
+
+      handlePageClick(paginationPageList, target.textContent);
+
+      appendNewActiveArticlePage(
+        Number(target.textContent) * Number(numOfEvents) - Number(numOfEvents),
+        Number(target.textContent) * Number(numOfEvents),
+        target,
+        currentEvenData,
+      );
+      updateBrowserUrl(searchParams, 'page', target.textContent);
+
+      const pagItems = document.querySelectorAll('.pagination-page');
+      for (let i = 0; i < pagItems.length; i += 1) {
+        pagItems[i].removeAttribute('aria-current');
+        if (pagItems[i].classList.contains('active-page')) {
+          pagItems[i].setAttribute('aria-current', 'true');
+        }
+      }
+    }
+  });
+
+  nextPageButton.addEventListener('click', () => {
+    const paginationList = nextPageButton.previousElementSibling;
+    const activePage = [...paginationList.children].find((page) => page.classList.contains('active-page'));
+    const nextActivePage = activePage.nextElementSibling;
+    handlePaginationNav(paginationList, nextActivePage);
+  });
+
+  prevPageButton.addEventListener('click', () => {
+    const paginationList = prevPageButton.nextElementSibling;
+    const activePage = [...paginationList.children].find((page) => page.classList.contains('active-page'));
+    const nextActivePage = activePage.previousElementSibling;
+    handlePaginationNav(paginationList, nextActivePage);
   });
 }
