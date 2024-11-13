@@ -13,6 +13,7 @@ module.exports = {
   plugins: ['prettier'],
   rules: {
     // allow reassigning param
+    'no-underscore-dangle': 'off',
     'no-param-reassign': [2, { props: false }],
     'prettier/prettier': 'warn',
     'linebreak-style': ['error', 'unix'],
