@@ -143,7 +143,6 @@ const toggleFilterAccordion = (toggle) => {
 function fetchEventsData() {
   fetch('https://publish-p131512-e1282665.adobeaemcloud.com/graphql/execute.json/pricefx/events', {
     method: 'GET',
-    mode: 'no-cors',
   })
     .then((response) => console.log(response))
     .then((data) => {
