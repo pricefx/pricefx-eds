@@ -143,7 +143,17 @@ const toggleFilterAccordion = (toggle) => {
 function fetchEventsData() {
   fetch('https://publish-p131512-e1282665.adobeaemcloud.com/graphql/execute.json/pricefx/events', {
     method: 'GET',
-  }).then((response) => response);
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json(); // Assuming the response is JSON
+    })
+    .catch((error) => {
+      console.error('Error fetching events data:', error);
+      throw error; // Re-throw to allow further handling if needed
+    });
 }
 
 export default async function decorate(block) {
