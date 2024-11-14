@@ -143,14 +143,18 @@ const toggleFilterAccordion = (toggle) => {
 export default async function decorate(block) {
   fetch('https://publish-p131512-e1282665.adobeaemcloud.com/graphql/execute.json/pricefx/events', {
     method: 'GET',
-  }).then((response) => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    console.log(response);
-    allEventsData = response;
-    // Assuming the response is JSON
-  });
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+      // Assuming the response is JSON
+    })
+    .then((data) => {
+      // Step 4: Handle the parsed data
+      console.log('Data received:', data);
+    });
 
   const blockConfig = readBlockConfig(block);
   const featuredEvent = blockConfig.featuredevents;
