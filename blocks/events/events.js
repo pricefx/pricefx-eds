@@ -344,7 +344,7 @@ export default async function decorate(block) {
   const blockConfig = readBlockConfig(block);
   const featuredEvent = blockConfig.featuredevents;
   const searchPlaceholder = blockConfig.searchplaceholdertext;
-  const numOfEvents = blockConfig.numberOfEvents ? blockConfig.numberOfEvents : 3;
+  const numOfEvents = blockConfig.numberofevents ? blockConfig.numberofevents : 3;
   const defaultSort = blockConfig.sortby;
   const filterOne = blockConfig.filteronetitle;
   const filterOneOptions = blockConfig.filteronetags;
