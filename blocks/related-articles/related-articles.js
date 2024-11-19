@@ -477,6 +477,17 @@ const filterBasedOnProp = (data = [], filterProps = [], filterValues = {}) =>
       }).length > 0,
   );
 
+const removeDuplicates = (arr) => {
+  const seen = new Set();
+  return arr.filter((item) => {
+    if (seen.has(item.path)) {
+      return false;
+    }
+    seen.add(item.path);
+    return true;
+  });
+};
+
 export default async function decorate(block) {
   const type = block.children[0]?.textContent.trim() || 'related';
   const title = block.children[1]?.textContent.trim();
@@ -515,7 +526,7 @@ export default async function decorate(block) {
 
   // Sorting Article by Date published
   filteredData = sortByDate(filteredData, 'articlePublishDate');
-
+  filteredData = removeDuplicates(filteredData);
   const ul = document.createElement('ul');
   block.textContent = '';
   if (type === 'related') {
