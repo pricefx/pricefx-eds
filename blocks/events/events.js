@@ -10,134 +10,6 @@ const allEventsData = {
     eventsList: {
       items: [
         {
-          _path: '/content/dam/pricefx/content-fragments/copy-of-meet-pricefx-pps-chicago',
-          program: 'Event',
-          eventType: 'Live',
-          eventImage: {
-            _path:
-              '/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
-            _dmS7Url:
-              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-Business-people-discussing-over-new-advertising-project',
-            _publishUrl:
-              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
-          },
-          eventTitle: 'Meet Pricefx @ PPS Chicago 1',
-          eventLink: 'https://events.bizzabo.com/386429',
-          eventCtaLabel: 'REGISTER NOW',
-          eventDate: '2025-01-16',
-          eventTags: [
-            'pricefx:capability/insights',
-            'pricefx:status/live',
-            'pricefx:program/event',
-            'pricefx:topic/tips-&-tricks',
-          ],
-        },
-        {
-          _path: '/content/dam/pricefx/content-fragments/event-1',
-          program: 'Event',
-          eventType: 'Live',
-          eventImage: {
-            _path:
-              '/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
-            _dmS7Url:
-              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-Business-people-discussing-over-new-advertising-project',
-            _publishUrl:
-              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
-          },
-          eventTitle: 'Meet Pricefx @ PPS Chicago',
-          eventLink: 'https://events.bizzabo.com/386429',
-          eventCtaLabel: 'REGISTER NOW',
-          eventDate: '2024-07-10',
-          eventTags: ['pricefx:program/event', 'pricefx:status/live'],
-        },
-        {
-          _path: '/content/dam/pricefx/content-fragments/event-10',
-          program: 'Webinar',
-          eventType: 'Live',
-          eventImage: {
-            _path:
-              '/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
-            _dmS7Url:
-              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-Business-people-discussing-over-new-advertising-project',
-            _publishUrl:
-              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
-          },
-          eventTitle: 'Meet Pricefx @ PPS Chicago 2',
-          eventLink: 'https://events.bizzabo.com/386429',
-          eventCtaLabel: 'REGISTER NOW',
-          eventDate: '2025-01-10',
-          eventTags: [
-            'pricefx:status/live',
-            'pricefx:program/event',
-            'pricefx:industry/distribution',
-            'pricefx:topic/tips-&-tricks',
-          ],
-        },
-        {
-          _path: '/content/dam/pricefx/content-fragments/event-2',
-          program: 'Webinar',
-          eventType: 'On-demand',
-          eventImage: {
-            _path:
-              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
-            _dmS7Url:
-              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
-            _publishUrl:
-              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
-          },
-          eventTitle: 'SIMPLIFY THE EXECUTION OF YOUR PRICING',
-          eventLink: 'https://events.bizzabo.com/Simplifiez',
-          eventCtaLabel: 'WATCH NOW',
-          eventDate: '2024-07-18',
-          eventTags: ['pricefx:status/on-demand', 'pricefx:program/webinar'],
-        },
-        {
-          _path: '/content/dam/pricefx/content-fragments/event-20',
-          program: 'Webinar',
-          eventType: 'Live',
-          eventImage: {
-            _path:
-              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
-            _dmS7Url:
-              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
-            _publishUrl:
-              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
-          },
-          eventTitle: 'SIMPLIFY THE EXECUTION OF YOUR PRICING 1',
-          eventLink: 'https://events.bizzabo.com/Simplifiez',
-          eventCtaLabel: 'WATCH NOW',
-          eventDate: '2025-01-15',
-          eventTags: [
-            'pricefx:status/on-demand',
-            'pricefx:program/webinar',
-            'pricefx:capability/ai-optimization',
-            'pricefx:capability/price-management',
-          ],
-        },
-        {
-          _path: '/content/dam/pricefx/content-fragments/event-21',
-          program: 'Webinar',
-          eventType: 'Live',
-          eventImage: {
-            _path:
-              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
-            _dmS7Url:
-              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
-            _publishUrl:
-              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
-          },
-          eventTitle: 'SIMPLIFY THE EXECUTION OF YOUR PRICING 2',
-          eventLink: 'https://events.bizzabo.com/Simplifiez',
-          eventCtaLabel: 'WATCH NOW',
-          eventDate: '2024-07-15',
-          eventTags: [
-            'pricefx:status/on-demand',
-            'pricefx:program/webinar',
-            'pricefx:industry/distribution',
-            'pricefx:capability/price-management',
-          ],
-        },
-        {
           _path: '/content/dam/pricefx/content-fragments/meet-pricefx-pps-chicago',
           program: 'Event',
           eventType: 'Live',
@@ -152,11 +24,35 @@ const allEventsData = {
           eventTitle: 'Meet Pricefx @ PPS Chicago',
           eventLink: 'https://events.bizzabo.com/386429',
           eventCtaLabel: 'REGISTER NOW',
-          eventDate: '2024-12-19',
-          eventTags: ['pricefx:status/live', 'pricefx:program/event'],
+          eventDate: '2025-01-16',
+          eventTags: [
+            'pricefx:capability/insights',
+            'pricefx:status/live',
+            'pricefx:program/event',
+            'pricefx:topic/tips-&-tricks',
+            'pricefx:status/on-demand',
+          ],
         },
         {
-          _path: '/content/dam/pricefx/content-fragments/meet-pricefx-pps-chicago0',
+          _path: '/content/dam/pricefx/content-fragments/meet-pricefx-pps-chicago-1',
+          program: 'Event',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-Business-people-discussing-over-new-advertising-project',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+          },
+          eventTitle: 'Meet Pricefx @ PPS Chicago 1',
+          eventLink: 'https://events.bizzabo.com/386429',
+          eventCtaLabel: 'REGISTER NOW',
+          eventDate: '2025-01-16',
+          eventTags: ['pricefx:capability/insights', 'pricefx:status/live', 'pricefx:program/event'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/meet-pricefx-pps-chicago-2',
           program: 'Event',
           eventType: 'Live',
           eventImage: {
@@ -170,13 +66,674 @@ const allEventsData = {
           eventTitle: 'Meet Pricefx @ PPS Chicago 2',
           eventLink: 'https://events.bizzabo.com/386429',
           eventCtaLabel: 'REGISTER NOW',
+          eventDate: '2025-01-10',
+          eventTags: ['pricefx:status/live', 'pricefx:program/event'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/event-3',
+          program: 'Webinar',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+          },
+          eventTitle: 'Simplify Your Pricing Execution 1',
+          eventLink: 'https://events.bizzabo.com/Simplifiez',
+          eventCtaLabel: 'WATCH NOW',
+          eventDate: '2024-07-18',
+          eventTags: ['pricefx:status/on-demand', 'pricefx:program/webinar'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/event-4',
+          program: 'Webinar',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+          },
+          eventTitle: 'Simplify Your Pricing Execution 2',
+          eventLink: 'https://events.bizzabo.com/Simplifiez',
+          eventCtaLabel: 'WATCH NOW',
+          eventDate: '2024-07-15',
+          eventTags: ['pricefx:status/on-demand', 'pricefx:program/webinar'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/meet-pricefx-pps-chicago-3',
+          program: 'Event',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-Business-people-discussing-over-new-advertising-project',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+          },
+          eventTitle: 'Meet Pricefx @ PPS Chicago 3',
+          eventLink: 'https://events.bizzabo.com/386429',
+          eventCtaLabel: 'REGISTER NOW',
+          eventDate: '2024-12-19',
+          eventTags: ['pricefx:status/live', 'pricefx:program/event'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/meet-pricefx-pps-chicago-4',
+          program: 'Event',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-Business-people-discussing-over-new-advertising-project',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+          },
+          eventTitle: 'Meet Pricefx @ PPS Chicago 4',
+          eventLink: 'https://events.bizzabo.com/386429',
+          eventCtaLabel: 'REGISTER NOW',
           eventDate: '2024-12-05',
-          eventTags: [
-            'pricefx:status/live',
-            'pricefx:program/event',
-            'pricefx:industry/process',
-            'pricefx:topic/thought-leadership',
-          ],
+          eventTags: ['pricefx:status/live', 'pricefx:program/event'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/meet-pricefx-pps-chicago-5',
+          program: 'Event',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-Business-people-discussing-over-new-advertising-project',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+          },
+          eventTitle: 'Meet Pricefx @ PPS Chicago 5',
+          eventLink: 'https://events.bizzabo.com/386429',
+          eventCtaLabel: 'REGISTER NOW',
+          eventDate: '2025-01-05',
+          eventTags: ['pricefx:status/live', 'pricefx:program/event'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/event-5',
+          program: 'Webinar',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+          },
+          eventTitle: 'Simplify Your Pricing Execution 3',
+          eventLink: 'https://events.bizzabo.com/Simplifiez',
+          eventCtaLabel: 'WATCH NOW',
+          eventDate: '2024-05-15',
+          eventTags: ['pricefx:status/live', 'pricefx:program/webinar'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/event-6',
+          program: 'Webinar',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+          },
+          eventTitle: 'Simplify Your Pricing Execution 4',
+          eventLink: 'https://events.bizzabo.com/Simplifiez',
+          eventCtaLabel: 'WATCH NOW',
+          eventDate: '2024-05-01',
+          eventTags: ['pricefx:status/live', 'pricefx:program/webinar'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/event-7',
+          program: 'Webinar',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+          },
+          eventTitle: 'Simplify Your Pricing Execution 5',
+          eventLink: 'https://events.bizzabo.com/Simplifiez',
+          eventCtaLabel: 'WATCH NOW',
+          eventDate: '2024-04-10',
+          eventTags: ['pricefx:status/on-demand', 'pricefx:program/webinar'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/event-8',
+          program: 'Webinar',
+          eventType: 'On-demand',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+          },
+          eventTitle: 'Simplify Your Pricing Execution 6',
+          eventLink: 'https://events.bizzabo.com/Simplifiez',
+          eventCtaLabel: 'WATCH NOW',
+          eventDate: '2024-03-18',
+          eventTags: ['pricefx:status/on-demand', 'pricefx:program/webinar'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/event-9',
+          program: 'Webinar',
+          eventType: 'On-demand',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+          },
+          eventTitle: 'Simplify Your Pricing Execution 7',
+          eventLink: 'https://events.bizzabo.com/Simplifiez',
+          eventCtaLabel: 'WATCH NOW',
+          eventDate: '2024-02-25',
+          eventTags: ['pricefx:status/on-demand', 'pricefx:program/webinar'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/event-10',
+          program: 'Webinar',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+          },
+          eventTitle: 'Simplify Your Pricing Execution 8',
+          eventLink: 'https://events.bizzabo.com/Simplifiez',
+          eventCtaLabel: 'WATCH NOW',
+          eventDate: '2024-02-10',
+          eventTags: ['pricefx:status/on-demand', 'pricefx:program/webinar'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/meet-pricefx-pps-chicago-1',
+          program: 'Event',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-Business-people-discussing-over-new-advertising-project',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+          },
+          eventTitle: 'Meet Pricefx @ PPS Chicago 41',
+          eventLink: 'https://events.bizzabo.com/386429',
+          eventCtaLabel: 'REGISTER NOW',
+          eventDate: '2025-01-16',
+          eventTags: ['pricefx:capability/insights', 'pricefx:status/live', 'pricefx:program/event'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/meet-pricefx-pps-chicago-2',
+          program: 'Event',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-Business-people-discussing-over-new-advertising-project',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+          },
+          eventTitle: 'Meet Pricefx @ PPS Chicago 32',
+          eventLink: 'https://events.bizzabo.com/386429',
+          eventCtaLabel: 'REGISTER NOW',
+          eventDate: '2025-01-10',
+          eventTags: ['pricefx:status/live', 'pricefx:program/event'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/event-3',
+          program: 'Webinar',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+          },
+          eventTitle: 'Simplify Your Pricing Execution 31',
+          eventLink: 'https://events.bizzabo.com/Simplifiez',
+          eventCtaLabel: 'WATCH NOW',
+          eventDate: '2024-07-18',
+          eventTags: ['pricefx:status/on-demand', 'pricefx:program/webinar'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/event-4',
+          program: 'Webinar',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+          },
+          eventTitle: 'Simplify Your Pricing Execution 2',
+          eventLink: 'https://events.bizzabo.com/Simplifiez',
+          eventCtaLabel: 'WATCH NOW',
+          eventDate: '2024-07-15',
+          eventTags: ['pricefx:status/on-demand', 'pricefx:program/webinar'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/meet-pricefx-pps-chicago-3',
+          program: 'Event',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-Business-people-discussing-over-new-advertising-project',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+          },
+          eventTitle: 'Meet Pricefx @ PPS Chicago 23',
+          eventLink: 'https://events.bizzabo.com/386429',
+          eventCtaLabel: 'REGISTER NOW',
+          eventDate: '2024-12-19',
+          eventTags: ['pricefx:status/live', 'pricefx:program/event'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/meet-pricefx-pps-chicago-4',
+          program: 'Event',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-Business-people-discussing-over-new-advertising-project',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+          },
+          eventTitle: 'Meet Pricefx @ PPS Chicago 24',
+          eventLink: 'https://events.bizzabo.com/386429',
+          eventCtaLabel: 'REGISTER NOW',
+          eventDate: '2024-12-05',
+          eventTags: ['pricefx:status/live', 'pricefx:program/event'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/meet-pricefx-pps-chicago-5',
+          program: 'Event',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-Business-people-discussing-over-new-advertising-project',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+          },
+          eventTitle: 'Meet Pricefx @ PPS Chicago 25',
+          eventLink: 'https://events.bizzabo.com/386429',
+          eventCtaLabel: 'REGISTER NOW',
+          eventDate: '2025-01-05',
+          eventTags: ['pricefx:status/live', 'pricefx:program/event'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/event-5',
+          program: 'Webinar',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+          },
+          eventTitle: 'Simplify Your Pricing Execution 13',
+          eventLink: 'https://events.bizzabo.com/Simplifiez',
+          eventCtaLabel: 'WATCH NOW',
+          eventDate: '2024-05-15',
+          eventTags: ['pricefx:status/live', 'pricefx:program/webinar'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/event-6',
+          program: 'Webinar',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+          },
+          eventTitle: 'Simplify Your Pricing Execution 14',
+          eventLink: 'https://events.bizzabo.com/Simplifiez',
+          eventCtaLabel: 'WATCH NOW',
+          eventDate: '2024-05-01',
+          eventTags: ['pricefx:status/live', 'pricefx:program/webinar'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/event-7',
+          program: 'Webinar',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+          },
+          eventTitle: 'Simplify Your Pricing Execution 15',
+          eventLink: 'https://events.bizzabo.com/Simplifiez',
+          eventCtaLabel: 'WATCH NOW',
+          eventDate: '2024-04-10',
+          eventTags: ['pricefx:status/on-demand', 'pricefx:program/webinar'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/event-8',
+          program: 'Webinar',
+          eventType: 'On-demand',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+          },
+          eventTitle: 'Simplify Your Pricing Execution 16',
+          eventLink: 'https://events.bizzabo.com/Simplifiez',
+          eventCtaLabel: 'WATCH NOW',
+          eventDate: '2024-03-18',
+          eventTags: ['pricefx:status/on-demand', 'pricefx:program/webinar'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/event-9',
+          program: 'Webinar',
+          eventType: 'On-demand',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+          },
+          eventTitle: 'Simplify Your Pricing Execution 17',
+          eventLink: 'https://events.bizzabo.com/Simplifiez',
+          eventCtaLabel: 'WATCH NOW',
+          eventDate: '2024-02-25',
+          eventTags: ['pricefx:status/on-demand', 'pricefx:program/webinar'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/event-10',
+          program: 'Webinar',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+          },
+          eventTitle: 'Simplify Your Pricing Execution 18',
+          eventLink: 'https://events.bizzabo.com/Simplifiez',
+          eventCtaLabel: 'WATCH NOW',
+          eventDate: '2024-02-10',
+          eventTags: ['pricefx:status/on-demand', 'pricefx:program/webinar'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/meet-pricefx-pps-chicago-1',
+          program: 'Event',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-Business-people-discussing-over-new-advertising-project',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+          },
+          eventTitle: 'Meet Pricefx @ PPS Chicago 4771',
+          eventLink: 'https://events.bizzabo.com/386429',
+          eventCtaLabel: 'REGISTER NOW',
+          eventDate: '2025-01-16',
+          eventTags: ['pricefx:capability/insights', 'pricefx:status/live', 'pricefx:program/event'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/meet-pricefx-pps-chicago-2',
+          program: 'Event',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-Business-people-discussing-over-new-advertising-project',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+          },
+          eventTitle: 'Meet Pricefx @ PPS Chicago 3772',
+          eventLink: 'https://events.bizzabo.com/386429',
+          eventCtaLabel: 'REGISTER NOW',
+          eventDate: '2025-01-10',
+          eventTags: ['pricefx:status/live', 'pricefx:program/event'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/event-3',
+          program: 'Webinar',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+          },
+          eventTitle: 'Simplify Your Pricing Execution 71',
+          eventLink: 'https://events.bizzabo.com/Simplifiez',
+          eventCtaLabel: 'WATCH NOW',
+          eventDate: '2024-07-18',
+          eventTags: ['pricefx:status/on-demand', 'pricefx:program/webinar'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/event-4',
+          program: 'Webinar',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+          },
+          eventTitle: 'Simplify Your Pricing Execution 72',
+          eventLink: 'https://events.bizzabo.com/Simplifiez',
+          eventCtaLabel: 'WATCH NOW',
+          eventDate: '2024-07-15',
+          eventTags: ['pricefx:status/on-demand', 'pricefx:program/webinar'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/meet-pricefx-pps-chicago-3',
+          program: 'Event',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-Business-people-discussing-over-new-advertising-project',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+          },
+          eventTitle: 'Meet Pricefx @ PPS Chicago 73',
+          eventLink: 'https://events.bizzabo.com/386429',
+          eventCtaLabel: 'REGISTER NOW',
+          eventDate: '2024-12-19',
+          eventTags: ['pricefx:status/live', 'pricefx:program/event'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/meet-pricefx-pps-chicago-4',
+          program: 'Event',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-Business-people-discussing-over-new-advertising-project',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+          },
+          eventTitle: 'Meet Pricefx @ PPS Chicago 74',
+          eventLink: 'https://events.bizzabo.com/386429',
+          eventCtaLabel: 'REGISTER NOW',
+          eventDate: '2024-12-05',
+          eventTags: ['pricefx:status/live', 'pricefx:program/event'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/meet-pricefx-pps-chicago-5',
+          program: 'Event',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-Business-people-discussing-over-new-advertising-project',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-Business-people-discussing-over-new-advertising-project.jpeg',
+          },
+          eventTitle: 'Meet Pricefx @ PPS Chicago 75',
+          eventLink: 'https://events.bizzabo.com/386429',
+          eventCtaLabel: 'REGISTER NOW',
+          eventDate: '2025-01-05',
+          eventTags: ['pricefx:status/live', 'pricefx:program/event'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/event-5',
+          program: 'Webinar',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+          },
+          eventTitle: 'Simplify Your Pricing Execution 73',
+          eventLink: 'https://events.bizzabo.com/Simplifiez',
+          eventCtaLabel: 'WATCH NOW',
+          eventDate: '2024-05-15',
+          eventTags: ['pricefx:status/live', 'pricefx:program/webinar'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/event-6',
+          program: 'Webinar',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+          },
+          eventTitle: 'Simplify Your Pricing Execution 74',
+          eventLink: 'https://events.bizzabo.com/Simplifiez',
+          eventCtaLabel: 'WATCH NOW',
+          eventDate: '2024-05-01',
+          eventTags: ['pricefx:status/live', 'pricefx:program/webinar'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/event-7',
+          program: 'Webinar',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+          },
+          eventTitle: 'Simplify Your Pricing Execution 75',
+          eventLink: 'https://events.bizzabo.com/Simplifiez',
+          eventCtaLabel: 'WATCH NOW',
+          eventDate: '2024-04-10',
+          eventTags: ['pricefx:status/on-demand', 'pricefx:program/webinar'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/event-8',
+          program: 'Webinar',
+          eventType: 'On-demand',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+          },
+          eventTitle: 'Simplify Your Pricing Execution 76',
+          eventLink: 'https://events.bizzabo.com/Simplifiez',
+          eventCtaLabel: 'WATCH NOW',
+          eventDate: '2024-03-18',
+          eventTags: ['pricefx:status/on-demand', 'pricefx:program/webinar'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/event-9',
+          program: 'Webinar',
+          eventType: 'On-demand',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+          },
+          eventTitle: 'Simplify Your Pricing Execution 77',
+          eventLink: 'https://events.bizzabo.com/Simplifiez',
+          eventCtaLabel: 'WATCH NOW',
+          eventDate: '2024-02-25',
+          eventTags: ['pricefx:status/on-demand', 'pricefx:program/webinar'],
+        },
+        {
+          _path: '/content/dam/pricefx/content-fragments/event-10',
+          program: 'Webinar',
+          eventType: 'Live',
+          eventImage: {
+            _path:
+              '/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+            _dmS7Url:
+              'https://s7d9.scene7.com/is/image/pricefxstage/2024-photo-group-of-people-discussing-infront-board',
+            _publishUrl:
+              'https://publish-p131512-e1282665.adobeaemcloud.com/content/dam/pricefx/website/images/photography/2024-photo-group-of-people-discussing-infront-board.jpeg',
+          },
+          eventTitle: 'Simplify Your Pricing Execution 78',
+          eventLink: 'https://events.bizzabo.com/Simplifiez',
+          eventCtaLabel: 'WATCH NOW',
+          eventDate: '2024-02-10',
+          eventTags: ['pricefx:status/on-demand', 'pricefx:program/webinar'],
         },
       ],
     },
