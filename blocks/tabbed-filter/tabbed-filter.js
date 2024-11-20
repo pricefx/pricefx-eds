@@ -53,7 +53,7 @@ const renderClientLogos = (clientsDataJson, noResultsText) => {
       markup += `
         <li class="tabbed-filter__content-item">
           <picture>
-            <img class="tabbed-filter__content-item-image" src="${client.logo}" alt="${imageAltText}">
+            <img class="tabbed-filter__content-item-image" src="${client.logo}" alt="${imageAltText}" aria-label="${imageAltText}">
           </picture>
         </li>
       `;
