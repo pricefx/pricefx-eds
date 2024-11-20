@@ -51,9 +51,9 @@ const renderClientLogos = (clientsDataJson, noResultsText) => {
         ? client['alt text'].replaceAll('-', ' ')
         : client['alt text'];
       markup += `
-        <li class="tabbed-filter__content-item">
+        <li class="tabbed-filter__content-item" aria-label="${imageAltText}">
           <picture>
-            <img class="tabbed-filter__content-item-image" src="${client.logo}" alt="${imageAltText}" aria-label="${imageAltText}">
+            <img class="tabbed-filter__content-item-image" src="${client.logo}" alt="${imageAltText}" >
           </picture>
         </li>
       `;
