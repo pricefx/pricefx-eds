@@ -235,6 +235,8 @@ function showOnDemandOrDate(eventDate, program) {
     } else {
       eventDateFormatted = formatDate(eventDate);
     }
+  } else {
+    eventDateFormatted = formatDate(eventDate);
   }
   return eventDateFormatted;
 }
@@ -422,9 +424,7 @@ export default async function decorate(block) {
   paginationContainer.setAttribute('role', 'navigation');
   eventsContent.append(paginationContainer);
 
-  const defaultSortedArticle = allEventsData.data.eventsList.items.sort(
-    (a, b) => new Date(b.eventDate) - new Date(a.eventDate),
-  );
+  const defaultSortedArticle = noFeaturedEventData.sort((a, b) => new Date(b.eventDate) - new Date(a.eventDate));
 
   const queryStr = 'page=1&sortBy=desc-date';
   const searchParams = new URLSearchParams(queryStr);
@@ -643,7 +643,7 @@ ${
   const appendEvents = (articleJsonData) => {
     EventsContainer.innerHTML = renderArticleCard(articleJsonData);
   };
-  appendEvents(allEventsData.data.eventsList.items);
+  appendEvents(noFeaturedEventData);
 
   // Render pagination pages
   const renderPages = (articlePerPage, articleList, currentPage) => {
