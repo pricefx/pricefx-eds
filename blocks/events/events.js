@@ -194,9 +194,6 @@ function filterAndModifyEvents(events) {
       if (event.program === 'Event') {
         return false;
       }
-      if (event.program === 'Webinar') {
-        event.eventDate = 'On-demand';
-      }
     }
 
     // Hide events of type "Event"
@@ -214,16 +211,6 @@ function filterAndModifyEvents(events) {
   });
 }
 
-function filterEventsByPath(path) {
-  return allEventsData.data.eventsList.items.filter((event) => path.includes(event._path))[0];
-}
-
-const updateBrowserUrl = (searchParams, key, value) => {
-  searchParams.set(key, value);
-  const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
-  window.history.pushState(null, '', newRelativePathQuery);
-};
-
 const formatDate = (dateString) => {
   if (dateString === 'On-demand') {
     return dateString;
@@ -235,6 +222,31 @@ const formatDate = (dateString) => {
     year: 'numeric',
   };
   return date.toLocaleDateString('en-US', options);
+};
+
+function showOnDemandOrDate(eventDate, program) {
+  const today = new Date().toISOString().split('T')[0];
+  // Parse the event date
+  let [eventDateFormatted] = new Date(eventDate).toISOString().split('T');
+  // Skip events that are already passed
+  if (eventDateFormatted < today) {
+    if (program === 'Webinar') {
+      eventDateFormatted = 'On-demand';
+    } else {
+      eventDateFormatted = formatDate(eventDate);
+    }
+  }
+  return eventDateFormatted;
+}
+
+function filterEventsByPath(path) {
+  return allEventsData.data.eventsList.items.filter((event) => path.includes(event._path))[0];
+}
+
+const updateBrowserUrl = (searchParams, key, value) => {
+  searchParams.set(key, value);
+  const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
+  window.history.pushState(null, '', newRelativePathQuery);
 };
 
 const renderArticleCategory = (event) => {
@@ -613,13 +625,13 @@ ${
                 event.eventType !== '' || event.eventTitle !== '' || event.eventDate !== ''
                   ? `<div class="event-details">
                   ${event.category !== '' ? renderArticleCategory(event) : ''}
-                  ${event.title !== '' ? `<p class="event-info">${event.eventTitle}` : ''}
+                  ${event.title !== '' ? `<p class="event-info"><b>${event.eventTitle}</b></p>` : ''}
                 </div>`
                   : ''
               }
               <div class="event-cta-container">
                 ${renderArticleCtaLabel(event)}
-                ${event.readingTime !== '' ? `<p class="event-readtime">${formatDate(event.eventDate)}</p>` : ''}
+                ${event.readingTime !== '' ? `<p class="event-readtime">${showOnDemandOrDate(event.eventDate, event.program)}</p>` : ''}
               </div>
             </div>
           </li>
