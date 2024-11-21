@@ -20,6 +20,7 @@ export default function decorate(block) {
     summary.append(...label.childNodes);
     type.innerHTML = summary.innerHTML;
     if (!hasWrapper(summary)) {
+      summary.innerHTML = '';
       summary.appendChild(type);
     }
 
