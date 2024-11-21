@@ -10,8 +10,8 @@ export default function decorate(block) {
     const label = row.children[0];
     let type = row.children[1];
 
-    if (type) {
-      type = document.createElement(type);
+    if (type.type.firstChild) {
+      type = document.createElement(type.firstChild.textContent);
     } else {
       type = document.createElement('h3');
     }
