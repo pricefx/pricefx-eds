@@ -139,6 +139,12 @@
   object-fit: cover;
 }
 
+@media (width <= 767px) {
+  .columns > div {
+        gap: inherit;
+  }
+}
+
 @media (width >= 985px) {
   .columns > div {
     align-items: center;
