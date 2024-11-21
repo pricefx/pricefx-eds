@@ -905,7 +905,7 @@
       {
         "component": "select",
         "name": "type",
-        "value": "h2",
+        "value": "h3",
         "label": "Type",
         "valueType": "string",
         "options": [
