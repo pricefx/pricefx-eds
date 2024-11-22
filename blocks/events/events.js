@@ -13,23 +13,19 @@ function filterAndModifyEvents(events) {
     const eventDate = new Date(event.eventDate).toISOString().split('T')[0];
 
     // Skip events that are already passed
+
     if (eventDate < today) {
       if (event.program === 'Event') {
         return false;
       }
+      if (event.program === 'Webinar') {
+        const liveStatusIndex = event.eventTags.indexOf('pricefx:status/live');
+        if (liveStatusIndex !== -1) {
+          event.eventTags.push('pricefx:status/on-demand');
+        }
+      }
     }
 
-    // Hide events of type "Event"
-
-    // Modify "Webinar" type to "On-demand"
-
-    // Modify eventTags to add "pricefx:status/on-demand" if "pricefx:status/live" exists
-    const liveStatusIndex = event.eventTags.indexOf('pricefx:status/live');
-    if (liveStatusIndex !== -1) {
-      event.eventTags.push('pricefx:status/on-demand');
-    }
-
-    // Return the modified event
     return true;
   });
 }
@@ -585,7 +581,8 @@ ${
           updateBrowserUrl(searchParams, 'filter-industry', valuesString);
         }
         if (selectedFilters['filter-capability'].length > 0) {
-          updateBrowserUrl(searchParams, 'filter-capability', selectedFilters['filter-capability'][0]);
+          const valuesString = selectedFilters['filter-capability'].toString();
+          updateBrowserUrl(searchParams, 'filter-capability', valuesString);
         }
         if (selectedFilters['filter-topic'].length > 0) {
           updateBrowserUrl(searchParams, 'filter-topic', selectedFilters['filter-topic'][0]);
@@ -612,7 +609,7 @@ ${
           appendEvents(articleJson);
         }
 
-        currentSortedEvents = allEventsData.data.eventsList.items;
+        currentSortedEvents = articleJson;
 
         if (articleJson.length === 0) {
           EventsContainer.innerHTML = `
@@ -777,7 +774,12 @@ ${
         if (state === true && value.includes('all')) {
           selectedFilters[key].pop();
           searchParams.delete(key);
-        } else if (state === true && key === 'filter-program') {
+        } else if (
+          (state === true && key === 'filter-program') ||
+          key === 'filter-type' ||
+          key === 'filter-industry' ||
+          key === 'filter-topic'
+        ) {
           selectedFilters[key].pop();
           selectedFilters[key].push(value);
           updateFiltersUrlParams();
@@ -787,6 +789,7 @@ ${
         } else if (state === false && selectedFilters[key].includes(value)) {
           selectedFilters[key].splice(selectedFilters[key].indexOf(value), 1);
           searchParams.delete(key);
+          updateFiltersUrlParams();
         }
         const newRelativePathQuery = `${window.location.pathname}?${searchParams.toString()}`;
         window.history.pushState(null, '', newRelativePathQuery);
