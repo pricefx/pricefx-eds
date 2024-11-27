@@ -326,10 +326,7 @@ ${
         optionsArray.forEach((option) => {
           const optionSplit = option.split('/')[1];
           const optionReplace = optionSplit.includes('-') ? optionSplit.replaceAll('-', ' ') : optionSplit;
-          const optionTextTransform =
-            optionReplace.length <= 4 && optionReplace !== 'news' && optionReplace !== 'food'
-              ? optionReplace.toUpperCase()
-              : optionReplace;
+          const optionTextTransform = optionReplace;
           const optionLabel = optionTextTransform === 'it professionals' ? 'IT Professionals' : optionTextTransform;
           if (filterIsMultiSelect !== 'true') {
             filterOptionsMarkup += `
