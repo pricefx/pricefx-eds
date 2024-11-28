@@ -119,3 +119,34 @@ indices:
       cq-tags:
         select: head > meta[name="cq-tags"]
         value: attribute(el, "content")
+  videos:
+    include:
+      - /learning-center/**
+    exclude:
+      - /learning-center/writer/**
+    target: /video-index.json
+    properties:
+      lastModified:
+        select: none
+        value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
+      title:
+        select: head > meta[property="og:title"]
+        value: attribute(el, "content")
+      description:
+        select: head > meta[name="description"]
+        value: attribute(el, "content")
+      image:
+        select: head > meta[property="og:image"]
+        value: match(attribute(el, "content"), "^(https?:\/\/.*?(pricefx.com))+(.*)|^(.*)")
+      imageAlt:
+        select: head > meta[property="og:image:alt"]
+        value: attribute(el, "content")      
+      type:
+        select: head > meta[name="template"]
+        value: attribute(el, "content")
+      category:
+        select: head > meta[name="category"]
+        value: attribute(el, "content")
+    filters:
+      category:
+        match: "pricefx:content-types/videos"

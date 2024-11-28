@@ -4,6 +4,7 @@ const BASE_CONTENT_PATH = '/content/pricefx/en'; // En base content path
 const BASE_STYLE_GUIDE_PATH = '/content/pricefx/style-guide'; // Style guide base content path
 const CAREERS_PATH = 'https://careers.jobscore.com/jobs/pricefx/feed.json';
 const DM_VIDEO_SERVER_URL = 'https://s7d9.scene7.com/is/content/';
+const DM_CONTENT_SERVER_URL = 'https://s7d9.scene7.com/is/content/';
 const DM_SERVER_URL = 'https://s7d9.scene7.com/is/image/';
 const SEARCH_INDEX_PATH = '/query-index.json';
 const GRAPHQL_ENDPOINT_PATH = '/graphql/execute.json/pricefx/events';
@@ -18,4 +19,5 @@ export {
   DM_SERVER_URL,
   SEARCH_INDEX_PATH,
   GRAPHQL_ENDPOINT_PATH,
+  DM_CONTENT_SERVER_URL,
 };

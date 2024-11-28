@@ -150,6 +150,45 @@
     ]
   },
   {
+    "id": "image-zoom",
+    "fields": [
+      {
+        "component": "text-input",
+        "name": "url",
+        "label": "Dynamic Image URL",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "name": "zoomType",
+        "label": "Zoom Type",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Basic Zoom",
+            "value": "image_zoom"
+          },
+          {
+            "name": "Flyout Zoom",
+            "value": "Flyout"
+          },
+          {
+            "name": "Inline Zoom",
+            "value": "InlineZoom"
+          },
+          {
+            "name": "Zoom Vertical Dark Backgroud",
+            "value": "ZoomVertical_dark"
+          },
+          {
+            "name": "Zoom Vertical Light Backgroud",
+            "value": "ZoomVertical_light"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "button",
     "fields": [
       {
