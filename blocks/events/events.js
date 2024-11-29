@@ -187,7 +187,7 @@ export default async function decorate(block) {
       const filterThreeOptions = blockConfig.filterthreetags;
       const filterFour = blockConfig.filterfourtitle;
       const filterFourOptions = blockConfig.filterfourtags;
-      const filterFourIsMultiSelect = blockConfig.filterfourmultiselect ? 'false' : 'true';
+      const filterFourIsMultiSelect = blockConfig.filterfourmultiselect ? 'true' : 'false';
 
       const filterFive = blockConfig.filterfivetitle;
       const filterFiveOptions = blockConfig.filterfivetags;
