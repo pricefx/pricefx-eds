@@ -11,19 +11,11 @@ export default function decorate(block) {
       scriptUrl: 'https://s7d9.scene7.com/s7viewers/html5/js/BasicZoomViewer.js',
       funcNam: 'BasicZoomViewer',
     },
-    Flyout: {
-      scriptUrl: 'https://s7d9.scene7.com/s7viewers/html5/js/FlyoutViewer.js',
-      funcNam: 'FlyoutViewer',
-    },
     InlineZoom: {
       scriptUrl: 'https://s7d9.scene7.com/s7viewers/html5/js/FlyoutViewer.js',
       funcNam: 'FlyoutViewer',
     },
     ZoomVertical_dark: {
-      scriptUrl: 'https://s7d9.scene7.com/s7viewers/html5/js/ZoomVerticalViewer.js',
-      funcNam: 'ZoomVerticalViewer',
-    },
-    ZoomVertical_light: {
       scriptUrl: 'https://s7d9.scene7.com/s7viewers/html5/js/ZoomVerticalViewer.js',
       funcNam: 'ZoomVerticalViewer',
     },

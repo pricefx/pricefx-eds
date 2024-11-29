@@ -169,20 +169,12 @@
             "value": "image_zoom"
           },
           {
-            "name": "Flyout Zoom",
-            "value": "Flyout"
-          },
-          {
             "name": "Inline Zoom",
             "value": "InlineZoom"
           },
           {
-            "name": "Zoom Vertical Dark Backgroud",
+            "name": "Zoom Vertical",
             "value": "ZoomVertical_dark"
-          },
-          {
-            "name": "Zoom Vertical Light Backgroud",
-            "value": "ZoomVertical_light"
           }
         ]
       }
